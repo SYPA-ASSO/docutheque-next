@@ -4,6 +4,7 @@ import Categories from '@/components/Categories'
 import About from '@/components/About'
 import HowItWorks from '@/components/HowItWorks'
 import Tarifs from '@/components/Tarifs'
+import FAQ from '@/components/FAQ'
 import Footer from '@/components/Footer'
 import SchemaOrg from '@/components/SchemaOrg'
 
@@ -17,6 +18,7 @@ export default function Home() {
       <About />
       <HowItWorks />
       <Tarifs />
+      <FAQ />
       <Footer />
     </>
   )
