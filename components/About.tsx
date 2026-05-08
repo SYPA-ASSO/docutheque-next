@@ -1,6 +1,6 @@
 export default function About() {
   const domaines = [
-    'Droit du travail et de l\'emploi',
+    "Droit du travail et de l'emploi",
     'Droit de la consommation',
     'Droit de la famille',
     'Droit des sociétés et des entreprises',
@@ -8,21 +8,21 @@ export default function About() {
     'Droit immobilier et locatif',
     'Droit du numérique et des données personnelles (RGPD)',
     'Droit des assurances',
-    'Droit du handicap et de l\'accessibilité',
+    "Droit du handicap et de l'accessibilité",
     'Droit associatif et des organisations',
     'Droit agricole et rural',
     'Droit du recouvrement de créances',
     'Droit commercial et des affaires',
     'Droit de la propriété intellectuelle',
     'Droit de la santé',
-    'Droit de l\'environnement',
+    "Droit de l'environnement",
     'Droit fiscal et comptable',
     'Droit bancaire et financier',
     'Droit pénal des affaires',
     'Droit administratif et des collectivités',
     'Droit de la construction et de l\'urbanisme',
     'Droit du sport et des loisirs',
-    'Droit de l\'éducation et de la formation',
+    "Droit de l'éducation et de la formation",
   ]
 
   return (
@@ -80,10 +80,10 @@ export default function About() {
           <div style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.25rem'}}>
             <div style={{display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px'}}>
               <span style={{fontSize: '22px'}}>✏️</span>
-              <strong style={{color: '#0f2d6e', fontSize: '13px'}}>100% personnalisables — adaptez chaque document à votre situation</strong>
+              <strong style={{color: '#0f2d6e', fontSize: '13px'}}>100% personnalisables, adaptez chaque document à votre situation</strong>
             </div>
             <p style={{color: '#6b7280', fontSize: '12px', lineHeight: '1.6'}}>
-              Tous nos modèles sont fournis au format DOCX, le format Word universel. Vous les ouvrez, vous les complétez, vous les adaptez à votre situation exacte — sans contrainte, sans abonnement logiciel, sans intermédiaire. Le document final est le vôtre, entièrement.
+              Tous nos modèles sont fournis au format DOCX, le format Word universel. Vous les ouvrez, vous les complétez, vous les adaptez à votre situation exacte, sans contrainte, sans abonnement logiciel, sans intermédiaire. Le document final est le vôtre, entièrement.
             </p>
           </div>
 
@@ -92,10 +92,10 @@ export default function About() {
               Le droit du quotidien, pour tous les profils
             </h3>
             <p style={{color: 'rgba(255,255,255,0.85)', fontSize: '12px', lineHeight: '1.8', marginBottom: '12px'}}>
-              Que vous soyez salarié confronté à une situation difficile au travail, employeur face à une obligation légale, consommateur lésé par un prestataire, dirigeant en train de créer votre société, bailleur ou locataire en désaccord, association cherchant à se structurer ou particulier souhaitant simplement comprendre ses droits — Docuthèque a été conçue pour vous.
+              Que vous soyez salarié confronté à une situation difficile au travail, employeur face à une obligation légale, consommateur lésé par un prestataire, dirigeant en train de créer votre société, bailleur ou locataire en désaccord, association cherchant à se structurer ou particulier souhaitant simplement comprendre ses droits : Docuthèque a été conçue pour vous.
             </p>
             <p style={{color: 'rgba(255,255,255,0.85)', fontSize: '12px', lineHeight: '1.8', marginBottom: '16px'}}>
-              Nos modèles couvrent l'ensemble des situations juridiques de la vie courante et professionnelle, sans distinction de statut ni de niveau de connaissance juridique. Du contrat de travail aux statuts de société, de la mise en demeure au registre RGPD, du bail rural à la lettre de réclamation auprès d'un assureur — chaque document est accessible, compréhensible et immédiatement utilisable.
+              Nos modèles couvrent l'ensemble des situations juridiques de la vie courante et professionnelle, sans distinction de statut ni de niveau de connaissance juridique. Du contrat de travail aux statuts de société, de la mise en demeure au registre RGPD, du bail rural à la lettre de réclamation auprès d'un assureur : chaque document est accessible, compréhensible et immédiatement utilisable.
             </p>
             <p style={{color: '#93c5fd', fontSize: '13px', fontWeight: '600', fontStyle: 'italic', borderTop: '1px solid rgba(255,255,255,0.15)', paddingTop: '12px', margin: 0}}>
               Vous avez des droits. Nous vous proposons les solutions pour mieux les comprendre. Parce qu'un document bien rédigé aujourd'hui, c'est certainement un litige évité demain.

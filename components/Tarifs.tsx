@@ -76,7 +76,7 @@ export default function Tarifs() {
 
             <div style={{borderTop: '1px solid #f3f4f6', margin: '12px 0'}}></div>
             <div style={{display: 'flex', flexDirection: 'column', gap: '7px'}}>
-              <p style={{fontSize: '12px'}}><span style={{color: '#16a34a', marginRight: '5px'}}>✓</span>Bibliothèque complète (25+ modèles)</p>
+              <p style={{fontSize: '12px'}}><span style={{color: '#16a34a', marginRight: '5px'}}>✓</span>Bibliothèque complète en constante expansion</p>
               <p style={{fontSize: '12px'}}><span style={{color: '#16a34a', marginRight: '5px'}}>✓</span>Notices juridiques détaillées</p>
               <p style={{fontSize: '12px'}}><span style={{color: '#16a34a', marginRight: '5px'}}>✓</span>Mises à jour incluses</p>
               <div style={{background: '#eff6ff', borderRadius: '8px', padding: '8px 10px', marginTop: '4px'}}>

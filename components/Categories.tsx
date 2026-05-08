@@ -1,10 +1,10 @@
 const categories = [
-  { bg: '#eff6ff', ic: '#2563eb', icone: '🏢', label: 'Employeur', desc: 'Contrats, licenciement, rupture conventionnelle, règlement intérieur', n: 8 },
-  { bg: '#f0fdf4', ic: '#16a34a', icone: '👤', label: 'Salarié', desc: 'Démission, contestation de sanction, solde de tout compte', n: 5 },
-  { bg: '#fff7ed', ic: '#ea580c', icone: '🛒', label: 'Consommateur', desc: 'Mise en demeure, rétractation, garantie légale', n: 4 },
-  { bg: '#fdf4ff', ic: '#9333ea', icone: '🛡', label: 'RGPD / Conformité', desc: 'Registre, DPA, AIPD, politique de confidentialité', n: 6 },
-  { bg: '#eff6ff', ic: '#1a4fba', icone: '📄', label: 'Contrats', desc: 'Prestation de services, CGV, NDA, mandat, freelance', n: 5 },
-  { bg: '#f8fafc', ic: '#475569', icone: '⚖', label: 'Recouvrement', desc: 'Mise en demeure de payer, relances, injonction de payer', n: 3 },
+  { bg: '#eff6ff', ic: '#2563eb', icone: '🏢', label: 'Employeur', desc: 'Contrats, licenciement, rupture conventionnelle, règlement intérieur' },
+  { bg: '#f0fdf4', ic: '#16a34a', icone: '👤', label: 'Salarié', desc: 'Démission, contestation de sanction, solde de tout compte' },
+  { bg: '#fff7ed', ic: '#ea580c', icone: '🛒', label: 'Consommateur', desc: 'Mise en demeure, rétractation, garantie légale' },
+  { bg: '#fdf4ff', ic: '#9333ea', icone: '🛡', label: 'RGPD / Conformité', desc: 'Registre, DPA, AIPD, politique de confidentialité' },
+  { bg: '#eff6ff', ic: '#1a4fba', icone: '📄', label: 'Contrats', desc: 'Prestation de services, CGV, NDA, mandat, freelance' },
+  { bg: '#f8fafc', ic: '#475569', icone: '⚖', label: 'Recouvrement', desc: 'Mise en demeure de payer, relances, injonction de payer' },
 ]
 
 export default function Categories() {
@@ -25,10 +25,7 @@ export default function Categories() {
                 {cat.icone}
               </div>
               <div>
-                <div style={{display: 'flex', alignItems: 'center', gap: '8px'}}>
-                  <strong style={{fontSize: '13px', color: '#0f2d6e'}}>{cat.label}</strong>
-                  <span style={{background: '#eff6ff', color: '#1a4fba', fontSize: '10px', padding: '2px 8px', borderRadius: '20px'}}>{cat.n}</span>
-                </div>
+                <strong style={{fontSize: '13px', color: '#0f2d6e'}}>{cat.label}</strong>
                 <p style={{color: '#6b7280', fontSize: '12px', marginTop: '4px', lineHeight: '1.5'}}>{cat.desc}</p>
               </div>
             </div>
