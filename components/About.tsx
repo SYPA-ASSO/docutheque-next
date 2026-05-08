@@ -20,7 +20,7 @@ export default function About() {
     'Droit bancaire et financier',
     'Droit pénal des affaires',
     'Droit administratif et des collectivités',
-    'Droit de la construction et de l\'urbanisme',
+    "Droit de la construction et de l'urbanisme",
     'Droit du sport et des loisirs',
     "Droit de l'éducation et de la formation",
   ]
@@ -71,10 +71,10 @@ export default function About() {
           <div style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.25rem'}}>
             <div style={{display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px'}}>
               <span style={{fontSize: '22px'}}>🔄</span>
-              <strong style={{color: '#0f2d6e', fontSize: '13px'}}>Mis à jour en temps réel</strong>
+              <strong style={{color: '#0f2d6e', fontSize: '13px'}}>Mise à jour des documents</strong>
             </div>
             <p style={{color: '#6b7280', fontSize: '12px', lineHeight: '1.6'}}>
-              Notre base documentaire est mise à jour dès qu'une loi, un décret ou une jurisprudence modifie le cadre juridique applicable. Vous téléchargez toujours la version conforme en vigueur.
+              Notre base documentaire est mise à jour dans les meilleurs délais, dès qu'une loi, un décret ou une jurisprudence modifie le cadre juridique applicable. Cette veille est incluse dans notre pratique au quotidien.
             </p>
           </div>
           <div style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.25rem'}}>
