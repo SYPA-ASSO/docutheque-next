@@ -24,7 +24,7 @@ export default function SchemaOrg() {
         {
           "@type": "Offer",
           "name": "Premium",
-          "price": "9.90",
+          "price": "14.90",
           "priceCurrency": "EUR",
           "description": "Bibliothèque complète, notices juridiques, fiches pédagogiques et 1 question sous 48h"
         },
