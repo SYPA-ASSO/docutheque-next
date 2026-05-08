@@ -91,15 +91,9 @@ export default function HowItWorks() {
               <p style={{color: '#374151', fontSize: '0.95rem', lineHeight: '1.8', marginBottom: '16px'}}>
                 Notre offre s'inscrit dans une démarche d'information et de mise à disposition documentaire. Nous ne délivrons pas de consultation juridique au sens de la loi du 31 décembre 1971, réservée aux avocats et professionnels réglementés, à l'exception de l'activité réglementée que nous menons sur le droit assurantiel<sup>(1)</sup>. Nous disposons d'un réseau d'avocats partenaires vers lesquels nous pouvons vous orienter, sans obligation de votre part, le choix d'un avocat vous étant libre. Nous mettons à votre disposition des ressources pédagogiques et des modèles de documents pour vous permettre de mieux appréhender votre situation et d'agir avec les bons outils.
               </p>
-              <p style={{color: '#374151', fontSize: '0.95rem', lineHeight: '1.8', marginBottom: '24px'}}>
+              <p style={{color: '#374151', fontSize: '0.95rem', lineHeight: '1.8'}}>
                 Deux formes d'accompagnement complémentaires : une bibliothèque de modèles de documents prêts à l'emploi, et un service de réponse pédagogique pour éclairer vos droits avant d'agir.
               </p>
-              {/* NOTE DE BAS DE PAGE */}
-              <div style={{borderTop: '1px solid #e5e7eb', paddingTop: '12px'}}>
-                <p style={{color: '#9ca3af', fontSize: '11px', lineHeight: '1.7'}}>
-                  <sup>(1)</sup> Activité de conseil en assurances réglementée, exercée sous le contrôle de l'ACPR (Autorité de Contrôle Prudentiel et de Résolution), déclarée à l'ORIAS sous le numéro 26003943. Membre de l'association d'autorégulation ENDYA. Membre du CRFF (Conseil Représentatif des Formalistes de France).
-                </p>
-              </div>
             </div>
             <div style={{flex: '0 0 48%', display: 'flex', flexDirection: 'column', gap: '14px'}}>
               <div style={{background: '#f8fafc', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.25rem'}}>
