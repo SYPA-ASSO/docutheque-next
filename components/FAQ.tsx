@@ -34,11 +34,11 @@ export default function FAQ() {
     },
     {
       q: "Proposez-vous un accompagnement pour la création d'entreprise et les formalités juridiques ?",
-      a: "Oui. En tant que juriste formaliste, membre du CRFF (Conseil Représentatif des Formalistes de France), nous vous accompagnons dans toutes vos démarches de formalités : création de société (SASU, SAS, SARL, EURL), rédaction de statuts, modifications statutaires, transfert de siège, dissolution et liquidation. Nous intervenons en France, en Belgique et au Luxembourg. Pour en savoir plus, consultez le site du Cabinet Cholez-Pagotto."
+      a: "Oui. En tant que juriste formaliste, nous vous accompagnons dans toutes vos démarches de formalités : création de société (SASU, SAS, SARL, EURL), de micro-entreprise, d'entreprise individuelle, vos statuts, vos modifications statutaires, de transfert de siège, de dissolution et de liquidation. Notre cabinet est membre du CRFF (Conseil Représentatif des Formalistes de France)."
     },
     {
       q: "Proposez-vous des services de courtage en assurances ?",
-      a: "Oui. En complément de notre activité documentaire et pédagogique, nous exerçons une activité de conseil en assurances et réassurances, déclarée à l'ORIAS sous le numéro 26003943 et exercée sous le contrôle de l'ACPR. Nous pouvons vous accompagner dans la recherche et la mise en place de solutions assurantielles adaptées à votre situation personnelle ou professionnelle. Pour en savoir plus, consultez notre site dédié DEVILINE."
+      a: "Oui. En complément de notre activité documentaire et pédagogique, nous exerçons une activité de conseil en assurances et réassurances, déclarée à l'ORIAS sous le numéro 26003943 et exercée sous le contrôle de l'ACPR. Nous pouvons vous accompagner dans la recherche et la mise en place de solutions assurantielles adaptées à votre situation personnelle ou professionnelle, en tous domaines concernés par de l'assurance."
     },
   ]
 
