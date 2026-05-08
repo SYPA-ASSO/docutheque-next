@@ -82,7 +82,7 @@ export default function HowItWorks() {
               <span style={{background: '#eff6ff', color: '#1a4fba', fontSize: '11px', fontWeight: '600', padding: '3px 12px', borderRadius: '20px', letterSpacing: '0.05em'}}>
                 ASSISTANCE JURIDIQUE
               </span>
-              <h2 style={{fontSize: '1.6rem', fontWeight: '700', color: '#0f2d6e', margin: '12px 0 16px 0', lineHeight: '1.4'}}>
+              <h2 style={{fontSize: '1.3rem', fontWeight: '700', color: '#0f2d6e', margin: '12px 0 16px 0', lineHeight: '1.4'}}>
                 L'assistance juridique, qu'est-ce que c'est ?
               </h2>
               <p style={{color: '#374151', fontSize: '0.95rem', lineHeight: '1.8', marginBottom: '16px'}}>
