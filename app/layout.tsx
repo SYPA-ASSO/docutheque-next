@@ -8,12 +8,12 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Docuthèque et assistance : documents juridiques prêts à l'emploi et informations pédagogiques, vos droits expliqués sans jargon",
-  description: "Modèles de documents juridiques et administratifs conformes au droit en vigueur : contrats, mises en demeure, RGPD, RH, recouvrement, statuts de société. Téléchargez en DOCX. Vos droits expliqués sans jargon par un juriste dédié.",
-  keywords: "modèles de documents, documents pédagogiques, documents juridiques, contrats, mise en demeure, RGPD, documents RH, statuts SASU, statuts SARL, auto-entrepreneur, micro entreprise, juriste en ligne, assistance juridique, formalités, création d'entreprise, information juridique, droit du travail, protection juridique",
+  title: "Docutheque et assistance : documents juridiques prets a l'emploi et informations pedagogiques, vos droits expliques sans jargon",
+  description: "Modeles de documents juridiques et administratifs conformes au droit en vigueur : contrats, mises en demeure, RGPD, RH, recouvrement, statuts de societe. Telechargez en DOCX. Vos droits expliques sans jargon par un juriste dedie.",
+  keywords: "modeles de documents, documents pedagogiques, documents juridiques, contrats, mise en demeure, RGPD, documents RH, statuts SASU, statuts SARL, auto-entrepreneur, micro entreprise, juriste en ligne, assistance juridique, formalites, creation d'entreprise, information juridique, droit du travail, protection juridique",
   openGraph: {
-    title: "Docuthèque et informations sur vos droits. Juriste et formaliste dédié",
-    description: "Modèles de documents, informations administratives et juridiques pédagogiques, juriste formaliste et conseil en assurances dédié.",
+    title: "Docutheque et informations sur vos droits. Juriste et formaliste dedie",
+    description: "Modeles de documents, informations administratives et juridiques pedagogiques, juriste formaliste et conseil en assurances dedie.",
     type: "website",
     url: "https://docutheque.cholez-pagotto.fr",
     locale: "fr_FR",
