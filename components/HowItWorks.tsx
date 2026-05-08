@@ -71,7 +71,6 @@ export default function HowItWorks() {
               <strong style={{color: '#6b7280'}}>Information importante :</strong> les réponses fournies sont à vocation informative et pédagogique. Elles ne constituent pas une consultation juridique au sens de la loi du 31 décembre 1971. Pour toute situation nécessitant un acte juridique ou une représentation, nous vous recommandons de consulter un avocat. Selon votre besoin, nous pouvons vous orienter vers des avocats partenaires, sans engagement de votre part.
             </p>
           </div>
-
         </div>
       </section>
 
@@ -87,13 +86,13 @@ export default function HowItWorks() {
                 L'assistance juridique, qu'est-ce que c'est ?
               </h2>
               <p style={{color: '#374151', fontSize: '0.95rem', lineHeight: '1.8', marginBottom: '16px'}}>
-                L'assistance juridique désigne toute forme d'aide apportée à une personne pour comprendre ses droits, identifier les démarches à entreprendre ou préparer les documents nécessaires à la résolution d'un litige ou d'une situation juridique complexe.
+                L'assistance juridique désigne toute forme d'aide apportée à une personne pour mieux comprendre ses droits, s'informer sur le cadre légal applicable à sa situation et accéder aux documents dont elle a besoin pour agir.
               </p>
               <p style={{color: '#374151', fontSize: '0.95rem', lineHeight: '1.8', marginBottom: '16px'}}>
-                Contrairement à la consultation juridique — réservée aux avocats — l'assistance juridique à vocation pédagogique et documentaire est accessible à tous les professionnels du droit. Elle permet de mieux comprendre une situation, d'anticiper les risques et d'agir avec les bons outils, sans nécessairement recourir à une procédure judiciaire.
+                Notre offre s'inscrit dans une démarche d'information et de mise à disposition documentaire. Nous ne délivrons pas de consultation juridique au sens de la loi du 31 décembre 1971, réservée aux avocats et professionnels réglementés, à l'exception de l'activité réglementée que nous menons en interne sur le droit assurantiel. Nous disposons d'un réseau d'avocats partenaires vers lesquels nous pouvons vous orienter, sans obligation de votre part, le choix d'un avocat vous étant libre. Nous mettons à votre disposition des ressources pédagogiques et des modèles de documents pour vous permettre de mieux appréhender votre situation et d'agir avec les bons outils.
               </p>
               <p style={{color: '#374151', fontSize: '0.95rem', lineHeight: '1.8'}}>
-                Docuthèque vous propose cette assistance sous deux formes complémentaires : des modèles de documents prêts à l'emploi pour agir immédiatement, et un service de réponse pédagogique pour mieux comprendre vos droits avant d'agir.
+                Deux formes d'accompagnement complémentaires : une bibliothèque de modèles de documents prêts à l'emploi, et un service de réponse pédagogique pour éclairer vos droits avant d'agir.
               </p>
             </div>
             <div style={{flex: '0 0 48%', display: 'flex', flexDirection: 'column', gap: '14px'}}>
