@@ -34,9 +34,21 @@ export default function Connexion() {
             {/* LES 3 OFFRES */}
             <div style={{display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '28px'}}>
               {[
-                { label: 'Accès gratuit', desc: 'Documents en accès libre, DOCX, sans inscription payante', color: '#4ade80' },
-                { label: 'Abonnement Optimal', desc: 'Bibliothèque complète + 1 question/mois à partir de 14,90 €/mois', color: '#93c5fd' },
-                { label: 'Information sur vos droits', desc: 'Une question, une réponse juriste sous 48h — 47 € à l\'unité', color: '#fcd34d' },
+                {
+                  label: 'Accès gratuit',
+                  desc: 'Tous les documents disponibles en accès libre, format DOCX, sans frais.',
+                  color: '#4ade80'
+                },
+                {
+                  label: 'Abonnement Optimal',
+                  desc: 'Bibliothèque complète de documents juridiques, 1 question juriste incluse par mois, non cumulable. 14,90 €/mois ou 147,97 €/an.',
+                  color: '#93c5fd'
+                },
+                {
+                  label: 'Information sur vos droits',
+                  desc: 'Une question, une réponse rédigée par un juriste sous 24 à 48h. 47 € à l\'unité, sans abonnement.',
+                  color: '#fcd34d'
+                },
               ].map((offre, i) => (
                 <div key={i} style={{background: 'rgba(255,255,255,0.1)', borderRadius: '10px', padding: '12px 14px'}}>
                   <p style={{color: offre.color, fontSize: '12px', fontWeight: '700', margin: '0 0 3px'}}>{offre.label}</p>
@@ -82,27 +94,51 @@ export default function Connexion() {
             {mode === 'connexion' && (
               <div style={{display: 'flex', flexDirection: 'column', gap: '16px'}}>
                 <div>
-                  <h2 style={{fontSize: '1.3rem', fontWeight: '700', color: '#0f2d6e', margin: '0 0 4px'}}>Bon retour !</h2>
-                  <p style={{color: '#6b7280', fontSize: '13px', margin: 0}}>Connectez-vous à votre espace client.</p>
+                  <h2 style={{fontSize: '1.3rem', fontWeight: '700', color: '#0f2d6e', margin: '0 0 4px'}}>Accédez à votre espace client</h2>
+                  <p style={{color: '#6b7280', fontSize: '13px', margin: 0}}>Renseignez vos identifiants pour accéder à vos documents et à votre suivi.</p>
                 </div>
+
                 <div>
                   <label style={{display: 'block', fontSize: '12px', fontWeight: '600', color: '#374151', marginBottom: '6px'}}>Adresse email *</label>
                   <input type="email" placeholder="votre@email.fr" style={{width: '100%', padding: '10px 12px', border: '1px solid #d1d5db', borderRadius: '8px', fontSize: '13px', boxSizing: 'border-box', outline: 'none'}} />
                 </div>
+
                 <div>
                   <label style={{display: 'block', fontSize: '12px', fontWeight: '600', color: '#374151', marginBottom: '6px'}}>Mot de passe *</label>
                   <input type="password" placeholder="••••••••" style={{width: '100%', padding: '10px 12px', border: '1px solid #d1d5db', borderRadius: '8px', fontSize: '13px', boxSizing: 'border-box', outline: 'none'}} />
                 </div>
+
                 <div style={{display: 'flex', justifyContent: 'flex-end'}}>
                   <a href="/mot-de-passe-oublie" style={{color: '#1a4fba', fontSize: '12px', textDecoration: 'none'}}>Mot de passe oublié ?</a>
                 </div>
+
                 <button style={{width: '100%', padding: '12px', borderRadius: '8px', border: 'none', background: '#1a4fba', color: 'white', fontSize: '14px', fontWeight: '700', cursor: 'pointer'}}>
                   Se connecter
                 </button>
+
+                <p style={{color: '#9ca3af', fontSize: '11px', textAlign: 'center', margin: 0}}>
+                  Vous serez redirigé vers votre espace client après connexion.
+                </p>
+
+                <div style={{background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '10px', padding: '14px 16px'}}>
+                  <p style={{color: '#1e3a5f', fontSize: '12px', fontWeight: '600', marginBottom: '8px'}}>Depuis votre espace client, vous pouvez :</p>
+                  {[
+                    'Télécharger vos documents en format DOCX',
+                    'Poser une question à votre juriste',
+                    'Gérer votre abonnement Optimal',
+                    'Consulter vos réponses et historique',
+                  ].map((item, i) => (
+                    <div key={i} style={{display: 'flex', gap: '8px', alignItems: 'flex-start', marginBottom: '4px'}}>
+                      <span style={{color: '#1a4fba', fontSize: '12px', flexShrink: 0}}>✓</span>
+                      <span style={{color: '#374151', fontSize: '12px'}}>{item}</span>
+                    </div>
+                  ))}
+                </div>
+
                 <p style={{color: '#6b7280', fontSize: '12px', textAlign: 'center', margin: 0}}>
                   Pas encore de compte ?{' '}
                   <button onClick={() => setMode('inscription')} style={{color: '#1a4fba', fontWeight: '600', background: 'none', border: 'none', cursor: 'pointer', fontSize: '12px', padding: 0}}>
-                    Créer mon compte
+                    Inscription en moins de 2 minutes
                   </button>
                 </p>
               </div>
@@ -113,12 +149,29 @@ export default function Connexion() {
               <div style={{display: 'flex', flexDirection: 'column', gap: '20px'}}>
                 <div>
                   <h2 style={{fontSize: '1.3rem', fontWeight: '700', color: '#0f2d6e', margin: '0 0 4px'}}>Créer mon compte</h2>
-                  <p style={{color: '#6b7280', fontSize: '13px', margin: 0}}>Accédez à votre espace client en quelques instants.</p>
+                  <p style={{color: '#6b7280', fontSize: '13px', margin: 0}}>Inscription en moins de 2 minutes · Accès immédiat à votre espace client.</p>
+                </div>
+
+                {/* EMAIL + MOT DE PASSE EN PREMIER */}
+                <div>
+                  <label style={{display: 'block', fontSize: '12px', fontWeight: '600', color: '#374151', marginBottom: '6px'}}>Adresse email *</label>
+                  <input type="email" placeholder="votre@email.fr" style={{width: '100%', padding: '10px 12px', border: '1px solid #d1d5db', borderRadius: '8px', fontSize: '13px', boxSizing: 'border-box'}} />
+                </div>
+
+                <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px'}}>
+                  <div>
+                    <label style={{display: 'block', fontSize: '12px', fontWeight: '600', color: '#374151', marginBottom: '6px'}}>Mot de passe *</label>
+                    <input type="password" placeholder="••••••••" style={{width: '100%', padding: '10px 12px', border: '1px solid #d1d5db', borderRadius: '8px', fontSize: '13px', boxSizing: 'border-box'}} />
+                  </div>
+                  <div>
+                    <label style={{display: 'block', fontSize: '12px', fontWeight: '600', color: '#374151', marginBottom: '6px'}}>Confirmer le mot de passe *</label>
+                    <input type="password" placeholder="••••••••" style={{width: '100%', padding: '10px 12px', border: '1px solid #d1d5db', borderRadius: '8px', fontSize: '13px', boxSizing: 'border-box'}} />
+                  </div>
                 </div>
 
                 {/* STATUT */}
                 <div>
-                  <label style={{display: 'block', fontSize: '12px', fontWeight: '600', color: '#374151', marginBottom: '8px'}}>Vous êtes * </label>
+                  <label style={{display: 'block', fontSize: '12px', fontWeight: '600', color: '#374151', marginBottom: '8px'}}>Vous êtes *</label>
                   <div style={{display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '8px'}}>
                     {[
                       { value: 'particulier', label: 'Particulier', icon: <Users size={14} strokeWidth={1.5} /> },
@@ -136,7 +189,7 @@ export default function Connexion() {
                   </div>
                 </div>
 
-                {/* CHAMPS COMMUNS */}
+                {/* CHAMPS IDENTITÉ */}
                 <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px'}}>
                   <div>
                     <label style={{display: 'block', fontSize: '12px', fontWeight: '600', color: '#374151', marginBottom: '6px'}}>Prénom *</label>
@@ -222,23 +275,6 @@ export default function Connexion() {
                   </div>
                 )}
 
-                {/* EMAIL + MOT DE PASSE */}
-                <div>
-                  <label style={{display: 'block', fontSize: '12px', fontWeight: '600', color: '#374151', marginBottom: '6px'}}>Adresse email *</label>
-                  <input type="email" placeholder="votre@email.fr" style={{width: '100%', padding: '10px 12px', border: '1px solid #d1d5db', borderRadius: '8px', fontSize: '13px', boxSizing: 'border-box'}} />
-                </div>
-
-                <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px'}}>
-                  <div>
-                    <label style={{display: 'block', fontSize: '12px', fontWeight: '600', color: '#374151', marginBottom: '6px'}}>Mot de passe *</label>
-                    <input type="password" placeholder="••••••••" style={{width: '100%', padding: '10px 12px', border: '1px solid #d1d5db', borderRadius: '8px', fontSize: '13px', boxSizing: 'border-box'}} />
-                  </div>
-                  <div>
-                    <label style={{display: 'block', fontSize: '12px', fontWeight: '600', color: '#374151', marginBottom: '6px'}}>Confirmer le mot de passe *</label>
-                    <input type="password" placeholder="••••••••" style={{width: '100%', padding: '10px 12px', border: '1px solid #d1d5db', borderRadius: '8px', fontSize: '13px', boxSizing: 'border-box'}} />
-                  </div>
-                </div>
-
                 {/* CGU */}
                 <div style={{display: 'flex', gap: '10px', alignItems: 'flex-start'}}>
                   <input type="checkbox" id="cgu" style={{marginTop: '2px', flexShrink: 0}} />
@@ -248,7 +284,7 @@ export default function Connexion() {
                 </div>
 
                 <div style={{display: 'flex', gap: '10px', alignItems: 'flex-start'}}>
-                  <input type="checkbox" id="newsletter" style={{marginTop: '2px', flexShrink: 0}} />
+                  <input type="checkbox" id="newsletter" defaultChecked={false} style={{marginTop: '2px', flexShrink: 0}} />
                   <label htmlFor="newsletter" style={{color: '#6b7280', fontSize: '12px', lineHeight: '1.6'}}>
                     Je souhaite recevoir la newsletter juridique gratuite de Docuthèque
                   </label>
@@ -258,10 +294,22 @@ export default function Connexion() {
                   Créer mon compte
                 </button>
 
+                <p style={{color: '#9ca3af', fontSize: '11px', textAlign: 'center', margin: 0}}>
+                  Inscription en moins de 2 minutes · Accès immédiat à votre espace client.
+                </p>
+
                 <div style={{background: '#f0fdf4', border: '1px solid #bbf7d0', borderRadius: '8px', padding: '12px 14px'}}>
-                  <p style={{color: '#15803d', fontSize: '12px', lineHeight: '1.6', margin: 0}}>
-                    Après création de votre compte, vous pourrez choisir votre offre : accès gratuit immédiat, abonnement Optimal, ou poser une question unitaire à 47 €.
-                  </p>
+                  <p style={{color: '#15803d', fontSize: '12px', lineHeight: '1.6', margin: '0 0 6px', fontWeight: '600'}}>Après création de votre compte :</p>
+                  {[
+                    'Accès gratuit immédiat aux documents en accès libre',
+                    'Souscription à l\'abonnement Optimal si vous le souhaitez',
+                    'Possibilité de poser une question unitaire à 47 €',
+                  ].map((item, i) => (
+                    <div key={i} style={{display: 'flex', gap: '8px', alignItems: 'flex-start', marginBottom: '4px'}}>
+                      <span style={{color: '#16a34a', fontSize: '12px', flexShrink: 0}}>✓</span>
+                      <span style={{color: '#374151', fontSize: '12px'}}>{item}</span>
+                    </div>
+                  ))}
                 </div>
 
                 <p style={{color: '#6b7280', fontSize: '12px', textAlign: 'center', margin: 0}}>
