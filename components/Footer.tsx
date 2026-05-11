@@ -1,5 +1,5 @@
 import { Scale } from 'lucide-react'
- 
+
 export default function Footer() {
   return (
     <>
@@ -13,7 +13,7 @@ export default function Footer() {
           </div>
         </div>
       </section>
- 
+
       {/* FOOTER */}
       <footer style={{background: '#111827', padding: '2rem 0'}}>
         <div style={{maxWidth: '1200px', margin: '0 auto', padding: '0 2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start'}}>
@@ -56,7 +56,7 @@ export default function Footer() {
           </div>
         </div>
       </footer>
- 
+
       {/* NOTE RÉGLEMENTAIRE */}
       <div style={{background: '#0f172a', padding: '12px 0'}}>
         <div style={{maxWidth: '1200px', margin: '0 auto', padding: '0 2rem'}}>

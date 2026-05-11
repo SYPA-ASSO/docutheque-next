@@ -1,9 +1,9 @@
 'use client'
 import { useState } from 'react'
- 
+
 export default function Tarifs() {
   const [annuel, setAnnuel] = useState(false)
- 
+
   return (
     <section style={{background: 'white', padding: '4rem 0', borderTop: '1px solid #e5e7eb'}}>
       <div style={{maxWidth: '1200px', margin: '0 auto', padding: '0 2rem'}}>
@@ -11,7 +11,7 @@ export default function Tarifs() {
           <h2 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#0f2d6e'}}>Une offre simple et transparente</h2>
           <p style={{color: '#6b7280', fontSize: '0.875rem', marginTop: '0.25rem'}}>Des modèles juridiques accessibles à tous, et vos droits expliqués sans jargon.</p>
         </div>
- 
+
         {/* TOGGLE MENSUEL / ANNUEL */}
         <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '12px', marginBottom: '2rem'}}>
           <div style={{background: '#e5e7eb', borderRadius: '20px', padding: '3px', display: 'flex', gap: '2px'}}>
@@ -28,9 +28,9 @@ export default function Tarifs() {
           </div>
           <span style={{background: '#dcfce7', color: '#16a34a', fontSize: '11px', padding: '3px 10px', borderRadius: '20px', fontWeight: '600'}}>2 mois offerts sur l'offre annuelle</span>
         </div>
- 
+
         <div style={{display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.25rem', maxWidth: '900px', margin: '0 auto'}}>
- 
+
           {/* GRATUIT */}
           <div style={{border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.5rem'}}>
             <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px'}}>
@@ -52,7 +52,7 @@ export default function Tarifs() {
               Accéder gratuitement
             </button>
           </div>
- 
+
           {/* ABONNEMENT OPTIMAL */}
           <div style={{border: '2px solid #1a4fba', borderRadius: '12px', padding: '1.5rem', position: 'relative'}}>
             <span style={{position: 'absolute', top: '-13px', left: '50%', transform: 'translateX(-50%)', background: '#1a4fba', color: 'white', fontSize: '10px', padding: '4px 14px', borderRadius: '20px', whiteSpace: 'nowrap', fontWeight: '500'}}>�? Recommandé</span>
@@ -60,7 +60,7 @@ export default function Tarifs() {
               <p style={{fontWeight: '600', color: '#0f2d6e'}}>Abonnement Optimal</p>
               <span style={{background: '#eff6ff', color: '#1a4fba', fontSize: '10px', padding: '2px 8px', borderRadius: '20px'}}>Abonnement</span>
             </div>
- 
+
             {annuel ? (
               <>
                 <p style={{fontSize: '28px', fontWeight: '600', color: '#1a4fba'}}>147,97 €<span style={{fontSize: '14px', color: '#6b7280', fontWeight: '400'}}> /an</span></p>
@@ -74,7 +74,7 @@ export default function Tarifs() {
                 <p style={{color: '#e53e3e', fontSize: '11px', marginTop: '3px'}}>Engagement 12 mois · renouvellement annuel</p>
               </>
             )}
- 
+
             <div style={{borderTop: '1px solid #f3f4f6', margin: '12px 0'}}></div>
             <div style={{display: 'flex', flexDirection: 'column', gap: '7px'}}>
               <p style={{fontSize: '12px'}}><span style={{color: '#16a34a', marginRight: '5px'}}>✓</span>Accès à toute la bibliothèque de documents en DOCX</p>
@@ -93,7 +93,7 @@ export default function Tarifs() {
               {annuel ? 'S\'abonner — offre annuelle' : 'S\'abonner'}
             </button>
           </div>
- 
+
           {/* INFORMATION SUR VOS DROITS */}
           <div style={{border: '1px solid #d4af37', borderRadius: '12px', padding: '1.5rem', position: 'relative'}}>
             <span style={{position: 'absolute', top: '-13px', left: '50%', transform: 'translateX(-50%)', background: '#b8860b', color: 'white', fontSize: '10px', padding: '4px 14px', borderRadius: '20px', whiteSpace: 'nowrap', fontWeight: '500'}}>Sans abonnement</span>
@@ -118,16 +118,16 @@ export default function Tarifs() {
               Poser ma question
             </button>
           </div>
- 
+
         </div>
- 
+
         {/* NOTE ENGAGEMENT */}
         <div style={{maxWidth: '900px', margin: '1.5rem auto 0', background: '#fff7ed', border: '1px solid #fed7aa', borderRadius: '10px', padding: '0.875rem 1.25rem'}}>
           <p style={{color: '#92400e', fontSize: '11px', lineHeight: '1.7', margin: 0}}>
             <strong>Information importante —</strong> L'abonnement Optimal est souscrit pour une durée minimale de 12 mois. À l'issue de cette période, il se renouvelle automatiquement pour une nouvelle année, sauf résiliation adressée par écrit au moins 30 jours avant l'échéance. Le tarif mensuel affiché est donné à titre indicatif, calculé sur la base de l'engagement annuel. La question mensuelle incluse est non cumulable d'un mois sur l'autre. Vous posez régulièrement des questions ? L'abonnement Optimal est plus économique dès la deuxième question mensuelle.
           </p>
         </div>
- 
+
       </div>
     </section>
   )

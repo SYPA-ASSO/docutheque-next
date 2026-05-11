@@ -1,20 +1,20 @@
 'use client'
-
+ 
 import { useState } from 'react'
 import { Scale, UserCheck, Shield, Clock, Lock, Building2, Users, PenLine, KeyRound } from 'lucide-react'
 import Header from '@/components/Header'
 import FooterMinimal from '@/components/FooterMinimal'
-
+ 
 export default function Connexion() {
   const [mode, setMode] = useState<'choix' | 'connexion' | 'inscription'>('choix')
   const [statut, setStatut] = useState<'particulier' | 'professionnel' | 'association' | 'collectivite'>('particulier')
-
+ 
   return (
     <>
       <Header />
       <main style={{background: '#f8fafc', minHeight: '100vh', padding: '3rem 0'}}>
         <div style={{maxWidth: '1100px', margin: '0 auto', padding: '0 2rem', display: 'flex', gap: '2rem', alignItems: 'flex-start'}}>
-
+ 
           {/* COLONNE GAUCHE */}
           <div style={{flex: '0 0 380px', background: 'linear-gradient(135deg, #0f2d6e 0%, #1a4fba 100%)', borderRadius: '16px', padding: '2.5rem', position: 'sticky', top: '80px'}}>
             <div style={{display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '24px'}}>
@@ -23,14 +23,14 @@ export default function Connexion() {
               </div>
               <span style={{color: 'white', fontWeight: '700', fontSize: '15px'}}>Docuthèque</span>
             </div>
-
+ 
             <h2 style={{color: 'white', fontSize: '1.3rem', fontWeight: '700', lineHeight: '1.4', marginBottom: '8px'}}>
               Vos documents juridiques et vos droits expliqués, sans jargon.
             </h2>
             <p style={{color: 'rgba(255,255,255,0.7)', fontSize: '13px', lineHeight: '1.7', marginBottom: '28px'}}>
               Accédez à votre espace client pour télécharger vos documents, poser vos questions et gérer votre abonnement.
             </p>
-
+ 
             <div style={{display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '28px'}}>
               {[
                 { label: 'Accès gratuit', desc: 'Tous les documents disponibles en accès libre, format DOCX, sans frais.', color: '#4ade80' },
@@ -43,7 +43,7 @@ export default function Connexion() {
                 </div>
               ))}
             </div>
-
+ 
             <div style={{display: 'flex', flexDirection: 'column', gap: '10px'}}>
               {[
                 { icon: <UserCheck size={16} color="#93c5fd" strokeWidth={1.5} />, text: '100% humain, zéro intelligence artificielle' },
@@ -58,10 +58,10 @@ export default function Connexion() {
               ))}
             </div>
           </div>
-
+ 
           {/* COLONNE DROITE */}
           <div style={{flex: 1, background: 'white', borderRadius: '16px', padding: '2.5rem', border: '1px solid #e5e7eb'}}>
-
+ 
             {/* ÉCRAN DE CHOIX */}
             {mode === 'choix' && (
               <div style={{display: 'flex', flexDirection: 'column', gap: '24px'}}>
@@ -69,7 +69,7 @@ export default function Connexion() {
                   <h2 style={{fontSize: '1.4rem', fontWeight: '700', color: '#0f2d6e', margin: '0 0 6px'}}>Bienvenue sur Docuthèque</h2>
                   <p style={{color: '#6b7280', fontSize: '13px', margin: 0}}>Pour commencer, dites-nous où vous en êtes :</p>
                 </div>
-
+ 
                 <button
                   onClick={() => setMode('inscription')}
                   style={{width: '100%', background: 'white', border: '2px solid #e5e7eb', borderRadius: '14px', padding: '1.75rem', cursor: 'pointer', textAlign: 'left', transition: 'all 0.2s', display: 'flex', gap: '1.25rem', alignItems: 'flex-start'}}
@@ -85,13 +85,13 @@ export default function Connexion() {
                     <span style={{color: '#1a4fba', fontSize: '12px', fontWeight: '600'}}>Créer mon compte →</span>
                   </div>
                 </button>
-
+ 
                 <div style={{display: 'flex', alignItems: 'center', gap: '12px'}}>
                   <div style={{flex: 1, height: '1px', background: '#e5e7eb'}} />
                   <span style={{color: '#9ca3af', fontSize: '13px', fontWeight: '600', letterSpacing: '0.05em'}}>OU</span>
                   <div style={{flex: 1, height: '1px', background: '#e5e7eb'}} />
                 </div>
-
+ 
                 <button
                   onClick={() => setMode('connexion')}
                   style={{width: '100%', background: 'white', border: '2px solid #e5e7eb', borderRadius: '14px', padding: '1.75rem', cursor: 'pointer', textAlign: 'left', transition: 'all 0.2s', display: 'flex', gap: '1.25rem', alignItems: 'flex-start'}}
@@ -107,18 +107,18 @@ export default function Connexion() {
                     <span style={{color: '#16a34a', fontSize: '12px', fontWeight: '600'}}>Me connecter →</span>
                   </div>
                 </button>
-
+ 
                 <p style={{color: '#9ca3af', fontSize: '11px', textAlign: 'center', margin: 0, lineHeight: '1.6'}}>
                   Vos données sont protégées conformément au RGPD · <a href="/confidentialite" style={{color: '#9ca3af'}}>Politique de confidentialité</a>
                 </p>
               </div>
             )}
-
+ 
             {/* FORMULAIRE CONNEXION */}
             {mode === 'connexion' && (
               <div style={{display: 'flex', flexDirection: 'column', gap: '16px'}}>
                 <button onClick={() => setMode('choix')} style={{background: 'none', border: 'none', color: '#6b7280', fontSize: '12px', cursor: 'pointer', padding: 0, display: 'flex', alignItems: 'center', gap: '4px', alignSelf: 'flex-start'}}>
-                  ← Retour
+                  �? Retour
                 </button>
                 <div>
                   <h2 style={{fontSize: '1.3rem', fontWeight: '700', color: '#0f2d6e', margin: '0 0 4px'}}>Accédez à votre espace client</h2>
@@ -163,23 +163,23 @@ export default function Connexion() {
                 </p>
               </div>
             )}
-
+ 
             {/* FORMULAIRE INSCRIPTION */}
             {mode === 'inscription' && (
               <div style={{display: 'flex', flexDirection: 'column', gap: '20px'}}>
                 <button onClick={() => setMode('choix')} style={{background: 'none', border: 'none', color: '#6b7280', fontSize: '12px', cursor: 'pointer', padding: 0, display: 'flex', alignItems: 'center', gap: '4px', alignSelf: 'flex-start'}}>
-                  ← Retour
+                  �? Retour
                 </button>
                 <div>
                   <h2 style={{fontSize: '1.3rem', fontWeight: '700', color: '#0f2d6e', margin: '0 0 4px'}}>Créer mon compte</h2>
                   <p style={{color: '#6b7280', fontSize: '13px', margin: 0}}>Inscription rapide · Accès immédiat à votre espace client.</p>
                 </div>
-
+ 
                 <div>
                   <label style={{display: 'block', fontSize: '12px', fontWeight: '600', color: '#374151', marginBottom: '6px'}}>Adresse email *</label>
                   <input type="email" placeholder="votre@email.fr" style={{width: '100%', padding: '10px 12px', border: '1px solid #d1d5db', borderRadius: '8px', fontSize: '13px', boxSizing: 'border-box'}} />
                 </div>
-
+ 
                 <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px'}}>
                   <div>
                     <label style={{display: 'block', fontSize: '12px', fontWeight: '600', color: '#374151', marginBottom: '6px'}}>Mot de passe *</label>
@@ -190,7 +190,7 @@ export default function Connexion() {
                     <input type="password" placeholder="••••••••" style={{width: '100%', padding: '10px 12px', border: '1px solid #d1d5db', borderRadius: '8px', fontSize: '13px', boxSizing: 'border-box'}} />
                   </div>
                 </div>
-
+ 
                 <div>
                   <label style={{display: 'block', fontSize: '12px', fontWeight: '600', color: '#374151', marginBottom: '8px'}}>Vous êtes *</label>
                   <div style={{display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '8px'}}>
@@ -209,7 +209,7 @@ export default function Connexion() {
                     ))}
                   </div>
                 </div>
-
+ 
                 <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px'}}>
                   <div>
                     <label style={{display: 'block', fontSize: '12px', fontWeight: '600', color: '#374151', marginBottom: '6px'}}>Prénom *</label>
@@ -220,12 +220,12 @@ export default function Connexion() {
                     <input type="text" placeholder="Dupont" style={{width: '100%', padding: '10px 12px', border: '1px solid #d1d5db', borderRadius: '8px', fontSize: '13px', boxSizing: 'border-box'}} />
                   </div>
                 </div>
-
+ 
                 <div>
                   <label style={{display: 'block', fontSize: '12px', fontWeight: '600', color: '#374151', marginBottom: '6px'}}>Rue *</label>
                   <input type="text" placeholder="12 rue de la République" style={{width: '100%', padding: '10px 12px', border: '1px solid #d1d5db', borderRadius: '8px', fontSize: '13px', boxSizing: 'border-box'}} />
                 </div>
-
+ 
                 <div style={{display: 'grid', gridTemplateColumns: '1fr 2fr', gap: '12px'}}>
                   <div>
                     <label style={{display: 'block', fontSize: '12px', fontWeight: '600', color: '#374151', marginBottom: '6px'}}>Code postal *</label>
@@ -236,12 +236,12 @@ export default function Connexion() {
                     <input type="text" placeholder="Paris" style={{width: '100%', padding: '10px 12px', border: '1px solid #d1d5db', borderRadius: '8px', fontSize: '13px', boxSizing: 'border-box'}} />
                   </div>
                 </div>
-
+ 
                 <div>
                   <label style={{display: 'block', fontSize: '12px', fontWeight: '600', color: '#374151', marginBottom: '6px'}}>Téléphone *</label>
                   <input type="tel" placeholder="06 00 00 00 00" style={{width: '100%', padding: '10px 12px', border: '1px solid #d1d5db', borderRadius: '8px', fontSize: '13px', boxSizing: 'border-box'}} />
                 </div>
-
+ 
                 {statut === 'professionnel' && (
                   <div style={{display: 'flex', flexDirection: 'column', gap: '12px', background: '#f8fafc', borderRadius: '10px', padding: '16px', border: '1px solid #e5e7eb'}}>
                     <p style={{color: '#1a4fba', fontSize: '12px', fontWeight: '700', margin: 0}}>Informations professionnelles</p>
@@ -255,7 +255,7 @@ export default function Connexion() {
                     </div>
                   </div>
                 )}
-
+ 
                 {statut === 'association' && (
                   <div style={{display: 'flex', flexDirection: 'column', gap: '12px', background: '#f8fafc', borderRadius: '10px', padding: '16px', border: '1px solid #e5e7eb'}}>
                     <p style={{color: '#1a4fba', fontSize: '12px', fontWeight: '700', margin: 0}}>Informations association</p>
@@ -273,7 +273,7 @@ export default function Connexion() {
                     </div>
                   </div>
                 )}
-
+ 
                 {statut === 'collectivite' && (
                   <div style={{display: 'flex', flexDirection: 'column', gap: '12px', background: '#f8fafc', borderRadius: '10px', padding: '16px', border: '1px solid #e5e7eb'}}>
                     <p style={{color: '#1a4fba', fontSize: '12px', fontWeight: '700', margin: 0}}>Informations collectivité</p>
@@ -291,29 +291,29 @@ export default function Connexion() {
                     </div>
                   </div>
                 )}
-
+ 
                 <div style={{display: 'flex', gap: '10px', alignItems: 'flex-start'}}>
                   <input type="checkbox" id="cgu" style={{marginTop: '2px', flexShrink: 0}} />
                   <label htmlFor="cgu" style={{color: '#6b7280', fontSize: '12px', lineHeight: '1.6'}}>
                     J'accepte les <a href="/cgu" style={{color: '#1a4fba'}}>Conditions Générales d'Utilisation</a> et la <a href="/confidentialite" style={{color: '#1a4fba'}}>Politique de confidentialité</a> *
                   </label>
                 </div>
-
+ 
                 <div style={{display: 'flex', gap: '10px', alignItems: 'flex-start'}}>
                   <input type="checkbox" id="newsletter" defaultChecked={false} style={{marginTop: '2px', flexShrink: 0}} />
                   <label htmlFor="newsletter" style={{color: '#6b7280', fontSize: '12px', lineHeight: '1.6'}}>
-                    Je souhaite recevoir la newsletter juridique gratuite de Docuthèque
+                    Je souhaite recevoir la newsletter de Docuthèque (informations juridiques, offres sur nos services et sélections partenaires)
                   </label>
                 </div>
-
+ 
                 <button style={{width: '100%', padding: '13px', borderRadius: '8px', border: 'none', background: '#1a4fba', color: 'white', fontSize: '14px', fontWeight: '700', cursor: 'pointer'}}>
                   Créer mon compte
                 </button>
-
+ 
                 <p style={{color: '#9ca3af', fontSize: '11px', textAlign: 'center', margin: 0}}>
                   Inscription rapide · Accès immédiat à votre espace client.
                 </p>
-
+ 
                 <div style={{background: '#f0fdf4', border: '1px solid #bbf7d0', borderRadius: '8px', padding: '12px 14px'}}>
                   <p style={{color: '#15803d', fontSize: '12px', lineHeight: '1.6', margin: '0 0 6px', fontWeight: '600'}}>Après création de votre compte :</p>
                   {[
@@ -327,20 +327,20 @@ export default function Connexion() {
                     </div>
                   ))}
                 </div>
-
+ 
                 <p style={{color: '#6b7280', fontSize: '12px', textAlign: 'center', margin: 0}}>
                   Déjà un compte ?{' '}
                   <button onClick={() => setMode('connexion')} style={{color: '#1a4fba', fontWeight: '600', background: 'none', border: 'none', cursor: 'pointer', fontSize: '12px', padding: 0}}>
                     Me connecter
                   </button>
                 </p>
-
+ 
                 <p style={{color: '#9ca3af', fontSize: '10px', textAlign: 'center', margin: 0, lineHeight: '1.6'}}>
                   * Champs obligatoires · Vos données sont protégées conformément au RGPD · <a href="/confidentialite" style={{color: '#9ca3af'}}>Politique de confidentialité</a>
                 </p>
               </div>
             )}
-
+ 
           </div>
         </div>
       </main>
