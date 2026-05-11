@@ -33,8 +33,8 @@ export default function Connexion() {
  
             <div style={{display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '28px'}}>
               {[
-                { label: 'Accès gratuit', desc: 'Tous les documents disponibles en accès libre, format DOCX, sans frais.', color: '#4ade80' },
-                { label: 'Abonnement Optimal', desc: 'Bibliothèque complète de documents juridiques, 1 question juriste incluse par mois, non cumulable. 14,90 €/mois ou 147,97 €/an.', color: '#93c5fd' },
+                { label: 'Accès gratuit', desc: 'Tous les documents disponibles en accès libre, format DOCX.', color: '#4ade80' },
+                { label: 'Abonnement Optimal', desc: 'Bibliothèque complète de documents juridiques, 1 question juriste incluse par mois, non cumulable. 12,49 €/mois ou 147,97 €/an.', color: '#93c5fd' },
                 { label: 'Information sur vos droits', desc: 'Une question, une réponse rédigée par un juriste sous 24 à 48h. 47 € à l\'unité, sans abonnement.', color: '#fcd34d' },
               ].map((offre, i) => (
                 <div key={i} style={{background: 'rgba(255,255,255,0.1)', borderRadius: '10px', padding: '12px 14px'}}>
@@ -118,7 +118,7 @@ export default function Connexion() {
             {mode === 'connexion' && (
               <div style={{display: 'flex', flexDirection: 'column', gap: '16px'}}>
                 <button onClick={() => setMode('choix')} style={{background: 'none', border: 'none', color: '#6b7280', fontSize: '12px', cursor: 'pointer', padding: 0, display: 'flex', alignItems: 'center', gap: '4px', alignSelf: 'flex-start'}}>
-                  �? Retour
+                  ← Retour
                 </button>
                 <div>
                   <h2 style={{fontSize: '1.3rem', fontWeight: '700', color: '#0f2d6e', margin: '0 0 4px'}}>Accédez à votre espace client</h2>
@@ -168,13 +168,14 @@ export default function Connexion() {
             {mode === 'inscription' && (
               <div style={{display: 'flex', flexDirection: 'column', gap: '20px'}}>
                 <button onClick={() => setMode('choix')} style={{background: 'none', border: 'none', color: '#6b7280', fontSize: '12px', cursor: 'pointer', padding: 0, display: 'flex', alignItems: 'center', gap: '4px', alignSelf: 'flex-start'}}>
-                  �? Retour
+                  ← Retour
                 </button>
                 <div>
                   <h2 style={{fontSize: '1.3rem', fontWeight: '700', color: '#0f2d6e', margin: '0 0 4px'}}>Créer mon compte</h2>
-                  <p style={{color: '#6b7280', fontSize: '13px', margin: 0}}>Inscription rapide · Accès immédiat à votre espace client.</p>
+                  <p style={{color: '#6b7280', fontSize: '13px', margin: 0}}>Accès immédiat à votre espace client.</p>
                 </div>
  
+                {/* CHAMPS OBLIGATOIRES */}
                 <div>
                   <label style={{display: 'block', fontSize: '12px', fontWeight: '600', color: '#374151', marginBottom: '6px'}}>Adresse email *</label>
                   <input type="email" placeholder="votre@email.fr" style={{width: '100%', padding: '10px 12px', border: '1px solid #d1d5db', borderRadius: '8px', fontSize: '13px', boxSizing: 'border-box'}} />
@@ -221,27 +222,37 @@ export default function Connexion() {
                   </div>
                 </div>
  
-                <div>
-                  <label style={{display: 'block', fontSize: '12px', fontWeight: '600', color: '#374151', marginBottom: '6px'}}>Rue *</label>
-                  <input type="text" placeholder="12 rue de la République" style={{width: '100%', padding: '10px 12px', border: '1px solid #d1d5db', borderRadius: '8px', fontSize: '13px', boxSizing: 'border-box'}} />
-                </div>
+                {/* CHAMPS OPTIONNELS */}
+                <div style={{background: '#f8fafc', border: '1px solid #e5e7eb', borderRadius: '10px', padding: '16px'}}>
+                  <p style={{color: '#6b7280', fontSize: '12px', fontWeight: '600', margin: '0 0 12px'}}>
+                    Informations complémentaires <span style={{fontWeight: '400', fontStyle: 'italic'}}>(optionnelles pour l'accès gratuit — requises pour l'Abonnement Optimal et la question payante)</span>
+                  </p>
  
-                <div style={{display: 'grid', gridTemplateColumns: '1fr 2fr', gap: '12px'}}>
-                  <div>
-                    <label style={{display: 'block', fontSize: '12px', fontWeight: '600', color: '#374151', marginBottom: '6px'}}>Code postal *</label>
-                    <input type="text" placeholder="75001" style={{width: '100%', padding: '10px 12px', border: '1px solid #d1d5db', borderRadius: '8px', fontSize: '13px', boxSizing: 'border-box'}} />
+                  <div style={{display: 'flex', flexDirection: 'column', gap: '12px'}}>
+                    <div>
+                      <label style={{display: 'block', fontSize: '12px', fontWeight: '600', color: '#374151', marginBottom: '6px'}}>Rue</label>
+                      <input type="text" placeholder="12 rue de la République" style={{width: '100%', padding: '10px 12px', border: '1px solid #d1d5db', borderRadius: '8px', fontSize: '13px', boxSizing: 'border-box'}} />
+                    </div>
+ 
+                    <div style={{display: 'grid', gridTemplateColumns: '1fr 2fr', gap: '12px'}}>
+                      <div>
+                        <label style={{display: 'block', fontSize: '12px', fontWeight: '600', color: '#374151', marginBottom: '6px'}}>Code postal</label>
+                        <input type="text" placeholder="75001" style={{width: '100%', padding: '10px 12px', border: '1px solid #d1d5db', borderRadius: '8px', fontSize: '13px', boxSizing: 'border-box'}} />
+                      </div>
+                      <div>
+                        <label style={{display: 'block', fontSize: '12px', fontWeight: '600', color: '#374151', marginBottom: '6px'}}>Ville</label>
+                        <input type="text" placeholder="Paris" style={{width: '100%', padding: '10px 12px', border: '1px solid #d1d5db', borderRadius: '8px', fontSize: '13px', boxSizing: 'border-box'}} />
+                      </div>
+                    </div>
+ 
+                    <div>
+                      <label style={{display: 'block', fontSize: '12px', fontWeight: '600', color: '#374151', marginBottom: '6px'}}>Téléphone</label>
+                      <input type="tel" placeholder="06 00 00 00 00" style={{width: '100%', padding: '10px 12px', border: '1px solid #d1d5db', borderRadius: '8px', fontSize: '13px', boxSizing: 'border-box'}} />
+                    </div>
                   </div>
-                  <div>
-                    <label style={{display: 'block', fontSize: '12px', fontWeight: '600', color: '#374151', marginBottom: '6px'}}>Ville *</label>
-                    <input type="text" placeholder="Paris" style={{width: '100%', padding: '10px 12px', border: '1px solid #d1d5db', borderRadius: '8px', fontSize: '13px', boxSizing: 'border-box'}} />
-                  </div>
                 </div>
  
-                <div>
-                  <label style={{display: 'block', fontSize: '12px', fontWeight: '600', color: '#374151', marginBottom: '6px'}}>Téléphone *</label>
-                  <input type="tel" placeholder="06 00 00 00 00" style={{width: '100%', padding: '10px 12px', border: '1px solid #d1d5db', borderRadius: '8px', fontSize: '13px', boxSizing: 'border-box'}} />
-                </div>
- 
+                {/* CHAMPS SPÉCIFIQUES PAR STATUT */}
                 {statut === 'professionnel' && (
                   <div style={{display: 'flex', flexDirection: 'column', gap: '12px', background: '#f8fafc', borderRadius: '10px', padding: '16px', border: '1px solid #e5e7eb'}}>
                     <p style={{color: '#1a4fba', fontSize: '12px', fontWeight: '700', margin: 0}}>Informations professionnelles</p>
@@ -309,10 +320,6 @@ export default function Connexion() {
                 <button style={{width: '100%', padding: '13px', borderRadius: '8px', border: 'none', background: '#1a4fba', color: 'white', fontSize: '14px', fontWeight: '700', cursor: 'pointer'}}>
                   Créer mon compte
                 </button>
- 
-                <p style={{color: '#9ca3af', fontSize: '11px', textAlign: 'center', margin: 0}}>
-                  Inscription rapide · Accès immédiat à votre espace client.
-                </p>
  
                 <div style={{background: '#f0fdf4', border: '1px solid #bbf7d0', borderRadius: '8px', padding: '12px 14px'}}>
                   <p style={{color: '#15803d', fontSize: '12px', lineHeight: '1.6', margin: '0 0 6px', fontWeight: '600'}}>Après création de votre compte :</p>
