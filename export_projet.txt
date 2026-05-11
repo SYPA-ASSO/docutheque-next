@@ -1,0 +1,2460 @@
+﻿=== C:\Users\chole\docutheque-next\app\blog\lintelligence-artificielle-en-droit-une-fausse-bonne-idee\page.tsx ===
+import Header from '@/components/Header'
+import Footer from '@/components/Footer'
+import { Calendar, Clock, User, ChevronRight } from 'lucide-react'
+
+export const metadata = {
+  title: "L'Intelligence Artificielle en droit : une fausse bonne idÃ©e ? Â· Blog DocuthÃ¨que",
+  description: "L'IA promet efficacitÃ© et gain de temps en droit. Mais hallucinations, biais algorithmiques et absence de jugement Ã©thique en font un outil risquÃ©. Analyse complÃ¨te par un juriste.",
+}
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "L'Intelligence Artificielle en droit : une fausse bonne idÃ©e ?",
+      "description": "L'IA promet efficacitÃ© et gain de temps en droit. Mais hallucinations, biais algorithmiques et absence de jugement Ã©thique en font un outil risquÃ©. Analyse complÃ¨te par un juriste.",
+      "image": "https://www.cholez-pagotto.fr/wp-content/uploads/2025/07/IA-droit-1536x1280.jpg",
+      "datePublished": "2025-07-15T09:42:00+02:00",
+      "dateModified": "2025-07-15T09:42:00+02:00",
+      "author": {
+        "@type": "Person",
+        "name": "FranÃ§ois CHOLEZ",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Cabinet Cholez-Pagotto"
+        }
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "DocuthÃ¨que â€” Cabinet Cholez-Pagotto",
+        "url": "https://docutheque.cholez-pagotto.fr"
+      },
+      "url": "https://docutheque.cholez-pagotto.fr/blog/lintelligence-artificielle-en-droit-une-fausse-bonne-idee",
+      "keywords": ["intelligence artificielle", "droit", "IA juridique", "hallucinations IA", "biais algorithmiques", "juriste", "justice prÃ©dictive"],
+      "articleSection": ["Intelligence artificielle", "Droit", "Informations juridiques"],
+      "inLanguage": "fr-FR"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "L'intelligence artificielle peut-elle remplacer un juriste ou un avocat ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Non. L'IA peut automatiser certaines tÃ¢ches rÃ©pÃ©titives, mais elle ne peut pas reproduire le jugement nuancÃ©, l'Ã©thique, l'empathie et la capacitÃ© Ã  traiter chaque situation juridique dans sa singularitÃ© â€” des qualitÃ©s indispensables Ã  la pratique du droit."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Qu'est-ce qu'une hallucination de l'IA en droit ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Une hallucination est la production par un modÃ¨le d'IA d'informations factuellement inexactes mais prÃ©sentÃ©es de maniÃ¨re convaincante. En droit, cela peut se traduire par des citations de jurisprudence inventÃ©es, des prÃ©cÃ©dents juridiques inexistants ou des rÃ©fÃ©rences lÃ©gales erronÃ©es â€” avec des consÃ©quences potentiellement graves."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Qu'est-ce que le biais algorithmique en droit ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Le biais algorithmique dÃ©signe les erreurs systÃ©matiques dans les rÃ©sultats d'un systÃ¨me d'IA, dues Ã  des donnÃ©es d'entraÃ®nement non reprÃ©sentatives ou Ã  la conception de l'algorithme lui-mÃªme. En droit, cela peut conduire Ã  des dÃ©cisions discriminatoires â€” comme l'a dÃ©montrÃ© le cas COMPAS aux Ã‰tats-Unis, qui surÃ©valuait le risque de rÃ©cidive pour les personnes noires."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "L'IA est-elle encadrÃ©e juridiquement en Europe ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Oui. L'Union europÃ©enne a adoptÃ© l'AI Act en 2024, premiÃ¨re rÃ©glementation mondiale complÃ¨te sur l'intelligence artificielle. Elle interdit les pratiques Ã  risque inacceptable et impose des obligations strictes aux systÃ¨mes Ã  haut risque. Cependant, son application reste limitÃ©e au territoire europÃ©en et l'Ã©volution rapide de l'IA dÃ©passe souvent les efforts rÃ©glementaires."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Comment utiliser l'IA de maniÃ¨re responsable dans un contexte juridique ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "L'IA doit Ãªtre considÃ©rÃ©e comme un outil d'assistance, jamais comme un dÃ©cideur. Tout rÃ©sultat produit par une IA doit Ãªtre vÃ©rifiÃ© et validÃ© par un professionnel du droit qualifiÃ©. La vÃ©rification des sources, la conscience des biais et le maintien d'une supervision humaine sont des impÃ©ratifs non nÃ©gociables."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Qu'est-ce que la justice prÃ©dictive et pourquoi est-elle problÃ©matique ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "La justice prÃ©dictive consiste Ã  utiliser des algorithmes pour anticiper les dÃ©cisions judiciaires. Elle est problÃ©matique car elle tend Ã  uniformiser les dÃ©cisions, Ã  nÃ©gliger la singularitÃ© de chaque cas et Ã  Ã©roder le principe de justice individualisÃ©e. Des projets comme Datajust en France ont Ã©tÃ© suspendus pour ces raisons."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://docutheque.cholez-pagotto.fr" },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://docutheque.cholez-pagotto.fr/blog" },
+        { "@type": "ListItem", "position": 3, "name": "L'Intelligence Artificielle en droit : une fausse bonne idÃ©e ?" }
+      ]
+    }
+  ]
+}
+
+export default function ArticleIA() {
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <Header />
+      <main style={{background: '#f8fafc', minHeight: '100vh'}}>
+
+        {/* BREADCRUMB */}
+        <div style={{background: 'white', borderBottom: '1px solid #e5e7eb', padding: '10px 0'}}>
+          <div style={{maxWidth: '1100px', margin: '0 auto', padding: '0 2rem', display: 'flex', alignItems: 'center', gap: '6px', fontSize: '12px', color: '#6b7280'}}>
+            <a href="/" style={{color: '#6b7280', textDecoration: 'none'}}>Accueil</a>
+            <ChevronRight size={12} />
+            <a href="/blog" style={{color: '#6b7280', textDecoration: 'none'}}>Blog</a>
+            <ChevronRight size={12} />
+            <span style={{color: '#0f2d6e', fontWeight: '500'}}>L'IA en droit</span>
+          </div>
+        </div>
+
+        <div style={{maxWidth: '1100px', margin: '0 auto', padding: '3rem 2rem', display: 'flex', gap: '3rem', alignItems: 'flex-start'}}>
+
+          {/* COLONNE PRINCIPALE */}
+          <article style={{flex: 1, minWidth: 0}}>
+
+            {/* EN-TÃŠTE */}
+            <div style={{marginBottom: '2rem'}}>
+              <div style={{display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '14px'}}>
+                {['Intelligence artificielle', 'Droit', 'Informations'].map(tag => (
+                  <span key={tag} style={{background: '#eff6ff', color: '#1a4fba', fontSize: '11px', fontWeight: '600', padding: '2px 10px', borderRadius: '20px'}}>{tag}</span>
+                ))}
+              </div>
+              <h1 style={{color: '#0f2d6e', fontSize: '1.9rem', fontWeight: '700', lineHeight: '1.3', margin: '0 0 16px'}}>
+                L'Intelligence Artificielle en droit : une fausse bonne idÃ©e ?
+              </h1>
+              <div style={{display: 'flex', gap: '20px', flexWrap: 'wrap', alignItems: 'center', marginBottom: '20px'}}>
+                <span style={{display: 'flex', alignItems: 'center', gap: '5px', color: '#6b7280', fontSize: '12px'}}>
+                  <User size={13} strokeWidth={1.5} /> FranÃ§ois CHOLEZ
+                </span>
+                <span style={{display: 'flex', alignItems: 'center', gap: '5px', color: '#6b7280', fontSize: '12px'}}>
+                  <Calendar size={13} strokeWidth={1.5} /> 15 juillet 2025
+                </span>
+                <span style={{display: 'flex', alignItems: 'center', gap: '5px', color: '#6b7280', fontSize: '12px'}}>
+                  <Clock size={13} strokeWidth={1.5} /> 15 min de lecture
+                </span>
+              </div>
+              <img
+                src="https://www.cholez-pagotto.fr/wp-content/uploads/2025/07/IA-droit-1536x1280.jpg"
+                alt="L'Intelligence Artificielle en droit : une fausse bonne idÃ©e ?"
+                style={{width: '100%', borderRadius: '12px', objectFit: 'cover', maxHeight: '400px'}}
+              />
+            </div>
+
+            {/* SOMMAIRE */}
+            <nav style={{background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '12px', padding: '1.25rem 1.5rem', marginBottom: '2.5rem'}}>
+              <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px'}}>Sommaire</p>
+              <ol style={{margin: 0, paddingLeft: '1.25rem', display: 'flex', flexDirection: 'column', gap: '6px'}}>
+                {[
+                  { id: 'introduction', label: 'Introduction' },
+                  { id: 'promesses', label: 'I. Les promesses de l\'IA en droit : une efficacitÃ© Ã  relativiser' },
+                  { id: 'erreurs-biais', label: 'II. Erreurs et biais de l\'IA : des consÃ©quences juridiques tangibles' },
+                  { id: 'hallucinations', label: 'â€” A. Les hallucinations et citations inventÃ©es' },
+                  { id: 'biais', label: 'â€” B. Les biais algorithmiques' },
+                  { id: 'donnees', label: 'â€” C. La qualitÃ© et la gouvernance des donnÃ©es' },
+                  { id: 'nuance', label: 'III. L\'incapacitÃ© de l\'IA Ã  saisir la nuance du droit' },
+                  { id: 'raisonnement', label: 'â€” A. Le raisonnement juridique humain' },
+                  { id: 'cas-espece', label: 'â€” B. Le cas d\'espÃ¨ce : l\'Ã©chec de l\'uniformisation' },
+                  { id: 'ethique', label: 'â€” C. L\'absence de jugement, d\'Ã©thique et d\'empathie' },
+                  { id: 'au-dela', label: 'V. Le droit : une discipline exigeant plus que la technologie' },
+                  { id: 'faq', label: 'Questions frÃ©quentes' },
+                ].map((item) => (
+                  <li key={item.id}>
+                    <a href={`#${item.id}`} style={{color: '#1a4fba', fontSize: '12px', textDecoration: 'none', lineHeight: '1.5'}}>
+                      {item.label}
+                    </a>
+                  </li>
+                ))}
+              </ol>
+            </nav>
+
+            {/* CONTENU */}
+            <div style={{color: '#374151', fontSize: '0.95rem', lineHeight: '1.9'}}>
+
+              <section id="introduction">
+                <h2 style={{color: '#0f2d6e', fontSize: '1.3rem', fontWeight: '700', margin: '0 0 16px', paddingTop: '1rem'}}>
+                  Introduction : L'Intelligence Artificielle en droit â€“ Une fausse bonne idÃ©e ?
+                </h2>
+                <p>Le secteur juridique connaÃ®t actuellement un engouement significatif pour les technologies de l'intelligence artificielle. Cet enthousiasme est largement alimentÃ© par des promesses d'efficacitÃ© accrue, de rÃ©duction des coÃ»ts et de simplification des flux de travail. L'IA est de plus en plus prÃ©sentÃ©e comme une force transformatrice, capable d'automatiser des tÃ¢ches routiniÃ¨res et de simplifier des processus complexes, allant de la recherche juridique Ã  la nÃ©gociation de contrats.</p>
+                <p>MalgrÃ© ces promesses allÃ©chantes, l'intÃ©gration gÃ©nÃ©ralisÃ©e et non critique de l'intelligence artificielle dans le domaine juridique est, fondamentalement, une fausse bonne idÃ©e. Les limitations intrinsÃ¨ques de l'IA en matiÃ¨re de raisonnement, de gestion des nuances, de fiabilitÃ© des donnÃ©es et de considÃ©rations Ã©thiques la rendent incapable de remplacer ou mÃªme de reproduire pleinement l'expertise juridique humaine. Son adoption non critique introduit des risques significatifs pour l'intÃ©gritÃ© de la justice et la protection des droits fondamentaux.</p>
+                <div style={{background: '#fff7ed', border: '1px solid #fed7aa', borderRadius: '10px', padding: '1rem 1.25rem', margin: '1.5rem 0'}}>
+                  <p style={{color: '#92400e', fontSize: '13px', lineHeight: '1.7', margin: 0}}>
+                    <strong>Note de l'auteur :</strong> Dans cet article, je commencerai par reconnaÃ®tre briÃ¨vement les avantages perÃ§us de l'IA dans le droit, puis j'examinerai des Ã©checs concrets et des biais inhÃ©rents, avant d'expliquer pourquoi l'IA ne peut pas reproduire la nature nuancÃ©e et humaine du raisonnement juridique. Je mettrai enfin en Ã©vidence le rÃ´le indispensable de l'expertise humaine.
+                  </p>
+                </div>
+              </section>
+
+              <section id="promesses">
+                <h2 style={{color: '#0f2d6e', fontSize: '1.3rem', fontWeight: '700', margin: '2rem 0 16px', paddingTop: '1rem'}}>
+                  I. Les promesses de l'IA dans le domaine juridique : une efficacitÃ© Ã  relativiser
+                </h2>
+                <p>L'attrait de l'intelligence artificielle dans le secteur juridique repose sur des avantages perÃ§us, principalement liÃ©s Ã  l'efficacitÃ© opÃ©rationnelle et Ã  l'accÃ¨s rapide Ã  l'information.</p>
+                <h3 style={{color: '#0f2d6e', fontSize: '1.1rem', fontWeight: '700', margin: '1.5rem 0 10px'}}>Automatisation des tÃ¢ches rÃ©pÃ©titives et chronophages</h3>
+                <p>L'IA est prÃ©sentÃ©e comme un outil puissant pour automatiser les tÃ¢ches routiniÃ¨res, libÃ©rant ainsi les professionnels du droit pour qu'ils se concentrent sur des missions plus stratÃ©giques. Les outils d'IA peuvent analyser rapidement de vastes bases de donnÃ©es juridiques, identifiant la jurisprudence pertinente en quelques secondes. De mÃªme, l'IA <strong>assiste</strong> â€” et j'insiste sur ce verbe â€” la rÃ©daction et la rÃ©vision de documents.</p>
+                <h3 style={{color: '#0f2d6e', fontSize: '1.1rem', fontWeight: '700', margin: '1.5rem 0 10px'}}>Gains de productivitÃ© et d'accÃ¨s Ã  l'information</h3>
+                <p>Les partisans de l'IA soutiennent qu'elle conduit Ã  des gains de temps considÃ©rables et une meilleure qualitÃ© dans la prise de dÃ©cision. Cependant, il est crucial de noter que si l'IA promet efficacitÃ© et rapiditÃ©, cela se fait souvent au dÃ©triment de la profondeur, de la nuance et du jugement humain â€” primordiaux dans les contextes juridiques.</p>
+                <div style={{background: '#f0fdf4', border: '1px solid #bbf7d0', borderRadius: '10px', padding: '1rem 1.25rem', margin: '1.5rem 0'}}>
+                  <p style={{color: '#15803d', fontSize: '13px', lineHeight: '1.7', margin: 0}}>
+                    <strong>Question fondamentale :</strong> Ã€ quel prix cette efficacitÃ© est-elle obtenue en termes de qualitÃ© et de fiabilitÃ© du travail juridique ? Et ce temps gagnÃ© est-il vÃ©ritablement consacrÃ© Ã  des tÃ¢ches Ã  haute valeur ajoutÃ©e ?
+                  </p>
+                </div>
+              </section>
+
+              <section id="erreurs-biais">
+                <h2 style={{color: '#0f2d6e', fontSize: '1.3rem', fontWeight: '700', margin: '2rem 0 16px', paddingTop: '1rem'}}>
+                  II. Erreurs et biais de l'IA : des consÃ©quences juridiques tangibles
+                </h2>
+
+                <section id="hallucinations">
+                  <h3 style={{color: '#0f2d6e', fontSize: '1.1rem', fontWeight: '700', margin: '1.5rem 0 10px'}}>
+                    A. Les "hallucinations" et citations juridiques inventÃ©es : des prÃ©cÃ©dents alarmants
+                  </h3>
+                  <p>Une faille critique des modÃ¨les d'IA est leur propension Ã  "halluciner" â€” produire un contenu factuellement inexact tout en le prÃ©sentant de maniÃ¨re plausible et convaincante. Il ne s'agit pas d'un simple bug, mais d'une caractÃ©ristique fondamentale : ces modÃ¨les gÃ©nÃ¨rent du texte basÃ© sur des probabilitÃ©s et des motifs, non sur une vÃ©ritable comprÃ©hension ou vÃ©rification factuelle.</p>
+                  <div style={{background: '#fef2f2', border: '1px solid #fecaca', borderRadius: '10px', padding: '1rem 1.25rem', margin: '1.5rem 0'}}>
+                    <p style={{color: '#dc2626', fontSize: '13px', lineHeight: '1.7', margin: '0 0 8px', fontWeight: '700'}}>Cas rÃ©el : L'avocat sanctionnÃ© Ã  31 000 $</p>
+                    <p style={{color: '#374151', fontSize: '13px', lineHeight: '1.7', margin: 0}}>Un avocat amÃ©ricain a utilisÃ© ChatGPT pour complÃ©ter sa recherche juridique. Le chatbot a gÃ©nÃ©rÃ© des citations de jurisprudence entiÃ¨rement fabriquÃ©es, prÃ©sentÃ©es comme vÃ©rifiables sur Westlaw et LexisNexis. L'avocat, faisant confiance Ã  l'IA sans vÃ©rification, a soumis ces faux prÃ©cÃ©dents au tribunal. Sanction : 31 000 dollars.</p>
+                  </div>
+                  <p>Les "hallucinations" de l'IA ne sont pas de simples erreurs techniques, mais des dÃ©fauts fondamentaux dÃ©coulant de sa nature probabiliste. La chaÃ®ne de causalitÃ© est claire : nature probabiliste â†’ hallucinations â†’ citations juridiques fabriquÃ©es â†’ compromission de l'intÃ©gritÃ© du systÃ¨me juridique.</p>
+                </section>
+
+                <section id="biais">
+                  <h3 style={{color: '#0f2d6e', fontSize: '1.1rem', fontWeight: '700', margin: '1.5rem 0 10px'}}>
+                    B. Les biais algorithmiques : une menace pour l'Ã©quitÃ© et la justice
+                  </h3>
+                  <p>Les systÃ¨mes d'IA sont intrinsÃ¨quement sujets aux biais â€” ils ne sont jamais neutres Ã  100 %. Ces biais peuvent provenir de multiples sources :</p>
+                  <ul style={{paddingLeft: '1.5rem', display: 'flex', flexDirection: 'column', gap: '8px', margin: '1rem 0'}}>
+                    <li><strong>Biais liÃ© aux donnÃ©es :</strong> Si les donnÃ©es d'entraÃ®nement sont non reprÃ©sentatives, l'IA gÃ©nÃ¨rera des prÃ©visions qui reflÃ¨tent et perpÃ©tuent ces dÃ©sÃ©quilibres.</li>
+                    <li><strong>Biais algorithmique :</strong> Des biais peuvent apparaÃ®tre dans la conception mÃªme de l'algorithme, conduisant Ã  des rÃ©sultats discriminatoires.</li>
+                    <li><strong>Biais cognitif :</strong> Les dÃ©cisions subjectives des dÃ©veloppeurs lors de l'Ã©tiquetage des donnÃ©es introduisent leurs propres biais dans le systÃ¨me.</li>
+                  </ul>
+                  <div style={{background: '#fef2f2', border: '1px solid #fecaca', borderRadius: '10px', padding: '1rem 1.25rem', margin: '1.5rem 0'}}>
+                    <p style={{color: '#dc2626', fontSize: '13px', lineHeight: '1.7', margin: '0 0 8px', fontWeight: '700'}}>Cas rÃ©el : Le systÃ¨me COMPAS (Ã‰tats-Unis, 2016)</p>
+                    <p style={{color: '#374151', fontSize: '13px', lineHeight: '1.7', margin: 0}}>Des tribunaux amÃ©ricains utilisaient cet outil d'IA pour Ã©valuer le risque de rÃ©cidive et influencer les dÃ©cisions de libÃ©ration conditionnelle. Une Ã©tude a rÃ©vÃ©lÃ© que COMPAS prÃ©sentait d'importants biais raciaux, Ã©valuant de maniÃ¨re disproportionnÃ©e un risque de rÃ©cidive plus Ã©levÃ© chez les personnes noires â€” mÃªme en contrÃ´lant des facteurs similaires.</p>
+                  </div>
+                </section>
+
+                <section id="donnees">
+                  <h3 style={{color: '#0f2d6e', fontSize: '1.1rem', fontWeight: '700', margin: '1.5rem 0 10px'}}>
+                    C. La qualitÃ© et la gouvernance des donnÃ©es : un frein majeur Ã  la fiabilitÃ© de l'IA
+                  </h3>
+                  <p>La fiabilitÃ© des systÃ¨mes d'IA dÃ©pend directement de la qualitÃ© des donnÃ©es sur lesquelles ils sont entraÃ®nÃ©s. Or, une Ã©tude de 2024 rÃ©vÃ¨le que seulement <strong>12 % des entreprises</strong> estiment que la qualitÃ© de leurs donnÃ©es est suffisante pour soutenir des initiatives efficaces en matiÃ¨re d'IA, et <strong>67 % expriment un manque de confiance totale</strong> dans les donnÃ©es utilisÃ©es pour leurs processus dÃ©cisionnels.</p>
+                  <p>Le principal obstacle Ã  l'adoption de l'IA, identifiÃ© par <strong>62 % des rÃ©pondants</strong>, est l'absence de cadres de gouvernance des donnÃ©es robustes â€” problÃ¨me particuliÃ¨rement critique en droit, oÃ¹ la confidentialitÃ© est primordiale.</p>
+                </section>
+              </section>
+
+              <section id="nuance">
+                <h2 style={{color: '#0f2d6e', fontSize: '1.3rem', fontWeight: '700', margin: '2rem 0 16px', paddingTop: '1rem'}}>
+                  III. L'incapacitÃ© de l'IA Ã  saisir la nuance et la spÃ©cificitÃ© du droit
+                </h2>
+
+                <section id="raisonnement">
+                  <h3 style={{color: '#0f2d6e', fontSize: '1.1rem', fontWeight: '700', margin: '1.5rem 0 10px'}}>
+                    A. Le raisonnement juridique humain : au-delÃ  de l'algorithme
+                  </h3>
+                  <p>La prise de dÃ©cision en droit est un processus profondÃ©ment humain, souvent dÃ©crit comme une "pesÃ©e des Ã¢mes et des actes", symbolisÃ©e par la balance de ThÃ©mis. Elle implique une logique complexe en trois temps : analyse des faits, dÃ©termination de la rÃ¨gle de droit la plus adaptÃ©e, et rÃ©daction d'une dÃ©cision motivÃ©e.</p>
+                  <p>En contraste, l'IA fonctionne principalement comme un algorithme qui trie, compare et extrait des rÃ©sultats Ã  partir de donnÃ©es collectÃ©es. Une "dÃ©cision" gÃ©nÃ©rÃ©e par l'IA serait statistique et probabiliste, non profondÃ©ment motivÃ©e par des principes juridiques et le contexte humain.</p>
+
+                  {/* TABLEAU COMPARATIF */}
+                  <div style={{overflowX: 'auto', margin: '1.5rem 0'}}>
+                    <table style={{width: '100%', borderCollapse: 'collapse', fontSize: '12px'}}>
+                      <thead>
+                        <tr style={{background: '#0f2d6e'}}>
+                          <th style={{color: 'white', padding: '10px 12px', textAlign: 'left', fontWeight: '600'}}>CritÃ¨re</th>
+                          <th style={{color: 'white', padding: '10px 12px', textAlign: 'left', fontWeight: '600'}}>Raisonnement juridique humain</th>
+                          <th style={{color: 'white', padding: '10px 12px', textAlign: 'left', fontWeight: '600'}}>Approche de l'IA</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {[
+                          ['Nature du raisonnement', 'InterprÃ©tatif, contextuel, dÃ©ductif et inductif â€” "pesÃ©e des Ã¢mes et des actes"', 'Statistique, probabiliste, basÃ©e sur la reconnaissance de motifs'],
+                          ['Traitement des faits', 'Analyse approfondie, dÃ©construction des faits, considÃ©ration des subtilitÃ©s', 'Tri, comparaison, rapprochement des donnÃ©es â€” risque de gÃ©nÃ©ralisation'],
+                          ['Application de la rÃ¨gle', 'DÃ©termination de la rÃ¨gle adaptÃ©e, avec interprÃ©tation et adaptation stratÃ©gique', 'Application mÃ©canique ou probabiliste basÃ©e sur les donnÃ©es d\'entraÃ®nement'],
+                          ['Gestion des nuances', 'CapacitÃ© Ã  considÃ©rer les subtilitÃ©s et les situations extraordinaires', 'Tendance Ã  l\'uniformisation, gommant les particularitÃ©s individuelles'],
+                          ['Ã‰thique / Empathie', 'IntÃ©gration de considÃ©rations Ã©thiques, morales et empathiques', 'Absence de jugement Ã©thique ou d\'empathie'],
+                          ['ResponsabilitÃ©', 'Le juge ou l\'avocat conserve l\'entiÃ¨re responsabilitÃ©', 'L\'IA est un outil â€” le concept de "boÃ®te noire" pose question'],
+                        ].map(([critere, humain, ia], i) => (
+                          <tr key={i} style={{background: i % 2 === 0 ? 'white' : '#f8fafc', borderBottom: '1px solid #e5e7eb'}}>
+                            <td style={{padding: '10px 12px', fontWeight: '600', color: '#0f2d6e', verticalAlign: 'top'}}>{critere}</td>
+                            <td style={{padding: '10px 12px', color: '#374151', verticalAlign: 'top'}}>{humain}</td>
+                            <td style={{padding: '10px 12px', color: '#374151', verticalAlign: 'top'}}>{ia}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </section>
+
+                <section id="cas-espece">
+                  <h3 style={{color: '#0f2d6e', fontSize: '1.1rem', fontWeight: '700', margin: '1.5rem 0 10px'}}>
+                    B. Le cas d'espÃ¨ce : l'Ã©chec de l'uniformisation par l'IA
+                  </h3>
+                  <p>L'essence mÃªme du systÃ¨me juridique repose sur les circonstances uniques et les faits spÃ©cifiques de chaque "cas d'espÃ¨ce". La tendance inhÃ©rente de l'IA Ã  gÃ©nÃ©raliser Ã  partir de vastes ensembles de donnÃ©es conduit Ã  une uniformisation des dÃ©cisions â€” qui Ã©rode fondamentalement la capacitÃ© Ã  prendre en compte les spÃ©cificitÃ©s et nuances des cas individuels.</p>
+                  <div style={{background: '#fef2f2', border: '1px solid #fecaca', borderRadius: '10px', padding: '1rem 1.25rem', margin: '1.5rem 0'}}>
+                    <p style={{color: '#dc2626', fontSize: '13px', lineHeight: '1.7', margin: '0 0 8px', fontWeight: '700'}}>Deux projets franÃ§ais suspendus ou abandonnÃ©s</p>
+                    <p style={{color: '#374151', fontSize: '13px', lineHeight: '1.7', margin: '0 0 8px'}}><strong>Datajust (2020) :</strong> Projet de la Cour de cassation visant Ã  standardiser l'indemnisation des prÃ©judices corporels via l'IA. Suspendu en raison de craintes d'uniformisation indÃ©sirable des dÃ©cisions.</p>
+                    <p style={{color: '#374151', fontSize: '13px', lineHeight: '1.7', margin: 0}}><strong>Trames interactives de la Cour de cassation (2015) :</strong> Tentative de modÃ©liser le raisonnement d'un "juge idÃ©al" via des choix binaires. AbandonnÃ© car la complexitÃ© des situations judiciaires ne pouvait pas Ãªtre rÃ©duite Ã  de simples choix binaires.</p>
+                  </div>
+                </section>
+
+                <section id="ethique">
+                  <h3 style={{color: '#0f2d6e', fontSize: '1.1rem', fontWeight: '700', margin: '1.5rem 0 10px'}}>
+                    C. L'absence de jugement, d'Ã©thique et d'empathie : les limites infranchissables de l'IA
+                  </h3>
+                  <p>La pratique du droit est profondÃ©ment liÃ©e Ã  des qualitÃ©s humaines â€” jugement, raisonnement Ã©thique, empathie. L'IA, par sa nature mÃªme, fonctionne sur des algorithmes et des modÃ¨les de donnÃ©es ; elle ne peut pas reproduire ces qualitÃ©s intrinsÃ¨quement humaines.</p>
+                  <p>Une prÃ©occupation majeure est l'Ã©mergence potentielle d'un <strong>"juge robot"</strong> : des dÃ©cisions judiciaires purement statistiques, sans motivation rÃ©elle par des principes juridiques et des considÃ©rations humaines, conduisant Ã  un systÃ¨me de justice dÃ©pourvu de responsabilitÃ© humaine pour ses rÃ©sultats.</p>
+                </section>
+              </section>
+
+              <section id="au-dela">
+                <h2 style={{color: '#0f2d6e', fontSize: '1.3rem', fontWeight: '700', margin: '2rem 0 16px', paddingTop: '1rem'}}>
+                  V. Le droit : une discipline exigeant plus que l'exploitation technologique
+                </h2>
+                <h3 style={{color: '#0f2d6e', fontSize: '1.1rem', fontWeight: '700', margin: '1.5rem 0 10px'}}>A. L'impÃ©ratif de l'analyse critique et de la vÃ©rification humaine</h3>
+                <p>MalgrÃ© les capacitÃ©s d'analyse de l'IA, l'analyse critique humaine, l'interprÃ©tation et la vÃ©rification des rÃ©sultats restent absolument indispensables. L'IA doit Ãªtre considÃ©rÃ©e comme une aide ou un outil d'assistance, <strong>non comme un dÃ©cideur ou un substitut au professionnel du droit.</strong></p>
+
+                <h3 style={{color: '#0f2d6e', fontSize: '1.1rem', fontWeight: '700', margin: '1.5rem 0 10px'}}>B. Les risques liÃ©s Ã  la confidentialitÃ© et Ã  la propriÃ©tÃ© intellectuelle</h3>
+                <p>Les modÃ¨les d'IA nÃ©cessitent la collecte et le traitement de grandes quantitÃ©s de donnÃ©es, incluant souvent des informations sensibles. L'injection de ces donnÃ©es dans des outils d'IA externes soulÃ¨ve des prÃ©occupations importantes concernant le RGPD et les fuites potentielles de donnÃ©es. La propriÃ©tÃ© lÃ©gale du contenu gÃ©nÃ©rÃ© par l'IA reste par ailleurs largement ambiguÃ«.</p>
+
+                <h3 style={{color: '#0f2d6e', fontSize: '1.1rem', fontWeight: '700', margin: '1.5rem 0 10px'}}>C. L'encadrement lÃ©gislatif : une course contre la montre</h3>
+                <p>L'Union europÃ©enne a adoptÃ© l'<strong>AI Act en 2024</strong>, premiÃ¨re rÃ©glementation mondiale complÃ¨te sur l'intelligence artificielle. Elle interdit les pratiques Ã  "risque inacceptable" et impose des obligations strictes aux systÃ¨mes Ã  "haut risque". MalgrÃ© son importance historique, elle prÃ©sente des lacunes et son applicabilitÃ© reste limitÃ©e au territoire europÃ©en.</p>
+
+                <div style={{background: '#0f2d6e', borderRadius: '12px', padding: '1.5rem', margin: '2rem 0'}}>
+                  <h3 style={{color: 'white', fontSize: '1.1rem', fontWeight: '700', margin: '0 0 12px'}}>Conclusion : L'IA, un outil technologique â€” jamais un substitut au professionnel du droit</h3>
+                  <p style={{color: 'rgba(255,255,255,0.85)', fontSize: '13px', lineHeight: '1.8', margin: '0 0 12px'}}>Si l'intelligence artificielle peut servir d'outil prÃ©cieux pour automatiser certaines tÃ¢ches rÃ©pÃ©titives, elle ne peut ni ne doit remplacer l'humain. Le cÅ“ur de la pratique juridique â€” jugement nuancÃ©, considÃ©ration Ã©thique, empathie authentique, pensÃ©e stratÃ©gique â€” demeure un domaine exclusivement humain.</p>
+                  <p style={{color: '#93c5fd', fontSize: '13px', lineHeight: '1.8', margin: 0, fontStyle: 'italic'}}>PrivilÃ©giez, au regard de votre situation, de son contexte et de vos perspectives d'action, de vous appuyer sur un professionnel du droit : juriste, avocat, notaire.</p>
+                </div>
+              </section>
+
+              {/* FAQ */}
+              <section id="faq" style={{marginTop: '3rem'}}>
+                <h2 style={{color: '#0f2d6e', fontSize: '1.3rem', fontWeight: '700', margin: '0 0 1.5rem'}}>
+                  Questions frÃ©quentes
+                </h2>
+                <div style={{display: 'flex', flexDirection: 'column', gap: '10px'}}>
+                  {[
+                    {
+                      q: "L'intelligence artificielle peut-elle remplacer un juriste ou un avocat ?",
+                      a: "Non. L'IA peut automatiser certaines tÃ¢ches rÃ©pÃ©titives, mais elle ne peut pas reproduire le jugement nuancÃ©, l'Ã©thique, l'empathie et la capacitÃ© Ã  traiter chaque situation juridique dans sa singularitÃ© â€” des qualitÃ©s indispensables Ã  la pratique du droit."
+                    },
+                    {
+                      q: "Qu'est-ce qu'une hallucination de l'IA en droit ?",
+                      a: "Une hallucination est la production par un modÃ¨le d'IA d'informations factuellement inexactes mais prÃ©sentÃ©es de maniÃ¨re convaincante. En droit, cela peut se traduire par des citations de jurisprudence inventÃ©es ou des prÃ©cÃ©dents juridiques inexistants â€” avec des consÃ©quences potentiellement graves."
+                    },
+                    {
+                      q: "Qu'est-ce que le biais algorithmique en droit ?",
+                      a: "Le biais algorithmique dÃ©signe les erreurs systÃ©matiques dans les rÃ©sultats d'un systÃ¨me d'IA, dues Ã  des donnÃ©es d'entraÃ®nement non reprÃ©sentatives. En droit, cela peut conduire Ã  des dÃ©cisions discriminatoires â€” comme l'a dÃ©montrÃ© le cas COMPAS aux Ã‰tats-Unis."
+                    },
+                    {
+                      q: "L'IA est-elle encadrÃ©e juridiquement en Europe ?",
+                      a: "Oui. L'Union europÃ©enne a adoptÃ© l'AI Act en 2024, premiÃ¨re rÃ©glementation mondiale complÃ¨te sur l'intelligence artificielle. Elle interdit les pratiques Ã  risque inacceptable et impose des obligations strictes aux systÃ¨mes Ã  haut risque."
+                    },
+                    {
+                      q: "Comment utiliser l'IA de maniÃ¨re responsable dans un contexte juridique ?",
+                      a: "L'IA doit Ãªtre considÃ©rÃ©e comme un outil d'assistance, jamais comme un dÃ©cideur. Tout rÃ©sultat produit par une IA doit Ãªtre vÃ©rifiÃ© et validÃ© par un professionnel du droit qualifiÃ©. La vÃ©rification des sources et la supervision humaine sont des impÃ©ratifs non nÃ©gociables."
+                    },
+                    {
+                      q: "Qu'est-ce que la justice prÃ©dictive et pourquoi est-elle problÃ©matique ?",
+                      a: "La justice prÃ©dictive consiste Ã  utiliser des algorithmes pour anticiper les dÃ©cisions judiciaires. Elle est problÃ©matique car elle tend Ã  uniformiser les dÃ©cisions et Ã  nÃ©gliger la singularitÃ© de chaque cas. Des projets comme Datajust en France ont Ã©tÃ© suspendus pour ces raisons."
+                    },
+                  ].map((faq, i) => (
+                    <details key={i} style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '10px', padding: '1rem 1.25rem'}}>
+                      <summary style={{fontWeight: '600', color: '#0f2d6e', fontSize: '14px', cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '12px'}}>
+                        <span>{faq.q}</span>
+                        <span style={{color: '#1a4fba', fontSize: '18px', flexShrink: 0, lineHeight: 1}}>ï¼‹</span>
+                      </summary>
+                      <p style={{color: '#374151', fontSize: '13px', lineHeight: '1.75', marginTop: '12px', marginBottom: 0}}>{faq.a}</p>
+                    </details>
+                  ))}
+                </div>
+              </section>
+
+            </div>
+          </article>
+
+          {/* SIDEBAR */}
+          <aside style={{flex: '0 0 280px', display: 'flex', flexDirection: 'column', gap: '20px', position: 'sticky', top: '80px'}}>
+
+            {/* Ã€ PROPOS DE L'AUTEUR */}
+            <div style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.25rem'}}>
+              <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 8px'}}>Ã€ propos de l'auteur</p>
+              <p style={{color: '#374151', fontSize: '12px', lineHeight: '1.6', margin: '0 0 8px'}}><strong>FranÃ§ois CHOLEZ</strong></p>
+              <p style={{color: '#6b7280', fontSize: '12px', lineHeight: '1.6', margin: 0}}>Juriste formaliste, conseil en assurances et rÃ©assurances. Cabinet Cholez-Pagotto â€” FCFBL ACTIVITIES.</p>
+            </div>
+
+            {/* CTA */}
+            <div style={{background: '#0f2d6e', borderRadius: '12px', padding: '1.25rem'}}>
+              <p style={{color: 'white', fontSize: '13px', fontWeight: '700', margin: '0 0 8px'}}>Une question juridique ?</p>
+              <p style={{color: 'rgba(255,255,255,0.8)', fontSize: '12px', lineHeight: '1.6', margin: '0 0 14px'}}>Un juriste vous rÃ©pond par Ã©crit sous 24 Ã  48h. 47 â‚¬ Ã  l'unitÃ©, sans abonnement.</p>
+              <a href="/information-sur-vos-droits" style={{display: 'block', background: 'white', color: '#0f2d6e', padding: '10px', borderRadius: '8px', fontSize: '12px', fontWeight: '700', textDecoration: 'none', textAlign: 'center'}}>
+                Poser ma question â†’
+              </a>
+            </div>
+
+            {/* TAGS */}
+            <div style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.25rem'}}>
+              <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px'}}>Tags</p>
+              <div style={{display: 'flex', gap: '6px', flexWrap: 'wrap'}}>
+                {['Droit', 'Intelligence Artificielle', 'IA juridique', 'Biais algorithmique', 'AI Act'].map(tag => (
+                  <span key={tag} style={{background: '#eff6ff', color: '#1a4fba', fontSize: '11px', padding: '3px 10px', borderRadius: '20px'}}>{tag}</span>
+                ))}
+              </div>
+            </div>
+
+            {/* RETOUR AU BLOG */}
+            <a href="/blog" style={{display: 'flex', alignItems: 'center', gap: '6px', color: '#6b7280', fontSize: '12px', textDecoration: 'none'}}>
+              â† Retour au blog
+            </a>
+
+          </aside>
+
+        </div>
+      </main>
+      <Footer />
+    </>
+  )
+}
+=== C:\Users\chole\docutheque-next\app\blog\page.tsx ===
+import Header from '@/components/Header'
+import Footer from '@/components/Footer'
+import { FileText, Calendar, Clock } from 'lucide-react'
+
+export const metadata = {
+  title: 'Blog juridique Â· ActualitÃ©s, informations et analyses du Cabinet Cholez-Pagotto',
+  description: 'Articles juridiques rÃ©digÃ©s par des juristes : droit du travail, intelligence artificielle et droit, formalitÃ©s, recouvrement, RGPD. Informations pÃ©dagogiques pour particuliers et professionnels.',
+}
+
+const articles = [
+  {
+    slug: 'lintelligence-artificielle-en-droit-une-fausse-bonne-idee',
+    titre: "L'Intelligence Artificielle en droit : une fausse bonne idÃ©e ?",
+    resume: "L'IA est prÃ©sentÃ©e comme une rÃ©volution pour le secteur juridique. Mais ses limitations intrinsÃ¨ques â€” hallucinations, biais algorithmiques, absence de jugement Ã©thique â€” en font un outil risquÃ© lorsqu'il est utilisÃ© sans esprit critique. Analyse complÃ¨te.",
+    date: '15 juillet 2025',
+    auteur: 'FranÃ§ois CHOLEZ',
+    categorie: 'Intelligence artificielle',
+    tags: ['Droit', 'Intelligence Artificielle'],
+    tempsLecture: '15 min',
+    image: 'https://www.cholez-pagotto.fr/wp-content/uploads/2025/07/IA-droit-1536x1280.jpg',
+  },
+]
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "Blog juridique DocuthÃ¨que â€” Cabinet Cholez-Pagotto",
+  "description": "Articles juridiques rÃ©digÃ©s par des juristes pour particuliers et professionnels.",
+  "url": "https://docutheque.cholez-pagotto.fr/blog",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Cabinet Cholez-Pagotto â€” DocuthÃ¨que",
+    "url": "https://docutheque.cholez-pagotto.fr"
+  }
+}
+
+export default function Blog() {
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <Header />
+      <main style={{background: '#f8fafc', minHeight: '100vh'}}>
+
+        {/* HERO */}
+        <section style={{background: 'linear-gradient(135deg, #0f2d6e 0%, #1a4fba 100%)', padding: '3rem 0'}}>
+          <div style={{maxWidth: '1100px', margin: '0 auto', padding: '0 2rem'}}>
+            <span style={{display: 'inline-block', background: 'rgba(255,255,255,0.15)', color: 'white', border: '1px solid rgba(255,255,255,0.3)', borderRadius: '20px', padding: '4px 14px', fontSize: '11px', marginBottom: '14px'}}>
+              BLOG JURIDIQUE
+            </span>
+            <h1 style={{color: 'white', fontSize: '1.8rem', fontWeight: '700', margin: '0 0 10px', lineHeight: '1.3'}}>
+              ActualitÃ©s, analyses et informations juridiques
+            </h1>
+            <p style={{color: 'rgba(255,255,255,0.8)', fontSize: '0.95rem', margin: 0, maxWidth: '560px', lineHeight: '1.7'}}>
+              Des articles rÃ©digÃ©s par des juristes, pour mieux comprendre le droit du quotidien â€” sans jargon, avec rigueur.
+            </p>
+          </div>
+        </section>
+
+        {/* ARTICLES */}
+        <section style={{padding: '3rem 0'}}>
+          <div style={{maxWidth: '1100px', margin: '0 auto', padding: '0 2rem'}}>
+            <div style={{display: 'flex', flexDirection: 'column', gap: '24px'}}>
+              {articles.map((article) => (
+                <a
+                  key={article.slug}
+                  href={`/blog/${article.slug}`}
+                  style={{textDecoration: 'none', display: 'flex', gap: '2rem', background: 'white', border: '1px solid #e5e7eb', borderRadius: '14px', overflow: 'hidden', transition: 'box-shadow 0.2s'}}
+                >
+                  {/* IMAGE */}
+                  <div style={{flex: '0 0 280px', overflow: 'hidden'}}>
+                    <img
+                      src={article.image}
+                      alt={article.titre}
+                      style={{width: '100%', height: '100%', objectFit: 'cover', minHeight: '200px'}}
+                    />
+                  </div>
+                  {/* CONTENU */}
+                  <div style={{flex: 1, padding: '1.75rem 1.75rem 1.75rem 0'}}>
+                    <div style={{display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '10px'}}>
+                      <span style={{background: '#eff6ff', color: '#1a4fba', fontSize: '11px', fontWeight: '600', padding: '2px 10px', borderRadius: '20px'}}>{article.categorie}</span>
+                      {article.tags.map(tag => (
+                        <span key={tag} style={{background: '#f3f4f6', color: '#6b7280', fontSize: '11px', padding: '2px 10px', borderRadius: '20px'}}>{tag}</span>
+                      ))}
+                    </div>
+                    <h2 style={{color: '#0f2d6e', fontSize: '1.2rem', fontWeight: '700', margin: '0 0 10px', lineHeight: '1.4'}}>{article.titre}</h2>
+                    <p style={{color: '#6b7280', fontSize: '13px', lineHeight: '1.7', margin: '0 0 16px'}}>{article.resume}</p>
+                    <div style={{display: 'flex', gap: '16px', alignItems: 'center'}}>
+                      <span style={{display: 'flex', alignItems: 'center', gap: '5px', color: '#9ca3af', fontSize: '11px'}}>
+                        <Calendar size={13} strokeWidth={1.5} /> {article.date}
+                      </span>
+                      <span style={{display: 'flex', alignItems: 'center', gap: '5px', color: '#9ca3af', fontSize: '11px'}}>
+                        <Clock size={13} strokeWidth={1.5} /> {article.tempsLecture} de lecture
+                      </span>
+                      <span style={{display: 'flex', alignItems: 'center', gap: '5px', color: '#9ca3af', fontSize: '11px'}}>
+                        <FileText size={13} strokeWidth={1.5} /> {article.auteur}
+                      </span>
+                    </div>
+                    <span style={{display: 'inline-block', marginTop: '16px', color: '#1a4fba', fontSize: '13px', fontWeight: '600'}}>
+                      Lire l'article â†’
+                    </span>
+                  </div>
+                </a>
+              ))}
+            </div>
+
+            {/* MESSAGE SI PAS D'AUTRES ARTICLES */}
+            <div style={{textAlign: 'center', marginTop: '3rem', background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '12px', padding: '2rem'}}>
+              <p style={{color: '#1e3a5f', fontSize: '14px', fontWeight: '600', margin: '0 0 6px'}}>D'autres articles arrivent prochainement.</p>
+              <p style={{color: '#6b7280', fontSize: '12px', margin: 0}}>Notre blog juridique est alimentÃ© rÃ©guliÃ¨rement par nos juristes. Abonnez-vous Ã  la newsletter pour ne rien manquer.</p>
+            </div>
+          </div>
+        </section>
+
+      </main>
+      <Footer />
+    </>
+  )
+}
+=== C:\Users\chole\docutheque-next\app\connexion\page.tsx ===
+'use client'
+
+import { useState } from 'react'
+import { Scale, UserCheck, Shield, Clock, Lock, Building2, Users, PenLine, KeyRound } from 'lucide-react'
+import Header from '@/components/Header'
+import FooterMinimal from '@/components/FooterMinimal'
+
+export default function Connexion() {
+  const [mode, setMode] = useState<'choix' | 'connexion' | 'inscription'>('choix')
+  const [statut, setStatut] = useState<'particulier' | 'professionnel' | 'association' | 'collectivite'>('particulier')
+
+  return (
+    <>
+      <Header />
+      <main style={{background: '#f8fafc', minHeight: '100vh', padding: '3rem 0'}}>
+        <div style={{maxWidth: '1100px', margin: '0 auto', padding: '0 2rem', display: 'flex', gap: '2rem', alignItems: 'flex-start'}}>
+
+          {/* COLONNE GAUCHE */}
+          <div style={{flex: '0 0 380px', background: 'linear-gradient(135deg, #0f2d6e 0%, #1a4fba 100%)', borderRadius: '16px', padding: '2.5rem', position: 'sticky', top: '80px'}}>
+            <div style={{display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '24px'}}>
+              <div style={{width: '32px', height: '32px', background: 'rgba(255,255,255,0.2)', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                <Scale size={18} color="white" strokeWidth={1.5} />
+              </div>
+              <span style={{color: 'white', fontWeight: '700', fontSize: '15px'}}>DocuthÃ¨que</span>
+            </div>
+
+            <h2 style={{color: 'white', fontSize: '1.3rem', fontWeight: '700', lineHeight: '1.4', marginBottom: '8px'}}>
+              Vos documents juridiques et vos droits expliquÃ©s, sans jargon.
+            </h2>
+            <p style={{color: 'rgba(255,255,255,0.7)', fontSize: '13px', lineHeight: '1.7', marginBottom: '28px'}}>
+              AccÃ©dez Ã  votre espace client pour tÃ©lÃ©charger vos documents, poser vos questions et gÃ©rer votre abonnement.
+            </p>
+
+            <div style={{display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '28px'}}>
+              {[
+                { label: 'AccÃ¨s gratuit', desc: 'Tous les documents disponibles en accÃ¨s libre, format DOCX, sans frais.', color: '#4ade80' },
+                { label: 'Abonnement Optimal', desc: 'BibliothÃ¨que complÃ¨te de documents juridiques, 1 question juriste incluse par mois, non cumulable. 14,90 â‚¬/mois ou 147,97 â‚¬/an.', color: '#93c5fd' },
+                { label: 'Information sur vos droits', desc: 'Une question, une rÃ©ponse rÃ©digÃ©e par un juriste sous 24 Ã  48h. 47 â‚¬ Ã  l\'unitÃ©, sans abonnement.', color: '#fcd34d' },
+              ].map((offre, i) => (
+                <div key={i} style={{background: 'rgba(255,255,255,0.1)', borderRadius: '10px', padding: '12px 14px'}}>
+                  <p style={{color: offre.color, fontSize: '12px', fontWeight: '700', margin: '0 0 3px'}}>{offre.label}</p>
+                  <p style={{color: 'rgba(255,255,255,0.75)', fontSize: '11px', margin: 0, lineHeight: '1.5'}}>{offre.desc}</p>
+                </div>
+              ))}
+            </div>
+
+            <div style={{display: 'flex', flexDirection: 'column', gap: '10px'}}>
+              {[
+                { icon: <UserCheck size={16} color="#93c5fd" strokeWidth={1.5} />, text: '100% humain, zÃ©ro intelligence artificielle' },
+                { icon: <Shield size={16} color="#93c5fd" strokeWidth={1.5} />, text: 'Paiement sÃ©curisÃ© Â· CB et virement' },
+                { icon: <Clock size={16} color="#93c5fd" strokeWidth={1.5} />, text: 'RÃ©ponse juriste sous 24 Ã  48h' },
+                { icon: <Lock size={16} color="#93c5fd" strokeWidth={1.5} />, text: 'DonnÃ©es personnelles protÃ©gÃ©es (RGPD)' },
+              ].map((item, i) => (
+                <div key={i} style={{display: 'flex', gap: '10px', alignItems: 'center'}}>
+                  {item.icon}
+                  <span style={{color: 'rgba(255,255,255,0.8)', fontSize: '12px'}}>{item.text}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* COLONNE DROITE */}
+          <div style={{flex: 1, background: 'white', borderRadius: '16px', padding: '2.5rem', border: '1px solid #e5e7eb'}}>
+
+            {/* Ã‰CRAN DE CHOIX */}
+            {mode === 'choix' && (
+              <div style={{display: 'flex', flexDirection: 'column', gap: '24px'}}>
+                <div>
+                  <h2 style={{fontSize: '1.4rem', fontWeight: '700', color: '#0f2d6e', margin: '0 0 6px'}}>Bienvenue sur DocuthÃ¨que</h2>
+                  <p style={{color: '#6b7280', fontSize: '13px', margin: 0}}>Pour commencer, dites-nous oÃ¹ vous en Ãªtes :</p>
+                </div>
+
+                <button
+                  onClick={() => setMode('inscription')}
+                  style={{width: '100%', background: 'white', border: '2px solid #e5e7eb', borderRadius: '14px', padding: '1.75rem', cursor: 'pointer', textAlign: 'left', transition: 'all 0.2s', display: 'flex', gap: '1.25rem', alignItems: 'flex-start'}}
+                  onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.borderColor = '#1a4fba'; (e.currentTarget as HTMLButtonElement).style.background = '#eff6ff' }}
+                  onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.borderColor = '#e5e7eb'; (e.currentTarget as HTMLButtonElement).style.background = 'white' }}
+                >
+                  <div style={{width: '48px', height: '48px', background: '#eff6ff', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0}}>
+                    <PenLine size={24} color="#1a4fba" strokeWidth={1.5} />
+                  </div>
+                  <div>
+                    <p style={{color: '#0f2d6e', fontSize: '15px', fontWeight: '700', margin: '0 0 4px'}}>C'est ma premiÃ¨re visite</p>
+                    <p style={{color: '#6b7280', fontSize: '13px', margin: '0 0 8px', lineHeight: '1.5'}}>Je n'ai pas encore de compte DocuthÃ¨que et je souhaite en crÃ©er un.</p>
+                    <span style={{color: '#1a4fba', fontSize: '12px', fontWeight: '600'}}>CrÃ©er mon compte â†’</span>
+                  </div>
+                </button>
+
+                <div style={{display: 'flex', alignItems: 'center', gap: '12px'}}>
+                  <div style={{flex: 1, height: '1px', background: '#e5e7eb'}} />
+                  <span style={{color: '#9ca3af', fontSize: '13px', fontWeight: '600', letterSpacing: '0.05em'}}>OU</span>
+                  <div style={{flex: 1, height: '1px', background: '#e5e7eb'}} />
+                </div>
+
+                <button
+                  onClick={() => setMode('connexion')}
+                  style={{width: '100%', background: 'white', border: '2px solid #e5e7eb', borderRadius: '14px', padding: '1.75rem', cursor: 'pointer', textAlign: 'left', transition: 'all 0.2s', display: 'flex', gap: '1.25rem', alignItems: 'flex-start'}}
+                  onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.borderColor = '#1a4fba'; (e.currentTarget as HTMLButtonElement).style.background = '#eff6ff' }}
+                  onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.borderColor = '#e5e7eb'; (e.currentTarget as HTMLButtonElement).style.background = 'white' }}
+                >
+                  <div style={{width: '48px', height: '48px', background: '#f0fdf4', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0}}>
+                    <KeyRound size={24} color="#16a34a" strokeWidth={1.5} />
+                  </div>
+                  <div>
+                    <p style={{color: '#0f2d6e', fontSize: '15px', fontWeight: '700', margin: '0 0 4px'}}>J'ai dÃ©jÃ  un compte</p>
+                    <p style={{color: '#6b7280', fontSize: '13px', margin: '0 0 8px', lineHeight: '1.5'}}>Je suis dÃ©jÃ  inscrit sur DocuthÃ¨que et je souhaite accÃ©der Ã  mon espace client.</p>
+                    <span style={{color: '#16a34a', fontSize: '12px', fontWeight: '600'}}>Me connecter â†’</span>
+                  </div>
+                </button>
+
+                <p style={{color: '#9ca3af', fontSize: '11px', textAlign: 'center', margin: 0, lineHeight: '1.6'}}>
+                  Vos donnÃ©es sont protÃ©gÃ©es conformÃ©ment au RGPD Â· <a href="/confidentialite" style={{color: '#9ca3af'}}>Politique de confidentialitÃ©</a>
+                </p>
+              </div>
+            )}
+
+            {/* FORMULAIRE CONNEXION */}
+            {mode === 'connexion' && (
+              <div style={{display: 'flex', flexDirection: 'column', gap: '16px'}}>
+                <button onClick={() => setMode('choix')} style={{background: 'none', border: 'none', color: '#6b7280', fontSize: '12px', cursor: 'pointer', padding: 0, display: 'flex', alignItems: 'center', gap: '4px', alignSelf: 'flex-start'}}>
+                  â† Retour
+                </button>
+                <div>
+                  <h2 style={{fontSize: '1.3rem', fontWeight: '700', color: '#0f2d6e', margin: '0 0 4px'}}>AccÃ©dez Ã  votre espace client</h2>
+                  <p style={{color: '#6b7280', fontSize: '13px', margin: 0}}>Renseignez vos identifiants pour accÃ©der Ã  vos documents et Ã  votre suivi.</p>
+                </div>
+                <div>
+                  <label style={{display: 'block', fontSize: '12px', fontWeight: '600', color: '#374151', marginBottom: '6px'}}>Adresse email *</label>
+                  <input type="email" placeholder="votre@email.fr" style={{width: '100%', padding: '10px 12px', border: '1px solid #d1d5db', borderRadius: '8px', fontSize: '13px', boxSizing: 'border-box', outline: 'none'}} />
+                </div>
+                <div>
+                  <label style={{display: 'block', fontSize: '12px', fontWeight: '600', color: '#374151', marginBottom: '6px'}}>Mot de passe *</label>
+                  <input type="password" placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢" style={{width: '100%', padding: '10px 12px', border: '1px solid #d1d5db', borderRadius: '8px', fontSize: '13px', boxSizing: 'border-box', outline: 'none'}} />
+                </div>
+                <div style={{display: 'flex', justifyContent: 'flex-end'}}>
+                  <a href="/mot-de-passe-oublie" style={{color: '#1a4fba', fontSize: '12px', textDecoration: 'none'}}>Mot de passe oubliÃ© ?</a>
+                </div>
+                <button style={{width: '100%', padding: '12px', borderRadius: '8px', border: 'none', background: '#1a4fba', color: 'white', fontSize: '14px', fontWeight: '700', cursor: 'pointer'}}>
+                  Se connecter
+                </button>
+                <p style={{color: '#9ca3af', fontSize: '11px', textAlign: 'center', margin: 0}}>
+                  Vous serez redirigÃ© vers votre espace client aprÃ¨s connexion.
+                </p>
+                <div style={{background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '10px', padding: '14px 16px'}}>
+                  <p style={{color: '#1e3a5f', fontSize: '12px', fontWeight: '600', marginBottom: '8px'}}>Depuis votre espace client, vous pouvez :</p>
+                  {[
+                    'TÃ©lÃ©charger vos documents en format DOCX',
+                    'Poser une question Ã  votre juriste',
+                    'GÃ©rer votre abonnement Optimal',
+                    'Consulter vos rÃ©ponses et historique',
+                  ].map((item, i) => (
+                    <div key={i} style={{display: 'flex', gap: '8px', alignItems: 'flex-start', marginBottom: '4px'}}>
+                      <span style={{color: '#1a4fba', fontSize: '12px', flexShrink: 0}}>âœ“</span>
+                      <span style={{color: '#374151', fontSize: '12px'}}>{item}</span>
+                    </div>
+                  ))}
+                </div>
+                <p style={{color: '#6b7280', fontSize: '12px', textAlign: 'center', margin: 0}}>
+                  Pas encore de compte ?{' '}
+                  <button onClick={() => setMode('inscription')} style={{color: '#1a4fba', fontWeight: '600', background: 'none', border: 'none', cursor: 'pointer', fontSize: '12px', padding: 0}}>
+                    Inscription rapide
+                  </button>
+                </p>
+              </div>
+            )}
+
+            {/* FORMULAIRE INSCRIPTION */}
+            {mode === 'inscription' && (
+              <div style={{display: 'flex', flexDirection: 'column', gap: '20px'}}>
+                <button onClick={() => setMode('choix')} style={{background: 'none', border: 'none', color: '#6b7280', fontSize: '12px', cursor: 'pointer', padding: 0, display: 'flex', alignItems: 'center', gap: '4px', alignSelf: 'flex-start'}}>
+                  â† Retour
+                </button>
+                <div>
+                  <h2 style={{fontSize: '1.3rem', fontWeight: '700', color: '#0f2d6e', margin: '0 0 4px'}}>CrÃ©er mon compte</h2>
+                  <p style={{color: '#6b7280', fontSize: '13px', margin: 0}}>Inscription rapide Â· AccÃ¨s immÃ©diat Ã  votre espace client.</p>
+                </div>
+
+                <div>
+                  <label style={{display: 'block', fontSize: '12px', fontWeight: '600', color: '#374151', marginBottom: '6px'}}>Adresse email *</label>
+                  <input type="email" placeholder="votre@email.fr" style={{width: '100%', padding: '10px 12px', border: '1px solid #d1d5db', borderRadius: '8px', fontSize: '13px', boxSizing: 'border-box'}} />
+                </div>
+
+                <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px'}}>
+                  <div>
+                    <label style={{display: 'block', fontSize: '12px', fontWeight: '600', color: '#374151', marginBottom: '6px'}}>Mot de passe *</label>
+                    <input type="password" placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢" style={{width: '100%', padding: '10px 12px', border: '1px solid #d1d5db', borderRadius: '8px', fontSize: '13px', boxSizing: 'border-box'}} />
+                  </div>
+                  <div>
+                    <label style={{display: 'block', fontSize: '12px', fontWeight: '600', color: '#374151', marginBottom: '6px'}}>Confirmer le mot de passe *</label>
+                    <input type="password" placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢" style={{width: '100%', padding: '10px 12px', border: '1px solid #d1d5db', borderRadius: '8px', fontSize: '13px', boxSizing: 'border-box'}} />
+                  </div>
+                </div>
+
+                <div>
+                  <label style={{display: 'block', fontSize: '12px', fontWeight: '600', color: '#374151', marginBottom: '8px'}}>Vous Ãªtes *</label>
+                  <div style={{display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '8px'}}>
+                    {[
+                      { value: 'particulier', label: 'Particulier', icon: <Users size={14} strokeWidth={1.5} /> },
+                      { value: 'professionnel', label: 'Professionnel', icon: <Building2 size={14} strokeWidth={1.5} /> },
+                      { value: 'association', label: 'Association', icon: <Shield size={14} strokeWidth={1.5} /> },
+                      { value: 'collectivite', label: 'CollectivitÃ©', icon: <Scale size={14} strokeWidth={1.5} /> },
+                    ].map((s) => (
+                      <button
+                        key={s.value}
+                        onClick={() => setStatut(s.value as typeof statut)}
+                        style={{padding: '10px', borderRadius: '8px', border: `2px solid ${statut === s.value ? '#1a4fba' : '#e5e7eb'}`, background: statut === s.value ? '#eff6ff' : 'white', color: statut === s.value ? '#1a4fba' : '#374151', fontSize: '12px', fontWeight: statut === s.value ? '700' : '500', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', transition: 'all 0.15s'}}>
+                        {s.icon} {s.label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px'}}>
+                  <div>
+                    <label style={{display: 'block', fontSize: '12px', fontWeight: '600', color: '#374151', marginBottom: '6px'}}>PrÃ©nom *</label>
+                    <input type="text" placeholder="Jean" style={{width: '100%', padding: '10px 12px', border: '1px solid #d1d5db', borderRadius: '8px', fontSize: '13px', boxSizing: 'border-box'}} />
+                  </div>
+                  <div>
+                    <label style={{display: 'block', fontSize: '12px', fontWeight: '600', color: '#374151', marginBottom: '6px'}}>Nom *</label>
+                    <input type="text" placeholder="Dupont" style={{width: '100%', padding: '10px 12px', border: '1px solid #d1d5db', borderRadius: '8px', fontSize: '13px', boxSizing: 'border-box'}} />
+                  </div>
+                </div>
+
+                <div>
+                  <label style={{display: 'block', fontSize: '12px', fontWeight: '600', color: '#374151', marginBottom: '6px'}}>Rue *</label>
+                  <input type="text" placeholder="12 rue de la RÃ©publique" style={{width: '100%', padding: '10px 12px', border: '1px solid #d1d5db', borderRadius: '8px', fontSize: '13px', boxSizing: 'border-box'}} />
+                </div>
+
+                <div style={{display: 'grid', gridTemplateColumns: '1fr 2fr', gap: '12px'}}>
+                  <div>
+                    <label style={{display: 'block', fontSize: '12px', fontWeight: '600', color: '#374151', marginBottom: '6px'}}>Code postal *</label>
+                    <input type="text" placeholder="75001" style={{width: '100%', padding: '10px 12px', border: '1px solid #d1d5db', borderRadius: '8px', fontSize: '13px', boxSizing: 'border-box'}} />
+                  </div>
+                  <div>
+                    <label style={{display: 'block', fontSize: '12px', fontWeight: '600', color: '#374151', marginBottom: '6px'}}>Ville *</label>
+                    <input type="text" placeholder="Paris" style={{width: '100%', padding: '10px 12px', border: '1px solid #d1d5db', borderRadius: '8px', fontSize: '13px', boxSizing: 'border-box'}} />
+                  </div>
+                </div>
+
+                <div>
+                  <label style={{display: 'block', fontSize: '12px', fontWeight: '600', color: '#374151', marginBottom: '6px'}}>TÃ©lÃ©phone *</label>
+                  <input type="tel" placeholder="06 00 00 00 00" style={{width: '100%', padding: '10px 12px', border: '1px solid #d1d5db', borderRadius: '8px', fontSize: '13px', boxSizing: 'border-box'}} />
+                </div>
+
+                {statut === 'professionnel' && (
+                  <div style={{display: 'flex', flexDirection: 'column', gap: '12px', background: '#f8fafc', borderRadius: '10px', padding: '16px', border: '1px solid #e5e7eb'}}>
+                    <p style={{color: '#1a4fba', fontSize: '12px', fontWeight: '700', margin: 0}}>Informations professionnelles</p>
+                    <div>
+                      <label style={{display: 'block', fontSize: '12px', fontWeight: '600', color: '#374151', marginBottom: '6px'}}>Nom commercial *</label>
+                      <input type="text" placeholder="Nom de votre entreprise" style={{width: '100%', padding: '10px 12px', border: '1px solid #d1d5db', borderRadius: '8px', fontSize: '13px', boxSizing: 'border-box'}} />
+                    </div>
+                    <div>
+                      <label style={{display: 'block', fontSize: '12px', fontWeight: '600', color: '#374151', marginBottom: '6px'}}>NumÃ©ro SIRET *</label>
+                      <input type="text" placeholder="000 000 000 00000" style={{width: '100%', padding: '10px 12px', border: '1px solid #d1d5db', borderRadius: '8px', fontSize: '13px', boxSizing: 'border-box'}} />
+                    </div>
+                  </div>
+                )}
+
+                {statut === 'association' && (
+                  <div style={{display: 'flex', flexDirection: 'column', gap: '12px', background: '#f8fafc', borderRadius: '10px', padding: '16px', border: '1px solid #e5e7eb'}}>
+                    <p style={{color: '#1a4fba', fontSize: '12px', fontWeight: '700', margin: 0}}>Informations association</p>
+                    <div>
+                      <label style={{display: 'block', fontSize: '12px', fontWeight: '600', color: '#374151', marginBottom: '6px'}}>Nom de l'association *</label>
+                      <input type="text" placeholder="Nom de votre association" style={{width: '100%', padding: '10px 12px', border: '1px solid #d1d5db', borderRadius: '8px', fontSize: '13px', boxSizing: 'border-box'}} />
+                    </div>
+                    <div>
+                      <label style={{display: 'block', fontSize: '12px', fontWeight: '600', color: '#374151', marginBottom: '6px'}}>NumÃ©ro RNA *</label>
+                      <input type="text" placeholder="W000000000" style={{width: '100%', padding: '10px 12px', border: '1px solid #d1d5db', borderRadius: '8px', fontSize: '13px', boxSizing: 'border-box'}} />
+                    </div>
+                    <div>
+                      <label style={{display: 'block', fontSize: '12px', fontWeight: '600', color: '#374151', marginBottom: '6px'}}>NumÃ©ro SIRET (si applicable)</label>
+                      <input type="text" placeholder="000 000 000 00000" style={{width: '100%', padding: '10px 12px', border: '1px solid #d1d5db', borderRadius: '8px', fontSize: '13px', boxSizing: 'border-box'}} />
+                    </div>
+                  </div>
+                )}
+
+                {statut === 'collectivite' && (
+                  <div style={{display: 'flex', flexDirection: 'column', gap: '12px', background: '#f8fafc', borderRadius: '10px', padding: '16px', border: '1px solid #e5e7eb'}}>
+                    <p style={{color: '#1a4fba', fontSize: '12px', fontWeight: '700', margin: 0}}>Informations collectivitÃ©</p>
+                    <div>
+                      <label style={{display: 'block', fontSize: '12px', fontWeight: '600', color: '#374151', marginBottom: '6px'}}>Nom de la collectivitÃ© *</label>
+                      <input type="text" placeholder="Commune de..." style={{width: '100%', padding: '10px 12px', border: '1px solid #d1d5db', borderRadius: '8px', fontSize: '13px', boxSizing: 'border-box'}} />
+                    </div>
+                    <div>
+                      <label style={{display: 'block', fontSize: '12px', fontWeight: '600', color: '#374151', marginBottom: '6px'}}>NumÃ©ro SIRET *</label>
+                      <input type="text" placeholder="000 000 000 00000" style={{width: '100%', padding: '10px 12px', border: '1px solid #d1d5db', borderRadius: '8px', fontSize: '13px', boxSizing: 'border-box'}} />
+                    </div>
+                    <div>
+                      <label style={{display: 'block', fontSize: '12px', fontWeight: '600', color: '#374151', marginBottom: '6px'}}>QualitÃ© du signataire *</label>
+                      <input type="text" placeholder="ex. Maire, DGS, Ã‰lu dÃ©lÃ©guÃ©..." style={{width: '100%', padding: '10px 12px', border: '1px solid #d1d5db', borderRadius: '8px', fontSize: '13px', boxSizing: 'border-box'}} />
+                    </div>
+                  </div>
+                )}
+
+                <div style={{display: 'flex', gap: '10px', alignItems: 'flex-start'}}>
+                  <input type="checkbox" id="cgu" style={{marginTop: '2px', flexShrink: 0}} />
+                  <label htmlFor="cgu" style={{color: '#6b7280', fontSize: '12px', lineHeight: '1.6'}}>
+                    J'accepte les <a href="/cgu" style={{color: '#1a4fba'}}>Conditions GÃ©nÃ©rales d'Utilisation</a> et la <a href="/confidentialite" style={{color: '#1a4fba'}}>Politique de confidentialitÃ©</a> *
+                  </label>
+                </div>
+
+                <div style={{display: 'flex', gap: '10px', alignItems: 'flex-start'}}>
+                  <input type="checkbox" id="newsletter" defaultChecked={false} style={{marginTop: '2px', flexShrink: 0}} />
+                  <label htmlFor="newsletter" style={{color: '#6b7280', fontSize: '12px', lineHeight: '1.6'}}>
+                    Je souhaite recevoir la newsletter juridique gratuite de DocuthÃ¨que
+                  </label>
+                </div>
+
+                <button style={{width: '100%', padding: '13px', borderRadius: '8px', border: 'none', background: '#1a4fba', color: 'white', fontSize: '14px', fontWeight: '700', cursor: 'pointer'}}>
+                  CrÃ©er mon compte
+                </button>
+
+                <p style={{color: '#9ca3af', fontSize: '11px', textAlign: 'center', margin: 0}}>
+                  Inscription rapide Â· AccÃ¨s immÃ©diat Ã  votre espace client.
+                </p>
+
+                <div style={{background: '#f0fdf4', border: '1px solid #bbf7d0', borderRadius: '8px', padding: '12px 14px'}}>
+                  <p style={{color: '#15803d', fontSize: '12px', lineHeight: '1.6', margin: '0 0 6px', fontWeight: '600'}}>AprÃ¨s crÃ©ation de votre compte :</p>
+                  {[
+                    'AccÃ¨s gratuit immÃ©diat aux documents en accÃ¨s libre',
+                    'Souscription Ã  l\'abonnement Optimal si vous le souhaitez',
+                    'PossibilitÃ© de poser une question unitaire Ã  47 â‚¬',
+                  ].map((item, i) => (
+                    <div key={i} style={{display: 'flex', gap: '8px', alignItems: 'flex-start', marginBottom: '4px'}}>
+                      <span style={{color: '#16a34a', fontSize: '12px', flexShrink: 0}}>âœ“</span>
+                      <span style={{color: '#374151', fontSize: '12px'}}>{item}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <p style={{color: '#6b7280', fontSize: '12px', textAlign: 'center', margin: 0}}>
+                  DÃ©jÃ  un compte ?{' '}
+                  <button onClick={() => setMode('connexion')} style={{color: '#1a4fba', fontWeight: '600', background: 'none', border: 'none', cursor: 'pointer', fontSize: '12px', padding: 0}}>
+                    Me connecter
+                  </button>
+                </p>
+
+                <p style={{color: '#9ca3af', fontSize: '10px', textAlign: 'center', margin: 0, lineHeight: '1.6'}}>
+                  * Champs obligatoires Â· Vos donnÃ©es sont protÃ©gÃ©es conformÃ©ment au RGPD Â· <a href="/confidentialite" style={{color: '#9ca3af'}}>Politique de confidentialitÃ©</a>
+                </p>
+              </div>
+            )}
+
+          </div>
+        </div>
+      </main>
+      <FooterMinimal />
+    </>
+  )
+}
+=== C:\Users\chole\docutheque-next\app\information-sur-vos-droits\page.tsx ===
+import Header from '@/components/Header'
+import Footer from '@/components/Footer'
+import { MessageCircle, Clock, FileText, Shield, Users, Home, Car, Scale, Heart, AlertTriangle } from 'lucide-react'
+
+export const metadata = {
+  title: 'Information sur vos droits Â· RÃ©ponse juridique pÃ©dagogique par un juriste sous 48h',
+  description: 'Posez votre question juridique en langage courant. Un juriste vous rÃ©pond par Ã©crit sous 24 Ã  48h : droit du travail, famille, consommation, voisinage, succession. 47 â‚¬ Ã  l\'unitÃ©, sans abonnement.',
+}
+
+const situations = [
+  {
+    icon: <Users size={20} color="#1a4fba" strokeWidth={1.5} />,
+    bg: '#eff6ff',
+    label: 'Droit du travail',
+    exemples: ['Licenciement, rupture conventionnelle', 'Fin de contrat, abandon de poste', 'CongÃ©s cumulÃ©s suite Ã  maladie', 'Prud\'hommes', 'Fonction publique : contractuel, maladie, congÃ©s'],
+  },
+  {
+    icon: <Heart size={20} color="#be185d" strokeWidth={1.5} />,
+    bg: '#fdf2f8',
+    label: 'Droit de la famille',
+    exemples: ['Divorce, garde d\'enfants', 'Parents sÃ©parÃ©s, compte joint', 'Violence conjugale', 'PropriÃ©tÃ© d\'un vÃ©hicule'],
+  },
+  {
+    icon: <Home size={20} color="#b45309" strokeWidth={1.5} />,
+    bg: '#fffbeb',
+    label: 'Droit locatif',
+    exemples: ['Litiges bailleur / locataire', 'DÃ©pÃ´t de garantie', 'Expulsion, Ã©tat des lieux', 'Charges locatives'],
+  },
+  {
+    icon: <Car size={20} color="#16a34a" strokeWidth={1.5} />,
+    bg: '#f0fdf4',
+    label: 'Droit de la consommation',
+    exemples: ['Droit de rÃ©tractation', 'Achat vÃ©hicule d\'occasion', 'Litige commerÃ§ant', 'Litige compagnie aÃ©rienne'],
+  },
+  {
+    icon: <Scale size={20} color="#7c3aed" strokeWidth={1.5} />,
+    bg: '#f5f3ff',
+    label: 'ProcÃ©dures judiciaires',
+    exemples: ['Comment saisir un tribunal', 'Aide juridictionnelle', 'Article 700, exÃ©cution provisoire', 'Diffamation en ligne'],
+  },
+  {
+    icon: <AlertTriangle size={20} color="#dc2626" strokeWidth={1.5} />,
+    bg: '#fef2f2',
+    label: 'Accidents & responsabilitÃ© civile',
+    exemples: ['Accident de la route', 'ResponsabilitÃ© civile', 'Dommages corporels', 'Recours assurance'],
+  },
+  {
+    icon: <Shield size={20} color="#0891b2" strokeWidth={1.5} />,
+    bg: '#ecfeff',
+    label: 'Droit pÃ©nal & harcÃ¨lement',
+    exemples: ['Porter plainte', 'Garde Ã  vue', 'HarcÃ¨lement moral ou sexuel', 'Diffamation'],
+  },
+  {
+    icon: <FileText size={20} color="#475569" strokeWidth={1.5} />,
+    bg: '#f8fafc',
+    label: 'Successions & hÃ©ritage',
+    exemples: ['Ouverture de succession', 'RÃ©partition entre hÃ©ritiers', 'Dettes successorales', 'Testament'],
+  },
+  {
+    icon: <MessageCircle size={20} color="#ea580c" strokeWidth={1.5} />,
+    bg: '#fff7ed',
+    label: 'Litiges de voisinage',
+    exemples: ['Troubles de voisinage', 'Servitudes', 'Haies et clÃ´tures', 'Nuisances sonores'],
+  },
+]
+
+const faqItems = [
+  {
+    q: 'Qu\'est-ce que le service "Information sur vos droits" ?',
+    a: "C'est un service de rÃ©ponse pÃ©dagogique par Ã©crit, rÃ©digÃ©e par un juriste sous 24 Ã  48h ouvrÃ©es. Vous posez votre question en langage courant â€” pas besoin de maÃ®triser le droit â€” et vous recevez une rÃ©ponse claire qui vous explique le cadre juridique applicable Ã  votre situation, vos droits et les dÃ©marches possibles."
+  },
+  {
+    q: "La rÃ©ponse constitue-t-elle une consultation juridique ?",
+    a: "Non. ConformÃ©ment Ã  la loi du 31 dÃ©cembre 1971, la consultation juridique est rÃ©servÃ©e aux avocats et aux professionnels rÃ©glementÃ©s. Notre service a une vocation informative et pÃ©dagogique : il vous aide Ã  mieux comprendre votre situation et Ã  identifier vos options, sans se substituer Ã  un conseil juridique personnalisÃ© ni Ã  une reprÃ©sentation en justice."
+  },
+  {
+    q: "Quels types de questions puis-je poser ?",
+    a: "Vous pouvez poser des questions sur l'ensemble des situations juridiques de la vie courante et professionnelle. Ã€ titre d'exemples non exhaustifs : droit du travail (licenciement, rupture conventionnelle, prud'hommes, fonction publique), droit de la famille (divorce, garde d'enfants, succession, violence conjugale), droit locatif, droit de la consommation, procÃ©dures judiciaires, responsabilitÃ© civile, droit pÃ©nal, harcÃ¨lement moral ou sexuel. Si votre situation n'est pas listÃ©e, posez votre question â€” nous couvrons un spectre trÃ¨s large du droit du quotidien."
+  },
+  {
+    q: "Dans quel dÃ©lai vais-je recevoir une rÃ©ponse ?",
+    a: "Nous nous engageons Ã  vous apporter une rÃ©ponse sous 24 Ã  48h ouvrÃ©es Ã  compter de la rÃ©ception de votre question et de la confirmation de votre paiement. La rÃ©ponse vous est transmise par Ã©crit, directement depuis votre espace client."
+  },
+  {
+    q: "Quel est le tarif et comment fonctionne le paiement ?",
+    a: "Le service est proposÃ© Ã  47 â‚¬ par question, sans abonnement ni engagement. Le paiement est sÃ©curisÃ©, par carte bancaire ou virement. Si vous Ãªtes abonnÃ© Optimal, une question est incluse chaque mois, non cumulable, et les questions supplÃ©mentaires sont Ã  9,90 â‚¬ l'unitÃ©."
+  },
+  {
+    q: "Puis-je poser une question de suivi aprÃ¨s avoir reÃ§u ma rÃ©ponse ?",
+    a: "Oui. Une question de suivi est traitÃ©e comme une nouvelle question et facturÃ©e en consÃ©quence, Ã  47 â‚¬ Ã  l'unitÃ©. Si votre situation gÃ©nÃ¨re plusieurs questions, l'abonnement Optimal peut Ãªtre plus adaptÃ© : Ã  partir de 14,90 â‚¬/mois, il inclut une question par mois et les suivantes Ã  seulement 9,90 â‚¬ â€” soit une Ã©conomie significative dÃ¨s la deuxiÃ¨me question mensuelle."
+  },
+]
+
+export default function InformationSurVosDroits() {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Information sur vos droits",
+    "description": "Service de rÃ©ponse pÃ©dagogique juridique par Ã©crit, rÃ©digÃ©e par un juriste sous 24 Ã  48h ouvrÃ©es. 47 â‚¬ Ã  l'unitÃ©, sans abonnement ni engagement.",
+    "url": "https://docutheque.cholez-pagotto.fr/information-sur-vos-droits",
+    "provider": {
+      "@type": "Organization",
+      "name": "DocuthÃ¨que â€” Cabinet Cholez-Pagotto",
+      "url": "https://docutheque.cholez-pagotto.fr"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "47",
+      "priceCurrency": "EUR",
+      "description": "RÃ©ponse pÃ©dagogique rÃ©digÃ©e par un juriste sous 24 Ã  48h ouvrÃ©es, sans abonnement ni engagement."
+    },
+    "areaServed": {
+      "@type": "Country",
+      "name": "France"
+    }
+  }
+
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <Header />
+      <main style={{background: '#f8fafc', minHeight: '100vh'}}>
+
+        {/* HERO */}
+        <section style={{background: 'linear-gradient(135deg, #0f2d6e 0%, #1a4fba 100%)', padding: '4rem 0'}}>
+          <div style={{maxWidth: '1100px', margin: '0 auto', padding: '0 2rem', display: 'flex', gap: '3rem', alignItems: 'center'}}>
+            <div style={{flex: 1}}>
+              <span style={{display: 'inline-block', background: 'rgba(255,255,255,0.15)', color: 'white', border: '1px solid rgba(255,255,255,0.3)', borderRadius: '20px', padding: '4px 14px', fontSize: '11px', marginBottom: '16px'}}>
+                INFORMATION SUR VOS DROITS
+              </span>
+              <h1 style={{color: 'white', fontSize: '2rem', fontWeight: '700', lineHeight: '1.3', margin: '0 0 16px 0'}}>
+                Vous avez une question sur vos droits ?<br />
+                <span style={{color: '#93c5fd'}}>Un juriste vous rÃ©pond sous 24 Ã  48h.</span>
+              </h1>
+              <p style={{color: 'rgba(255,255,255,0.8)', fontSize: '0.95rem', lineHeight: '1.8', maxWidth: '520px', marginBottom: '28px'}}>
+                Posez votre question en langage courant. Un juriste vous apporte une rÃ©ponse pÃ©dagogique et documentÃ©e, par Ã©crit, sans jargon. 47 â‚¬ Ã  l'unitÃ©, sans abonnement, sans engagement.
+              </p>
+              <div style={{display: 'flex', gap: '12px', flexWrap: 'wrap'}}>
+                <a href="/connexion" style={{background: 'white', color: '#1a4fba', border: 'none', padding: '12px 24px', borderRadius: '6px', fontSize: '13px', fontWeight: '700', cursor: 'pointer', textDecoration: 'none', display: 'inline-block'}}>
+                  Poser ma question â†’
+                </a>
+                <a href="/tarifs" style={{background: 'transparent', color: 'white', border: '1px solid rgba(255,255,255,0.4)', padding: '12px 24px', borderRadius: '6px', fontSize: '13px', cursor: 'pointer', textDecoration: 'none', display: 'inline-block'}}>
+                  Voir les tarifs
+                </a>
+              </div>
+            </div>
+            <div style={{flex: '0 0 320px', display: 'flex', flexDirection: 'column', gap: '12px'}}>
+              {[
+                { icon: <MessageCircle size={20} color="#93c5fd" strokeWidth={1.5} />, text: 'Posez votre question en langage courant' },
+                { icon: <Clock size={20} color="#93c5fd" strokeWidth={1.5} />, text: 'RÃ©ponse par Ã©crit sous 24 Ã  48h ouvrÃ©es' },
+                { icon: <FileText size={20} color="#93c5fd" strokeWidth={1.5} />, text: 'RÃ©digÃ©e par un juriste, pas une IA' },
+                { icon: <Shield size={20} color="#93c5fd" strokeWidth={1.5} />, text: '47 â‚¬ Ã  l\'unitÃ© Â· sans abonnement' },
+              ].map((item, i) => (
+                <div key={i} style={{background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)', borderRadius: '10px', padding: '14px 16px', display: 'flex', gap: '12px', alignItems: 'center'}}>
+                  {item.icon}
+                  <span style={{color: 'white', fontSize: '13px', fontWeight: '500'}}>{item.text}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* CE QUE C'EST / CE QUE CE N'EST PAS */}
+        <section style={{background: 'white', padding: '4rem 0', borderBottom: '1px solid #e5e7eb'}}>
+          <div style={{maxWidth: '1100px', margin: '0 auto', padding: '0 2rem'}}>
+            <div style={{display: 'flex', gap: '3rem', alignItems: 'flex-start'}}>
+              <div style={{flex: 1}}>
+                <span style={{background: '#eff6ff', color: '#1a4fba', fontSize: '11px', fontWeight: '600', padding: '3px 12px', borderRadius: '20px', letterSpacing: '0.05em'}}>LE SERVICE</span>
+                <h2 style={{fontSize: '1.5rem', fontWeight: '700', color: '#0f2d6e', margin: '12px 0 16px', lineHeight: '1.4'}}>
+                  Un juriste qui vous explique le droit, pas qui le pratique Ã  votre place.
+                </h2>
+                <p style={{color: '#374151', fontSize: '0.95rem', lineHeight: '1.8', marginBottom: '16px'}}>
+                  Le service <strong>Information sur vos droits</strong> vous permet d'obtenir une rÃ©ponse pÃ©dagogique et documentÃ©e Ã  votre question juridique, rÃ©digÃ©e par un juriste sous 24 Ã  48h ouvrÃ©es. Vous comprenez le cadre lÃ©gal applicable Ã  votre situation, vos droits, et les dÃ©marches possibles â€” en clair, sans jargon.
+                </p>
+                <p style={{color: '#374151', fontSize: '0.95rem', lineHeight: '1.8', marginBottom: '24px'}}>
+                  Ce service s'adresse Ã  toute personne qui souhaite mieux comprendre sa situation avant d'agir : avant d'envoyer un courrier, de signer un document, de saisir un tribunal ou simplement de savoir oÃ¹ elle en est juridiquement.
+                </p>
+                <div style={{background: '#fff7ed', border: '1px solid #fed7aa', borderRadius: '10px', padding: '1rem 1.25rem'}}>
+                  <p style={{color: '#92400e', fontSize: '12px', lineHeight: '1.7', margin: 0}}>
+                    <strong>Important :</strong> les rÃ©ponses fournies ont une vocation informative et pÃ©dagogique. Elles ne constituent pas une consultation juridique au sens de la loi du 31 dÃ©cembre 1971, rÃ©servÃ©e aux avocats et professionnels rÃ©glementÃ©s. Pour toute situation nÃ©cessitant une reprÃ©sentation ou un acte juridique formel, nous pouvons vous orienter vers nos avocats partenaires.
+                  </p>
+                </div>
+              </div>
+              <div style={{flex: '0 0 340px', display: 'flex', flexDirection: 'column', gap: '12px'}}>
+                <div style={{background: '#f0fdf4', border: '1px solid #bbf7d0', borderRadius: '12px', padding: '1.25rem'}}>
+                  <p style={{color: '#15803d', fontSize: '12px', fontWeight: '700', marginBottom: '10px'}}>âœ“ Ce que nous faisons</p>
+                  {[
+                    'Expliquer le cadre juridique applicable Ã  votre situation',
+                    'Vous informer sur vos droits et obligations',
+                    'Vous indiquer les dÃ©marches possibles',
+                    'Vous orienter vers les bons interlocuteurs',
+                    'RÃ©diger une rÃ©ponse claire, sans jargon',
+                  ].map((item, i) => (
+                    <div key={i} style={{display: 'flex', gap: '8px', alignItems: 'flex-start', marginBottom: '6px'}}>
+                      <span style={{color: '#16a34a', fontSize: '13px', flexShrink: 0}}>âœ“</span>
+                      <span style={{color: '#374151', fontSize: '12px', lineHeight: '1.5'}}>{item}</span>
+                    </div>
+                  ))}
+                </div>
+                <div style={{background: '#fef2f2', border: '1px solid #fecaca', borderRadius: '12px', padding: '1.25rem'}}>
+                  <p style={{color: '#dc2626', fontSize: '12px', fontWeight: '700', marginBottom: '10px'}}>âœ— Ce que nous ne faisons pas</p>
+                  {[
+                    'DÃ©livrer une consultation juridique (loi du 31/12/1971)',
+                    'Vous reprÃ©senter en justice',
+                    'RÃ©diger des actes juridiques en votre nom',
+                    'Remplacer un avocat pour les actes formels',
+                  ].map((item, i) => (
+                    <div key={i} style={{display: 'flex', gap: '8px', alignItems: 'flex-start', marginBottom: '6px'}}>
+                      <span style={{color: '#dc2626', fontSize: '13px', flexShrink: 0}}>âœ—</span>
+                      <span style={{color: '#374151', fontSize: '12px', lineHeight: '1.5'}}>{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* LES 3 Ã‰TAPES */}
+        <section style={{background: '#f0f4ff', padding: '4rem 0', borderBottom: '1px solid #e5e7eb'}}>
+          <div style={{maxWidth: '1100px', margin: '0 auto', padding: '0 2rem'}}>
+            <div style={{textAlign: 'center', marginBottom: '2.5rem'}}>
+              <h2 style={{fontSize: '1.5rem', fontWeight: '700', color: '#0f2d6e', margin: 0}}>Comment Ã§a marche ?</h2>
+              <p style={{color: '#6b7280', fontSize: '0.875rem', marginTop: '6px'}}>Simple, rapide, sans jargon.</p>
+            </div>
+            <div style={{display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem'}}>
+              {[
+                { n: '1', title: 'Posez votre question', text: 'DÃ©crivez votre situation en langage courant depuis votre espace client. Pas besoin de maÃ®triser le droit â€” expliquez simplement ce qui se passe, comme vous l\'expliqueriez Ã  un ami.' },
+                { n: '2', title: 'Confirmez votre paiement', text: '47 â‚¬ par question, sans abonnement ni engagement. Paiement sÃ©curisÃ© par carte bancaire ou virement. AbonnÃ© Optimal ? Votre premiÃ¨re question mensuelle est incluse, les suivantes Ã  9,90 â‚¬.' },
+                { n: '3', title: 'Recevez votre rÃ©ponse sous 24 Ã  48h', text: 'Un juriste rÃ©dige votre rÃ©ponse personnellement et vous la transmet par Ã©crit depuis votre espace client sous 24 Ã  48h ouvrÃ©es. Aucune IA, aucune rÃ©ponse automatique.' },
+              ].map((s) => (
+                <div key={s.n} style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.75rem'}}>
+                  <div style={{width: '36px', height: '36px', background: '#0f2d6e', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontSize: '14px', fontWeight: '700', marginBottom: '14px'}}>{s.n}</div>
+                  <h3 style={{fontWeight: '700', color: '#0f2d6e', fontSize: '0.95rem', marginBottom: '8px'}}>{s.title}</h3>
+                  <p style={{color: '#6b7280', fontSize: '13px', lineHeight: '1.7', margin: 0}}>{s.text}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* SITUATIONS COUVERTES */}
+        <section style={{background: 'white', padding: '4rem 0', borderBottom: '1px solid #e5e7eb'}}>
+          <div style={{maxWidth: '1100px', margin: '0 auto', padding: '0 2rem'}}>
+            <div style={{textAlign: 'center', marginBottom: '2.5rem'}}>
+              <h2 style={{fontSize: '1.5rem', fontWeight: '700', color: '#0f2d6e', margin: 0}}>Quelles situations sont couvertes ?</h2>
+              <p style={{color: '#6b7280', fontSize: '0.875rem', marginTop: '6px'}}>Les domaines et sujets les plus frÃ©quemment traitÃ©s â€” cette liste n'est pas exhaustive.</p>
+            </div>
+            <div style={{display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px'}}>
+              {situations.map((sit) => (
+                <div key={sit.label} style={{border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.25rem'}}>
+                  <div style={{display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px'}}>
+                    <div style={{width: '36px', height: '36px', background: sit.bg, borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0}}>
+                      {sit.icon}
+                    </div>
+                    <strong style={{color: '#0f2d6e', fontSize: '13px'}}>{sit.label}</strong>
+                  </div>
+                  <p style={{color: '#9ca3af', fontSize: '10px', fontStyle: 'italic', marginBottom: '8px'}}>Exemples frÃ©quents :</p>
+                  <div style={{display: 'flex', flexDirection: 'column', gap: '4px'}}>
+                    {sit.exemples.map((ex) => (
+                      <span key={ex} style={{color: '#6b7280', fontSize: '11px', display: 'flex', gap: '6px', alignItems: 'flex-start'}}>
+                        <span style={{color: '#1a4fba', flexShrink: 0}}>â€º</span>{ex}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div style={{textAlign: 'center', marginTop: '1.5rem', background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '10px', padding: '12px 20px', maxWidth: '600px', margin: '1.5rem auto 0'}}>
+              <p style={{color: '#1a4fba', fontSize: '12px', margin: 0}}>
+                Votre situation n'est pas listÃ©e ? Posez votre question â€” nous couvrons un spectre trÃ¨s large du droit du quotidien, bien au-delÃ  des exemples prÃ©sentÃ©s ici.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* TARIF RAPPEL */}
+        <section style={{background: '#f0f4ff', padding: '4rem 0', borderBottom: '1px solid #e5e7eb'}}>
+          <div style={{maxWidth: '700px', margin: '0 auto', padding: '0 2rem', textAlign: 'center'}}>
+            <h2 style={{fontSize: '1.5rem', fontWeight: '700', color: '#0f2d6e', margin: '0 0 8px'}}>Un tarif simple et transparent</h2>
+            <p style={{color: '#6b7280', fontSize: '0.875rem', marginBottom: '2rem'}}>Sans abonnement, sans engagement, sans surprise.</p>
+            <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '1.5rem'}}>
+              <div style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '14px', padding: '1.75rem'}}>
+                <p style={{fontSize: '11px', fontWeight: '600', color: '#6b7280', letterSpacing: '0.08em', margin: '0 0 8px'}}>SANS ABONNEMENT</p>
+                <div style={{fontSize: '2.5rem', fontWeight: '700', color: '#0f2d6e', marginBottom: '4px'}}>47 â‚¬</div>
+                <p style={{color: '#6b7280', fontSize: '12px', marginBottom: '16px'}}>par question Â· paiement unique</p>
+                <a href="/connexion" style={{display: 'block', width: '100%', padding: '10px', borderRadius: '8px', border: 'none', background: '#1a4fba', color: 'white', fontSize: '13px', fontWeight: '600', cursor: 'pointer', textDecoration: 'none', textAlign: 'center', boxSizing: 'border-box'}}>
+                  Poser ma question
+                </a>
+              </div>
+              <div style={{background: '#0f2d6e', border: '2px solid #1a4fba', borderRadius: '14px', padding: '1.75rem'}}>
+                <p style={{fontSize: '11px', fontWeight: '600', color: 'rgba(255,255,255,0.6)', letterSpacing: '0.08em', margin: '0 0 8px'}}>ABONNÃ‰ OPTIMAL</p>
+                <div style={{fontSize: '2.5rem', fontWeight: '700', color: 'white', marginBottom: '4px'}}>9,90 â‚¬</div>
+                <p style={{color: 'rgba(255,255,255,0.6)', fontSize: '12px', marginBottom: '4px'}}>par question supplÃ©mentaire</p>
+                <p style={{color: '#93c5fd', fontSize: '11px', marginBottom: '16px'}}>1 question incluse par mois</p>
+                <a href="/tarifs" style={{display: 'block', width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.4)', background: 'transparent', color: 'white', fontSize: '13px', fontWeight: '600', cursor: 'pointer', textDecoration: 'none', textAlign: 'center', boxSizing: 'border-box'}}>
+                  Voir l'abonnement Optimal
+                </a>
+              </div>
+            </div>
+            {/* ENCART PUSH ABONNEMENT OPTIMAL */}
+            <div style={{background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '10px', padding: '14px 20px', marginBottom: '1.5rem'}}>
+              <p style={{color: '#1e3a5f', fontSize: '12px', lineHeight: '1.7', margin: 0}}>
+                <strong>Vous posez rÃ©guliÃ¨rement des questions ?</strong> L'abonnement Optimal inclut 1 question par mois et les suivantes Ã  seulement 9,90 â‚¬ â€” soit une Ã©conomie significative dÃ¨s la deuxiÃ¨me question mensuelle. Ã€ partir de 14,90 â‚¬/mois.
+              </p>
+            </div>
+            <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '8px'}}>
+              <span style={{fontSize: '16px'}}>ðŸ”’</span>
+              <span style={{color: '#6b7280', fontSize: '12px'}}>Paiement sÃ©curisÃ© Â· Carte bancaire et virement acceptÃ©s</span>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ */}
+        <section style={{background: '#f8fafc', padding: '4rem 0'}}>
+          <div style={{maxWidth: '1100px', margin: '0 auto', padding: '0 2rem'}}>
+            <div style={{textAlign: 'center', marginBottom: '2.5rem'}}>
+              <h2 style={{fontSize: '1.5rem', fontWeight: '700', color: '#0f2d6e', margin: 0}}>Questions frÃ©quentes</h2>
+              <p style={{color: '#6b7280', fontSize: '0.875rem', marginTop: '6px'}}>Tout ce que vous devez savoir sur le service.</p>
+            </div>
+            <div style={{display: 'flex', flexDirection: 'column', gap: '10px', maxWidth: '800px', margin: '0 auto'}}>
+              {faqItems.map((faq, i) => (
+                <details key={i} style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '10px', padding: '1rem 1.25rem'}}>
+                  <summary style={{fontWeight: '600', color: '#0f2d6e', fontSize: '14px', cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '12px'}}>
+                    <span>{faq.q}</span>
+                    <span style={{color: '#1a4fba', fontSize: '18px', flexShrink: 0, lineHeight: 1}}>ï¼‹</span>
+                  </summary>
+                  <p style={{color: '#374151', fontSize: '13px', lineHeight: '1.75', marginTop: '12px', marginBottom: 0}}>{faq.a}</p>
+                </details>
+              ))}
+            </div>
+          </div>
+        </section>
+
+      </main>
+      <Footer />
+    </>
+  )
+}
+=== C:\Users\chole\docutheque-next\app\tarifs\page.tsx ===
+import TarifsClient from './TarifsClient'
+
+export const metadata = {
+  title: 'Tarifs Â· Documents juridiques, information sur vos droits et crÃ©ation d\'entreprise',
+  description: 'ModÃ¨les de documents en DOCX, information pÃ©dagogique sur le droit, accompagnement crÃ©ation d\'entreprise. Offres simples et transparentes.',
+}
+
+export default function Page() {
+  return <TarifsClient />
+}
+=== C:\Users\chole\docutheque-next\app\tarifs\TarifsClient.tsx ===
+'use client'
+
+import { useState } from 'react'
+import { Building2, PenLine, Monitor, Shield, FileText, Lock, RefreshCw } from 'lucide-react'
+import Header from '@/components/Header'
+import Footer from '@/components/Footer'
+
+export default function TarifsClient() {
+  const [annuel, setAnnuel] = useState(true)
+
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Tarifs DocuthÃ¨que",
+    "description": "Offres et tarifs de la plateforme DocuthÃ¨que : modÃ¨les de documents juridiques, abonnement Optimal, information sur vos droits, accompagnement crÃ©ation d'entreprise.",
+    "url": "https://docutheque.fr/tarifs",
+    "mainEntity": {
+      "@type": "ItemList",
+      "itemListElement": [
+        { "@type": "Offer", "name": "AccÃ¨s Gratuit", "price": "0", "priceCurrency": "EUR", "description": "AccÃ¨s gratuit Ã  tous les documents disponibles en accÃ¨s libre, en format DOCX." },
+        { "@type": "Offer", "name": "Abonnement Optimal", "price": "14.90", "priceCurrency": "EUR", "description": "AccÃ¨s Ã  toute la bibliothÃ¨que de documents juridiques en DOCX, notices explicatives, fiches pÃ©dagogiques, 1 question juriste incluse par mois non cumulable sous 24 Ã  48h, support prioritaire." },
+        { "@type": "Offer", "name": "Information sur vos droits", "price": "47", "priceCurrency": "EUR", "description": "RÃ©ponse pÃ©dagogique rÃ©digÃ©e par un juriste sous 24 Ã  48h ouvrÃ©es, sans abonnement ni engagement." },
+        { "@type": "Offer", "name": "Accompagnement CrÃ©ateurs", "price": "0", "priceCurrency": "EUR", "description": "CrÃ©ation d'entreprise offerte (hors frais de greffe et JAL). Statuts, formalitÃ©s, accompagnement juriste formaliste inclus. Sur devis personnalisÃ©." }
+      ]
+    }
+  }
+
+  const faqItems = [
+    { q: "Puis-je rÃ©silier mon abonnement Ã  tout moment ?", a: "L'abonnement Optimal est souscrit pour une durÃ©e minimale de 12 mois. La rÃ©siliation est possible Ã  tout moment, mais prend effet Ã  l'Ã©chÃ©ance annuelle, sous rÃ©serve d'en faire la demande par Ã©crit au moins 30 jours avant cette date." },
+    { q: "Quels moyens de paiement acceptez-vous ?", a: "Nous acceptons le paiement par carte bancaire et par virement bancaire. Le paiement est sÃ©curisÃ©. Aucune information bancaire n'est conservÃ©e sur nos serveurs." },
+    { q: "L'abonnement se renouvelle-t-il automatiquement ?", a: "Oui. Ã€ l'issue de la pÃ©riode initiale de 12 mois, l'abonnement se renouvelle automatiquement pour une nouvelle annÃ©e, sauf rÃ©siliation adressÃ©e par Ã©crit au moins 30 jours avant l'Ã©chÃ©ance." },
+    { q: 'La rÃ©ponse "Information sur vos droits" est-elle garantie sous 48h ?', a: "Oui. Nous nous engageons Ã  vous apporter une rÃ©ponse rÃ©digÃ©e par un juriste dans un dÃ©lai de 24 Ã  48h ouvrÃ©es suivant la rÃ©ception de votre question et la confirmation de votre paiement." },
+    { q: "Puis-je cumuler les questions incluses dans mon abonnement Optimal ?", a: "Non. La question mensuelle incluse dans l'abonnement Optimal n'est pas cumulable d'un mois sur l'autre. Si vous avez besoin de poser des questions supplÃ©mentaires dans le mÃªme mois, elles sont disponibles Ã  9,90 â‚¬ l'unitÃ©. Sans abonnement, chaque question est Ã  47 â‚¬ â€” si vous posez rÃ©guliÃ¨rement des questions, l'abonnement Optimal devient plus Ã©conomique dÃ¨s la deuxiÃ¨me question mensuelle." },
+  ]
+
+  const createurItems = [
+    { icon: <Building2 size={18} color="rgba(255,255,255,0.85)" strokeWidth={1.5} />, label: "CrÃ©ation de sociÃ©tÃ© (SASU, SAS, SARL, EURL), micro-entreprise, entreprise individuelle" },
+    { icon: <PenLine size={18} color="rgba(255,255,255,0.85)" strokeWidth={1.5} />, label: "RÃ©daction des statuts et actes constitutifs" },
+    { icon: <Monitor size={18} color="rgba(255,255,255,0.85)" strokeWidth={1.5} />, label: "FormalitÃ©s d'immatriculation via le guichet unique INPI" },
+    { icon: <Shield size={18} color="rgba(255,255,255,0.85)" strokeWidth={1.5} />, label: "Accompagnement RGPD et conformitÃ©" },
+    { icon: <FileText size={18} color="rgba(255,255,255,0.85)" strokeWidth={1.5} />, label: "Contrats et documents mÃ©tier Ã  tarifs prÃ©fÃ©rentiels" },
+    { icon: <Lock size={18} color="rgba(255,255,255,0.85)" strokeWidth={1.5} />, label: "Conseil en assurances professionnelles (RC Pro, multirisques)" },
+    { icon: <RefreshCw size={18} color="rgba(255,255,255,0.85)" strokeWidth={1.5} />, label: "Modifications statutaires, transfert de siÃ¨ge, dissolution" },
+  ]
+
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <Header />
+      <main style={{background: '#f8fafc', minHeight: '100vh', padding: '4rem 0'}}>
+        <div style={{maxWidth: '1100px', margin: '0 auto', padding: '0 2rem'}}>
+
+          {/* TITRE + INTRO */}
+          <div style={{textAlign: 'center', maxWidth: '700px', margin: '0 auto 3rem'}}>
+            <h1 style={{fontSize: '2rem', fontWeight: '700', color: '#0f2d6e', margin: 0}}>Nos tarifs</h1>
+            <p style={{color: '#6b7280', fontSize: '0.95rem', marginTop: '8px', marginBottom: '16px'}}>Des formules simples, transparentes, sans mauvaise surprise.</p>
+            <p style={{color: '#374151', fontSize: '0.95rem', lineHeight: '1.8'}}>
+              Que vous ayez besoin d'un document ponctuel, d'un accÃ¨s complet Ã  notre bibliothÃ¨que juridique ou d'un accompagnement personnalisÃ© pour crÃ©er votre entreprise, DocuthÃ¨que propose une offre adaptÃ©e Ã  chaque situation. Tous nos documents sont rÃ©digÃ©s par un juriste, jamais gÃ©nÃ©rÃ©s par une IA, et mis Ã  jour dÃ¨s que la lÃ©gislation Ã©volue.
+            </p>
+          </div>
+
+          {/* TOGGLE */}
+          <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '12px', marginBottom: '2.5rem'}}>
+            <span style={{fontSize: '13px', fontWeight: annuel ? '400' : '600', color: annuel ? '#6b7280' : '#0f2d6e'}}>Mensuel</span>
+            <div onClick={() => setAnnuel(!annuel)} style={{width: '48px', height: '26px', borderRadius: '13px', background: '#1a4fba', cursor: 'pointer', position: 'relative', transition: 'background 0.2s'}}>
+              <div style={{position: 'absolute', top: '3px', left: annuel ? '25px' : '3px', width: '20px', height: '20px', borderRadius: '50%', background: 'white', transition: 'left 0.2s'}} />
+            </div>
+            <span style={{fontSize: '13px', fontWeight: annuel ? '600' : '400', color: annuel ? '#0f2d6e' : '#6b7280'}}>
+              Annuel <span style={{background: '#dcfce7', color: '#16a34a', fontSize: '11px', fontWeight: '600', padding: '2px 7px', borderRadius: '10px', marginLeft: '4px'}}>2 mois offerts</span>
+            </span>
+          </div>
+
+          {/* CARTES */}
+          <div style={{display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px', alignItems: 'flex-start'}}>
+
+            {/* GRATUIT */}
+            <div style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '14px', padding: '1.75rem', display: 'flex', flexDirection: 'column'}}>
+              <p style={{fontSize: '11px', fontWeight: '600', color: '#6b7280', letterSpacing: '0.08em', margin: 0}}>ACCÃˆS GRATUIT</p>
+              <div style={{margin: '12px 0 4px'}}><span style={{fontSize: '2.2rem', fontWeight: '700', color: '#0f2d6e'}}>0 â‚¬</span></div>
+              <p style={{color: '#6b7280', fontSize: '12px', marginBottom: '20px'}}>Sans inscription obligatoire</p>
+              <div style={{display: 'flex', flexDirection: 'column', gap: '9px', marginBottom: '24px'}}>
+                {[
+                  'AccÃ¨s gratuit Ã  tous les documents disponibles en accÃ¨s libre, en format DOCX',
+                  "Documents supplÃ©mentaires disponibles Ã  l'unitÃ© (prix variable selon le document)",
+                  'Newsletter juridique gratuite',
+                ].map((item, i) => (
+                  <div key={i} style={{display: 'flex', gap: '8px', alignItems: 'flex-start'}}>
+                    <span style={{color: '#16a34a', fontSize: '13px', flexShrink: 0, marginTop: '1px'}}>âœ“</span>
+                    <span style={{color: '#374151', fontSize: '12px', lineHeight: '1.5'}}>{item}</span>
+                  </div>
+                ))}
+              </div>
+              <button style={{width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid #e5e7eb', background: 'white', color: '#0f2d6e', fontSize: '13px', fontWeight: '600', cursor: 'pointer'}}>
+                AccÃ©der gratuitement
+              </button>
+            </div>
+
+            {/* ABONNEMENT OPTIMAL */}
+            <div style={{background: '#0f2d6e', border: '2px solid #1a4fba', borderRadius: '14px', padding: '1.75rem', display: 'flex', flexDirection: 'column', position: 'relative', overflow: 'hidden'}}>
+              <div style={{position: 'absolute', top: '14px', right: '14px', background: '#1a4fba', color: 'white', fontSize: '10px', fontWeight: '700', padding: '3px 10px', borderRadius: '10px', letterSpacing: '0.05em'}}>RECOMMANDÃ‰</div>
+              <p style={{fontSize: '11px', fontWeight: '600', color: 'rgba(255,255,255,0.6)', letterSpacing: '0.08em', margin: 0}}>ABONNEMENT OPTIMAL</p>
+              <div style={{margin: '12px 0 4px'}}>
+                <span style={{fontSize: '2.2rem', fontWeight: '700', color: 'white'}}>{annuel ? '12,49 â‚¬' : '14,90 â‚¬'}</span>
+                <span style={{color: 'rgba(255,255,255,0.6)', fontSize: '12px', marginLeft: '4px'}}>/mois</span>
+              </div>
+              <p style={{color: 'rgba(255,255,255,0.6)', fontSize: '12px', marginBottom: '20px'}}>
+                {annuel ? '147,97 â‚¬/an, 2 mois offerts' : 'Engagement 12 mois, 178,80 â‚¬/an'}
+              </p>
+              <div style={{display: 'flex', flexDirection: 'column', gap: '9px', marginBottom: '24px'}}>
+                {[
+                  "AccÃ¨s Ã  toute la bibliothÃ¨que de documents en DOCX durant la pÃ©riode d'abonnement",
+                  'Notices explicatives des documents et fiches pÃ©dagogiques de vulgarisation juridique',
+                  '1 question incluse par mois Â· rÃ©ponse sous 24 Ã  48h Â· non cumulable',
+                  '9,90 â‚¬ par question supplÃ©mentaire',
+                  'Newsletter spÃ©ciale abonnÃ©s',
+                  'Support prioritaire par mail',
+                ].map((item, i) => (
+                  <div key={i} style={{display: 'flex', gap: '8px', alignItems: 'flex-start'}}>
+                    <span style={{color: '#93c5fd', fontSize: '13px', flexShrink: 0, marginTop: '1px'}}>âœ“</span>
+                    <span style={{color: 'rgba(255,255,255,0.85)', fontSize: '12px', lineHeight: '1.5'}}>{item}</span>
+                  </div>
+                ))}
+              </div>
+              <button style={{width: '100%', padding: '10px', borderRadius: '8px', border: 'none', background: 'white', color: '#0f2d6e', fontSize: '13px', fontWeight: '700', cursor: 'pointer'}}>S'abonner</button>
+            </div>
+
+            {/* INFORMATION SUR VOS DROITS */}
+            <div style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '14px', padding: '1.75rem', display: 'flex', flexDirection: 'column'}}>
+              <p style={{fontSize: '11px', fontWeight: '600', color: '#6b7280', letterSpacing: '0.08em', margin: 0}}>INFORMATION SUR VOS DROITS</p>
+              <div style={{margin: '12px 0 4px'}}><span style={{fontSize: '2.2rem', fontWeight: '700', color: '#0f2d6e'}}>47 â‚¬</span></div>
+              <p style={{color: '#6b7280', fontSize: '12px', marginBottom: '20px'}}>Ã€ l'unitÃ© Â· sans abonnement Â· sans engagement</p>
+              <div style={{display: 'flex', flexDirection: 'column', gap: '9px', marginBottom: '20px'}}>
+                {[
+                  'Vous posez votre question en langage courant',
+                  'Un juriste vous apporte une rÃ©ponse pÃ©dagogique par Ã©crit sous 24 Ã  48h',
+                  'RÃ©ponse sur le droit et vos droits applicables Ã  votre situation',
+                ].map((item, i) => (
+                  <div key={i} style={{display: 'flex', gap: '8px', alignItems: 'flex-start'}}>
+                    <span style={{color: '#16a34a', fontSize: '13px', flexShrink: 0, marginTop: '1px'}}>âœ“</span>
+                    <span style={{color: '#374151', fontSize: '12px', lineHeight: '1.5'}}>{item}</span>
+                  </div>
+                ))}
+              </div>
+              <div style={{background: '#fff7ed', border: '1px solid #fed7aa', borderRadius: '8px', padding: '10px 12px', marginBottom: '12px'}}>
+                <p style={{color: '#92400e', fontSize: '11px', lineHeight: '1.6', margin: 0}}>
+                  Cette rÃ©ponse a vocation Ã  vous informer et Ã  vous orienter. Elle ne constitue pas une consultation juridique au sens de la loi du 31 dÃ©cembre 1971, rÃ©servÃ©e aux avocats.
+                </p>
+              </div>
+              <div style={{background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '8px', padding: '10px 12px', marginBottom: '20px'}}>
+                <p style={{color: '#1e3a5f', fontSize: '11px', lineHeight: '1.6', margin: 0}}>
+                  Vous posez rÃ©guliÃ¨rement des questions ? L'abonnement Optimal est plus Ã©conomique dÃ¨s la deuxiÃ¨me question mensuelle.
+                </p>
+              </div>
+              <button style={{width: '100%', padding: '10px', borderRadius: '8px', border: 'none', background: '#1a4fba', color: 'white', fontSize: '13px', fontWeight: '600', cursor: 'pointer'}}>Poser ma question</button>
+            </div>
+
+          </div>
+
+          {/* RÃ‰ASSURANCE */}
+          <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '8px', marginTop: '2rem'}}>
+            <span style={{fontSize: '16px'}}>ðŸ”’</span>
+            <span style={{color: '#6b7280', fontSize: '12px'}}>Paiement sÃ©curisÃ© Â· Carte bancaire et virement bancaire acceptÃ©s</span>
+          </div>
+
+          {/* SECTION ACCOMPAGNEMENT CRÃ‰ATEURS */}
+          <div style={{marginTop: '4rem', background: 'linear-gradient(135deg, #0f2d6e 0%, #1a4fba 100%)', borderRadius: '16px', padding: '2.5rem', display: 'flex', gap: '3rem', alignItems: 'flex-start'}}>
+            <div style={{flex: '0 0 55%'}}>
+              <span style={{background: 'rgba(255,255,255,0.15)', color: 'white', fontSize: '11px', fontWeight: '600', padding: '3px 12px', borderRadius: '20px', letterSpacing: '0.05em'}}>ACCOMPAGNEMENT CRÃ‰ATEURS</span>
+              <h2 style={{color: 'white', fontSize: '1.5rem', fontWeight: '700', margin: '14px 0 10px', lineHeight: '1.4'}}>CrÃ©ez votre entreprise accompagnÃ© d'un juriste formaliste dÃ©diÃ©.</h2>
+              <p style={{color: 'rgba(255,255,255,0.8)', fontSize: '0.875rem', fontStyle: 'italic', marginBottom: '16px'}}>De l'idÃ©e Ã  l'immatriculation, et bien au-delÃ .</p>
+              <p style={{color: 'rgba(255,255,255,0.85)', fontSize: '0.875rem', lineHeight: '1.8', marginBottom: '20px'}}>
+                La crÃ©ation de votre structure est offerte. Vous ne payez que les frais imposÃ©s par les organismes tiers : greffe et publication au journal d'annonces lÃ©gales. Statuts, formalitÃ©s et accompagnement juriste sont inclus. En complÃ©ment, nos packs de documents mÃ©tier (contrats, CGV, RGPD, documents RH...) sont disponibles Ã  tarifs prÃ©fÃ©rentiels pour vous Ã©quiper dÃ¨s le lancement de votre activitÃ©. Sur devis personnalisÃ©, sans engagement.
+              </p>
+              <div style={{background: 'rgba(255,255,255,0.1)', borderRadius: '10px', padding: '12px 16px', marginBottom: '24px'}}>
+                <p style={{color: 'rgba(255,255,255,0.6)', fontSize: '11px', lineHeight: '1.7', margin: 0}}>
+                  Frais indÃ©pendants de nos services, rÃ©glÃ©s directement auprÃ¨s des organismes concernÃ©s : greffe (50 Ã  250 â‚¬ selon la forme juridique) et journal d'annonces lÃ©gales (150 Ã  200 â‚¬).
+                </p>
+              </div>
+              <button style={{padding: '12px 28px', borderRadius: '8px', border: '2px solid white', background: 'white', color: '#0f2d6e', fontSize: '13px', fontWeight: '700', cursor: 'pointer'}}>Nous contacter</button>
+            </div>
+            <div style={{flex: '0 0 40%', display: 'flex', flexDirection: 'column', gap: '12px'}}>
+              {createurItems.map((item, i) => (
+                <div key={i} style={{display: 'flex', gap: '10px', alignItems: 'flex-start'}}>
+                  <div style={{flexShrink: 0, marginTop: '1px'}}>{item.icon}</div>
+                  <span style={{color: 'rgba(255,255,255,0.85)', fontSize: '12px', lineHeight: '1.5'}}>{item.label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* FAQ TARIFS */}
+          <div style={{marginTop: '4rem'}}>
+            <h2 style={{fontSize: '1.4rem', fontWeight: '700', color: '#0f2d6e', textAlign: 'center', marginBottom: '1.5rem'}}>Questions frÃ©quentes sur nos tarifs</h2>
+            <div style={{display: 'flex', flexDirection: 'column', gap: '10px', maxWidth: '760px', margin: '0 auto'}}>
+              {faqItems.map((faq, i) => (
+                <details key={i} style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '10px', padding: '1rem 1.25rem'}}>
+                  <summary style={{fontWeight: '600', color: '#0f2d6e', fontSize: '14px', cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '12px'}}>
+                    <span>{faq.q}</span>
+                    <span style={{color: '#1a4fba', fontSize: '18px', flexShrink: 0, lineHeight: 1}}>ï¼‹</span>
+                  </summary>
+                  <p style={{color: '#374151', fontSize: '13px', lineHeight: '1.75', marginTop: '12px', marginBottom: 0}}>{faq.a}</p>
+                </details>
+              ))}
+            </div>
+          </div>
+
+          {/* NOTE BAS DE PAGE */}
+          <div style={{borderTop: '1px solid #e5e7eb', marginTop: '3rem', paddingTop: '1.5rem'}}>
+            <p style={{color: '#9ca3af', fontSize: '11px', lineHeight: '1.7', textAlign: 'center', maxWidth: '700px', margin: '0 auto'}}>
+              L'abonnement Optimal est souscrit pour une durÃ©e minimale de 12 mois. Ã€ l'issue de cette pÃ©riode, il se renouvelle automatiquement sauf rÃ©siliation adressÃ©e par Ã©crit au moins 30 jours avant l'Ã©chÃ©ance. Le tarif mensuel affichÃ© en mode annuel est calculÃ© sur la base du paiement annuel de 147,97 â‚¬. La question mensuelle incluse est non cumulable d'un mois sur l'autre.
+            </p>
+          </div>
+
+        </div>
+      </main>
+      <Footer />
+    </>
+  )
+}
+=== C:\Users\chole\docutheque-next\app\globals.css ===
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+@import "tailwindcss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", system-ui, sans-serif;
+  color: #1a1a2e;
+  background: white;
+}
+=== C:\Users\chole\docutheque-next\app\layout.tsx ===
+import { Inter } from "next/font/google";
+import "./globals.css";
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+});
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="fr" className={inter.className}>
+      <head>
+        <title>DocuthÃ¨que : documents juridiques prÃªts Ã  l'emploi et informations pÃ©dagogiques, vos droits expliquÃ©s sans jargon</title>
+        <meta name="description" content="ModÃ¨les de documents juridiques et administratifs conformes au droit en vigueur : contrats, mises en demeure, RGPD, RH, recouvrement, statuts de sociÃ©tÃ©. TÃ©lÃ©chargez en DOCX. Vos droits expliquÃ©s sans jargon par un juriste dÃ©diÃ©." />
+        <meta name="keywords" content="modÃ¨les de documents, documents pÃ©dagogiques, documents juridiques, contrats, mise en demeure, RGPD, documents RH, statuts SASU, statuts SARL, auto-entrepreneur, micro-entreprise, juriste en ligne, assistance juridique, formalitÃ©s, crÃ©ation d'entreprise, information juridique, droit du travail, protection juridique" />
+        <meta property="og:title" content="DocuthÃ¨que : documents juridiques et informations sur vos droits. Juriste et formaliste dÃ©diÃ©" />
+        <meta property="og:description" content="ModÃ¨les de documents, informations administratives et juridiques pÃ©dagogiques, juriste formaliste et conseil en assurances dÃ©diÃ©." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://docutheque.cholez-pagotto.fr" />
+        <meta property="og:locale" content="fr_FR" />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://docutheque.cholez-pagotto.fr" />
+        <meta name="theme-color" content="#0f2d6e" />
+      </head>
+      <body>{children}</body>
+    </html>
+  );
+}
+=== C:\Users\chole\docutheque-next\app\page.tsx ===
+import Header from '@/components/Header'
+import Hero from '@/components/Hero'
+import Categories from '@/components/Categories'
+import About from '@/components/About'
+import HowItWorks from '@/components/HowItWorks'
+import Tarifs from '@/components/Tarifs'
+import FAQ from '@/components/FAQ'
+import Footer from '@/components/Footer'
+import SchemaOrg from '@/components/SchemaOrg'
+
+export default function Home() {
+  return (
+    <>
+      <SchemaOrg />
+      <Header />
+      <Hero />
+      <Categories />
+      <About />
+      <HowItWorks />
+      <Tarifs />
+      <FAQ />
+      <Footer />
+    </>
+  )
+}
+=== C:\Users\chole\docutheque-next\components\About.tsx ===
+import { UserCheck, RefreshCw, PenLine } from 'lucide-react'
+
+export default function About() {
+  const domaines = [
+    "Droit du travail et de l'emploi",
+    'Droit de la consommation',
+    'Droit de la famille',
+    'Droit des sociÃ©tÃ©s et des entreprises',
+    'Droit des contrats',
+    'Droit immobilier et locatif',
+    'Droit du numÃ©rique et des donnÃ©es personnelles (RGPD)',
+    'Droit des assurances',
+    "Droit du handicap et de l'accessibilitÃ©",
+    'Droit associatif et des organisations',
+    'Droit agricole et rural',
+    'Droit du recouvrement de crÃ©ances',
+    'Droit commercial et des affaires',
+    'Droit de la propriÃ©tÃ© intellectuelle',
+    'Droit de la santÃ©',
+    "Droit de l'environnement",
+    'Droit fiscal et comptable',
+    'Droit bancaire et financier',
+    'Droit pÃ©nal des affaires',
+    'Droit administratif et des collectivitÃ©s',
+    "Droit de la construction et de l'urbanisme",
+    'Droit du sport et des loisirs',
+    "Droit de l'Ã©ducation et de la formation",
+  ]
+
+  return (
+    <section style={{background: '#f8fafc', borderTop: '1px solid #e5e7eb', padding: '4rem 0'}}>
+      <div style={{maxWidth: '1200px', margin: '0 auto', padding: '0 2rem', display: 'flex', gap: '2rem', alignItems: 'flex-start'}}>
+
+        <div style={{flex: '0 0 48%'}}>
+          <span style={{background: '#eff6ff', color: '#1a4fba', fontSize: '11px', fontWeight: '600', padding: '3px 12px', borderRadius: '20px', letterSpacing: '0.05em'}}>
+            QUI SOMMES-NOUS
+          </span>
+          <h2 style={{fontSize: '1.6rem', fontWeight: '700', color: '#0f2d6e', margin: '12px 0 8px 0', lineHeight: '1.4'}}>
+            Des documents conformes, prÃªts Ã  l'emploi et vos droits expliquÃ©s, sans jargon.
+          </h2>
+          <p style={{color: '#1a4fba', fontSize: '0.95rem', fontStyle: 'italic', marginBottom: '16px'}}>
+            DocuthÃ¨que est la plateforme de ressources du Cabinet Cholez-Pagotto, conÃ§ue pour sÃ©curiser vos dÃ©marches administratives et juridiques sans la complexitÃ© du jargon.
+          </p>
+          <div style={{background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '10px', padding: '1rem 1.25rem', marginBottom: '20px'}}>
+            <p style={{color: '#1e3a5f', fontSize: '0.9rem', lineHeight: '1.8', margin: 0}}>
+              Chaque document de la DocuthÃ¨que est une crÃ©ation en conformitÃ© avec la lÃ©gislation, actualisÃ©e autant de fois que nÃ©cessaire. Chaque modÃ¨le est le fruit d'une expertise dÃ©diÃ©e, mise en cohÃ©rence avec l'Ã©volution permanente des textes grÃ¢ce Ã  une veille quotidienne. RÃ©sultat : vous profitez de documents simples Ã  utiliser, avec la garantie d'une prÃ©cision juridique absolue.
+            </p>
+          </div>
+          <div style={{display: 'flex', gap: '8px', flexWrap: 'wrap'}}>
+            {domaines.map((domaine) => (
+              <span key={domaine} style={{display: 'inline-flex', alignItems: 'center', gap: '4px', background: 'white', border: '1px solid #e5e7eb', borderRadius: '20px', padding: '4px 10px', fontSize: '11px', color: '#374151', fontWeight: '500'}}>
+                <span style={{color: '#16a34a', fontSize: '12px'}}>âœ“</span>
+                {domaine}
+              </span>
+            ))}
+            <span style={{display: 'inline-flex', alignItems: 'center', gap: '4px', background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '20px', padding: '4px 10px', fontSize: '11px', color: '#1a4fba', fontWeight: '600', fontStyle: 'italic'}}>
+              <span style={{color: '#1a4fba', fontSize: '12px'}}>âœ“</span>
+              Et de nombreux autres domaines du droit...
+            </span>
+          </div>
+        </div>
+
+        <div style={{flex: '0 0 48%', display: 'flex', flexDirection: 'column', gap: '14px'}}>
+          <div style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.25rem'}}>
+            <div style={{display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px'}}>
+              <UserCheck size={22} color="#1a4fba" strokeWidth={1.5} />
+              <strong style={{color: '#0f2d6e', fontSize: '13px'}}>100% humain, zÃ©ro intelligence artificielle</strong>
+            </div>
+            <p style={{color: '#6b7280', fontSize: '12px', lineHeight: '1.6'}}>
+              Chaque modÃ¨le de document est rÃ©digÃ© et relu par un juriste, il n'y a pas d'intervention de l'IA. Dans un domaine oÃ¹ une erreur juridique peut coÃ»ter cher, nous faisons le choix de l'expertise humaine et de la prÃ©cision. L'IA peut halluciner. Nos juristes, non.
+            </p>
+          </div>
+          <div style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.25rem'}}>
+            <div style={{display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px'}}>
+              <RefreshCw size={22} color="#1a4fba" strokeWidth={1.5} />
+              <strong style={{color: '#0f2d6e', fontSize: '13px'}}>Mise Ã  jour des documents</strong>
+            </div>
+            <p style={{color: '#6b7280', fontSize: '12px', lineHeight: '1.6'}}>
+              Notre base documentaire est mise Ã  jour dans les meilleurs dÃ©lais, dÃ¨s qu'une loi, un dÃ©cret ou une jurisprudence modifie le cadre juridique applicable. Cette veille est incluse dans notre pratique au quotidien.
+            </p>
+          </div>
+          <div style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.25rem'}}>
+            <div style={{display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px'}}>
+              <PenLine size={22} color="#1a4fba" strokeWidth={1.5} />
+              <strong style={{color: '#0f2d6e', fontSize: '13px'}}>100% personnalisables, adaptez chaque document Ã  votre situation</strong>
+            </div>
+            <p style={{color: '#6b7280', fontSize: '12px', lineHeight: '1.6'}}>
+              Tous nos modÃ¨les sont fournis au format DOCX, le format Word universel. Vous les ouvrez, vous les complÃ©tez, vous les adaptez Ã  votre situation exacte, sans contrainte, sans abonnement logiciel, sans intermÃ©diaire. Le document final est le vÃ´tre, entiÃ¨rement.
+            </p>
+          </div>
+
+          <div style={{background: '#0f2d6e', borderRadius: '12px', padding: '1.5rem', marginTop: '4px'}}>
+            <h3 style={{color: 'white', fontSize: '1rem', fontWeight: '700', marginBottom: '12px', lineHeight: '1.4'}}>
+              Le droit du quotidien, pour tous les profils
+            </h3>
+            <p style={{color: 'rgba(255,255,255,0.85)', fontSize: '12px', lineHeight: '1.8', marginBottom: '12px'}}>
+              Que vous soyez salariÃ© confrontÃ© Ã  une situation difficile au travail, employeur face Ã  une obligation lÃ©gale, consommateur lÃ©sÃ© par un prestataire, dirigeant en train de crÃ©er votre sociÃ©tÃ©, bailleur ou locataire en dÃ©saccord, association cherchant Ã  se structurer ou particulier souhaitant simplement comprendre ses droits : DocuthÃ¨que a Ã©tÃ© conÃ§ue pour vous.
+            </p>
+            <p style={{color: 'rgba(255,255,255,0.85)', fontSize: '12px', lineHeight: '1.8', marginBottom: '16px'}}>
+              Nos modÃ¨les couvrent l'ensemble des situations juridiques de la vie courante et professionnelle, sans distinction de statut ni de niveau de connaissance juridique. Du contrat de travail aux statuts de sociÃ©tÃ©, de la mise en demeure au registre RGPD, du bail rural Ã  la lettre de rÃ©clamation auprÃ¨s d'un assureur : chaque document est accessible, comprÃ©hensible et immÃ©diatement utilisable.
+            </p>
+            <p style={{color: '#93c5fd', fontSize: '13px', fontWeight: '600', fontStyle: 'italic', borderTop: '1px solid rgba(255,255,255,0.15)', paddingTop: '12px', margin: 0}}>
+              Vous avez des droits. Nous vous proposons les solutions pour mieux les comprendre. Parce qu'un document bien rÃ©digÃ© aujourd'hui, c'est certainement un litige Ã©vitÃ© demain.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+=== C:\Users\chole\docutheque-next\components\Categories.tsx ===
+import { Building2, User, ShoppingCart, Shield, FileText, Scale } from 'lucide-react'
+
+const categories = [
+  { bg: '#eff6ff', ic: '#2563eb', icone: <Building2 size={20} color="#2563eb" strokeWidth={1.5} />, label: 'Employeur', desc: 'Contrats, licenciement, rupture conventionnelle, rÃ¨glement intÃ©rieur' },
+  { bg: '#f0fdf4', ic: '#16a34a', icone: <User size={20} color="#16a34a" strokeWidth={1.5} />, label: 'SalariÃ©', desc: 'DÃ©mission, contestation de sanction, solde de tout compte' },
+  { bg: '#fff7ed', ic: '#ea580c', icone: <ShoppingCart size={20} color="#ea580c" strokeWidth={1.5} />, label: 'Consommateur', desc: 'Mise en demeure, rÃ©tractation, garantie lÃ©gale' },
+  { bg: '#fdf4ff', ic: '#9333ea', icone: <Shield size={20} color="#9333ea" strokeWidth={1.5} />, label: 'RGPD / ConformitÃ©', desc: 'Registre, DPA, AIPD, politique de confidentialitÃ©' },
+  { bg: '#eff6ff', ic: '#1a4fba', icone: <FileText size={20} color="#1a4fba" strokeWidth={1.5} />, label: 'Contrats', desc: 'Prestation de services, CGV, NDA, mandat, freelance' },
+  { bg: '#f8fafc', ic: '#475569', icone: <Scale size={20} color="#475569" strokeWidth={1.5} />, label: 'Recouvrement', desc: 'Mise en demeure de payer, relances, injonction de payer' },
+]
+
+export default function Categories() {
+  return (
+    <section style={{background: 'white', padding: '4rem 0'}}>
+      <div style={{maxWidth: '1200px', margin: '0 auto', padding: '0 2rem'}}>
+        <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem'}}>
+          <div>
+            <h2 style={{fontSize: '1.6rem', fontWeight: '700', color: '#0f2d6e', margin: 0}}>Parcourir par profil</h2>
+            <p style={{color: '#6b7280', fontSize: '0.875rem', marginTop: '4px'}}>Choisissez votre situation pour accÃ©der aux bons modÃ¨les.</p>
+          </div>
+          <a href="/catalogue" style={{color: '#1a4fba', fontSize: '13px', fontWeight: '500', textDecoration: 'none'}}>Voir tout le catalogue â†’</a>
+        </div>
+        <div style={{display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px'}}>
+          {categories.map((cat) => (
+            <div key={cat.label} style={{border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.25rem', cursor: 'pointer', display: 'flex', gap: '12px', alignItems: 'flex-start'}}>
+              <div style={{width: '42px', height: '42px', background: cat.bg, borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0}}>
+                {cat.icone}
+              </div>
+              <div>
+                <strong style={{fontSize: '13px', color: '#0f2d6e'}}>{cat.label}</strong>
+                <p style={{color: '#6b7280', fontSize: '12px', marginTop: '4px', lineHeight: '1.5'}}>{cat.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+=== C:\Users\chole\docutheque-next\components\FAQ.tsx ===
+export default function FAQ() {
+  const faqs = [
+    {
+      q: "Qu'est-ce qu'un modÃ¨le de document juridique ?",
+      a: "Un modÃ¨le de document juridique est un document prÃ©rÃ©digÃ©, conforme Ã  la lÃ©gislation en vigueur, que vous pouvez tÃ©lÃ©charger, complÃ©ter et adapter Ã  votre situation. Il vous Ã©vite de rÃ©diger un document de zÃ©ro et garantit que les mentions obligatoires sont bien prÃ©sentes."
+    },
+    {
+      q: "Les modÃ¨les sont-ils conformes au droit franÃ§ais en vigueur ?",
+      a: "Oui. Chaque modÃ¨le est rÃ©digÃ© par un juriste et mis Ã  jour dans les meilleurs dÃ©lais dÃ¨s qu'une loi, un dÃ©cret ou une jurisprudence modifie le cadre applicable."
+    },
+    {
+      q: "Quelle est la diffÃ©rence entre un modÃ¨le gratuit et un modÃ¨le Optimal ?",
+      a: "L'accÃ¨s gratuit donne accÃ¨s Ã  tous les documents disponibles en accÃ¨s libre, en format DOCX. L'abonnement Optimal dÃ©bloque la bibliothÃ¨que complÃ¨te, les notices explicatives des documents, les fiches pÃ©dagogiques de vulgarisation juridique et une question incluse par mois sous 24 Ã  48h."
+    },
+    {
+      q: "Puis-je modifier les documents aprÃ¨s tÃ©lÃ©chargement ?",
+      a: "Oui. Tous nos modÃ¨les sont fournis au format DOCX, le format Word universel. Vous pouvez les ouvrir, les modifier et les personnaliser librement, sans logiciel spÃ©cifique ni abonnement supplÃ©mentaire."
+    },
+    {
+      q: 'Qu\'est-ce que le service "Information sur vos droits" ?',
+      a: "C'est un service Ã  l'unitÃ©, sans abonnement, Ã  47 â‚¬. Vous posez votre question en langage courant et un juriste vous apporte une rÃ©ponse pÃ©dagogique par Ã©crit sous 24 Ã  48h. Cette rÃ©ponse a vocation Ã  vous informer, elle ne constitue pas une consultation juridique au sens de la loi du 31 dÃ©cembre 1971. Si votre situation gÃ©nÃ¨re plusieurs questions, l'abonnement Optimal est plus adaptÃ© : Ã  partir de 14,90 â‚¬/mois, il inclut une question par mois et les suivantes Ã  seulement 9,90 â‚¬."
+    },
+    {
+      q: "L'intelligence artificielle est-elle utilisÃ©e pour rÃ©diger les documents ?",
+      a: "Non. Chaque modÃ¨le est rÃ©digÃ© et relu par un juriste. Il n'y a aucune intervention de l'IA dans la rÃ©daction de nos documents. L'IA peut halluciner. Nos juristes, non."
+    },
+    {
+      q: "Comment fonctionne l'abonnement Optimal ?",
+      a: "L'abonnement Optimal est souscrit pour une durÃ©e minimale de 12 mois Ã  14,90 â‚¬/mois, ou 147,97 â‚¬/an avec 2 mois offerts. Il inclut 1 question par mois, non cumulable, avec rÃ©ponse sous 24 Ã  48h. Ã€ l'issue de la pÃ©riode, il se renouvelle automatiquement sauf rÃ©siliation adressÃ©e par Ã©crit au moins 30 jours avant l'Ã©chÃ©ance."
+    },
+    {
+      q: "Pouvez-vous m'orienter vers un avocat ?",
+      a: "Oui. Nous disposons d'un rÃ©seau d'avocats partenaires vers lesquels nous pouvons vous orienter si votre situation nÃ©cessite une reprÃ©sentation ou un acte juridique formel, sans obligation de votre part et en toute libertÃ© de choix."
+    },
+    {
+      q: "Proposez-vous un accompagnement pour la crÃ©ation d'entreprise et les formalitÃ©s juridiques ?",
+      a: "Oui. En tant que juriste formaliste, nous vous accompagnons dans toutes vos dÃ©marches de formalitÃ©s : crÃ©ation de sociÃ©tÃ© (SASU, SAS, SARL, EURL), de micro-entreprise, d'entreprise individuelle, vos statuts, vos modifications statutaires, de transfert de siÃ¨ge, de dissolution et de liquidation. Notre cabinet est membre du CRFF (Conseil ReprÃ©sentatif des Formalistes de France)."
+    },
+    {
+      q: "Proposez-vous des services de courtage en assurances ?",
+      a: "Oui. En complÃ©ment de notre activitÃ© documentaire et pÃ©dagogique, nous exerÃ§ons une activitÃ© de conseil en assurances et rÃ©assurances, dÃ©clarÃ©e Ã  l'ORIAS sous le numÃ©ro 26003943 et exercÃ©e sous le contrÃ´le de l'ACPR. Nous pouvons vous accompagner dans la recherche et la mise en place de solutions assurantielles adaptÃ©es Ã  votre situation personnelle ou professionnelle, en tous domaines concernÃ©s par de l'assurance."
+    },
+  ]
+
+  return (
+    <section style={{background: '#f8fafc', borderTop: '1px solid #e5e7eb', padding: '4rem 0'}}>
+      <div style={{maxWidth: '1200px', margin: '0 auto', padding: '0 2rem'}}>
+        <div style={{textAlign: 'center', marginBottom: '2.5rem'}}>
+          <h2 style={{fontSize: '1.6rem', fontWeight: '700', color: '#0f2d6e', margin: 0}}>Questions frÃ©quentes</h2>
+          <p style={{color: '#6b7280', fontSize: '0.875rem', marginTop: '6px'}}>Tout ce que vous devez savoir avant de commencer.</p>
+        </div>
+        <div style={{display: 'flex', flexDirection: 'column', gap: '10px', maxWidth: '860px', margin: '0 auto'}}>
+          {faqs.map((faq, i) => (
+            <details key={i} style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '10px', padding: '1rem 1.25rem'}}>
+              <summary style={{fontWeight: '600', color: '#0f2d6e', fontSize: '14px', cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '12px'}}>
+                <span>{faq.q}</span>
+                <span style={{color: '#1a4fba', fontSize: '18px', flexShrink: 0, lineHeight: 1}}>ï¼‹</span>
+              </summary>
+              <p style={{color: '#374151', fontSize: '13px', lineHeight: '1.75', marginTop: '12px', marginBottom: 0}}>
+                {faq.a}
+              </p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+=== C:\Users\chole\docutheque-next\components\Footer.tsx ===
+import { Scale } from 'lucide-react'
+
+export default function Footer() {
+  return (
+    <>
+      {/* CTA FINAL */}
+      <section style={{background: '#0f2d6e', padding: '3rem 0', textAlign: 'center'}}>
+        <div style={{maxWidth: '1200px', margin: '0 auto', padding: '0 2rem'}}>
+          <h2 style={{color: 'white', fontSize: '1.5rem', fontWeight: 'bold', lineHeight: '1.4'}}>PrÃªt Ã  sÃ©curiser vos documents et votre quotidien dans la comprÃ©hension de vos droits ?</h2>
+          <p style={{color: 'rgba(255,255,255,0.7)', fontSize: '0.875rem', marginTop: '0.75rem', maxWidth: '600px', margin: '0.75rem auto 0', lineHeight: '1.7'}}>AccÃ¨s immÃ©diat Ã  des modÃ¨les fiables, conformes et personnalisables, juriste dÃ©diÃ© pour vous Ã©clairer et vous apporter une meilleure comprÃ©hension du droit.</p>
+          <div style={{display: 'flex', justifyContent: 'center', marginTop: '1.5rem'}}>
+            <button style={{background: 'white', color: '#1a4fba', border: 'none', padding: '10px 24px', borderRadius: '6px', fontSize: '12px', fontWeight: '600', cursor: 'pointer'}}>Voir les tarifs</button>
+          </div>
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer style={{background: '#111827', padding: '2rem 0'}}>
+        <div style={{maxWidth: '1200px', margin: '0 auto', padding: '0 2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start'}}>
+          <div>
+            <div style={{display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px'}}>
+              <div style={{width: '24px', height: '24px', background: '#1a4fba', borderRadius: '5px', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                <Scale size={14} color="white" strokeWidth={1.5} />
+              </div>
+              <span style={{fontSize: '13px', fontWeight: '600', color: 'white'}}>DocuthÃ¨que et assistance par le cabinet Cholez-Pagotto</span>
+            </div>
+            <p style={{color: '#6b7280', fontSize: '11px', maxWidth: '200px', lineHeight: '1.6'}}>ModÃ¨les de documents actualisÃ©s rÃ©guliÃ¨rement.</p>
+            <p style={{color: '#6b7280', fontSize: '11px', marginTop: '6px', lineHeight: '1.6'}}>Un service de FCFBL ACTIVITIES</p>
+          </div>
+          <div style={{display: 'flex', gap: '2.5rem'}}>
+            <div>
+              <p style={{fontSize: '11px', fontWeight: '600', color: 'white', marginBottom: '8px'}}>Navigation</p>
+              <div style={{display: 'flex', flexDirection: 'column', gap: '5px'}}>
+                <a href="/catalogue" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>Catalogue</a>
+                <a href="/information-sur-vos-droits" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>Information sur vos droits</a>
+                <a href="/tarifs" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>Tarifs</a>
+                <a href="/blog" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>Blog juridique</a>
+              </div>
+            </div>
+            <div>
+              <p style={{fontSize: '11px', fontWeight: '600', color: 'white', marginBottom: '8px'}}>LÃ©gal</p>
+              <div style={{display: 'flex', flexDirection: 'column', gap: '5px'}}>
+                <a href="/mentions-legales" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>Mentions lÃ©gales</a>
+                <a href="/cgu" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>CGU</a>
+                <a href="/confidentialite" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>Politique de confidentialitÃ©</a>
+                <a href="/contact" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>Contact</a>
+              </div>
+            </div>
+            <div>
+              <p style={{fontSize: '11px', fontWeight: '600', color: 'white', marginBottom: '8px'}}>Le Cabinet</p>
+              <div style={{display: 'flex', flexDirection: 'column', gap: '5px'}}>
+                <a href="https://cholez-pagotto.fr" target="_blank" rel="noopener noreferrer" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>cholez-pagotto.fr</a>
+                <a href="/a-propos" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>Ã€ propos</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+      {/* NOTE RÃ‰GLEMENTAIRE */}
+      <div style={{background: '#0f172a', padding: '12px 0'}}>
+        <div style={{maxWidth: '1200px', margin: '0 auto', padding: '0 2rem'}}>
+          <p style={{color: '#4b5563', fontSize: '10px', lineHeight: '1.7', marginBottom: '6px'}}>
+            <sup>(1)</sup> ActivitÃ© de conseil en assurances et rÃ©assurances rÃ©glementÃ©e, exercÃ©e sous le contrÃ´le de l'ACPR (AutoritÃ© de ContrÃ´le Prudentiel et de RÃ©solution), dÃ©clarÃ©e Ã  l'ORIAS sous le numÃ©ro 26003943. Membre de l'association d'autorÃ©gulation ENDYA. Membre du CRFF (Conseil ReprÃ©sentatif des Formalistes de France).
+          </p>
+          <p style={{color: '#4b5563', fontSize: '10px', textAlign: 'center'}}>
+            Â© 2026 Â· Cabinet Cholez-Pagotto, service de FCFBL ACTIVITIES Â· Les modÃ¨les fournis ne constituent pas un conseil juridique personnalisÃ©.
+          </p>
+        </div>
+      </div>
+    </>
+  )
+}
+=== C:\Users\chole\docutheque-next\components\FooterMinimal.tsx ===
+import { Scale } from 'lucide-react'
+
+export default function FooterMinimal() {
+  return (
+    <>
+      {/* FOOTER */}
+      <footer style={{background: '#111827', padding: '2rem 0'}}>
+        <div style={{maxWidth: '1200px', margin: '0 auto', padding: '0 2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start'}}>
+          <div>
+            <div style={{display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px'}}>
+              <div style={{width: '24px', height: '24px', background: '#1a4fba', borderRadius: '5px', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                <Scale size={14} color="white" strokeWidth={1.5} />
+              </div>
+              <span style={{fontSize: '13px', fontWeight: '600', color: 'white'}}>DocuthÃ¨que et assistance par le cabinet Cholez-Pagotto</span>
+            </div>
+            <p style={{color: '#6b7280', fontSize: '11px', maxWidth: '200px', lineHeight: '1.6'}}>ModÃ¨les de documents actualisÃ©s rÃ©guliÃ¨rement.</p>
+            <p style={{color: '#6b7280', fontSize: '11px', marginTop: '6px', lineHeight: '1.6'}}>Un service de FCFBL ACTIVITIES</p>
+          </div>
+          <div style={{display: 'flex', gap: '2.5rem'}}>
+            <div>
+              <p style={{fontSize: '11px', fontWeight: '600', color: 'white', marginBottom: '8px'}}>Navigation</p>
+              <div style={{display: 'flex', flexDirection: 'column', gap: '5px'}}>
+                <a href="/catalogue" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>Catalogue</a>
+                <a href="/information-sur-vos-droits" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>Information sur vos droits</a>
+                <a href="/tarifs" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>Tarifs</a>
+                <a href="/blog" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>Blog juridique</a>
+              </div>
+            </div>
+            <div>
+              <p style={{fontSize: '11px', fontWeight: '600', color: 'white', marginBottom: '8px'}}>LÃ©gal</p>
+              <div style={{display: 'flex', flexDirection: 'column', gap: '5px'}}>
+                <a href="/mentions-legales" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>Mentions lÃ©gales</a>
+                <a href="/cgu" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>CGU</a>
+                <a href="/confidentialite" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>Politique de confidentialitÃ©</a>
+                <a href="/contact" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>Contact</a>
+              </div>
+            </div>
+            <div>
+              <p style={{fontSize: '11px', fontWeight: '600', color: 'white', marginBottom: '8px'}}>Le Cabinet</p>
+              <div style={{display: 'flex', flexDirection: 'column', gap: '5px'}}>
+                <a href="https://cholez-pagotto.fr" target="_blank" rel="noopener noreferrer" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>cholez-pagotto.fr</a>
+                <a href="/a-propos" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>Ã€ propos</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+      {/* NOTE RÃ‰GLEMENTAIRE */}
+      <div style={{background: '#0f172a', padding: '12px 0'}}>
+        <div style={{maxWidth: '1200px', margin: '0 auto', padding: '0 2rem'}}>
+          <p style={{color: '#4b5563', fontSize: '10px', lineHeight: '1.7', marginBottom: '6px'}}>
+            <sup>(1)</sup> ActivitÃ© de conseil en assurances et rÃ©assurances rÃ©glementÃ©e, exercÃ©e sous le contrÃ´le de l'ACPR (AutoritÃ© de ContrÃ´le Prudentiel et de RÃ©solution), dÃ©clarÃ©e Ã  l'ORIAS sous le numÃ©ro 26003943. Membre de l'association d'autorÃ©gulation ENDYA. Membre du CRFF (Conseil ReprÃ©sentatif des Formalistes de France).
+          </p>
+          <p style={{color: '#4b5563', fontSize: '10px', textAlign: 'center'}}>
+            Â© 2026 Â· Cabinet Cholez-Pagotto, service de FCFBL ACTIVITIES Â· Les modÃ¨les fournis ne constituent pas un conseil juridique personnalisÃ©.
+          </p>
+        </div>
+      </div>
+    </>
+  )
+}
+=== C:\Users\chole\docutheque-next\components\Header.tsx ===
+import { Scale } from 'lucide-react'
+ 
+export default function Header() {
+  return (
+    <>
+      {/* BANDEAU OFFRE DÃ‰DIÃ‰E */}
+      <div style={{background: 'linear-gradient(135deg, #b8860b 0%, #d4a017 50%, #b8860b 100%)', padding: '10px 0'}}>
+        <div style={{maxWidth: '1200px', margin: '0 auto', padding: '0 2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '16px'}}>
+          <span style={{background: 'white', color: '#b8860b', fontSize: '11px', fontWeight: '800', padding: '3px 12px', borderRadius: '20px', letterSpacing: '0.08em', whiteSpace: 'nowrap', flexShrink: 0}}>
+            OFFRE DÃ‰DIÃ‰E
+          </span>
+          <span style={{color: 'rgba(255,255,255,0.95)', fontSize: '12px', lineHeight: '1.5', textAlign: 'center', flex: 1}}>
+            CrÃ©ation d'entreprise, statuts, contrats, conformitÃ© RGPD, recouvrement, assistance... On vous accompagne dans chaque phase de la vie de votre projet et de votre entreprise. Juriste et formaliste dÃ©diÃ©, conseil en assurances, tout est mis en Å“uvre pour Ãªtre Ã  vos cÃ´tÃ©s.
+          </span>
+          <a href="/accompagnement" style={{display: 'inline-block', border: '1px solid rgba(255,255,255,0.8)', borderRadius: '6px', padding: '4px 12px', color: 'white', fontSize: '12px', fontWeight: '600', textDecoration: 'none', whiteSpace: 'nowrap', flexShrink: 0}}>
+            En savoir plus â†’
+          </a>
+        </div>
+      </div>
+ 
+      {/* HEADER PRINCIPAL */}
+      <header style={{background: 'white', borderBottom: '1px solid #e5e7eb', padding: '0', position: 'sticky', top: 0, zIndex: 100}}>
+        <div style={{maxWidth: '1200px', margin: '0 auto', padding: '0 2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '56px'}}>
+          <div style={{display: 'flex', alignItems: 'center', gap: '8px'}}>
+            <div style={{width: '28px', height: '28px', background: '#1a4fba', borderRadius: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+              <Scale size={16} color="white" strokeWidth={1.5} />
+            </div>
+            <div>
+              <span style={{fontSize: '14px', fontWeight: '700', color: '#0f2d6e'}}>DocuthÃ¨que</span>
+              <span style={{fontSize: '11px', color: '#6b7280', marginLeft: '6px'}}>Vos documents juridiques en ligne</span>
+            </div>
+          </div>
+          <nav style={{display: 'flex', gap: '24px', alignItems: 'center'}}>
+            <a href="/" style={{color: '#374151', fontSize: '13px', textDecoration: 'none', fontWeight: '500'}}>Accueil</a>
+            <a href="/catalogue" style={{color: '#374151', fontSize: '13px', textDecoration: 'none', fontWeight: '500'}}>Catalogue</a>
+            <a href="/tarifs" style={{color: '#374151', fontSize: '13px', textDecoration: 'none', fontWeight: '500'}}>Tarifs</a>
+            <a href="/blog" style={{color: '#374151', fontSize: '13px', textDecoration: 'none', fontWeight: '500'}}>Blog</a>
+            <a href="/connexion" style={{background: '#1a4fba', color: 'white', border: 'none', borderRadius: '6px', padding: '7px 16px', fontSize: '12px', fontWeight: '500', cursor: 'pointer', textDecoration: 'none', display: 'inline-block'}}>
+              Mon espace client / Mon inscription
+            </a>
+          </nav>
+        </div>
+      </header>
+    </>
+  )
+}
+=== C:\Users\chole\docutheque-next\components\Hero.tsx ===
+import { FileText, Scale, UserCheck, Clock } from 'lucide-react'
+
+export default function Hero() {
+  return (
+    <section style={{background: 'linear-gradient(135deg, #0f2d6e 0%, #1a4fba 100%)', padding: '4rem 0'}}>
+      <div style={{maxWidth: '1200px', margin: '0 auto', padding: '0 2rem', display: 'flex', gap: '2rem', alignItems: 'stretch'}}>
+        
+        {/* COLONNE GAUCHE */}
+        <div style={{flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
+          <span style={{display: 'inline-block', background: 'rgba(255,255,255,0.15)', color: 'white', border: '1px solid rgba(255,255,255,0.3)', borderRadius: '20px', padding: '4px 14px', fontSize: '11px', marginBottom: '16px', alignSelf: 'flex-start'}}>
+            Un juriste dÃ©diÃ©, des documents rÃ©digÃ©s et mis Ã  jour rÃ©guliÃ¨rement. Aucune IA.
+          </span>
+          <h1 style={{color: 'white', fontSize: '2.2rem', fontWeight: '700', lineHeight: '1.3', margin: '0 0 16px 0'}}>
+            Vos documents prÃªts Ã  l'emploi.<br />
+            <span style={{color: '#93c5fd'}}>Vos droits expliquÃ©s, sans jargon.</span>
+          </h1>
+          <p style={{color: 'rgba(255,255,255,0.75)', fontSize: '1rem', lineHeight: '1.7', maxWidth: '480px', margin: '0 0 24px 0'}}>
+            ModÃ¨les de documents conformes au droit franÃ§ais, tÃ©lÃ©chargeables en DOCX, prÃªts Ã  l'emploi et personnalisables. Et si vous avez une question sur vos droits, un juriste vous rÃ©pond sous 24 Ã  48h, en clair, sans jargon.
+          </p>
+          <div style={{display: 'flex', gap: '12px', marginBottom: '20px'}}>
+            <button style={{background: 'white', color: '#1a4fba', border: 'none', padding: '11px 22px', borderRadius: '6px', fontSize: '13px', fontWeight: '600', cursor: 'pointer'}}>
+              Trouver mon document â†’
+            </button>
+            <button style={{background: 'transparent', color: 'white', border: '1px solid rgba(255,255,255,0.4)', padding: '11px 22px', borderRadius: '6px', fontSize: '13px', cursor: 'pointer'}}>
+              Voir les tarifs
+            </button>
+          </div>
+          <div style={{display: 'flex', gap: '14px', flexWrap: 'wrap', rowGap: '8px'}}>
+            {[
+              'Documents DOCX personnalisables',
+              'BibliothÃ¨que alimentÃ©e trÃ¨s rÃ©guliÃ¨rement',
+              'Mises Ã  jour rÃ©guliÃ¨res',
+              'Un juriste dÃ©diÃ©, votre interlocuteur unique',
+              'Une rÃ©ponse rÃ©digÃ©e par un juriste, pas gÃ©nÃ©rÃ©e par une IA',
+              'Accompagnement possible vers un avocat partenaire',
+            ].map((badge) => (
+              <span key={badge} style={{color: 'rgba(255,255,255,0.75)', fontSize: '12px', display: 'flex', alignItems: 'center', gap: '4px'}}>
+                <span style={{color: '#4ade80', fontWeight: '700'}}>âœ“</span> {badge}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* COLONNE DROITE â€” STATS */}
+        <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gridTemplateRows: '1fr 1fr', gap: '14px', minWidth: '400px', maxWidth: '400px', alignSelf: 'stretch'}}>
+          {[
+            { icon: <FileText size={32} color="#93c5fd" strokeWidth={1.5} />, text: 'Des milliers de situations juridiques couvertes' },
+            { icon: <Scale size={32} color="#93c5fd" strokeWidth={1.5} />, text: 'Ã€ jour des jurisprudences' },
+            { icon: <UserCheck size={32} color="#93c5fd" strokeWidth={1.5} />, text: '100% humain, 0% IA' },
+            { icon: <Clock size={32} color="#93c5fd" strokeWidth={1.5} />, text: 'RÃ©ponse sous 24 Ã  48h' },
+          ].map((stat, i) => (
+            <div key={i} style={{background: 'rgba(255,255,255,0.12)', border: '1px solid rgba(255,255,255,0.2)', borderRadius: '14px', padding: '20px 16px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', gap: '12px'}}>
+              {stat.icon}
+              <div style={{color: 'white', fontWeight: '600', fontSize: '12px', lineHeight: '1.5'}}>{stat.text}</div>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </section>
+  )
+}
+=== C:\Users\chole\docutheque-next\components\HowItWorks.tsx ===
+import { ClipboardList, GraduationCap, Handshake } from 'lucide-react'
+
+export default function HowItWorks() {
+  return (
+    <>
+      {/* SECTION 1 â€” DOCUMENTS */}
+      <section style={{background: '#f0f4ff', borderTop: '1px solid #e5e7eb', borderBottom: '1px solid #e5e7eb', padding: '4rem 0'}}>
+        <div style={{maxWidth: '1200px', margin: '0 auto', padding: '0 2rem'}}>
+          <div style={{textAlign: 'center', marginBottom: '2.5rem'}}>
+            <h2 style={{fontSize: '1.6rem', fontWeight: '700', color: '#0f2d6e'}}>Pour les documents, comment Ã§a marche ?</h2>
+            <p style={{color: '#6b7280', fontSize: '0.875rem', marginTop: '6px'}}>Simple, rapide, sans jargon.</p>
+          </div>
+          <div style={{display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem'}}>
+            {[
+              { n: '1', title: 'Choisissez votre profil', text: "Employeur, salariÃ©, consommateur, dirigeant, entrepreneur, bÃ©nÃ©vole ou DPO, quel que soit votre profil, chacun dispose de ses propres modÃ¨les de documents, adaptÃ©s Ã  sa situation." },
+              { n: '2', title: 'SÃ©lectionnez votre document', text: "Une bibliothÃ¨que de modÃ¨les en constante expansion, classÃ©s par catÃ©gorie et cas d'usage, couvrant l'ensemble des situations juridiques du quotidien, tant pour particuliers que professionnels ou acteurs associatifs." },
+              { n: '3', title: 'TÃ©lÃ©chargez et personnalisez', text: "Format DOCX universel, compatible Word et toutes suites bureautiques. Chaque modÃ¨le est prÃªt Ã  l'emploi, entiÃ¨rement modifiable et personnalisable Ã  volontÃ©, sans logiciel spÃ©cifique, sans abonnement supplÃ©mentaire, sans restriction. Le document final vous appartient intÃ©gralement." },
+            ].map((s) => (
+              <div key={s.n} style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.5rem', display: 'flex', gap: '1rem', alignItems: 'flex-start'}}>
+                <div style={{width: '28px', height: '28px', background: '#1a4fba', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontSize: '12px', fontWeight: '700', flexShrink: 0}}>{s.n}</div>
+                <div>
+                  <h3 style={{fontWeight: '600', color: '#0f2d6e', fontSize: '0.875rem'}}>{s.title}</h3>
+                  <p style={{color: '#6b7280', fontSize: '0.75rem', marginTop: '4px', lineHeight: '1.6'}}>{s.text}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 2 â€” INFORMATION SUR VOS DROITS */}
+      <section style={{background: '#f0f4ff', padding: '4rem 0', borderBottom: '1px solid #e5e7eb'}}>
+        <div style={{maxWidth: '1200px', margin: '0 auto', padding: '0 2rem'}}>
+          <div style={{textAlign: 'center', marginBottom: '2.5rem'}}>
+            <h2 style={{fontSize: '1.6rem', fontWeight: '700', color: '#0f2d6e'}}>Vos droits expliquÃ©s, par un juriste</h2>
+            <p style={{color: '#6b7280', fontSize: '0.875rem', marginTop: '6px'}}>Une question sur vos droits ? Nous vous aidons Ã  mieux les comprendre. Nous vous rÃ©pondons en vous expliquant le droit, en clair, sans jargon, sous 24 Ã  48h.</p>
+          </div>
+          <div style={{display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem'}}>
+            {[
+              { n: '1', title: 'Vous avez une question sur vos droits', text: "Relations difficiles avec votre employeur ou votre bailleur, licenciement, litige consommateur, clause contractuelle, obligation lÃ©gale, droit du voisinage, relations entre professionnels... Posez votre question en langage courant, pas besoin de maÃ®triser le droit." },
+              { n: '2', title: 'Choisissez votre formule', text: "AbonnÃ© Optimal ? Une question est incluse chaque mois, non cumulable, les suivantes Ã  9,90 â‚¬. Sans abonnement ? AccÃ©dez directement Ã  l'offre unitaire Information sur vos droits Ã  47 â‚¬, sans abonnement ni engagement." },
+              { n: '3', title: 'Recevez une rÃ©ponse claire sous 24 Ã  48h', text: "Un juriste vous apporte une rÃ©ponse documentaire et pÃ©dagogique par Ã©crit, sous 24 Ã  48h. Cette rÃ©ponse a vocation Ã  vous informer et Ã  vous orienter, elle ne constitue pas un conseil juridique au sens de la loi." },
+            ].map((s) => (
+              <div key={s.n} style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.5rem', display: 'flex', gap: '1rem', alignItems: 'flex-start'}}>
+                <div style={{width: '28px', height: '28px', background: '#0f2d6e', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontSize: '12px', fontWeight: '700', flexShrink: 0}}>{s.n}</div>
+                <div>
+                  <h3 style={{fontWeight: '600', color: '#0f2d6e', fontSize: '0.875rem'}}>{s.title}</h3>
+                  <p style={{color: '#6b7280', fontSize: '0.75rem', marginTop: '4px', lineHeight: '1.6'}}>{s.text}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '10px', padding: '1rem 1.5rem', marginTop: '2rem'}}>
+            <p style={{color: '#9ca3af', fontSize: '11px', lineHeight: '1.7', margin: 0}}>
+              <strong style={{color: '#6b7280'}}>Information importante :</strong> les rÃ©ponses fournies sont Ã  vocation informative et pÃ©dagogique. Elles ne constituent pas une consultation juridique au sens de la loi du 31 dÃ©cembre 1971. Pour toute situation nÃ©cessitant un acte juridique ou une reprÃ©sentation, nous vous recommandons de consulter un avocat. Selon votre besoin, nous pouvons vous orienter vers des avocats partenaires, sans engagement de votre part.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 3 â€” ASSISTANCE JURIDIQUE */}
+      <section style={{background: 'white', padding: '4rem 0', borderBottom: '1px solid #e5e7eb'}}>
+        <div style={{maxWidth: '1200px', margin: '0 auto', padding: '0 2rem'}}>
+          <div style={{display: 'flex', gap: '3rem', alignItems: 'flex-start'}}>
+            <div style={{flex: '0 0 48%'}}>
+              <span style={{background: '#eff6ff', color: '#1a4fba', fontSize: '11px', fontWeight: '600', padding: '3px 12px', borderRadius: '20px', letterSpacing: '0.05em'}}>ASSISTANCE JURIDIQUE</span>
+              <h2 style={{fontSize: '1.3rem', fontWeight: '700', color: '#0f2d6e', margin: '12px 0 16px 0', lineHeight: '1.4'}}>L'assistance juridique, qu'est-ce que c'est ?</h2>
+              <p style={{color: '#374151', fontSize: '0.95rem', lineHeight: '1.8', marginBottom: '16px'}}>
+                L'assistance juridique dÃ©signe toute forme d'aide apportÃ©e Ã  une personne pour mieux comprendre ses droits, s'informer sur le cadre lÃ©gal applicable Ã  sa situation et accÃ©der aux documents dont elle a besoin pour agir.
+              </p>
+              <p style={{color: '#374151', fontSize: '0.95rem', lineHeight: '1.8', marginBottom: '16px'}}>
+                Notre offre s'inscrit dans une dÃ©marche d'information et de mise Ã  disposition documentaire. Nous ne dÃ©livrons pas de consultation juridique au sens de la loi du 31 dÃ©cembre 1971, rÃ©servÃ©e aux avocats et professionnels rÃ©glementÃ©s, Ã  l'exception de l'activitÃ© rÃ©glementÃ©e que nous menons sur le droit assurantiel<sup>(1)</sup>. Nous disposons d'un rÃ©seau d'avocats partenaires vers lesquels nous pouvons vous orienter, sans obligation de votre part, le choix d'un avocat vous Ã©tant libre. Nous mettons Ã  votre disposition des ressources pÃ©dagogiques et des modÃ¨les de documents pour vous permettre de mieux apprÃ©hender votre situation et d'agir avec les bons outils.
+              </p>
+              <p style={{color: '#374151', fontSize: '0.95rem', lineHeight: '1.8'}}>
+                Deux formes d'accompagnement complÃ©mentaires : une bibliothÃ¨que de modÃ¨les de documents prÃªts Ã  l'emploi, et un service de rÃ©ponse pÃ©dagogique pour Ã©clairer vos droits avant d'agir.
+              </p>
+            </div>
+            <div style={{flex: '0 0 48%', display: 'flex', flexDirection: 'column', gap: '14px'}}>
+              <div style={{background: '#f8fafc', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.25rem'}}>
+                <div style={{display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px'}}>
+                  <ClipboardList size={22} color="#1a4fba" strokeWidth={1.5} />
+                  <strong style={{color: '#0f2d6e', fontSize: '13px'}}>PrÃ©venir plutÃ´t que guÃ©rir</strong>
+                </div>
+                <p style={{color: '#6b7280', fontSize: '12px', lineHeight: '1.6'}}>
+                  Un document juridique bien rÃ©digÃ© en amont est souvent la meilleure faÃ§on d'Ã©viter un litige. Nos modÃ¨les vous permettent d'anticiper les situations Ã  risque et de vous protÃ©ger efficacement.
+                </p>
+              </div>
+              <div style={{background: '#f8fafc', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.25rem'}}>
+                <div style={{display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px'}}>
+                  <GraduationCap size={22} color="#1a4fba" strokeWidth={1.5} />
+                  <strong style={{color: '#0f2d6e', fontSize: '13px'}}>Comprendre pour mieux agir</strong>
+                </div>
+                <p style={{color: '#6b7280', fontSize: '12px', lineHeight: '1.6'}}>
+                  Avant d'envoyer un courrier, de signer un contrat ou d'engager une procÃ©dure, il est essentiel de comprendre ce que vous faites et pourquoi. Notre service d'information vous apporte cette clartÃ©.
+                </p>
+              </div>
+              <div style={{background: '#f8fafc', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.25rem'}}>
+                <div style={{display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px'}}>
+                  <Handshake size={22} color="#1a4fba" strokeWidth={1.5} />
+                  <strong style={{color: '#0f2d6e', fontSize: '13px'}}>Un relais vers les avocats partenaires</strong>
+                </div>
+                <p style={{color: '#6b7280', fontSize: '12px', lineHeight: '1.6'}}>
+                  Lorsque votre situation nÃ©cessite une reprÃ©sentation ou un acte juridique formel, nous pouvons vous orienter vers des avocats partenaires compÃ©tents, sans engagement de votre part.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
+  )
+}
+=== C:\Users\chole\docutheque-next\components\SchemaOrg.tsx ===
+export default function SchemaOrg() {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "LegalService",
+    "name": "DocuthÃ¨que",
+    "description": "Plateforme de modÃ¨les de documents juridiques franÃ§ais rÃ©digÃ©s par des juristes professionnels. Contrats, mises en demeure, RGPD, documents RH, statuts de sociÃ©tÃ©.",
+    "url": "https://docutheque.fr",
+    "serviceType": "Document juridique en ligne",
+    "areaServed": {
+      "@type": "Country",
+      "name": "France"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Catalogue de modÃ¨les juridiques",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "name": "AccÃ¨s Gratuit",
+          "price": "0",
+          "priceCurrency": "EUR",
+          "description": "12 modÃ¨les juridiques essentiels en DOCX et PDF"
+        },
+        {
+          "@type": "Offer",
+          "name": "Premium",
+          "price": "14.90",
+          "priceCurrency": "EUR",
+          "description": "BibliothÃ¨que complÃ¨te, notices juridiques, fiches pÃ©dagogiques et 1 question sous 48h"
+        },
+        {
+          "@type": "Offer",
+          "name": "Information sur vos droits",
+          "price": "47",
+          "priceCurrency": "EUR",
+          "description": "RÃ©ponse pÃ©dagogique personnalisÃ©e Ã  votre question juridique sous 48h"
+        }
+      ]
+    },
+    "provider": {
+      "@type": "Organization",
+      "name": "DocuthÃ¨que",
+      "url": "https://docutheque.fr"
+    }
+  }
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  )
+}
+=== C:\Users\chole\docutheque-next\components\Tarifs.tsx ===
+'use client'
+import { useState } from 'react'
+
+export default function Tarifs() {
+  const [annuel, setAnnuel] = useState(false)
+
+  return (
+    <section style={{background: 'white', padding: '4rem 0', borderTop: '1px solid #e5e7eb'}}>
+      <div style={{maxWidth: '1200px', margin: '0 auto', padding: '0 2rem'}}>
+        <div style={{textAlign: 'center', marginBottom: '2.5rem'}}>
+          <h2 style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#0f2d6e'}}>Une offre simple et transparente</h2>
+          <p style={{color: '#6b7280', fontSize: '0.875rem', marginTop: '0.25rem'}}>Des modÃ¨les juridiques accessibles Ã  tous, et vos droits expliquÃ©s sans jargon.</p>
+        </div>
+
+        {/* TOGGLE MENSUEL / ANNUEL */}
+        <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '12px', marginBottom: '2rem'}}>
+          <div style={{background: '#e5e7eb', borderRadius: '20px', padding: '3px', display: 'flex', gap: '2px'}}>
+            <span
+              onClick={() => setAnnuel(false)}
+              style={{background: !annuel ? '#1a4fba' : 'transparent', color: !annuel ? 'white' : '#6b7280', fontSize: '11px', padding: '4px 14px', borderRadius: '16px', fontWeight: '500', cursor: 'pointer', transition: 'all 0.2s'}}>
+              Mensuel
+            </span>
+            <span
+              onClick={() => setAnnuel(true)}
+              style={{background: annuel ? '#1a4fba' : 'transparent', color: annuel ? 'white' : '#6b7280', fontSize: '11px', padding: '4px 14px', borderRadius: '16px', fontWeight: '500', cursor: 'pointer', transition: 'all 0.2s'}}>
+              Annuel
+            </span>
+          </div>
+          <span style={{background: '#dcfce7', color: '#16a34a', fontSize: '11px', padding: '3px 10px', borderRadius: '20px', fontWeight: '600'}}>2 mois offerts sur l'offre annuelle</span>
+        </div>
+
+        <div style={{display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.25rem', maxWidth: '900px', margin: '0 auto'}}>
+
+          {/* GRATUIT */}
+          <div style={{border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.5rem'}}>
+            <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px'}}>
+              <p style={{fontWeight: '600', color: '#0f2d6e'}}>AccÃ¨s gratuit</p>
+              <span style={{background: '#f3f4f6', color: '#6b7280', fontSize: '10px', padding: '2px 8px', borderRadius: '20px'}}>Sans inscription</span>
+            </div>
+            <p style={{fontSize: '28px', fontWeight: '600', color: '#0f2d6e'}}>0 â‚¬</p>
+            <p style={{color: '#6b7280', fontSize: '12px'}}>pour toujours</p>
+            <div style={{borderTop: '1px solid #f3f4f6', margin: '12px 0'}}></div>
+            <div style={{display: 'flex', flexDirection: 'column', gap: '7px'}}>
+              <p style={{fontSize: '12px'}}><span style={{color: '#16a34a', marginRight: '5px'}}>âœ“</span>AccÃ¨s gratuit Ã  tous les documents disponibles en accÃ¨s libre, en format DOCX</p>
+              <p style={{fontSize: '12px'}}><span style={{color: '#16a34a', marginRight: '5px'}}>âœ“</span>Documents supplÃ©mentaires Ã  l'unitÃ© (prix variable)</p>
+              <p style={{fontSize: '12px'}}><span style={{color: '#16a34a', marginRight: '5px'}}>âœ“</span>Newsletter juridique gratuite</p>
+              <p style={{fontSize: '12px'}}><span style={{color: '#d1d5db', marginRight: '5px'}}>âœ—</span><span style={{color: '#9ca3af'}}>Notices explicatives des documents</span></p>
+              <p style={{fontSize: '12px'}}><span style={{color: '#d1d5db', marginRight: '5px'}}>âœ—</span><span style={{color: '#9ca3af'}}>BibliothÃ¨que complÃ¨te</span></p>
+              <p style={{fontSize: '12px'}}><span style={{color: '#d1d5db', marginRight: '5px'}}>âœ—</span><span style={{color: '#9ca3af'}}>Question juriste incluse</span></p>
+            </div>
+            <button style={{width: '100%', marginTop: '14px', background: 'white', color: '#1a4fba', border: '1.5px solid #1a4fba', padding: '9px', borderRadius: '6px', fontSize: '12px', fontWeight: '500', cursor: 'pointer'}}>
+              AccÃ©der gratuitement
+            </button>
+          </div>
+
+          {/* ABONNEMENT OPTIMAL */}
+          <div style={{border: '2px solid #1a4fba', borderRadius: '12px', padding: '1.5rem', position: 'relative'}}>
+            <span style={{position: 'absolute', top: '-13px', left: '50%', transform: 'translateX(-50%)', background: '#1a4fba', color: 'white', fontSize: '10px', padding: '4px 14px', borderRadius: '20px', whiteSpace: 'nowrap', fontWeight: '500'}}>â­ RecommandÃ©</span>
+            <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px'}}>
+              <p style={{fontWeight: '600', color: '#0f2d6e'}}>Abonnement Optimal</p>
+              <span style={{background: '#eff6ff', color: '#1a4fba', fontSize: '10px', padding: '2px 8px', borderRadius: '20px'}}>Abonnement</span>
+            </div>
+
+            {annuel ? (
+              <>
+                <p style={{fontSize: '28px', fontWeight: '600', color: '#1a4fba'}}>147,97 â‚¬<span style={{fontSize: '14px', color: '#6b7280', fontWeight: '400'}}> /an</span></p>
+                <p style={{color: '#6b7280', fontSize: '12px'}}>soit <strong style={{color: '#16a34a'}}>12,49 â‚¬/mois</strong>, 2 mois offerts</p>
+                <p style={{color: '#e53e3e', fontSize: '11px', marginTop: '3px'}}>Engagement 12 mois Â· renouvellement annuel</p>
+              </>
+            ) : (
+              <>
+                <p style={{fontSize: '28px', fontWeight: '600', color: '#1a4fba'}}>14,90 â‚¬<span style={{fontSize: '14px', color: '#6b7280', fontWeight: '400'}}> /mois</span></p>
+                <p style={{color: '#6b7280', fontSize: '12px'}}>ou <strong style={{color: '#0f2d6e'}}>147,97 â‚¬/an</strong>, 2 mois offerts</p>
+                <p style={{color: '#e53e3e', fontSize: '11px', marginTop: '3px'}}>Engagement 12 mois Â· renouvellement annuel</p>
+              </>
+            )}
+
+            <div style={{borderTop: '1px solid #f3f4f6', margin: '12px 0'}}></div>
+            <div style={{display: 'flex', flexDirection: 'column', gap: '7px'}}>
+              <p style={{fontSize: '12px'}}><span style={{color: '#16a34a', marginRight: '5px'}}>âœ“</span>AccÃ¨s Ã  toute la bibliothÃ¨que de documents en DOCX</p>
+              <p style={{fontSize: '12px'}}><span style={{color: '#16a34a', marginRight: '5px'}}>âœ“</span>Notices explicatives des documents</p>
+              <p style={{fontSize: '12px'}}><span style={{color: '#16a34a', marginRight: '5px'}}>âœ“</span>Mises Ã  jour incluses</p>
+              <div style={{background: '#eff6ff', borderRadius: '8px', padding: '8px 10px', marginTop: '4px'}}>
+                <p style={{fontSize: '11px', fontWeight: '600', color: '#1a4fba', marginBottom: '4px'}}>Espace pÃ©dagogique inclus</p>
+                <p style={{fontSize: '12px'}}><span style={{color: '#16a34a', marginRight: '5px'}}>âœ“</span>Fiches pÃ©dagogiques de vulgarisation juridique</p>
+                <p style={{fontSize: '12px', marginTop: '4px'}}><span style={{color: '#16a34a', marginRight: '5px'}}>âœ“</span>1 question par mois Â· rÃ©ponse sous 24 Ã  48h Â· non cumulable</p>
+                <p style={{fontSize: '11px', color: '#6b7280', marginTop: '4px', paddingLeft: '16px'}}>puis 9,90 â‚¬ par question supplÃ©mentaire</p>
+              </div>
+              <p style={{fontSize: '12px'}}><span style={{color: '#16a34a', marginRight: '5px'}}>âœ“</span>Newsletter spÃ©ciale abonnÃ©s</p>
+              <p style={{fontSize: '12px'}}><span style={{color: '#16a34a', marginRight: '5px'}}>âœ“</span>Support prioritaire par mail</p>
+            </div>
+            <button style={{width: '100%', marginTop: '14px', background: '#1a4fba', color: 'white', border: 'none', padding: '9px', borderRadius: '6px', fontSize: '12px', fontWeight: '500', cursor: 'pointer'}}>
+              {annuel ? 'S\'abonner â€” offre annuelle' : 'S\'abonner'}
+            </button>
+          </div>
+
+          {/* INFORMATION SUR VOS DROITS */}
+          <div style={{border: '1px solid #d4af37', borderRadius: '12px', padding: '1.5rem', position: 'relative'}}>
+            <span style={{position: 'absolute', top: '-13px', left: '50%', transform: 'translateX(-50%)', background: '#b8860b', color: 'white', fontSize: '10px', padding: '4px 14px', borderRadius: '20px', whiteSpace: 'nowrap', fontWeight: '500'}}>Sans abonnement</span>
+            <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px'}}>
+              <p style={{fontWeight: '600', color: '#0f2d6e', lineHeight: '1.3'}}>Information<br />sur vos droits</p>
+              <span style={{background: '#fefce8', color: '#b8860b', fontSize: '10px', padding: '2px 8px', borderRadius: '20px'}}>Ã€ l'unitÃ©</span>
+            </div>
+            <p style={{fontSize: '28px', fontWeight: '600', color: '#b8860b'}}>47 â‚¬</p>
+            <p style={{color: '#6b7280', fontSize: '12px'}}>par question Â· paiement unique</p>
+            <p style={{color: '#16a34a', fontSize: '11px', marginTop: '3px'}}>RÃ©ponse garantie sous 24 Ã  48h</p>
+            <div style={{borderTop: '1px solid #f3f4f6', margin: '12px 0'}}></div>
+            <div style={{display: 'flex', flexDirection: 'column', gap: '7px'}}>
+              <p style={{fontSize: '12px'}}><span style={{color: '#16a34a', marginRight: '5px'}}>âœ“</span>Vous posez votre question en langage courant</p>
+              <p style={{fontSize: '12px'}}><span style={{color: '#16a34a', marginRight: '5px'}}>âœ“</span>RÃ©ponse pÃ©dagogique rÃ©digÃ©e par un juriste</p>
+              <p style={{fontSize: '12px'}}><span style={{color: '#16a34a', marginRight: '5px'}}>âœ“</span>RÃ©ponse sur le droit et vos droits applicables</p>
+              <p style={{fontSize: '12px'}}><span style={{color: '#16a34a', marginRight: '5px'}}>âœ“</span>Sans abonnement ni engagement</p>
+            </div>
+            <div style={{background: '#fff7ed', borderRadius: '8px', padding: '8px 10px', marginTop: '10px', border: '1px solid #fed7aa'}}>
+              <p style={{fontSize: '11px', color: '#92400e', lineHeight: '1.5'}}>Cette rÃ©ponse a vocation Ã  vous informer et Ã  vous orienter. Elle ne constitue pas une consultation juridique au sens de la loi du 31 dÃ©cembre 1971, rÃ©servÃ©e aux avocats.</p>
+            </div>
+            <button style={{width: '100%', marginTop: '14px', background: '#b8860b', color: 'white', border: 'none', padding: '9px', borderRadius: '6px', fontSize: '12px', fontWeight: '500', cursor: 'pointer'}}>
+              Poser ma question
+            </button>
+          </div>
+
+        </div>
+
+        {/* NOTE ENGAGEMENT */}
+        <div style={{maxWidth: '900px', margin: '1.5rem auto 0', background: '#fff7ed', border: '1px solid #fed7aa', borderRadius: '10px', padding: '0.875rem 1.25rem'}}>
+          <p style={{color: '#92400e', fontSize: '11px', lineHeight: '1.7', margin: 0}}>
+            <strong>Information importante â€”</strong> L'abonnement Optimal est souscrit pour une durÃ©e minimale de 12 mois. Ã€ l'issue de cette pÃ©riode, il se renouvelle automatiquement pour une nouvelle annÃ©e, sauf rÃ©siliation adressÃ©e par Ã©crit au moins 30 jours avant l'Ã©chÃ©ance. Le tarif mensuel affichÃ© est donnÃ© Ã  titre indicatif, calculÃ© sur la base de l'engagement annuel. La question mensuelle incluse est non cumulable d'un mois sur l'autre. Vous posez rÃ©guliÃ¨rement des questions ? L'abonnement Optimal est plus Ã©conomique dÃ¨s la deuxiÃ¨me question mensuelle.
+          </p>
+        </div>
+
+      </div>
+    </section>
+  )
+}
+=== C:\Users\chole\docutheque-next\next-env.d.ts ===
+/// <reference types="next" />
+/// <reference types="next/image-types/global" />
+import "./.next/dev/types/routes.d.ts";
+
+// NOTE: This file should not be edited
+// see https://nextjs.org/docs/app/api-reference/config/typescript for more information.
+=== C:\Users\chole\docutheque-next\next.config.ts ===
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
+  async redirects() {
+    return [
+      // Pages de services â†’ Tarifs
+      {
+        source: '/juriste-formaliste-vos-formalites',
+        destination: '/tarifs',
+        permanent: true,
+      },
+      {
+        source: '/gestion-paie-externalise',
+        destination: '/tarifs',
+        permanent: true,
+      },
+      {
+        source: '/securite-sociale',
+        destination: '/tarifs',
+        permanent: true,
+      },
+      {
+        source: '/assistance-juridique',
+        destination: '/information-sur-vos-droits',
+        permanent: true,
+      },
+      {
+        source: '/demande-information-juridique',
+        destination: '/information-sur-vos-droits',
+        permanent: true,
+      },
+      {
+        source: '/professionnels',
+        destination: '/tarifs',
+        permanent: true,
+      },
+
+      // Pages lÃ©gales
+      {
+        source: '/confidentialite-rgpd',
+        destination: '/confidentialite',
+        permanent: true,
+      },
+      {
+        source: '/conditions-generales-utilisation',
+        destination: '/cgu',
+        permanent: true,
+      },
+      {
+        source: '/mentions-legales',
+        destination: '/mentions-legales',
+        permanent: true,
+      },
+      {
+        source: '/declaration-accessibilite',
+        destination: '/mentions-legales',
+        permanent: true,
+      },
+
+      // Ã€ propos
+      {
+        source: '/a-propos',
+        destination: '/a-propos',
+        permanent: true,
+      },
+
+      // Blog â€” listing
+      {
+        source: '/blog-informations-juridiques-actualites-mieux-comprendre-droit',
+        destination: '/blog',
+        permanent: true,
+      },
+      {
+        source: '/blog-informations-juridiques-actualites-mieux-comprendre-droit/page/:page',
+        destination: '/blog',
+        permanent: true,
+      },
+      {
+        source: '/blog-actualites-informations-agence-cholez-pagotto-fcfbl-activities',
+        destination: '/blog',
+        permanent: true,
+      },
+
+      // Tags â†’ Blog
+      {
+        source: '/tag/:tag',
+        destination: '/blog',
+        permanent: true,
+      },
+
+      // Articles de blog â€” slugs conservÃ©s
+      {
+        source: '/lintelligence-artificielle-en-droit-une-fausse-bonne-idee',
+        destination: '/blog/lintelligence-artificielle-en-droit-une-fausse-bonne-idee',
+        permanent: true,
+      },
+      {
+        source: '/at-mt-3-decisions-cour-cassation-juin-2025',
+        destination: '/blog/at-mt-3-decisions-cour-cassation-juin-2025',
+        permanent: true,
+      },
+      {
+        source: '/arnaque-au-registre-des-societes-europeennes-ne-laissez-pas-les-fraudeurs-saboter-votre-lancement',
+        destination: '/blog/arnaque-au-registre-des-societes-europeennes-ne-laissez-pas-les-fraudeurs-saboter-votre-lancement',
+        permanent: true,
+      },
+      {
+        source: '/conges-paternite-alsace-moselle-maintien-salaire-jurisprudence',
+        destination: '/blog/conges-paternite-alsace-moselle-maintien-salaire-jurisprudence',
+        permanent: true,
+      },
+      {
+        source: '/loi-no-2025-623-du-9-juillet-2025-visant-a-renforcer-la-securite-des-professionnels-de-sante',
+        destination: '/blog/loi-no-2025-623-du-9-juillet-2025-visant-a-renforcer-la-securite-des-professionnels-de-sante',
+        permanent: true,
+      },
+      {
+        source: '/saisie-sur-salaire-decryptage-complet-de-la-nouvelle-procedure-et-du-cadre-legal',
+        destination: '/blog/saisie-sur-salaire-decryptage-complet-de-la-nouvelle-procedure-et-du-cadre-legal',
+        permanent: true,
+      },
+      {
+        source: '/cee-revalorisation-remuneration-decret-4-decembre-2024',
+        destination: '/blog/cee-revalorisation-remuneration-decret-4-decembre-2024',
+        permanent: true,
+      },
+      {
+        source: '/luctus-non-massa-fusce-ac-turpis',
+        destination: '/blog',
+        permanent: true,
+      },
+
+      // Kit juridique
+      {
+        source: '/kit-juridique-gratuit-consommateur-averti-edition-1',
+        destination: '/catalogue',
+        permanent: true,
+      },
+    ];
+  },
+};
+
+export default nextConfig;

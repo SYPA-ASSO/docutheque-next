@@ -1,12 +1,12 @@
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { Calendar, Clock, User, ChevronRight } from 'lucide-react'
-
+ 
 export const metadata = {
   title: "L'Intelligence Artificielle en droit : une fausse bonne idée ? · Blog Docuthèque",
   description: "L'IA promet efficacité et gain de temps en droit. Mais hallucinations, biais algorithmiques et absence de jugement éthique en font un outil risqué. Analyse complète par un juriste.",
 }
-
+ 
 const schema = {
   "@context": "https://schema.org",
   "@graph": [
@@ -98,14 +98,14 @@ const schema = {
     }
   ]
 }
-
+ 
 export default function ArticleIA() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <Header />
       <main style={{background: '#f8fafc', minHeight: '100vh'}}>
-
+ 
         {/* BREADCRUMB */}
         <div style={{background: 'white', borderBottom: '1px solid #e5e7eb', padding: '10px 0'}}>
           <div style={{maxWidth: '1100px', margin: '0 auto', padding: '0 2rem', display: 'flex', alignItems: 'center', gap: '6px', fontSize: '12px', color: '#6b7280'}}>
@@ -116,12 +116,12 @@ export default function ArticleIA() {
             <span style={{color: '#0f2d6e', fontWeight: '500'}}>L'IA en droit</span>
           </div>
         </div>
-
+ 
         <div style={{maxWidth: '1100px', margin: '0 auto', padding: '3rem 2rem', display: 'flex', gap: '3rem', alignItems: 'flex-start'}}>
-
+ 
           {/* COLONNE PRINCIPALE */}
           <article style={{flex: 1, minWidth: 0}}>
-
+ 
             {/* EN-TÊTE */}
             <div style={{marginBottom: '2rem'}}>
               <div style={{display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '14px'}}>
@@ -149,7 +149,7 @@ export default function ArticleIA() {
                 style={{width: '100%', borderRadius: '12px', objectFit: 'cover', maxHeight: '400px'}}
               />
             </div>
-
+ 
             {/* SOMMAIRE */}
             <nav style={{background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '12px', padding: '1.25rem 1.5rem', marginBottom: '2.5rem'}}>
               <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px'}}>Sommaire</p>
@@ -176,10 +176,10 @@ export default function ArticleIA() {
                 ))}
               </ol>
             </nav>
-
+ 
             {/* CONTENU */}
             <div style={{color: '#374151', fontSize: '0.95rem', lineHeight: '1.9'}}>
-
+ 
               <section id="introduction">
                 <h2 style={{color: '#0f2d6e', fontSize: '1.3rem', fontWeight: '700', margin: '0 0 16px', paddingTop: '1rem'}}>
                   Introduction : L'Intelligence Artificielle en droit – Une fausse bonne idée ?
@@ -192,7 +192,7 @@ export default function ArticleIA() {
                   </p>
                 </div>
               </section>
-
+ 
               <section id="promesses">
                 <h2 style={{color: '#0f2d6e', fontSize: '1.3rem', fontWeight: '700', margin: '2rem 0 16px', paddingTop: '1rem'}}>
                   I. Les promesses de l'IA dans le domaine juridique : une efficacité à relativiser
@@ -208,12 +208,12 @@ export default function ArticleIA() {
                   </p>
                 </div>
               </section>
-
+ 
               <section id="erreurs-biais">
                 <h2 style={{color: '#0f2d6e', fontSize: '1.3rem', fontWeight: '700', margin: '2rem 0 16px', paddingTop: '1rem'}}>
                   II. Erreurs et biais de l'IA : des conséquences juridiques tangibles
                 </h2>
-
+ 
                 <section id="hallucinations">
                   <h3 style={{color: '#0f2d6e', fontSize: '1.1rem', fontWeight: '700', margin: '1.5rem 0 10px'}}>
                     A. Les "hallucinations" et citations juridiques inventées : des précédents alarmants
@@ -225,7 +225,7 @@ export default function ArticleIA() {
                   </div>
                   <p>Les "hallucinations" de l'IA ne sont pas de simples erreurs techniques, mais des défauts fondamentaux découlant de sa nature probabiliste. La chaîne de causalité est claire : nature probabiliste → hallucinations → citations juridiques fabriquées → compromission de l'intégrité du système juridique.</p>
                 </section>
-
+ 
                 <section id="biais">
                   <h3 style={{color: '#0f2d6e', fontSize: '1.1rem', fontWeight: '700', margin: '1.5rem 0 10px'}}>
                     B. Les biais algorithmiques : une menace pour l'équité et la justice
@@ -241,7 +241,7 @@ export default function ArticleIA() {
                     <p style={{color: '#374151', fontSize: '13px', lineHeight: '1.7', margin: 0}}>Des tribunaux américains utilisaient cet outil d'IA pour évaluer le risque de récidive et influencer les décisions de libération conditionnelle. Une étude a révélé que COMPAS présentait d'importants biais raciaux, évaluant de manière disproportionnée un risque de récidive plus élevé chez les personnes noires — même en contrôlant des facteurs similaires.</p>
                   </div>
                 </section>
-
+ 
                 <section id="donnees">
                   <h3 style={{color: '#0f2d6e', fontSize: '1.1rem', fontWeight: '700', margin: '1.5rem 0 10px'}}>
                     C. La qualité et la gouvernance des données : un frein majeur à la fiabilité de l'IA
@@ -250,19 +250,19 @@ export default function ArticleIA() {
                   <p>Le principal obstacle à l'adoption de l'IA, identifié par <strong>62 % des répondants</strong>, est l'absence de cadres de gouvernance des données robustes — problème particulièrement critique en droit, où la confidentialité est primordiale.</p>
                 </section>
               </section>
-
+ 
               <section id="nuance">
                 <h2 style={{color: '#0f2d6e', fontSize: '1.3rem', fontWeight: '700', margin: '2rem 0 16px', paddingTop: '1rem'}}>
                   III. L'incapacité de l'IA à saisir la nuance et la spécificité du droit
                 </h2>
-
+ 
                 <section id="raisonnement">
                   <h3 style={{color: '#0f2d6e', fontSize: '1.1rem', fontWeight: '700', margin: '1.5rem 0 10px'}}>
                     A. Le raisonnement juridique humain : au-delà de l'algorithme
                   </h3>
                   <p>La prise de décision en droit est un processus profondément humain, souvent décrit comme une "pesée des âmes et des actes", symbolisée par la balance de Thémis. Elle implique une logique complexe en trois temps : analyse des faits, détermination de la règle de droit la plus adaptée, et rédaction d'une décision motivée.</p>
                   <p>En contraste, l'IA fonctionne principalement comme un algorithme qui trie, compare et extrait des résultats à partir de données collectées. Une "décision" générée par l'IA serait statistique et probabiliste, non profondément motivée par des principes juridiques et le contexte humain.</p>
-
+ 
                   {/* TABLEAU COMPARATIF */}
                   <div style={{overflowX: 'auto', margin: '1.5rem 0'}}>
                     <table style={{width: '100%', borderCollapse: 'collapse', fontSize: '12px'}}>
@@ -292,7 +292,7 @@ export default function ArticleIA() {
                     </table>
                   </div>
                 </section>
-
+ 
                 <section id="cas-espece">
                   <h3 style={{color: '#0f2d6e', fontSize: '1.1rem', fontWeight: '700', margin: '1.5rem 0 10px'}}>
                     B. Le cas d'espèce : l'échec de l'uniformisation par l'IA
@@ -304,7 +304,7 @@ export default function ArticleIA() {
                     <p style={{color: '#374151', fontSize: '13px', lineHeight: '1.7', margin: 0}}><strong>Trames interactives de la Cour de cassation (2015) :</strong> Tentative de modéliser le raisonnement d'un "juge idéal" via des choix binaires. Abandonné car la complexité des situations judiciaires ne pouvait pas être réduite à de simples choix binaires.</p>
                   </div>
                 </section>
-
+ 
                 <section id="ethique">
                   <h3 style={{color: '#0f2d6e', fontSize: '1.1rem', fontWeight: '700', margin: '1.5rem 0 10px'}}>
                     C. L'absence de jugement, d'éthique et d'empathie : les limites infranchissables de l'IA
@@ -313,27 +313,27 @@ export default function ArticleIA() {
                   <p>Une préoccupation majeure est l'émergence potentielle d'un <strong>"juge robot"</strong> : des décisions judiciaires purement statistiques, sans motivation réelle par des principes juridiques et des considérations humaines, conduisant à un système de justice dépourvu de responsabilité humaine pour ses résultats.</p>
                 </section>
               </section>
-
+ 
               <section id="au-dela">
                 <h2 style={{color: '#0f2d6e', fontSize: '1.3rem', fontWeight: '700', margin: '2rem 0 16px', paddingTop: '1rem'}}>
                   V. Le droit : une discipline exigeant plus que l'exploitation technologique
                 </h2>
                 <h3 style={{color: '#0f2d6e', fontSize: '1.1rem', fontWeight: '700', margin: '1.5rem 0 10px'}}>A. L'impératif de l'analyse critique et de la vérification humaine</h3>
                 <p>Malgré les capacités d'analyse de l'IA, l'analyse critique humaine, l'interprétation et la vérification des résultats restent absolument indispensables. L'IA doit être considérée comme une aide ou un outil d'assistance, <strong>non comme un décideur ou un substitut au professionnel du droit.</strong></p>
-
+ 
                 <h3 style={{color: '#0f2d6e', fontSize: '1.1rem', fontWeight: '700', margin: '1.5rem 0 10px'}}>B. Les risques liés à la confidentialité et à la propriété intellectuelle</h3>
                 <p>Les modèles d'IA nécessitent la collecte et le traitement de grandes quantités de données, incluant souvent des informations sensibles. L'injection de ces données dans des outils d'IA externes soulève des préoccupations importantes concernant le RGPD et les fuites potentielles de données. La propriété légale du contenu généré par l'IA reste par ailleurs largement ambiguë.</p>
-
+ 
                 <h3 style={{color: '#0f2d6e', fontSize: '1.1rem', fontWeight: '700', margin: '1.5rem 0 10px'}}>C. L'encadrement législatif : une course contre la montre</h3>
                 <p>L'Union européenne a adopté l'<strong>AI Act en 2024</strong>, première réglementation mondiale complète sur l'intelligence artificielle. Elle interdit les pratiques à "risque inacceptable" et impose des obligations strictes aux systèmes à "haut risque". Malgré son importance historique, elle présente des lacunes et son applicabilité reste limitée au territoire européen.</p>
-
+ 
                 <div style={{background: '#0f2d6e', borderRadius: '12px', padding: '1.5rem', margin: '2rem 0'}}>
                   <h3 style={{color: 'white', fontSize: '1.1rem', fontWeight: '700', margin: '0 0 12px'}}>Conclusion : L'IA, un outil technologique — jamais un substitut au professionnel du droit</h3>
                   <p style={{color: 'rgba(255,255,255,0.85)', fontSize: '13px', lineHeight: '1.8', margin: '0 0 12px'}}>Si l'intelligence artificielle peut servir d'outil précieux pour automatiser certaines tâches répétitives, elle ne peut ni ne doit remplacer l'humain. Le cœur de la pratique juridique — jugement nuancé, considération éthique, empathie authentique, pensée stratégique — demeure un domaine exclusivement humain.</p>
                   <p style={{color: '#93c5fd', fontSize: '13px', lineHeight: '1.8', margin: 0, fontStyle: 'italic'}}>Privilégiez, au regard de votre situation, de son contexte et de vos perspectives d'action, de vous appuyer sur un professionnel du droit : juriste, avocat, notaire.</p>
                 </div>
               </section>
-
+ 
               {/* FAQ */}
               <section id="faq" style={{marginTop: '3rem'}}>
                 <h2 style={{color: '#0f2d6e', fontSize: '1.3rem', fontWeight: '700', margin: '0 0 1.5rem'}}>
@@ -376,20 +376,33 @@ export default function ArticleIA() {
                   ))}
                 </div>
               </section>
-
+ 
             </div>
           </article>
-
+ 
           {/* SIDEBAR */}
           <aside style={{flex: '0 0 280px', display: 'flex', flexDirection: 'column', gap: '20px', position: 'sticky', top: '80px'}}>
-
+ 
             {/* À PROPOS DE L'AUTEUR */}
             <div style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.25rem'}}>
-              <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 8px'}}>À propos de l'auteur</p>
-              <p style={{color: '#374151', fontSize: '12px', lineHeight: '1.6', margin: '0 0 8px'}}><strong>François CHOLEZ</strong></p>
-              <p style={{color: '#6b7280', fontSize: '12px', lineHeight: '1.6', margin: 0}}>Juriste formaliste, conseil en assurances et réassurances. Cabinet Cholez-Pagotto — FCFBL ACTIVITIES.</p>
+              <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px'}}>À propos de l'auteur</p>
+              <div style={{display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '10px'}}>
+                <img
+                  src="https://secure.gravatar.com/avatar/6c4917275b124957f449a0eb107866858eaaf8ab6f17ccc1d2262120d3c04478?s=200&d=mm&r=g"
+                  alt="François CHOLEZ PAGOTTO"
+                  style={{width: '48px', height: '48px', borderRadius: '50%', objectFit: 'cover', flexShrink: 0}}
+                />
+                <div>
+                  <p style={{color: '#374151', fontSize: '12px', fontWeight: '700', margin: '0 0 2px'}}>François CHOLEZ PAGOTTO</p>
+                  <p style={{color: '#9ca3af', fontSize: '11px', margin: 0}}>Juriste · Formaliste · Conseil en assurances</p>
+                </div>
+              </div>
+              <p style={{color: '#6b7280', fontSize: '11px', lineHeight: '1.7', margin: '0 0 8px'}}>
+                Accompagne particuliers, professionnels, collectivités et acteurs de l'ESS dans la compréhension de leurs droits, la sécurisation des activités et le développement de projets. Défend une approche du droit accessible, opérationnelle et orientée impact social ainsi qu'une meilleure maîtrise de leurs droits assurantiels. Administrateur expert au collectif <a href="https://www.facebook.com/groups/968209681246209/" target="_blank" rel="noopener noreferrer" style={{color: '#1a4fba', textDecoration: 'none'}}>DAVO (Des Avocats Vous Orientent)</a>.
+              </p>
+              <p style={{color: '#9ca3af', fontSize: '11px', margin: 0}}>Cabinet Cholez-Pagotto — FCFBL ACTIVITIES</p>
             </div>
-
+ 
             {/* CTA */}
             <div style={{background: '#0f2d6e', borderRadius: '12px', padding: '1.25rem'}}>
               <p style={{color: 'white', fontSize: '13px', fontWeight: '700', margin: '0 0 8px'}}>Une question juridique ?</p>
@@ -398,7 +411,16 @@ export default function ArticleIA() {
                 Poser ma question →
               </a>
             </div>
-
+ 
+            {/* CTA NEWSLETTER */}
+            <div style={{background: 'linear-gradient(135deg, #b8860b 0%, #d4a017 50%, #b8860b 100%)', borderRadius: '12px', padding: '1.25rem'}}>
+              <p style={{color: 'white', fontSize: '13px', fontWeight: '700', margin: '0 0 8px'}}>Newsletter juridique gratuite</p>
+              <p style={{color: 'rgba(255,255,255,0.85)', fontSize: '12px', lineHeight: '1.6', margin: '0 0 14px'}}>Actualités, analyses et informations juridiques directement dans votre boîte mail.</p>
+              <a href="/tarifs" style={{display: 'block', background: 'white', color: '#b8860b', padding: '10px', borderRadius: '8px', fontSize: '12px', fontWeight: '700', textDecoration: 'none', textAlign: 'center'}}>
+                S'inscrire gratuitement →
+              </a>
+            </div>
+ 
             {/* TAGS */}
             <div style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.25rem'}}>
               <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px'}}>Tags</p>
@@ -408,14 +430,14 @@ export default function ArticleIA() {
                 ))}
               </div>
             </div>
-
+ 
             {/* RETOUR AU BLOG */}
             <a href="/blog" style={{display: 'flex', alignItems: 'center', gap: '6px', color: '#6b7280', fontSize: '12px', textDecoration: 'none'}}>
-              ← Retour au blog
+              �? Retour au blog
             </a>
-
+ 
           </aside>
-
+ 
         </div>
       </main>
       <Footer />

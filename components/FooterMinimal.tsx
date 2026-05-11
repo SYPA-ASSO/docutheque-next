@@ -1,5 +1,5 @@
 import { Scale } from 'lucide-react'
-
+ 
 export default function FooterMinimal() {
   return (
     <>
@@ -23,7 +23,7 @@ export default function FooterMinimal() {
                 <a href="/catalogue" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>Catalogue</a>
                 <a href="/information-sur-vos-droits" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>Information sur vos droits</a>
                 <a href="/tarifs" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>Tarifs</a>
-                <a href="/blog" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>Blog juridique</a>
+                <a href="/blog" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>Blog</a>
               </div>
             </div>
             <div>
@@ -45,7 +45,7 @@ export default function FooterMinimal() {
           </div>
         </div>
       </footer>
-
+ 
       {/* NOTE RÉGLEMENTAIRE */}
       <div style={{background: '#0f172a', padding: '12px 0'}}>
         <div style={{maxWidth: '1200px', margin: '0 auto', padding: '0 2rem'}}>
