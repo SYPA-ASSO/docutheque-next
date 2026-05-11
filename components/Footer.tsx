@@ -1,5 +1,5 @@
 import { Scale } from 'lucide-react'
-
+ 
 export default function Footer() {
   return (
     <>
@@ -9,11 +9,11 @@ export default function Footer() {
           <h2 style={{color: 'white', fontSize: '1.5rem', fontWeight: 'bold', lineHeight: '1.4'}}>Prêt à sécuriser vos documents et votre quotidien dans la compréhension de vos droits ?</h2>
           <p style={{color: 'rgba(255,255,255,0.7)', fontSize: '0.875rem', marginTop: '0.75rem', maxWidth: '600px', margin: '0.75rem auto 0', lineHeight: '1.7'}}>Accès immédiat à des modèles fiables, conformes et personnalisables, juriste dédié pour vous éclairer et vous apporter une meilleure compréhension du droit.</p>
           <div style={{display: 'flex', justifyContent: 'center', marginTop: '1.5rem'}}>
-            <button style={{background: 'white', color: '#1a4fba', border: 'none', padding: '10px 24px', borderRadius: '6px', fontSize: '12px', fontWeight: '600', cursor: 'pointer'}}>Voir les tarifs</button>
+            <a href="/tarifs" style={{background: 'white', color: '#1a4fba', border: 'none', padding: '10px 24px', borderRadius: '6px', fontSize: '12px', fontWeight: '600', cursor: 'pointer', textDecoration: 'none', display: 'inline-block'}}>Voir les tarifs</a>
           </div>
         </div>
       </section>
-
+ 
       {/* FOOTER */}
       <footer style={{background: '#111827', padding: '2rem 0'}}>
         <div style={{maxWidth: '1200px', margin: '0 auto', padding: '0 2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start'}}>
@@ -35,6 +35,7 @@ export default function Footer() {
                 <a href="/information-sur-vos-droits" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>Information sur vos droits</a>
                 <a href="/tarifs" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>Tarifs</a>
                 <a href="/blog" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>Blog</a>
+                <a href="/newsletter" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>Newsletter</a>
               </div>
             </div>
             <div>
@@ -49,14 +50,13 @@ export default function Footer() {
             <div>
               <p style={{fontSize: '11px', fontWeight: '600', color: 'white', marginBottom: '8px'}}>Le Cabinet</p>
               <div style={{display: 'flex', flexDirection: 'column', gap: '5px'}}>
-                <a href="https://cholez-pagotto.fr" target="_blank" rel="noopener noreferrer" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>cholez-pagotto.fr</a>
                 <a href="/a-propos" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>À propos</a>
               </div>
             </div>
           </div>
         </div>
       </footer>
-
+ 
       {/* NOTE RÉGLEMENTAIRE */}
       <div style={{background: '#0f172a', padding: '12px 0'}}>
         <div style={{maxWidth: '1200px', margin: '0 auto', padding: '0 2rem'}}>

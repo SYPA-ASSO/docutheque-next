@@ -1,17 +1,17 @@
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
- 
+
 export const metadata = {
   title: 'Politique de confidentialité · Docuthèque — Cabinet Cholez-Pagotto',
   description: 'Politique de confidentialité et protection des données personnelles de la plateforme Docuthèque, service de FCFBL ACTIVITIES. Conforme au RGPD.',
 }
- 
+
 export default function Confidentialite() {
   return (
     <>
       <Header />
       <main style={{background: '#f8fafc', minHeight: '100vh'}}>
- 
+
         <section style={{background: 'linear-gradient(135deg, #0f2d6e 0%, #1a4fba 100%)', padding: '3rem 0'}}>
           <div style={{maxWidth: '900px', margin: '0 auto', padding: '0 2rem'}}>
             <span style={{display: 'inline-block', background: 'rgba(255,255,255,0.15)', color: 'white', border: '1px solid rgba(255,255,255,0.3)', borderRadius: '20px', padding: '4px 14px', fontSize: '11px', marginBottom: '14px'}}>
@@ -21,20 +21,20 @@ export default function Confidentialite() {
               Politique de confidentialité
             </h1>
             <p style={{color: 'rgba(255,255,255,0.7)', fontSize: '12px', margin: 0}}>
-              Mise à jour le 11 mai 2026 · Applicable à docutheque.cholez-pagotto.fr
+              Mise à jour le 11 mai 2026 · Applicable à cholez-pagotto.fr et ses services
             </p>
           </div>
         </section>
- 
+
         <div style={{maxWidth: '900px', margin: '0 auto', padding: '3rem 2rem'}}>
- 
+
           {/* INTRO */}
           <div style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.75rem', marginBottom: '2rem'}}>
             <p style={{color: '#374151', fontSize: '13px', lineHeight: '1.9', margin: 0}}>
               Le cabinet Cholez-Pagotto, service commercial de <strong>FCFBL ACTIVITIES</strong>, représenté par François CHOLEZ PAGOTTO (ci-après « Nous » ou « le Responsable de traitement »), accorde une importance primordiale à la protection de vos données personnelles. La présente politique s'applique à l'ensemble des traitements effectués via la plateforme <strong>Docuthèque</strong> accessible à l'adresse <strong>docutheque.cholez-pagotto.fr</strong>, conformément au Règlement (UE) 2016/679 du 27 avril 2016 (RGPD) et à la loi n° 78-17 du 6 janvier 1978 modifiée.
             </p>
           </div>
- 
+
           {[
             {
               titre: '1. Responsable de traitement',
@@ -72,7 +72,7 @@ export default function Confidentialite() {
               titre: '3. Données collectées et finalités',
               contenu: (
                 <div style={{color: '#374151', fontSize: '13px', lineHeight: '1.9', display: 'flex', flexDirection: 'column', gap: '16px'}}>
- 
+
                   <div style={{background: '#f8fafc', border: '1px solid #e5e7eb', borderRadius: '8px', padding: '1rem'}}>
                     <p style={{color: '#0f2d6e', fontWeight: '700', margin: '0 0 8px'}}>3.1 Création de compte et gestion de l'espace client</p>
                     <p><strong>Données :</strong> nom, prénom, adresse email, statut (particulier / professionnel / association / collectivité), mot de passe (haché)</p>
@@ -80,7 +80,7 @@ export default function Confidentialite() {
                     <p><strong>Base légale :</strong> exécution du contrat (art. 6.1.b RGPD)</p>
                     <p><strong>Durée :</strong> pendant toute la durée de vie du compte, puis 3 ans après la dernière activité</p>
                   </div>
- 
+
                   <div style={{background: '#f8fafc', border: '1px solid #e5e7eb', borderRadius: '8px', padding: '1rem'}}>
                     <p style={{color: '#0f2d6e', fontWeight: '700', margin: '0 0 8px'}}>3.2 Abonnement Optimal et paiement en ligne</p>
                     <p><strong>Données :</strong> données d'identification, informations de facturation (nom, adresse), données de transaction (montant, date) — <em>les données de carte bancaire ne sont pas collectées ni stockées par Docuthèque ; elles sont traitées directement par notre prestataire de paiement</em></p>
@@ -88,7 +88,7 @@ export default function Confidentialite() {
                     <p><strong>Base légale :</strong> exécution du contrat (art. 6.1.b) et obligation légale (art. 6.1.c RGPD)</p>
                     <p><strong>Durée :</strong> durée de la relation contractuelle + 5 ans (prescription de droit commun) ; données de facturation : 10 ans (Code de commerce)</p>
                   </div>
- 
+
                   <div style={{background: '#f8fafc', border: '1px solid #e5e7eb', borderRadius: '8px', padding: '1rem'}}>
                     <p style={{color: '#0f2d6e', fontWeight: '700', margin: '0 0 8px'}}>3.3 Service « Information sur vos droits »</p>
                     <p><strong>Données :</strong> question posée, données d'identification, historique des échanges</p>
@@ -96,7 +96,7 @@ export default function Confidentialite() {
                     <p><strong>Base légale :</strong> exécution du contrat (art. 6.1.b RGPD)</p>
                     <p><strong>Durée :</strong> durée de la relation contractuelle + 3 ans</p>
                   </div>
- 
+
                   <div style={{background: '#f8fafc', border: '1px solid #e5e7eb', borderRadius: '8px', padding: '1rem'}}>
                     <p style={{color: '#0f2d6e', fontWeight: '700', margin: '0 0 8px'}}>3.4 Newsletter et communications</p>
                     <p><strong>Données :</strong> adresse email, prénom (facultatif)</p>
@@ -106,7 +106,7 @@ export default function Confidentialite() {
                     <p><strong>Durée :</strong> jusqu'au retrait du consentement (désinscription), et au maximum 3 ans après le dernier contact actif</p>
                     <p style={{color: '#6b7280', fontSize: '12px', marginTop: '8px', fontStyle: 'italic'}}>Note : le consentement à la newsletter est indépendant de tout abonnement souscrit. La résiliation d'un abonnement Optimal n'entraîne pas automatiquement la désinscription de la newsletter. Vous pouvez vous désinscrire à tout moment, en un clic, depuis chaque édition reçue.</p>
                   </div>
- 
+
                   <div style={{background: '#f8fafc', border: '1px solid #e5e7eb', borderRadius: '8px', padding: '1rem'}}>
                     <p style={{color: '#0f2d6e', fontWeight: '700', margin: '0 0 8px'}}>3.5 Navigation et données techniques</p>
                     <p><strong>Données :</strong> adresse IP, type de navigateur, pages visitées, durée de visite (données de journalisation)</p>
@@ -114,7 +114,7 @@ export default function Confidentialite() {
                     <p><strong>Base légale :</strong> intérêt légitime (art. 6.1.f RGPD)</p>
                     <p><strong>Durée :</strong> 12 mois maximum</p>
                   </div>
- 
+
                 </div>
               )
             },
@@ -191,15 +191,14 @@ export default function Confidentialite() {
               {section.contenu}
             </div>
           ))}
- 
+
           {/* NOTE FINALE */}
           <div style={{background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '10px', padding: '1rem 1.25rem', marginTop: '1rem'}}>
             <p style={{color: '#1e3a5f', fontSize: '12px', lineHeight: '1.7', margin: 0}}>
-              <strong>Lien avec la politique de confidentialité du cabinet Cholez-Pagotto :</strong> la présente politique est propre à la plateforme Docuthèque (docutheque.cholez-pagotto.fr). Pour les traitements relatifs au site institutionnel du cabinet, consultez la{' '}
-              <a href="https://www.cholez-pagotto.fr/confidentialite-rgpd/" target="_blank" rel="noopener noreferrer" style={{color: '#1a4fba', textDecoration: 'none'}}>politique de confidentialité de cholez-pagotto.fr</a>.
+              La présente politique de confidentialité constitue le document unique et exhaustif applicable à l'ensemble des services proposés par le cabinet Cholez-Pagotto via ce site, qu'il s'agisse de la consultation des contenus, de l'utilisation de la plateforme Docuthèque ou de toute autre prestation disponible à l'adresse <strong>cholez-pagotto.fr</strong>.
             </p>
           </div>
- 
+
         </div>
       </main>
       <Footer />
