@@ -31,24 +31,11 @@ export default function Connexion() {
               Accédez à votre espace client pour télécharger vos documents, poser vos questions et gérer votre abonnement.
             </p>
 
-            {/* LES 3 OFFRES */}
             <div style={{display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '28px'}}>
               {[
-                {
-                  label: 'Accès gratuit',
-                  desc: 'Tous les documents disponibles en accès libre, format DOCX, sans frais.',
-                  color: '#4ade80'
-                },
-                {
-                  label: 'Abonnement Optimal',
-                  desc: 'Bibliothèque complète de documents juridiques, 1 question juriste incluse par mois, non cumulable. 14,90 €/mois ou 147,97 €/an.',
-                  color: '#93c5fd'
-                },
-                {
-                  label: 'Information sur vos droits',
-                  desc: 'Une question, une réponse rédigée par un juriste sous 24 à 48h. 47 € à l\'unité, sans abonnement.',
-                  color: '#fcd34d'
-                },
+                { label: 'Accès gratuit', desc: 'Tous les documents disponibles en accès libre, format DOCX, sans frais.', color: '#4ade80' },
+                { label: 'Abonnement Optimal', desc: 'Bibliothèque complète de documents juridiques, 1 question juriste incluse par mois, non cumulable. 14,90 €/mois ou 147,97 €/an.', color: '#93c5fd' },
+                { label: 'Information sur vos droits', desc: 'Une question, une réponse rédigée par un juriste sous 24 à 48h. 47 € à l\'unité, sans abonnement.', color: '#fcd34d' },
               ].map((offre, i) => (
                 <div key={i} style={{background: 'rgba(255,255,255,0.1)', borderRadius: '10px', padding: '12px 14px'}}>
                   <p style={{color: offre.color, fontSize: '12px', fontWeight: '700', margin: '0 0 3px'}}>{offre.label}</p>
@@ -57,7 +44,6 @@ export default function Connexion() {
               ))}
             </div>
 
-            {/* RÉASSURANCE */}
             <div style={{display: 'flex', flexDirection: 'column', gap: '10px'}}>
               {[
                 { icon: <UserCheck size={16} color="#93c5fd" strokeWidth={1.5} />, text: '100% humain, zéro intelligence artificielle' },
@@ -73,7 +59,7 @@ export default function Connexion() {
             </div>
           </div>
 
-          {/* COLONNE DROITE — FORMULAIRE */}
+          {/* COLONNE DROITE */}
           <div style={{flex: 1, background: 'white', borderRadius: '16px', padding: '2.5rem', border: '1px solid #e5e7eb'}}>
 
             {/* ÉCRAN DE CHOIX */}
@@ -84,7 +70,6 @@ export default function Connexion() {
                   <p style={{color: '#6b7280', fontSize: '13px', margin: 0}}>Pour commencer, dites-nous où vous en êtes :</p>
                 </div>
 
-                {/* CARTE PREMIÈRE VISITE */}
                 <button
                   onClick={() => setMode('inscription')}
                   style={{width: '100%', background: 'white', border: '2px solid #e5e7eb', borderRadius: '14px', padding: '1.75rem', cursor: 'pointer', textAlign: 'left', transition: 'all 0.2s', display: 'flex', gap: '1.25rem', alignItems: 'flex-start'}}
@@ -101,14 +86,12 @@ export default function Connexion() {
                   </div>
                 </button>
 
-                {/* SÉPARATEUR "OU" */}
                 <div style={{display: 'flex', alignItems: 'center', gap: '12px'}}>
                   <div style={{flex: 1, height: '1px', background: '#e5e7eb'}} />
                   <span style={{color: '#9ca3af', fontSize: '13px', fontWeight: '600', letterSpacing: '0.05em'}}>OU</span>
                   <div style={{flex: 1, height: '1px', background: '#e5e7eb'}} />
                 </div>
 
-                {/* CARTE DÉJÀ INSCRIT */}
                 <button
                   onClick={() => setMode('connexion')}
                   style={{width: '100%', background: 'white', border: '2px solid #e5e7eb', borderRadius: '14px', padding: '1.75rem', cursor: 'pointer', textAlign: 'left', transition: 'all 0.2s', display: 'flex', gap: '1.25rem', alignItems: 'flex-start'}}
@@ -134,40 +117,30 @@ export default function Connexion() {
             {/* FORMULAIRE CONNEXION */}
             {mode === 'connexion' && (
               <div style={{display: 'flex', flexDirection: 'column', gap: '16px'}}>
-                <div style={{display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '4px'}}>
-                  <button
-                    onClick={() => setMode('choix')}
-                    style={{background: 'none', border: 'none', color: '#6b7280', fontSize: '12px', cursor: 'pointer', padding: 0, display: 'flex', alignItems: 'center', gap: '4px'}}>
-                    ← Retour
-                  </button>
-                </div>
+                <button onClick={() => setMode('choix')} style={{background: 'none', border: 'none', color: '#6b7280', fontSize: '12px', cursor: 'pointer', padding: 0, display: 'flex', alignItems: 'center', gap: '4px', alignSelf: 'flex-start'}}>
+                  ← Retour
+                </button>
                 <div>
                   <h2 style={{fontSize: '1.3rem', fontWeight: '700', color: '#0f2d6e', margin: '0 0 4px'}}>Accédez à votre espace client</h2>
                   <p style={{color: '#6b7280', fontSize: '13px', margin: 0}}>Renseignez vos identifiants pour accéder à vos documents et à votre suivi.</p>
                 </div>
-
                 <div>
                   <label style={{display: 'block', fontSize: '12px', fontWeight: '600', color: '#374151', marginBottom: '6px'}}>Adresse email *</label>
                   <input type="email" placeholder="votre@email.fr" style={{width: '100%', padding: '10px 12px', border: '1px solid #d1d5db', borderRadius: '8px', fontSize: '13px', boxSizing: 'border-box', outline: 'none'}} />
                 </div>
-
                 <div>
                   <label style={{display: 'block', fontSize: '12px', fontWeight: '600', color: '#374151', marginBottom: '6px'}}>Mot de passe *</label>
                   <input type="password" placeholder="••••••••" style={{width: '100%', padding: '10px 12px', border: '1px solid #d1d5db', borderRadius: '8px', fontSize: '13px', boxSizing: 'border-box', outline: 'none'}} />
                 </div>
-
                 <div style={{display: 'flex', justifyContent: 'flex-end'}}>
                   <a href="/mot-de-passe-oublie" style={{color: '#1a4fba', fontSize: '12px', textDecoration: 'none'}}>Mot de passe oublié ?</a>
                 </div>
-
                 <button style={{width: '100%', padding: '12px', borderRadius: '8px', border: 'none', background: '#1a4fba', color: 'white', fontSize: '14px', fontWeight: '700', cursor: 'pointer'}}>
                   Se connecter
                 </button>
-
                 <p style={{color: '#9ca3af', fontSize: '11px', textAlign: 'center', margin: 0}}>
                   Vous serez redirigé vers votre espace client après connexion.
                 </p>
-
                 <div style={{background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '10px', padding: '14px 16px'}}>
                   <p style={{color: '#1e3a5f', fontSize: '12px', fontWeight: '600', marginBottom: '8px'}}>Depuis votre espace client, vous pouvez :</p>
                   {[
@@ -182,11 +155,10 @@ export default function Connexion() {
                     </div>
                   ))}
                 </div>
-
                 <p style={{color: '#6b7280', fontSize: '12px', textAlign: 'center', margin: 0}}>
                   Pas encore de compte ?{' '}
                   <button onClick={() => setMode('inscription')} style={{color: '#1a4fba', fontWeight: '600', background: 'none', border: 'none', cursor: 'pointer', fontSize: '12px', padding: 0}}>
-                    Inscription en moins de 2 minutes
+                    Inscription rapide
                   </button>
                 </p>
               </div>
@@ -195,19 +167,14 @@ export default function Connexion() {
             {/* FORMULAIRE INSCRIPTION */}
             {mode === 'inscription' && (
               <div style={{display: 'flex', flexDirection: 'column', gap: '20px'}}>
-                <div style={{display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '4px'}}>
-                  <button
-                    onClick={() => setMode('choix')}
-                    style={{background: 'none', border: 'none', color: '#6b7280', fontSize: '12px', cursor: 'pointer', padding: 0, display: 'flex', alignItems: 'center', gap: '4px'}}>
-                    ← Retour
-                  </button>
-                </div>
+                <button onClick={() => setMode('choix')} style={{background: 'none', border: 'none', color: '#6b7280', fontSize: '12px', cursor: 'pointer', padding: 0, display: 'flex', alignItems: 'center', gap: '4px', alignSelf: 'flex-start'}}>
+                  ← Retour
+                </button>
                 <div>
                   <h2 style={{fontSize: '1.3rem', fontWeight: '700', color: '#0f2d6e', margin: '0 0 4px'}}>Créer mon compte</h2>
-                  <p style={{color: '#6b7280', fontSize: '13px', margin: 0}}>Inscription en moins de 2 minutes · Accès immédiat à votre espace client.</p>
+                  <p style={{color: '#6b7280', fontSize: '13px', margin: 0}}>Inscription rapide · Accès immédiat à votre espace client.</p>
                 </div>
 
-                {/* EMAIL + MOT DE PASSE EN PREMIER */}
                 <div>
                   <label style={{display: 'block', fontSize: '12px', fontWeight: '600', color: '#374151', marginBottom: '6px'}}>Adresse email *</label>
                   <input type="email" placeholder="votre@email.fr" style={{width: '100%', padding: '10px 12px', border: '1px solid #d1d5db', borderRadius: '8px', fontSize: '13px', boxSizing: 'border-box'}} />
@@ -224,7 +191,6 @@ export default function Connexion() {
                   </div>
                 </div>
 
-                {/* STATUT */}
                 <div>
                   <label style={{display: 'block', fontSize: '12px', fontWeight: '600', color: '#374151', marginBottom: '8px'}}>Vous êtes *</label>
                   <div style={{display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '8px'}}>
@@ -244,7 +210,6 @@ export default function Connexion() {
                   </div>
                 </div>
 
-                {/* CHAMPS IDENTITÉ */}
                 <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px'}}>
                   <div>
                     <label style={{display: 'block', fontSize: '12px', fontWeight: '600', color: '#374151', marginBottom: '6px'}}>Prénom *</label>
@@ -277,7 +242,6 @@ export default function Connexion() {
                   <input type="tel" placeholder="06 00 00 00 00" style={{width: '100%', padding: '10px 12px', border: '1px solid #d1d5db', borderRadius: '8px', fontSize: '13px', boxSizing: 'border-box'}} />
                 </div>
 
-                {/* CHAMPS PROFESSIONNEL */}
                 {statut === 'professionnel' && (
                   <div style={{display: 'flex', flexDirection: 'column', gap: '12px', background: '#f8fafc', borderRadius: '10px', padding: '16px', border: '1px solid #e5e7eb'}}>
                     <p style={{color: '#1a4fba', fontSize: '12px', fontWeight: '700', margin: 0}}>Informations professionnelles</p>
@@ -292,7 +256,6 @@ export default function Connexion() {
                   </div>
                 )}
 
-                {/* CHAMPS ASSOCIATION */}
                 {statut === 'association' && (
                   <div style={{display: 'flex', flexDirection: 'column', gap: '12px', background: '#f8fafc', borderRadius: '10px', padding: '16px', border: '1px solid #e5e7eb'}}>
                     <p style={{color: '#1a4fba', fontSize: '12px', fontWeight: '700', margin: 0}}>Informations association</p>
@@ -311,7 +274,6 @@ export default function Connexion() {
                   </div>
                 )}
 
-                {/* CHAMPS COLLECTIVITÉ */}
                 {statut === 'collectivite' && (
                   <div style={{display: 'flex', flexDirection: 'column', gap: '12px', background: '#f8fafc', borderRadius: '10px', padding: '16px', border: '1px solid #e5e7eb'}}>
                     <p style={{color: '#1a4fba', fontSize: '12px', fontWeight: '700', margin: 0}}>Informations collectivité</p>
@@ -330,7 +292,6 @@ export default function Connexion() {
                   </div>
                 )}
 
-                {/* CGU */}
                 <div style={{display: 'flex', gap: '10px', alignItems: 'flex-start'}}>
                   <input type="checkbox" id="cgu" style={{marginTop: '2px', flexShrink: 0}} />
                   <label htmlFor="cgu" style={{color: '#6b7280', fontSize: '12px', lineHeight: '1.6'}}>
@@ -350,7 +311,7 @@ export default function Connexion() {
                 </button>
 
                 <p style={{color: '#9ca3af', fontSize: '11px', textAlign: 'center', margin: 0}}>
-                  Inscription en moins de 2 minutes · Accès immédiat à votre espace client.
+                  Inscription rapide · Accès immédiat à votre espace client.
                 </p>
 
                 <div style={{background: '#f0fdf4', border: '1px solid #bbf7d0', borderRadius: '8px', padding: '12px 14px'}}>
