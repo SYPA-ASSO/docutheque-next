@@ -47,7 +47,7 @@ const situations = [
   {
     icon: <Shield size={20} color="#0891b2" strokeWidth={1.5} />,
     bg: '#ecfeff',
-    label: 'Droit pénal',
+    label: 'Droit pénal & harcèlement',
     exemples: ['Porter plainte', 'Garde à vue', 'Harcèlement moral ou sexuel', 'Diffamation'],
   },
   {
@@ -66,7 +66,7 @@ const situations = [
 
 const faqItems = [
   {
-    q: "Qu'est-ce que le service \"Information sur vos droits\" ?",
+    q: 'Qu\'est-ce que le service "Information sur vos droits" ?',
     a: "C'est un service de réponse pédagogique par écrit, rédigée par un juriste sous 24 à 48h ouvrées. Vous posez votre question en langage courant — pas besoin de maîtriser le droit — et vous recevez une réponse claire qui vous explique le cadre juridique applicable à votre situation, vos droits et les démarches possibles."
   },
   {
@@ -75,7 +75,7 @@ const faqItems = [
   },
   {
     q: "Quels types de questions puis-je poser ?",
-    a: "Vous pouvez poser des questions sur l'ensemble des situations juridiques de la vie courante : droit du travail (licenciement, rupture conventionnelle, prud'hommes), droit de la famille (divorce, garde d'enfants, succession), droit locatif, droit de la consommation, procédures judiciaires, responsabilité civile, droit pénal, harcèlement, et bien d'autres domaines."
+    a: "Vous pouvez poser des questions sur l'ensemble des situations juridiques de la vie courante et professionnelle. À titre d'exemples non exhaustifs : droit du travail (licenciement, rupture conventionnelle, prud'hommes, fonction publique), droit de la famille (divorce, garde d'enfants, succession, violence conjugale), droit locatif, droit de la consommation, procédures judiciaires, responsabilité civile, droit pénal, harcèlement moral ou sexuel. Si votre situation n'est pas listée, posez votre question — nous couvrons un spectre très large du droit du quotidien."
   },
   {
     q: "Dans quel délai vais-je recevoir une réponse ?",
@@ -87,7 +87,7 @@ const faqItems = [
   },
   {
     q: "Puis-je poser une question de suivi après avoir reçu ma réponse ?",
-    a: "Oui. Si votre question de suivi est directement liée à la réponse reçue et nécessite un complément d'information, elle est traitée comme une nouvelle question et facturée en conséquence (47 € à l'unité, ou 9,90 € si vous êtes abonné Optimal)."
+    a: "Oui. Une question de suivi est traitée comme une nouvelle question et facturée en conséquence, à 47 € à l'unité. Si votre situation génère plusieurs questions, l'abonnement Optimal peut être plus adapté : à partir de 14,90 €/mois, il inclut une question par mois et les suivantes à seulement 9,90 € — soit une économie significative dès la deuxième question mensuelle."
   },
 ]
 
@@ -148,7 +148,7 @@ export default function InformationSurVosDroits() {
               {[
                 { icon: <MessageCircle size={20} color="#93c5fd" strokeWidth={1.5} />, text: 'Posez votre question en langage courant' },
                 { icon: <Clock size={20} color="#93c5fd" strokeWidth={1.5} />, text: 'Réponse par écrit sous 24 à 48h ouvrées' },
-                { icon: <FileText size={20} color="#93c5fd" strokeWidth={1.5} />, text: 'Réponse rédigée par un juriste, pas une IA' },
+                { icon: <FileText size={20} color="#93c5fd" strokeWidth={1.5} />, text: 'Rédigée par un juriste, pas une IA' },
                 { icon: <Shield size={20} color="#93c5fd" strokeWidth={1.5} />, text: '47 € à l\'unité · sans abonnement' },
               ].map((item, i) => (
                 <div key={i} style={{background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)', borderRadius: '10px', padding: '14px 16px', display: 'flex', gap: '12px', alignItems: 'center'}}>
@@ -244,17 +244,18 @@ export default function InformationSurVosDroits() {
           <div style={{maxWidth: '1100px', margin: '0 auto', padding: '0 2rem'}}>
             <div style={{textAlign: 'center', marginBottom: '2.5rem'}}>
               <h2 style={{fontSize: '1.5rem', fontWeight: '700', color: '#0f2d6e', margin: 0}}>Quelles situations sont couvertes ?</h2>
-              <p style={{color: '#6b7280', fontSize: '0.875rem', marginTop: '6px'}}>Les domaines juridiques les plus fréquents de la vie courante et professionnelle.</p>
+              <p style={{color: '#6b7280', fontSize: '0.875rem', marginTop: '6px'}}>Les domaines et sujets les plus fréquemment traités — cette liste n'est pas exhaustive.</p>
             </div>
             <div style={{display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px'}}>
               {situations.map((sit) => (
                 <div key={sit.label} style={{border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.25rem'}}>
-                  <div style={{display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '10px'}}>
+                  <div style={{display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px'}}>
                     <div style={{width: '36px', height: '36px', background: sit.bg, borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0}}>
                       {sit.icon}
                     </div>
                     <strong style={{color: '#0f2d6e', fontSize: '13px'}}>{sit.label}</strong>
                   </div>
+                  <p style={{color: '#9ca3af', fontSize: '10px', fontStyle: 'italic', marginBottom: '8px'}}>Exemples fréquents :</p>
                   <div style={{display: 'flex', flexDirection: 'column', gap: '4px'}}>
                     {sit.exemples.map((ex) => (
                       <span key={ex} style={{color: '#6b7280', fontSize: '11px', display: 'flex', gap: '6px', alignItems: 'flex-start'}}>
@@ -265,8 +266,10 @@ export default function InformationSurVosDroits() {
                 </div>
               ))}
             </div>
-            <div style={{textAlign: 'center', marginTop: '1.5rem'}}>
-              <p style={{color: '#6b7280', fontSize: '12px', fontStyle: 'italic'}}>Et de nombreux autres domaines du droit — si vous avez un doute sur votre situation, posez votre question.</p>
+            <div style={{textAlign: 'center', marginTop: '1.5rem', background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '10px', padding: '12px 20px', maxWidth: '600px', margin: '1.5rem auto 0'}}>
+              <p style={{color: '#1a4fba', fontSize: '12px', margin: 0}}>
+                Votre situation n'est pas listée ? Posez votre question — nous couvrons un spectre très large du droit du quotidien, bien au-delà des exemples présentés ici.
+              </p>
             </div>
           </div>
         </section>
@@ -276,7 +279,7 @@ export default function InformationSurVosDroits() {
           <div style={{maxWidth: '700px', margin: '0 auto', padding: '0 2rem', textAlign: 'center'}}>
             <h2 style={{fontSize: '1.5rem', fontWeight: '700', color: '#0f2d6e', margin: '0 0 8px'}}>Un tarif simple et transparent</h2>
             <p style={{color: '#6b7280', fontSize: '0.875rem', marginBottom: '2rem'}}>Sans abonnement, sans engagement, sans surprise.</p>
-            <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '2rem'}}>
+            <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '1.5rem'}}>
               <div style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '14px', padding: '1.75rem'}}>
                 <p style={{fontSize: '11px', fontWeight: '600', color: '#6b7280', letterSpacing: '0.08em', margin: '0 0 8px'}}>SANS ABONNEMENT</p>
                 <div style={{fontSize: '2.5rem', fontWeight: '700', color: '#0f2d6e', marginBottom: '4px'}}>47 €</div>
@@ -294,6 +297,12 @@ export default function InformationSurVosDroits() {
                   Voir l'abonnement Optimal
                 </a>
               </div>
+            </div>
+            {/* ENCART PUSH ABONNEMENT OPTIMAL */}
+            <div style={{background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '10px', padding: '14px 20px', marginBottom: '1.5rem'}}>
+              <p style={{color: '#1e3a5f', fontSize: '12px', lineHeight: '1.7', margin: 0}}>
+                <strong>Vous posez régulièrement des questions ?</strong> L'abonnement Optimal inclut 1 question par mois et les suivantes à seulement 9,90 € — soit une économie significative dès la deuxième question mensuelle. À partir de 14,90 €/mois.
+              </p>
             </div>
             <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '8px'}}>
               <span style={{fontSize: '16px'}}>🔒</span>
