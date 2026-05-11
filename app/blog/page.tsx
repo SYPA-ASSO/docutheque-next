@@ -103,12 +103,12 @@ export default function Blog() {
               ))}
             </div>
  
-            {/* NEWSLETTER */}
+            {/* MESSAGE SI PAS D'AUTRES ARTICLES */}
             <div style={{textAlign: 'center', marginTop: '3rem', background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '12px', padding: '2rem'}}>
-              <p style={{color: '#1e3a5f', fontSize: '14px', fontWeight: '600', margin: '0 0 8px'}}>D'autres articles arrivent prochainement.</p>
+              <p style={{color: '#1e3a5f', fontSize: '14px', fontWeight: '600', margin: '0 0 6px'}}>D'autres articles arrivent prochainement.</p>
               <p style={{color: '#6b7280', fontSize: '12px', margin: '0 0 16px'}}>Notre blog est alimenté régulièrement par le cabinet CHOLEZ PAGOTTO. Abonnez-vous à la newsletter pour ne rien manquer.</p>
-              <a href="/tarifs" style={{display: 'inline-block', background: '#0f2d6e', color: 'white', padding: '10px 24px', borderRadius: '8px', fontSize: '12px', fontWeight: '700', textDecoration: 'none'}}>
-                S'inscrire gratuitement →
+              <a href="/newsletter" style={{display: 'inline-block', background: '#0f2d6e', color: 'white', padding: '10px 24px', borderRadius: '8px', fontSize: '12px', fontWeight: '700', textDecoration: 'none'}}>
+                S'inscrire à la newsletter →
               </a>
             </div>
           </div>

@@ -416,8 +416,8 @@ export default function ArticleIA() {
             <div style={{background: 'linear-gradient(135deg, #b8860b 0%, #d4a017 50%, #b8860b 100%)', borderRadius: '12px', padding: '1.25rem'}}>
               <p style={{color: 'white', fontSize: '13px', fontWeight: '700', margin: '0 0 8px'}}>Newsletter juridique gratuite</p>
               <p style={{color: 'rgba(255,255,255,0.85)', fontSize: '12px', lineHeight: '1.6', margin: '0 0 14px'}}>Actualités, analyses et informations juridiques directement dans votre boîte mail.</p>
-              <a href="/tarifs" style={{display: 'block', background: 'white', color: '#b8860b', padding: '10px', borderRadius: '8px', fontSize: '12px', fontWeight: '700', textDecoration: 'none', textAlign: 'center'}}>
-                S'inscrire gratuitement →
+              <a href="/newsletter" style={{display: 'block', background: 'white', color: '#b8860b', padding: '10px', borderRadius: '8px', fontSize: '12px', fontWeight: '700', textDecoration: 'none', textAlign: 'center'}}>
+                En savoir plus →
               </a>
             </div>
  
@@ -433,7 +433,7 @@ export default function ArticleIA() {
  
             {/* RETOUR AU BLOG */}
             <a href="/blog" style={{display: 'flex', alignItems: 'center', gap: '6px', color: '#6b7280', fontSize: '12px', textDecoration: 'none'}}>
-              �? Retour au blog
+              ← Retour au blog
             </a>
  
           </aside>
