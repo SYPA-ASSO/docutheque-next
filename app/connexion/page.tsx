@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { Scale, UserCheck, Shield, Clock, Lock, Building2, Users, PenLine, KeyRound } from 'lucide-react'
 import Header from '@/components/Header'
+import GoogleAvis from '@/components/GoogleAvis'
 import FooterMinimal from '@/components/FooterMinimal'
 
 export default function Connexion() {
@@ -56,6 +57,9 @@ export default function Connexion() {
                   <span style={{color: 'rgba(255,255,255,0.8)', fontSize: '12px'}}>{item.text}</span>
                 </div>
               ))}
+            </div>
+            <div style={{marginTop: '16px'}}>
+              <GoogleAvis variant="compact" />
             </div>
           </div>
 

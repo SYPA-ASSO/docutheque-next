@@ -1,3 +1,4 @@
+import GoogleAvis from '@/components/GoogleAvis'
 import { FileText, Scale, UserCheck, Clock } from 'lucide-react'
 
 export default function Hero() {
@@ -24,6 +25,9 @@ export default function Hero() {
             <button style={{background: 'transparent', color: 'white', border: '1px solid rgba(255,255,255,0.4)', padding: '11px 22px', borderRadius: '6px', fontSize: '13px', cursor: 'pointer'}}>
               Voir les tarifs
             </button>
+          </div>
+          <div style={{marginBottom: '16px'}}>
+            <GoogleAvis variant="default" />
           </div>
           <div style={{display: 'flex', gap: '14px', flexWrap: 'wrap', rowGap: '8px'}}>
             {[
