@@ -30,7 +30,7 @@ export default function TarifsClient() {
     { q: "Quels moyens de paiement acceptez-vous ?", a: "Nous acceptons le paiement par carte bancaire et par virement bancaire. Le paiement est sécurisé. Aucune information bancaire n'est conservée sur nos serveurs." },
     { q: "L'abonnement se renouvelle-t-il automatiquement ?", a: "Oui. À l'issue de la période initiale de 12 mois, l'abonnement se renouvelle automatiquement pour une nouvelle année, sauf résiliation adressée par écrit au moins 30 jours avant l'échéance." },
     { q: 'La réponse "Information sur vos droits" est-elle garantie sous 48h ?', a: "Oui. Nous nous engageons à vous apporter une réponse rédigée par un juriste dans un délai de 24 à 48h ouvrées suivant la réception de votre question et la confirmation de votre paiement." },
-    { q: "Puis-je cumuler les questions incluses dans mon abonnement Optimal ?", a: "Non. La question mensuelle incluse dans l'abonnement Optimal n'est pas cumulable d'un mois sur l'autre. Si vous avez besoin de poser des questions supplémentaires dans le même mois, elles sont disponibles à 9,90 € l'unité." },
+    { q: "Puis-je cumuler les questions incluses dans mon abonnement Optimal ?", a: "Non. La question mensuelle incluse dans l'abonnement Optimal n'est pas cumulable d'un mois sur l'autre. Si vous avez besoin de poser des questions supplémentaires dans le même mois, elles sont disponibles à 9,90 € l'unité. Sans abonnement, chaque question est à 47 € — si vous posez régulièrement des questions, l'abonnement Optimal devient plus économique dès la deuxième question mensuelle." },
   ]
 
   const createurItems = [
@@ -141,9 +141,14 @@ export default function TarifsClient() {
                   </div>
                 ))}
               </div>
-              <div style={{background: '#fff7ed', border: '1px solid #fed7aa', borderRadius: '8px', padding: '10px 12px', marginBottom: '20px'}}>
+              <div style={{background: '#fff7ed', border: '1px solid #fed7aa', borderRadius: '8px', padding: '10px 12px', marginBottom: '12px'}}>
                 <p style={{color: '#92400e', fontSize: '11px', lineHeight: '1.6', margin: 0}}>
                   Cette réponse a vocation à vous informer et à vous orienter. Elle ne constitue pas une consultation juridique au sens de la loi du 31 décembre 1971, réservée aux avocats.
+                </p>
+              </div>
+              <div style={{background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '8px', padding: '10px 12px', marginBottom: '20px'}}>
+                <p style={{color: '#1e3a5f', fontSize: '11px', lineHeight: '1.6', margin: 0}}>
+                  Vous posez régulièrement des questions ? L'abonnement Optimal est plus économique dès la deuxième question mensuelle.
                 </p>
               </div>
               <button style={{width: '100%', padding: '10px', borderRadius: '8px', border: 'none', background: '#1a4fba', color: 'white', fontSize: '13px', fontWeight: '600', cursor: 'pointer'}}>Poser ma question</button>

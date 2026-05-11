@@ -124,7 +124,7 @@ export default function Tarifs() {
         {/* NOTE ENGAGEMENT */}
         <div style={{maxWidth: '900px', margin: '1.5rem auto 0', background: '#fff7ed', border: '1px solid #fed7aa', borderRadius: '10px', padding: '0.875rem 1.25rem'}}>
           <p style={{color: '#92400e', fontSize: '11px', lineHeight: '1.7', margin: 0}}>
-            <strong>Information importante —</strong> L'abonnement Optimal est souscrit pour une durée minimale de 12 mois. À l'issue de cette période, il se renouvelle automatiquement pour une nouvelle année, sauf résiliation adressée par écrit au moins 30 jours avant l'échéance. Le tarif mensuel affiché est donné à titre indicatif, calculé sur la base de l'engagement annuel. La question mensuelle incluse est non cumulable d'un mois sur l'autre.
+            <strong>Information importante —</strong> L'abonnement Optimal est souscrit pour une durée minimale de 12 mois. À l'issue de cette période, il se renouvelle automatiquement pour une nouvelle année, sauf résiliation adressée par écrit au moins 30 jours avant l'échéance. Le tarif mensuel affiché est donné à titre indicatif, calculé sur la base de l'engagement annuel. La question mensuelle incluse est non cumulable d'un mois sur l'autre. Vous posez régulièrement des questions ? L'abonnement Optimal est plus économique dès la deuxième question mensuelle.
           </p>
         </div>
 
