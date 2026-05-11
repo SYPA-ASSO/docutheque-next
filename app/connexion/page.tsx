@@ -1,12 +1,12 @@
 'use client'
 
 import { useState } from 'react'
-import { Scale, UserCheck, Shield, Clock, Lock, Building2, Users } from 'lucide-react'
+import { Scale, UserCheck, Shield, Clock, Lock, Building2, Users, PenLine, KeyRound } from 'lucide-react'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 
 export default function Connexion() {
-  const [mode, setMode] = useState<'connexion' | 'inscription'>('inscription')
+  const [mode, setMode] = useState<'choix' | 'connexion' | 'inscription'>('choix')
   const [statut, setStatut] = useState<'particulier' | 'professionnel' | 'association' | 'collectivite'>('particulier')
 
   return (
@@ -76,23 +76,71 @@ export default function Connexion() {
           {/* COLONNE DROITE — FORMULAIRE */}
           <div style={{flex: 1, background: 'white', borderRadius: '16px', padding: '2.5rem', border: '1px solid #e5e7eb'}}>
 
-            {/* TOGGLE CONNEXION / INSCRIPTION */}
-            <div style={{display: 'flex', background: '#f3f4f6', borderRadius: '10px', padding: '4px', marginBottom: '2rem'}}>
-              <button
-                onClick={() => setMode('inscription')}
-                style={{flex: 1, padding: '10px', borderRadius: '8px', border: 'none', background: mode === 'inscription' ? 'white' : 'transparent', color: mode === 'inscription' ? '#0f2d6e' : '#6b7280', fontSize: '13px', fontWeight: mode === 'inscription' ? '700' : '500', cursor: 'pointer', boxShadow: mode === 'inscription' ? '0 1px 3px rgba(0,0,0,0.1)' : 'none', transition: 'all 0.2s'}}>
-                Créer mon compte
-              </button>
-              <button
-                onClick={() => setMode('connexion')}
-                style={{flex: 1, padding: '10px', borderRadius: '8px', border: 'none', background: mode === 'connexion' ? 'white' : 'transparent', color: mode === 'connexion' ? '#0f2d6e' : '#6b7280', fontSize: '13px', fontWeight: mode === 'connexion' ? '700' : '500', cursor: 'pointer', boxShadow: mode === 'connexion' ? '0 1px 3px rgba(0,0,0,0.1)' : 'none', transition: 'all 0.2s'}}>
-                Me connecter
-              </button>
-            </div>
+            {/* ÉCRAN DE CHOIX */}
+            {mode === 'choix' && (
+              <div style={{display: 'flex', flexDirection: 'column', gap: '24px'}}>
+                <div>
+                  <h2 style={{fontSize: '1.4rem', fontWeight: '700', color: '#0f2d6e', margin: '0 0 6px'}}>Bienvenue sur Docuthèque</h2>
+                  <p style={{color: '#6b7280', fontSize: '13px', margin: 0}}>Pour commencer, dites-nous où vous en êtes :</p>
+                </div>
+
+                {/* CARTE PREMIÈRE VISITE */}
+                <button
+                  onClick={() => setMode('inscription')}
+                  style={{width: '100%', background: 'white', border: '2px solid #e5e7eb', borderRadius: '14px', padding: '1.75rem', cursor: 'pointer', textAlign: 'left', transition: 'all 0.2s', display: 'flex', gap: '1.25rem', alignItems: 'flex-start'}}
+                  onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.borderColor = '#1a4fba'; (e.currentTarget as HTMLButtonElement).style.background = '#eff6ff' }}
+                  onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.borderColor = '#e5e7eb'; (e.currentTarget as HTMLButtonElement).style.background = 'white' }}
+                >
+                  <div style={{width: '48px', height: '48px', background: '#eff6ff', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0}}>
+                    <PenLine size={24} color="#1a4fba" strokeWidth={1.5} />
+                  </div>
+                  <div>
+                    <p style={{color: '#0f2d6e', fontSize: '15px', fontWeight: '700', margin: '0 0 4px'}}>C'est ma première visite</p>
+                    <p style={{color: '#6b7280', fontSize: '13px', margin: '0 0 8px', lineHeight: '1.5'}}>Je n'ai pas encore de compte Docuthèque et je souhaite en créer un.</p>
+                    <span style={{color: '#1a4fba', fontSize: '12px', fontWeight: '600'}}>Créer mon compte →</span>
+                  </div>
+                </button>
+
+                {/* SÉPARATEUR "OU" */}
+                <div style={{display: 'flex', alignItems: 'center', gap: '12px'}}>
+                  <div style={{flex: 1, height: '1px', background: '#e5e7eb'}} />
+                  <span style={{color: '#9ca3af', fontSize: '13px', fontWeight: '600', letterSpacing: '0.05em'}}>OU</span>
+                  <div style={{flex: 1, height: '1px', background: '#e5e7eb'}} />
+                </div>
+
+                {/* CARTE DÉJÀ INSCRIT */}
+                <button
+                  onClick={() => setMode('connexion')}
+                  style={{width: '100%', background: 'white', border: '2px solid #e5e7eb', borderRadius: '14px', padding: '1.75rem', cursor: 'pointer', textAlign: 'left', transition: 'all 0.2s', display: 'flex', gap: '1.25rem', alignItems: 'flex-start'}}
+                  onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.borderColor = '#1a4fba'; (e.currentTarget as HTMLButtonElement).style.background = '#eff6ff' }}
+                  onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.borderColor = '#e5e7eb'; (e.currentTarget as HTMLButtonElement).style.background = 'white' }}
+                >
+                  <div style={{width: '48px', height: '48px', background: '#f0fdf4', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0}}>
+                    <KeyRound size={24} color="#16a34a" strokeWidth={1.5} />
+                  </div>
+                  <div>
+                    <p style={{color: '#0f2d6e', fontSize: '15px', fontWeight: '700', margin: '0 0 4px'}}>J'ai déjà un compte</p>
+                    <p style={{color: '#6b7280', fontSize: '13px', margin: '0 0 8px', lineHeight: '1.5'}}>Je suis déjà inscrit sur Docuthèque et je souhaite accéder à mon espace client.</p>
+                    <span style={{color: '#16a34a', fontSize: '12px', fontWeight: '600'}}>Me connecter →</span>
+                  </div>
+                </button>
+
+                <p style={{color: '#9ca3af', fontSize: '11px', textAlign: 'center', margin: 0, lineHeight: '1.6'}}>
+                  Vos données sont protégées conformément au RGPD · <a href="/confidentialite" style={{color: '#9ca3af'}}>Politique de confidentialité</a>
+                </p>
+              </div>
+            )}
 
             {/* FORMULAIRE CONNEXION */}
             {mode === 'connexion' && (
               <div style={{display: 'flex', flexDirection: 'column', gap: '16px'}}>
+                <div style={{display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '4px'}}>
+                  <button
+                    onClick={() => setMode('choix')}
+                    style={{background: 'none', border: 'none', color: '#6b7280', fontSize: '12px', cursor: 'pointer', padding: 0, display: 'flex', alignItems: 'center', gap: '4px'}}>
+                    ← Retour
+                  </button>
+                </div>
                 <div>
                   <h2 style={{fontSize: '1.3rem', fontWeight: '700', color: '#0f2d6e', margin: '0 0 4px'}}>Accédez à votre espace client</h2>
                   <p style={{color: '#6b7280', fontSize: '13px', margin: 0}}>Renseignez vos identifiants pour accéder à vos documents et à votre suivi.</p>
@@ -147,6 +195,13 @@ export default function Connexion() {
             {/* FORMULAIRE INSCRIPTION */}
             {mode === 'inscription' && (
               <div style={{display: 'flex', flexDirection: 'column', gap: '20px'}}>
+                <div style={{display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '4px'}}>
+                  <button
+                    onClick={() => setMode('choix')}
+                    style={{background: 'none', border: 'none', color: '#6b7280', fontSize: '12px', cursor: 'pointer', padding: 0, display: 'flex', alignItems: 'center', gap: '4px'}}>
+                    ← Retour
+                  </button>
+                </div>
                 <div>
                   <h2 style={{fontSize: '1.3rem', fontWeight: '700', color: '#0f2d6e', margin: '0 0 4px'}}>Créer mon compte</h2>
                   <p style={{color: '#6b7280', fontSize: '13px', margin: 0}}>Inscription en moins de 2 minutes · Accès immédiat à votre espace client.</p>
