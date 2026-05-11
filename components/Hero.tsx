@@ -25,9 +25,11 @@ export default function Hero() {
             <button style={{background: 'transparent', color: 'white', border: '1px solid rgba(255,255,255,0.4)', padding: '11px 22px', borderRadius: '6px', fontSize: '13px', cursor: 'pointer'}}>
               Voir les tarifs
             </button>
-          </div>
-          <div style={{marginBottom: '16px'}}>
-            <GoogleAvis variant="default" />
+            <div style={{display: 'flex', alignItems: 'center', background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)', borderRadius: '6px', padding: '11px 16px', gap: '8px'}}>
+              <span style={{color: '#FBBC05', fontSize: '13px', letterSpacing: '-1px'}}>★★★★★</span>
+              <span style={{color: 'white', fontSize: '13px', fontWeight: '700'}}>5/5</span>
+              <span style={{color: 'rgba(255,255,255,0.5)', fontSize: '11px'}}>Google</span>
+            </div>
           </div>
           <div style={{display: 'flex', gap: '14px', flexWrap: 'wrap', rowGap: '8px'}}>
             {[

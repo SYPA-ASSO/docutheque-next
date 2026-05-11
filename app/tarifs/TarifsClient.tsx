@@ -162,15 +162,14 @@ export default function TarifsClient() {
           <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '8px', marginTop: '2rem'}}>
             <span style={{fontSize: '16px'}}>🔒</span>
             <span style={{color: '#6b7280', fontSize: '12px'}}>Paiement sécurisé · Carte bancaire et virement bancaire acceptés</span>
+            <span style={{color: '#d1d5db', fontSize: '12px'}}>·</span>
+            <GoogleAvis variant="inline" />
           </div>
  
           {/* SECTION ACCOMPAGNEMENT CRÉATEURS */}
           <div style={{marginTop: '4rem', background: 'linear-gradient(135deg, #0f2d6e 0%, #1a4fba 100%)', borderRadius: '16px', padding: '2.5rem', display: 'flex', gap: '3rem', alignItems: 'flex-start'}}>
             <div style={{flex: '0 0 55%'}}>
               <span style={{background: 'rgba(255,255,255,0.15)', color: 'white', fontSize: '11px', fontWeight: '600', padding: '3px 12px', borderRadius: '20px', letterSpacing: '0.05em'}}>ACCOMPAGNEMENT CRÉATEURS</span>
-              <div style={{marginTop: '12px', marginBottom: '4px'}}>
-                <GoogleAvis variant="compact" />
-              </div>
               <h2 style={{color: 'white', fontSize: '1.5rem', fontWeight: '700', margin: '14px 0 10px', lineHeight: '1.4'}}>Créez votre entreprise accompagné d'un juriste formaliste dédié.</h2>
               <p style={{color: 'rgba(255,255,255,0.8)', fontSize: '0.875rem', fontStyle: 'italic', marginBottom: '16px'}}>De l'idée à l'immatriculation, et bien au-delà.</p>
               <p style={{color: 'rgba(255,255,255,0.85)', fontSize: '0.875rem', lineHeight: '1.8', marginBottom: '20px'}}>
@@ -182,9 +181,6 @@ export default function TarifsClient() {
                     Frais indépendants de nos services, réglés directement auprès des organismes concernés : greffe (50 à 250 € selon la forme juridique) et journal d'annonces légales (150 à 200 €).
                   </p>
                 </div>
-                <a href="/contact" style={{display: 'inline-block', background: 'white', color: '#0f2d6e', padding: '12px 28px', borderRadius: '8px', border: '2px solid white', fontSize: '13px', fontWeight: '700', textDecoration: 'none', whiteSpace: 'nowrap', flexShrink: 0}}>
-                  Nous contacter
-                </a>
               </div>
             </div>
             <div style={{flex: '0 0 40%', display: 'flex', flexDirection: 'column', gap: '12px'}}>
@@ -194,6 +190,11 @@ export default function TarifsClient() {
                   <span style={{color: 'rgba(255,255,255,0.85)', fontSize: '12px', lineHeight: '1.5'}}>{item.label}</span>
                 </div>
               ))}
+              <div style={{marginTop: '20px'}}>
+                <a href="/contact" style={{display: 'inline-block', background: 'white', color: '#0f2d6e', padding: '12px 28px', borderRadius: '8px', border: '2px solid white', fontSize: '13px', fontWeight: '700', textDecoration: 'none'}}>
+                  Nous contacter
+                </a>
+              </div>
             </div>
           </div>
  
