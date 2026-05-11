@@ -4,12 +4,12 @@ export default function Header() {
   return (
     <>
       {/* BANDEAU OFFRE DÉDIÉE */}
-      <div style={{background: '#0f2d6e', borderBottom: '1px solid rgba(255,255,255,0.1)', padding: '8px 0', textAlign: 'center'}}>
+      <div style={{background: '#9a7b2e', borderBottom: '1px solid rgba(255,255,255,0.15)', padding: '8px 0', textAlign: 'center'}}>
         <div style={{maxWidth: '1200px', margin: '0 auto', padding: '0 2rem', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '8px'}}>
-          <span style={{color: 'rgba(255,255,255,0.85)', fontSize: '12px', lineHeight: '1.5'}}>
+          <span style={{color: 'rgba(255,255,255,0.92)', fontSize: '12px', lineHeight: '1.5'}}>
             <strong style={{color: 'white'}}>OFFRE DÉDIÉE</strong> · Création d'entreprise, statuts, contrats, conformité RGPD, recouvrement, assistance... On vous accompagne dans chaque phase de la vie de votre projet et de votre entreprise. Juriste et formaliste dédié, conseil en assurances, tout est mis en œuvre pour être à vos côtés.
           </span>
-          <a href="/accompagnement" style={{color: '#93c5fd', fontSize: '12px', fontWeight: '600', textDecoration: 'none', whiteSpace: 'nowrap'}}>En savoir plus →</a>
+          <a href="/accompagnement" style={{color: 'white', fontSize: '12px', fontWeight: '600', textDecoration: 'none', whiteSpace: 'nowrap'}}>En savoir plus →</a>
         </div>
       </div>
 

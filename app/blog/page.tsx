@@ -1,12 +1,12 @@
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { FileText, Calendar, Clock } from 'lucide-react'
- 
+
 export const metadata = {
   title: 'Blog juridique · Actualités, informations et analyses du Cabinet Cholez-Pagotto',
   description: 'Articles juridiques rédigés par des juristes : droit du travail, intelligence artificielle et droit, formalités, recouvrement, RGPD. Informations pédagogiques pour particuliers et professionnels.',
 }
- 
+
 const articles = [
   {
     slug: 'lintelligence-artificielle-en-droit-une-fausse-bonne-idee',
@@ -20,7 +20,7 @@ const articles = [
     image: 'https://www.cholez-pagotto.fr/wp-content/uploads/2025/07/IA-droit-1536x1280.jpg',
   },
 ]
- 
+
 const schema = {
   "@context": "https://schema.org",
   "@type": "Blog",
@@ -33,14 +33,14 @@ const schema = {
     "url": "https://docutheque.cholez-pagotto.fr"
   }
 }
- 
+
 export default function Blog() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <Header />
       <main style={{background: '#f8fafc', minHeight: '100vh'}}>
- 
+
         {/* HERO */}
         <section style={{background: 'linear-gradient(135deg, #0f2d6e 0%, #1a4fba 100%)', padding: '3rem 0'}}>
           <div style={{maxWidth: '1100px', margin: '0 auto', padding: '0 2rem'}}>
@@ -55,7 +55,7 @@ export default function Blog() {
             </p>
           </div>
         </section>
- 
+
         {/* ARTICLES */}
         <section style={{padding: '3rem 0'}}>
           <div style={{maxWidth: '1100px', margin: '0 auto', padding: '0 2rem'}}>
@@ -102,7 +102,7 @@ export default function Blog() {
                 </a>
               ))}
             </div>
- 
+
             {/* MESSAGE SI PAS D'AUTRES ARTICLES */}
             <div style={{textAlign: 'center', marginTop: '3rem', background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '12px', padding: '2rem'}}>
               <p style={{color: '#1e3a5f', fontSize: '14px', fontWeight: '600', margin: '0 0 6px'}}>D'autres articles arrivent prochainement.</p>
@@ -110,7 +110,7 @@ export default function Blog() {
             </div>
           </div>
         </section>
- 
+
       </main>
       <Footer />
     </>
