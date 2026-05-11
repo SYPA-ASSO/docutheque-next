@@ -61,7 +61,7 @@ export default function Newsletter() {
               <h2 style={{color: '#0f2d6e', fontSize: '1.3rem', fontWeight: '700', margin: 0}}>La newsletter</h2>
             </div>
             <p style={{color: '#6b7280', fontSize: '14px', lineHeight: '1.8', marginBottom: '1.5rem'}}>
-              Accessible à tous, sans abonnement ni carte bancaire. Une newsletter pensée pour être utile : informations juridiques pratiques, alertes sur les nouveaux documents, offres sur nos services et sélections partenaires.
+              Accessible à tous avec un compte gratuit. Une newsletter pensée pour être utile : informations juridiques pratiques, alertes sur les nouveaux documents, offres sur nos services et sélections partenaires.
             </p>
             <div style={{display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '16px', marginBottom: '2rem'}}>
               {[
