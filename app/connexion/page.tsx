@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { Scale, UserCheck, Shield, Clock, Lock, Building2, Users, PenLine, KeyRound } from 'lucide-react'
 import Header from '@/components/Header'
-import Footer from '@/components/Footer'
+import FooterMinimal from '@/components/FooterMinimal'
 
 export default function Connexion() {
   const [mode, setMode] = useState<'choix' | 'connexion' | 'inscription'>('choix')
@@ -344,7 +344,7 @@ export default function Connexion() {
           </div>
         </div>
       </main>
-      <Footer />
+      <FooterMinimal />
     </>
   )
 }
