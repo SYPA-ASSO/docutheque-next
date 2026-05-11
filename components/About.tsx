@@ -1,3 +1,5 @@
+import { UserCheck, RefreshCw, PenLine } from 'lucide-react'
+
 export default function About() {
   const domaines = [
     "Droit du travail et de l'emploi",
@@ -61,7 +63,7 @@ export default function About() {
         <div style={{flex: '0 0 48%', display: 'flex', flexDirection: 'column', gap: '14px'}}>
           <div style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.25rem'}}>
             <div style={{display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px'}}>
-              <span style={{fontSize: '22px'}}>🧑‍⚖️</span>
+              <UserCheck size={22} color="#1a4fba" strokeWidth={1.5} />
               <strong style={{color: '#0f2d6e', fontSize: '13px'}}>100% humain, zéro intelligence artificielle</strong>
             </div>
             <p style={{color: '#6b7280', fontSize: '12px', lineHeight: '1.6'}}>
@@ -70,7 +72,7 @@ export default function About() {
           </div>
           <div style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.25rem'}}>
             <div style={{display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px'}}>
-              <span style={{fontSize: '22px'}}>🔄</span>
+              <RefreshCw size={22} color="#1a4fba" strokeWidth={1.5} />
               <strong style={{color: '#0f2d6e', fontSize: '13px'}}>Mise à jour des documents</strong>
             </div>
             <p style={{color: '#6b7280', fontSize: '12px', lineHeight: '1.6'}}>
@@ -79,7 +81,7 @@ export default function About() {
           </div>
           <div style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.25rem'}}>
             <div style={{display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px'}}>
-              <span style={{fontSize: '22px'}}>✏️</span>
+              <PenLine size={22} color="#1a4fba" strokeWidth={1.5} />
               <strong style={{color: '#0f2d6e', fontSize: '13px'}}>100% personnalisables, adaptez chaque document à votre situation</strong>
             </div>
             <p style={{color: '#6b7280', fontSize: '12px', lineHeight: '1.6'}}>
@@ -101,9 +103,7 @@ export default function About() {
               Vous avez des droits. Nous vous proposons les solutions pour mieux les comprendre. Parce qu'un document bien rédigé aujourd'hui, c'est certainement un litige évité demain.
             </p>
           </div>
-
         </div>
-
       </div>
     </section>
   )

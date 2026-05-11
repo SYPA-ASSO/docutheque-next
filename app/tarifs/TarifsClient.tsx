@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { Building2, PenLine, Monitor, Shield, FileText, Lock, RefreshCw } from 'lucide-react'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 
@@ -11,13 +12,13 @@ export default function TarifsClient() {
     "@context": "https://schema.org",
     "@type": "WebPage",
     "name": "Tarifs Docuthèque",
-    "description": "Offres et tarifs de la plateforme Docuthèque : modèles de documents juridiques, abonnement, information sur vos droits, accompagnement création d'entreprise.",
+    "description": "Offres et tarifs de la plateforme Docuthèque : modèles de documents juridiques, abonnement Optimal, information sur vos droits, accompagnement création d'entreprise.",
     "url": "https://docutheque.fr/tarifs",
     "mainEntity": {
       "@type": "ItemList",
       "itemListElement": [
-        { "@type": "Offer", "name": "Accès Gratuit", "price": "0", "priceCurrency": "EUR", "description": "Sélection de modèles de documents juridiques en DOCX, sans inscription obligatoire." },
-        { "@type": "Offer", "name": "Abonnement Optimal", "price": "14.90", "priceCurrency": "EUR", "description": "Accès à toute la bibliothèque de documents juridiques en DOCX, notices juridiques, fiches pédagogiques, 1 question juriste incluse sous 24 à 48h, support prioritaire." },
+        { "@type": "Offer", "name": "Accès Gratuit", "price": "0", "priceCurrency": "EUR", "description": "Accès gratuit à tous les documents disponibles en accès libre, en format DOCX." },
+        { "@type": "Offer", "name": "Abonnement Optimal", "price": "14.90", "priceCurrency": "EUR", "description": "Accès à toute la bibliothèque de documents juridiques en DOCX, notices explicatives, fiches pédagogiques, 1 question juriste incluse par mois non cumulable sous 24 à 48h, support prioritaire." },
         { "@type": "Offer", "name": "Information sur vos droits", "price": "47", "priceCurrency": "EUR", "description": "Réponse pédagogique rédigée par un juriste sous 24 à 48h ouvrées, sans abonnement ni engagement." },
         { "@type": "Offer", "name": "Accompagnement Créateurs", "price": "0", "priceCurrency": "EUR", "description": "Création d'entreprise offerte (hors frais de greffe et JAL). Statuts, formalités, accompagnement juriste formaliste inclus. Sur devis personnalisé." }
       ]
@@ -29,7 +30,17 @@ export default function TarifsClient() {
     { q: "Quels moyens de paiement acceptez-vous ?", a: "Nous acceptons le paiement par carte bancaire et par virement bancaire. Le paiement est sécurisé. Aucune information bancaire n'est conservée sur nos serveurs." },
     { q: "L'abonnement se renouvelle-t-il automatiquement ?", a: "Oui. À l'issue de la période initiale de 12 mois, l'abonnement se renouvelle automatiquement pour une nouvelle année, sauf résiliation adressée par écrit au moins 30 jours avant l'échéance." },
     { q: 'La réponse "Information sur vos droits" est-elle garantie sous 48h ?', a: "Oui. Nous nous engageons à vous apporter une réponse rédigée par un juriste dans un délai de 24 à 48h ouvrées suivant la réception de votre question et la confirmation de votre paiement." },
-    { q: "Puis-je cumuler un abonnement Optimal et une question unitaire ?", a: "Non, ce n'est pas nécessaire. L'abonnement Optimal inclut déjà une question par période d'abonnement. Si vous avez besoin de poser des questions supplémentaires, elles sont disponibles à 9,90 € l'unité, directement depuis votre espace abonné." },
+    { q: "Puis-je cumuler les questions incluses dans mon abonnement Optimal ?", a: "Non. La question mensuelle incluse dans l'abonnement Optimal n'est pas cumulable d'un mois sur l'autre. Si vous avez besoin de poser des questions supplémentaires dans le même mois, elles sont disponibles à 9,90 € l'unité." },
+  ]
+
+  const createurItems = [
+    { icon: <Building2 size={18} color="rgba(255,255,255,0.85)" strokeWidth={1.5} />, label: "Création de société (SASU, SAS, SARL, EURL), micro-entreprise, entreprise individuelle" },
+    { icon: <PenLine size={18} color="rgba(255,255,255,0.85)" strokeWidth={1.5} />, label: "Rédaction des statuts et actes constitutifs" },
+    { icon: <Monitor size={18} color="rgba(255,255,255,0.85)" strokeWidth={1.5} />, label: "Formalités d'immatriculation via le guichet unique INPI" },
+    { icon: <Shield size={18} color="rgba(255,255,255,0.85)" strokeWidth={1.5} />, label: "Accompagnement RGPD et conformité" },
+    { icon: <FileText size={18} color="rgba(255,255,255,0.85)" strokeWidth={1.5} />, label: "Contrats et documents métier à tarifs préférentiels" },
+    { icon: <Lock size={18} color="rgba(255,255,255,0.85)" strokeWidth={1.5} />, label: "Conseil en assurances professionnelles (RC Pro, multirisques)" },
+    { icon: <RefreshCw size={18} color="rgba(255,255,255,0.85)" strokeWidth={1.5} />, label: "Modifications statutaires, transfert de siège, dissolution" },
   ]
 
   return (
@@ -69,8 +80,8 @@ export default function TarifsClient() {
               <p style={{color: '#6b7280', fontSize: '12px', marginBottom: '20px'}}>Sans inscription obligatoire</p>
               <div style={{display: 'flex', flexDirection: 'column', gap: '9px', marginBottom: '24px'}}>
                 {[
-                  'Accès à une sélection de modèles de documents en DOCX',
-                  "Autres documents disponibles à l'unité (prix variable selon le document)",
+                  'Accès gratuit à tous les documents disponibles en accès libre, en format DOCX',
+                  "Documents supplémentaires disponibles à l'unité (prix variable selon le document)",
                   'Newsletter juridique gratuite',
                 ].map((item, i) => (
                   <div key={i} style={{display: 'flex', gap: '8px', alignItems: 'flex-start'}}>
@@ -98,8 +109,8 @@ export default function TarifsClient() {
               <div style={{display: 'flex', flexDirection: 'column', gap: '9px', marginBottom: '24px'}}>
                 {[
                   "Accès à toute la bibliothèque de documents en DOCX durant la période d'abonnement",
-                  'Notices juridiques détaillées et fiches pédagogiques',
-                  '1 question incluse · réponse sous 24 à 48h',
+                  'Notices explicatives des documents et fiches pédagogiques de vulgarisation juridique',
+                  '1 question incluse par mois · réponse sous 24 à 48h · non cumulable',
                   '9,90 € par question supplémentaire',
                   'Newsletter spéciale abonnés',
                   'Support prioritaire par mail',
@@ -163,17 +174,9 @@ export default function TarifsClient() {
               <button style={{padding: '12px 28px', borderRadius: '8px', border: '2px solid white', background: 'white', color: '#0f2d6e', fontSize: '13px', fontWeight: '700', cursor: 'pointer'}}>Nous contacter</button>
             </div>
             <div style={{flex: '0 0 40%', display: 'flex', flexDirection: 'column', gap: '12px'}}>
-              {[
-                { icon: '🏢', label: "Création de société (SASU, SAS, SARL, EURL), micro-entreprise, entreprise individuelle" },
-                { icon: '📝', label: 'Rédaction des statuts et actes constitutifs' },
-                { icon: '🖥️', label: "Formalités d'immatriculation via le guichet unique INPI" },
-                { icon: '🛡️', label: 'Accompagnement RGPD et conformité' },
-                { icon: '📄', label: 'Contrats et documents métier à tarifs préférentiels' },
-                { icon: '🔒', label: 'Conseil en assurances professionnelles (RC Pro, multirisques)' },
-                { icon: '🔄', label: 'Modifications statutaires, transfert de siège, dissolution' },
-              ].map((item, i) => (
+              {createurItems.map((item, i) => (
                 <div key={i} style={{display: 'flex', gap: '10px', alignItems: 'flex-start'}}>
-                  <span style={{fontSize: '16px', flexShrink: 0}}>{item.icon}</span>
+                  <div style={{flexShrink: 0, marginTop: '1px'}}>{item.icon}</div>
                   <span style={{color: 'rgba(255,255,255,0.85)', fontSize: '12px', lineHeight: '1.5'}}>{item.label}</span>
                 </div>
               ))}
@@ -199,7 +202,7 @@ export default function TarifsClient() {
           {/* NOTE BAS DE PAGE */}
           <div style={{borderTop: '1px solid #e5e7eb', marginTop: '3rem', paddingTop: '1.5rem'}}>
             <p style={{color: '#9ca3af', fontSize: '11px', lineHeight: '1.7', textAlign: 'center', maxWidth: '700px', margin: '0 auto'}}>
-              L'abonnement Optimal est souscrit pour une durée minimale de 12 mois. À l'issue de cette période, il se renouvelle automatiquement sauf résiliation adressée par écrit au moins 30 jours avant l'échéance. Le tarif mensuel affiché en mode annuel est calculé sur la base du paiement annuel de 147,97 €.
+              L'abonnement Optimal est souscrit pour une durée minimale de 12 mois. À l'issue de cette période, il se renouvelle automatiquement sauf résiliation adressée par écrit au moins 30 jours avant l'échéance. Le tarif mensuel affiché en mode annuel est calculé sur la base du paiement annuel de 147,97 €. La question mensuelle incluse est non cumulable d'un mois sur l'autre.
             </p>
           </div>
 

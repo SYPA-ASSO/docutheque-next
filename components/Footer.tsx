@@ -1,3 +1,5 @@
+import { Scale } from 'lucide-react'
+
 export default function Footer() {
   return (
     <>
@@ -18,7 +20,7 @@ export default function Footer() {
           <div>
             <div style={{display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px'}}>
               <div style={{width: '24px', height: '24px', background: '#1a4fba', borderRadius: '5px', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-                <span style={{color: 'white', fontSize: '12px'}}>⚖</span>
+                <Scale size={14} color="white" strokeWidth={1.5} />
               </div>
               <span style={{fontSize: '13px', fontWeight: '600', color: 'white'}}>Docuthèque et assistance par le cabinet Cholez-Pagotto</span>
             </div>

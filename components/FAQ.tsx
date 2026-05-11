@@ -9,8 +9,8 @@ export default function FAQ() {
       a: "Oui. Chaque modèle est rédigé par un juriste et mis à jour dans les meilleurs délais dès qu'une loi, un décret ou une jurisprudence modifie le cadre applicable."
     },
     {
-      q: "Quelle est la différence entre un modèle gratuit et un modèle Premium ?",
-      a: "L'accès gratuit donne accès à une sélection de modèles essentiels en format DOCX. L'abonnement Premium débloque la bibliothèque complète, les notices juridiques détaillées, les fiches pédagogiques et une question incluse sous 24 à 48h."
+      q: "Quelle est la différence entre un modèle gratuit et un modèle Optimal ?",
+      a: "L'accès gratuit donne accès à tous les documents disponibles en accès libre, en format DOCX. L'abonnement Optimal débloque la bibliothèque complète, les notices explicatives des documents, les fiches pédagogiques de vulgarisation juridique et une question incluse par mois sous 24 à 48h."
     },
     {
       q: "Puis-je modifier les documents après téléchargement ?",
@@ -25,8 +25,8 @@ export default function FAQ() {
       a: "Non. Chaque modèle est rédigé et relu par un juriste. Il n'y a aucune intervention de l'IA dans la rédaction de nos documents. L'IA peut halluciner. Nos juristes, non."
     },
     {
-      q: "Comment fonctionne l'abonnement Premium ?",
-      a: "L'abonnement Premium est souscrit pour une durée minimale de 12 mois à 14,90 €/mois, ou 147,97 €/an avec 2 mois offerts. À l'issue de la période, il se renouvelle automatiquement sauf résiliation adressée par écrit au moins 30 jours avant l'échéance."
+      q: "Comment fonctionne l'abonnement Optimal ?",
+      a: "L'abonnement Optimal est souscrit pour une durée minimale de 12 mois à 14,90 €/mois, ou 147,97 €/an avec 2 mois offerts. Il inclut 1 question par mois, non cumulable, avec réponse sous 24 à 48h. À l'issue de la période, il se renouvelle automatiquement sauf résiliation adressée par écrit au moins 30 jours avant l'échéance."
     },
     {
       q: "Pouvez-vous m'orienter vers un avocat ?",
