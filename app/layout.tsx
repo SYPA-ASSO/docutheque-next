@@ -14,11 +14,11 @@ export default function RootLayout({
   return (
     <html lang="fr" className={inter.className}>
       <head>
-        <title>Docutheque et assistance : documents juridiques prets a l'emploi et informations pedagogiques, vos droits expliques sans jargon</title>
-        <meta name="description" content="Modeles de documents juridiques et administratifs conformes au droit en vigueur : contrats, mises en demeure, RGPD, RH, recouvrement, statuts de societe. Telechargez en DOCX. Vos droits expliques sans jargon par un juriste dedie." />
-        <meta name="keywords" content="modeles de documents, documents pedagogiques, documents juridiques, contrats, mise en demeure, RGPD, documents RH, statuts SASU, statuts SARL, auto-entrepreneur, micro entreprise, juriste en ligne, assistance juridique, formalites, creation d'entreprise, information juridique, droit du travail, protection juridique" />
-        <meta property="og:title" content="Docutheque et informations sur vos droits. Juriste et formaliste dedie" />
-        <meta property="og:description" content="Modeles de documents, informations administratives et juridiques pedagogiques, juriste formaliste et conseil en assurances dedie." />
+        <title>Docuthèque : documents juridiques prêts à l'emploi et informations pédagogiques, vos droits expliqués sans jargon</title>
+        <meta name="description" content="Modèles de documents juridiques et administratifs conformes au droit en vigueur : contrats, mises en demeure, RGPD, RH, recouvrement, statuts de société. Téléchargez en DOCX. Vos droits expliqués sans jargon par un juriste dédié." />
+        <meta name="keywords" content="modèles de documents, documents pédagogiques, documents juridiques, contrats, mise en demeure, RGPD, documents RH, statuts SASU, statuts SARL, auto-entrepreneur, micro-entreprise, juriste en ligne, assistance juridique, formalités, création d'entreprise, information juridique, droit du travail, protection juridique" />
+        <meta property="og:title" content="Docuthèque : documents juridiques et informations sur vos droits. Juriste et formaliste dédié" />
+        <meta property="og:description" content="Modèles de documents, informations administratives et juridiques pédagogiques, juriste formaliste et conseil en assurances dédié." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://docutheque.cholez-pagotto.fr" />
         <meta property="og:locale" content="fr_FR" />
