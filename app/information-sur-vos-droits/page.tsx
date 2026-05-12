@@ -300,11 +300,13 @@ export default function InformationDroits() {
 
 
           {/* ENCART LIMITES IA */}
-          <section style={{background: 'white', border: '2px solid #fecaca', borderRadius: '12px', padding: '1.75rem 2rem'}}>
+          <section style={{background: 'white', border: '1px solid #bfdbfe', borderRadius: '12px', padding: '1.75rem 2rem'}}>
             <div style={{display: 'flex', gap: '16px', alignItems: 'flex-start', marginBottom: '1.25rem'}}>
-              <div style={{flexShrink: 0, width: '40px', height: '40px', background: '#fef2f2', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '20px'}}>⚠️</div>
+              <div style={{flexShrink: 0, width: '40px', height: '40px', background: '#eff6ff', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                <Shield size={20} color="#0f2d6e" strokeWidth={1.5} />
+              </div>
               <div>
-                <p style={{color: '#dc2626', fontSize: '14px', fontWeight: '700', margin: '0 0 4px'}}>Pourquoi ne pas se fier à une IA pour vos questions juridiques ?</p>
+                <p style={{color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: '0 0 4px'}}>Pourquoi ne pas se fier à une IA pour vos questions juridiques ?</p>
                 <p style={{color: '#6b7280', fontSize: '13px', margin: 0, lineHeight: '1.6'}}>Les outils d'intelligence artificielle (ChatGPT, Gemini, Copilot...) sont souvent consultés pour des questions de droit. Leurs réponses paraissent confiantes et structurées. Pourtant, leurs limites en matière juridique sont réelles et peuvent avoir des conséquences sérieuses.</p>
               </div>
             </div>
@@ -327,15 +329,15 @@ export default function InformationDroits() {
                   desc: "Si une IA vous donne une réponse erronée et que vous agissez sur cette base — délai raté, mauvaise procédure, droit non exercé — vous n'avez aucun recours. Un juriste est responsable de ses réponses."
                 },
               ].map((item, i) => (
-                <div key={i} style={{background: '#fef2f2', borderRadius: '8px', padding: '1rem'}}>
-                  <p style={{color: '#dc2626', fontSize: '12px', fontWeight: '700', margin: '0 0 6px'}}>{item.titre}</p>
+                <div key={i} style={{background: '#f0f4ff', borderRadius: '8px', padding: '1rem'}}>
+                  <p style={{color: '#0f2d6e', fontSize: '12px', fontWeight: '700', margin: '0 0 6px'}}>{item.titre}</p>
                   <p style={{color: '#6b7280', fontSize: '12px', lineHeight: '1.6', margin: 0}}>{item.desc}</p>
                 </div>
               ))}
             </div>
             <div style={{background: '#f8fafc', borderRadius: '8px', padding: '12px 16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '16px', flexWrap: 'wrap'}}>
               <p style={{color: '#374151', fontSize: '13px', margin: 0, lineHeight: '1.6'}}>
-                <strong>Notre position :</strong> l'IA peut être utile pour une première orientation générale. Elle ne remplace pas une réponse rédigée par un juriste qui connaît les textes en vigueur, les nuances locales et qui engage sa responsabilité.
+                <strong>Notre position :</strong> l'IA peut être utile pour une première approche. Elle ne remplace pas une réponse rédigée par un juriste en veille permanente sur l'actualité législative et jurisprudentielle, qui identifie les règles applicables en tenant compte des éléments spécifiques de votre situation.
               </p>
               <a href="/blog/lintelligence-artificielle-en-droit-une-fausse-bonne-idee" style={{display: 'inline-block', background: '#0f2d6e', color: 'white', padding: '9px 18px', borderRadius: '8px', fontSize: '12px', fontWeight: '700', textDecoration: 'none', whiteSpace: 'nowrap', flexShrink: 0}}>
                 Lire notre analyse →
