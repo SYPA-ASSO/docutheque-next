@@ -176,11 +176,6 @@ export default function TarifsClient() {
               <p style={{color: 'rgba(255,255,255,0.85)', fontSize: '0.875rem', lineHeight: '1.8', marginBottom: '20px'}}>
                 La création de votre structure est offerte. Vous ne payez que les frais imposés par les organismes tiers : greffe et publication au journal d'annonces légales. Statuts, formalités et accompagnement juriste sont inclus. En complément, nos packs de documents métier (contrats, CGV, RGPD, documents RH...) sont disponibles à tarifs préférentiels pour vous équiper dès le lancement de votre activité. Sur devis personnalisé, sans engagement.
               </p>
-              <div style={{display: 'flex', justifyContent: 'center', marginBottom: '20px'}}>
-                <a href="/contact" style={{display: 'inline-block', background: 'white', color: '#0f2d6e', padding: '12px 32px', borderRadius: '8px', fontSize: '13px', fontWeight: '700', textDecoration: 'none'}}>
-                  Nous contacter pour un devis →
-                </a>
-              </div>
               <div style={{display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '24px', flexWrap: 'wrap'}}>
                 <div style={{flex: 1, background: 'rgba(255,255,255,0.1)', borderRadius: '10px', padding: '12px 16px'}}>
                   <p style={{color: 'rgba(255,255,255,0.6)', fontSize: '11px', lineHeight: '1.7', margin: 0}}>
