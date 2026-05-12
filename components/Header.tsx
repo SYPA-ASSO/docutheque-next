@@ -1,5 +1,5 @@
 import { Scale } from 'lucide-react'
- 
+
 export default function Header() {
   return (
     <>
@@ -17,7 +17,7 @@ export default function Header() {
           </a>
         </div>
       </div>
- 
+
       {/* HEADER PRINCIPAL */}
       <header style={{background: 'white', borderBottom: '1px solid #e5e7eb', padding: '0', position: 'sticky', top: 0, zIndex: 100}}>
         <div style={{maxWidth: '1200px', margin: '0 auto', padding: '0 2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '56px'}}>
@@ -35,6 +35,7 @@ export default function Header() {
             <a href="/catalogue" style={{color: '#374151', fontSize: '13px', textDecoration: 'none', fontWeight: '500'}}>Catalogue</a>
             <a href="/tarifs" style={{color: '#374151', fontSize: '13px', textDecoration: 'none', fontWeight: '500'}}>Tarifs</a>
             <a href="/blog" style={{color: '#374151', fontSize: '13px', textDecoration: 'none', fontWeight: '500'}}>Blog</a>
+            <a href="/contact" style={{color: '#374151', fontSize: '13px', textDecoration: 'none', fontWeight: '500'}}>Contact</a>
             <a href="/connexion" style={{background: '#1a4fba', color: 'white', border: 'none', borderRadius: '6px', padding: '7px 16px', fontSize: '12px', fontWeight: '500', cursor: 'pointer', textDecoration: 'none', display: 'inline-block'}}>
               Mon espace client / Mon inscription
             </a>
