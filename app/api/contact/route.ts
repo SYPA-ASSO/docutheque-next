@@ -181,9 +181,25 @@ export async function POST(request: NextRequest) {
     <p>Bonjour ${nomSafe},</p>
     <p>Nous avons bien reçu votre message concernant : <strong>${sujetSafe}</strong>.</p>
     <p>Nous vous répondrons dans les meilleurs délais (24 à 48h ouvrées pour les questions juridiques).</p>
-    <p style="margin-top:24px;">Cordialement,<br><strong>François CHOLEZ</strong><br>Cabinet CHOLEZ PAGOTTO</p>
+    <p style="margin-top:24px;">Cordialement,</p>
+    <p style="margin:8px 0 0;line-height:1.7;">
+      <strong>François CHOLEZ</strong><br>
+      Juriste · Formaliste · Conseil en assurances<br><br>
+      <strong>Cabinet CHOLEZ PAGOTTO</strong><br>
+      12 rue d'Olima · 88000 Épinal<br>
+      <a href="https://cholez-pagotto.fr" style="color:#1a4fba;text-decoration:none;">cholez-pagotto.fr</a>
+    </p>
+    <p style="margin:14px 0 0;font-size:12px;color:#6b7280;line-height:1.7;">
+      Formaliste membre du CRFF (Conseil Représentatif des Formalistes de France)<br>
+      Courtier en assurances et réassurances<br>
+      Immatriculé à l'ORIAS n°26003943 · <a href="https://www.orias.fr" target="_blank" style="color:#6b7280;">www.orias.fr</a><br>
+      Sous contrôle de l'ACPR · 4 place de Budapest, 75436 Paris Cedex 09
+    </p>
     <hr style="border:none;border-top:1px solid #e5e7eb;margin:20px 0;">
-    <p style="color:#9ca3af;font-size:11px;">Cet email de confirmation est automatique. Ne pas y répondre directement — utilisez le <a href="https://cholez-pagotto.fr/contact" style="color:#9ca3af;">formulaire de contact</a> pour toute nouvelle demande.</p>
+    <p style="color:#9ca3af;font-size:11px;line-height:1.6;">
+      Les informations échangées dans le cadre de cette correspondance sont confidentielles et destinées exclusivement à leur destinataire.<br>
+      Cet email est automatique — pour toute nouvelle demande, utilisez le <a href="https://cholez-pagotto.fr/contact" style="color:#9ca3af;">formulaire de contact</a>.
+    </p>
   </div>
 </body>
 </html>`
