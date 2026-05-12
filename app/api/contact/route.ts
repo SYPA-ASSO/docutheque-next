@@ -133,7 +133,7 @@ export async function POST(request: NextRequest) {
       body: JSON.stringify({
         sender: {
           name: 'Cabinet CHOLEZ PAGOTTO',
-          email: 'contact@fcfbl.net',
+          email: 'contact@cholez-pagotto.fr',
         },
         to: [
           { email: 'contact@cholez-pagotto.fr', name: 'François CHOLEZ' },
@@ -183,7 +183,7 @@ export async function POST(request: NextRequest) {
       body: JSON.stringify({
         sender: {
           name: 'Cabinet CHOLEZ PAGOTTO',
-          email: 'contact@fcfbl.net',
+          email: 'contact@cholez-pagotto.fr',
         },
         to: [{ email: emailSafe, name: nomSafe }],
         subject: 'Votre message a bien été reçu — Cabinet Cholez-Pagotto',
