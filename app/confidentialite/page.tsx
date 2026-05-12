@@ -31,7 +31,7 @@ export default function Confidentialite() {
           {/* INTRO */}
           <div style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.75rem', marginBottom: '2rem'}}>
             <p style={{color: '#374151', fontSize: '13px', lineHeight: '1.9', margin: 0}}>
-              Le cabinet Cholez-Pagotto, service commercial de <strong>FCFBL ACTIVITIES</strong>, représenté par François CHOLEZ PAGOTTO (ci-après « Nous » ou « le Responsable de traitement »), accorde une importance primordiale à la protection de vos données personnelles. La présente politique s'applique à l'ensemble des traitements effectués via la plateforme <strong>Docuthèque</strong> accessible à l'adresse <strong>docutheque.cholez-pagotto.fr</strong>, conformément au Règlement (UE) 2016/679 du 27 avril 2016 (RGPD) et à la loi n° 78-17 du 6 janvier 1978 modifiée.
+              Le cabinet Cholez-Pagotto, service commercial de <strong>FCFBL ACTIVITIES</strong>, représenté par François CHOLEZ (ci-après « Nous » ou « le Responsable de traitement »), accorde une importance primordiale à la protection de vos données personnelles. La présente politique s'applique à l'ensemble des traitements effectués via la plateforme <strong>Docuthèque</strong> accessible à l'adresse <strong>cholez-pagotto.fr</strong>, conformément au Règlement (UE) 2016/679 du 27 avril 2016 (RGPD) et à la loi n° 78-17 du 6 janvier 1978 modifiée.
             </p>
           </div>
 
@@ -43,11 +43,11 @@ export default function Confidentialite() {
                   <p><strong>FCFBL ACTIVITIES CHOLEZ François E.I.</strong></p>
                   <p>SIREN : 490 889 516 00053</p>
                   <p>Siège social : 12 rue d'Olima, 88000 ÉPINAL</p>
-                  <p>Représentant : François CHOLEZ PAGOTTO</p>
+                  <p>Représentant : François CHOLEZ</p>
                   <p style={{marginTop: '10px'}}>
-                    <strong>Délégué à la protection des données (DPO) :</strong> François CHOLEZ PAGOTTO<br />
+                    <strong>Délégué à la protection des données (DPO) :</strong> François CHOLEZ<br />
                     Contact : via le formulaire disponible à l'adresse{' '}
-                    <a href="/contact" style={{color: '#1a4fba', textDecoration: 'none'}}>docutheque.cholez-pagotto.fr/contact</a>
+                    <a href="/contact" style={{color: '#1a4fba', textDecoration: 'none'}}>cholez-pagotto.fr/contact</a>
                   </p>
                 </div>
               )

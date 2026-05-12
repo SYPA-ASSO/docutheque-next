@@ -215,7 +215,7 @@ export default function Newsletter() {
                 },
                 {
                   q: "Les informations juridiques sont-elles rédigées par une IA ?",
-                  r: "Non. Les contenus juridiques sont rédigés et relus par François CHOLEZ PAGOTTO, juriste et formaliste. Aucune IA n'intervient dans leur rédaction."
+                  r: "Non. Les contenus juridiques sont rédigés et relus par François CHOLEZ, juriste et formaliste. Aucune IA n'intervient dans leur rédaction."
                 },
                 {
                   q: "Puis-je me désinscrire à tout moment ?",
