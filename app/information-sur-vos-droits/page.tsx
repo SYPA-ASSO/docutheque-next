@@ -86,38 +86,38 @@ const schema = {
 const exemples = [
   {
     domaine: "Droit du travail",
-    question: "Mon employeur peut-il modifier mon contrat de travail sans mon accord ?",
-    contexte: "Changement de poste, de lieu de travail, de salaire ou d'horaires imposé unilatéralement.",
+    question: "Mon patron veut changer mon poste et mes horaires sans me demander mon avis. Il dit que je suis obligé d'accepter. Est-ce qu'il a le droit ?",
+    contexte: "Modification du contrat de travail imposée unilatéralement par l'employeur.",
     color: "#0f2d6e",
   },
   {
     domaine: "Droit du travail",
-    question: "Comment se passe une rupture conventionnelle et quels sont mes droits ?",
-    contexte: "Conditions, indemnités, délais de rétractation, accès à l'assurance chômage.",
+    question: "Mon employeur me propose une rupture conventionnelle. Je ne sais pas si c'est intéressant pour moi, ce que je vais toucher, ni si j'aurai droit au chômage.",
+    contexte: "Rupture conventionnelle : conditions, indemnités et accès à l'assurance chômage.",
     color: "#1a4fba",
   },
   {
     domaine: "Droit immobilier",
-    question: "Mon propriétaire peut-il retenir tout ou partie de mon dépôt de garantie ?",
-    contexte: "Délais légaux, justifications obligatoires, recours en cas de retenue abusive.",
+    question: "Je viens de quitter mon appartement. Mon propriétaire refuse de me rendre ma caution en disant qu'il y a des dégâts. Je ne suis pas d'accord. Qu'est-ce que je peux faire ?",
+    contexte: "Retenue sur dépôt de garantie contestée par le locataire à la sortie du logement.",
     color: "#0f2d6e",
   },
   {
     domaine: "Droit de la consommation",
-    question: "Comment obtenir le remboursement d'un achat en ligne non reçu ou défectueux ?",
-    contexte: "Droit de rétractation, garantie légale de conformité, recours contre le vendeur.",
+    question: "J'ai commandé un produit sur internet, je ne l'ai jamais reçu et le vendeur ne répond plus à mes messages. Comment est-ce que je peux me faire rembourser ?",
+    contexte: "Achat en ligne non livré : recours contre le vendeur et droit au remboursement.",
     color: "#1a4fba",
   },
   {
     domaine: "Droit social",
-    question: "Quels sont mes droits après un accident du travail ?",
-    contexte: "Déclaration, indemnisation, faute inexcusable, protection contre le licenciement.",
+    question: "Je me suis blessé au travail la semaine dernière. Je ne sais pas ce que je dois faire, ce que je vais toucher et si mon employeur peut me licencier pendant mon arrêt.",
+    contexte: "Accident du travail : déclaration, indemnisation et protection contre le licenciement.",
     color: "#0f2d6e",
   },
   {
     domaine: "Droit des assurances",
-    question: "Mon assureur peut-il refuser de prendre en charge mon sinistre ?",
-    contexte: "Exclusions de garanties, obligations d'information, recours amiable et contentieux.",
+    question: "Mon assurance refuse de rembourser mon sinistre en invoquant une clause que je ne comprends pas. Est-ce que ce refus est justifié et qu'est-ce que je peux faire ?",
+    contexte: "Refus de prise en charge d'un sinistre : exclusions de garantie et recours possibles.",
     color: "#1a4fba",
   },
 ]
@@ -145,7 +145,7 @@ const etapes = [
 
 const garanties = [
   "Réponse rédigée par un juriste — 100% humain, aucune IA",
-  "Délai de 24 à 48h ouvrées (obligation de moyen)",
+  "Délai de 24 à 48h ouvrées",
   "Réponse en langage clair, sans jargon",
   "Références juridiques précises (articles de loi, jurisprudences)",
   "Confidentialité totale de vos échanges",
