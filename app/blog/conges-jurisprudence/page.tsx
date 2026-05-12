@@ -15,7 +15,7 @@ const schema = {
       "headline": "Congés payés : obligations de l'employeur et droit du salarié",
       "description": "L'employeur doit démontrer qu'il a effectivement permis au salarié de prendre ses congés payés. Analyse de l'arrêt de la Cour de cassation du 9 avril 2025.",
       "image": "https://www.cholez-pagotto.fr/wp-content/uploads/2016/10/Conges-jurisprudence-scaled.jpg",
-      "datePublished": "6 mai 2025",
+      "datePublished": "2025-05-06",
       "author": {
         "@type": "Person",
         "name": "François CHOLEZ",
@@ -251,7 +251,7 @@ export default function ArticleCongesPayes() {
             <div style={{background: '#0f2d6e', borderRadius: '12px', padding: '1.25rem'}}>
               <p style={{color: 'white', fontSize: '13px', fontWeight: '700', margin: '0 0 8px'}}>Une question juridique ?</p>
               <p style={{color: 'rgba(255,255,255,0.8)', fontSize: '12px', lineHeight: '1.6', margin: '0 0 10px'}}>Un juriste vous répond par écrit sous 24 à 48h. 47 € à l'unité, sans abonnement.</p>
-              <p style={{color: 'rgba(255,255,255,0.6)', fontSize: '11px', lineHeight: '1.6', margin: '0 0 14px', fontStyle: 'italic'}}>Ce service constitue une information juridique au sens de la loi n°71-1130 du 31 décembre 1971 et ne constitue pas une consultation juridique personnalisée.</p>
+              <p style={{color: 'rgba(255,255,255,0.6)', fontSize: '11px', lineHeight: '1.6', margin: '0 0 14px', fontStyle: 'italic'}}>Ce service constitue une information juridique au sens de la loi n°71-1130 du 31 décembre 1971 et ne constitue pas une consultation juridique personnalisée. La réponse apportée vous permettra de mieux comprendre vos droits, d'identifier les règles juridiques applicables à votre situation et de prendre vos décisions en toute connaissance de cause. Le cas échéant, vous serez orienté vers le professionnel du droit compétent.</p>
               <a href="/information-sur-vos-droits" style={{display: 'block', background: 'white', color: '#0f2d6e', padding: '10px', borderRadius: '8px', fontSize: '12px', fontWeight: '700', textDecoration: 'none', textAlign: 'center'}}>
                 Poser ma question →
               </a>
