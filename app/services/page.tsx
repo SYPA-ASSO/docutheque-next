@@ -42,9 +42,9 @@ const services = [
     badge: "ACCÈS LIBRE & ABONNEMENT",
     icon: <FileText size={22} color="#1a4fba" strokeWidth={1.5} />,
     titre: "Bibliothèque de documents juridiques",
-    accroche: "Des documents rédigés par un juriste, prêts à l'emploi, mis à jour dès que la législation évolue.",
+    accroche: "Des modèles de documents rédigés par un juriste, accompagnés de notices explicatives pour les adapter à votre situation.",
     pourQui: "Particuliers, professionnels, associations, dirigeants d'entreprise.",
-    description: "La bibliothèque Docuthèque regroupe des modèles de documents juridiques en format DOCX, rédigés par un juriste et accompagnés de notices explicatives. Certains documents sont disponibles en accès libre. L'Abonnement Optimal donne accès à l'intégralité de la bibliothèque, incluant des fiches pédagogiques de vulgarisation juridique et une question mensuelle à un juriste.",
+    description: "La bibliothèque Docuthèque regroupe des modèles de documents juridiques en format DOCX, rédigés par un juriste et accompagnés de notices explicatives. Certains documents sont disponibles en accès libre. L'Abonnement Optimal donne accès à l'intégralité de la bibliothèque, incluant des fiches pédagogiques de vulgarisation juridique et une question mensuelle d'information juridique rédigée par un juriste.",
     comprend: [
       "Documents DOCX téléchargeables immédiatement",
       "Notices explicatives rédigées par un juriste",
@@ -82,11 +82,11 @@ const services = [
     badge: "ACCOMPAGNEMENT FORMALISTE",
     icon: <Building2 size={22} color="#1a4fba" strokeWidth={1.5} />,
     titre: "Accompagnement création d'entreprise",
-    accroche: "De l'idée à l'immatriculation — et bien au-delà. La création offerte, hors frais de greffe et JAL.",
+    accroche: "De l'idée à l'immatriculation — et bien au-delà. La création offerte, hors frais de greffe et de publication légale.",
     pourQui: "Porteurs de projet, créateurs d'entreprise, entrepreneurs.",
-    description: "Créer une entreprise implique des choix juridiques structurants : forme sociale, rédaction des statuts, formalités d'immatriculation, conformité initiale. Le cabinet accompagne les porteurs de projet de la phase de réflexion à l'obtention du Kbis, en assurant la rédaction des statuts, la réalisation des formalités via le guichet unique INPI et l'accompagnement RGPD et assurantiel dès le lancement.",
+    description: "Créer une entreprise implique des choix juridiques structurants : forme juridique, rédaction des statuts, formalités d'immatriculation, conformité initiale. Le cabinet accompagne les porteurs de projet de la phase de réflexion à l'obtention du Kbis, en assurant la rédaction des statuts, la réalisation des formalités via le guichet unique INPI et l'accompagnement RGPD et assurantiel dès le lancement.",
     comprend: [
-      "Conseil sur le choix de la forme juridique adaptée à votre projet",
+      "Orientation sur le choix de la forme juridique adaptée à votre projet (SASU, SARL, micro-entreprise...)",
       "Rédaction des statuts et actes constitutifs",
       "Réalisation des formalités d'immatriculation (guichet unique INPI)",
       "Accompagnement RGPD et conformité dès le lancement",
@@ -94,7 +94,7 @@ const services = [
       "Conseil en assurances professionnelles (RC Pro, multirisques)",
       "Prise en charge des modifications statutaires ultérieures",
     ],
-    tarif: "Création offerte (hors frais de greffe et JAL) · Sur devis personnalisé",
+    tarif: "Création offerte (hors frais de greffe et journal d'annonces légales) · Sur devis personnalisé",
     lien: "/accompagnement-professionnels",
     disponible: false,
     cta: "Nous contacter",
@@ -151,7 +151,7 @@ const services = [
     titre: "DPO externalisé",
     accroche: "Les obligations du DPO sans le coût d'un poste dédié. Une expertise en veille permanente.",
     pourQui: "Organismes publics, structures traitant des données sensibles à grande échelle, TPE, associations.",
-    description: "Le Délégué à la Protection des Données (DPO) est obligatoire pour certaines organisations (art. 37 RGPD) et fortement recommandé pour les autres. L'externalisation du DPO permet d'accéder à une expertise juridique et technique en protection des données, en veille permanente sur l'actualité réglementaire et les décisions de la CNIL, sans les contraintes d'un recrutement interne.",
+    description: "Le Délégué à la Protection des Données (DPO) est obligatoire pour certaines organisations (art. 37 RGPD) et fortement recommandé pour les autres. L'externalisation du DPO permet d'accéder à une expertise juridique et réglementaire en protection des données, en veille permanente sur l'actualité réglementaire et les décisions de la CNIL, sans les contraintes d'un recrutement interne.",
     comprend: [
       "Prise en charge du mandat de DPO au sens de l'art. 37 RGPD",
       "Point de contact désigné auprès de la CNIL",
@@ -174,17 +174,17 @@ const services = [
     titre: "Conseil en assurances",
     accroche: "Un courtier immatriculé à l'ORIAS pour vous orienter vers les garanties adaptées à votre situation.",
     pourQui: "Particuliers, associations, entreprises, professions libérales, structures ESS.",
-    description: "Le cabinet exerce l'activité de courtage en assurances et réassurances, sous le numéro ORIAS 26003943, sous contrôle de l'ACPR. À ce titre, il accompagne particuliers, professionnels et associations dans l'analyse de leurs besoins en couverture assurantielle, la comparaison des offres du marché et la souscription de contrats adaptés à leur situation.",
+    description: "Le cabinet exerce l'activité de courtage en assurances et réassurances, sous le numéro ORIAS 26003943, sous contrôle de l'ACPR. À ce titre, il accompagne particuliers, professionnels et associations dans l'identification de leurs besoins en assurance, la comparaison des offres du marché et la souscription de contrats adaptés à leur situation.",
     comprend: [
       "Analyse des besoins et des risques à couvrir",
-      "Comparaison des offres du marché (RC Pro, multirisques, assurance vie...)",
-      "Conseil indépendant sans lien d'exclusivité avec un assureur",
+      "Comparaison des offres du marché (RC Pro, multirisques, assurance vie, prévoyance...)",
+      "Conseil indépendant de tout assureur — aucun lien d'exclusivité",
       "Accompagnement à la souscription et suivi du contrat",
-      "Assistance en cas de sinistre et de litige avec l'assureur",
+      "Accompagnement en cas de sinistre et de litige avec l'assureur",
       "Conseil en assurances professionnelles pour les créateurs d'entreprise",
       "Couvertures spécifiques pour les structures associatives et ESS",
     ],
-    tarif: "Gratuit (rémunération par commissions versées par les assureurs)",
+    tarif: "Sans honoraires directs · Rémunération par commissions versées par les assureurs, dont vous êtes informé avant toute souscription (obligation DDA, art. L.521-2 Code des assurances)",
     lien: "/contact",
     disponible: true,
     cta: "Nous contacter",
@@ -214,10 +214,10 @@ export default function Services() {
               NOS SERVICES
             </span>
             <h1 style={{color: 'white', fontSize: '2rem', fontWeight: '700', margin: '0 0 16px', lineHeight: '1.3', maxWidth: '620px'}}>
-              Une offre complète de services juridiques, formalistes et assurantiels.
+              Une offre complète de services juridiques, formalistes et d'assurances.
             </h1>
             <p style={{color: 'rgba(255,255,255,0.8)', fontSize: '0.95rem', lineHeight: '1.8', margin: '0 0 28px', maxWidth: '580px'}}>
-              Le Cabinet Cholez-Pagotto accompagne particuliers, professionnels, associations et structures ESS dans la compréhension de leurs droits, la sécurisation de leurs activités et la réalisation de leurs formalités — à distance, avec rigueur, sans intermédiaire inutile.
+              Le Cabinet Cholez-Pagotto accompagne particuliers, professionnels, associations et structures ESS dans la compréhension de leurs droits, la sécurisation de leurs activités et la réalisation de leurs formalités — à distance, avec rigueur et sans jargon.
             </p>
             <div style={{display: 'flex', gap: '10px', flexWrap: 'wrap'}}>
               {['Juriste', 'Formaliste membre du CRFF', 'Courtier ORIAS 26003943', '100% distanciel'].map((tag, i) => (
