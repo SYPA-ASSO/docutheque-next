@@ -3,20 +3,20 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   async redirects() {
     return [
-      // Pages de services → Tarifs
+      // Pages de services
       {
         source: '/juriste-formaliste-vos-formalites',
-        destination: '/tarifs',
+        destination: '/accompagnement-professionnels',
         permanent: true,
       },
       {
         source: '/gestion-paie-externalise',
-        destination: '/tarifs',
+        destination: '/accompagnement',
         permanent: true,
       },
       {
         source: '/securite-sociale',
-        destination: '/tarifs',
+        destination: '/information-sur-vos-droits',
         permanent: true,
       },
       {
@@ -47,20 +47,8 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
-        source: '/mentions-legales',
-        destination: '/mentions-legales',
-        permanent: true,
-      },
-      {
         source: '/declaration-accessibilite',
         destination: '/mentions-legales',
-        permanent: true,
-      },
-
-      // À propos
-      {
-        source: '/a-propos',
-        destination: '/a-propos',
         permanent: true,
       },
 
@@ -80,6 +68,11 @@ const nextConfig: NextConfig = {
         destination: '/blog',
         permanent: true,
       },
+      {
+        source: '/uncategorized',
+        destination: '/blog',
+        permanent: true,
+      },
 
       // Tags → Blog
       {
@@ -88,7 +81,7 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
 
-      // Articles de blog — slugs conservés
+      // Articles — slugs conservés (301 → même slug sous /blog/)
       {
         source: '/lintelligence-artificielle-en-droit-une-fausse-bonne-idee',
         destination: '/blog/lintelligence-artificielle-en-droit-une-fausse-bonne-idee',
@@ -124,9 +117,27 @@ const nextConfig: NextConfig = {
         destination: '/blog/cee-revalorisation-remuneration-decret-4-decembre-2024',
         permanent: true,
       },
+
+
+      {
+        source: '/caution-depot-de-garantie-difference-locataire-proprietaire',
+        destination: '/blog/caution-depot-de-garantie-difference-locataire-proprietaire',
+        permanent: true,
+      },
+      {
+        source: '/reforme-des-esat-nouveaux-droits-pour-les-travailleurs-handicapes',
+        destination: '/blog/reforme-des-esat-nouveaux-droits-pour-les-travailleurs-handicapes',
+        permanent: true,
+      },
+      {
+        source: '/conges-jurisprudence',
+        destination: '/blog/conges-jurisprudence',
+        permanent: true,
+      },
+      // Contenu démo WordPress résiduel → homepage
       {
         source: '/luctus-non-massa-fusce-ac-turpis',
-        destination: '/blog',
+        destination: '/blog/apprentissage-evolution-plafond-exoneration-cotisations-salariales',
         permanent: true,
       },
 
