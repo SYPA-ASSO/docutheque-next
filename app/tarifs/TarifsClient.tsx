@@ -131,7 +131,7 @@ export default function TarifsClient() {
               <p style={{fontSize: '11px', fontWeight: '600', color: '#6b7280', letterSpacing: '0.08em', margin: 0}}>INFORMATION SUR VOS DROITS</p>
               <div style={{margin: '12px 0 4px'}}><span style={{fontSize: '2.2rem', fontWeight: '700', color: '#0f2d6e'}}>47 €</span></div>
               <p style={{color: '#6b7280', fontSize: '12px', marginBottom: '8px'}}>À l'unité · sans abonnement · sans engagement</p>
-              <p style={{color: '#9ca3af', fontSize: '11px', marginBottom: '20px', lineHeight: '1.6', fontStyle: 'italic'}}>Ce service constitue une information juridique au sens de la loi n°71-1130 du 31 décembre 1971 et ne constitue pas une consultation juridique personnalisée.</p>
+              <p style={{color: '#9ca3af', fontSize: '11px', marginBottom: '20px', lineHeight: '1.6', fontStyle: 'italic'}}>Ce service constitue une information juridique au sens de la loi n°71-1130 du 31 décembre 1971 et ne constitue pas une consultation juridique personnalisée. La réponse apportée vous permettra de mieux comprendre vos droits, d'identifier les règles juridiques applicables à votre situation et de prendre vos décisions en toute connaissance de cause. Le cas échéant, vous serez orienté vers le professionnel du droit compétent.</p>
               <div style={{display: 'flex', flexDirection: 'column', gap: '9px', marginBottom: '20px'}}>
                 {[
                   'Vous posez votre question en langage courant',
@@ -176,10 +176,15 @@ export default function TarifsClient() {
               <p style={{color: 'rgba(255,255,255,0.85)', fontSize: '0.875rem', lineHeight: '1.8', marginBottom: '20px'}}>
                 La création de votre structure est offerte. Vous ne payez que les frais imposés par les organismes tiers : greffe et publication au journal d'annonces légales. Statuts, formalités et accompagnement juriste sont inclus. En complément, nos packs de documents métier (contrats, CGV, RGPD, documents RH...) sont disponibles à tarifs préférentiels pour vous équiper dès le lancement de votre activité. Sur devis personnalisé, sans engagement.
               </p>
+              <div style={{display: 'flex', justifyContent: 'center', marginBottom: '20px'}}>
+                <a href="/contact" style={{display: 'inline-block', background: 'white', color: '#0f2d6e', padding: '12px 32px', borderRadius: '8px', fontSize: '13px', fontWeight: '700', textDecoration: 'none'}}>
+                  Nous contacter pour un devis →
+                </a>
+              </div>
               <div style={{display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '24px', flexWrap: 'wrap'}}>
                 <div style={{flex: 1, background: 'rgba(255,255,255,0.1)', borderRadius: '10px', padding: '12px 16px'}}>
                   <p style={{color: 'rgba(255,255,255,0.6)', fontSize: '11px', lineHeight: '1.7', margin: 0}}>
-                    Frais indépendants de nos services, réglés directement auprès des organismes concernés : greffe (50 à 250 € selon la forme juridique) et journal d'annonces légales (150 à 200 €).
+                    Frais indépendants de nos services, réglés directement auprès des organismes concernés : greffe (gratuit pour la micro-entreprise, entre 55 et 80 € pour les sociétés) et journal d'annonces légales (entre 120 et 230 € HT selon la forme juridique et le département) — tarifs 2026.
                   </p>
                 </div>
               </div>
