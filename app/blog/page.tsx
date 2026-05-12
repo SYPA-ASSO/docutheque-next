@@ -88,7 +88,7 @@ const articles = [
   {
     slug: 'loi-no-2025-623-du-9-juillet-2025-visant-a-renforcer-la-securite-des-professionnels-de-sante',
     titre: "Loi visant à renforcer la sécurité des professionnels de santé",
-    resume: "La loi n°2025-623 du 9 juillet 2025 renforce la protection des soignants face aux agressions. Principales mesures et obligations pour les employeurs.",
+    resume: "La loi n°2025-623 du 9 juillet 2025 renforce la protection des soignants face aux agressions. Peines aggravées, aide au dépôt de plainte, rapport annuel obligatoire.",
     date: '10 juillet 2025',
     auteur: 'François CHOLEZ',
     categorie: 'Droit de la santé',
@@ -128,10 +128,6 @@ const articles = [
     tags: ['CEE', 'Animation'],
     tempsLecture: '8 min',
     image: 'https://www.cholez-pagotto.fr/wp-content/uploads/2016/10/CEE-revalorisation-scaled.jpg',
-  },
-],
-    tempsLecture: '15 min',
-    image: 'https://www.cholez-pagotto.fr/wp-content/uploads/2025/07/IA-droit-1536x1280.jpg',
   },
 ]
 
@@ -194,6 +190,7 @@ export default function Blog() {
                       <FileText size={48} color="rgba(255,255,255,0.3)" strokeWidth={1} />
                     </div>
                   )}
+
                   {/* CONTENU */}
                   <div style={{flex: 1, padding: '1.75rem 1.75rem 1.75rem 0'}}>
                     <div style={{display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '10px'}}>
@@ -223,14 +220,15 @@ export default function Blog() {
               ))}
             </div>
 
-            {/* MESSAGE SI PAS D'AUTRES ARTICLES */}
+            {/* CTA NEWSLETTER */}
             <div style={{textAlign: 'center', marginTop: '3rem', background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '12px', padding: '2rem'}}>
-              <p style={{color: '#1e3a5f', fontSize: '14px', fontWeight: '600', margin: '0 0 6px'}}>D'autres articles arrivent prochainement.</p>
-              <p style={{color: '#6b7280', fontSize: '12px', margin: '0 0 16px'}}>Notre blog est mis à jour régulièrement. Abonnez-vous à la newsletter pour ne rien manquer.</p>
+              <p style={{color: '#1e3a5f', fontSize: '14px', fontWeight: '600', margin: '0 0 6px'}}>Le blog est mis à jour régulièrement.</p>
+              <p style={{color: '#6b7280', fontSize: '12px', margin: '0 0 16px'}}>Abonnez-vous à la newsletter pour être informé des nouvelles publications.</p>
               <a href="/newsletter" style={{display: 'inline-block', background: '#0f2d6e', color: 'white', padding: '10px 24px', borderRadius: '8px', fontSize: '12px', fontWeight: '700', textDecoration: 'none'}}>
                 S'inscrire à la newsletter →
               </a>
             </div>
+
           </div>
         </section>
 
