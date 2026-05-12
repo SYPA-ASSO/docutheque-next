@@ -72,7 +72,7 @@ const services = [
       "Délai de 24 à 48h ouvrées",
       "Orientation vers le professionnel compétent si nécessaire",
     ],
-    tarif: "47 € à l'unité · 9,90 € par question supplémentaire (abonnés Optimal)",
+    tarif: "47 € à l'unité · Abonnés Optimal (dès 14,90 €/mois) : 1 question gratuite/mois, puis 9,90 €",
     lien: "/information-sur-vos-droits",
     disponible: true,
     cta: "En savoir plus",
@@ -265,9 +265,12 @@ export default function Services() {
                     <span style={{color: '#6b7280', fontSize: '11px', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.06em'}}>Pour qui :</span>
                     <span style={{color: '#374151', fontSize: '12px'}}>{s.pourQui}</span>
                   </div>
-                  <div style={{marginTop: '12px', background: '#f8fafc', borderRadius: '8px', padding: '10px 14px', display: 'flex', gap: '8px', alignItems: 'flex-start'}}>
+                  <div style={{marginTop: '12px', background: '#f8fafc', borderRadius: '8px', padding: '10px 14px', display: 'flex', gap: '8px', alignItems: 'flex-start', flexWrap: 'wrap'}}>
                     <span style={{color: '#6b7280', fontSize: '11px', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.06em', flexShrink: 0, marginTop: '1px'}}>Tarif :</span>
                     <span style={{color: '#0f2d6e', fontSize: '12px', fontWeight: '600'}}>{s.tarif}</span>
+                    {s.id === 'information-droits' && (
+                      <a href="/tarifs" style={{color: '#1a4fba', fontSize: '12px', textDecoration: 'underline', marginLeft: '4px'}}>Voir les tarifs complets →</a>
+                    )}
                   </div>
                 </div>
 
