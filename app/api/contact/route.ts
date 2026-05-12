@@ -94,30 +94,45 @@ export async function POST(request: NextRequest) {
 <!DOCTYPE html>
 <html lang="fr">
 <head><meta charset="UTF-8"><style>
-  body { font-family: Arial, sans-serif; color: #374151; font-size: 14px; }
-  .header { background: #0f2d6e; color: white; padding: 20px 24px; border-radius: 8px 8px 0 0; }
-  .body { background: #f8fafc; padding: 24px; border: 1px solid #e5e7eb; border-top: none; border-radius: 0 0 8px 8px; }
-  table { width: 100%; border-collapse: collapse; background: white; border-radius: 8px; overflow: hidden; }
+  body { font-family: Arial, sans-serif; color: #374151; font-size: 14px; margin: 0; padding: 0; background: #f8fafc; }
+  .wrapper { max-width: 600px; margin: 0 auto; }
+  .header { background: linear-gradient(135deg, #0f2d6e 0%, #1a4fba 100%); padding: 28px 28px 24px; }
+  .header-top { display: flex; align-items: center; margin-bottom: 16px; }
+  .logo-text { color: white; font-size: 13px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; border-left: 3px solid rgba(255,255,255,0.4); padding-left: 12px; }
+  .header h2 { color: white; font-size: 18px; font-weight: 700; margin: 0 0 6px; }
+  .header p { color: rgba(255,255,255,0.7); font-size: 12px; margin: 0; }
+  .body { background: #f8fafc; padding: 24px 28px; border: 1px solid #e5e7eb; border-top: none; }
+  table { width: 100%; border-collapse: collapse; background: white; border-radius: 8px; overflow: hidden; border: 1px solid #e5e7eb; }
   td { padding: 12px 16px; border-bottom: 1px solid #f3f4f6; vertical-align: top; }
-  td:first-child { color: #6b7280; font-size: 12px; font-weight: 600; width: 160px; text-transform: uppercase; letter-spacing: 0.05em; }
-  .message-box { background: white; border-radius: 8px; padding: 16px; margin-top: 16px; border: 1px solid #e5e7eb; line-height: 1.7; }
-  .footer { color: #9ca3af; font-size: 11px; margin-top: 16px; text-align: center; }
+  td:last-child { border-bottom: none; }
+  td:first-child { color: #6b7280; font-size: 11px; font-weight: 700; width: 140px; text-transform: uppercase; letter-spacing: 0.06em; background: #f8fafc; }
+  .message-label { font-size: 11px; font-weight: 700; color: #6b7280; text-transform: uppercase; letter-spacing: 0.06em; margin: 20px 0 8px; }
+  .message-box { background: white; border-radius: 8px; padding: 16px; border: 1px solid #e5e7eb; line-height: 1.75; }
+  .footer { background: white; border: 1px solid #e5e7eb; border-top: none; border-radius: 0 0 8px 8px; padding: 14px 28px; text-align: center; }
+  .footer p { color: #9ca3af; font-size: 11px; margin: 0; }
 </style></head>
 <body>
-<div class="header">
-  <h2 style="margin:0;font-size:16px;">📬 Nouveau message — Docuthèque</h2>
-  <p style="margin:4px 0 0;opacity:0.8;font-size:12px;">Formulaire de contact · ${new Date().toLocaleDateString('fr-FR', { day: '2-digit', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' })}</p>
-</div>
-<div class="body">
-  <table>
-    <tr><td>Nom</td><td><strong>${nomSafe}</strong></td></tr>
-    <tr><td>Email</td><td><a href="mailto:${emailSafe}" style="color:#1a4fba;">${emailSafe}</a></td></tr>
-    ${telSafe ? `<tr><td>Téléphone</td><td>${telSafe}</td></tr>` : ''}
-    <tr><td>Sujet</td><td><strong>${sujetSafe}</strong></td></tr>
-  </table>
-  <p style="margin:16px 0 8px;font-size:12px;color:#6b7280;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;">Message</p>
-  <div class="message-box">${messageSafe}</div>
-  <p class="footer">Répondre directement à cet email pour contacter ${nomSafe} — ${emailSafe}</p>
+<div class="wrapper">
+  <div class="header">
+    <div class="header-top">
+      <span class="logo-text">Cabinet CHOLEZ PAGOTTO &nbsp;·&nbsp; Docuthèque</span>
+    </div>
+    <h2>Nouveau message depuis le formulaire de contact</h2>
+    <p>Reçu le ${new Date().toLocaleDateString('fr-FR', { weekday: 'long', day: '2-digit', month: 'long', year: 'numeric' })} à ${new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })}</p>
+  </div>
+  <div class="body">
+    <table>
+      <tr><td>Nom</td><td><strong>${nomSafe}</strong></td></tr>
+      <tr><td>Email</td><td><a href="mailto:${emailSafe}" style="color:#1a4fba;text-decoration:none;">${emailSafe}</a></td></tr>
+      ${telSafe ? `<tr><td>Téléphone</td><td>${telSafe}</td></tr>` : ''}
+      <tr><td>Sujet</td><td><strong>${sujetSafe}</strong></td></tr>
+    </table>
+    <p class="message-label">Message</p>
+    <div class="message-box">${messageSafe}</div>
+  </div>
+  <div class="footer">
+    <p>Cabinet CHOLEZ PAGOTTO — FCFBL ACTIVITIES · <a href="https://cholez-pagotto.fr" style="color:#9ca3af;">cholez-pagotto.fr</a></p>
+  </div>
 </div>
 </body>
 </html>`
