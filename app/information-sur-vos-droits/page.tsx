@@ -298,6 +298,51 @@ export default function InformationDroits() {
             </div>
           </section>
 
+
+          {/* ENCART LIMITES IA */}
+          <section style={{background: 'white', border: '2px solid #fecaca', borderRadius: '12px', padding: '1.75rem 2rem'}}>
+            <div style={{display: 'flex', gap: '16px', alignItems: 'flex-start', marginBottom: '1.25rem'}}>
+              <div style={{flexShrink: 0, width: '40px', height: '40px', background: '#fef2f2', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '20px'}}>⚠️</div>
+              <div>
+                <p style={{color: '#dc2626', fontSize: '14px', fontWeight: '700', margin: '0 0 4px'}}>Pourquoi ne pas se fier à une IA pour vos questions juridiques ?</p>
+                <p style={{color: '#6b7280', fontSize: '13px', margin: 0, lineHeight: '1.6'}}>Les outils d'intelligence artificielle (ChatGPT, Gemini, Copilot...) sont souvent consultés pour des questions de droit. Leurs réponses paraissent confiantes et structurées. Pourtant, leurs limites en matière juridique sont réelles et peuvent avoir des conséquences sérieuses.</p>
+              </div>
+            </div>
+            <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', marginBottom: '1.25rem'}}>
+              {[
+                {
+                  titre: "Les hallucinations juridiques",
+                  desc: "Une IA peut citer des articles de loi inexistants, inventer des arrêts de jurisprudence ou donner un numéro de décret erroné — avec la même assurance que pour une information exacte. Impossible à distinguer sans vérification."
+                },
+                {
+                  titre: "Une connaissance figée dans le temps",
+                  desc: "Le droit évolue constamment : nouvelles lois, décrets, revirements de jurisprudence. Une IA a une date de coupure et peut vous citer des textes abrogés ou des règles modifiées sans le signaler."
+                },
+                {
+                  titre: "Aucune prise en compte de votre situation réelle",
+                  desc: "Une IA ignore votre convention collective, votre département, votre type de contrat, votre situation familiale. Elle donne une réponse générique là où le droit exige une analyse contextualisée."
+                },
+                {
+                  titre: "Aucune responsabilité, aucun recours",
+                  desc: "Si une IA vous donne une réponse erronée et que vous agissez sur cette base — délai raté, mauvaise procédure, droit non exercé — vous n'avez aucun recours. Un juriste est responsable de ses réponses."
+                },
+              ].map((item, i) => (
+                <div key={i} style={{background: '#fef2f2', borderRadius: '8px', padding: '1rem'}}>
+                  <p style={{color: '#dc2626', fontSize: '12px', fontWeight: '700', margin: '0 0 6px'}}>{item.titre}</p>
+                  <p style={{color: '#6b7280', fontSize: '12px', lineHeight: '1.6', margin: 0}}>{item.desc}</p>
+                </div>
+              ))}
+            </div>
+            <div style={{background: '#f8fafc', borderRadius: '8px', padding: '12px 16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '16px', flexWrap: 'wrap'}}>
+              <p style={{color: '#374151', fontSize: '13px', margin: 0, lineHeight: '1.6'}}>
+                <strong>Notre position :</strong> l'IA peut être utile pour une première orientation générale. Elle ne remplace pas une réponse rédigée par un juriste qui connaît les textes en vigueur, les nuances locales et qui engage sa responsabilité.
+              </p>
+              <a href="/blog/lintelligence-artificielle-en-droit-une-fausse-bonne-idee" style={{display: 'inline-block', background: '#0f2d6e', color: 'white', padding: '9px 18px', borderRadius: '8px', fontSize: '12px', fontWeight: '700', textDecoration: 'none', whiteSpace: 'nowrap', flexShrink: 0}}>
+                Lire notre analyse →
+              </a>
+            </div>
+          </section>
+
           {/* EXEMPLES DE QUESTIONS */}
           <section>
             <div style={{textAlign: 'center', maxWidth: '700px', margin: '0 auto 2rem'}}>
@@ -337,8 +382,8 @@ export default function InformationDroits() {
                   <p style={{color: 'rgba(255,255,255,0.7)', fontSize: '12px', margin: 0}}>Délai de réponse</p>
                 </div>
                 <div style={{background: 'rgba(255,255,255,0.1)', borderRadius: '10px', padding: '14px 20px', textAlign: 'center'}}>
-                  <p style={{color: 'white', fontSize: '1.8rem', fontWeight: '700', margin: 0}}>9,90 €</p>
-                  <p style={{color: 'rgba(255,255,255,0.7)', fontSize: '12px', margin: 0}}>Abonnés Optimal</p>
+                  <p style={{color: 'white', fontSize: '1.8rem', fontWeight: '700', margin: 0}}>100%</p>
+                  <p style={{color: 'rgba(255,255,255,0.7)', fontSize: '12px', margin: 0}}>Humain · Aucune IA</p>
                 </div>
               </div>
             </div>
