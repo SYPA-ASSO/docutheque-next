@@ -96,11 +96,11 @@ export async function POST(request: NextRequest) {
 <head><meta charset="UTF-8"><style>
   body { font-family: Arial, sans-serif; color: #374151; font-size: 14px; margin: 0; padding: 0; background: #f8fafc; }
   .wrapper { max-width: 600px; margin: 0 auto; }
-  .header { background: linear-gradient(135deg, #0f2d6e 0%, #1a4fba 100%); padding: 28px 28px 24px; }
-  .header-top { display: flex; align-items: center; margin-bottom: 16px; }
-  .logo-text { color: white; font-size: 13px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; border-left: 3px solid rgba(255,255,255,0.4); padding-left: 12px; }
-  .header h2 { color: white; font-size: 18px; font-weight: 700; margin: 0 0 6px; }
-  .header p { color: rgba(255,255,255,0.7); font-size: 12px; margin: 0; }
+  .header { background-color: #0f2d6e; padding: 24px 28px; }
+  .header-top { margin-bottom: 12px; }
+  .logo-text { color: white; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; opacity: 0.75; }
+  .header h2 { color: white; font-size: 17px; font-weight: 700; margin: 0 0 6px; }
+  .header p { color: #93c5fd; font-size: 12px; margin: 0; }
   .body { background: #f8fafc; padding: 24px 28px; border: 1px solid #e5e7eb; border-top: none; }
   table { width: 100%; border-collapse: collapse; background: white; border-radius: 8px; overflow: hidden; border: 1px solid #e5e7eb; }
   td { padding: 12px 16px; border-bottom: 1px solid #f3f4f6; vertical-align: top; }
@@ -131,7 +131,7 @@ export async function POST(request: NextRequest) {
     <div class="message-box">${messageSafe}</div>
   </div>
   <div class="footer">
-    <p>Cabinet CHOLEZ PAGOTTO — FCFBL ACTIVITIES · <a href="https://cholez-pagotto.fr" style="color:#9ca3af;">cholez-pagotto.fr</a></p>
+    <p>Cabinet CHOLEZ PAGOTTO - <a href="https://cholez-pagotto.fr" style="color:#9ca3af;text-decoration:none;">cholez-pagotto.fr</a></p>
   </div>
 </div>
 </body>
@@ -181,7 +181,7 @@ export async function POST(request: NextRequest) {
     <p>Bonjour ${nomSafe},</p>
     <p>Nous avons bien reçu votre message concernant : <strong>${sujetSafe}</strong>.</p>
     <p>Nous vous répondrons dans les meilleurs délais (24 à 48h ouvrées pour les questions juridiques).</p>
-    <p style="margin-top:24px;">Cordialement,<br><strong>François CHOLEZ</strong><br>Cabinet Cholez-Pagotto — FCFBL ACTIVITIES</p>
+    <p style="margin-top:24px;">Cordialement,<br><strong>François CHOLEZ</strong><br>Cabinet CHOLEZ PAGOTTO</p>
     <hr style="border:none;border-top:1px solid #e5e7eb;margin:20px 0;">
     <p style="color:#9ca3af;font-size:11px;">Cet email de confirmation est automatique. Ne pas y répondre directement — utilisez le <a href="https://cholez-pagotto.fr/contact" style="color:#9ca3af;">formulaire de contact</a> pour toute nouvelle demande.</p>
   </div>
