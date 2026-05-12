@@ -13,7 +13,7 @@ const schema = {
     {
       "@type": "Service",
       "name": "Information sur vos droits",
-      "description": "Service d'information juridique rédigée par un juriste sous 24 à 48h ouvrées. Réponse pédagogique et personnalisée sur le droit applicable à votre situation.",
+      "description": "Service d'information juridique rédigée par un juriste sous 24 à 48h ouvrées. Réponse pédagogique sur le droit applicable à votre situation, rédigée en fonction des éléments transmis.",
       "provider": {
         "@type": "Organization",
         "name": "Cabinet Cholez-Pagotto — FCFBL ACTIVITIES",
@@ -131,8 +131,8 @@ const etapes = [
   },
   {
     num: "2",
-    titre: "Un juriste analyse votre dossier",
-    desc: "Votre question est traitée par un juriste qui identifie les textes applicables, analyse votre situation et rédige une réponse pédagogique.",
+    titre: "Un juriste identifie le droit applicable",
+    desc: "Votre question est traitée par un juriste qui identifie les textes et règles juridiques applicables à votre situation, puis rédige une réponse pédagogique avec les références correspondantes.",
     icon: <User size={24} color="#1a4fba" strokeWidth={1.5} />,
   },
   {
@@ -206,7 +206,7 @@ export default function InformationDroits() {
                 Comprenez vos droits.<br />Un juriste vous répond.
               </h1>
               <p style={{color: 'rgba(255,255,255,0.85)', fontSize: '1rem', lineHeight: '1.8', margin: '0 0 24px', maxWidth: '520px'}}>
-                Vous avez une question juridique et vous ne savez pas quels sont vos droits ? Un juriste analyse votre situation et vous apporte une réponse pédagogique, rédigée en langage clair, sous 24 à 48h ouvrées.
+                Vous avez une question juridique et vous ne savez pas quels sont vos droits ? Un juriste identifie les règles et textes applicables à votre situation et vous apporte une réponse pédagogique, rédigée en langage clair, sous 24 à 48h ouvrées.
               </p>
               <div style={{display: 'flex', gap: '12px', flexWrap: 'wrap', alignItems: 'center'}}>
                 <a href="/connexion" style={{display: 'inline-block', background: 'white', color: '#0f2d6e', padding: '13px 28px', borderRadius: '8px', fontSize: '14px', fontWeight: '700', textDecoration: 'none'}}>
@@ -233,7 +233,7 @@ export default function InformationDroits() {
           {/* QU'EST-CE QUE CE SERVICE */}
           <section>
             <div style={{textAlign: 'center', maxWidth: '700px', margin: '0 auto 2.5rem'}}>
-              <h2 style={{color: '#0f2d6e', fontSize: '1.5rem', fontWeight: '700', margin: '0 0 12px'}}>Un service d'assistance juridique, pas une consultation d'avocat</h2>
+              <h2 style={{color: '#0f2d6e', fontSize: '1.5rem', fontWeight: '700', margin: '0 0 12px'}}>Un service d'information juridique, pas une consultation d'avocat</h2>
               <p style={{color: '#6b7280', fontSize: '14px', lineHeight: '1.8', margin: 0}}>
                 Le droit encadre chaque aspect de votre vie quotidienne — travail, logement, famille, consommation, assurances. Pourtant, face à une situation juridique, la plupart des personnes ne savent pas quels textes s'appliquent, quels sont leurs droits réels, ni comment agir efficacement.
               </p>
@@ -245,7 +245,7 @@ export default function InformationDroits() {
                   {[
                     "Comprendre le cadre juridique applicable à votre situation",
                     "Identifier vos droits et obligations selon les textes en vigueur",
-                    "Savoir si vous avez des recours et lesquels",
+                    "Identifier les recours légaux applicables à votre type de situation",
                     "Préparer un échange avec un avocat ou une démarche administrative",
                     "Prendre vos décisions en toute connaissance de cause",
                     "Être orienté vers le professionnel compétent si nécessaire",
