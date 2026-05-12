@@ -184,15 +184,15 @@ export default function TarifsClient() {
                 </div>
               </div>
             </div>
-            <div style={{flex: '0 0 40%', display: 'flex', flexDirection: 'column', gap: '12px'}}>
+            <div style={{flex: '0 0 40%', display: 'flex', flexDirection: 'column', gap: '12px', justifyContent: 'space-between'}}>
               {createurItems.map((item, i) => (
                 <div key={i} style={{display: 'flex', gap: '10px', alignItems: 'flex-start'}}>
                   <div style={{flexShrink: 0, marginTop: '1px'}}>{item.icon}</div>
                   <span style={{color: 'rgba(255,255,255,0.85)', fontSize: '12px', lineHeight: '1.5'}}>{item.label}</span>
                 </div>
               ))}
-              <div style={{marginTop: '20px'}}>
-                <a href="/contact" style={{display: 'inline-block', background: 'white', color: '#0f2d6e', padding: '12px 28px', borderRadius: '8px', border: '2px solid white', fontSize: '13px', fontWeight: '700', textDecoration: 'none'}}>
+              <div style={{display: 'flex', justifyContent: 'center', paddingTop: '8px'}}>
+                <a href="/contact" style={{display: 'inline-block', background: 'white', color: '#0f2d6e', padding: '12px 32px', borderRadius: '8px', border: '2px solid white', fontSize: '13px', fontWeight: '700', textDecoration: 'none', textAlign: 'center'}}>
                   Nous contacter
                 </a>
               </div>
