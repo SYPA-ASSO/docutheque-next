@@ -1,5 +1,5 @@
 import { Scale } from 'lucide-react'
- 
+
 export default function Footer() {
   return (
     <>
@@ -13,7 +13,7 @@ export default function Footer() {
           </div>
         </div>
       </section>
- 
+
       {/* FOOTER */}
       <footer style={{background: '#111827', padding: '2rem 0'}}>
         <div style={{maxWidth: '1200px', margin: '0 auto', padding: '0 2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start'}}>
@@ -31,7 +31,7 @@ export default function Footer() {
             <div>
               <p style={{fontSize: '11px', fontWeight: '600', color: 'white', marginBottom: '8px'}}>Navigation</p>
               <div style={{display: 'flex', flexDirection: 'column', gap: '5px'}}>
-                <a href="/catalogue" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>Catalogue</a>
+                <a href="/services" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>Services</a>
                 <a href="/information-sur-vos-droits" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>Information sur vos droits</a>
                 <a href="/tarifs" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>Tarifs</a>
                 <a href="/blog" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>Blog</a>
@@ -56,7 +56,7 @@ export default function Footer() {
           </div>
         </div>
       </footer>
- 
+
       {/* NOTE RÉGLEMENTAIRE */}
       <div style={{background: '#0f172a', padding: '12px 0'}}>
         <div style={{maxWidth: '1200px', margin: '0 auto', padding: '0 2rem'}}>

@@ -1,0 +1,312 @@
+import Header from '@/components/Header'
+import Footer from '@/components/Footer'
+import { ChevronRight, FileText, Scale, Building2, Heart, Shield, Lock, Umbrella, ArrowRight } from 'lucide-react'
+
+export const metadata = {
+  title: "Nos services · Cabinet Cholez-Pagotto — Juriste, Formaliste, Conseil en assurances",
+  description: "Découvrez l'ensemble des services du Cabinet Cholez-Pagotto : bibliothèque juridique, information sur vos droits, accompagnement création d'entreprise, associations ESS, RGPD, DPO externalisé, conseil en assurances.",
+}
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ItemList",
+      "name": "Services du Cabinet Cholez-Pagotto",
+      "description": "Ensemble des services proposés par le Cabinet Cholez-Pagotto — FCFBL ACTIVITIES : information juridique, formalités, RGPD, DPO externalisé, conseil en assurances.",
+      "url": "https://cholez-pagotto.fr/services",
+      "numberOfItems": 7,
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Bibliothèque de documents juridiques", "url": "https://cholez-pagotto.fr/catalogue" },
+        { "@type": "ListItem", "position": 2, "name": "Information sur vos droits", "url": "https://cholez-pagotto.fr/information-sur-vos-droits" },
+        { "@type": "ListItem", "position": 3, "name": "Accompagnement création d'entreprise", "url": "https://cholez-pagotto.fr/accompagnement-professionnels" },
+        { "@type": "ListItem", "position": 4, "name": "Accompagnement associations & ESS", "url": "https://cholez-pagotto.fr/accompagnement-associations" },
+        { "@type": "ListItem", "position": 5, "name": "Accompagnement RGPD & conformité", "url": "https://cholez-pagotto.fr/contact" },
+        { "@type": "ListItem", "position": 6, "name": "DPO externalisé", "url": "https://cholez-pagotto.fr/contact" },
+        { "@type": "ListItem", "position": 7, "name": "Conseil en assurances", "url": "https://cholez-pagotto.fr/contact" },
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://cholez-pagotto.fr" },
+        { "@type": "ListItem", "position": 2, "name": "Services" }
+      ]
+    }
+  ]
+}
+
+const services = [
+  {
+    id: "bibliotheque",
+    badge: "ACCÈS LIBRE & ABONNEMENT",
+    icon: <FileText size={22} color="#1a4fba" strokeWidth={1.5} />,
+    titre: "Bibliothèque de documents juridiques",
+    accroche: "Des documents rédigés par un juriste, prêts à l'emploi, mis à jour dès que la législation évolue.",
+    pourQui: "Particuliers, professionnels, associations, dirigeants d'entreprise.",
+    description: "La bibliothèque Docuthèque regroupe des modèles de documents juridiques en format DOCX, rédigés par un juriste et accompagnés de notices explicatives. Certains documents sont disponibles en accès libre. L'Abonnement Optimal donne accès à l'intégralité de la bibliothèque, incluant des fiches pédagogiques de vulgarisation juridique et une question mensuelle à un juriste.",
+    comprend: [
+      "Documents DOCX téléchargeables immédiatement",
+      "Notices explicatives rédigées par un juriste",
+      "Fiches pédagogiques de vulgarisation juridique",
+      "Mise à jour régulière en fonction de l'évolution législative",
+      "Accès libre partiel ou accès complet via abonnement",
+    ],
+    tarif: "Gratuit (accès libre) · 14,90 €/mois ou 147,97 €/an (Abonnement Optimal)",
+    lien: "/catalogue",
+    disponible: false,
+    cta: "Voir la bibliothèque",
+  },
+  {
+    id: "information-droits",
+    badge: "SERVICE D'INFORMATION JURIDIQUE",
+    icon: <Scale size={22} color="#1a4fba" strokeWidth={1.5} />,
+    titre: "Information sur vos droits",
+    accroche: "Une question. Un juriste. Une réponse pédagogique par écrit sous 24 à 48h ouvrées.",
+    pourQui: "Particuliers, salariés, locataires, consommateurs, dirigeants, associations.",
+    description: "Face à une situation juridique, comprendre ses droits est la première étape indispensable. Ce service vous permet de poser votre question en langage courant et de recevoir une réponse rédigée par un juriste, avec les références juridiques applicables à votre situation. Sans abonnement, sans engagement. Ce service constitue une information juridique au sens de la loi n°71-1130 du 31 décembre 1971.",
+    comprend: [
+      "Réponse rédigée par un juriste — 100% humain, aucune IA",
+      "Identification des textes et règles applicables à votre situation",
+      "Réponse en langage clair, avec références juridiques précises",
+      "Délai de 24 à 48h ouvrées",
+      "Orientation vers le professionnel compétent si nécessaire",
+    ],
+    tarif: "47 € à l'unité · 9,90 € par question supplémentaire (abonnés Optimal)",
+    lien: "/information-sur-vos-droits",
+    disponible: true,
+    cta: "En savoir plus",
+  },
+  {
+    id: "creation-entreprise",
+    badge: "ACCOMPAGNEMENT FORMALISTE",
+    icon: <Building2 size={22} color="#1a4fba" strokeWidth={1.5} />,
+    titre: "Accompagnement création d'entreprise",
+    accroche: "De l'idée à l'immatriculation — et bien au-delà. La création offerte, hors frais de greffe et JAL.",
+    pourQui: "Porteurs de projet, créateurs d'entreprise, entrepreneurs.",
+    description: "Créer une entreprise implique des choix juridiques structurants : forme sociale, rédaction des statuts, formalités d'immatriculation, conformité initiale. Le cabinet accompagne les porteurs de projet de la phase de réflexion à l'obtention du Kbis, en assurant la rédaction des statuts, la réalisation des formalités via le guichet unique INPI et l'accompagnement RGPD et assurantiel dès le lancement.",
+    comprend: [
+      "Conseil sur le choix de la forme juridique adaptée à votre projet",
+      "Rédaction des statuts et actes constitutifs",
+      "Réalisation des formalités d'immatriculation (guichet unique INPI)",
+      "Accompagnement RGPD et conformité dès le lancement",
+      "Contrats et documents métier à tarifs préférentiels",
+      "Conseil en assurances professionnelles (RC Pro, multirisques)",
+      "Prise en charge des modifications statutaires ultérieures",
+    ],
+    tarif: "Création offerte (hors frais de greffe et JAL) · Sur devis personnalisé",
+    lien: "/accompagnement-professionnels",
+    disponible: false,
+    cta: "Nous contacter",
+  },
+  {
+    id: "associations",
+    badge: "ÉCONOMIE SOCIALE ET SOLIDAIRE",
+    icon: <Heart size={22} color="#1a4fba" strokeWidth={1.5} />,
+    titre: "Accompagnement associations & ESS",
+    accroche: "Les acteurs de l'ESS méritent un accompagnement à la hauteur de leurs engagements.",
+    pourQui: "Associations loi 1901, fondations, coopératives, mutuelles, structures ESS.",
+    description: "Le secteur de l'économie sociale et solidaire obéit à des règles juridiques spécifiques souvent méconnues. Le cabinet accompagne les associations et structures ESS dans leur création, leur gouvernance, leur conformité juridique et réglementaire, et leur développement. Une expertise particulière est apportée sur les questions de bénévolat, de gestion désintéressée, d'agrément et de financement public.",
+    comprend: [
+      "Constitution et formalités de création d'association loi 1901",
+      "Rédaction et mise à jour des statuts associatifs",
+      "Accompagnement sur la gouvernance et les instances dirigeantes",
+      "Conformité RGPD adaptée aux structures associatives",
+      "Conseil sur les questions de bénévolat et de gestion désintéressée",
+      "Accompagnement sur les agréments et les financements publics",
+      "Documents contractuels et réglementaires spécifiques à l'ESS",
+    ],
+    tarif: "Sur devis personnalisé",
+    lien: "/accompagnement-associations",
+    disponible: false,
+    cta: "Nous contacter",
+  },
+  {
+    id: "rgpd",
+    badge: "CONFORMITÉ RGPD",
+    icon: <Shield size={22} color="#1a4fba" strokeWidth={1.5} />,
+    titre: "Accompagnement RGPD & conformité",
+    accroche: "La conformité au RGPD n'est pas une option. C'est une obligation légale et un gage de confiance.",
+    pourQui: "Entreprises, associations, professions libérales, collectivités.",
+    description: "Le Règlement Général sur la Protection des Données (RGPD) impose des obligations concrètes à toute structure qui traite des données personnelles. Le cabinet accompagne les organisations dans la mise en conformité initiale et le maintien de cette conformité dans le temps : audit des traitements, rédaction des documents obligatoires, formation des équipes et mise en place des procédures internes.",
+    comprend: [
+      "Audit de conformité des traitements de données personnelles",
+      "Rédaction du registre des activités de traitement (art. 30 RGPD)",
+      "Registre des violations et procédures de notification (art. 33-34)",
+      "Analyse d'impact relative à la protection des données (AIPD)",
+      "Politique de confidentialité et mentions légales conformes",
+      "Contrats de sous-traitance (art. 28 RGPD)",
+      "Formation des équipes et responsables de traitement",
+      "Modèles de réponse aux droits des personnes (art. 15 à 22)",
+    ],
+    tarif: "Sur devis selon périmètre",
+    lien: "/contact",
+    disponible: true,
+    cta: "Nous contacter",
+  },
+  {
+    id: "dpo",
+    badge: "DÉLÉGUÉ À LA PROTECTION DES DONNÉES",
+    icon: <Lock size={22} color="#1a4fba" strokeWidth={1.5} />,
+    titre: "DPO externalisé",
+    accroche: "Les obligations du DPO sans le coût d'un poste dédié. Une expertise en veille permanente.",
+    pourQui: "Organismes publics, structures traitant des données sensibles à grande échelle, TPE, associations.",
+    description: "Le Délégué à la Protection des Données (DPO) est obligatoire pour certaines organisations (art. 37 RGPD) et fortement recommandé pour les autres. L'externalisation du DPO permet d'accéder à une expertise juridique et technique en protection des données, en veille permanente sur l'actualité réglementaire et les décisions de la CNIL, sans les contraintes d'un recrutement interne.",
+    comprend: [
+      "Prise en charge du mandat de DPO au sens de l'art. 37 RGPD",
+      "Point de contact désigné auprès de la CNIL",
+      "Veille permanente sur l'actualité législative et les délibérations CNIL",
+      "Suivi de la conformité et recommandations régulières",
+      "Gestion des demandes d'exercice de droits des personnes",
+      "Accompagnement en cas de violation de données",
+      "Formation continue des équipes impliquées",
+      "Rapport annuel de conformité",
+    ],
+    tarif: "Sur devis — engagement annuel",
+    lien: "/contact",
+    disponible: true,
+    cta: "Nous contacter",
+  },
+  {
+    id: "assurances",
+    badge: "ORIAS N°26003943",
+    icon: <Umbrella size={22} color="#1a4fba" strokeWidth={1.5} />,
+    titre: "Conseil en assurances",
+    accroche: "Un courtier immatriculé à l'ORIAS pour vous orienter vers les garanties adaptées à votre situation.",
+    pourQui: "Particuliers, associations, entreprises, professions libérales, structures ESS.",
+    description: "Le cabinet exerce l'activité de courtage en assurances et réassurances, sous le numéro ORIAS 26003943, sous contrôle de l'ACPR. À ce titre, il accompagne particuliers, professionnels et associations dans l'analyse de leurs besoins en couverture assurantielle, la comparaison des offres du marché et la souscription de contrats adaptés à leur situation.",
+    comprend: [
+      "Analyse des besoins et des risques à couvrir",
+      "Comparaison des offres du marché (RC Pro, multirisques, assurance vie...)",
+      "Conseil indépendant sans lien d'exclusivité avec un assureur",
+      "Accompagnement à la souscription et suivi du contrat",
+      "Assistance en cas de sinistre et de litige avec l'assureur",
+      "Conseil en assurances professionnelles pour les créateurs d'entreprise",
+      "Couvertures spécifiques pour les structures associatives et ESS",
+    ],
+    tarif: "Gratuit (rémunération par commissions versées par les assureurs)",
+    lien: "/contact",
+    disponible: true,
+    cta: "Nous contacter",
+  },
+]
+
+export default function Services() {
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <Header />
+      <main style={{background: '#f8fafc', minHeight: '100vh'}}>
+
+        {/* BREADCRUMB */}
+        <div style={{background: 'white', borderBottom: '1px solid #e5e7eb', padding: '10px 0'}}>
+          <div style={{maxWidth: '1100px', margin: '0 auto', padding: '0 2rem', display: 'flex', alignItems: 'center', gap: '6px', fontSize: '12px', color: '#6b7280'}}>
+            <a href="/" style={{color: '#6b7280', textDecoration: 'none'}}>Accueil</a>
+            <ChevronRight size={12} />
+            <span style={{color: '#0f2d6e', fontWeight: '500'}}>Services</span>
+          </div>
+        </div>
+
+        {/* HERO */}
+        <section style={{background: 'linear-gradient(135deg, #0f2d6e 0%, #1a4fba 100%)', padding: '4rem 0'}}>
+          <div style={{maxWidth: '1100px', margin: '0 auto', padding: '0 2rem'}}>
+            <span style={{display: 'inline-block', background: 'rgba(255,255,255,0.15)', color: 'white', border: '1px solid rgba(255,255,255,0.3)', borderRadius: '20px', padding: '4px 14px', fontSize: '11px', fontWeight: '600', marginBottom: '16px', letterSpacing: '0.05em'}}>
+              NOS SERVICES
+            </span>
+            <h1 style={{color: 'white', fontSize: '2rem', fontWeight: '700', margin: '0 0 16px', lineHeight: '1.3', maxWidth: '620px'}}>
+              Une offre complète de services juridiques, formalistes et assurantiels.
+            </h1>
+            <p style={{color: 'rgba(255,255,255,0.8)', fontSize: '0.95rem', lineHeight: '1.8', margin: '0 0 28px', maxWidth: '580px'}}>
+              Le Cabinet Cholez-Pagotto accompagne particuliers, professionnels, associations et structures ESS dans la compréhension de leurs droits, la sécurisation de leurs activités et la réalisation de leurs formalités — à distance, avec rigueur, sans intermédiaire inutile.
+            </p>
+            <div style={{display: 'flex', gap: '10px', flexWrap: 'wrap'}}>
+              {['Juriste', 'Formaliste membre du CRFF', 'Courtier ORIAS 26003943', '100% distanciel'].map((tag, i) => (
+                <span key={i} style={{background: 'rgba(255,255,255,0.12)', color: 'white', border: '1px solid rgba(255,255,255,0.2)', borderRadius: '20px', padding: '4px 14px', fontSize: '11px'}}>
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* SERVICES */}
+        <div style={{maxWidth: '1100px', margin: '0 auto', padding: '4rem 2rem', display: 'flex', flexDirection: 'column', gap: '2rem'}}>
+
+          {services.map((s, i) => (
+            <article key={s.id} id={s.id} style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '14px', overflow: 'hidden'}}>
+
+              {/* EN-TÊTE SERVICE */}
+              <div style={{background: '#f8fafc', borderBottom: '1px solid #e5e7eb', padding: '1.25rem 1.75rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '16px', flexWrap: 'wrap'}}>
+                <div style={{display: 'flex', alignItems: 'center', gap: '12px'}}>
+                  <div style={{width: '40px', height: '40px', background: '#eff6ff', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0}}>
+                    {s.icon}
+                  </div>
+                  <div>
+                    <span style={{display: 'block', color: '#9ca3af', fontSize: '10px', fontWeight: '700', letterSpacing: '0.08em', marginBottom: '2px'}}>{s.badge}</span>
+                    <h2 style={{color: '#0f2d6e', fontSize: '1.1rem', fontWeight: '700', margin: 0}}>{s.titre}</h2>
+                  </div>
+                </div>
+                <a
+                  href={s.lien}
+                  style={{display: 'flex', alignItems: 'center', gap: '6px', background: '#0f2d6e', color: 'white', padding: '9px 18px', borderRadius: '8px', fontSize: '12px', fontWeight: '700', textDecoration: 'none', flexShrink: 0}}
+                >
+                  {s.cta} <ArrowRight size={13} strokeWidth={2} />
+                </a>
+              </div>
+
+              {/* CORPS */}
+              <div style={{padding: '1.75rem', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem'}}>
+
+                {/* COLONNE GAUCHE */}
+                <div>
+                  <p style={{color: '#1a4fba', fontSize: '14px', fontWeight: '600', fontStyle: 'italic', margin: '0 0 14px', lineHeight: '1.5'}}>{s.accroche}</p>
+                  <p style={{color: '#374151', fontSize: '13px', lineHeight: '1.85', margin: '0 0 16px'}}>{s.description}</p>
+                  <div style={{display: 'flex', gap: '8px', flexWrap: 'wrap', alignItems: 'center'}}>
+                    <span style={{color: '#6b7280', fontSize: '11px', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.06em'}}>Pour qui :</span>
+                    <span style={{color: '#374151', fontSize: '12px'}}>{s.pourQui}</span>
+                  </div>
+                  <div style={{marginTop: '12px', background: '#f8fafc', borderRadius: '8px', padding: '10px 14px', display: 'flex', gap: '8px', alignItems: 'flex-start'}}>
+                    <span style={{color: '#6b7280', fontSize: '11px', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.06em', flexShrink: 0, marginTop: '1px'}}>Tarif :</span>
+                    <span style={{color: '#0f2d6e', fontSize: '12px', fontWeight: '600'}}>{s.tarif}</span>
+                  </div>
+                </div>
+
+                {/* COLONNE DROITE */}
+                <div>
+                  <p style={{color: '#6b7280', fontSize: '11px', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.07em', margin: '0 0 12px'}}>Ce service comprend</p>
+                  <div style={{display: 'flex', flexDirection: 'column', gap: '8px'}}>
+                    {s.comprend.map((item, j) => (
+                      <div key={j} style={{display: 'flex', gap: '8px', alignItems: 'flex-start'}}>
+                        <div style={{width: '5px', height: '5px', borderRadius: '50%', background: '#1a4fba', flexShrink: 0, marginTop: '6px'}} />
+                        <span style={{color: '#374151', fontSize: '13px', lineHeight: '1.6'}}>{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+              </div>
+            </article>
+          ))}
+
+          {/* CTA GLOBAL */}
+          <div style={{background: '#0f2d6e', borderRadius: '14px', padding: '2.5rem', textAlign: 'center'}}>
+            <p style={{color: 'white', fontSize: '1.25rem', fontWeight: '700', margin: '0 0 10px'}}>Vous ne savez pas par où commencer ?</p>
+            <p style={{color: 'rgba(255,255,255,0.75)', fontSize: '14px', margin: '0 0 24px', lineHeight: '1.7', maxWidth: '520px', marginLeft: 'auto', marginRight: 'auto'}}>
+              Décrivez-nous votre situation en quelques lignes. Nous vous orientons vers le service adapté, sans engagement.
+            </p>
+            <a href="/contact" style={{display: 'inline-block', background: 'white', color: '#0f2d6e', padding: '13px 32px', borderRadius: '8px', fontSize: '14px', fontWeight: '700', textDecoration: 'none'}}>
+              Nous contacter →
+            </a>
+          </div>
+
+          {/* NOTE LÉGALE */}
+          <p style={{color: '#9ca3af', fontSize: '11px', lineHeight: '1.7', textAlign: 'center', maxWidth: '700px', margin: '0 auto'}}>
+            Cabinet Cholez-Pagotto — FCFBL ACTIVITIES · Juriste-Formaliste · Formaliste membre du CRFF (Conseil Représentatif des Formalistes de France) · Courtier en assurances et réassurances immatriculé à l'ORIAS n°26003943 · Sous contrôle de l'ACPR · Les services d'information juridique sont proposés au sens de la loi n°71-1130 du 31 décembre 1971 et ne constituent pas des consultations juridiques personnalisées.
+          </p>
+
+        </div>
+      </main>
+      <Footer />
+    </>
+  )
+}

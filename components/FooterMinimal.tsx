@@ -20,7 +20,7 @@ export default function FooterMinimal() {
             <div>
               <p style={{fontSize: '11px', fontWeight: '600', color: 'white', marginBottom: '8px'}}>Navigation</p>
               <div style={{display: 'flex', flexDirection: 'column', gap: '5px'}}>
-                <a href="/catalogue" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>Catalogue</a>
+                <a href="/services" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>Services</a>
                 <a href="/information-sur-vos-droits" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>Information sur vos droits</a>
                 <a href="/tarifs" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>Tarifs</a>
                 <a href="/blog" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>Blog</a>

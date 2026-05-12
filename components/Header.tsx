@@ -32,7 +32,7 @@ export default function Header() {
           </div>
           <nav style={{display: 'flex', gap: '24px', alignItems: 'center'}}>
             <a href="/" style={{color: '#374151', fontSize: '13px', textDecoration: 'none', fontWeight: '500'}}>Accueil</a>
-            <a href="/catalogue" style={{color: '#374151', fontSize: '13px', textDecoration: 'none', fontWeight: '500'}}>Catalogue</a>
+            <a href="/services" style={{color: '#374151', fontSize: '13px', textDecoration: 'none', fontWeight: '500'}}>Services</a>
             <a href="/tarifs" style={{color: '#374151', fontSize: '13px', textDecoration: 'none', fontWeight: '500'}}>Tarifs</a>
             <a href="/blog" style={{color: '#374151', fontSize: '13px', textDecoration: 'none', fontWeight: '500'}}>Blog</a>
             <a href="/contact" style={{color: '#374151', fontSize: '13px', textDecoration: 'none', fontWeight: '500'}}>Contact</a>
