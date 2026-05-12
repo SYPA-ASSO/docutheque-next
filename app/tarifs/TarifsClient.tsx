@@ -15,7 +15,7 @@ export default function TarifsClient() {
     "@type": "WebPage",
     "name": "Tarifs Docuthèque",
     "description": "Offres et tarifs de la plateforme Docuthèque : modèles de documents juridiques, abonnement Optimal, information sur vos droits, accompagnement création d'entreprise.",
-    "url": "https://docutheque.fr/tarifs",
+    "url": "https://cholez-pagotto.fr/tarifs",
     "mainEntity": {
       "@type": "ItemList",
       "itemListElement": [
@@ -31,7 +31,7 @@ export default function TarifsClient() {
     { q: "Puis-je résilier mon abonnement à tout moment ?", a: "L'abonnement Optimal est souscrit pour une durée minimale de 12 mois. La résiliation est possible à tout moment, mais prend effet à l'échéance annuelle, sous réserve d'en faire la demande par écrit au moins 30 jours avant cette date." },
     { q: "Quels moyens de paiement acceptez-vous ?", a: "Nous acceptons le paiement par carte bancaire et par virement bancaire. Le paiement est sécurisé. Aucune information bancaire n'est conservée sur nos serveurs." },
     { q: "L'abonnement se renouvelle-t-il automatiquement ?", a: "Oui. À l'issue de la période initiale de 12 mois, l'abonnement se renouvelle automatiquement pour une nouvelle année, sauf résiliation adressée par écrit au moins 30 jours avant l'échéance." },
-    { q: 'La réponse "Information sur vos droits" est-elle garantie sous 48h ?', a: "Oui. Nous nous engageons à vous apporter une réponse rédigée par un juriste dans un délai de 24 à 48h ouvrées suivant la réception de votre question et la confirmation de votre paiement." },
+    { q: 'La réponse "Information sur vos droits" est-elle garantie sous 48h ?', a: "Dans le cadre d'une obligation de moyen, nous mettons tout en œuvre pour vous apporter une réponse rédigée par un juriste sous 24 à 48h ouvrées suivant la réception de votre question et la confirmation du paiement." },
     { q: "Puis-je cumuler les questions incluses dans mon abonnement Optimal ?", a: "Non. La question mensuelle incluse dans l'abonnement Optimal n'est pas cumulable d'un mois sur l'autre. Si vous avez besoin de poser des questions supplémentaires dans le même mois, elles sont disponibles à 9,90 € l'unité. Sans abonnement, chaque question est à 47 € — si vous posez régulièrement des questions, l'abonnement Optimal devient plus économique dès la deuxième question mensuelle." },
   ]
 
@@ -123,7 +123,7 @@ export default function TarifsClient() {
                   </div>
                 ))}
               </div>
-              <button style={{width: '100%', padding: '10px', borderRadius: '8px', border: 'none', background: 'white', color: '#0f2d6e', fontSize: '13px', fontWeight: '700', cursor: 'pointer'}}>S'abonner</button>
+              <a href="/connexion" style={{display: 'block', width: '100%', padding: '10px', borderRadius: '8px', border: 'none', background: 'white', color: '#0f2d6e', fontSize: '13px', fontWeight: '700', cursor: 'pointer', textDecoration: 'none', textAlign: 'center', boxSizing: 'border-box'}}>S'abonner</a>
             </div>
 
             {/* INFORMATION SUR VOS DROITS */}
@@ -144,17 +144,13 @@ export default function TarifsClient() {
                   </div>
                 ))}
               </div>
-              <div style={{background: '#fff7ed', border: '1px solid #fed7aa', borderRadius: '8px', padding: '10px 12px', marginBottom: '12px'}}>
-                <p style={{color: '#92400e', fontSize: '11px', lineHeight: '1.6', margin: 0}}>
-                 
-                </p>
-              </div>
+
               <div style={{background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '8px', padding: '10px 12px', marginBottom: '20px'}}>
                 <p style={{color: '#1e3a5f', fontSize: '11px', lineHeight: '1.6', margin: 0}}>
                   Vous posez régulièrement des questions ? L'abonnement Optimal est plus économique dès la deuxième question mensuelle.
                 </p>
               </div>
-              <button style={{width: '100%', padding: '10px', borderRadius: '8px', border: 'none', background: '#1a4fba', color: 'white', fontSize: '13px', fontWeight: '600', cursor: 'pointer'}}>Poser ma question</button>
+              <a href="/information-sur-vos-droits" style={{display: 'block', width: '100%', padding: '10px', borderRadius: '8px', background: '#1a4fba', color: 'white', fontSize: '13px', fontWeight: '600', cursor: 'pointer', textDecoration: 'none', textAlign: 'center', boxSizing: 'border-box'}}>Poser ma question</a>
             </div>
 
           </div>
