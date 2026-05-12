@@ -1,31 +1,31 @@
 import Header from '@/components/Header'
 import Footer from '@/components/FooterMinimal'
- 
+
 export const metadata = {
   title: 'S\'inscrire à la newsletter · Docuthèque — Cabinet Cholez-Pagotto',
   description: 'Restez informé : actualités juridiques, offres sur les documents, services complémentaires et partenaires sélectionnés. Newsletter gratuite ou exclusive abonnés Optimal.',
 }
- 
+
 const schema = {
   "@context": "https://schema.org",
   "@type": "WebPage",
   "name": "S'inscrire à la newsletter — Docuthèque",
   "description": "Newsletter Docuthèque : informations juridiques pratiques, offres sur les documents, services complémentaires et sélections partenaires. Version gratuite et version exclusive abonnés Optimal.",
-  "url": "https://docutheque.cholez-pagotto.fr/newsletter",
+  "url": "https://cholez-pagotto.fr/newsletter",
   "publisher": {
     "@type": "Organization",
     "name": "Cabinet Cholez-Pagotto — Docuthèque",
-    "url": "https://docutheque.cholez-pagotto.fr"
+    "url": "https://cholez-pagotto.fr"
   }
 }
- 
+
 export default function Newsletter() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <Header />
       <main style={{background: '#f8fafc', minHeight: '100vh'}}>
- 
+
         {/* HERO */}
         <section style={{background: 'linear-gradient(135deg, #0f2d6e 0%, #1a4fba 100%)', padding: '4rem 0'}}>
           <div style={{maxWidth: '760px', margin: '0 auto', padding: '0 2rem', textAlign: 'center'}}>
@@ -51,9 +51,9 @@ export default function Newsletter() {
             </p>
           </div>
         </section>
- 
+
         <div style={{maxWidth: '900px', margin: '0 auto', padding: '3rem 2rem'}}>
- 
+
           {/* NEWSLETTER GRATUITE */}
           <section style={{marginBottom: '3rem'}}>
             <div style={{display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '1.5rem'}}>
@@ -103,14 +103,14 @@ export default function Newsletter() {
               </a>
             </div>
           </section>
- 
+
           {/* SÉPARATEUR */}
           <div style={{display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '3rem'}}>
             <div style={{flex: 1, height: '1px', background: '#e5e7eb'}} />
             <span style={{color: '#9ca3af', fontSize: '12px', fontWeight: '600', whiteSpace: 'nowrap'}}>ENVIE D'ALLER PLUS LOIN ?</span>
             <div style={{flex: 1, height: '1px', background: '#e5e7eb'}} />
           </div>
- 
+
           {/* NEWSLETTER ABONNÉS */}
           <section id="premium" style={{marginBottom: '3rem'}}>
             <div style={{display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '1.5rem'}}>
@@ -120,7 +120,7 @@ export default function Newsletter() {
             <p style={{color: '#6b7280', fontSize: '14px', lineHeight: '1.8', marginBottom: '1.5rem'}}>
               Réservée aux abonnés Optimal, cette newsletter va plus loin : analyses approfondies, accès prioritaire aux nouveaux documents, offres tarifaires préférentielles et contenus non disponibles en accès libre.
             </p>
- 
+
             <div style={{background: 'white', border: '2px solid #d4a017', borderRadius: '14px', padding: '2rem', marginBottom: '1.5rem', position: 'relative', overflow: 'hidden'}}>
               <div style={{position: 'absolute', top: 0, right: 0, background: 'linear-gradient(135deg, #b8860b, #d4a017)', color: 'white', fontSize: '10px', fontWeight: '700', padding: '4px 14px', borderRadius: '0 0 0 10px', letterSpacing: '0.05em'}}>
                 ABONNÉS OPTIMAL
@@ -167,7 +167,7 @@ export default function Newsletter() {
                 </a>
               </div>
             </div>
- 
+
             {/* TABLEAU COMPARATIF */}
             <div style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', overflow: 'hidden'}}>
               <table style={{width: '100%', borderCollapse: 'collapse', fontSize: '12px'}}>
@@ -199,7 +199,7 @@ export default function Newsletter() {
               </table>
             </div>
           </section>
- 
+
           {/* FAQ */}
           <section style={{marginBottom: '3rem'}}>
             <h2 style={{color: '#0f2d6e', fontSize: '1.2rem', fontWeight: '700', margin: '0 0 1.25rem'}}>Questions fréquentes</h2>
@@ -233,7 +233,7 @@ export default function Newsletter() {
               ))}
             </div>
           </section>
- 
+
           {/* CTA FINAL */}
           <section style={{background: 'linear-gradient(135deg, #0f2d6e 0%, #1a4fba 100%)', borderRadius: '16px', padding: '2.5rem', textAlign: 'center'}}>
             <p style={{color: 'white', fontSize: '1.3rem', fontWeight: '700', margin: '0 0 8px'}}>Rejoignez la communauté Docuthèque</p>
@@ -252,7 +252,7 @@ export default function Newsletter() {
               Inscription à la newsletter sans engagement · Désinscription en un clic · Abonnement Optimal soumis à engagement de 12 mois
             </p>
           </section>
- 
+
         </div>
       </main>
       <Footer />

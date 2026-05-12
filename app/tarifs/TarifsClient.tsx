@@ -146,7 +146,7 @@ export default function TarifsClient() {
               </div>
               <div style={{background: '#fff7ed', border: '1px solid #fed7aa', borderRadius: '8px', padding: '10px 12px', marginBottom: '12px'}}>
                 <p style={{color: '#92400e', fontSize: '11px', lineHeight: '1.6', margin: 0}}>
-                  Cette réponse a vocation à vous informer et à vous orienter. Elle ne constitue pas une consultation juridique au sens de la loi du 31 décembre 1971, réservée aux avocats.
+                 
                 </p>
               </div>
               <div style={{background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '8px', padding: '10px 12px', marginBottom: '20px'}}>
