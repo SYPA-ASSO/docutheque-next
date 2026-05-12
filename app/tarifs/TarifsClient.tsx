@@ -1,15 +1,15 @@
 'use client'
- 
+
 import GoogleAvis from '@/components/GoogleAvis'
- 
+
 import { useState } from 'react'
 import { Building2, PenLine, Monitor, Shield, FileText, Lock, RefreshCw } from 'lucide-react'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
- 
+
 export default function TarifsClient() {
   const [annuel, setAnnuel] = useState(true)
- 
+
   const schema = {
     "@context": "https://schema.org",
     "@type": "WebPage",
@@ -26,7 +26,7 @@ export default function TarifsClient() {
       ]
     }
   }
- 
+
   const faqItems = [
     { q: "Puis-je résilier mon abonnement à tout moment ?", a: "L'abonnement Optimal est souscrit pour une durée minimale de 12 mois. La résiliation est possible à tout moment, mais prend effet à l'échéance annuelle, sous réserve d'en faire la demande par écrit au moins 30 jours avant cette date." },
     { q: "Quels moyens de paiement acceptez-vous ?", a: "Nous acceptons le paiement par carte bancaire et par virement bancaire. Le paiement est sécurisé. Aucune information bancaire n'est conservée sur nos serveurs." },
@@ -34,7 +34,7 @@ export default function TarifsClient() {
     { q: 'La réponse "Information sur vos droits" est-elle garantie sous 48h ?', a: "Oui. Nous nous engageons à vous apporter une réponse rédigée par un juriste dans un délai de 24 à 48h ouvrées suivant la réception de votre question et la confirmation de votre paiement." },
     { q: "Puis-je cumuler les questions incluses dans mon abonnement Optimal ?", a: "Non. La question mensuelle incluse dans l'abonnement Optimal n'est pas cumulable d'un mois sur l'autre. Si vous avez besoin de poser des questions supplémentaires dans le même mois, elles sont disponibles à 9,90 € l'unité. Sans abonnement, chaque question est à 47 € — si vous posez régulièrement des questions, l'abonnement Optimal devient plus économique dès la deuxième question mensuelle." },
   ]
- 
+
   const createurItems = [
     { icon: <Building2 size={18} color="rgba(255,255,255,0.85)" strokeWidth={1.5} />, label: "Création de société (SASU, SAS, SARL, EURL), micro-entreprise, entreprise individuelle" },
     { icon: <PenLine size={18} color="rgba(255,255,255,0.85)" strokeWidth={1.5} />, label: "Assistance à la constitution : statuts et actes constitutifs" },
@@ -44,14 +44,14 @@ export default function TarifsClient() {
     { icon: <Lock size={18} color="rgba(255,255,255,0.85)" strokeWidth={1.5} />, label: "Conseil en assurances professionnelles (RC Pro, multirisques)" },
     { icon: <RefreshCw size={18} color="rgba(255,255,255,0.85)" strokeWidth={1.5} />, label: "Prise en charge des modifications statutaires, transferts de siège, dissolution" },
   ]
- 
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <Header />
       <main style={{background: '#f8fafc', minHeight: '100vh', padding: '4rem 0'}}>
         <div style={{maxWidth: '1100px', margin: '0 auto', padding: '0 2rem'}}>
- 
+
           {/* TITRE + INTRO */}
           <div style={{textAlign: 'center', maxWidth: '700px', margin: '0 auto 3rem'}}>
             <h1 style={{fontSize: '2rem', fontWeight: '700', color: '#0f2d6e', margin: 0}}>Nos tarifs</h1>
@@ -60,7 +60,7 @@ export default function TarifsClient() {
               Que vous ayez besoin d'un document ponctuel, d'un accès complet à notre bibliothèque juridique ou d'un accompagnement personnalisé pour créer votre entreprise, Docuthèque propose une offre adaptée à chaque situation. Tous nos documents sont rédigés par un juriste, jamais générés par une IA, et mis à jour dès que la législation évolue.
             </p>
           </div>
- 
+
           {/* TOGGLE */}
           <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '12px', marginBottom: '2.5rem'}}>
             <span style={{fontSize: '13px', fontWeight: annuel ? '400' : '600', color: annuel ? '#6b7280' : '#0f2d6e'}}>Mensuel</span>
@@ -71,10 +71,10 @@ export default function TarifsClient() {
               Annuel <span style={{background: '#dcfce7', color: '#16a34a', fontSize: '11px', fontWeight: '600', padding: '2px 7px', borderRadius: '10px', marginLeft: '4px'}}>2 mois offerts</span>
             </span>
           </div>
- 
+
           {/* CARTES */}
           <div style={{display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px', alignItems: 'flex-start'}}>
- 
+
             {/* GRATUIT */}
             <div style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '14px', padding: '1.75rem', display: 'flex', flexDirection: 'column'}}>
               <p style={{fontSize: '11px', fontWeight: '600', color: '#6b7280', letterSpacing: '0.08em', margin: 0}}>ACCÈS GRATUIT</p>
@@ -96,7 +96,7 @@ export default function TarifsClient() {
                 S'inscrire gratuitement
               </a>
             </div>
- 
+
             {/* ABONNEMENT OPTIMAL */}
             <div style={{background: '#0f2d6e', border: '2px solid #1a4fba', borderRadius: '14px', padding: '1.75rem', display: 'flex', flexDirection: 'column', position: 'relative', overflow: 'hidden'}}>
               <div style={{position: 'absolute', top: '14px', right: '14px', background: '#1a4fba', color: 'white', fontSize: '10px', fontWeight: '700', padding: '3px 10px', borderRadius: '10px', letterSpacing: '0.05em'}}>RECOMMANDÉ</div>
@@ -125,12 +125,13 @@ export default function TarifsClient() {
               </div>
               <button style={{width: '100%', padding: '10px', borderRadius: '8px', border: 'none', background: 'white', color: '#0f2d6e', fontSize: '13px', fontWeight: '700', cursor: 'pointer'}}>S'abonner</button>
             </div>
- 
+
             {/* INFORMATION SUR VOS DROITS */}
             <div style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '14px', padding: '1.75rem', display: 'flex', flexDirection: 'column'}}>
               <p style={{fontSize: '11px', fontWeight: '600', color: '#6b7280', letterSpacing: '0.08em', margin: 0}}>INFORMATION SUR VOS DROITS</p>
               <div style={{margin: '12px 0 4px'}}><span style={{fontSize: '2.2rem', fontWeight: '700', color: '#0f2d6e'}}>47 €</span></div>
-              <p style={{color: '#6b7280', fontSize: '12px', marginBottom: '20px'}}>À l'unité · sans abonnement · sans engagement</p>
+              <p style={{color: '#6b7280', fontSize: '12px', marginBottom: '8px'}}>À l'unité · sans abonnement · sans engagement</p>
+              <p style={{color: '#9ca3af', fontSize: '11px', marginBottom: '20px', lineHeight: '1.6', fontStyle: 'italic'}}>Ce service constitue une information juridique au sens de la loi n°71-1130 du 31 décembre 1971 et ne constitue pas une consultation juridique personnalisée.</p>
               <div style={{display: 'flex', flexDirection: 'column', gap: '9px', marginBottom: '20px'}}>
                 {[
                   'Vous posez votre question en langage courant',
@@ -155,9 +156,9 @@ export default function TarifsClient() {
               </div>
               <button style={{width: '100%', padding: '10px', borderRadius: '8px', border: 'none', background: '#1a4fba', color: 'white', fontSize: '13px', fontWeight: '600', cursor: 'pointer'}}>Poser ma question</button>
             </div>
- 
+
           </div>
- 
+
           {/* RÉASSURANCE */}
           <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '8px', marginTop: '2rem'}}>
             <span style={{fontSize: '16px'}}>🔒</span>
@@ -165,7 +166,7 @@ export default function TarifsClient() {
             <span style={{color: '#d1d5db', fontSize: '12px'}}>·</span>
             <GoogleAvis variant="inline" />
           </div>
- 
+
           {/* SECTION ACCOMPAGNEMENT CRÉATEURS */}
           <div style={{marginTop: '4rem', background: 'linear-gradient(135deg, #0f2d6e 0%, #1a4fba 100%)', borderRadius: '16px', padding: '2.5rem', display: 'flex', gap: '3rem', alignItems: 'flex-start'}}>
             <div style={{flex: '0 0 55%'}}>
@@ -197,7 +198,7 @@ export default function TarifsClient() {
               </div>
             </div>
           </div>
- 
+
           {/* FAQ TARIFS */}
           <div style={{marginTop: '4rem'}}>
             <h2 style={{fontSize: '1.4rem', fontWeight: '700', color: '#0f2d6e', textAlign: 'center', marginBottom: '1.5rem'}}>Questions fréquentes sur nos tarifs</h2>
@@ -213,14 +214,14 @@ export default function TarifsClient() {
               ))}
             </div>
           </div>
- 
+
           {/* NOTE BAS DE PAGE */}
           <div style={{borderTop: '1px solid #e5e7eb', marginTop: '3rem', paddingTop: '1.5rem'}}>
             <p style={{color: '#9ca3af', fontSize: '11px', lineHeight: '1.7', textAlign: 'center', maxWidth: '700px', margin: '0 auto'}}>
               L'abonnement Optimal est souscrit pour une durée minimale de 12 mois. À l'issue de cette période, il se renouvelle automatiquement sauf résiliation adressée par écrit au moins 30 jours avant l'échéance. Le tarif mensuel affiché en mode annuel est calculé sur la base du paiement annuel de 147,97 €. La question mensuelle incluse est non cumulable d'un mois sur l'autre.
             </p>
           </div>
- 
+
         </div>
       </main>
       <Footer />

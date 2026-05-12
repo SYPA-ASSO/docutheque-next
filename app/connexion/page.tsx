@@ -36,7 +36,7 @@ export default function Connexion() {
               {[
                 { label: 'Accès gratuit', desc: 'Tous les documents disponibles en accès libre, format DOCX.', color: '#4ade80' },
                 { label: 'Abonnement Optimal', desc: 'Bibliothèque complète de documents juridiques, 1 question juriste incluse par mois, non cumulable. 12,49 €/mois ou 147,97 €/an.', color: '#93c5fd' },
-                { label: 'Information sur vos droits', desc: 'Une question, une réponse rédigée par un juriste sous 24 à 48h. 47 € à l\'unité, sans abonnement.', color: '#fcd34d' },
+                { label: 'Information sur vos droits', desc: 'Une question, une réponse rédigée par un juriste sous 24 à 48h. 47 € à l\'unité, sans abonnement. Ce service constitue une information juridique au sens de la loi n°71-1130 du 31 décembre 1971 et ne constitue pas une consultation personnalisée.', color: '#fcd34d' },
               ].map((offre, i) => (
                 <div key={i} style={{background: 'rgba(255,255,255,0.1)', borderRadius: '10px', padding: '12px 14px'}}>
                   <p style={{color: offre.color, fontSize: '12px', fontWeight: '700', margin: '0 0 3px'}}>{offre.label}</p>

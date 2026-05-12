@@ -54,7 +54,7 @@ const schema = {
           "name": "Que faire si j'ai déjà signé et payé ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Vous pouvez contester le prélèvement auprès de votre banque dans un délai de 8 semaines (ordre de virement) ou 13 mois (prélèvement SEPA). Signalez également la fraude sur signal.conso.gouv.fr et, si le montant est significatif, déposez plainte auprès de la gendarmerie ou de la police."
+            "text": "Si le paiement a été effectué par prélèvement SEPA autorisé, vous disposez de 8 semaines pour le contester auprès de votre banque ; 13 mois s'il était non autorisé. Pour un virement bancaire, contactez immédiatement votre banque pour tenter un rappel — il n'existe pas de droit légal au remboursement mais la banque peut intervenir. Signalez également la fraude sur signal.conso.gouv.fr et déposez plainte."
           }
         },
         {
@@ -222,7 +222,7 @@ export default function ArticleArnaqueRSE() {
                       <span>Que faire si j'ai déjà signé et payé ?</span>
                       <span style={{color: '#1a4fba', fontSize: '18px', flexShrink: 0, lineHeight: 1}}>＋</span>
                     </summary>
-                    <p style={{color: '#374151', fontSize: '13px', lineHeight: '1.75', marginTop: '12px', marginBottom: 0}}>Vous pouvez contester le prélèvement auprès de votre banque dans un délai de 8 semaines (ordre de virement) ou 13 mois (prélèvement SEPA). Signalez également la fraude sur signal.conso.gouv.fr et, si le montant est significatif, déposez plainte auprès de la gendarmerie ou de la police.</p>
+                    <p style={{color: '#374151', fontSize: '13px', lineHeight: '1.75', marginTop: '12px', marginBottom: 0}}>Si le paiement a été effectué par prélèvement SEPA autorisé, vous disposez de 8 semaines pour le contester auprès de votre banque ; 13 mois s'il était non autorisé. Pour un virement bancaire, contactez immédiatement votre banque pour tenter un rappel — il n'existe pas de droit légal au remboursement mais la banque peut intervenir. Signalez également la fraude sur signal.conso.gouv.fr et déposez plainte.</p>
                   </details>
                   <details key={3} style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '10px', padding: '1rem 1.25rem'}}>
                     <summary style={{fontWeight: '600', color: '#0f2d6e', fontSize: '14px', cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '12px'}}>
@@ -257,7 +257,8 @@ export default function ArticleArnaqueRSE() {
 
             <div style={{background: '#0f2d6e', borderRadius: '12px', padding: '1.25rem'}}>
               <p style={{color: 'white', fontSize: '13px', fontWeight: '700', margin: '0 0 8px'}}>Une question juridique ?</p>
-              <p style={{color: 'rgba(255,255,255,0.8)', fontSize: '12px', lineHeight: '1.6', margin: '0 0 14px'}}>Un juriste vous répond par écrit sous 24 à 48h. 47 € à l'unité, sans abonnement.</p>
+              <p style={{color: 'rgba(255,255,255,0.8)', fontSize: '12px', lineHeight: '1.6', margin: '0 0 10px'}}>Un juriste vous répond par écrit sous 24 à 48h. 47 € à l'unité, sans abonnement.</p>
+              <p style={{color: 'rgba(255,255,255,0.6)', fontSize: '11px', lineHeight: '1.6', margin: '0 0 14px', fontStyle: 'italic'}}>Ce service constitue une information juridique au sens de la loi n°71-1130 du 31 décembre 1971 et ne constitue pas une consultation juridique personnalisée.</p>
               <a href="/information-sur-vos-droits" style={{display: 'block', background: 'white', color: '#0f2d6e', padding: '10px', borderRadius: '8px', fontSize: '12px', fontWeight: '700', textDecoration: 'none', textAlign: 'center'}}>
                 Poser ma question →
               </a>

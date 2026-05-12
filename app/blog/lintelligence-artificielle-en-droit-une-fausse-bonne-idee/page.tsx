@@ -28,9 +28,9 @@ const schema = {
       "publisher": {
         "@type": "Organization",
         "name": "Docuthèque — Cabinet Cholez-Pagotto",
-        "url": "https://docutheque.cholez-pagotto.fr"
+        "url": "https://cholez-pagotto.fr"
       },
-      "url": "https://docutheque.cholez-pagotto.fr/blog/lintelligence-artificielle-en-droit-une-fausse-bonne-idee",
+      "url": "https://cholez-pagotto.fr/blog/lintelligence-artificielle-en-droit-une-fausse-bonne-idee",
       "keywords": ["intelligence artificielle", "droit", "IA juridique", "hallucinations IA", "biais algorithmiques", "juriste", "justice prédictive"],
       "articleSection": ["Intelligence artificielle", "Droit", "Informations juridiques"],
       "inLanguage": "fr-FR"
@@ -91,8 +91,8 @@ const schema = {
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://docutheque.cholez-pagotto.fr" },
-        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://docutheque.cholez-pagotto.fr/blog" },
+        { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://cholez-pagotto.fr" },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://cholez-pagotto.fr/blog" },
         { "@type": "ListItem", "position": 3, "name": "L'Intelligence Artificielle en droit : une fausse bonne idée ?" }
       ]
     }
@@ -389,11 +389,11 @@ export default function ArticleIA() {
               <div style={{display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '10px'}}>
                 <img
                   src="https://secure.gravatar.com/avatar/6c4917275b124957f449a0eb107866858eaaf8ab6f17ccc1d2262120d3c04478?s=200&d=mm&r=g"
-                  alt="François CHOLEZ PAGOTTO"
+                  alt="François CHOLEZ"
                   style={{width: '48px', height: '48px', borderRadius: '50%', objectFit: 'cover', flexShrink: 0}}
                 />
                 <div>
-                  <p style={{color: '#374151', fontSize: '12px', fontWeight: '700', margin: '0 0 2px'}}>François CHOLEZ PAGOTTO</p>
+                  <p style={{color: '#374151', fontSize: '12px', fontWeight: '700', margin: '0 0 2px'}}>François CHOLEZ</p>
                   <p style={{color: '#9ca3af', fontSize: '11px', margin: 0}}>Juriste · Formaliste · Conseil en assurances</p>
                 </div>
               </div>
@@ -406,7 +406,8 @@ export default function ArticleIA() {
             {/* CTA */}
             <div style={{background: '#0f2d6e', borderRadius: '12px', padding: '1.25rem'}}>
               <p style={{color: 'white', fontSize: '13px', fontWeight: '700', margin: '0 0 8px'}}>Une question juridique ?</p>
-              <p style={{color: 'rgba(255,255,255,0.8)', fontSize: '12px', lineHeight: '1.6', margin: '0 0 14px'}}>Un juriste vous répond par écrit sous 24 à 48h. 47 € à l'unité, sans abonnement.</p>
+              <p style={{color: 'rgba(255,255,255,0.8)', fontSize: '12px', lineHeight: '1.6', margin: '0 0 10px'}}>Un juriste vous répond par écrit sous 24 à 48h. 47 € à l'unité, sans abonnement.</p>
+              <p style={{color: 'rgba(255,255,255,0.6)', fontSize: '11px', lineHeight: '1.6', margin: '0 0 14px', fontStyle: 'italic'}}>Ce service constitue une information juridique au sens de la loi n°71-1130 du 31 décembre 1971 et ne constitue pas une consultation juridique personnalisée.</p>
               <a href="/information-sur-vos-droits" style={{display: 'block', background: 'white', color: '#0f2d6e', padding: '10px', borderRadius: '8px', fontSize: '12px', fontWeight: '700', textDecoration: 'none', textAlign: 'center'}}>
                 Poser ma question →
               </a>
@@ -414,7 +415,7 @@ export default function ArticleIA() {
 
             {/* CTA NEWSLETTER */}
             <div style={{background: 'linear-gradient(135deg, #b8860b 0%, #d4a017 50%, #b8860b 100%)', borderRadius: '12px', padding: '1.25rem'}}>
-              <p style={{color: 'white', fontSize: '13px', fontWeight: '700', margin: '0 0 8px'}}>Newsletter juridique gratuite</p>
+              <p style={{color: 'white', fontSize: '13px', fontWeight: '700', margin: '0 0 8px'}}>Newsletter gratuite</p>
               <p style={{color: 'rgba(255,255,255,0.85)', fontSize: '12px', lineHeight: '1.6', margin: '0 0 14px'}}>Actualités, analyses et informations juridiques directement dans votre boîte mail.</p>
               <a href="/newsletter" style={{display: 'block', background: 'white', color: '#b8860b', padding: '10px', borderRadius: '8px', fontSize: '12px', fontWeight: '700', textDecoration: 'none', textAlign: 'center'}}>
                 En savoir plus →
