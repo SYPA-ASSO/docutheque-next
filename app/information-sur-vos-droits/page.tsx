@@ -330,7 +330,7 @@ export default function InformationDroits() {
               <div style={{display: 'flex', gap: '20px', flexWrap: 'wrap'}}>
                 <div style={{background: 'rgba(255,255,255,0.1)', borderRadius: '10px', padding: '14px 20px', textAlign: 'center'}}>
                   <p style={{color: 'white', fontSize: '1.8rem', fontWeight: '700', margin: 0}}>47 €</p>
-                  <p style={{color: 'rgba(255,255,255,0.7)', fontSize: '12px', margin: 0}}>À l'unité · HT</p>
+                  <p style={{color: 'rgba(255,255,255,0.7)', fontSize: '12px', margin: 0}}>À l'unité · sans abonnement</p>
                 </div>
                 <div style={{background: 'rgba(255,255,255,0.1)', borderRadius: '10px', padding: '14px 20px', textAlign: 'center'}}>
                   <p style={{color: 'white', fontSize: '1.8rem', fontWeight: '700', margin: 0}}>24–48h</p>
