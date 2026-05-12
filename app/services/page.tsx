@@ -52,7 +52,7 @@ const services = [
       "Mise à jour régulière en fonction de l'évolution législative",
       "Accès libre partiel ou accès complet via abonnement",
     ],
-    tarif: "Gratuit (accès libre) · 14,90 €/mois ou 147,97 €/an (Abonnement Optimal)",
+    tarif: "Gratuit (accès libre, documents sélectionnés) · 14,90 €/mois ou 147,97 €/an pour l'accès complet (Abonnement Optimal)",
     lien: "/catalogue",
     disponible: false,
     cta: "Voir la bibliothèque",
