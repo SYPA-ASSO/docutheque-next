@@ -95,7 +95,7 @@ export default function APropos() {
                 Juriste · Formaliste membre du CRFF · Conseil en assurances (ORIAS 26003943)
               </p>
               <p style={{color: 'rgba(255,255,255,0.85)', fontSize: '1rem', lineHeight: '1.85', margin: 0, maxWidth: '560px'}}>
-                Le droit ne devrait pas être une affaire de spécialistes. Pas quand il s'agit de comprendre ses droits, de créer son activité ou de s'assurer correctement. Ce cabinet est né de cette conviction — et de vingt-cinq ans d'expérience pour la mettre en pratique.
+                Le droit ne devrait pas être une affaire de spécialistes. Pas quand il s'agit de comprendre ses droits, de créer son activité ou de s'assurer correctement. Le Cabinet Cholez-Pagotto est né de cette conviction — et de vingt-cinq ans d'expérience pour la mettre en pratique.
               </p>
             </div>
           </div>
@@ -109,13 +109,13 @@ export default function APropos() {
               <h2 style={{color: '#0f2d6e', fontSize: '1.4rem', fontWeight: '700', margin: '0 0 1.25rem'}}>Un parcours construit à l'intersection de deux mondes</h2>
               <div style={{display: 'flex', flexDirection: 'column', gap: '1.25rem', color: '#374151', fontSize: '14px', lineHeight: '1.9'}}>
                 <p style={{margin: 0}}>
-                  Pendant quinze ans, j'ai créé, développé et géré des entreprises. J'ai vécu de l'intérieur ce que signifie naviguer seul dans les formalités administratives, les obligations juridiques, les questions d'assurance — sans guide, sans interlocuteur disponible, souvent sans réponse claire.
+                  Pendant quinze ans, François CHOLEZ a créé, développé et géré des entreprises. Une expérience de l'intérieur de ce que signifie naviguer seul dans les formalités administratives, les obligations juridiques, les questions d'assurance — sans guide, sans interlocuteur disponible, souvent sans réponse claire.
                 </p>
                 <p style={{margin: 0}}>
-                  En parallèle, j'ai construit une carrière dans le secteur social et associatif — éducateur spécialisé, responsable de service, cadre de direction, directeur de projets de territoire. Pendant treize ans, j'ai accompagné des personnes en difficulté, co-fondé et administré des structures associatives, piloté des projets d'insertion dans des quartiers prioritaires. J'ai mesuré, chaque jour, le coût de l'incompréhension juridique et administrative pour des gens qui n'avaient personne à qui poser leurs questions.
+                  En parallèle, une carrière construite dans le secteur social et associatif — éducateur spécialisé, responsable de service, cadre de direction, directeur de projets de territoire. Treize ans à accompagner des personnes en difficulté, co-fonder et administrer des structures associatives, piloter des projets d'insertion dans des quartiers prioritaires. À mesurer, chaque jour, le coût de l'incompréhension juridique et administrative pour des gens qui n'avaient personne à qui poser leurs questions.
                 </p>
                 <p style={{margin: 0}}>
-                  Ces deux mondes m'ont appris la même chose : l'accès à l'information juste, au bon moment, change des trajectoires. Personnelles. Professionnelles. Associatives. Le Cabinet Cholez-Pagotto est né de cette évidence — en octobre 2024.
+                  Ces deux mondes ont forgé une même conviction : l'accès à l'information juste, au bon moment, change des trajectoires. Personnelles. Professionnelles. Associatives. Le Cabinet Cholez-Pagotto est né de cette évidence — en octobre 2024.
                 </p>
               </div>
             </div>
@@ -210,7 +210,7 @@ export default function APropos() {
           {/* TÉMOIGNAGES */}
           <section>
             <h2 style={{color: '#0f2d6e', fontSize: '1.4rem', fontWeight: '700', margin: '0 0 0.5rem', textAlign: 'center'}}>Ils nous font confiance</h2>
-            <p style={{color: '#6b7280', fontSize: '13px', textAlign: 'center', margin: '0 0 2rem', lineHeight: '1.6'}}>Des particuliers, des créateurs d'entreprise, des associations — et des confrères.</p>
+            <p style={{color: '#6b7280', fontSize: '13px', textAlign: 'center', margin: '0 0 2rem', lineHeight: '1.6'}}>Des particuliers, des créateurs d'entreprise, des associations — et des professionnels du droit.</p>
             <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px'}}>
 
               {/* Nathalie V. — avocate, pleine largeur */}
