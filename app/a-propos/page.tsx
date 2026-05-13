@@ -229,6 +229,7 @@ export default function APropos() {
                   </li>
                   <li style={{color: '#374151', fontSize: '12px', lineHeight: '1.7'}}>
                     L'ouvrage <em>« Agir en situation de discrédit »</em> aux éditions Le Cavalier Bleu (2026).
+                    <span style={{display: 'block', color: '#9ca3af', fontSize: '11px', marginTop: '2px'}}>Avec Lise-Marie Schaffhauser, juriste, formatrice spécialisée en droit de la famille, ancien cadre de l'administration territoriale ; et Marie-Thérèse Gendron, ancien cadre d'une fondation, accompagnatrice de projets.</span>
                   </li>
                 </ol>
               </div>
