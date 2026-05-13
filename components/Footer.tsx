@@ -25,7 +25,7 @@ export default function Footer() {
               <span style={{fontSize: '13px', fontWeight: '600', color: 'white'}}>Docuthèque et assistance par le cabinet Cholez-Pagotto</span>
             </div>
             <p style={{color: '#6b7280', fontSize: '11px', maxWidth: '200px', lineHeight: '1.6'}}>Modèles de documents actualisés régulièrement.</p>
-            <p style={{color: '#6b7280', fontSize: '11px', marginTop: '6px', lineHeight: '1.6'}}>Un service de FCFBL ACTIVITIES</p>
+            <p style={{color: '#6b7280', fontSize: '11px', marginTop: '6px', lineHeight: '1.6'}}>Cabinet Cholez-Pagotto</p>
           </div>
           <div style={{display: 'flex', gap: '2.5rem'}}>
             <div>
@@ -64,7 +64,7 @@ export default function Footer() {
             <sup>(1)</sup> Activité de conseil en assurances et réassurances réglementée, exercée sous le contrôle de l'ACPR (Autorité de Contrôle Prudentiel et de Résolution), déclarée à l'ORIAS sous le numéro 26003943. Membre de l'association d'autorégulation ENDYA. Membre du CRFF (Conseil Représentatif des Formalistes de France).
           </p>
           <p style={{color: '#4b5563', fontSize: '10px', textAlign: 'center'}}>
-            © 2026 · Cabinet Cholez-Pagotto, service de FCFBL ACTIVITIES · Les modèles fournis ne constituent pas un conseil juridique personnalisé.
+            © 2026 · Cabinet Cholez-Pagotto · Les modèles fournis ne constituent pas un conseil juridique personnalisé.
           </p>
         </div>
       </div>

@@ -48,14 +48,14 @@ export default function Tarifs() {
               <p style={{fontSize: '12px'}}><span style={{color: '#d1d5db', marginRight: '5px'}}>✗</span><span style={{color: '#9ca3af'}}>Bibliothèque complète</span></p>
               <p style={{fontSize: '12px'}}><span style={{color: '#d1d5db', marginRight: '5px'}}>✗</span><span style={{color: '#9ca3af'}}>Question juriste incluse</span></p>
             </div>
-            <button style={{width: '100%', marginTop: '14px', background: 'white', color: '#1a4fba', border: '1.5px solid #1a4fba', padding: '9px', borderRadius: '6px', fontSize: '12px', fontWeight: '500', cursor: 'pointer'}}>
+            <a href="/connexion" style={{display: 'block', width: '100%', marginTop: '14px', background: 'white', color: '#1a4fba', border: '1.5px solid #1a4fba', padding: '9px', borderRadius: '6px', fontSize: '12px', fontWeight: '500', cursor: 'pointer', textDecoration: 'none', textAlign: 'center', boxSizing: 'border-box'}}>
               Accéder gratuitement
-            </button>
+            </a>
           </div>
 
           {/* ABONNEMENT OPTIMAL */}
           <div style={{border: '2px solid #1a4fba', borderRadius: '12px', padding: '1.5rem', position: 'relative'}}>
-            <span style={{position: 'absolute', top: '-13px', left: '50%', transform: 'translateX(-50%)', background: '#1a4fba', color: 'white', fontSize: '10px', padding: '4px 14px', borderRadius: '20px', whiteSpace: 'nowrap', fontWeight: '500'}}>�? Recommandé</span>
+            <span style={{position: 'absolute', top: '-13px', left: '50%', transform: 'translateX(-50%)', background: '#1a4fba', color: 'white', fontSize: '10px', padding: '4px 14px', borderRadius: '20px', whiteSpace: 'nowrap', fontWeight: '500'}}>Recommandé</span>
             <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px'}}>
               <p style={{fontWeight: '600', color: '#0f2d6e'}}>Abonnement Optimal</p>
               <span style={{background: '#eff6ff', color: '#1a4fba', fontSize: '10px', padding: '2px 8px', borderRadius: '20px'}}>Abonnement</span>
@@ -83,15 +83,15 @@ export default function Tarifs() {
               <div style={{background: '#eff6ff', borderRadius: '8px', padding: '8px 10px', marginTop: '4px'}}>
                 <p style={{fontSize: '11px', fontWeight: '600', color: '#1a4fba', marginBottom: '4px'}}>Espace pédagogique inclus</p>
                 <p style={{fontSize: '12px'}}><span style={{color: '#16a34a', marginRight: '5px'}}>✓</span>Fiches pédagogiques de vulgarisation juridique</p>
-                <p style={{fontSize: '12px', marginTop: '4px'}}><span style={{color: '#16a34a', marginRight: '5px'}}>✓</span>1 question par mois · réponse sous 24 à 48h · non cumulable</p>
+                <p style={{fontSize: '12px', marginTop: '4px'}}><span style={{color: '#16a34a', marginRight: '5px'}}>✓</span>1 question par mois · réponse sous 24 à 48h ouvrées · non cumulable</p>
                 <p style={{fontSize: '11px', color: '#6b7280', marginTop: '4px', paddingLeft: '16px'}}>puis 9,90 € par question supplémentaire</p>
               </div>
               <p style={{fontSize: '12px'}}><span style={{color: '#16a34a', marginRight: '5px'}}>✓</span>Newsletter spéciale abonnés</p>
               <p style={{fontSize: '12px'}}><span style={{color: '#16a34a', marginRight: '5px'}}>✓</span>Support prioritaire par mail</p>
             </div>
-            <button style={{width: '100%', marginTop: '14px', background: '#1a4fba', color: 'white', border: 'none', padding: '9px', borderRadius: '6px', fontSize: '12px', fontWeight: '500', cursor: 'pointer'}}>
-              {annuel ? 'S\'abonner — offre annuelle' : 'S\'abonner'}
-            </button>
+            <a href="/connexion" style={{display: 'block', width: '100%', marginTop: '14px', background: '#1a4fba', color: 'white', border: 'none', padding: '9px', borderRadius: '6px', fontSize: '12px', fontWeight: '500', cursor: 'pointer', textDecoration: 'none', textAlign: 'center', boxSizing: 'border-box'}}>
+              {annuel ? "S'abonner - offre annuelle" : "S'abonner"}
+            </a>
           </div>
 
           {/* INFORMATION SUR VOS DROITS */}
@@ -103,7 +103,7 @@ export default function Tarifs() {
             </div>
             <p style={{fontSize: '28px', fontWeight: '600', color: '#b8860b'}}>47 €</p>
             <p style={{color: '#6b7280', fontSize: '12px'}}>par question · paiement unique</p>
-            <p style={{color: '#16a34a', fontSize: '11px', marginTop: '3px'}}>Réponse garantie sous 24 à 48h</p>
+            <p style={{color: '#16a34a', fontSize: '11px', marginTop: '3px'}}>Réponse sous 24 à 48h ouvrées</p>
             <div style={{borderTop: '1px solid #f3f4f6', margin: '12px 0'}}></div>
             <div style={{display: 'flex', flexDirection: 'column', gap: '7px'}}>
               <p style={{fontSize: '12px'}}><span style={{color: '#16a34a', marginRight: '5px'}}>✓</span>Vous posez votre question en langage courant</p>
@@ -111,12 +111,12 @@ export default function Tarifs() {
               <p style={{fontSize: '12px'}}><span style={{color: '#16a34a', marginRight: '5px'}}>✓</span>Réponse sur le droit et vos droits applicables</p>
               <p style={{fontSize: '12px'}}><span style={{color: '#16a34a', marginRight: '5px'}}>✓</span>Sans abonnement ni engagement</p>
             </div>
-            <div style={{background: '#fff7ed', borderRadius: '8px', padding: '8px 10px', marginTop: '10px', border: '1px solid #fed7aa'}}>
-              <p style={{fontSize: '11px', color: '#92400e', lineHeight: '1.5'}}>Cette réponse a vocation à vous informer et à vous orienter. Elle ne constitue pas une consultation juridique au sens de la loi du 31 décembre 1971, réservée aux avocats.</p>
+            <div style={{background: '#f0f4ff', borderRadius: '8px', padding: '8px 10px', marginTop: '10px', border: '1px solid #bfdbfe'}}>
+              <p style={{fontSize: '11px', color: '#1e3a5f', lineHeight: '1.6'}}>Ce service constitue une information juridique au sens de la loi n°71-1130 du 31 décembre 1971 et ne constitue pas une consultation juridique personnalisée. Le cas échéant, vous serez orienté vers le professionnel du droit compétent.</p>
             </div>
-            <button style={{width: '100%', marginTop: '14px', background: '#b8860b', color: 'white', border: 'none', padding: '9px', borderRadius: '6px', fontSize: '12px', fontWeight: '500', cursor: 'pointer'}}>
+            <a href="/information-sur-vos-droits" style={{display: 'block', width: '100%', marginTop: '14px', background: '#b8860b', color: 'white', border: 'none', padding: '9px', borderRadius: '6px', fontSize: '12px', fontWeight: '500', cursor: 'pointer', textDecoration: 'none', textAlign: 'center', boxSizing: 'border-box'}}>
               Poser ma question
-            </button>
+            </a>
           </div>
 
         </div>
@@ -124,7 +124,7 @@ export default function Tarifs() {
         {/* NOTE ENGAGEMENT */}
         <div style={{maxWidth: '900px', margin: '1.5rem auto 0', background: '#fff7ed', border: '1px solid #fed7aa', borderRadius: '10px', padding: '0.875rem 1.25rem'}}>
           <p style={{color: '#92400e', fontSize: '11px', lineHeight: '1.7', margin: 0}}>
-            <strong>Information importante —</strong> L'abonnement Optimal est souscrit pour une durée minimale de 12 mois. À l'issue de cette période, il se renouvelle automatiquement pour une nouvelle année, sauf résiliation adressée par écrit au moins 30 jours avant l'échéance. Le tarif mensuel affiché est donné à titre indicatif, calculé sur la base de l'engagement annuel. La question mensuelle incluse est non cumulable d'un mois sur l'autre. Vous posez régulièrement des questions ? L'abonnement Optimal est plus économique dès la deuxième question mensuelle.
+            <strong>Information importante :</strong> L'abonnement Optimal est souscrit pour une durée minimale de 12 mois. À l'issue de cette période, il se renouvelle automatiquement pour une nouvelle année, sauf résiliation adressée par écrit au moins 30 jours avant l'échéance. Le tarif mensuel affiché est donné à titre indicatif, calculé sur la base de l'engagement annuel. La question mensuelle incluse est non cumulable d'un mois sur l'autre. Vous posez régulièrement des questions ? L'abonnement Optimal est plus économique dès la deuxième question mensuelle.
           </p>
         </div>
 

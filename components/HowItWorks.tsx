@@ -14,7 +14,7 @@ export default function HowItWorks() {
             {[
               { n: '1', title: 'Choisissez votre profil', text: "Employeur, salarié, consommateur, dirigeant, entrepreneur, bénévole ou DPO, quel que soit votre profil, chacun dispose de ses propres modèles de documents, adaptés à sa situation." },
               { n: '2', title: 'Sélectionnez votre document', text: "Une bibliothèque de modèles en constante expansion, classés par catégorie et cas d'usage, couvrant l'ensemble des situations juridiques du quotidien, tant pour particuliers que professionnels ou acteurs associatifs." },
-              { n: '3', title: 'Téléchargez et personnalisez', text: "Format DOCX universel, compatible Word et toutes suites bureautiques. Chaque modèle est prêt à l'emploi, entièrement modifiable et personnalisable à volonté, sans logiciel spécifique, sans abonnement supplémentaire, sans restriction. Le document final vous appartient intégralement." },
+              { n: '3', title: 'Téléchargez et personnalisez', text: "Format DOCX universel, compatible Word et toutes suites bureautiques. Chaque modèle est fourni au format DOCX, entièrement modifiable et personnalisable à volonté, sans logiciel spécifique, sans abonnement supplémentaire, sans restriction. Le document final vous appartient intégralement." },
             ].map((s) => (
               <div key={s.n} style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.5rem', display: 'flex', gap: '1rem', alignItems: 'flex-start'}}>
                 <div style={{width: '28px', height: '28px', background: '#1a4fba', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontSize: '12px', fontWeight: '700', flexShrink: 0}}>{s.n}</div>
@@ -28,18 +28,18 @@ export default function HowItWorks() {
         </div>
       </section>
 
-      {/* SECTION 2 — INFORMATION SUR VOS DROITS */}
+      {/* SECTION 2 - INFORMATION SUR VOS DROITS */}
       <section style={{background: '#f0f4ff', padding: '4rem 0', borderBottom: '1px solid #e5e7eb'}}>
         <div style={{maxWidth: '1200px', margin: '0 auto', padding: '0 2rem'}}>
           <div style={{textAlign: 'center', marginBottom: '2.5rem'}}>
-            <h2 style={{fontSize: '1.6rem', fontWeight: '700', color: '#0f2d6e'}}>Vos droits expliqués, par un juriste</h2>
-            <p style={{color: '#6b7280', fontSize: '0.875rem', marginTop: '6px'}}>Une question sur vos droits ? Nous vous aidons à mieux les comprendre. Nous vous répondons en vous expliquant le droit, en clair, sans jargon, sous 24 à 48h.</p>
+            <h2 style={{fontSize: '1.6rem', fontWeight: '700', color: '#0f2d6e'}}>Le droit et vos droits expliqués, par un juriste dédié</h2>
+            <p style={{color: '#6b7280', fontSize: '0.875rem', marginTop: '6px'}}>Une question sur vos droits ? Le cabinet vous aide à mieux les comprendre. Obtenez des explications sur le droit applicable à votre situation, en clair, sans jargon, sous 24 à 48h.</p>
           </div>
           <div style={{display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem'}}>
             {[
               { n: '1', title: 'Vous avez une question sur vos droits', text: "Relations difficiles avec votre employeur ou votre bailleur, licenciement, litige consommateur, clause contractuelle, obligation légale, droit du voisinage, relations entre professionnels... Posez votre question en langage courant, pas besoin de maîtriser le droit." },
               { n: '2', title: 'Choisissez votre formule', text: "Abonné Optimal ? Une question est incluse chaque mois, non cumulable, les suivantes à 9,90 €. Sans abonnement ? Accédez directement à l'offre unitaire Information sur vos droits à 47 €, sans abonnement ni engagement." },
-              { n: '3', title: 'Recevez une réponse claire sous 24 à 48h', text: "Un juriste vous apporte une réponse documentaire et pédagogique par écrit, sous 24 à 48h. Cette réponse a vocation à vous informer et à vous orienter, elle ne constitue pas un conseil juridique au sens de la loi." },
+              { n: '3', title: 'Recevez une réponse claire sous 24 à 48h', text: "Un juriste vous apporte une réponse pédagogique par écrit, sous 24 à 48h. Cette réponse constitue une information juridique au sens de la loi n°71-1130 du 31 décembre 1971 et ne constitue pas une consultation juridique personnalisée." },
             ].map((s) => (
               <div key={s.n} style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.5rem', display: 'flex', gap: '1rem', alignItems: 'flex-start'}}>
                 <div style={{width: '28px', height: '28px', background: '#0f2d6e', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontSize: '12px', fontWeight: '700', flexShrink: 0}}>{s.n}</div>
@@ -52,27 +52,27 @@ export default function HowItWorks() {
           </div>
           <div style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '10px', padding: '1rem 1.5rem', marginTop: '2rem'}}>
             <p style={{color: '#9ca3af', fontSize: '11px', lineHeight: '1.7', margin: 0}}>
-              <strong style={{color: '#6b7280'}}>Information importante :</strong> les réponses fournies sont à vocation informative et pédagogique. Elles ne constituent pas une consultation juridique au sens de la loi du 31 décembre 1971. Pour toute situation nécessitant un acte juridique ou une représentation, nous vous recommandons de consulter un avocat. Selon votre besoin, nous pouvons vous orienter vers des avocats partenaires, sans engagement de votre part.
+              <strong style={{color: '#6b7280'}}>Information importante :</strong> les réponses fournies sont à vocation informative et pédagogique. Elles ne constituent pas une consultation juridique au sens de la loi n°71-1130 du 31 décembre 1971. La réponse apportée vous permettra de mieux comprendre vos droits, d'identifier les règles juridiques applicables à votre situation et de prendre vos décisions en toute connaissance de cause. Le cas échéant, vous serez orienté vers le professionnel du droit compétent.
             </p>
           </div>
         </div>
       </section>
 
-      {/* SECTION 3 — ASSISTANCE JURIDIQUE */}
+      {/* SECTION 3 - INFORMATION JURIDIQUE */}
       <section style={{background: 'white', padding: '4rem 0', borderBottom: '1px solid #e5e7eb'}}>
         <div style={{maxWidth: '1200px', margin: '0 auto', padding: '0 2rem'}}>
           <div style={{display: 'flex', gap: '3rem', alignItems: 'flex-start'}}>
             <div style={{flex: '0 0 48%'}}>
-              <span style={{background: '#eff6ff', color: '#1a4fba', fontSize: '11px', fontWeight: '600', padding: '3px 12px', borderRadius: '20px', letterSpacing: '0.05em'}}>ASSISTANCE JURIDIQUE</span>
-              <h2 style={{fontSize: '1.3rem', fontWeight: '700', color: '#0f2d6e', margin: '12px 0 16px 0', lineHeight: '1.4'}}>L'assistance juridique, qu'est-ce que c'est ?</h2>
+              <span style={{background: '#eff6ff', color: '#1a4fba', fontSize: '11px', fontWeight: '600', padding: '3px 12px', borderRadius: '20px', letterSpacing: '0.05em'}}>INFORMATION JURIDIQUE</span>
+              <h2 style={{fontSize: '1.3rem', fontWeight: '700', color: '#0f2d6e', margin: '12px 0 16px 0', lineHeight: '1.4'}}>L'information juridique, qu'est-ce que c'est ?</h2>
               <p style={{color: '#374151', fontSize: '0.95rem', lineHeight: '1.8', marginBottom: '16px'}}>
-                L'assistance juridique désigne toute forme d'aide apportée à une personne pour mieux comprendre ses droits, s'informer sur le cadre légal applicable à sa situation et accéder aux documents dont elle a besoin pour agir.
+                L'information juridique désigne toute forme d'aide apportée à une personne pour mieux comprendre ses droits, s'informer sur le cadre légal applicable à sa situation et accéder aux documents dont elle a besoin pour agir.
               </p>
               <p style={{color: '#374151', fontSize: '0.95rem', lineHeight: '1.8', marginBottom: '16px'}}>
-                Notre offre s'inscrit dans une démarche d'information et de mise à disposition documentaire. Nous ne délivrons pas de consultation juridique au sens de la loi du 31 décembre 1971, réservée aux avocats et professionnels réglementés, à l'exception de l'activité réglementée que nous menons sur le droit assurantiel<sup>(1)</sup>. Nous disposons d'un réseau d'avocats partenaires vers lesquels nous pouvons vous orienter, sans obligation de votre part, le choix d'un avocat vous étant libre. Nous mettons à votre disposition des ressources pédagogiques et des modèles de documents pour vous permettre de mieux appréhender votre situation et d'agir avec les bons outils.
+                Notre offre s'inscrit dans une démarche d'information et de mise à disposition documentaire, au sens de la loi n°71-1130 du 31 décembre 1971. Nous ne délivrons pas de consultation juridique personnalisée, réservée aux professionnels du droit habilités par la loi, à l'exception de l'activité réglementée que nous menons sur le droit assurantiel<sup>(1)</sup>. Nous disposons d'un réseau d'avocats partenaires vers lesquels nous pouvons vous orienter, sans obligation de votre part, le choix d'un professionnel vous étant libre. Nous mettons à votre disposition des ressources pédagogiques et des modèles de documents pour vous permettre de mieux appréhender votre situation et d'agir avec les bons outils.
               </p>
               <p style={{color: '#374151', fontSize: '0.95rem', lineHeight: '1.8'}}>
-                Deux formes d'accompagnement complémentaires : une bibliothèque de modèles de documents prêts à l'emploi, et un service de réponse pédagogique pour éclairer vos droits avant d'agir.
+                Deux formes d'accompagnement complémentaires : une bibliothèque de modèles de documents téléchargeables et personnalisables, et un service de réponse pédagogique pour éclairer vos droits avant d'agir.
               </p>
             </div>
             <div style={{flex: '0 0 48%', display: 'flex', flexDirection: 'column', gap: '14px'}}>
