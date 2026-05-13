@@ -44,7 +44,7 @@ const valeurs = [
   },
   {
     titre: "La rigueur sans la complexité",
-    texte: "Le droit est précis. Il n'a pas à être obscur. Chaque réponse, chaque document, chaque accompagnement proposé ici est rédigé avec rigueur — et en langage clair. Parce que comprendre ce qu'on signe, ce qu'on déclare ou ce à quoi on a droit, c'est la base de toute décision éclairée.",
+    texte: "Le droit est précis. Il n'a pas à être obscur. Chaque réponse, chaque document, chaque accompagnement proposé ici est rédigé avec rigueur, en langage clair. Parce que comprendre ce qu'on signe, ce qu'on déclare ou ce à quoi on a droit, c'est la base de toute décision éclairée.",
   },
   {
     titre: "Le terrain avant la théorie",
@@ -52,7 +52,7 @@ const valeurs = [
   },
   {
     titre: "À vos côtés dans la durée",
-    texte: "Accompagner un porteur de projet, une association, un salarié ou un particulier, ce n'est pas livrer un document et passer à la suite. C'est être présent tout au long des démarches, projets et décisions — comprendre une situation, anticiper les besoins à venir, orienter vers les bons interlocuteurs quand nécessaire.",
+    texte: "Accompagner un porteur de projet, une association, un salarié ou un particulier, ce n'est pas livrer un document et passer à la suite. C'est être présent tout au long des démarches, projets et décisions : comprendre une situation, anticiper les besoins à venir, orienter vers les bons interlocuteurs quand nécessaire.",
   },
 ]
 
@@ -63,19 +63,19 @@ const offre = [
   },
   {
     service: "Information sur vos droits",
-    probleme: "Poser une question à un avocat coûte cher. La laisser sans réponse coûte parfois plus. Ce service rend l'information juridique accessible, rédigée par un juriste, sous 24 à 48h."
+    probleme: "L'accès à l'information juridique devrait être simple, rapide et abordable. Ce service rend une réponse rédigée par un juriste accessible à tous, sous 24 à 48h."
   },
   {
     service: "Accompagnement ESS et associations",
-    probleme: "Le secteur associatif et l'ESS ont des règles spécifiques que peu de cabinets maîtrisent vraiment. Ici, c'est un terrain connu depuis plus de dix ans — pas une spécialité de vitrine."
+    probleme: "Le secteur associatif et plus généralement l'ESS, la fonction publique, le monde du travail, du sport, de l'éducation... ont des règles spécifiques que peu de cabinets maîtrisent vraiment. Ici, c'est un terrain connu depuis plus de dix ans, pas des spécialités de vitrine."
   },
   {
     service: "RGPD et DPO externalisé",
-    probleme: "Les structures sociales et associatives traitent des données parmi les plus sensibles qui soient. Elles n'ont souvent pas les moyens d'un expert dédié. C'est précisément pour elles que ce service existe."
+    probleme: "Les entreprises et les structures associatives traitent des données parmi les plus sensibles qui soient. Elles n'ont souvent pas les moyens d'un expert dédié. C'est précisément pour elles que ce service existe."
   },
   {
     service: "Conseil en assurances",
-    probleme: "Un créateur d'entreprise sans RC Pro est exposé dès le premier jour. Une association sans couverture adaptée aussi. Un conseil indépendant, sans lien d'exclusivité avec un assureur, change la donne."
+    probleme: "Un créateur d'entreprise sans RC Pro est exposé dès le premier jour. Une association sans couverture adaptée aussi. Un particulier mal informé sur ses garanties, pareil. Un conseil indépendant de tout assureur permet de couvrir ce qui doit l'être, sans payer pour ce qui ne le doit pas."
   },
   {
     service: "Docuthèque",
@@ -135,10 +135,10 @@ export default function APropos() {
               <h2 style={{color: '#0f2d6e', fontSize: '1.4rem', fontWeight: '700', margin: '0 0 1.25rem'}}>Un parcours construit à l'intersection de deux mondes</h2>
               <div style={{display: 'flex', flexDirection: 'column', gap: '1.25rem', color: '#374151', fontSize: '14px', lineHeight: '1.9'}}>
                 <p style={{margin: 0}}>
-                  Pendant quinze ans, François CHOLEZ a participé à la création, au développement et à la gestion d'entreprises, de coopératives et d'établissements publics (EPIC), ainsi que d'activités économiques dans le secteur associatif. Une expérience de ce que signifie naviguer dans les formalités administratives, les obligations juridiques, la gestion RH, les questions d'assurance et tant d'autres domaines d'une activité. Parfois sans guide, sans interlocuteur disponible, souvent sans réponse claire.
+                  Pendant quinze ans, François CHOLEZ a participé à la création, au développement et à la gestion d'entreprises, de coopératives et d'un établissement public (EPIC), ainsi que d'activités économiques dans le secteur associatif. Une expérience de ce que signifie naviguer dans les formalités administratives, les obligations juridiques, la gestion RH, les questions d'assurance et tant d'autres domaines du quotidien. Parfois sans guide, sans interlocuteur disponible, souvent sans réponse claire.
                 </p>
                 <p style={{margin: 0}}>
-                  En parallèle, une carrière construite dans le secteur social et associatif, de terrain, de cadre et de direction. Treize ans à accompagner des personnes en difficulté, co-fonder et administrer des structures associatives, piloter des projets. À mesurer, chaque jour, le coût de l'incompréhension juridique et administrative.
+                  En parallèle, une carrière construite dans le secteur associatif, de terrain, de cadre et de direction. Treize ans dans l'accompagnement, l'administration de structures associatives et le pilotage de projets. À mesurer, chaque jour, le coût de l'incompréhension juridique et administrative, tant pour des personnes que pour des structures.
                 </p>
                 <p style={{margin: 0}}>
                   Ces deux mondes ont forgé une même conviction : l'accès à l'information juste, au bon moment, change des trajectoires. Personnelles. Professionnelles. Associatives. Le Cabinet Cholez-Pagotto est né de cette évidence.
@@ -183,7 +183,7 @@ export default function APropos() {
                 {[
                   {
                     label: "Juriste-Formaliste",
-                    detail: "Membre du Conseil Représentatif des Formalistes de France (CRFF). Une expertise juridique au service de toutes les situations de la vie quotidienne : droit du travail, des contrats, du logement, de la consommation, des associations, des assurances et bien d'autres."
+                    detail: "Membre du Conseil Représentatif des Formalistes de France (CRFF). Une connaissance juridique généraliste couvrant les situations de la vie quotidienne : droit du travail, des contrats, du logement, de la consommation, des associations, des assurances et bien d'autres."
                   },
                   {
                     label: "Conseil en assurances et réassurance",
@@ -214,7 +214,7 @@ export default function APropos() {
                 <p style={{color: 'rgba(255,255,255,0.6)', fontSize: '10px', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.08em', margin: '0 0 12px'}}>Le fondateur répond</p>
                 <p style={{color: '#93c5fd', fontSize: '13px', fontWeight: '600', margin: '0 0 10px', fontStyle: 'italic'}}>« Qu'est-ce que l'engagement, pour vous ? »</p>
                 <p style={{color: 'rgba(255,255,255,0.85)', fontSize: '13px', lineHeight: '1.85', margin: 0}}>
-                  L'éducation populaire repose sur une idée simple : chacun a quelque chose à apprendre et quelque chose à transmettre. L'action sociale, c'est la mise en pratique de cette idée — sur le terrain, avec des gens réels, dans des situations souvent complexes. Ces deux dimensions se rejoignent dans une même conviction : une société qui accompagne ses membres — quel que soit leur parcours, leur situation ou leur statut — est une société qui avance. C'est ce qui guide mes engagements bénévoles depuis des années, et c'est la même logique qui a fondé ce cabinet.
+                  L'éducation populaire repose sur une idée simple : chacun a quelque chose à apprendre et quelque chose à transmettre. L'action sociale, c'est la mise en pratique de cette idée, sur le terrain, avec des gens réels, dans des situations souvent complexes. Ces deux dimensions se rejoignent dans une même conviction : une société qui accompagne ses membres, quel que soit leur parcours, leur situation ou leur statut, est une société qui avance. C'est ce qui guide mes engagements bénévoles depuis des années, et c'est la même logique qui a fondé ce cabinet.
                 </p>
               </div>
 
@@ -224,7 +224,7 @@ export default function APropos() {
                 <div style={{display: 'flex', flexDirection: 'column', gap: '10px'}}>
                   <div>
                     <p style={{color: '#374151', fontSize: '12px', lineHeight: '1.7', margin: '0 0 3px'}}>
-                      Chercheur associé ayant contribué à l'ouvrage <em>« L'éducation, ça se partage ? »</em> aux éditions L'Harmattan (2021) — recherche action collaborative et participative sur la co-éducation et les ressources de l'entourage.
+                      Chercheur associé ayant contribué à l'ouvrage <em>« L'éducation, ça se partage ? »</em> aux éditions L'Harmattan (2021), issu d'une recherche action collaborative et participative sur la co-éducation et les ressources de l'entourage.
                     </p>
                     <p style={{color: '#9ca3af', fontSize: '11px', margin: 0}}>Université de Strasbourg - UNAPP - 2018-2021</p>
                   </div>
@@ -283,7 +283,7 @@ export default function APropos() {
 
               <div style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '16px'}}>
                 <p style={{color: '#374151', fontSize: '13px', lineHeight: '1.85', margin: 0, fontStyle: 'italic'}}>
-                  « Ma situation et mon projet de création d'entreprise ont été rapidement bien compris. J'ai bénéficié de toutes les informations utiles pour ne pas faire d'erreur dans le process de création de mon statut de micro-entrepreneur. Bravo pour la clarté des informations, les modèles de documents et le guide adressé. Futurs entrepreneurs, soumettez vos projets auprès de François — vous serez soutenu, accompagné et gagnerez en tranquillité d'esprit. »
+                  « Ma situation et mon projet de création d'entreprise ont été rapidement bien compris. J'ai bénéficié de toutes les informations utiles pour ne pas faire d'erreur dans le process de création de mon statut de micro-entrepreneur. Bravo pour la clarté des informations, les modèles de documents et le guide adressé. Futurs entrepreneurs, soumettez vos projets auprès de François : vous serez soutenu, accompagné et gagnerez en tranquillité d'esprit. »
                 </p>
                 <div style={{display: 'flex', alignItems: 'center', gap: '10px'}}>
                   <div style={{width: '36px', height: '36px', background: '#eff6ff', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#1a4fba', fontSize: '12px', fontWeight: '700', flexShrink: 0}}>D</div>
