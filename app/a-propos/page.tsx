@@ -221,22 +221,16 @@ export default function APropos() {
               {/* PUBLICATIONS */}
               <div style={{background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '12px', padding: '1.25rem'}}>
                 <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px'}}>Contributions à des travaux de recherche</p>
-                <div style={{display: 'flex', flexDirection: 'column', gap: '10px'}}>
-                  <div>
-                    <p style={{color: '#374151', fontSize: '12px', lineHeight: '1.7', margin: '0 0 3px'}}>
-                      Chercheur associé ayant contribué à l'ouvrage <em>« L'éducation, ça se partage ? »</em> aux éditions L'Harmattan (2021), issu d'une recherche action collaborative et participative sur la co-éducation et les ressources de l'entourage.
-                    </p>
-                    <p style={{color: '#9ca3af', fontSize: '11px', margin: 0}}>Université de Strasbourg - UNAPP - 2018-2021</p>
-                  </div>
-                  <div style={{borderTop: '1px solid #bfdbfe', paddingTop: '10px'}}>
-                    <p style={{color: '#374151', fontSize: '12px', lineHeight: '1.7', margin: '0 0 3px'}}>
-                      Contributeur à l'ouvrage <em>« Agir en situation de discrédit »</em> aux éditions Le Cavalier Bleu.
-                    </p>
-                    <a href="https://www.lecavalierbleu.com/livre/agir-en-situation-de-discredit/" target="_blank" rel="noopener noreferrer" style={{color: '#1a4fba', fontSize: '11px', textDecoration: 'none'}}>
-                      Voir l'ouvrage →
-                    </a>
-                  </div>
-                </div>
+                <p style={{color: '#374151', fontSize: '12px', lineHeight: '1.7', margin: '0 0 10px'}}>Chercheur associé ayant contribué à :</p>
+                <ol style={{margin: '0', paddingLeft: '1.25rem', display: 'flex', flexDirection: 'column', gap: '10px'}}>
+                  <li style={{color: '#374151', fontSize: '12px', lineHeight: '1.7'}}>
+                    L'ouvrage <em>« L'éducation, ça se partage ? »</em> aux éditions L'Harmattan (2021), issu d'une recherche action collaborative et participative sur la co-éducation et les ressources de l'entourage.
+                    <span style={{display: 'block', color: '#9ca3af', fontSize: '11px', marginTop: '2px'}}>Université de Strasbourg - UNAPP - 2018-2021</span>
+                  </li>
+                  <li style={{color: '#374151', fontSize: '12px', lineHeight: '1.7'}}>
+                    L'ouvrage <em>« Agir en situation de discrédit »</em> aux éditions Le Cavalier Bleu (2026).
+                  </li>
+                </ol>
               </div>
             </div>
           </section>
