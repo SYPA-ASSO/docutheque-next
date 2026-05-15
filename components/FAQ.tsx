@@ -18,11 +18,11 @@ export default function FAQ() {
     },
     {
       q: 'Qu\'est-ce que le service "Information sur vos droits" ?',
-      a: "C'est un service à l'unité, sans abonnement, à 47 €. Vous posez votre question en langage courant et un juriste vous apporte une réponse pédagogique par écrit sous 24 à 48h. Cette réponse a vocation à vous informer, elle ne constitue pas une consultation juridique au sens de la loi du 31 décembre 1971. Si votre situation génère plusieurs questions, l'abonnement Optimal est plus adapté : à partir de 14,90 €/mois, il inclut une question par mois et les suivantes à seulement 9,90 €."
+      a: "C'est un service à l'unité, sans abonnement, à 47 €. Vous posez votre question en langage courant et un juriste vous apporte une réponse pédagogique par écrit sous 24 à 48h. Ce service constitue une information juridique au sens de la loi n°71-1130 du 31 décembre 1971 et ne constitue pas une consultation juridique personnalisée. Si votre situation génère plusieurs questions, l'abonnement Optimal est plus adapté : à partir de 14,90 €/mois, il inclut une question par mois et les suivantes à seulement 9,90 €."
     },
     {
       q: "L'intelligence artificielle est-elle utilisée pour rédiger les documents ?",
-      a: "Non. Chaque modèle est rédigé et relu par un juriste. Il n'y a aucune intervention de l'IA dans la rédaction de nos documents. L'IA peut halluciner. Nos juristes, non."
+      a: "Non. Chaque modèle est rédigé et relu par un juriste. Il n'y a aucune intervention de l'IA dans la rédaction de nos documents. L'IA peut halluciner. Notre juriste, non."
     },
     {
       q: "Comment fonctionne l'abonnement Optimal ?",
@@ -38,7 +38,11 @@ export default function FAQ() {
     },
     {
       q: "Proposez-vous des services de courtage en assurances ?",
-      a: "Oui. En complément de notre activité documentaire et pédagogique, nous exerçons une activité de conseil en assurances et réassurances, déclarée à l'ORIAS sous le numéro 26003943 et exercée sous le contrôle de l'ACPR. Nous pouvons vous accompagner dans la recherche et la mise en place de solutions assurantielles adaptées à votre situation personnelle ou professionnelle, en tous domaines concernés par de l'assurance."
+      a: "Oui. En complément de notre activité documentaire et pédagogique, nous exerçons une activité de conseil en assurances et réassurances, déclarée à l'ORIAS sous le numéro 26003943 et exercée sous le contrôle de l'ACPR. Nous pouvons vous accompagner dans la recherche et la mise en place de solutions assurantielles adaptées à votre situation personnelle ou professionnelle."
+    },
+    {
+      q: "Proposez-vous des formations ?",
+      a: "Oui. Le cabinet propose des formations sur-mesure à destination des entreprises, associations, structures ESS et professions libérales. Les thématiques peuvent couvrir le droit du travail, le RGPD et la protection des données, les formalités juridiques, la gouvernance associative ou encore le droit des assurances. Chaque formation est construite en fonction de vos équipes, de votre secteur d'activité et de vos objectifs. Contactez-nous pour un devis personnalisé."
     },
   ]
 

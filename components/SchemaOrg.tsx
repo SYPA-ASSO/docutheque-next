@@ -2,45 +2,69 @@ export default function SchemaOrg() {
   const schema = {
     "@context": "https://schema.org",
     "@type": "LegalService",
-    "name": "Docuthèque",
-    "description": "Plateforme de modèles de documents juridiques français rédigés par des juristes professionnels. Contrats, mises en demeure, RGPD, documents RH, statuts de société.",
-    "url": "https://docutheque.fr",
-    "serviceType": "Document juridique en ligne",
+    "name": "Cabinet Cholez-Pagotto",
+    "alternateName": "Docuthèque",
+    "description": "Plateforme de modèles de documents juridiques français rédigés par un juriste professionnel. Contrats, mises en demeure, RGPD, documents RH, statuts de société. Information sur vos droits, formations sur-mesure, conseil en assurances, accompagnement à la création d'entreprise et formalités.",
+    "url": "https://cholez-pagotto.fr",
+    "serviceType": [
+      "Document juridique en ligne",
+      "Information juridique",
+      "Formalités d'entreprise",
+      "Accompagnement associations et ESS",
+      "Conformité RGPD",
+      "DPO externalisé",
+      "Conseil en assurances",
+      "Formation juridique sur-mesure"
+    ],
     "areaServed": {
       "@type": "Country",
       "name": "France"
     },
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
-      "name": "Catalogue de modèles juridiques",
+      "name": "Services du Cabinet Cholez-Pagotto",
       "itemListElement": [
         {
           "@type": "Offer",
           "name": "Accès Gratuit",
           "price": "0",
           "priceCurrency": "EUR",
-          "description": "12 modèles juridiques essentiels en DOCX et PDF"
+          "description": "Modèles juridiques essentiels en DOCX, téléchargeables et personnalisables"
         },
         {
           "@type": "Offer",
-          "name": "Premium",
+          "name": "Abonnement Optimal",
           "price": "14.90",
           "priceCurrency": "EUR",
-          "description": "Bibliothèque complète, notices juridiques, fiches pédagogiques et 1 question sous 48h"
+          "description": "Bibliothèque complète, notices juridiques, fiches pédagogiques et 1 question d'information juridique par mois sous 24 à 48h"
         },
         {
           "@type": "Offer",
           "name": "Information sur vos droits",
           "price": "47",
           "priceCurrency": "EUR",
-          "description": "Réponse pédagogique personnalisée à votre question juridique sous 48h"
+          "description": "Information juridique rédigée par un juriste sous 24 à 48h, au sens de la loi n°71-1130 du 31 décembre 1971"
+        },
+        {
+          "@type": "Offer",
+          "name": "Formations sur-mesure",
+          "price": "0",
+          "priceCurrency": "EUR",
+          "description": "Formations juridiques sur-mesure pour entreprises, associations et structures ESS. Sur devis selon périmètre et durée."
         }
       ]
     },
     "provider": {
       "@type": "Organization",
-      "name": "Docuthèque",
-      "url": "https://docutheque.fr"
+      "name": "Cabinet Cholez-Pagotto",
+      "url": "https://cholez-pagotto.fr",
+      "member": [
+        {
+          "@type": "Person",
+          "name": "François CHOLEZ",
+          "jobTitle": "Juriste - Formaliste - Conseil en assurances et réassurance"
+        }
+      ]
     }
   }
 
