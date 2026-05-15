@@ -81,6 +81,10 @@ const offre = [
     service: "Docuthèque",
     probleme: "Un document bien rédigé, accompagné d'une notice explicative, vaut mieux qu'une explication répétée. La bibliothèque met l'expertise du cabinet à disposition, à tout moment."
   },
+  {
+    service: "Formations sur-mesure",
+    probleme: "Comprendre ses droits ou ses obligations ne s'improvise pas. Des formations construites sur mesure, pour des équipes qui ont besoin de maîtriser un cadre juridique ou réglementaire précis, dans leur secteur."
+  },
 ]
 
 export default function APropos() {

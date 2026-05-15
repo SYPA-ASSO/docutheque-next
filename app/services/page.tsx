@@ -1,6 +1,6 @@
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-import { ChevronRight, FileText, Scale, Building2, Heart, Shield, Lock, Umbrella, ArrowRight } from 'lucide-react'
+import { ChevronRight, FileText, Scale, Building2, Heart, Shield, Lock, Umbrella, GraduationCap, ArrowRight } from 'lucide-react'
 
 export const metadata = {
   title: "Nos services · Cabinet Cholez-Pagotto — Juriste, Formaliste, Conseil en assurances",
@@ -13,9 +13,9 @@ const schema = {
     {
       "@type": "ItemList",
       "name": "Services du Cabinet Cholez-Pagotto",
-      "description": "Ensemble des services proposés par le Cabinet Cholez-Pagotto — FCFBL ACTIVITIES : information juridique, formalités, RGPD, DPO externalisé, conseil en assurances.",
+      "description": "Ensemble des services proposés par le Cabinet Cholez-Pagotto, Cabinet Cholez-Pagotto : information juridique, formalités, RGPD, DPO externalisé, conseil en assurances.",
       "url": "https://cholez-pagotto.fr/services",
-      "numberOfItems": 7,
+      "numberOfItems": 8,
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Bibliothèque de documents juridiques", "url": "https://cholez-pagotto.fr/catalogue" },
         { "@type": "ListItem", "position": 2, "name": "Information sur vos droits", "url": "https://cholez-pagotto.fr/information-sur-vos-droits" },
@@ -24,6 +24,7 @@ const schema = {
         { "@type": "ListItem", "position": 5, "name": "Accompagnement RGPD & conformité", "url": "https://cholez-pagotto.fr/contact" },
         { "@type": "ListItem", "position": 6, "name": "DPO externalisé", "url": "https://cholez-pagotto.fr/contact" },
         { "@type": "ListItem", "position": 7, "name": "Conseil en assurances", "url": "https://cholez-pagotto.fr/contact" },
+        { "@type": "ListItem", "position": 8, "name": "Formations sur-mesure", "url": "https://cholez-pagotto.fr/contact" },
       ]
     },
     {
@@ -66,7 +67,7 @@ const services = [
     pourQui: "Particuliers, salariés, locataires, consommateurs, dirigeants, associations.",
     description: "Face à une situation juridique, comprendre ses droits est la première étape indispensable. Ce service vous permet de poser votre question en langage courant et de recevoir une réponse rédigée par un juriste, avec les références juridiques applicables à votre situation. Sans abonnement, sans engagement. Ce service constitue une information juridique au sens de la loi n°71-1130 du 31 décembre 1971.",
     comprend: [
-      "Réponse rédigée par un juriste — 100% humain, aucune IA",
+      "Réponse rédigée par un juriste, 100% humain, aucune IA",
       "Identification des textes et règles applicables à votre situation",
       "Réponse en langage clair, avec références juridiques précises",
       "Délai indicatif de 24 à 48h ouvrées",
@@ -82,7 +83,7 @@ const services = [
     badge: "ACCOMPAGNEMENT FORMALISTE",
     icon: <Building2 size={22} color="#1a4fba" strokeWidth={1.5} />,
     titre: "Accompagnement création d'entreprise",
-    accroche: "De l'idée à l'immatriculation — et bien au-delà. La création offerte, hors frais de greffe et de publication légale.",
+    accroche: "De l'idée à l'immatriculation, et bien au-delà. La création offerte, hors frais de greffe et de publication légale.",
     pourQui: "Porteurs de projet, créateurs d'entreprise, entrepreneurs.",
     description: "Créer une entreprise implique des choix juridiques structurants : forme juridique, rédaction des statuts, formalités d'immatriculation, conformité initiale. Le cabinet accompagne les porteurs de projet de la phase de réflexion à l'obtention du Kbis, en assurant la rédaction des statuts, la réalisation des formalités d'immatriculation et l'accompagnement RGPD dès le lancement.",
     comprend: [
@@ -91,7 +92,7 @@ const services = [
       "Réalisation des formalités d'immatriculation",
       "Accompagnement RGPD de premier niveau dès le lancement (périmètre défini ensemble)",
       "Accès aux modèles de contrats et documents métier à tarifs préférentiels",
-      "Orientation en assurances professionnelles (RC Pro, multirisques) — service distinct, ORIAS 26003943",
+      "Orientation en assurances professionnelles (RC Pro, multirisques), service distinct, ORIAS 26003943",
       "Possibilité de prise en charge des modifications statutaires ultérieures (service complémentaire)",
     ],
     tarif: "Création offerte (hors frais de greffe et journal d'annonces légales) · Services complémentaires sur devis",
@@ -163,7 +164,28 @@ const services = [
       "Formation continue des équipes impliquées",
       "Rapport annuel de conformité",
     ],
-    tarif: "Sur devis — engagement annuel",
+    tarif: "Sur devis, engagement annuel",
+    lien: "/contact",
+    disponible: true,
+    cta: "Nous contacter",
+  },
+  {
+    id: "formations",
+    badge: "FORMATIONS SUR-MESURE",
+    icon: <GraduationCap size={22} color="#1a4fba" strokeWidth={1.5} />,
+    titre: "Formations sur-mesure",
+    accroche: "Des formations adaptées à vos équipes, votre secteur et vos enjeux, en présentiel ou à distance.",
+    pourQui: "Entreprises, associations, structures ESS, professions libérales, collectivités.",
+    description: "Des sessions de formation conçues sur mesure pour répondre aux besoins réels de vos équipes : droit du travail, RGPD et protection des données, formalités juridiques, gouvernance associative, droit des assurances... Chaque formation est construite en lien avec votre secteur d'activité, votre niveau de connaissance préalable et vos objectifs opérationnels. La formation peut être dispensée en présentiel ou à distance, en session individuelle ou collective.",
+    comprend: [
+      "Audit préalable des besoins et du niveau des participants",
+      "Conception d'un programme adapté à votre secteur et vos enjeux spécifiques",
+      "Animation en présentiel ou à distance",
+      "Support de formation et ressources documentaires remis aux participants",
+      "Évaluation des acquis en fin de formation",
+      "Accompagnement post-formation sur demande",
+    ],
+    tarif: "Sur devis selon périmètre, durée et nombre de participants",
     lien: "/contact",
     disponible: true,
     cta: "Nous contacter",
@@ -217,7 +239,7 @@ export default function Services() {
               Une offre complète de services juridiques, formalistes et d'assurances.
             </h1>
             <p style={{color: 'rgba(255,255,255,0.8)', fontSize: '0.95rem', lineHeight: '1.8', margin: '0 0 28px', maxWidth: '580px'}}>
-              Le Cabinet Cholez-Pagotto accompagne particuliers, professionnels, associations et structures ESS dans la compréhension de leurs droits, la sécurisation de leurs activités et la réalisation de leurs formalités — à distance, avec rigueur et sans jargon.
+              Le Cabinet Cholez-Pagotto accompagne particuliers, professionnels, associations et structures ESS dans la compréhension de leurs droits, la sécurisation de leurs activités et la réalisation de leurs formalités, à distance, avec rigueur et sans jargon.
             </p>
             <div style={{display: 'flex', gap: '10px', flexWrap: 'wrap'}}>
               {['Juriste', 'Formaliste membre du CRFF', 'Courtier ORIAS 26003943', '100% distanciel'].map((tag, i) => (
@@ -304,7 +326,7 @@ export default function Services() {
 
           {/* NOTE LÉGALE */}
           <p style={{color: '#9ca3af', fontSize: '11px', lineHeight: '1.7', textAlign: 'center', maxWidth: '700px', margin: '0 auto'}}>
-            Cabinet Cholez-Pagotto — FCFBL ACTIVITIES · Juriste-Formaliste · Formaliste membre du CRFF (Conseil Représentatif des Formalistes de France) · Courtier en assurances et réassurances immatriculé à l'ORIAS n°26003943 · Sous contrôle de l'ACPR · Les services d'information juridique sont proposés au sens de la loi n°71-1130 du 31 décembre 1971 et ne constituent pas des consultations juridiques personnalisées.
+            Cabinet Cholez-Pagotto, Cabinet Cholez-Pagotto · Juriste-Formaliste · Formaliste membre du CRFF (Conseil Représentatif des Formalistes de France) · Courtier en assurances et réassurances immatriculé à l'ORIAS n°26003943 · Sous contrôle de l'ACPR · Les services d'information juridique sont proposés au sens de la loi n°71-1130 du 31 décembre 1971 et ne constituent pas des consultations juridiques personnalisées.
           </p>
 
         </div>

@@ -1,4 +1,4 @@
-import { Building2, Heart, Shield, Lock, Umbrella } from 'lucide-react'
+import { Building2, Heart, Shield, Lock, Umbrella, GraduationCap } from 'lucide-react'
 
 const services = [
   {
@@ -40,6 +40,14 @@ const services = [
     desc: "Analyse des besoins, comparaison des offres du marché, accompagnement à la souscription. Courtier indépendant de tout assureur, pour particuliers, professionnels et associations. Profession réglementée, inscrite à l'ORIAS, sous contrôle de l'ACPR.",
     cible: "Particuliers, professionnels, associations, créateurs d'entreprise",
     lien: "/services#assurances",
+    featured: false,
+  },
+  {
+    icon: <GraduationCap size={24} color="#1a4fba" strokeWidth={1.5} />,
+    titre: "Formations sur-mesure",
+    desc: "Sessions de formation conçues en fonction de vos équipes, votre secteur et vos enjeux : droit du travail, RGPD, gouvernance associative, formalités juridiques... Présentiel ou distanciel, avec support documentaire remis aux participants.",
+    cible: "Entreprises, associations, structures ESS, professions libérales",
+    lien: "/services#formations",
     featured: false,
   },
 ]
@@ -114,8 +122,8 @@ export default function OtherServices() {
           ))}
         </div>
 
-        {/* LIGNE 2 : 2 cartes centrées */}
-        <div style={{display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '16px', maxWidth: '820px', margin: '0 auto 2.5rem'}}>
+        {/* LIGNE 2 : 3 cartes */}
+        <div style={{display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px', margin: '0 0 2.5rem'}}>
           {services.slice(3).map((s, i) => (
             <a key={i} href={s.lien} style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.5rem', textDecoration: 'none', display: 'flex', flexDirection: 'column', gap: '10px'}}>
               <div style={{width: '40px', height: '40px', background: '#eff6ff', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0}}>
