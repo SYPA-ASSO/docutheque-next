@@ -7,7 +7,7 @@ export default function Footer() {
       <section style={{background: '#0f2d6e', padding: '3rem 0', textAlign: 'center'}}>
         <div style={{maxWidth: '1200px', margin: '0 auto', padding: '0 2rem'}}>
           <h2 style={{color: 'white', fontSize: '1.5rem', fontWeight: 'bold', lineHeight: '1.4'}}>Prêt à sécuriser vos documents et votre quotidien dans la compréhension de vos droits ?</h2>
-          <p style={{color: 'rgba(255,255,255,0.7)', fontSize: '0.875rem', marginTop: '0.75rem', maxWidth: '600px', margin: '0.75rem auto 0', lineHeight: '1.7'}}>Accès immédiat à des modèles fiables, conformes et personnalisables, juriste dédié pour vous éclairer et vous apporter une meilleure compréhension du droit.</p>
+          <p style={{color: 'rgba(255,255,255,0.7)', fontSize: '0.875rem', marginTop: '0.75rem', maxWidth: '600px', margin: '0.75rem auto 0', lineHeight: '1.7'}}>Accès immédiat à des modèles fiables, conformes et téléchargeables et personnalisables, juriste dédié pour vous éclairer et vous apporter une meilleure compréhension du droit.</p>
           <div style={{display: 'flex', justifyContent: 'center', marginTop: '1.5rem'}}>
             <a href="/tarifs" style={{background: 'white', color: '#1a4fba', border: 'none', padding: '10px 24px', borderRadius: '6px', fontSize: '12px', fontWeight: '600', cursor: 'pointer', textDecoration: 'none', display: 'inline-block'}}>Voir les tarifs</a>
           </div>
@@ -16,18 +16,24 @@ export default function Footer() {
 
       {/* FOOTER */}
       <footer style={{background: '#111827', padding: '2rem 0'}}>
-        <div style={{maxWidth: '1200px', margin: '0 auto', padding: '0 2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start'}}>
-          <div>
+        <div style={{maxWidth: '1200px', margin: '0 auto', padding: '0 2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '2rem'}}>
+
+          {/* LOGO + DESCRIPTION */}
+          <div style={{minWidth: '180px'}}>
             <div style={{display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px'}}>
               <div style={{width: '24px', height: '24px', background: '#1a4fba', borderRadius: '5px', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
                 <Scale size={14} color="white" strokeWidth={1.5} />
               </div>
-              <span style={{fontSize: '13px', fontWeight: '600', color: 'white'}}>Docuthèque et assistance par le cabinet Cholez-Pagotto</span>
+              <span style={{fontSize: '13px', fontWeight: '600', color: 'white'}}>Docuthèque par le Cabinet Cholez-Pagotto</span>
             </div>
             <p style={{color: '#6b7280', fontSize: '11px', maxWidth: '200px', lineHeight: '1.6'}}>Modèles de documents actualisés régulièrement.</p>
             <p style={{color: '#6b7280', fontSize: '11px', marginTop: '6px', lineHeight: '1.6'}}>Cabinet Cholez-Pagotto</p>
           </div>
-          <div style={{display: 'flex', gap: '2.5rem'}}>
+
+          {/* COLONNES LIENS */}
+          <div style={{display: 'flex', gap: '2.5rem', flexWrap: 'wrap'}}>
+
+            {/* Navigation */}
             <div>
               <p style={{fontSize: '11px', fontWeight: '600', color: 'white', marginBottom: '8px'}}>Navigation</p>
               <div style={{display: 'flex', flexDirection: 'column', gap: '5px'}}>
@@ -38,6 +44,19 @@ export default function Footer() {
                 <a href="/newsletter" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>Newsletter</a>
               </div>
             </div>
+
+            {/* Accompagnement - NOUVEAU */}
+            <div>
+              <p style={{fontSize: '11px', fontWeight: '600', color: 'white', marginBottom: '8px'}}>Accompagnement</p>
+              <div style={{display: 'flex', flexDirection: 'column', gap: '5px'}}>
+                <a href="/accompagnement-professionnels" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>Professionnels</a>
+                <a href="/accompagnement-associations" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>Associations · ESS</a>
+                <a href="/accompagnement-particuliers" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>Particuliers</a>
+                <a href="/formations" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>Formations</a>
+              </div>
+            </div>
+
+            {/* Légal */}
             <div>
               <p style={{fontSize: '11px', fontWeight: '600', color: 'white', marginBottom: '8px'}}>Légal</p>
               <div style={{display: 'flex', flexDirection: 'column', gap: '5px'}}>
@@ -47,12 +66,15 @@ export default function Footer() {
                 <a href="/contact" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>Contact</a>
               </div>
             </div>
+
+            {/* Le Cabinet */}
             <div>
               <p style={{fontSize: '11px', fontWeight: '600', color: 'white', marginBottom: '8px'}}>Le Cabinet</p>
               <div style={{display: 'flex', flexDirection: 'column', gap: '5px'}}>
                 <a href="/a-propos" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>À propos</a>
               </div>
             </div>
+
           </div>
         </div>
       </footer>
@@ -64,7 +86,7 @@ export default function Footer() {
             <sup>(1)</sup> Activité de conseil en assurances et réassurances réglementée, exercée sous le contrôle de l'ACPR (Autorité de Contrôle Prudentiel et de Résolution), déclarée à l'ORIAS sous le numéro 26003943. Membre de l'association d'autorégulation ENDYA. Membre du CRFF (Conseil Représentatif des Formalistes de France).
           </p>
           <p style={{color: '#4b5563', fontSize: '10px', textAlign: 'center'}}>
-            © 2026 · Cabinet Cholez-Pagotto · Les modèles fournis ne constituent pas un conseil juridique personnalisé.
+            © 2026 · Cabinet Cholez-Pagotto · Les modèles fournis ne constituent pas une consultation juridique personnalisée.
           </p>
         </div>
       </div>
