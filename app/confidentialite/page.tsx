@@ -3,7 +3,7 @@ import Footer from '@/components/Footer'
 
 export const metadata = {
   title: 'Politique de confidentialité · Docuthèque — Cabinet Cholez-Pagotto',
-  description: 'Politique de confidentialité et protection des données personnelles de la plateforme Docuthèque, service de FCFBL ACTIVITIES. Conforme au RGPD.',
+  description: 'Politique de confidentialité et protection des données personnelles de la plateforme Docuthèque, service du Cabinet Cholez-Pagotto. Conforme au RGPD.',
 }
 
 export default function Confidentialite() {
@@ -31,7 +31,7 @@ export default function Confidentialite() {
           {/* INTRO */}
           <div style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.75rem', marginBottom: '2rem'}}>
             <p style={{color: '#374151', fontSize: '13px', lineHeight: '1.9', margin: 0}}>
-              Le cabinet Cholez-Pagotto, service commercial de <strong>FCFBL ACTIVITIES</strong>, représenté par François CHOLEZ (ci-après « Nous » ou « le Responsable de traitement »), accorde une importance primordiale à la protection de vos données personnelles. La présente politique s'applique à l'ensemble des traitements effectués via la plateforme <strong>Docuthèque</strong> accessible à l'adresse <strong>cholez-pagotto.fr</strong>, conformément au Règlement (UE) 2016/679 du 27 avril 2016 (RGPD) et à la loi n° 78-17 du 6 janvier 1978 modifiée.
+              Le Cabinet Cholez-Pagotto, représenté par François CHOLEZ (ci-après « Nous » ou « le Responsable de traitement »), accorde une importance primordiale à la protection de vos données personnelles. La présente politique s'applique à l'ensemble des traitements effectués via la plateforme <strong>Docuthèque</strong> accessible à l'adresse <strong>cholez-pagotto.fr</strong>, conformément au Règlement (UE) 2016/679 du 27 avril 2016 (RGPD) et à la loi n° 78-17 du 6 janvier 1978 modifiée.
             </p>
           </div>
 
@@ -40,9 +40,9 @@ export default function Confidentialite() {
               titre: '1. Responsable de traitement',
               contenu: (
                 <div style={{color: '#374151', fontSize: '13px', lineHeight: '1.9'}}>
-                  <p><strong>FCFBL ACTIVITIES CHOLEZ François E.I.</strong></p>
-                  <p>SIREN : 490 889 516 00053</p>
-                  <p>Siège social : 12 rue d'Olima, 88000 ÉPINAL</p>
+                  <p><strong>Cabinet Cholez-Pagotto — François CHOLEZ (Entreprise Individuelle)</strong></p>
+                  <p>SIRET : 490 889 516 00053</p>
+                  <p>Siège social : 12 rue d'Olima, 88000 Épinal</p>
                   <p>Représentant : François CHOLEZ</p>
                   <p style={{marginTop: '10px'}}>
                     <strong>Délégué à la protection des données (DPO) :</strong> François CHOLEZ<br />
@@ -83,7 +83,7 @@ export default function Confidentialite() {
 
                   <div style={{background: '#f8fafc', border: '1px solid #e5e7eb', borderRadius: '8px', padding: '1rem'}}>
                     <p style={{color: '#0f2d6e', fontWeight: '700', margin: '0 0 8px'}}>3.2 Abonnement Optimal et paiement en ligne</p>
-                    <p><strong>Données :</strong> données d'identification, informations de facturation (nom, adresse), données de transaction (montant, date) — <em>les données de carte bancaire ne sont pas collectées ni stockées par Docuthèque ; elles sont traitées directement par notre prestataire de paiement</em></p>
+                    <p><strong>Données :</strong> données d'identification, informations de facturation (nom, adresse), données de transaction (montant, date) — <em>les données de carte bancaire ne sont pas collectées ni stockées par Docuthèque : elles sont traitées directement par notre prestataire de paiement</em></p>
                     <p><strong>Finalité :</strong> gestion de l'abonnement, facturation, obligations comptables</p>
                     <p><strong>Base légale :</strong> exécution du contrat (art. 6.1.b) et obligation légale (art. 6.1.c RGPD)</p>
                     <p><strong>Durée :</strong> durée de la relation contractuelle + 5 ans (prescription de droit commun) ; données de facturation : 10 ans (Code de commerce)</p>
@@ -137,7 +137,7 @@ export default function Confidentialite() {
               titre: '5. Sécurité des données',
               contenu: (
                 <p style={{color: '#374151', fontSize: '13px', lineHeight: '1.9'}}>
-                  Nous mettons en œuvre toutes les mesures techniques et organisationnelles appropriées pour protéger vos données contre tout accès non autorisé, perte, altération ou divulgation. Les accès sont strictement limités aux personnes habilitées. Toute violation de données sera notifiée à la CNIL dans les 72 heures conformément aux articles 33 et 34 du RGPD, et aux personnes concernées si cette violation est susceptible d'engendrer un risque élevé pour leurs droits et libertés.
+                  Nous mettons en oeuvre toutes les mesures techniques et organisationnelles appropriées pour protéger vos données contre tout accès non autorisé, perte, altération ou divulgation. Les accès sont strictement limités aux personnes habilitées. Toute violation de données sera notifiée à la CNIL dans les 72 heures conformément aux articles 33 et 34 du RGPD, et aux personnes concernées si cette violation est susceptible d'engendrer un risque élevé pour leurs droits et libertés.
                 </p>
               )
             },
@@ -195,7 +195,7 @@ export default function Confidentialite() {
           {/* NOTE FINALE */}
           <div style={{background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '10px', padding: '1rem 1.25rem', marginTop: '1rem'}}>
             <p style={{color: '#1e3a5f', fontSize: '12px', lineHeight: '1.7', margin: 0}}>
-              La présente politique de confidentialité constitue le document unique et exhaustif applicable à l'ensemble des services proposés par le cabinet Cholez-Pagotto via ce site, qu'il s'agisse de la consultation des contenus, de l'utilisation de la plateforme Docuthèque ou de toute autre prestation disponible à l'adresse <strong>cholez-pagotto.fr</strong>.
+              La présente politique de confidentialité constitue le document unique et exhaustif applicable à l'ensemble des services proposés par le Cabinet Cholez-Pagotto via ce site, qu'il s'agisse de la consultation des contenus, de l'utilisation de la plateforme Docuthèque ou de toute autre prestation disponible à l'adresse <strong>cholez-pagotto.fr</strong>.
             </p>
           </div>
 

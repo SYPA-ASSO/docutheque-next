@@ -85,9 +85,12 @@ export default function Header() {
               {menuOuvert && (
                 <div style={{
                   position: 'absolute', top: '100%', left: '50%', transform: 'translateX(-50%)',
-                  marginTop: '8px', background: 'white', border: '1px solid #e5e7eb',
+                  paddingTop: '8px', zIndex: 200, width: '280px'
+                }}>
+                <div style={{
+                  background: 'white', border: '1px solid #e5e7eb',
                   borderRadius: '12px', boxShadow: '0 8px 24px rgba(0,0,0,0.12)',
-                  padding: '0.5rem', width: '280px', zIndex: 200
+                  padding: '0.5rem'
                 }}>
                   {accompagnementLinks.map((lien, i) => (
                     <a
@@ -109,6 +112,7 @@ export default function Header() {
                       </div>
                     </a>
                   ))}
+                </div>
                 </div>
               )}
             </div>
