@@ -1,4 +1,4 @@
-import Header from '@/components/Header'
+﻿import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { Calendar, Clock, User, ChevronRight } from 'lucide-react'
 
@@ -14,7 +14,7 @@ const schema = {
       "@type": "Article",
       "headline": "Loi visant à renforcer la sécurité des professionnels de santé",
       "description": "La loi n°2025-623 du 9 juillet 2025 renforce la protection des soignants face aux agressions. Peines aggravées, aide au dépôt de plainte, rapport annuel obligatoire : ce qu'il faut savoir.",
-      "image": "https://www.cholez-pagotto.fr/wp-content/uploads/2025/07/loi-2025-623-9-juillet-2025-renforcant-securite-professionnels-sante.png",
+      "image": "https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/loi-2025-623-9-juillet-2025-renforcant-securite-professionnels-sante.webp",
       "datePublished": "2025-07-10",
       "author": {
         "@type": "Person",
@@ -119,7 +119,7 @@ export default function ArticleLoisante() {
                 </span>
               </div>
                             <img
-                src="https://www.cholez-pagotto.fr/wp-content/uploads/2025/07/loi-2025-623-9-juillet-2025-renforcant-securite-professionnels-sante.png"
+                src="https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/loi-2025-623-9-juillet-2025-renforcant-securite-professionnels-sante.webp"
                 alt="Loi visant à renforcer la sécurité des professionnels de santé"
                 style={{width: '100%', borderRadius: '12px', objectFit: 'cover', maxHeight: '400px', marginBottom: '0'}}
               />

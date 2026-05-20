@@ -1,4 +1,4 @@
-import Header from '@/components/Header'
+﻿import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { FileText, Calendar, Clock } from 'lucide-react'
 
@@ -17,7 +17,7 @@ const articles = [
     categorie: 'Formalités',
     tags: ['Arnaque', 'Entrepreneurs'],
     tempsLecture: '5 min',
-    image: 'https://www.cholez-pagotto.fr/wp-content/uploads/2025/11/arnaque-registre-des-societes-europeennes.jpg',
+    image: 'https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/arnaque-registre-des-societes-europeennes.webp',
   },
   {
     slug: 'reforme-des-esat-nouveaux-droits-pour-les-travailleurs-handicapes',
@@ -28,7 +28,7 @@ const articles = [
     categorie: 'Droit social',
     tags: ['ESAT', 'Handicap'],
     tempsLecture: '6 min',
-    image: 'https://www.cholez-pagotto.fr/wp-content/uploads/2025/09/travailleurs-handicapes-heureux.jpg',
+    image: 'https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/travailleurs-handicapes-heureux.webp',
   },
   {
     slug: 'saisie-sur-salaire-decryptage-complet-de-la-nouvelle-procedure-et-du-cadre-legal',
@@ -39,7 +39,7 @@ const articles = [
     categorie: 'Droit du travail',
     tags: ['Saisie sur salaire', 'Procédure'],
     tempsLecture: '8 min',
-    image: 'https://www.cholez-pagotto.fr/wp-content/uploads/2025/07/saisie-sur-salaire.jpg',
+    image: 'https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/saisie-sur-salaire.webp',
   },
   {
     slug: 'lintelligence-artificielle-en-droit-une-fausse-bonne-idee',
@@ -50,7 +50,7 @@ const articles = [
     categorie: 'Intelligence artificielle',
     tags: ['Droit', 'Intelligence Artificielle'],
     tempsLecture: '15 min',
-    image: 'https://www.cholez-pagotto.fr/wp-content/uploads/2025/07/IA-droit-1536x1280.jpg',
+    image: 'https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/IA-droit-1536x1280.webp',
   },
   {
     slug: 'loi-no-2025-623-du-9-juillet-2025-visant-a-renforcer-la-securite-des-professionnels-de-sante',
@@ -61,7 +61,7 @@ const articles = [
     categorie: 'Droit de la santé',
     tags: ['Santé', 'Loi 2025'],
     tempsLecture: '6 min',
-    image: 'https://www.cholez-pagotto.fr/wp-content/uploads/2025/07/loi-2025-623-9-juillet-2025-renforcant-securite-professionnels-sante.png',
+    image: 'https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/loi-2025-623-9-juillet-2025-renforcant-securite-professionnels-sante.webp',
   },
   {
     slug: 'at-mt-3-decisions-cour-cassation-juin-2025',
@@ -72,7 +72,7 @@ const articles = [
     categorie: 'Droit du travail',
     tags: ['AT/MP', 'Jurisprudence'],
     tempsLecture: '5 min',
-    image: 'https://www.cholez-pagotto.fr/wp-content/uploads/2025/07/AT-MT-cours-de-cassation-scaled.jpg',
+    image: 'https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/AT-MT-cours-de-cassation-scaled.webp',
   },
   {
     slug: 'apprentissage-evolution-plafond-exoneration-cotisations-salariales',
@@ -83,7 +83,7 @@ const articles = [
     categorie: 'Droit du travail',
     tags: ['Apprentissage', 'Paie'],
     tempsLecture: '5 min',
-    image: 'https://www.cholez-pagotto.fr/wp-content/uploads/2016/10/apprentissage-exoneration-employeur-scaled.jpg',
+    image: 'https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/apprentissage-exoneration-employeur-scaled.webp',
   },
   {
     slug: 'conges-paternite-alsace-moselle-maintien-salaire-jurisprudence',
@@ -94,7 +94,7 @@ const articles = [
     categorie: 'Droit du travail',
     tags: ['Congés paternité', 'Alsace-Moselle'],
     tempsLecture: '3 min',
-    image: 'https://www.cholez-pagotto.fr/wp-content/uploads/2016/10/conges-parternite-Alsace-Moselle-Jurisprudence-scaled.jpg',
+    image: 'https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/conges-parternite-Alsace-Moselle-Jurisprudence-scaled.webp',
   },
   {
     slug: 'conges-jurisprudence',
@@ -105,7 +105,7 @@ const articles = [
     categorie: 'Droit du travail',
     tags: ['Congés payés', 'Jurisprudence'],
     tempsLecture: '5 min',
-    image: 'https://www.cholez-pagotto.fr/wp-content/uploads/2016/10/Conges-jurisprudence-scaled.jpg',
+    image: 'https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/Conges-jurisprudence-scaled.webp',
   },
   {
     slug: 'cee-revalorisation-remuneration-decret-4-decembre-2024',
@@ -116,7 +116,7 @@ const articles = [
     categorie: 'Droit du travail',
     tags: ['CEE', 'Animation'],
     tempsLecture: '8 min',
-    image: 'https://www.cholez-pagotto.fr/wp-content/uploads/2016/10/CEE-revalorisation-scaled.jpg',
+    image: 'https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/CEE-revalorisation-scaled.webp',
   },
   {
     slug: 'caution-depot-de-garantie-difference-locataire-proprietaire',

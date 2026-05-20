@@ -1,4 +1,4 @@
-import Header from '@/components/Header'
+﻿import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { Calendar, Clock, User, ChevronRight } from 'lucide-react'
 
@@ -14,7 +14,7 @@ const schema = {
       "@type": "Article",
       "headline": "Contrat d'engagement éducatif (CEE) : le seuil minimum de la rémunération du salarié a été revalorisé",
       "description": "Le décret du 4 décembre 2024 augmente le seuil minimum de rémunération des salariés en CEE à 51,08 € bruts/jour à partir du 1er mai 2025. Tout ce qu'il faut savoir sur ce contrat spécifique.",
-      "image": "https://www.cholez-pagotto.fr/wp-content/uploads/2016/10/CEE-revalorisation-scaled.jpg",
+      "image": "https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/CEE-revalorisation-scaled.webp",
       "datePublished": "2025-01-30",
       "author": {
         "@type": "Person",
@@ -119,7 +119,7 @@ export default function ArticleCEE() {
                 </span>
               </div>
                             <img
-                src="https://www.cholez-pagotto.fr/wp-content/uploads/2016/10/CEE-revalorisation-scaled.jpg"
+                src="https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/CEE-revalorisation-scaled.webp"
                 alt="Contrat d'engagement éducatif (CEE) : le seuil minimum de la rémunération du salarié a été revalorisé"
                 style={{width: '100%', borderRadius: '12px', objectFit: 'cover', maxHeight: '400px', marginBottom: '0'}}
               />

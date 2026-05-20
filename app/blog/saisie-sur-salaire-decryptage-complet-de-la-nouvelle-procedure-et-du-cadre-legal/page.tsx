@@ -1,4 +1,4 @@
-import Header from '@/components/Header'
+﻿import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { Calendar, Clock, User, ChevronRight } from 'lucide-react'
 
@@ -14,7 +14,7 @@ const schema = {
       "@type": "Article",
       "headline": "Saisie sur salaire : décryptage complet de la nouvelle procédure et du cadre légal",
       "description": "La saisie des rémunérations a été profondément modernisée en 2025. Nouveau rôle du commissaire de justice, barème actualisé et obligations de l'employeur : tout ce qu'il faut savoir.",
-      "image": "https://www.cholez-pagotto.fr/wp-content/uploads/2025/07/saisie-sur-salaire.jpg",
+      "image": "https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/saisie-sur-salaire.webp",
       "datePublished": "2025-07-16",
       "author": {
         "@type": "Person",
@@ -127,7 +127,7 @@ export default function ArticleSaisieSalaire() {
                 </span>
               </div>
                             <img
-                src="https://www.cholez-pagotto.fr/wp-content/uploads/2025/07/saisie-sur-salaire.jpg"
+                src="https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/saisie-sur-salaire.webp"
                 alt="Saisie sur salaire : décryptage complet de la nouvelle procédure et du cadre légal"
                 style={{width: '100%', borderRadius: '12px', objectFit: 'cover', maxHeight: '400px', marginBottom: '0'}}
               />

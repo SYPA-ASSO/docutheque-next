@@ -1,4 +1,4 @@
-import Header from '@/components/Header'
+﻿import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { Calendar, Clock, User, ChevronRight } from 'lucide-react'
 
@@ -14,7 +14,7 @@ const schema = {
       "@type": "Article",
       "headline": "Réforme des ESAT : nouveaux droits pour les travailleurs handicapés",
       "description": "Trois textes réglementaires publiés au Journal Officiel du 25 août 2025 concrétisent la réforme des ESAT et étendent significativement les droits des travailleurs en situation de handicap.",
-      "image": "https://www.cholez-pagotto.fr/wp-content/uploads/2025/09/travailleurs-handicapes-heureux.jpg",
+      "image": "https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/travailleurs-handicapes-heureux.webp",
       "datePublished": "2025-09-01",
       "author": {
         "@type": "Person",
@@ -119,7 +119,7 @@ export default function ArticleESAT() {
                 </span>
               </div>
                             <img
-                src="https://www.cholez-pagotto.fr/wp-content/uploads/2025/09/travailleurs-handicapes-heureux.jpg"
+                src="https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/travailleurs-handicapes-heureux.webp"
                 alt="Réforme des ESAT : nouveaux droits pour les travailleurs handicapés"
                 style={{width: '100%', borderRadius: '12px', objectFit: 'cover', maxHeight: '400px', marginBottom: '0'}}
               />

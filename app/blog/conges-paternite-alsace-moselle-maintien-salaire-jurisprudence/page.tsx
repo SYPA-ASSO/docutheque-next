@@ -1,4 +1,4 @@
-import Header from '@/components/Header'
+﻿import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { Calendar, Clock, User, ChevronRight } from 'lucide-react'
 
@@ -14,7 +14,7 @@ const schema = {
       "@type": "Article",
       "headline": "Congés de paternité en Alsace-Moselle : droit à un maintien de salaire",
       "description": "La Cour de cassation rappelle qu'en Alsace-Moselle, les salariés en congé de paternité ont droit au maintien de leur salaire en application du droit local alsacien-mosellan.",
-      "image": "https://www.cholez-pagotto.fr/wp-content/uploads/2016/10/conges-parternite-Alsace-Moselle-Jurisprudence-scaled.jpg",
+      "image": "https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/conges-parternite-Alsace-Moselle-Jurisprudence-scaled.webp",
       "datePublished": "2025-06-11",
       "author": {
         "@type": "Person",
@@ -111,7 +111,7 @@ export default function ArticleCongesPaternite() {
                 </span>
               </div>
                             <img
-                src="https://www.cholez-pagotto.fr/wp-content/uploads/2016/10/conges-parternite-Alsace-Moselle-Jurisprudence-scaled.jpg"
+                src="https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/conges-parternite-Alsace-Moselle-Jurisprudence-scaled.webp"
                 alt="Congés de paternité en Alsace-Moselle : droit à un maintien de salaire"
                 style={{width: '100%', borderRadius: '12px', objectFit: 'cover', maxHeight: '400px', marginBottom: '0'}}
               />

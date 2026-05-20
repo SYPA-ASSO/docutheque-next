@@ -1,4 +1,4 @@
-import Header from '@/components/Header'
+﻿import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { Calendar, Clock, User, ChevronRight } from 'lucide-react'
 
@@ -14,7 +14,7 @@ const schema = {
       "@type": "Article",
       "headline": "Arnaque au « Registre des Sociétés Européennes » : ne laissez pas les fraudeurs saboter votre lancement",
       "description": "La création d'une entreprise vous expose aux fraudes. Découvrez comment l'arnaque au Registre des Sociétés Européennes fonctionne et comment vous protéger efficacement.",
-      "image": "https://www.cholez-pagotto.fr/wp-content/uploads/2025/11/arnaque-registre-des-societes-europeennes.jpg",
+      "image": "https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/arnaque-registre-des-societes-europeennes.webp",
       "datePublished": "2025-11-07",
       "author": {
         "@type": "Person",
@@ -119,7 +119,7 @@ export default function ArticleArnaqueRSE() {
                 </span>
               </div>
                             <img
-                src="https://www.cholez-pagotto.fr/wp-content/uploads/2025/11/arnaque-registre-des-societes-europeennes.jpg"
+                src="https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/arnaque-registre-des-societes-europeennes.webp"
                 alt="Arnaque au « Registre des Sociétés Européennes » : ne laissez pas les fraudeurs saboter votre lancement"
                 style={{width: '100%', borderRadius: '12px', objectFit: 'cover', maxHeight: '400px', marginBottom: '0'}}
               />

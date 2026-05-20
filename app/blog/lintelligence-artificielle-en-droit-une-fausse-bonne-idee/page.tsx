@@ -1,4 +1,4 @@
-import Header from '@/components/Header'
+﻿import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { Calendar, Clock, User, ChevronRight } from 'lucide-react'
 
@@ -14,7 +14,7 @@ const schema = {
       "@type": "Article",
       "headline": "L'Intelligence Artificielle en droit : une fausse bonne idée ?",
       "description": "L'IA promet efficacité et gain de temps en droit. Mais hallucinations, biais algorithmiques et absence de jugement éthique en font un outil risqué. Analyse complète par un juriste.",
-      "image": "https://www.cholez-pagotto.fr/wp-content/uploads/2025/07/IA-droit-1536x1280.jpg",
+      "image": "https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/IA-droit-1536x1280.webp",
       "datePublished": "2025-07-15T09:42:00+02:00",
       "dateModified": "2025-07-15T09:42:00+02:00",
       "author": {
@@ -144,7 +144,7 @@ export default function ArticleIA() {
                 </span>
               </div>
               <img
-                src="https://www.cholez-pagotto.fr/wp-content/uploads/2025/07/IA-droit-1536x1280.jpg"
+                src="https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/IA-droit-1536x1280.webp"
                 alt="L'Intelligence Artificielle en droit : une fausse bonne idée ?"
                 style={{width: '100%', borderRadius: '12px', objectFit: 'cover', maxHeight: '400px'}}
               />
