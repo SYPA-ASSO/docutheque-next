@@ -1,4 +1,4 @@
-import Header from '@/components/Header'
+﻿import Header from '@/components/Header'
 import Footer from '@/components/FooterMinimal'
 
 export const metadata = {
@@ -95,7 +95,7 @@ export default function Newsletter() {
             </div>
             <div style={{background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '12px', padding: '1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '1rem', flexWrap: 'wrap'}}>
               <div>
-                <p style={{color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: '0 0 4px'}}>Newsletter gratuite — inscription sans engagement</p>
+                <p style={{color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: '0 0 4px'}}>Newsletter gratuite, inscription sans engagement</p>
                 <p style={{color: '#6b7280', fontSize: '12px', margin: 0}}>Accessible avec un compte gratuit · Désinscription possible à tout moment</p>
               </div>
               <a href="/connexion" style={{display: 'inline-block', background: '#0f2d6e', color: 'white', padding: '10px 24px', borderRadius: '8px', fontSize: '13px', fontWeight: '700', textDecoration: 'none', whiteSpace: 'nowrap'}}>

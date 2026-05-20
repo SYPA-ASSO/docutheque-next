@@ -1,4 +1,4 @@
-import Header from '@/components/Header'
+﻿import Header from '@/components/Header'
 import FooterMinimal from '@/components/FooterMinimal'
 import { ChevronRight } from 'lucide-react'
 
@@ -143,7 +143,7 @@ export default function CGU() {
                     <p style={plastyle}>Ce service fait l'objet d'un devis personnalisé communiqué avant toute souscription. Les frais de greffe et de publication au journal d'annonces légales sont indépendants des honoraires du Prestataire et restent à la charge exclusive du Client.</p>
                   </div>
                   <div style={hlstyle}>
-                    <strong>Nature des services — information importante</strong> — Les Contenus numériques et le Service d'information juridique sont fournis à titre informatif et pédagogique. Ils ne constituent pas un conseil juridique personnalisé ni un acte sous seing privé au sens de la loi n°71-1130 du 31 décembre 1971. FCFBL ACTIVITIES n'est pas un cabinet d'avocats. Pour toute situation nécessitant un acte juridique ou une représentation, le Client sera orienté vers un professionnel du droit habilité.
+                    <strong>Nature des services — information importante</strong> — Les Contenus numériques et le Service d'information juridique sont fournis à titre informatif et pédagogique. Ils ne constituent pas un conseil juridique personnalisé ni un acte sous seing privé au sens de la loi n°71-1130 du 31 décembre 1971. Le Cabinet Cholez-Pagotto n'est pas un cabinet d'avocats. Pour toute situation nécessitant un acte juridique ou une représentation, le Client sera orienté vers un professionnel du droit habilité.
                   </div>
                 </div>
               </section>
@@ -342,7 +342,7 @@ export default function CGU() {
               </section>
 
               <p style={{color: '#9ca3af', fontSize: '12px', textAlign: 'center', margin: 0}}>
-                CGU en vigueur au 12 mai 2026 — FCFBL ACTIVITIES — SIRET 490 889 516 00053
+                CGU en vigueur au 12 mai 2026 Â· Cabinet Cholez-Pagotto Â· SIRET 490 889 516 00053
               </p>
 
             </div>

@@ -151,7 +151,7 @@ export default function ArticleLoisante() {
                   I. Ce qu'il faut retenir
                 </h2>
                 <ul style={{paddingLeft: '1.5rem', margin: '1rem 0', display: 'flex', flexDirection: 'column', gap: '12px'}}>
-                  <li><strong>Sécurité juridique renforcée :</strong> le champ d'application des peines est élargi — toute violence, outrage ou vol visant les professionnels ou le matériel médical, en ville, en établissement ou à domicile, est désormais puni par des peines plus lourdes.</li>
+                  <li><strong>Sécurité juridique renforcée :</strong> le champ d'application des peines est élargi : toute violence, outrage ou vol visant les professionnels ou le matériel médical, en ville, en établissement ou à domicile, est désormais puni par des peines plus lourdes.</li>
                   <li><strong>Aide active au dépôt de plainte :</strong> employeurs, ordres professionnels et établissements peuvent agir pour soutenir et représenter les victimes.</li>
                   <li><strong>Suivi systématique :</strong> obligation de bilan annuel des violences et sécurité, avec prise en compte formelle par les conseils de gouvernance des établissements.</li>
                   <li><strong>Discrétion et protection des victimes :</strong> possibilité pour les soignants de dissimuler leur adresse personnelle dans les procédures judiciaires.</li>
@@ -204,8 +204,8 @@ export default function ArticleLoisante() {
                     </thead>
                     <tbody>
                       {[
-                        ["Peines aggravées", "Extension aux violences (physiques, verbales, menaces, vols) commises envers tout personnel de santé — peines alourdies pouvant aller jusqu'à 7 ans d'emprisonnement et 100 000 € d'amende pour violences aggravées, davantage selon la gravité des faits et les circonstances."],
-                        ["Extension du délit d'outrage", "L'outrage (paroles, gestes ou menaces à caractère irrespectueux) désormais expressément puni lorsqu'il s'adresse à tout professionnel de santé ou personnel de structure médicale dans l'exercice de ses fonctions — amende jusqu'à 7 500 €."],
+                        ["Peines aggravées", "Extension aux violences (physiques, verbales, menaces, vols) commises envers tout personnel de santé. Peines alourdies pouvant aller jusqu'à 7 ans d'emprisonnement et 100 000 € d'amende pour violences aggravées, davantage selon la gravité des faits et les circonstances."],
+                        ["Extension du délit d'outrage", "L'outrage (paroles, gestes ou menaces à caractère irrespectueux) désormais expressément puni lorsqu'il s'adresse à tout professionnel de santé ou personnel de structure médicale dans l'exercice de ses fonctions. Amende jusqu'à 7 500 €."],
                         ["Vols aggravés", "Le vol de matériel médical ou tout matériel au détriment d'un professionnel de santé est désormais une circonstance aggravante."],
                         ["Protection vie privée", "Les victimes peuvent utiliser l'adresse de leur ordre ou de leur lieu de travail lorsqu'elles déposent plainte, pour préserver leur vie privée."],
                         ["Territoires d'Outre-Mer", "Les dispositions s'appliquent également en Nouvelle-Calédonie, Polynésie, Wallis-et-Futuna."],
@@ -275,7 +275,7 @@ export default function ArticleLoisante() {
               <p style={{color: '#6b7280', fontSize: '11px', lineHeight: '1.7', margin: '0 0 8px'}}>
                 Accompagne particuliers, professionnels, collectivités et acteurs de l'ESS dans la compréhension de leurs droits, la sécurisation des activités et le développement de projets. Défend une approche du droit accessible, opérationnelle et orientée impact social ainsi qu'une meilleure maîtrise de leurs droits assurantiels. Membre du CRFF (Conseil Représentatif des Formalistes de France). Administrateur expert au collectif DAVO (Des Avocats Vous Orientent).
               </p>
-              <p style={{color: '#9ca3af', fontSize: '11px', margin: 0}}>Cabinet Cholez-Pagotto — FCFBL ACTIVITIES</p>
+              <p style={{color: '#9ca3af', fontSize: '11px', margin: 0}}>Cabinet Cholez-Pagotto</p>
             </div>
 
             <div style={{background: '#0f2d6e', borderRadius: '12px', padding: '1.25rem'}}>

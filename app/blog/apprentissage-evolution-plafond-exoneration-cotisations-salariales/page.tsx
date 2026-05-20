@@ -141,7 +141,7 @@ export default function ArticleApprentissage() {
             <div style={{color: '#374151', fontSize: '0.95rem', lineHeight: '1.9'}}>
 
               <section id="intro">
-                <p style={{marginBottom: '1rem'}}>Depuis le 1er mars 2025, le plafond d'exonération des cotisations salariales applicable aux contrats d'apprentissage a été abaissé. Les règles applicables diffèrent désormais selon la date de <strong>signature</strong> du contrat — et non plus seulement selon la date de début d'exécution.</p>
+                <p style={{marginBottom: '1rem'}}>Depuis le 1er mars 2025, le plafond d'exonération des cotisations salariales applicable aux contrats d'apprentissage a été abaissé. Les règles applicables diffèrent désormais selon la date de <strong>signature</strong> du contrat, et non plus seulement selon la date de début d'exécution.</p>
                 <p style={{marginBottom: '1rem'}}>Le BOSS (Bulletin Officiel de la Sécurité Sociale) a d'abord adopté une position, puis l'a revue le 3 juillet 2025. Voici ce qu'il faut retenir.</p>
               </section>
 
@@ -259,7 +259,7 @@ export default function ArticleApprentissage() {
               <p style={{color: '#6b7280', fontSize: '11px', lineHeight: '1.7', margin: '0 0 8px'}}>
                 Accompagne particuliers, professionnels, collectivités et acteurs de l'ESS dans la compréhension de leurs droits, la sécurisation des activités et le développement de projets. Défend une approche du droit accessible, opérationnelle et orientée impact social ainsi qu'une meilleure maîtrise de leurs droits assurantiels. Membre du CRFF (Conseil Représentatif des Formalistes de France). Administrateur expert au collectif DAVO (Des Avocats Vous Orientent).
               </p>
-              <p style={{color: '#9ca3af', fontSize: '11px', margin: 0}}>Cabinet Cholez-Pagotto — FCFBL ACTIVITIES</p>
+              <p style={{color: '#9ca3af', fontSize: '11px', margin: 0}}>Cabinet Cholez-Pagotto</p>
             </div>
 
             <div style={{background: '#0f2d6e', borderRadius: '12px', padding: '1.25rem'}}>

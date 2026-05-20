@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import GoogleAvis from '@/components/GoogleAvis'
 
@@ -32,7 +32,7 @@ export default function TarifsClient() {
     { q: "Quels moyens de paiement acceptez-vous ?", a: "Nous acceptons le paiement par carte bancaire et par virement bancaire. Le paiement est sécurisé. Aucune information bancaire n'est conservée sur nos serveurs." },
     { q: "L'abonnement se renouvelle-t-il automatiquement ?", a: "Oui. À l'issue de la période initiale de 12 mois, l'abonnement se renouvelle automatiquement pour une nouvelle année, sauf résiliation adressée par écrit au moins 30 jours avant l'échéance." },
     { q: 'La réponse "Information sur vos droits" est-elle garantie sous 48h ?', a: "Dans le cadre d'une obligation de moyen, nous mettons tout en œuvre pour vous apporter une réponse rédigée par un juriste sous 24 à 48h ouvrées suivant la réception de votre question et la confirmation du paiement." },
-    { q: "Puis-je cumuler les questions incluses dans mon abonnement Optimal ?", a: "Non. La question mensuelle incluse dans l'abonnement Optimal n'est pas cumulable d'un mois sur l'autre. Si vous avez besoin de poser des questions supplémentaires dans le même mois, elles sont disponibles à 9,90 € l'unité. Sans abonnement, chaque question est à 47 € — si vous posez régulièrement des questions, l'abonnement Optimal devient plus économique dès la deuxième question mensuelle." },
+    { q: "Puis-je cumuler les questions incluses dans mon abonnement Optimal ?", a: "Non. La question mensuelle incluse dans l'abonnement Optimal n'est pas cumulable d'un mois sur l'autre. Si vous avez besoin de poser des questions supplémentaires dans le même mois, elles sont disponibles à 9,90 € l'unité. Sans abonnement, chaque question est à 47 €. Si vous posez régulièrement des questions, l'abonnement Optimal devient plus économique dès la deuxième question mensuelle." },
   ]
 
   const createurItems = [
@@ -175,7 +175,7 @@ export default function TarifsClient() {
               <div style={{display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '24px', flexWrap: 'wrap'}}>
                 <div style={{flex: 1, background: 'rgba(255,255,255,0.1)', borderRadius: '10px', padding: '12px 16px'}}>
                   <p style={{color: 'rgba(255,255,255,0.6)', fontSize: '11px', lineHeight: '1.7', margin: 0}}>
-                    Frais indépendants de nos services, réglés directement auprès des organismes concernés : greffe (gratuit pour la micro-entreprise, entre 55 et 80 € pour les sociétés) et journal d'annonces légales (entre 120 et 230 € HT selon la forme juridique et le département) — tarifs 2026.
+                    Frais indépendants de nos services, réglés directement auprès des organismes concernés : greffe (gratuit pour la micro-entreprise, entre 55 et 80 € pour les sociétés) et journal d'annonces légales (entre 120 et 230 € HT selon la forme juridique et le département), tarifs 2026.
                   </p>
                 </div>
               </div>

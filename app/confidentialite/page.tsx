@@ -1,4 +1,4 @@
-import Header from '@/components/Header'
+﻿import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 
 export const metadata = {
@@ -154,7 +154,7 @@ export default function Confidentialite() {
                       ['Droit d\'opposition', 'Vous opposer au traitement pour motif légitime (art. 21 RGPD)'],
                       ['Droit à la limitation', 'Suspendre temporairement le traitement de vos données (art. 18 RGPD)'],
                       ['Droit à la portabilité', 'Recevoir vos données dans un format structuré et lisible (art. 20 RGPD)'],
-                      ['Retrait du consentement', 'Retirer votre consentement à tout moment pour les traitements fondés sur celui-ci (newsletter) — sans porter atteinte à la licéité des traitements antérieurs'],
+                      ['Retrait du consentement', 'Retirer votre consentement à tout moment pour les traitements fondés sur celui-ci (newsletter), sans porter atteinte à la licéité des traitements antérieurs'],
                       ['Directives post-mortem', 'Définir le sort de vos données après votre décès (art. 85 Loi Informatique et Libertés)'],
                     ].map(([droit, desc], i) => (
                       <div key={i} style={{background: '#f8fafc', border: '1px solid #e5e7eb', borderRadius: '8px', padding: '10px 14px'}}>

@@ -1,4 +1,4 @@
-import Header from '@/components/Header'
+﻿import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { Calendar, Clock, User, ChevronRight } from 'lucide-react'
 
@@ -127,12 +127,12 @@ export default function ArticleCaution() {
               <ol style={{margin: 0, paddingLeft: '1.25rem', display: 'flex', flexDirection: 'column', gap: '6px'}}>
                 <li><a href="#intro" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>Introduction</a></li>
                 <li><a href="#depot" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>I. Le dépôt de garantie : une somme d'argent encadrée</a></li>
-                <li><a href="#depot-objet" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>— A. À quoi sert le dépôt de garantie ?</a></li>
-                <li><a href="#depot-loi" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>— B. Ce que dit la loi</a></li>
-                <li><a href="#depot-restitution" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>— C. Restitution : un point source de litiges</a></li>
+                <li><a href="#depot-objet" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>A. À quoi sert le dépôt de garantie ?</a></li>
+                <li><a href="#depot-loi" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>B. Ce que dit la loi</a></li>
+                <li><a href="#depot-restitution" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>C. Restitution : un point source de litiges</a></li>
                 <li><a href="#caution" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>II. La caution : un engagement personnel</a></li>
-                <li><a href="#caution-def" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>— A. Définition et fonctionnement</a></li>
-                <li><a href="#caution-types" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>— B. Caution simple ou caution solidaire</a></li>
+                <li><a href="#caution-def" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>A. Définition et fonctionnement</a></li>
+                <li><a href="#caution-types" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>B. Caution simple ou caution solidaire</a></li>
                 <li><a href="#cumul" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>III. Peut-on cumuler dépôt de garantie et caution ?</a></li>
                 <li><a href="#confusion" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>IV. Pourquoi cette confusion est problématique</a></li>
                 <li><a href="#references" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>Références juridiques et jurisprudentielles</a></li>
@@ -316,7 +316,7 @@ export default function ArticleCaution() {
               <p style={{color: '#6b7280', fontSize: '11px', lineHeight: '1.7', margin: '0 0 8px'}}>
                 Accompagne particuliers, professionnels, collectivités et acteurs de l'ESS dans la compréhension de leurs droits, la sécurisation des activités et le développement de projets. Défend une approche du droit accessible, opérationnelle et orientée impact social ainsi qu'une meilleure maîtrise de leurs droits assurantiels. Membre du CRFF (Conseil Représentatif des Formalistes de France). Administrateur expert au collectif DAVO (Des Avocats Vous Orientent).
               </p>
-              <p style={{color: '#9ca3af', fontSize: '11px', margin: 0}}>Cabinet Cholez-Pagotto — FCFBL ACTIVITIES</p>
+              <p style={{color: '#9ca3af', fontSize: '11px', margin: 0}}>Cabinet Cholez-Pagotto</p>
             </div>
 
             <div style={{background: '#0f2d6e', borderRadius: '12px', padding: '1.25rem'}}>

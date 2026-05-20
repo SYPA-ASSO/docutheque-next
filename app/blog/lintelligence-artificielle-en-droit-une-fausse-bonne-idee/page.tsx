@@ -201,7 +201,7 @@ export default function ArticleIA() {
                 <h3 style={{color: '#0f2d6e', fontSize: '1.1rem', fontWeight: '700', margin: '1.5rem 0 10px'}}>Automatisation des tâches répétitives et chronophages</h3>
                 <p>L'IA est présentée comme un outil puissant pour automatiser les tâches routinières, libérant ainsi les professionnels du droit pour qu'ils se concentrent sur des missions plus stratégiques. Les outils d'IA peuvent analyser rapidement de vastes bases de données juridiques, identifiant la jurisprudence pertinente en quelques secondes. De même, l'IA <strong>assiste</strong> — et j'insiste sur ce verbe — la rédaction et la révision de documents.</p>
                 <h3 style={{color: '#0f2d6e', fontSize: '1.1rem', fontWeight: '700', margin: '1.5rem 0 10px'}}>Gains de productivité et d'accès à l'information</h3>
-                <p>Les partisans de l'IA soutiennent qu'elle conduit à des gains de temps considérables et une meilleure qualité dans la prise de décision. Cependant, il est crucial de noter que si l'IA promet efficacité et rapidité, cela se fait souvent au détriment de la profondeur, de la nuance et du jugement humain — primordiaux dans les contextes juridiques.</p>
+                <p>Les partisans de l'IA soutiennent qu'elle conduit à des gains de temps considérables et une meilleure qualité dans la prise de décision. Cependant, il est crucial de noter que si l'IA promet efficacité et rapidité, cela se fait souvent au détriment de la profondeur, de la nuance et du jugement humain, primordiaux dans les contextes juridiques.</p>
                 <div style={{background: '#f0fdf4', border: '1px solid #bbf7d0', borderRadius: '10px', padding: '1rem 1.25rem', margin: '1.5rem 0'}}>
                   <p style={{color: '#15803d', fontSize: '13px', lineHeight: '1.7', margin: 0}}>
                     <strong>Question fondamentale :</strong> À quel prix cette efficacité est-elle obtenue en termes de qualité et de fiabilité du travail juridique ? Et ce temps gagné est-il véritablement consacré à des tâches à haute valeur ajoutée ?
@@ -218,7 +218,7 @@ export default function ArticleIA() {
                   <h3 style={{color: '#0f2d6e', fontSize: '1.1rem', fontWeight: '700', margin: '1.5rem 0 10px'}}>
                     A. Les "hallucinations" et citations juridiques inventées : des précédents alarmants
                   </h3>
-                  <p>Une faille critique des modèles d'IA est leur propension à "halluciner" — produire un contenu factuellement inexact tout en le présentant de manière plausible et convaincante. Il ne s'agit pas d'un simple bug, mais d'une caractéristique fondamentale : ces modèles génèrent du texte basé sur des probabilités et des motifs, non sur une véritable compréhension ou vérification factuelle.</p>
+                  <p>Une faille critique des modèles d'IA est leur propension à "halluciner", c'est-Ã -dire produire un contenu factuellement inexact tout en le présentant de manière plausible et convaincante. Il ne s'agit pas d'un simple bug, mais d'une caractéristique fondamentale : ces modèles génèrent du texte basé sur des probabilités et des motifs, non sur une véritable compréhension ou vérification factuelle.</p>
                   <div style={{background: '#fef2f2', border: '1px solid #fecaca', borderRadius: '10px', padding: '1rem 1.25rem', margin: '1.5rem 0'}}>
                     <p style={{color: '#dc2626', fontSize: '13px', lineHeight: '1.7', margin: '0 0 8px', fontWeight: '700'}}>Cas réel : L'avocat sanctionné à 31 000 $</p>
                     <p style={{color: '#374151', fontSize: '13px', lineHeight: '1.7', margin: 0}}>Un avocat américain a utilisé ChatGPT pour compléter sa recherche juridique. Le chatbot a généré des citations de jurisprudence entièrement fabriquées, présentées comme vérifiables sur Westlaw et LexisNexis. L'avocat, faisant confiance à l'IA sans vérification, a soumis ces faux précédents au tribunal. Sanction : 31 000 dollars.</p>
@@ -230,7 +230,7 @@ export default function ArticleIA() {
                   <h3 style={{color: '#0f2d6e', fontSize: '1.1rem', fontWeight: '700', margin: '1.5rem 0 10px'}}>
                     B. Les biais algorithmiques : une menace pour l'équité et la justice
                   </h3>
-                  <p>Les systèmes d'IA sont intrinsèquement sujets aux biais — ils ne sont jamais neutres à 100 %. Ces biais peuvent provenir de multiples sources :</p>
+                  <p>Les systèmes d'IA sont intrinsèquement sujets aux biais : ils ne sont jamais neutres à 100 %. Ces biais peuvent provenir de multiples sources :</p>
                   <ul style={{paddingLeft: '1.5rem', display: 'flex', flexDirection: 'column', gap: '8px', margin: '1rem 0'}}>
                     <li><strong>Biais lié aux données :</strong> Si les données d'entraînement sont non représentatives, l'IA génèrera des prévisions qui reflètent et perpétuent ces déséquilibres.</li>
                     <li><strong>Biais algorithmique :</strong> Des biais peuvent apparaître dans la conception même de l'algorithme, conduisant à des résultats discriminatoires.</li>
@@ -328,7 +328,7 @@ export default function ArticleIA() {
                 <p>L'Union européenne a adopté l'<strong>AI Act en 2024</strong>, première réglementation mondiale complète sur l'intelligence artificielle. Elle interdit les pratiques à "risque inacceptable" et impose des obligations strictes aux systèmes à "haut risque". Malgré son importance historique, elle présente des lacunes et son applicabilité reste limitée au territoire européen.</p>
 
                 <div style={{background: '#0f2d6e', borderRadius: '12px', padding: '1.5rem', margin: '2rem 0'}}>
-                  <h3 style={{color: 'white', fontSize: '1.1rem', fontWeight: '700', margin: '0 0 12px'}}>Conclusion : L'IA, un outil technologique — jamais un substitut au professionnel du droit</h3>
+                  <h3 style={{color: 'white', fontSize: '1.1rem', fontWeight: '700', margin: '0 0 12px'}}>Conclusion : L'IA, un outil technologique, jamais un substitut au professionnel du droit</h3>
                   <p style={{color: 'rgba(255,255,255,0.85)', fontSize: '13px', lineHeight: '1.8', margin: '0 0 12px'}}>Si l'intelligence artificielle peut servir d'outil précieux pour automatiser certaines tâches répétitives, elle ne peut ni ne doit remplacer l'humain. Le cœur de la pratique juridique — jugement nuancé, considération éthique, empathie authentique, pensée stratégique — demeure un domaine exclusivement humain.</p>
                   <p style={{color: '#93c5fd', fontSize: '13px', lineHeight: '1.8', margin: 0, fontStyle: 'italic'}}>Privilégiez, au regard de votre situation, de son contexte et de vos perspectives d'action, de vous appuyer sur un professionnel du droit : juriste, avocat, notaire.</p>
                 </div>
@@ -400,7 +400,7 @@ export default function ArticleIA() {
               <p style={{color: '#6b7280', fontSize: '11px', lineHeight: '1.7', margin: '0 0 8px'}}>
                 Accompagne particuliers, professionnels, collectivités et acteurs de l'ESS dans la compréhension de leurs droits, la sécurisation des activités et le développement de projets. Défend une approche du droit accessible, opérationnelle et orientée impact social ainsi qu'une meilleure maîtrise de leurs droits assurantiels. Membre du CRFF (Conseil Représentatif des Formalistes de France). Administrateur expert au collectif DAVO (Des Avocats Vous Orientent).
               </p>
-              <p style={{color: '#9ca3af', fontSize: '11px', margin: 0}}>Cabinet Cholez-Pagotto — FCFBL ACTIVITIES</p>
+              <p style={{color: '#9ca3af', fontSize: '11px', margin: 0}}>Cabinet Cholez-Pagotto</p>
             </div>
 
             {/* CTA */}

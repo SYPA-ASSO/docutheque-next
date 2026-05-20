@@ -160,7 +160,7 @@ export default function ArticleATMP() {
                 </h2>
                 <p style={{marginBottom: '1rem'}}>Dans une autre décision du 26 juin 2025 (n°23-15.112), la Cour a rappelé une distinction essentielle entre deux dates :</p>
                 <ul style={{paddingLeft: '1.5rem', margin: '1rem 0', display: 'flex', flexDirection: 'column', gap: '10px'}}>
-                  <li>La <strong>date de première constatation médicale</strong> sert à vérifier le délai de prise en charge — c'est la date à laquelle le médecin a pour la première fois constaté les symptômes liés à la maladie professionnelle.</li>
+                  <li>La <strong>date de première constatation médicale</strong> sert à vérifier le délai de prise en charge : c'est la date à laquelle le médecin a pour la première fois constaté les symptômes liés à la maladie professionnelle.</li>
                   <li>La <strong>durée d'exposition au risque</strong>, en revanche, doit être appréciée à la date de la <em>déclaration de maladie professionnelle accompagnée du certificat médical initial</em>.</li>
                 </ul>
                 <p style={{marginBottom: '1rem'}}>Cette distinction a des conséquences pratiques importantes, notamment pour les maladies à tableau avec conditions d'exposition (durée minimale d'exposition requise) : confondre ces deux dates peut conduire à un refus de reconnaissance erroné.</p>
@@ -174,7 +174,7 @@ export default function ArticleATMP() {
                 <p style={{marginBottom: '1rem'}}>Ce principe est fondé sur les articles <strong>2241 du Code civil</strong> et <strong>L.431-2 du CSS</strong>. Concrètement :</p>
                 <ul style={{paddingLeft: '1.5rem', margin: '1rem 0', display: 'flex', flexDirection: 'column', gap: '8px'}}>
                   <li>La CPAM reste seule redevable des indemnités versées à la victime ou à ses ayants droit.</li>
-                  <li>Son recours ne peut viser que l'employeur — et non un tiers.</li>
+                  <li>Son recours ne peut viser que l'employeur, et non un tiers.</li>
                   <li>L'interruption de prescription bénéficie également aux actions dérivées du même fait.</li>
                 </ul>
                 <div style={{background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '10px', padding: '1rem 1.25rem', margin: '1.5rem 0', fontSize: '12px', color: '#1e3a5f'}}>
@@ -232,7 +232,7 @@ export default function ArticleATMP() {
               <p style={{color: '#6b7280', fontSize: '11px', lineHeight: '1.7', margin: '0 0 8px'}}>
                 Accompagne particuliers, professionnels, collectivités et acteurs de l'ESS dans la compréhension de leurs droits, la sécurisation des activités et le développement de projets. Membre du CRFF. Administrateur expert au collectif DAVO (Des Avocats Vous Orientent).
               </p>
-              <p style={{color: '#9ca3af', fontSize: '11px', margin: 0}}>Cabinet Cholez-Pagotto — FCFBL ACTIVITIES</p>
+              <p style={{color: '#9ca3af', fontSize: '11px', margin: 0}}>Cabinet Cholez-Pagotto</p>
             </div>
 
             <div style={{background: '#0f2d6e', borderRadius: '12px', padding: '1.25rem'}}>

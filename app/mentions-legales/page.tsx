@@ -1,4 +1,4 @@
-import Header from '@/components/Header'
+﻿import Header from '@/components/Header'
 import FooterMinimal from '@/components/FooterMinimal'
 import { ChevronRight } from 'lucide-react'
 
@@ -78,7 +78,7 @@ export default function MentionsLegales() {
 
                   <div style={{background: '#eff6ff', borderRadius: '8px', padding: '12px 14px'}}>
                     <p style={{color: '#1e3a5f', fontSize: '12px', lineHeight: '1.7', margin: 0}}>
-                      FCFBL ACTIVITIES n'est pas un cabinet d'avocats. Les informations et documents proposés sur ce site sont à visée informative et pédagogique. Ils ne constituent pas un conseil juridique personnalisé ni un acte sous seing privé au sens de la loi n°71-1130 du 31 décembre 1971. Toute situation nécessitant une consultation juridique ou la rédaction d'actes fera l'objet d'une orientation vers les professionnels du droit compétents (avocats, notaires).
+                      Le Cabinet Cholez-Pagotto n'est pas un cabinet d'avocats. Les informations et documents proposés sur ce site sont à visée informative et pédagogique. Ils ne constituent pas un conseil juridique personnalisé ni un acte sous seing privé au sens de la loi n°71-1130 du 31 décembre 1971. Toute situation nécessitant une consultation juridique ou la rédaction d'actes fera l'objet d'une orientation vers les professionnels du droit compétents (avocats, notaires).
                     </p>
                   </div>
                 </div>

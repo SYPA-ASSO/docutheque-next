@@ -139,8 +139,8 @@ export default function ArticleSaisieSalaire() {
               <ol style={{margin: 0, paddingLeft: '1.25rem', display: 'flex', flexDirection: 'column', gap: '6px'}}>
                 <li><a href="#intro" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>Introduction</a></li>
                 <li><a href="#reforme" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>I. Une réforme majeure de la procédure en 2025</a></li>
-                <li><a href="#commissaire" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>— A. Le nouveau rôle du commissaire de justice</a></li>
-                <li><a href="#procedure" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>— B. Déroulement étape par étape</a></li>
+                <li><a href="#commissaire" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>A. Le nouveau rôle du commissaire de justice</a></li>
+                <li><a href="#procedure" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>B. Déroulement étape par étape</a></li>
                 <li><a href="#bareme" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>II. Le barème de saisie 2025</a></li>
                 <li><a href="#employeur" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>III. Le rôle et les obligations de l'employeur</a></li>
                 <li><a href="#cas-particuliers" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>IV. Cas particuliers et recours</a></li>
@@ -186,7 +186,7 @@ export default function ArticleSaisieSalaire() {
                 <h2 style={{color: '#0f2d6e', fontSize: '1.3rem', fontWeight: '700', margin: '2rem 0 16px', paddingTop: '1rem'}}>
                   II. Le barème de saisie 2025 : un calcul précis et progressif
                 </h2>
-                <p style={{marginBottom: '1rem'}}>Le montant saisissable n'est jamais laissé au hasard. La loi protège une part minimale du salaire, correspondant au RSA pour une personne seule — soit <strong>646,52 € en 2025</strong>. Cette somme, dite part insaisissable, doit impérativement être laissée au débiteur.</p>
+                <p style={{marginBottom: '1rem'}}>Le montant saisissable n'est jamais laissé au hasard. La loi protège une part minimale du salaire, correspondant au RSA pour une personne seule, soit <strong>646,52 € en 2025</strong>. Cette somme, dite part insaisissable, doit impérativement être laissée au débiteur.</p>
                 <div style={{overflowX: 'auto', margin: '1.5rem 0'}}>
                   <table style={{width: '100%', borderCollapse: 'collapse', fontSize: '13px'}}>
                     <thead>
@@ -318,7 +318,7 @@ export default function ArticleSaisieSalaire() {
               <p style={{color: '#6b7280', fontSize: '11px', lineHeight: '1.7', margin: '0 0 8px'}}>
                 Accompagne particuliers, professionnels, collectivités et acteurs de l'ESS dans la compréhension de leurs droits, la sécurisation des activités et le développement de projets. Défend une approche du droit accessible, opérationnelle et orientée impact social ainsi qu'une meilleure maîtrise de leurs droits assurantiels. Membre du CRFF (Conseil Représentatif des Formalistes de France). Administrateur expert au collectif DAVO (Des Avocats Vous Orientent).
               </p>
-              <p style={{color: '#9ca3af', fontSize: '11px', margin: 0}}>Cabinet Cholez-Pagotto — FCFBL ACTIVITIES</p>
+              <p style={{color: '#9ca3af', fontSize: '11px', margin: 0}}>Cabinet Cholez-Pagotto</p>
             </div>
 
             <div style={{background: '#0f2d6e', borderRadius: '12px', padding: '1.25rem'}}>

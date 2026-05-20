@@ -1,4 +1,4 @@
-import Header from '@/components/Header'
+﻿import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { ChevronRight, FileText, Clock, CheckCircle, MessageSquare, Send, Shield, User } from 'lucide-react'
 
@@ -16,7 +16,7 @@ const schema = {
       "description": "Service d'information juridique rédigée par un juriste sous 24 à 48h ouvrées. Réponse pédagogique sur le droit applicable à votre situation, rédigée en fonction des éléments transmis.",
       "provider": {
         "@type": "Organization",
-        "name": "Cabinet Cholez-Pagotto — FCFBL ACTIVITIES",
+        "name": "Cabinet Cholez-Pagotto",
         "url": "https://cholez-pagotto.fr"
       },
       "offers": {

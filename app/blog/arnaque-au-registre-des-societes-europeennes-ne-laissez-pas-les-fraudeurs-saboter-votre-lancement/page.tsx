@@ -54,7 +54,7 @@ const schema = {
           "name": "Que faire si j'ai déjà signé et payé ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Si le paiement a été effectué par prélèvement SEPA autorisé, vous disposez de 8 semaines pour le contester auprès de votre banque ; 13 mois s'il était non autorisé. Pour un virement bancaire, contactez immédiatement votre banque pour tenter un rappel — il n'existe pas de droit légal au remboursement mais la banque peut intervenir. Signalez également la fraude sur signal.conso.gouv.fr et déposez plainte."
+            "text": "Si le paiement a été effectué par prélèvement SEPA autorisé, vous disposez de 8 semaines pour le contester auprès de votre banque ; 13 mois s'il était non autorisé. Pour un virement bancaire, contactez immédiatement votre banque pour tenter un rappel : il n'existe pas de droit légal au remboursement mais la banque peut intervenir. Signalez également la fraude sur signal.conso.gouv.fr et déposez plainte."
           }
         },
         {
@@ -222,7 +222,7 @@ export default function ArticleArnaqueRSE() {
                       <span>Que faire si j'ai déjà signé et payé ?</span>
                       <span style={{color: '#1a4fba', fontSize: '18px', flexShrink: 0, lineHeight: 1}}>＋</span>
                     </summary>
-                    <p style={{color: '#374151', fontSize: '13px', lineHeight: '1.75', marginTop: '12px', marginBottom: 0}}>Si le paiement a été effectué par prélèvement SEPA autorisé, vous disposez de 8 semaines pour le contester auprès de votre banque ; 13 mois s'il était non autorisé. Pour un virement bancaire, contactez immédiatement votre banque pour tenter un rappel — il n'existe pas de droit légal au remboursement mais la banque peut intervenir. Signalez également la fraude sur signal.conso.gouv.fr et déposez plainte.</p>
+                    <p style={{color: '#374151', fontSize: '13px', lineHeight: '1.75', marginTop: '12px', marginBottom: 0}}>Si le paiement a été effectué par prélèvement SEPA autorisé, vous disposez de 8 semaines pour le contester auprès de votre banque ; 13 mois s'il était non autorisé. Pour un virement bancaire, contactez immédiatement votre banque pour tenter un rappel : il n'existe pas de droit légal au remboursement mais la banque peut intervenir. Signalez également la fraude sur signal.conso.gouv.fr et déposez plainte.</p>
                   </details>
                   <details key={3} style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '10px', padding: '1rem 1.25rem'}}>
                     <summary style={{fontWeight: '600', color: '#0f2d6e', fontSize: '14px', cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '12px'}}>
@@ -252,7 +252,7 @@ export default function ArticleArnaqueRSE() {
               <p style={{color: '#6b7280', fontSize: '11px', lineHeight: '1.7', margin: '0 0 8px'}}>
                 Accompagne particuliers, professionnels, collectivités et acteurs de l'ESS dans la compréhension de leurs droits, la sécurisation des activités et le développement de projets. Défend une approche du droit accessible, opérationnelle et orientée impact social ainsi qu'une meilleure maîtrise de leurs droits assurantiels. Membre du CRFF (Conseil Représentatif des Formalistes de France). Administrateur expert au collectif DAVO (Des Avocats Vous Orientent).
               </p>
-              <p style={{color: '#9ca3af', fontSize: '11px', margin: 0}}>Cabinet Cholez-Pagotto — FCFBL ACTIVITIES</p>
+              <p style={{color: '#9ca3af', fontSize: '11px', margin: 0}}>Cabinet Cholez-Pagotto</p>
             </div>
 
             <div style={{background: '#0f2d6e', borderRadius: '12px', padding: '1.25rem'}}>
