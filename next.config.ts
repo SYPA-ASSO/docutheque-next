@@ -11,7 +11,7 @@ const nextConfig: NextConfig = {
       },
       {
         source: '/gestion-paie-externalise',
-        destination: '/accompagnement',
+        destination: '/accompagnement-professionnels',
         permanent: true,
       },
       {
