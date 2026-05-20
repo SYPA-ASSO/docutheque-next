@@ -17,7 +17,7 @@ export default function RootLayout({
       <head>
         <title>Docuthèque : documents juridiques téléchargeables et informations sur vos droits, sans jargon</title>
         <meta name="description" content="Modèles de documents juridiques et administratifs conformes au droit en vigueur : contrats, mises en demeure, RGPD, RH, recouvrement, statuts de société. Téléchargez en DOCX. Vos droits expliqués sans jargon par un juriste dédié." />
-        <meta name="keywords" content="modèles de documents, documents pédagogiques, documents juridiques, contrats, mise en demeure, RGPD, documents RH, statuts SASU, statuts SARL, auto-entrepreneur, micro-entreprise, juriste en ligne, assistance juridique, information juridique, formalités, création d'entreprise, droit du travail, protection juridique" />
+        <meta name="keywords" content="modèles de documents, documents pédagogiques, documents juridiques, contrats, mise en demeure, RGPD, documents RH, statuts SASU, statuts SARL, auto-entrepreneur, micro-entreprise, juriste en ligne, assistance juridique, formalités, création d'entreprise, information juridique, droit du travail, protection juridique" />
         <meta property="og:title" content="Docuthèque : documents juridiques et informations sur vos droits. Juriste et formaliste dédié" />
         <meta property="og:description" content="Modèles de documents téléchargeables et personnalisables, information juridique pédagogique, juriste formaliste et conseil en assurances dédié." />
         <meta property="og:type" content="website" />
