@@ -14,13 +14,14 @@ export default function TarifsClient() {
     "@context": "https://schema.org",
     "@type": "WebPage",
     "name": "Tarifs Docuthèque",
-    "description": "Offres et tarifs de la plateforme Docuthèque : modèles de documents juridiques, abonnement Optimal, information sur vos droits, accompagnement création d'entreprise.",
+    "description": "Offres et tarifs de la plateforme Docuthèque : modèles de documents juridiques, abonnements Optimal, information sur vos droits, accompagnement création d'entreprise.",
     "url": "https://cholez-pagotto.fr/tarifs",
     "mainEntity": {
       "@type": "ItemList",
       "itemListElement": [
         { "@type": "Offer", "name": "Accès Gratuit", "price": "0", "priceCurrency": "EUR", "description": "Accès gratuit à tous les documents disponibles en accès libre, en format DOCX." },
-        { "@type": "Offer", "name": "Abonnement Optimal", "price": "14.90", "priceCurrency": "EUR", "description": "Accès à toute la bibliothèque de documents juridiques en DOCX, notices explicatives, fiches pédagogiques, 1 question juriste incluse par mois non cumulable sous 24 à 48h, support prioritaire." },
+        { "@type": "Offer", "name": "Abonnement Optimal Particulier", "price": "17.90", "priceCurrency": "EUR", "description": "Accès à toute la bibliothèque de documents juridiques en DOCX, notices explicatives, fiches pédagogiques, 1 question juriste incluse par mois non cumulable sous 24 à 48h, support prioritaire. Sans engagement mensuel ou 149 €/an." },
+        { "@type": "Offer", "name": "Abonnement Optimal Pro", "price": "27.90", "priceCurrency": "EUR", "description": "Accès à toute la bibliothèque, 2 questions juriste incluses par mois, alertes légales événementielles, support prioritaire. Sans engagement mensuel ou 249 €/an." },
         { "@type": "Offer", "name": "Information sur vos droits", "price": "47", "priceCurrency": "EUR", "description": "Réponse pédagogique rédigée par un juriste sous 24 à 48h ouvrées, sans abonnement ni engagement." },
         { "@type": "Offer", "name": "Accompagnement Créateurs", "price": "0", "priceCurrency": "EUR", "description": "Création d'entreprise offerte (hors frais de greffe et JAL). Statuts, formalités, accompagnement juriste formaliste inclus. Sur devis personnalisé." }
       ]
@@ -28,11 +29,34 @@ export default function TarifsClient() {
   }
 
   const faqItems = [
-    { q: "Puis-je résilier mon abonnement à tout moment ?", a: "L'abonnement Optimal est souscrit pour une durée minimale de 12 mois. La résiliation est possible à tout moment, mais prend effet à l'échéance annuelle, sous réserve d'en faire la demande par écrit au moins 30 jours avant cette date." },
-    { q: "Quels moyens de paiement acceptez-vous ?", a: "Nous acceptons le paiement par carte bancaire et par virement bancaire. Le paiement est sécurisé. Aucune information bancaire n'est conservée sur nos serveurs." },
-    { q: "L'abonnement se renouvelle-t-il automatiquement ?", a: "Oui. À l'issue de la période initiale de 12 mois, l'abonnement se renouvelle automatiquement pour une nouvelle année, sauf résiliation adressée par écrit au moins 30 jours avant l'échéance." },
-    { q: 'La réponse "Information sur vos droits" est-elle garantie sous 48h ?', a: "Dans le cadre d'une obligation de moyen, nous mettons tout en œuvre pour vous apporter une réponse rédigée par un juriste sous 24 à 48h ouvrées suivant la réception de votre question et la confirmation du paiement." },
-    { q: "Puis-je cumuler les questions incluses dans mon abonnement Optimal ?", a: "Non. La question mensuelle incluse dans l'abonnement Optimal n'est pas cumulable d'un mois sur l'autre. Si vous avez besoin de poser des questions supplémentaires dans le même mois, elles sont disponibles à 9,90 € l'unité. Sans abonnement, chaque question est à 47 €. Si vous posez régulièrement des questions, l'abonnement Optimal devient plus économique dès la deuxième question mensuelle." },
+    {
+      q: "Quelle est la différence entre l'Abonnement Optimal Particulier et l'Abonnement Optimal Pro ?",
+      a: "L'Abonnement Optimal Particulier inclut 1 question juriste par mois et donne accès à la bibliothèque complète. L'Abonnement Optimal Pro inclut 2 questions par mois, le même accès bibliothèque, ainsi que les alertes légales événementielles publiées par le cabinet selon l'actualité. Le Pro est conçu pour les professionnels, associations et structures qui ont des besoins juridiques récurrents."
+    },
+    {
+      q: "L'abonnement mensuel est-il sans engagement ?",
+      a: "Oui. L'abonnement mensuel (Particulier ou Pro) est sans engagement de durée. Vous pouvez résilier à tout moment, avec un préavis de 30 jours. L'abonnement annuel bénéficie d'un tarif préférentiel (3 mois offerts) en contrepartie d'un engagement de 12 mois."
+    },
+    {
+      q: "Puis-je résilier mon abonnement annuel avant son terme ?",
+      a: "L'abonnement annuel est souscrit pour une durée ferme de 12 mois. La résiliation est possible à tout moment, mais prend effet à l'échéance annuelle, sous réserve d'en faire la demande par écrit au moins 30 jours avant cette date. Aucun remboursement au prorata n'est effectué."
+    },
+    {
+      q: "Quels moyens de paiement acceptez-vous ?",
+      a: "Nous acceptons le paiement par carte bancaire et par virement bancaire. Le paiement est sécurisé. Aucune information bancaire n'est conservée sur nos serveurs."
+    },
+    {
+      q: "L'abonnement annuel se renouvelle-t-il automatiquement ?",
+      a: "Oui. À l'issue de la période initiale de 12 mois, l'abonnement annuel se renouvelle automatiquement pour une nouvelle année, sauf résiliation adressée par écrit au moins 30 jours avant l'échéance. Vous serez informé par email entre 1 et 3 mois avant la date de renouvellement."
+    },
+    {
+      q: 'La réponse "Information sur vos droits" est-elle garantie sous 48h ?',
+      a: "Dans le cadre d'une obligation de moyen, nous mettons tout en œuvre pour vous apporter une réponse rédigée par un juriste sous 24 à 48h ouvrées suivant la réception de votre question et la confirmation du paiement."
+    },
+    {
+      q: "Puis-je cumuler les questions incluses dans mon abonnement Optimal ?",
+      a: "Non. Les questions mensuelles incluses dans l'abonnement Optimal ne sont pas cumulables d'un mois sur l'autre. Si vous avez besoin de poser des questions supplémentaires dans le même mois, elles sont disponibles à 14,90 € l'unité pour les abonnés. Sans abonnement, chaque question est à 47 €. Si vous posez régulièrement des questions, l'abonnement Optimal devient plus économique dès la deuxième question mensuelle."
+    },
   ]
 
   const createurItems = [
@@ -50,7 +74,7 @@ export default function TarifsClient() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <Header />
       <main style={{background: '#f8fafc', minHeight: '100vh', padding: '4rem 0'}}>
-        <div style={{maxWidth: '1100px', margin: '0 auto', padding: '0 2rem'}}>
+        <div style={{maxWidth: '1200px', margin: '0 auto', padding: '0 2rem'}}>
 
           {/* TITRE + INTRO */}
           <div style={{textAlign: 'center', maxWidth: '700px', margin: '0 auto 3rem'}}>
@@ -63,27 +87,27 @@ export default function TarifsClient() {
 
           {/* TOGGLE */}
           <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '12px', marginBottom: '2.5rem'}}>
-            <span style={{fontSize: '13px', fontWeight: annuel ? '400' : '600', color: annuel ? '#6b7280' : '#0f2d6e'}}>Mensuel</span>
+            <span style={{fontSize: '13px', fontWeight: annuel ? '400' : '600', color: annuel ? '#6b7280' : '#0f2d6e'}}>Mensuel · sans engagement</span>
             <div onClick={() => setAnnuel(!annuel)} style={{width: '48px', height: '26px', borderRadius: '13px', background: '#1a4fba', cursor: 'pointer', position: 'relative', transition: 'background 0.2s'}}>
               <div style={{position: 'absolute', top: '3px', left: annuel ? '25px' : '3px', width: '20px', height: '20px', borderRadius: '50%', background: 'white', transition: 'left 0.2s'}} />
             </div>
             <span style={{fontSize: '13px', fontWeight: annuel ? '600' : '400', color: annuel ? '#0f2d6e' : '#6b7280'}}>
-              Annuel <span style={{background: '#dcfce7', color: '#16a34a', fontSize: '11px', fontWeight: '600', padding: '2px 7px', borderRadius: '10px', marginLeft: '4px'}}>2 mois offerts</span>
+              Annuel <span style={{background: '#dcfce7', color: '#16a34a', fontSize: '11px', fontWeight: '600', padding: '2px 7px', borderRadius: '10px', marginLeft: '4px'}}>3 mois offerts</span>
             </span>
           </div>
 
-          {/* CARTES */}
-          <div style={{display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px', alignItems: 'flex-start'}}>
+          {/* CARTES — 4 colonnes */}
+          <div style={{display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '16px', alignItems: 'flex-start'}}>
 
             {/* GRATUIT */}
-            <div style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '14px', padding: '1.75rem', display: 'flex', flexDirection: 'column'}}>
+            <div style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '14px', padding: '1.5rem', display: 'flex', flexDirection: 'column'}}>
               <p style={{fontSize: '11px', fontWeight: '600', color: '#6b7280', letterSpacing: '0.08em', margin: 0}}>ACCÈS GRATUIT</p>
-              <div style={{margin: '12px 0 4px'}}><span style={{fontSize: '2.2rem', fontWeight: '700', color: '#0f2d6e'}}>0 €</span></div>
-              <p style={{color: '#6b7280', fontSize: '12px', marginBottom: '20px'}}>Inscription gratuite requise</p>
-              <div style={{display: 'flex', flexDirection: 'column', gap: '9px', marginBottom: '24px'}}>
+              <div style={{margin: '10px 0 4px'}}><span style={{fontSize: '2rem', fontWeight: '700', color: '#0f2d6e'}}>0 €</span></div>
+              <p style={{color: '#6b7280', fontSize: '11px', marginBottom: '16px'}}>Inscription gratuite requise</p>
+              <div style={{display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '20px', flex: 1}}>
                 {[
-                  'Accès gratuit à tous les documents disponibles en accès libre, en format DOCX',
-                  "Documents supplémentaires disponibles à l'unité (prix variable selon le document)",
+                  'Accès aux documents en accès libre, format DOCX',
+                  "Documents supplémentaires disponibles à l'unité",
                   'Newsletter gratuite',
                 ].map((item, i) => (
                   <div key={i} style={{display: 'flex', gap: '8px', alignItems: 'flex-start'}}>
@@ -92,29 +116,29 @@ export default function TarifsClient() {
                   </div>
                 ))}
               </div>
-              <a href="/connexion" style={{display: 'block', width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid #e5e7eb', background: 'white', color: '#0f2d6e', fontSize: '13px', fontWeight: '600', cursor: 'pointer', textDecoration: 'none', textAlign: 'center', boxSizing: 'border-box'}}>
+              <a href="/connexion" style={{display: 'block', width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid #e5e7eb', background: 'white', color: '#0f2d6e', fontSize: '12px', fontWeight: '600', cursor: 'pointer', textDecoration: 'none', textAlign: 'center', boxSizing: 'border-box'}}>
                 S'inscrire gratuitement
               </a>
             </div>
 
-            {/* ABONNEMENT OPTIMAL */}
-            <div style={{background: '#0f2d6e', border: '2px solid #1a4fba', borderRadius: '14px', padding: '1.75rem', display: 'flex', flexDirection: 'column', position: 'relative', overflow: 'hidden'}}>
-              <div style={{position: 'absolute', top: '14px', right: '14px', background: '#1a4fba', color: 'white', fontSize: '10px', fontWeight: '700', padding: '3px 10px', borderRadius: '10px', letterSpacing: '0.05em'}}>RECOMMANDÉ</div>
-              <p style={{fontSize: '11px', fontWeight: '600', color: 'rgba(255,255,255,0.6)', letterSpacing: '0.08em', margin: 0}}>ABONNEMENT OPTIMAL</p>
-              <div style={{margin: '12px 0 4px'}}>
-                <span style={{fontSize: '2.2rem', fontWeight: '700', color: 'white'}}>{annuel ? '12,49 €' : '14,90 €'}</span>
+            {/* OPTIMAL PARTICULIER */}
+            <div style={{background: '#0f2d6e', border: '2px solid #1a4fba', borderRadius: '14px', padding: '1.5rem', display: 'flex', flexDirection: 'column', position: 'relative', overflow: 'hidden'}}>
+              <div style={{position: 'absolute', top: '12px', right: '12px', background: '#1a4fba', color: 'white', fontSize: '9px', fontWeight: '700', padding: '3px 8px', borderRadius: '10px', letterSpacing: '0.05em'}}>RECOMMANDÉ</div>
+              <p style={{fontSize: '11px', fontWeight: '600', color: 'rgba(255,255,255,0.6)', letterSpacing: '0.08em', margin: 0}}>OPTIMAL PARTICULIER</p>
+              <div style={{margin: '10px 0 4px'}}>
+                <span style={{fontSize: '2rem', fontWeight: '700', color: 'white'}}>{annuel ? '12,42 €' : '17,90 €'}</span>
                 <span style={{color: 'rgba(255,255,255,0.6)', fontSize: '12px', marginLeft: '4px'}}>/mois</span>
               </div>
-              <p style={{color: 'rgba(255,255,255,0.6)', fontSize: '12px', marginBottom: '20px'}}>
-                {annuel ? '147,97 €/an, 2 mois offerts' : 'Engagement 12 mois, 178,80 €/an'}
+              <p style={{color: 'rgba(255,255,255,0.6)', fontSize: '11px', marginBottom: '16px'}}>
+                {annuel ? '149 €/an · 3 mois offerts' : 'Sans engagement · résiliation 30 j'}
               </p>
-              <div style={{display: 'flex', flexDirection: 'column', gap: '9px', marginBottom: '24px'}}>
+              <div style={{display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '20px', flex: 1}}>
                 {[
-                  "Accès à toute la bibliothèque de documents en DOCX durant la période d'abonnement",
-                  'Notices explicatives des documents et fiches pédagogiques de vulgarisation juridique',
-                  '1 question incluse par mois · réponse sous 24 à 48h · non cumulable',
-                  '9,90 € par question supplémentaire',
-                  'Newsletter spéciale abonnés',
+                  "Bibliothèque complète de documents DOCX",
+                  'Notices et fiches pédagogiques',
+                  '1 question juriste/mois · non cumulable',
+                  '14,90 € par question supplémentaire',
+                  'Newsletter abonnés',
                   'Support prioritaire par mail',
                 ].map((item, i) => (
                   <div key={i} style={{display: 'flex', gap: '8px', alignItems: 'flex-start'}}>
@@ -123,20 +147,49 @@ export default function TarifsClient() {
                   </div>
                 ))}
               </div>
-              <a href="/connexion" style={{display: 'block', width: '100%', padding: '10px', borderRadius: '8px', border: 'none', background: 'white', color: '#0f2d6e', fontSize: '13px', fontWeight: '700', cursor: 'pointer', textDecoration: 'none', textAlign: 'center', boxSizing: 'border-box'}}>S'abonner</a>
+              <a href="/connexion" style={{display: 'block', width: '100%', padding: '10px', borderRadius: '8px', border: 'none', background: 'white', color: '#0f2d6e', fontSize: '12px', fontWeight: '700', cursor: 'pointer', textDecoration: 'none', textAlign: 'center', boxSizing: 'border-box'}}>S'abonner</a>
+            </div>
+
+            {/* OPTIMAL PRO */}
+            <div style={{background: 'white', border: '2px solid #0f2d6e', borderRadius: '14px', padding: '1.5rem', display: 'flex', flexDirection: 'column', position: 'relative', overflow: 'hidden'}}>
+              <div style={{position: 'absolute', top: '12px', right: '12px', background: '#b8860b', color: 'white', fontSize: '9px', fontWeight: '700', padding: '3px 8px', borderRadius: '10px', letterSpacing: '0.05em'}}>PRO</div>
+              <p style={{fontSize: '11px', fontWeight: '600', color: '#0f2d6e', letterSpacing: '0.08em', margin: 0}}>OPTIMAL PRO</p>
+              <div style={{margin: '10px 0 4px'}}>
+                <span style={{fontSize: '2rem', fontWeight: '700', color: '#0f2d6e'}}>{annuel ? '20,75 €' : '27,90 €'}</span>
+                <span style={{color: '#6b7280', fontSize: '12px', marginLeft: '4px'}}>/mois</span>
+              </div>
+              <p style={{color: '#6b7280', fontSize: '11px', marginBottom: '16px'}}>
+                {annuel ? '249 €/an · 3 mois offerts' : 'Sans engagement · résiliation 30 j'}
+              </p>
+              <div style={{display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '20px', flex: 1}}>
+                {[
+                  "Bibliothèque complète de documents DOCX",
+                  'Notices et fiches pédagogiques',
+                  '2 questions juriste/mois · non cumulables',
+                  '14,90 € par question supplémentaire',
+                  'Alertes légales événementielles',
+                  'Support prioritaire par mail',
+                ].map((item, i) => (
+                  <div key={i} style={{display: 'flex', gap: '8px', alignItems: 'flex-start'}}>
+                    <span style={{color: '#b8860b', fontSize: '13px', flexShrink: 0, marginTop: '1px'}}>✓</span>
+                    <span style={{color: '#374151', fontSize: '12px', lineHeight: '1.5'}}>{item}</span>
+                  </div>
+                ))}
+              </div>
+              <a href="/connexion" style={{display: 'block', width: '100%', padding: '10px', borderRadius: '8px', border: '2px solid #0f2d6e', background: '#0f2d6e', color: 'white', fontSize: '12px', fontWeight: '700', cursor: 'pointer', textDecoration: 'none', textAlign: 'center', boxSizing: 'border-box'}}>S'abonner</a>
             </div>
 
             {/* INFORMATION SUR VOS DROITS */}
-            <div style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '14px', padding: '1.75rem', display: 'flex', flexDirection: 'column'}}>
+            <div style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '14px', padding: '1.5rem', display: 'flex', flexDirection: 'column'}}>
               <p style={{fontSize: '11px', fontWeight: '600', color: '#6b7280', letterSpacing: '0.08em', margin: 0}}>INFORMATION SUR VOS DROITS</p>
-              <div style={{margin: '12px 0 4px'}}><span style={{fontSize: '2.2rem', fontWeight: '700', color: '#0f2d6e'}}>47 €</span></div>
-              <p style={{color: '#6b7280', fontSize: '12px', marginBottom: '8px'}}>À l'unité · sans abonnement · sans engagement</p>
-              <p style={{color: '#9ca3af', fontSize: '11px', marginBottom: '20px', lineHeight: '1.6', fontStyle: 'italic'}}>Ce service constitue une information juridique au sens de la loi n°71-1130 du 31 décembre 1971 et ne constitue pas une consultation juridique personnalisée. La réponse apportée vous permettra de mieux comprendre vos droits, d'identifier les règles juridiques applicables à votre situation et de prendre vos décisions en toute connaissance de cause. Le cas échéant, vous serez orienté vers le professionnel du droit compétent.</p>
-              <div style={{display: 'flex', flexDirection: 'column', gap: '9px', marginBottom: '20px'}}>
+              <div style={{margin: '10px 0 4px'}}><span style={{fontSize: '2rem', fontWeight: '700', color: '#0f2d6e'}}>47 €</span></div>
+              <p style={{color: '#6b7280', fontSize: '11px', marginBottom: '8px'}}>À l'unité · sans abonnement</p>
+              <p style={{color: '#9ca3af', fontSize: '10px', marginBottom: '16px', lineHeight: '1.6', fontStyle: 'italic'}}>Information juridique au sens de la loi n°71-1130 du 31 décembre 1971. Ne constitue pas une consultation juridique personnalisée.</p>
+              <div style={{display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '16px', flex: 1}}>
                 {[
                   'Vous posez votre question en langage courant',
-                  'Un juriste vous apporte une réponse pédagogique par écrit sous 24 à 48h',
-                  'Réponse sur le droit et vos droits applicables à votre situation',
+                  'Réponse pédagogique par un juriste sous 24 à 48h',
+                  'Références juridiques précises',
                 ].map((item, i) => (
                   <div key={i} style={{display: 'flex', gap: '8px', alignItems: 'flex-start'}}>
                     <span style={{color: '#16a34a', fontSize: '13px', flexShrink: 0, marginTop: '1px'}}>✓</span>
@@ -144,13 +197,12 @@ export default function TarifsClient() {
                   </div>
                 ))}
               </div>
-
-              <div style={{background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '8px', padding: '10px 12px', marginBottom: '20px'}}>
-                <p style={{color: '#1e3a5f', fontSize: '11px', lineHeight: '1.6', margin: 0}}>
-                  Vous posez régulièrement des questions ? L'abonnement Optimal est plus économique dès la deuxième question mensuelle.
+              <div style={{background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '8px', padding: '8px 10px', marginBottom: '16px'}}>
+                <p style={{color: '#1e3a5f', fontSize: '10px', lineHeight: '1.6', margin: 0}}>
+                  Abonnés Optimal : 14,90 € par question supplémentaire (au lieu de 47 €).
                 </p>
               </div>
-              <a href="/information-sur-vos-droits" style={{display: 'block', width: '100%', padding: '10px', borderRadius: '8px', background: '#1a4fba', color: 'white', fontSize: '13px', fontWeight: '600', cursor: 'pointer', textDecoration: 'none', textAlign: 'center', boxSizing: 'border-box'}}>Poser ma question</a>
+              <a href="/information-sur-vos-droits" style={{display: 'block', width: '100%', padding: '10px', borderRadius: '8px', background: '#1a4fba', color: 'white', fontSize: '12px', fontWeight: '600', cursor: 'pointer', textDecoration: 'none', textAlign: 'center', boxSizing: 'border-box'}}>Poser ma question</a>
             </div>
 
           </div>
@@ -214,7 +266,7 @@ export default function TarifsClient() {
           {/* NOTE BAS DE PAGE */}
           <div style={{borderTop: '1px solid #e5e7eb', marginTop: '3rem', paddingTop: '1.5rem'}}>
             <p style={{color: '#9ca3af', fontSize: '11px', lineHeight: '1.7', textAlign: 'center', maxWidth: '700px', margin: '0 auto'}}>
-              L'abonnement Optimal est souscrit pour une durée minimale de 12 mois. À l'issue de cette période, il se renouvelle automatiquement sauf résiliation adressée par écrit au moins 30 jours avant l'échéance. Le tarif mensuel affiché en mode annuel est calculé sur la base du paiement annuel de 147,97 €. La question mensuelle incluse est non cumulable d'un mois sur l'autre.
+              L'abonnement mensuel (Particulier ou Pro) est sans engagement de durée, résiliable avec 30 jours de préavis. L'abonnement annuel est souscrit pour 12 mois fermes et se renouvelle automatiquement sauf résiliation adressée par écrit au moins 30 jours avant l'échéance. Le tarif mensuel affiché en mode annuel est calculé sur la base du paiement annuel (149 € pour le Particulier, 249 € pour le Pro). Les questions mensuelles incluses sont non cumulables d'un mois sur l'autre.
             </p>
           </div>
 
