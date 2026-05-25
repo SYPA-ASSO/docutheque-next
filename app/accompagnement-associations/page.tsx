@@ -272,7 +272,6 @@ export default function AccompagnementAssociationsPage() {
 
   return (
     <>
-      {/* Schema.org */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
@@ -295,35 +294,22 @@ export default function AccompagnementAssociationsPage() {
 
       <main style={{ background: '#f8fafc', minHeight: '80vh' }}>
 
-        {/* ─── HERO ─── */}
+        {/* HERO */}
         <section style={{ background: 'linear-gradient(135deg, #0f2d6e 0%, #1e40af 60%, #16a34a 100%)', padding: '4rem 1.5rem 3.5rem', color: 'white' }}>
           <div style={{ maxWidth: 1100, margin: '0 auto' }}>
 
             <div style={{ marginBottom: '1.2rem' }}>
               <span style={{
-                display: 'inline-block',
-                background: '#16a34a',
-                color: 'white',
-                fontSize: 12,
-                fontWeight: 700,
-                padding: '5px 18px',
-                borderRadius: 20,
-                letterSpacing: '0.08em',
-                textTransform: 'uppercase',
-                marginRight: '0.5rem'
+                display: 'inline-block', background: '#16a34a', color: 'white',
+                fontSize: 12, fontWeight: 700, padding: '5px 18px', borderRadius: 20,
+                letterSpacing: '0.08em', textTransform: 'uppercase', marginRight: '0.5rem'
               }}>
                 Associations
               </span>
               <span style={{
-                display: 'inline-block',
-                background: 'rgba(255,255,255,0.2)',
-                color: 'white',
-                fontSize: 12,
-                fontWeight: 700,
-                padding: '5px 18px',
-                borderRadius: 20,
-                letterSpacing: '0.08em',
-                textTransform: 'uppercase'
+                display: 'inline-block', background: 'rgba(255,255,255,0.2)', color: 'white',
+                fontSize: 12, fontWeight: 700, padding: '5px 18px', borderRadius: 20,
+                letterSpacing: '0.08em', textTransform: 'uppercase'
               }}>
                 ESS
               </span>
@@ -349,14 +335,14 @@ export default function AccompagnementAssociationsPage() {
               </a>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: 13, color: 'rgba(255,255,255,0.8)' }}>
                 <Star size={16} strokeWidth={1.5} />
-                <span>10 ans d'expérience terrain dans le secteur associatif</span>
+                <span>30 ans d'engagement dans l'ESS</span>
               </div>
             </div>
 
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '2rem', marginTop: '2.5rem', paddingTop: '2rem', borderTop: '1px solid rgba(255,255,255,0.2)' }}>
               {[
                 { valeur: "6", label: "Types de structures accompagnées" },
-                { valeur: "10+", label: "Ans d'expérience ESS" },
+                { valeur: "30+", label: "Ans d'engagement ESS" },
                 { valeur: "4", label: "Domaines de prestations" },
                 { valeur: "Sur devis", label: "Tarification transparente" }
               ].map((s, i) => (
@@ -385,7 +371,7 @@ export default function AccompagnementAssociationsPage() {
 
         <div style={{ maxWidth: 1100, margin: '0 auto', padding: '3rem 1.5rem' }}>
 
-          {/* ─── STRUCTURES ACCOMPAGNEES ─── */}
+          {/* STRUCTURES ACCOMPAGNEES */}
           <section id="structures" style={{ marginBottom: '3.5rem' }}>
             <h2 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#0f2d6e', marginBottom: '0.5rem' }}>
               Structures accompagnées
@@ -416,7 +402,7 @@ export default function AccompagnementAssociationsPage() {
             </div>
           </section>
 
-          {/* ─── PRESTATIONS ─── */}
+          {/* PRESTATIONS */}
           <section id="prestations" style={{ marginBottom: '3.5rem' }}>
             <h2 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#0f2d6e', marginBottom: '0.5rem' }}>
               Prestations proposées
@@ -425,21 +411,17 @@ export default function AccompagnementAssociationsPage() {
               Un accompagnement global, de la création à la conformité réglementaire.
             </p>
 
-            {/* Onglets */}
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '1.5rem' }}>
               {prestations.map((p, i) => (
                 <button
                   key={i}
                   onClick={() => setPrestationActive(i)}
                   style={{
-                    padding: '8px 18px',
-                    borderRadius: 20,
+                    padding: '8px 18px', borderRadius: 20,
                     border: prestationActive === i ? 'none' : '1px solid #e5e7eb',
                     background: prestationActive === i ? '#0f2d6e' : 'white',
                     color: prestationActive === i ? 'white' : '#374151',
-                    fontSize: 13,
-                    fontWeight: 600,
-                    cursor: 'pointer'
+                    fontSize: 13, fontWeight: 600, cursor: 'pointer'
                   }}
                 >
                   {p.categorie}
@@ -447,9 +429,7 @@ export default function AccompagnementAssociationsPage() {
               ))}
             </div>
 
-            <div style={{
-              background: 'white', border: '1px solid #e5e7eb', borderRadius: 12, padding: '1.5rem'
-            }}>
+            <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: 12, padding: '1.5rem' }}>
               <h3 style={{ fontSize: '1rem', fontWeight: 700, color: '#0f2d6e', marginBottom: '1rem' }}>
                 {prestations[prestationActive].categorie}
               </h3>
@@ -474,7 +454,7 @@ export default function AccompagnementAssociationsPage() {
             </div>
           </section>
 
-          {/* ─── RGPD ASSOCIATIF ─── */}
+          {/* RGPD ASSOCIATIF */}
           <section id="rgpd-associations" style={{ marginBottom: '3.5rem' }}>
             <h2 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#0f2d6e', marginBottom: '0.5rem' }}>
               RGPD et associations : ce que la loi impose
@@ -487,10 +467,7 @@ export default function AccompagnementAssociationsPage() {
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.2rem', marginBottom: '1.5rem' }}>
               {rgpdPoints.map((point, i) => (
-                <div key={i} style={{
-                  background: 'white', border: '1px solid #e5e7eb', borderRadius: 12,
-                  padding: '1.25rem'
-                }}>
+                <div key={i} style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: 12, padding: '1.25rem' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
                     <div style={{ color: '#1a4fba' }}>{point.icone}</div>
                     <h3 style={{ fontSize: '0.85rem', fontWeight: 700, color: '#0f2d6e', margin: 0 }}>{point.titre}</h3>
@@ -519,7 +496,7 @@ export default function AccompagnementAssociationsPage() {
             </div>
           </section>
 
-          {/* ─── CTA ─── */}
+          {/* CTA */}
           <section style={{
             background: 'linear-gradient(135deg, #14532d 0%, #16a34a 100%)',
             borderRadius: 16, padding: '2.5rem 2rem', marginBottom: '3.5rem',
@@ -547,7 +524,7 @@ export default function AccompagnementAssociationsPage() {
             </a>
           </section>
 
-          {/* ─── FAQ ─── */}
+          {/* FAQ */}
           <section id="faq" style={{ marginBottom: '3.5rem' }}>
             <h2 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#0f2d6e', marginBottom: '0.5rem' }}>
               Questions fréquentes sur les associations et l'ESS
@@ -558,9 +535,7 @@ export default function AccompagnementAssociationsPage() {
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
               {faqs.map((faq, i) => (
-                <div key={i} style={{
-                  background: 'white', border: '1px solid #e5e7eb', borderRadius: 12, overflow: 'hidden'
-                }}>
+                <div key={i} style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: 12, overflow: 'hidden' }}>
                   <button
                     onClick={() => setFaqOuverte(faqOuverte === i ? null : i)}
                     style={{
@@ -573,8 +548,7 @@ export default function AccompagnementAssociationsPage() {
                       {faq.question}
                     </span>
                     <ChevronDown
-                      size={18}
-                      strokeWidth={2}
+                      size={18} strokeWidth={2}
                       style={{
                         color: '#1a4fba', flexShrink: 0,
                         transform: faqOuverte === i ? 'rotate(180deg)' : 'rotate(0deg)',
@@ -592,7 +566,7 @@ export default function AccompagnementAssociationsPage() {
             </div>
           </section>
 
-          {/* ─── AUTEUR ─── */}
+          {/* AUTEUR */}
           <section style={{
             background: 'white', border: '1px solid #e5e7eb', borderRadius: 12,
             padding: '1.5rem', marginBottom: '3.5rem',
@@ -605,7 +579,7 @@ export default function AccompagnementAssociationsPage() {
             />
             <div>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '0.5rem' }}>
-                {['Juriste', 'Formaliste CRFF', '10 ans dans le secteur ESS'].map((badge, i) => (
+                {['Juriste', 'Formaliste', 'Conseil en assurances et réassurances'].map((badge, i) => (
                   <span key={i} style={{
                     background: '#f0fdf4', color: '#16a34a', fontSize: 11,
                     fontWeight: 600, padding: '3px 10px', borderRadius: 20
@@ -613,16 +587,20 @@ export default function AccompagnementAssociationsPage() {
                 ))}
               </div>
               <h3 style={{ fontSize: '1rem', fontWeight: 700, color: '#0f2d6e', margin: '0 0 0.3rem' }}>François CHOLEZ</h3>
+              <p style={{ fontSize: 13, color: '#6b7280', margin: '0 0 0.4rem', lineHeight: 1.6 }}>
+                Membre du CRFF (Conseil Représentatif des Formalistes de France), investi dans des instances
+                de gouvernances associatives à différents échelons (en local, départemental et national).
+                Co-fondateur et secrétaire national d'un fonds de dotation. Plus de 30 ans d'engagement dans l'ESS.
+              </p>
               <p style={{ fontSize: 13, color: '#6b7280', margin: 0, lineHeight: 1.6 }}>
-                Juriste - Formaliste - Conseil en assurances. Membre du CRFF. Plus de 10 ans d'expérience
-                terrain dans le secteur associatif et ESS. Chercheur associé, co-auteur de "L'éducation,
-                ça se partage ?" (L'Harmattan, 2021) et contributeur de "Agir en situation de discrédit"
-                (Le Cavalier Bleu, 2026).
+                Chercheur associé, contributeur aux ouvrages
+                {' '}<em>«&nbsp;L'éducation, ça se partage&nbsp;?&nbsp;»</em> (L'Harmattan, 2021)
+                {' '}et <em>«&nbsp;Agir en situation de discrédit&nbsp;»</em> (Le Cavalier Bleu, 2026).
               </p>
             </div>
           </section>
 
-          {/* ─── CTA FINAL ─── */}
+          {/* CTA FINAL */}
           <section style={{ background: '#f0fdf4', border: '1px solid #bbf7d0', borderRadius: 12, padding: '2rem', textAlign: 'center' }}>
             <h2 style={{ fontSize: '1.3rem', fontWeight: 700, color: '#14532d', marginBottom: '0.5rem' }}>
               Un projet associatif ou une question de conformité ?
