@@ -44,7 +44,7 @@ const articles = [
   {
     slug: 'lintelligence-artificielle-en-droit-une-fausse-bonne-idee',
     titre: "L'Intelligence Artificielle en droit : une fausse bonne idée ?",
-    resume: "L'IA est présentée comme une révolution pour le secteur juridique. Mais ses limitations intrinsèques — hallucinations, biais algorithmiques, absence de jugement éthique — en font un outil risqué lorsqu'il est utilisé sans esprit critique.",
+    resume: "L'IA est présentée comme une révolution pour le secteur juridique. Mais ses limitations intrinsèques (hallucinations, biais algorithmiques, absence de jugement éthique) en font un outil risqué lorsqu'il est utilisé sans esprit critique.",
     date: '15 juillet 2025',
     auteur: 'François CHOLEZ',
     categorie: 'Intelligence artificielle',
@@ -161,7 +161,7 @@ export default function Blog() {
               Actualités, analyses et informations juridiques
             </h1>
             <p style={{color: 'rgba(255,255,255,0.8)', fontSize: '0.95rem', margin: 0, maxWidth: '560px', lineHeight: '1.7'}}>
-              Des articles rédigés par un juriste, pour mieux comprendre le droit du quotidien — sans jargon, avec rigueur.
+              Des articles rédigés par un juriste, pour mieux comprendre le droit du quotidien, sans jargon, avec rigueur.
             </p>
           </div>
         </section>
