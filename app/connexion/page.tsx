@@ -35,7 +35,7 @@ export default function Connexion() {
             <div style={{display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '28px'}}>
               {[
                 { label: 'Accès gratuit', desc: 'Tous les documents disponibles en accès libre, format DOCX.', color: '#4ade80' },
-                { label: 'Abonnement Optimal', desc: 'Bibliothèque complète de documents juridiques, 1 question juriste incluse par mois, non cumulable. 12,49 €/mois ou 147,97 €/an.', color: '#93c5fd' },
+                { label: 'Abonnement Optimal', desc: 'Bibliothèque complète de documents juridiques, 1 question juriste incluse par mois, non cumulable. À partir de 17,90 €/mois ou 149 €/an.', color: '#93c5fd' },
                 { label: 'Information sur vos droits', desc: 'Une question, une réponse rédigée par un juriste sous 24 à 48h. 47 € à l\'unité, sans abonnement. Ce service constitue une information juridique au sens de la loi n°71-1130 du 31 décembre 1971 et ne constitue pas une consultation juridique personnalisée. La réponse apportée vous permettra de mieux comprendre vos droits, d\'identifier les règles juridiques applicables à votre situation et de prendre vos décisions en toute connaissance de cause. Le cas échéant, vous serez orienté vers le professionnel du droit compétent.', color: '#fcd34d' },
               ].map((offre, i) => (
                 <div key={i} style={{background: 'rgba(255,255,255,0.1)', borderRadius: '10px', padding: '12px 14px'}}>
@@ -229,7 +229,7 @@ export default function Connexion() {
                 {/* CHAMPS OPTIONNELS */}
                 <div style={{background: '#f8fafc', border: '1px solid #e5e7eb', borderRadius: '10px', padding: '16px'}}>
                   <p style={{color: '#6b7280', fontSize: '12px', fontWeight: '600', margin: '0 0 12px'}}>
-                    Informations complémentaires <span style={{fontWeight: '400', fontStyle: 'italic'}}>(optionnelles pour l'accès gratuit — requises pour l'Abonnement Optimal et la question payante)</span>
+                    Informations complémentaires <span style={{fontWeight: '400', fontStyle: 'italic'}}>(optionnelles pour l'accès gratuit, requises pour l'Abonnement Optimal et la question payante)</span>
                   </p>
 
                   <div style={{display: 'flex', flexDirection: 'column', gap: '12px'}}>
@@ -338,7 +338,7 @@ export default function Connexion() {
                   <div style={{display: 'flex', gap: '8px', alignItems: 'flex-start', marginBottom: '4px'}}>
                     <span style={{color: '#16a34a', fontSize: '12px', flexShrink: 0}}>✓</span>
                     <span style={{color: '#374151', fontSize: '12px'}}>
-                      Question unitaire à 47 € · ou incluse dans l'Abonnement Optimal —{' '}
+                      Question unitaire à 47 € · ou incluse dans l'Abonnement Optimal.{' '}
                       <a href="/tarifs" style={{color: '#1a4fba', textDecoration: 'none', fontWeight: '600'}}>Comparer les offres →</a>
                     </span>
                   </div>
