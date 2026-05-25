@@ -27,7 +27,7 @@ const schema = {
       },
       "publisher": {
         "@type": "Organization",
-        "name": "Docuthèque — Cabinet Cholez-Pagotto",
+        "name": "Docuthèque · Cabinet Cholez-Pagotto",
         "url": "https://cholez-pagotto.fr"
       },
       "url": "https://cholez-pagotto.fr/blog/lintelligence-artificielle-en-droit-une-fausse-bonne-idee",
@@ -43,7 +43,7 @@ const schema = {
           "name": "L'intelligence artificielle peut-elle remplacer un juriste ou un avocat ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Non. L'IA peut automatiser certaines tâches répétitives, mais elle ne peut pas reproduire le jugement nuancé, l'éthique, l'empathie et la capacité à traiter chaque situation juridique dans sa singularité — des qualités indispensables à la pratique du droit."
+            "text": "Non. L'IA peut automatiser certaines tâches répétitives, mais elle ne peut pas reproduire le jugement nuancé, l'éthique, l'empathie et la capacité à traiter chaque situation juridique dans sa singularité, des qualités indispensables à la pratique du droit."
           }
         },
         {
@@ -51,7 +51,7 @@ const schema = {
           "name": "Qu'est-ce qu'une hallucination de l'IA en droit ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Une hallucination est la production par un modèle d'IA d'informations factuellement inexactes mais présentées de manière convaincante. En droit, cela peut se traduire par des citations de jurisprudence inventées, des précédents juridiques inexistants ou des références légales erronées — avec des conséquences potentiellement graves."
+            "text": "Une hallucination est la production par un modèle d'IA d'informations factuellement inexactes mais présentées de manière convaincante. En droit, cela peut se traduire par des citations de jurisprudence inventées, des précédents juridiques inexistants ou des références légales erronées, avec des conséquences potentiellement graves."
           }
         },
         {
@@ -59,7 +59,7 @@ const schema = {
           "name": "Qu'est-ce que le biais algorithmique en droit ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Le biais algorithmique désigne les erreurs systématiques dans les résultats d'un système d'IA, dues à des données d'entraînement non représentatives ou à la conception de l'algorithme lui-même. En droit, cela peut conduire à des décisions discriminatoires — comme l'a démontré le cas COMPAS aux États-Unis, qui surévaluait le risque de récidive pour les personnes noires."
+            "text": "Le biais algorithmique désigne les erreurs systématiques dans les résultats d'un système d'IA, dues à des données d'entraînement non représentatives ou à la conception de l'algorithme lui-même. En droit, cela peut conduire à des décisions discriminatoires, comme l'a démontré le cas COMPAS aux États-Unis, qui surévaluait le risque de récidive pour les personnes noires."
           }
         },
         {
@@ -158,13 +158,13 @@ export default function ArticleIA() {
                   { id: 'introduction', label: 'Introduction' },
                   { id: 'promesses', label: 'I. Les promesses de l\'IA en droit : une efficacité à relativiser' },
                   { id: 'erreurs-biais', label: 'II. Erreurs et biais de l\'IA : des conséquences juridiques tangibles' },
-                  { id: 'hallucinations', label: '— A. Les hallucinations et citations inventées' },
-                  { id: 'biais', label: '— B. Les biais algorithmiques' },
-                  { id: 'donnees', label: '— C. La qualité et la gouvernance des données' },
+                  { id: 'hallucinations', label: '· A. Les hallucinations et citations inventées' },
+                  { id: 'biais', label: '· B. Les biais algorithmiques' },
+                  { id: 'donnees', label: '· C. La qualité et la gouvernance des données' },
                   { id: 'nuance', label: 'III. L\'incapacité de l\'IA à saisir la nuance du droit' },
-                  { id: 'raisonnement', label: '— A. Le raisonnement juridique humain' },
-                  { id: 'cas-espece', label: '— B. Le cas d\'espèce : l\'échec de l\'uniformisation' },
-                  { id: 'ethique', label: '— C. L\'absence de jugement, d\'éthique et d\'empathie' },
+                  { id: 'raisonnement', label: '· A. Le raisonnement juridique humain' },
+                  { id: 'cas-espece', label: '· B. Le cas d\'espèce : l\'échec de l\'uniformisation' },
+                  { id: 'ethique', label: '· C. L\'absence de jugement, d\'éthique et d\'empathie' },
                   { id: 'au-dela', label: 'V. Le droit : une discipline exigeant plus que la technologie' },
                   { id: 'faq', label: 'Questions fréquentes' },
                 ].map((item) => (
@@ -199,7 +199,7 @@ export default function ArticleIA() {
                 </h2>
                 <p>L'attrait de l'intelligence artificielle dans le secteur juridique repose sur des avantages perçus, principalement liés à l'efficacité opérationnelle et à l'accès rapide à l'information.</p>
                 <h3 style={{color: '#0f2d6e', fontSize: '1.1rem', fontWeight: '700', margin: '1.5rem 0 10px'}}>Automatisation des tâches répétitives et chronophages</h3>
-                <p>L'IA est présentée comme un outil puissant pour automatiser les tâches routinières, libérant ainsi les professionnels du droit pour qu'ils se concentrent sur des missions plus stratégiques. Les outils d'IA peuvent analyser rapidement de vastes bases de données juridiques, identifiant la jurisprudence pertinente en quelques secondes. De même, l'IA <strong>assiste</strong> — et j'insiste sur ce verbe — la rédaction et la révision de documents.</p>
+                <p>L'IA est présentée comme un outil puissant pour automatiser les tâches routinières, libérant ainsi les professionnels du droit pour qu'ils se concentrent sur des missions plus stratégiques. Les outils d'IA peuvent analyser rapidement de vastes bases de données juridiques, identifiant la jurisprudence pertinente en quelques secondes. De même, l'IA <strong>assiste</strong> (et j'insiste sur ce verbe) la rédaction et la révision de documents.</p>
                 <h3 style={{color: '#0f2d6e', fontSize: '1.1rem', fontWeight: '700', margin: '1.5rem 0 10px'}}>Gains de productivité et d'accès à l'information</h3>
                 <p>Les partisans de l'IA soutiennent qu'elle conduit à des gains de temps considérables et une meilleure qualité dans la prise de décision. Cependant, il est crucial de noter que si l'IA promet efficacité et rapidité, cela se fait souvent au détriment de la profondeur, de la nuance et du jugement humain, primordiaux dans les contextes juridiques.</p>
                 <div style={{background: '#f0fdf4', border: '1px solid #bbf7d0', borderRadius: '10px', padding: '1rem 1.25rem', margin: '1.5rem 0'}}>
@@ -218,7 +218,7 @@ export default function ArticleIA() {
                   <h3 style={{color: '#0f2d6e', fontSize: '1.1rem', fontWeight: '700', margin: '1.5rem 0 10px'}}>
                     A. Les "hallucinations" et citations juridiques inventées : des précédents alarmants
                   </h3>
-                  <p>Une faille critique des modèles d'IA est leur propension à "halluciner", c'est-Ã -dire produire un contenu factuellement inexact tout en le présentant de manière plausible et convaincante. Il ne s'agit pas d'un simple bug, mais d'une caractéristique fondamentale : ces modèles génèrent du texte basé sur des probabilités et des motifs, non sur une véritable compréhension ou vérification factuelle.</p>
+                  <p>Une faille critique des modèles d'IA est leur propension à "halluciner", c'est-à-dire produire un contenu factuellement inexact tout en le présentant de manière plausible et convaincante. Il ne s'agit pas d'un simple bug, mais d'une caractéristique fondamentale : ces modèles génèrent du texte basé sur des probabilités et des motifs, non sur une véritable compréhension ou vérification factuelle.</p>
                   <div style={{background: '#fef2f2', border: '1px solid #fecaca', borderRadius: '10px', padding: '1rem 1.25rem', margin: '1.5rem 0'}}>
                     <p style={{color: '#dc2626', fontSize: '13px', lineHeight: '1.7', margin: '0 0 8px', fontWeight: '700'}}>Cas réel : L'avocat sanctionné à 31 000 $</p>
                     <p style={{color: '#374151', fontSize: '13px', lineHeight: '1.7', margin: 0}}>Un avocat américain a utilisé ChatGPT pour compléter sa recherche juridique. Le chatbot a généré des citations de jurisprudence entièrement fabriquées, présentées comme vérifiables sur Westlaw et LexisNexis. L'avocat, faisant confiance à l'IA sans vérification, a soumis ces faux précédents au tribunal. Sanction : 31 000 dollars.</p>
@@ -238,7 +238,7 @@ export default function ArticleIA() {
                   </ul>
                   <div style={{background: '#fef2f2', border: '1px solid #fecaca', borderRadius: '10px', padding: '1rem 1.25rem', margin: '1.5rem 0'}}>
                     <p style={{color: '#dc2626', fontSize: '13px', lineHeight: '1.7', margin: '0 0 8px', fontWeight: '700'}}>Cas réel : Le système COMPAS (États-Unis, 2016)</p>
-                    <p style={{color: '#374151', fontSize: '13px', lineHeight: '1.7', margin: 0}}>Des tribunaux américains utilisaient cet outil d'IA pour évaluer le risque de récidive et influencer les décisions de libération conditionnelle. Une étude a révélé que COMPAS présentait d'importants biais raciaux, évaluant de manière disproportionnée un risque de récidive plus élevé chez les personnes noires — même en contrôlant des facteurs similaires.</p>
+                    <p style={{color: '#374151', fontSize: '13px', lineHeight: '1.7', margin: 0}}>Des tribunaux américains utilisaient cet outil d'IA pour évaluer le risque de récidive et influencer les décisions de libération conditionnelle. Une étude a révélé que COMPAS présentait d'importants biais raciaux, évaluant de manière disproportionnée un risque de récidive plus élevé chez les personnes noires, même en contrôlant des facteurs similaires.</p>
                   </div>
                 </section>
 
@@ -247,7 +247,7 @@ export default function ArticleIA() {
                     C. La qualité et la gouvernance des données : un frein majeur à la fiabilité de l'IA
                   </h3>
                   <p>La fiabilité des systèmes d'IA dépend directement de la qualité des données sur lesquelles ils sont entraînés. Or, une étude de 2024 révèle que seulement <strong>12 % des entreprises</strong> estiment que la qualité de leurs données est suffisante pour soutenir des initiatives efficaces en matière d'IA, et <strong>67 % expriment un manque de confiance totale</strong> dans les données utilisées pour leurs processus décisionnels.</p>
-                  <p>Le principal obstacle à l'adoption de l'IA, identifié par <strong>62 % des répondants</strong>, est l'absence de cadres de gouvernance des données robustes — problème particulièrement critique en droit, où la confidentialité est primordiale.</p>
+                  <p>Le principal obstacle à l'adoption de l'IA, identifié par <strong>62 % des répondants</strong>, est l'absence de cadres de gouvernance des données robustes, problème particulièrement critique en droit, où la confidentialité est primordiale.</p>
                 </section>
               </section>
 
@@ -275,12 +275,12 @@ export default function ArticleIA() {
                       </thead>
                       <tbody>
                         {[
-                          ['Nature du raisonnement', 'Interprétatif, contextuel, déductif et inductif — "pesée des âmes et des actes"', 'Statistique, probabiliste, basée sur la reconnaissance de motifs'],
-                          ['Traitement des faits', 'Analyse approfondie, déconstruction des faits, considération des subtilités', 'Tri, comparaison, rapprochement des données — risque de généralisation'],
+                          ['Nature du raisonnement', 'Interprétatif, contextuel, déductif et inductif : "pesée des âmes et des actes"', 'Statistique, probabiliste, basée sur la reconnaissance de motifs'],
+                          ['Traitement des faits', 'Analyse approfondie, déconstruction des faits, considération des subtilités', 'Tri, comparaison, rapprochement des données : risque de généralisation'],
                           ['Application de la règle', 'Détermination de la règle adaptée, avec interprétation et adaptation stratégique', 'Application mécanique ou probabiliste basée sur les données d\'entraînement'],
                           ['Gestion des nuances', 'Capacité à considérer les subtilités et les situations extraordinaires', 'Tendance à l\'uniformisation, gommant les particularités individuelles'],
                           ['Éthique / Empathie', 'Intégration de considérations éthiques, morales et empathiques', 'Absence de jugement éthique ou d\'empathie'],
-                          ['Responsabilité', 'Le juge ou l\'avocat conserve l\'entière responsabilité', 'L\'IA est un outil — le concept de "boîte noire" pose question'],
+                          ['Responsabilité', 'Le juge ou l\'avocat conserve l\'entière responsabilité', 'L\'IA est un outil ; le concept de "boîte noire" pose question'],
                         ].map(([critere, humain, ia], i) => (
                           <tr key={i} style={{background: i % 2 === 0 ? 'white' : '#f8fafc', borderBottom: '1px solid #e5e7eb'}}>
                             <td style={{padding: '10px 12px', fontWeight: '600', color: '#0f2d6e', verticalAlign: 'top'}}>{critere}</td>
@@ -297,7 +297,7 @@ export default function ArticleIA() {
                   <h3 style={{color: '#0f2d6e', fontSize: '1.1rem', fontWeight: '700', margin: '1.5rem 0 10px'}}>
                     B. Le cas d'espèce : l'échec de l'uniformisation par l'IA
                   </h3>
-                  <p>L'essence même du système juridique repose sur les circonstances uniques et les faits spécifiques de chaque "cas d'espèce". La tendance inhérente de l'IA à généraliser à partir de vastes ensembles de données conduit à une uniformisation des décisions — qui érode fondamentalement la capacité à prendre en compte les spécificités et nuances des cas individuels.</p>
+                  <p>L'essence même du système juridique repose sur les circonstances uniques et les faits spécifiques de chaque "cas d'espèce". La tendance inhérente de l'IA à généraliser à partir de vastes ensembles de données conduit à une uniformisation des décisions, qui érode fondamentalement la capacité à prendre en compte les spécificités et nuances des cas individuels.</p>
                   <div style={{background: '#fef2f2', border: '1px solid #fecaca', borderRadius: '10px', padding: '1rem 1.25rem', margin: '1.5rem 0'}}>
                     <p style={{color: '#dc2626', fontSize: '13px', lineHeight: '1.7', margin: '0 0 8px', fontWeight: '700'}}>Deux projets français suspendus ou abandonnés</p>
                     <p style={{color: '#374151', fontSize: '13px', lineHeight: '1.7', margin: '0 0 8px'}}><strong>Datajust (2020) :</strong> Projet de la Cour de cassation visant à standardiser l'indemnisation des préjudices corporels via l'IA. Suspendu en raison de craintes d'uniformisation indésirable des décisions.</p>
@@ -309,7 +309,7 @@ export default function ArticleIA() {
                   <h3 style={{color: '#0f2d6e', fontSize: '1.1rem', fontWeight: '700', margin: '1.5rem 0 10px'}}>
                     C. L'absence de jugement, d'éthique et d'empathie : les limites infranchissables de l'IA
                   </h3>
-                  <p>La pratique du droit est profondément liée à des qualités humaines — jugement, raisonnement éthique, empathie. L'IA, par sa nature même, fonctionne sur des algorithmes et des modèles de données ; elle ne peut pas reproduire ces qualités intrinsèquement humaines.</p>
+                  <p>La pratique du droit est profondément liée à des qualités humaines : jugement, raisonnement éthique, empathie. L'IA, par sa nature même, fonctionne sur des algorithmes et des modèles de données ; elle ne peut pas reproduire ces qualités intrinsèquement humaines.</p>
                   <p>Une préoccupation majeure est l'émergence potentielle d'un <strong>"juge robot"</strong> : des décisions judiciaires purement statistiques, sans motivation réelle par des principes juridiques et des considérations humaines, conduisant à un système de justice dépourvu de responsabilité humaine pour ses résultats.</p>
                 </section>
               </section>
@@ -329,7 +329,7 @@ export default function ArticleIA() {
 
                 <div style={{background: '#0f2d6e', borderRadius: '12px', padding: '1.5rem', margin: '2rem 0'}}>
                   <h3 style={{color: 'white', fontSize: '1.1rem', fontWeight: '700', margin: '0 0 12px'}}>Conclusion : L'IA, un outil technologique, jamais un substitut au professionnel du droit</h3>
-                  <p style={{color: 'rgba(255,255,255,0.85)', fontSize: '13px', lineHeight: '1.8', margin: '0 0 12px'}}>Si l'intelligence artificielle peut servir d'outil précieux pour automatiser certaines tâches répétitives, elle ne peut ni ne doit remplacer l'humain. Le cœur de la pratique juridique — jugement nuancé, considération éthique, empathie authentique, pensée stratégique — demeure un domaine exclusivement humain.</p>
+                  <p style={{color: 'rgba(255,255,255,0.85)', fontSize: '13px', lineHeight: '1.8', margin: '0 0 12px'}}>Si l'intelligence artificielle peut servir d'outil précieux pour automatiser certaines tâches répétitives, elle ne peut ni ne doit remplacer l'humain. Le cœur de la pratique juridique (jugement nuancé, considération éthique, empathie authentique, pensée stratégique) demeure un domaine exclusivement humain.</p>
                   <p style={{color: '#93c5fd', fontSize: '13px', lineHeight: '1.8', margin: 0, fontStyle: 'italic'}}>Privilégiez, au regard de votre situation, de son contexte et de vos perspectives d'action, de vous appuyer sur un professionnel du droit : juriste, avocat, notaire.</p>
                 </div>
               </section>
@@ -343,15 +343,15 @@ export default function ArticleIA() {
                   {[
                     {
                       q: "L'intelligence artificielle peut-elle remplacer un juriste ou un avocat ?",
-                      a: "Non. L'IA peut automatiser certaines tâches répétitives, mais elle ne peut pas reproduire le jugement nuancé, l'éthique, l'empathie et la capacité à traiter chaque situation juridique dans sa singularité — des qualités indispensables à la pratique du droit."
+                      a: "Non. L'IA peut automatiser certaines tâches répétitives, mais elle ne peut pas reproduire le jugement nuancé, l'éthique, l'empathie et la capacité à traiter chaque situation juridique dans sa singularité, des qualités indispensables à la pratique du droit."
                     },
                     {
                       q: "Qu'est-ce qu'une hallucination de l'IA en droit ?",
-                      a: "Une hallucination est la production par un modèle d'IA d'informations factuellement inexactes mais présentées de manière convaincante. En droit, cela peut se traduire par des citations de jurisprudence inventées ou des précédents juridiques inexistants — avec des conséquences potentiellement graves."
+                      a: "Une hallucination est la production par un modèle d'IA d'informations factuellement inexactes mais présentées de manière convaincante. En droit, cela peut se traduire par des citations de jurisprudence inventées ou des précédents juridiques inexistants, avec des conséquences potentiellement graves."
                     },
                     {
                       q: "Qu'est-ce que le biais algorithmique en droit ?",
-                      a: "Le biais algorithmique désigne les erreurs systématiques dans les résultats d'un système d'IA, dues à des données d'entraînement non représentatives. En droit, cela peut conduire à des décisions discriminatoires — comme l'a démontré le cas COMPAS aux États-Unis."
+                      a: "Le biais algorithmique désigne les erreurs systématiques dans les résultats d'un système d'IA, dues à des données d'entraînement non représentatives. En droit, cela peut conduire à des décisions discriminatoires, comme l'a démontré le cas COMPAS aux États-Unis."
                     },
                     {
                       q: "L'IA est-elle encadrée juridiquement en Europe ?",
@@ -383,7 +383,6 @@ export default function ArticleIA() {
           {/* SIDEBAR */}
           <aside style={{flex: '0 0 280px', display: 'flex', flexDirection: 'column', gap: '20px', position: 'sticky', top: '80px'}}>
 
-            {/* À PROPOS DE L'AUTEUR */}
             <div style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.25rem'}}>
               <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px'}}>À propos de l'auteur</p>
               <div style={{display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '10px'}}>
@@ -403,7 +402,6 @@ export default function ArticleIA() {
               <p style={{color: '#9ca3af', fontSize: '11px', margin: 0}}>Cabinet Cholez-Pagotto</p>
             </div>
 
-            {/* CTA */}
             <div style={{background: '#0f2d6e', borderRadius: '12px', padding: '1.25rem'}}>
               <p style={{color: 'white', fontSize: '13px', fontWeight: '700', margin: '0 0 8px'}}>Une question juridique ?</p>
               <p style={{color: 'rgba(255,255,255,0.8)', fontSize: '12px', lineHeight: '1.6', margin: '0 0 10px'}}>Un juriste vous répond par écrit sous 24 à 48h. 47 € à l'unité, sans abonnement.</p>
@@ -413,7 +411,6 @@ export default function ArticleIA() {
               </a>
             </div>
 
-            {/* CTA NEWSLETTER */}
             <div style={{background: 'linear-gradient(135deg, #b8860b 0%, #d4a017 50%, #b8860b 100%)', borderRadius: '12px', padding: '1.25rem'}}>
               <p style={{color: 'white', fontSize: '13px', fontWeight: '700', margin: '0 0 8px'}}>Newsletter gratuite</p>
               <p style={{color: 'rgba(255,255,255,0.85)', fontSize: '12px', lineHeight: '1.6', margin: '0 0 14px'}}>Actualités, analyses et informations juridiques directement dans votre boîte mail.</p>
@@ -422,7 +419,6 @@ export default function ArticleIA() {
               </a>
             </div>
 
-            {/* TAGS */}
             <div style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.25rem'}}>
               <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px'}}>Tags</p>
               <div style={{display: 'flex', gap: '6px', flexWrap: 'wrap'}}>
@@ -432,7 +428,6 @@ export default function ArticleIA() {
               </div>
             </div>
 
-            {/* RETOUR AU BLOG */}
             <a href="/blog" style={{display: 'flex', alignItems: 'center', gap: '6px', color: '#6b7280', fontSize: '12px', textDecoration: 'none'}}>
               ← Retour au blog
             </a>
