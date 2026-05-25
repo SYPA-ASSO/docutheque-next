@@ -7,7 +7,7 @@ import { ChevronRight, Mail, Clock, MapPin, Send, CheckCircle, AlertCircle } fro
 
 const SUJETS = [
   'Question générale',
-  'Demande de devis — Accompagnement créateurs',
+  'Demande de devis : Accompagnement créateurs',
   'Mon abonnement Optimal',
   'Problème technique',
   'Exercice de mes droits (RGPD)',
@@ -34,7 +34,6 @@ export default function Contact() {
     setForm(prev => ({ ...prev, [field]: value }))
 
   const handleSubmit = async () => {
-    // Validation côté client
     if (!form.nom.trim() || !form.email.trim() || !form.sujet || !form.message.trim()) {
       setErrorMsg('Veuillez remplir tous les champs obligatoires.')
       setStatus('error')
@@ -199,7 +198,7 @@ export default function Contact() {
                       onChange={e => set('sujet', e.target.value)}
                       style={{ ...inputStyle, appearance: 'auto', cursor: 'pointer' }}
                     >
-                      <option value="">— Sélectionner —</option>
+                      <option value="">Sélectionner une option</option>
                       {SUJETS.map(s => <option key={s} value={s}>{s}</option>)}
                     </select>
                   </div>
@@ -233,7 +232,7 @@ export default function Contact() {
                   <label htmlFor="rgpd" style={{ color: '#6b7280', fontSize: '12px', lineHeight: '1.6', cursor: 'pointer' }}>
                     J'accepte que mes données soient utilisées pour traiter ma demande, conformément à la{' '}
                     <a href="/confidentialite" style={{ color: '#1a4fba', textDecoration: 'none' }}>Politique de confidentialité</a>{' '}
-                    de FCFBL ACTIVITIES. *
+                    du Cabinet Cholez-Pagotto. *
                   </label>
                 </div>
 

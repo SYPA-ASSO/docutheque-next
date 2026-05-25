@@ -2,7 +2,7 @@
 import Footer from '@/components/Footer'
 
 export const metadata = {
-  title: 'Politique de confidentialité · Docuthèque — Cabinet Cholez-Pagotto',
+  title: 'Politique de confidentialité · Docuthèque · Cabinet Cholez-Pagotto',
   description: 'Politique de confidentialité et protection des données personnelles de la plateforme Docuthèque, service du Cabinet Cholez-Pagotto. Conforme au RGPD.',
 }
 
@@ -40,7 +40,7 @@ export default function Confidentialite() {
               titre: '1. Responsable de traitement',
               contenu: (
                 <div style={{color: '#374151', fontSize: '13px', lineHeight: '1.9'}}>
-                  <p><strong>Cabinet Cholez-Pagotto — François CHOLEZ (Entreprise Individuelle)</strong></p>
+                  <p><strong>Cabinet Cholez-Pagotto · François CHOLEZ (Entreprise Individuelle)</strong></p>
                   <p>SIRET : 490 889 516 00053</p>
                   <p>Siège social : 12 rue d'Olima, 88000 Épinal</p>
                   <p>Représentant : François CHOLEZ</p>
@@ -83,7 +83,7 @@ export default function Confidentialite() {
 
                   <div style={{background: '#f8fafc', border: '1px solid #e5e7eb', borderRadius: '8px', padding: '1rem'}}>
                     <p style={{color: '#0f2d6e', fontWeight: '700', margin: '0 0 8px'}}>3.2 Abonnement Optimal et paiement en ligne</p>
-                    <p><strong>Données :</strong> données d'identification, informations de facturation (nom, adresse), données de transaction (montant, date) — <em>les données de carte bancaire ne sont pas collectées ni stockées par Docuthèque : elles sont traitées directement par notre prestataire de paiement</em></p>
+                    <p><strong>Données :</strong> données d'identification, informations de facturation (nom, adresse), données de transaction (montant, date). <em>Les données de carte bancaire ne sont pas collectées ni stockées par Docuthèque : elles sont traitées directement par notre prestataire de paiement.</em></p>
                     <p><strong>Finalité :</strong> gestion de l'abonnement, facturation, obligations comptables</p>
                     <p><strong>Base légale :</strong> exécution du contrat (art. 6.1.b) et obligation légale (art. 6.1.c RGPD)</p>
                     <p><strong>Durée :</strong> durée de la relation contractuelle + 5 ans (prescription de droit commun) ; données de facturation : 10 ans (Code de commerce)</p>
@@ -100,7 +100,7 @@ export default function Confidentialite() {
                   <div style={{background: '#f8fafc', border: '1px solid #e5e7eb', borderRadius: '8px', padding: '1rem'}}>
                     <p style={{color: '#0f2d6e', fontWeight: '700', margin: '0 0 8px'}}>3.4 Newsletter et communications</p>
                     <p><strong>Données :</strong> adresse email, prénom (facultatif)</p>
-                    <p><strong>Sous-traitant :</strong> Brevo SAS, 55 rue d'Amsterdam, 75008 Paris — entreprise française, données hébergées dans l'Union Européenne, DPA Art. 28 RGPD disponible sur <a href="https://www.brevo.com/fr/legal/termsofuse/" target="_blank" rel="noopener noreferrer" style={{color: '#1a4fba', textDecoration: 'none'}}>brevo.com</a></p>
+                    <p><strong>Sous-traitant :</strong> Brevo SAS, 55 rue d'Amsterdam, 75008 Paris, entreprise française, données hébergées dans l'Union Européenne, DPA Art. 28 RGPD disponible sur <a href="https://www.brevo.com/fr/legal/termsofuse/" target="_blank" rel="noopener noreferrer" style={{color: '#1a4fba', textDecoration: 'none'}}>brevo.com</a></p>
                     <p><strong>Finalité :</strong> envoi de la newsletter incluant des informations juridiques pratiques, des actualités sur les nouveaux documents disponibles, des offres sur nos services et abonnements, des promotions négociées auprès de partenaires sélectionnés, et des contenus exclusifs abonnés Optimal</p>
                     <p><strong>Base légale :</strong> consentement explicite et informé (art. 6.1.a RGPD)</p>
                     <p><strong>Durée :</strong> jusqu'au retrait du consentement (désinscription), et au maximum 3 ans après le dernier contact actif</p>
@@ -125,7 +125,7 @@ export default function Confidentialite() {
                   <p>Vos données sont accessibles :</p>
                   <ul style={{paddingLeft: '1.5rem', marginTop: '10px', display: 'flex', flexDirection: 'column', gap: '8px'}}>
                     <li><strong>En interne :</strong> aux seules personnes habilitées du cabinet, dans le cadre de leurs fonctions</li>
-                    <li><strong>Aux sous-traitants techniques :</strong> hébergeur (Vercel), prestataire de paiement, Brevo SAS (plateforme d'emailing, 55 rue d'Amsterdam, 75008 Paris, données hébergées dans l'UE) pour la newsletter — tous liés par un contrat de sous-traitance conforme à l'article 28 du RGPD</li>
+                    <li><strong>Aux sous-traitants techniques :</strong> hébergeur (Vercel), prestataire de paiement, Brevo SAS (plateforme d'emailing, 55 rue d'Amsterdam, 75008 Paris, données hébergées dans l'UE) pour la newsletter, tous liés par un contrat de sous-traitance conforme à l'article 28 du RGPD</li>
                     <li><strong>Aux autorités compétentes :</strong> sur réquisition judiciaire ou légale</li>
                   </ul>
                   <p style={{marginTop: '12px'}}>Vos données sont hébergées au sein de l'Union Européenne. En cas de transfert hors UE rendu nécessaire par un outil tiers, nous nous assurons de la mise en place de garanties appropriées (clauses contractuelles types approuvées par la Commission Européenne).</p>
@@ -164,7 +164,7 @@ export default function Confidentialite() {
                     ))}
                   </div>
                   <p style={{marginTop: '16px'}}>
-                    Pour exercer vos droits : <a href="/contact" style={{color: '#1a4fba', textDecoration: 'none'}}>formulaire de contact</a>. Nous disposons d'un délai d'un mois pour répondre (pouvant être prolongé de deux mois supplémentaires pour les demandes complexes). Si vous estimez que vos droits ne sont pas respectés, vous pouvez introduire une réclamation auprès de la <strong>CNIL</strong> (3 place de Fontenoy, 75007 Paris — <a href="https://www.cnil.fr" target="_blank" rel="noopener noreferrer" style={{color: '#1a4fba', textDecoration: 'none'}}>www.cnil.fr</a>).
+                    Pour exercer vos droits : <a href="/contact" style={{color: '#1a4fba', textDecoration: 'none'}}>formulaire de contact</a>. Nous disposons d'un délai d'un mois pour répondre (pouvant être prolongé de deux mois supplémentaires pour les demandes complexes). Si vous estimez que vos droits ne sont pas respectés, vous pouvez introduire une réclamation auprès de la <strong>CNIL</strong> (3 place de Fontenoy, 75007 Paris, <a href="https://www.cnil.fr" target="_blank" rel="noopener noreferrer" style={{color: '#1a4fba', textDecoration: 'none'}}>www.cnil.fr</a>).
                   </p>
                 </div>
               )
