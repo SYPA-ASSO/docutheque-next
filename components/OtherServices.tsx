@@ -13,7 +13,7 @@ const services = [
   {
     icon: <Heart size={24} color="#1a4fba" strokeWidth={1.5} />,
     titre: "Associations et structures ESS",
-    desc: "Création, statuts, gouvernance, conformité juridique et réglementaire. Une expertise construite sur plus de dix ans d'immersion dans le secteur associatif et l'économie sociale et solidaire.",
+    desc: "Création, statuts, gouvernance, conformité juridique et réglementaire. Une expertise construite sur plus de trente ans d'engagement dans le secteur associatif et l'économie sociale et solidaire.",
     cible: "Associations loi 1901, fondations, coopératives, mutuelles",
     lien: "/accompagnement-associations",
     featured: false,
@@ -37,7 +37,7 @@ const services = [
   {
     icon: <Umbrella size={24} color="#1a4fba" strokeWidth={1.5} />,
     titre: "Conseil en assurances",
-    desc: "Analyse des besoins, comparaison des offres du marché, accompagnement à la souscription. Courtier indépendant de tout assureur, pour particuliers, professionnels et associations. Profession réglementée, inscrite à l'ORIAS, sous contrôle de l'ACPR.",
+    desc: "Forfait conseil individualisé, documenté et motivé — art. L.521-4 Code des assurances (DDA). Analyse des besoins, audit des contrats existants, comparaison des offres, rapport écrit archivé. 90 € HT (particuliers) · 150 € HT (professionnels, associations). Commission assureur séparée, communiquée avant souscription.",
     cible: "Particuliers, professionnels, associations, créateurs d'entreprise",
     lien: "/services#assurances",
     featured: false,
@@ -74,7 +74,6 @@ export default function OtherServices() {
     <section style={{background: '#f8fafc', padding: '4rem 0', borderTop: '1px solid #e5e7eb', borderBottom: '1px solid #e5e7eb'}}>
       <div style={{maxWidth: '1200px', margin: '0 auto', padding: '0 2rem'}}>
 
-        {/* EN-TETE */}
         <div style={{textAlign: 'center', marginBottom: '2.5rem'}}>
           <span style={{display: 'inline-block', background: '#eff6ff', color: '#1a4fba', fontSize: '11px', fontWeight: '600', padding: '3px 12px', borderRadius: '20px', letterSpacing: '0.05em', marginBottom: '12px'}}>
             UN INTERLOCUTEUR UNIQUE
@@ -90,7 +89,6 @@ export default function OtherServices() {
         {/* LIGNE 1 : carte bleue creation + 2 cartes blanches */}
         <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '16px', marginBottom: '16px'}}>
 
-          {/* CARTE CREATION - FEATURED */}
           <a href="/accompagnement-professionnels" style={{background: 'linear-gradient(135deg, #0f2d6e 0%, #1a4fba 100%)', borderRadius: '12px', padding: '1.75rem', textDecoration: 'none', display: 'flex', flexDirection: 'column', gap: '12px', gridColumn: '1'}}>
             <div style={{width: '44px', height: '44px', background: 'rgba(255,255,255,0.15)', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0}}>
               <Building2 size={24} color="white" strokeWidth={1.5} />
@@ -108,7 +106,6 @@ export default function OtherServices() {
             <span style={{color: '#93c5fd', fontSize: '12px', fontWeight: '600'}}>En savoir plus →</span>
           </a>
 
-          {/* CARTES 2 et 3 */}
           {services.slice(1, 3).map((s, i) => (
             <a key={i} href={s.lien} style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.5rem', textDecoration: 'none', display: 'flex', flexDirection: 'column', gap: '10px'}}>
               <div style={{width: '40px', height: '40px', background: '#eff6ff', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0}}>
@@ -137,7 +134,6 @@ export default function OtherServices() {
           ))}
         </div>
 
-        {/* CTA CONTACT */}
         <div style={{background: '#0f2d6e', borderRadius: '12px', padding: '1.75rem 2rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '2rem', flexWrap: 'wrap'}}>
           <div>
             <p style={{color: 'white', fontSize: '14px', fontWeight: '700', margin: '0 0 4px'}}>Une question sur le bon service pour votre situation ?</p>

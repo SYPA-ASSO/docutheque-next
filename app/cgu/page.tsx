@@ -145,7 +145,17 @@ export default function CGU() {
                     <p style={plastyle}>Ce service permet à tout Client de poser une question juridique et d'obtenir une réponse rédigée par un juriste, au tarif de <strong>47 € HT</strong> par question, sans abonnement ni engagement de durée.</p>
                   </div>
                   <div>
-                    <p style={h3style}>5.5 Accompagnement à la création d'entreprise</p>
+                    <p style={h3style}>5.5 Conseil en assurances</p>
+                    <p style={pstyle}>Conformément à l'article L.521-4 du Code des assurances (devoir de conseil DDA), le conseil est individualisé, documenté et motivé. Un forfait est dû avant la remise du rapport de conseil, indépendamment de toute souscription ultérieure. Le montant du forfait varie selon le profil du Client :</p>
+                    <ul style={ulstyle}>
+                      <li><strong>Particulier :</strong> 90 € HT</li>
+                      <li><strong>Professionnel, association, structure ESS :</strong> 150 € HT</li>
+                      <li><strong>Structure complexe (PME, structure multi-contrats) :</strong> sur devis</li>
+                    </ul>
+                    <p style={plastyle}>En cas de souscription d'un contrat d'assurance via le Cabinet, celui-ci perçoit en complément une commission versée par l'assureur — indépendante du forfait, dont le montant est communiqué au Client avant toute souscription, conformément à l'article L.521-2 du Code des assurances et à la Directive sur la Distribution d'Assurances (DDA). Le Cabinet est enregistré à l'ORIAS sous le numéro 26003943, catégorie IAS Niveau 1, sous contrôle de l'ACPR.</p>
+                  </div>
+                  <div>
+                    <p style={h3style}>5.6 Accompagnement à la création d'entreprise</p>
                     <p style={plastyle}>Ce service fait l'objet d'un devis personnalisé communiqué avant toute souscription. Les frais de greffe et de publication au journal d'annonces légales sont indépendants des honoraires du Prestataire et restent à la charge exclusive du Client.</p>
                   </div>
                   <div style={hlstyle}>
@@ -184,6 +194,9 @@ export default function CGU() {
                         ['Abonnement Optimal Pro annuel', '249 €/an (soit 20,75 €/mois)', '12 mois'],
                         ['Question supplémentaire (abonné)', '14,90 €/question', 'Aucun'],
                         ['Information sur vos droits (unitaire)', '47 €/question', 'Aucun'],
+                        ['Conseil en assurances - Particulier', '90 €/forfait HT', 'Aucun'],
+                        ['Conseil en assurances - Pro / Association', '150 €/forfait HT', 'Aucun'],
+                        ['Conseil en assurances - Structure complexe', 'Sur devis', 'Aucun'],
                       ].map(([offre, tarif, engagement], i) => (
                         <tr key={i} style={{borderBottom: '1px solid #e5e7eb', background: i % 2 === 0 ? 'white' : '#f8fafc'}}>
                           <td style={{padding: '10px 12px', color: '#374151'}}>{offre}</td>

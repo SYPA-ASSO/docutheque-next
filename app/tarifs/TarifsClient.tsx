@@ -227,7 +227,10 @@ export default function TarifsClient() {
               <div style={{display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '24px', flexWrap: 'wrap'}}>
                 <div style={{flex: 1, background: 'rgba(255,255,255,0.1)', borderRadius: '10px', padding: '12px 16px'}}>
                   <p style={{color: 'rgba(255,255,255,0.6)', fontSize: '11px', lineHeight: '1.7', margin: 0}}>
-                    Frais indépendants de nos services, réglés directement auprès des organismes concernés : greffe (gratuit pour la micro-entreprise, entre 55 et 80 € pour les sociétés) et journal d'annonces légales (entre 120 et 230 € HT selon la forme juridique et le département), tarifs 2026.
+                    Frais indépendants de nos services, réglés directement auprès des organismes concernés : greffe (gratuit pour la micro-entreprise, entre 55 et 80 € pour les sociétés) et journal d'annonces légales (entre 130 et 250 € HT selon la forme juridique et le département), tarifs 2026.
+                  </p>
+                  <p style={{color: 'rgba(255,255,255,0.6)', fontSize: '11px', lineHeight: '1.7', margin: '8px 0 0'}}>
+                    Conseil en assurances professionnelles (RC Pro, multirisques) : forfait conseil 150 € HT — individualisé, documenté et motivé (art. L.521-4 Code des assurances / DDA). Commission assureur séparée, communiquée avant souscription.
                   </p>
                 </div>
               </div>
