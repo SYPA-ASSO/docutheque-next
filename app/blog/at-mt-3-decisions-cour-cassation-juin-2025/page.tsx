@@ -84,7 +84,7 @@ export default function ArticleATMP() {
             <ChevronRight size={12} />
             <a href="/blog" style={{color: '#6b7280', textDecoration: 'none'}}>Blog</a>
             <ChevronRight size={12} />
-            <span style={{color: '#0f2d6e', fontWeight: '500'}}>AT/MP — Cour de cassation juin 2025</span>
+            <span style={{color: '#0f2d6e', fontWeight: '500'}}>AT/MP · Cour de cassation juin 2025</span>
           </div>
         </div>
 
