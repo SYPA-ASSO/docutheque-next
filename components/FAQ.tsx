@@ -18,7 +18,7 @@ export default function FAQ() {
     },
     {
       q: 'Qu\'est-ce que le service "Information sur vos droits" ?',
-      a: "C'est un service à l'unité, sans abonnement, à 47 €. Vous posez votre question en langage courant et un juriste vous apporte une réponse pédagogique par écrit sous 24 à 48h. Ce service constitue une information juridique au sens de la loi n°71-1130 du 31 décembre 1971 et ne constitue pas une consultation juridique personnalisée. Si votre situation génère plusieurs questions, l'abonnement Optimal est plus adapté : à partir de 14,90 €/mois, il inclut une question par mois et les suivantes à seulement 9,90 €."
+      a: "C'est un service à l'unité, sans abonnement, à 47 €. Vous posez votre question en langage courant et un juriste vous apporte une réponse pédagogique par écrit sous 24 à 48h. Ce service constitue une information juridique au sens de la loi n°71-1130 du 31 décembre 1971 et ne constitue pas une consultation juridique personnalisée. Si votre situation génère plusieurs questions, l'abonnement Optimal est plus adapté : à partir de 17,90 €/mois sans engagement, il inclut une question par mois et les suivantes à seulement 14,90 €."
     },
     {
       q: "L'intelligence artificielle est-elle utilisée pour rédiger les documents ?",
@@ -26,7 +26,7 @@ export default function FAQ() {
     },
     {
       q: "Comment fonctionne l'abonnement Optimal ?",
-      a: "L'abonnement Optimal est souscrit pour une durée minimale de 12 mois à 14,90 €/mois, ou 147,97 €/an avec 2 mois offerts. Il inclut 1 question par mois, non cumulable, avec réponse sous 24 à 48h. À l'issue de la période, il se renouvelle automatiquement sauf résiliation adressée par écrit au moins 30 jours avant l'échéance."
+      a: "L'abonnement Optimal est disponible en deux formules : Particulier à 17,90 €/mois sans engagement (ou 149 €/an, 3 mois offerts), et Pro à 27,90 €/mois sans engagement (ou 249 €/an, 3 mois offerts). Les deux incluent l'accès à la bibliothèque complète. Le Particulier inclut 1 question juriste par mois, le Pro en inclut 2. Les questions non utilisées ne se cumulent pas d'un mois sur l'autre."
     },
     {
       q: "Pouvez-vous m'orienter vers un avocat ?",
