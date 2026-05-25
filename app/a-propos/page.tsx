@@ -3,13 +3,13 @@ import Footer from '@/components/Footer'
 import { ChevronRight } from 'lucide-react'
 
 export const metadata = {
-  title: "À propos · François CHOLEZ — Cabinet Cholez-Pagotto",
+  title: "À propos · François CHOLEZ · Cabinet Cholez-Pagotto",
   description: "Découvrez le parcours et les valeurs de François CHOLEZ, juriste-formaliste et conseil en assurances, fondateur du Cabinet Cholez-Pagotto. Un cabinet né de 25 ans d'expérience au carrefour de l'entreprise, du droit et du secteur social.",
   alternates: {
     canonical: 'https://cholez-pagotto.fr/a-propos',
   },
   openGraph: {
-    title: "À propos · François CHOLEZ — Cabinet Cholez-Pagotto",
+    title: "À propos · François CHOLEZ · Cabinet Cholez-Pagotto",
     description: "Juriste-formaliste, conseil en assurances, fondateur du Cabinet Cholez-Pagotto. 25 ans d'expérience.",
     url: 'https://cholez-pagotto.fr/a-propos',
     siteName: 'Cabinet Cholez-Pagotto',

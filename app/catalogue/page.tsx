@@ -213,7 +213,7 @@ export default function CataloguePage() {
               </div>
               <div style={{ background: '#d4a017', borderRadius: 12, padding: '1rem 1.5rem', minWidth: 160, position: 'relative' }}>
                 <div style={{ fontSize: '1.6rem', fontWeight: 800, color: 'white' }}>14,90 €</div>
-                <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.9)', marginTop: 4 }}>/mois — Accès complet</div>
+                <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.9)', marginTop: 4 }}>/mois · Accès complet</div>
                 <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.8)', marginTop: 2 }}>ou 147,97 €/an</div>
               </div>
             </div>
