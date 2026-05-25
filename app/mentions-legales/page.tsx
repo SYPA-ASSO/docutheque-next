@@ -4,7 +4,7 @@ import { ChevronRight } from 'lucide-react'
 
 export const metadata = {
   title: 'Mentions légales · Cabinet Cholez-Pagotto',
-  description: 'Mentions légales du site cholez-pagotto.fr — éditeur, hébergeur, propriété intellectuelle, responsabilité et données personnelles.',
+  description: 'Mentions légales du site cholez-pagotto.fr : éditeur, hébergeur, propriété intellectuelle, responsabilité et données personnelles.',
   robots: 'noindex',
 }
 
@@ -52,7 +52,7 @@ export default function MentionsLegales() {
                 <h2 style={{color: '#0f2d6e', fontSize: '1.1rem', fontWeight: '700', margin: '0 0 1rem', paddingBottom: '0.75rem', borderBottom: '1px solid #f3f4f6'}}>1. Éditeur du site</h2>
                 <div style={{display: 'grid', gridTemplateColumns: '160px 1fr', gap: '8px 16px', fontSize: '14px', color: '#374151', lineHeight: '1.7'}}>
                   <span style={{color: '#6b7280', fontSize: '13px'}}>Dénomination</span>
-                  <span><strong>FCFBL ACTIVITIES</strong></span>
+                  <span><strong>Cabinet Cholez-Pagotto</strong></span>
                   <span style={{color: '#6b7280', fontSize: '13px'}}>Forme juridique</span>
                   <span>Entreprise individuelle (E.I.)</span>
                   <span style={{color: '#6b7280', fontSize: '13px'}}>SIRET</span>
@@ -71,8 +71,8 @@ export default function MentionsLegales() {
                 <div style={{display: 'flex', flexDirection: 'column', gap: '1.25rem'}}>
                   <div>
                     <p style={{fontSize: '14px', fontWeight: '600', color: '#0f2d6e', margin: '0 0 6px'}}>Courtage en assurances et réassurances</p>
-                    <p style={{fontSize: '13px', color: '#6b7280', margin: '0 0 4px', lineHeight: '1.7'}}>Activité réglementée exercée sous le contrôle de l'Autorité de Contrôle Prudentiel et de Résolution (ACPR) — 4 place de Budapest, CS 92459, 75436 Paris Cedex 09.</p>
-                    <p style={{fontSize: '13px', color: '#6b7280', margin: '0 0 4px'}}>Immatriculé à l'ORIAS sous le numéro <strong>26003943</strong> — <a href="https://www.orias.fr" target="_blank" rel="noopener noreferrer" style={{color: '#1a4fba', textDecoration: 'none'}}>www.orias.fr</a></p>
+                    <p style={{fontSize: '13px', color: '#6b7280', margin: '0 0 4px', lineHeight: '1.7'}}>Activité réglementée exercée sous le contrôle de l'Autorité de Contrôle Prudentiel et de Résolution (ACPR), 4 place de Budapest, CS 92459, 75436 Paris Cedex 09.</p>
+                    <p style={{fontSize: '13px', color: '#6b7280', margin: '0 0 4px'}}>Immatriculé à l'ORIAS sous le numéro <strong>26003943</strong>, consultable sur <a href="https://www.orias.fr" target="_blank" rel="noopener noreferrer" style={{color: '#1a4fba', textDecoration: 'none'}}>www.orias.fr</a></p>
                     <p style={{fontSize: '13px', color: '#6b7280', margin: 0}}>Membre de l'association d'autorégulation <strong>ENDYA</strong>.</p>
                   </div>
 
@@ -97,10 +97,10 @@ export default function MentionsLegales() {
                 <h2 style={{color: '#0f2d6e', fontSize: '1.1rem', fontWeight: '700', margin: '0 0 1rem', paddingBottom: '0.75rem', borderBottom: '1px solid #f3f4f6'}}>4. Hébergement</h2>
                 <div style={{display: 'flex', flexDirection: 'column', gap: '1rem'}}>
                   <div style={{display: 'grid', gridTemplateColumns: '220px 1fr', gap: '4px 16px', fontSize: '13px'}}>
-                    <span style={{color: '#6b7280', fontWeight: '600'}}>Site — cholez-pagotto.fr</span>
-                    <span style={{color: '#374151'}}>Vercel Inc., 340 Pine Street Suite 701, San Francisco CA 94104, États-Unis — <a href="https://vercel.com" target="_blank" rel="noopener noreferrer" style={{color: '#1a4fba', textDecoration: 'none'}}>vercel.com</a></span>
-                    <span style={{color: '#6b7280', fontWeight: '600'}}>Documents — docs.cholez-pagotto.fr</span>
-                    <span style={{color: '#374151'}}>Hostinger International Ltd., 61 Lordou Vironos Street, 6023 Larnaca, Chypre — <a href="https://www.hostinger.fr" target="_blank" rel="noopener noreferrer" style={{color: '#1a4fba', textDecoration: 'none'}}>hostinger.fr</a></span>
+                    <span style={{color: '#6b7280', fontWeight: '600'}}>Site · cholez-pagotto.fr</span>
+                    <span style={{color: '#374151'}}>Vercel Inc., 340 Pine Street Suite 701, San Francisco CA 94104, États-Unis · <a href="https://vercel.com" target="_blank" rel="noopener noreferrer" style={{color: '#1a4fba', textDecoration: 'none'}}>vercel.com</a></span>
+                    <span style={{color: '#6b7280', fontWeight: '600'}}>Documents · docs.cholez-pagotto.fr</span>
+                    <span style={{color: '#374151'}}>Hostinger International Ltd., 61 Lordou Vironos Street, 6023 Larnaca, Chypre · <a href="https://www.hostinger.fr" target="_blank" rel="noopener noreferrer" style={{color: '#1a4fba', textDecoration: 'none'}}>hostinger.fr</a></span>
                     <span style={{color: '#6b7280', fontWeight: '600'}}>Nom de domaine</span>
                     <span style={{color: '#374151'}}>Enregistré et géré via Hostinger International Ltd.</span>
                   </div>
@@ -110,8 +110,8 @@ export default function MentionsLegales() {
               <section id="propriete" style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.75rem'}}>
                 <h2 style={{color: '#0f2d6e', fontSize: '1.1rem', fontWeight: '700', margin: '0 0 1rem', paddingBottom: '0.75rem', borderBottom: '1px solid #f3f4f6'}}>5. Propriété intellectuelle</h2>
                 <div style={{fontSize: '14px', color: '#374151', lineHeight: '1.8', display: 'flex', flexDirection: 'column', gap: '10px'}}>
-                  <p style={{margin: 0}}>L'ensemble du contenu de ce site — textes, articles, analyses juridiques, documents téléchargeables, structure et mise en page — est la propriété exclusive de FCFBL ACTIVITIES et est protégé par les lois françaises et internationales relatives au droit d'auteur et à la propriété intellectuelle.</p>
-                  <p style={{margin: 0}}>Toute reproduction, représentation, modification, publication ou adaptation de tout ou partie des éléments du site, quel que soit le moyen ou le procédé utilisé, est interdite sans autorisation écrite préalable de FCFBL ACTIVITIES.</p>
+                  <p style={{margin: 0}}>L'ensemble du contenu de ce site (textes, articles, analyses juridiques, documents téléchargeables, structure et mise en page) est la propriété exclusive du Cabinet Cholez-Pagotto et est protégé par les lois françaises et internationales relatives au droit d'auteur et à la propriété intellectuelle.</p>
+                  <p style={{margin: 0}}>Toute reproduction, représentation, modification, publication ou adaptation de tout ou partie des éléments du site, quel que soit le moyen ou le procédé utilisé, est interdite sans autorisation écrite préalable du Cabinet Cholez-Pagotto.</p>
                   <p style={{margin: 0}}>Les modèles de documents proposés en téléchargement sont fournis à titre d'exemples généraux. Ils doivent être adaptés à chaque situation particulière. Leur utilisation reste sous la seule responsabilité de l'utilisateur.</p>
                 </div>
               </section>
@@ -119,9 +119,9 @@ export default function MentionsLegales() {
               <section id="responsabilite" style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.75rem'}}>
                 <h2 style={{color: '#0f2d6e', fontSize: '1.1rem', fontWeight: '700', margin: '0 0 1rem', paddingBottom: '0.75rem', borderBottom: '1px solid #f3f4f6'}}>6. Limitation de responsabilité</h2>
                 <div style={{fontSize: '14px', color: '#374151', lineHeight: '1.8', display: 'flex', flexDirection: 'column', gap: '10px'}}>
-                  <p style={{margin: 0}}>Les informations publiées sur ce site sont fournies à titre informatif et pédagogique. FCFBL ACTIVITIES s'efforce d'assurer l'exactitude et la mise à jour des informations diffusées, mais ne saurait être tenu responsable des erreurs ou omissions, ni des conséquences de leur utilisation.</p>
-                  <p style={{margin: 0}}>Les modèles de documents mis à disposition sont des exemples généraux qui nécessitent une adaptation à chaque situation. FCFBL ACTIVITIES ne saurait être tenu responsable de l'usage qui en est fait par l'utilisateur.</p>
-                  <p style={{margin: 0}}>Les liens hypertextes présents sur ce site pointant vers des sites tiers n'engagent pas la responsabilité de FCFBL ACTIVITIES quant à leur contenu.</p>
+                  <p style={{margin: 0}}>Les informations publiées sur ce site sont fournies à titre informatif et pédagogique. Le Cabinet Cholez-Pagotto s'efforce d'assurer l'exactitude et la mise à jour des informations diffusées, mais ne saurait être tenu responsable des erreurs ou omissions, ni des conséquences de leur utilisation.</p>
+                  <p style={{margin: 0}}>Les modèles de documents mis à disposition sont des exemples généraux qui nécessitent une adaptation à chaque situation. Le Cabinet Cholez-Pagotto ne saurait être tenu responsable de l'usage qui en est fait par l'utilisateur.</p>
+                  <p style={{margin: 0}}>Les liens hypertextes présents sur ce site pointant vers des sites tiers n'engagent pas la responsabilité du Cabinet Cholez-Pagotto quant à leur contenu.</p>
                 </div>
               </section>
 
