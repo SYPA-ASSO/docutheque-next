@@ -3,7 +3,7 @@ import Footer from '@/components/Footer'
 import { ChevronRight, FileText, Clock, CheckCircle, MessageSquare, Send, Shield, User } from 'lucide-react'
 
 export const metadata = {
-  title: "Information sur vos droits · Posez votre question à un juriste — Cabinet Cholez-Pagotto",
+  title: "Information sur vos droits · Posez votre question à un juriste · Cabinet Cholez-Pagotto",
   description: "Un juriste vous répond par écrit sous 24 à 48h. Service d'information juridique accessible à tous : droit du travail, logement, consommation, assurances, création d'entreprise. 47 € à l'unité, sans abonnement.",
 }
 
@@ -60,7 +60,7 @@ const schema = {
           "name": "Quelle est la différence avec l'Abonnement Optimal ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "L'Abonnement Optimal inclut une question mensuelle au tarif préférentiel de 9,90 € pour les questions supplémentaires, plus l'accès à toute la bibliothèque de documents juridiques. Si vous posez régulièrement des questions, l'abonnement devient plus économique dès la deuxième question mensuelle."
+            "text": "L'Abonnement Optimal inclut une question mensuelle au tarif préférentiel de 14,90 € pour les questions supplémentaires, plus l'accès à toute la bibliothèque de documents juridiques. Si vous posez régulièrement des questions, l'abonnement devient plus économique dès la deuxième question mensuelle."
           }
         },
         {
@@ -144,7 +144,7 @@ const etapes = [
 ]
 
 const garanties = [
-  "Réponse rédigée par un juriste — 100% humain, aucune IA",
+  "Réponse rédigée par un juriste, 100% humain, aucune IA",
   "Délai de 24 à 48h ouvrées",
   "Réponse en langage clair, sans jargon",
   "Références juridiques précises (articles de loi, jurisprudences)",
@@ -167,7 +167,7 @@ const faqs = [
   },
   {
     q: "Quelle est la différence avec l'Abonnement Optimal ?",
-    a: "L'Abonnement Optimal inclut une question mensuelle, plus l'accès à toute la bibliothèque de documents juridiques (DOCX). Les questions supplémentaires sont à 9,90 € pour les abonnés au lieu de 47 €. Si vous posez régulièrement des questions, l'abonnement devient plus économique dès la deuxième question mensuelle."
+    a: "L'Abonnement Optimal inclut une question mensuelle, plus l'accès à toute la bibliothèque de documents juridiques (DOCX). Les questions supplémentaires sont à 14,90 € pour les abonnés au lieu de 47 €. Si vous posez régulièrement des questions, l'abonnement devient plus économique dès la deuxième question mensuelle."
   },
   {
     q: "Ma question est-elle confidentielle ?",
@@ -210,7 +210,7 @@ export default function InformationDroits() {
               </p>
               <div style={{display: 'flex', gap: '12px', flexWrap: 'wrap', alignItems: 'center'}}>
                 <a href="/connexion" style={{display: 'inline-block', background: 'white', color: '#0f2d6e', padding: '13px 28px', borderRadius: '8px', fontSize: '14px', fontWeight: '700', textDecoration: 'none'}}>
-                  Poser ma question — 47 € →
+                  Poser ma question · 47 €
                 </a>
                 <a href="/tarifs" style={{display: 'inline-block', background: 'transparent', color: 'white', border: '1px solid rgba(255,255,255,0.5)', padding: '13px 24px', borderRadius: '8px', fontSize: '13px', fontWeight: '600', textDecoration: 'none'}}>
                   Voir l'Abonnement Optimal
@@ -235,7 +235,7 @@ export default function InformationDroits() {
             <div style={{textAlign: 'center', maxWidth: '700px', margin: '0 auto 2.5rem'}}>
               <h2 style={{color: '#0f2d6e', fontSize: '1.5rem', fontWeight: '700', margin: '0 0 12px'}}>Un service d'information juridique, pas une consultation d'avocat</h2>
               <p style={{color: '#6b7280', fontSize: '14px', lineHeight: '1.8', margin: 0}}>
-                Le droit encadre chaque aspect de votre vie quotidienne — travail, logement, famille, consommation, assurances. Pourtant, face à une situation juridique, la plupart des personnes ne savent pas quels textes s'appliquent, quels sont leurs droits réels, ni comment agir efficacement.
+                Le droit encadre chaque aspect de votre vie, personnelle et professionnelle : logement, famille, consommation, assurances, contrats, relations de travail. Pourtant, face à une situation juridique, la plupart des personnes ne savent pas quels textes s'appliquent, quels sont leurs droits réels, ni comment agir efficacement.
               </p>
             </div>
             <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px'}}>
@@ -267,7 +267,7 @@ export default function InformationDroits() {
                     "L'assistance d'urgence en cas de garde à vue ou d'audience imminente",
                   ].map((item, i) => (
                     <div key={i} style={{display: 'flex', gap: '8px', alignItems: 'flex-start'}}>
-                      <span style={{color: '#9ca3af', fontSize: '14px', flexShrink: 0, marginTop: '1px'}}>—</span>
+                      <span style={{color: '#9ca3af', fontSize: '14px', flexShrink: 0, marginTop: '1px'}}>·</span>
                       <span style={{color: '#6b7280', fontSize: '13px', lineHeight: '1.5'}}>{item}</span>
                     </div>
                   ))}
@@ -314,7 +314,7 @@ export default function InformationDroits() {
               {[
                 {
                   titre: "Les hallucinations juridiques",
-                  desc: "Une IA peut citer des articles de loi inexistants, inventer des arrêts de jurisprudence ou donner un numéro de décret erroné — avec la même assurance que pour une information exacte. Impossible à distinguer sans vérification."
+                  desc: "Une IA peut citer des articles de loi inexistants, inventer des arrêts de jurisprudence ou donner un numéro de décret erroné. Avec la même assurance que pour une information exacte. Impossible à distinguer sans vérification."
                 },
                 {
                   titre: "Une connaissance figée dans le temps",
@@ -326,7 +326,7 @@ export default function InformationDroits() {
                 },
                 {
                   titre: "Aucune responsabilité, aucun recours",
-                  desc: "Si une IA vous donne une réponse erronée et que vous agissez sur cette base — délai raté, mauvaise procédure, droit non exercé — vous n'avez aucun recours. Un juriste est responsable de ses réponses."
+                  desc: "Si une IA vous donne une réponse erronée et que vous agissez sur cette base (délai raté, mauvaise procédure, droit non exercé), vous n'avez aucun recours. Un juriste est responsable de ses réponses."
                 },
               ].map((item, i) => (
                 <div key={i} style={{background: '#f0f4ff', borderRadius: '8px', padding: '1rem'}}>
@@ -391,7 +391,7 @@ export default function InformationDroits() {
             </div>
             <div style={{flex: '0 0 260px', display: 'flex', flexDirection: 'column', gap: '12px'}}>
               <a href="/connexion" style={{display: 'block', background: 'white', color: '#0f2d6e', padding: '14px', borderRadius: '8px', fontSize: '14px', fontWeight: '700', textDecoration: 'none', textAlign: 'center'}}>
-                Poser ma question — 47 € →
+                Poser ma question · 47 €
               </a>
               <a href="/tarifs" style={{display: 'block', background: 'transparent', color: 'white', border: '1px solid rgba(255,255,255,0.4)', padding: '12px', borderRadius: '8px', fontSize: '13px', fontWeight: '600', textDecoration: 'none', textAlign: 'center'}}>
                 Voir l'Abonnement Optimal
