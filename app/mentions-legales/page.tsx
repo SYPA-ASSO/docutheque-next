@@ -6,6 +6,7 @@ export const metadata = {
   title: 'Mentions légales · Cabinet Cholez-Pagotto',
   description: 'Mentions légales du site cholez-pagotto.fr : éditeur, hébergeur, propriété intellectuelle, responsabilité et données personnelles.',
   robots: 'noindex',
+  alternates: { canonical: 'https://cholez-pagotto.fr/mentions-legales' },
 }
 
 const sections = [

@@ -6,6 +6,7 @@ export const metadata = {
   title: "Conditions Générales d'Utilisation · Cabinet Cholez-Pagotto",
   description: "Conditions générales d'utilisation de la plateforme Docuthèque du Cabinet Cholez-Pagotto.",
   robots: 'noindex',
+  alternates: { canonical: 'https://cholez-pagotto.fr/cgu' },
 }
 
 const sections = [
