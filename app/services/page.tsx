@@ -3,7 +3,7 @@ import Footer from '@/components/Footer'
 import { ChevronRight, FileText, Scale, Building2, Heart, Shield, Lock, Umbrella, GraduationCap, ArrowRight } from 'lucide-react'
 
 export const metadata = {
-  title: "Nos services · Cabinet Cholez-Pagotto — Juriste, Formaliste, Conseil en assurances",
+  title: "Nos services · Cabinet Cholez-Pagotto · Juriste, Formaliste, Conseil en assurances",
   description: "Découvrez l'ensemble des services du Cabinet Cholez-Pagotto : bibliothèque juridique, information sur vos droits, accompagnement création d'entreprise, associations ESS, RGPD, DPO externalisé, conseil en assurances.",
 }
 
@@ -13,7 +13,7 @@ const schema = {
     {
       "@type": "ItemList",
       "name": "Services du Cabinet Cholez-Pagotto",
-      "description": "Ensemble des services proposés par le Cabinet Cholez-Pagotto, Cabinet Cholez-Pagotto : information juridique, formalités, RGPD, DPO externalisé, conseil en assurances.",
+      "description": "Ensemble des services proposés par le Cabinet Cholez-Pagotto : information juridique, formalités, RGPD, DPO externalisé, conseil en assurances.",
       "url": "https://cholez-pagotto.fr/services",
       "numberOfItems": 8,
       "itemListElement": [
@@ -53,7 +53,7 @@ const services = [
       "Mise à jour des documents en fonction des évolutions législatives et réglementaires",
       "Accès libre (documents sélectionnés) ou accès complet (Abonnement Optimal)",
     ],
-    tarif: "Gratuit (accès libre, documents sélectionnés) · 14,90 €/mois ou 147,97 €/an pour l'accès complet (Abonnement Optimal)",
+    tarif: "Gratuit (accès libre, documents sélectionnés) · 17,90 €/mois ou 149 €/an pour l'accès complet (Abonnement Optimal)",
     lien: "/catalogue",
     disponible: false,
     cta: "Voir la bibliothèque",
@@ -73,7 +73,7 @@ const services = [
       "Délai indicatif de 24 à 48h ouvrées",
       "Orientation vers le professionnel compétent si nécessaire",
     ],
-    tarif: "47 € à l'unité · Abonnés Optimal (dès 14,90 €/mois) : 1 question gratuite/mois, puis 9,90 €",
+    tarif: "47 € à l'unité · Abonnés Optimal (dès 17,90 €/mois) : 1 question gratuite/mois, puis 14,90 €",
     lien: "/information-sur-vos-droits",
     disponible: true,
     cta: "En savoir plus",
@@ -326,7 +326,7 @@ export default function Services() {
 
           {/* NOTE LÉGALE */}
           <p style={{color: '#9ca3af', fontSize: '11px', lineHeight: '1.7', textAlign: 'center', maxWidth: '700px', margin: '0 auto'}}>
-            Cabinet Cholez-Pagotto, Cabinet Cholez-Pagotto · Juriste-Formaliste · Formaliste membre du CRFF (Conseil Représentatif des Formalistes de France) · Courtier en assurances et réassurances immatriculé à l'ORIAS n°26003943 · Sous contrôle de l'ACPR · Les services d'information juridique sont proposés au sens de la loi n°71-1130 du 31 décembre 1971 et ne constituent pas des consultations juridiques personnalisées.
+            Cabinet Cholez-Pagotto · Juriste-Formaliste · Formaliste membre du CRFF (Conseil Représentatif des Formalistes de France) · Courtier en assurances et réassurances immatriculé à l'ORIAS n°26003943 · Sous contrôle de l'ACPR · Les services d'information juridique sont proposés au sens de la loi n°71-1130 du 31 décembre 1971 et ne constituent pas des consultations juridiques personnalisées.
           </p>
 
         </div>
