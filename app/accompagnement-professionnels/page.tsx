@@ -13,13 +13,6 @@ import {
   Award, Briefcase, Star, AlertCircle, Info
 } from 'lucide-react'
 
-// ─── METADATA (à déplacer dans un fichier séparé si 'use client' pose problème) ───
-// export const metadata: Metadata = {
-//   title: "Création d'entreprise accompagnée par un formaliste | Cabinet Cholez-Pagotto",
-//   description: "Formalités de création d'entreprise offertes hors greffe et journal d'annonces légales. SASU, SARL, SAS, EURL, micro-entreprise. Juriste formaliste CRFF.",
-//   alternates: { canonical: 'https://cholez-pagotto.fr/accompagnement-professionnels' },
-// }
-
 // ─── SCHEMA.ORG ───
 const schemaData = {
   "@context": "https://schema.org",
@@ -70,7 +63,7 @@ const schemaData = {
           "name": "Qu'est-ce qui est inclus dans la création d'entreprise offerte ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "La préparation et l'assistance à la rédaction des statuts, la préparation du dossier complet d'immatriculation, la vérification de conformité et le dépôt du dossier auprès du Guichet Unique sont offerts. Restent à votre charge les droits de greffe (gratuits pour la micro-entreprise, entre 55 et 80 euros pour les sociétés) et les frais de journal d'annonces légales (entre 120 et 230 euros HT selon la forme juridique et le département)."
+            "text": "La préparation et l'assistance à la rédaction des statuts, la préparation du dossier complet d'immatriculation, la vérification de conformité et le dépôt du dossier auprès du Guichet Unique sont offerts. Restent à votre charge les droits de greffe (gratuits pour la micro-entreprise, entre 55 et 80 euros pour les sociétés, DBE incluse) et les frais de journal d'annonces légales (entre 130 et 250 euros HT selon la forme juridique et le département)."
           }
         },
         {
@@ -83,10 +76,10 @@ const schemaData = {
         },
         {
           "@type": "Question",
-          "name": "Combien coûtent les droits de greffe en 2025 ?",
+          "name": "Combien coûtent les droits de greffe en 2026 ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "En 2025, l'immatriculation d'une micro-entreprise est gratuite. Pour les sociétés (SASU, SARL, SAS, EURL, SCI), les droits de greffe varient entre 55 et 80 euros selon la forme juridique. Les frais de publication au journal d'annonces légales varient entre 120 et 230 euros HT selon la forme et le département."
+            "text": "En 2026, l'immatriculation d'une micro-entreprise est gratuite. Pour les sociétés (SASU, SARL, SAS, EURL, SCI), les droits de greffe (immatriculation + déclaration des bénéficiaires effectifs obligatoire) varient entre 55 et 80 euros selon la forme juridique. Les frais de publication au journal d'annonces légales varient entre 130 et 250 euros HT selon la forme et le département."
           }
         },
         {
@@ -143,7 +136,7 @@ const formesJuridiques = [
     associes: "1",
     capital: "Aucun minimum",
     responsabilite: "Illimitée (sur patrimoine perso)",
-    greffe2025: "Gratuit",
+    greffe2026: "Gratuit",
     jal: "Non requis",
     ideal: "Démarrage en solo, activité complémentaire",
     couleur: "#16a34a"
@@ -153,8 +146,8 @@ const formesJuridiques = [
     associes: "1",
     capital: "À partir de 1 €",
     responsabilite: "Limitée aux apports",
-    greffe2025: "55 à 80 €",
-    jal: "120 à 180 € HT",
+    greffe2026: "55 à 80 €",
+    jal: "130 à 180 € HT",
     ideal: "Associé unique, protection du patrimoine",
     couleur: "#1a4fba"
   },
@@ -163,8 +156,8 @@ const formesJuridiques = [
     associes: "1",
     capital: "À partir de 1 €",
     responsabilite: "Limitée aux apports",
-    greffe2025: "55 à 80 €",
-    jal: "120 à 180 € HT",
+    greffe2026: "55 à 80 €",
+    jal: "130 à 180 € HT",
     ideal: "Président salarié, levée de fonds future",
     couleur: "#0f2d6e"
   },
@@ -173,8 +166,8 @@ const formesJuridiques = [
     associes: "2 à 100",
     capital: "À partir de 1 €",
     responsabilite: "Limitée aux apports",
-    greffe2025: "55 à 80 €",
-    jal: "150 à 230 € HT",
+    greffe2026: "55 à 80 €",
+    jal: "150 à 250 € HT",
     ideal: "Projet à plusieurs, structure familiale",
     couleur: "#7c3aed"
   },
@@ -183,8 +176,8 @@ const formesJuridiques = [
     associes: "2 et plus",
     capital: "À partir de 1 €",
     responsabilite: "Limitée aux apports",
-    greffe2025: "55 à 80 €",
-    jal: "150 à 230 € HT",
+    greffe2026: "55 à 80 €",
+    jal: "150 à 250 € HT",
     ideal: "Flexibilité statutaire, investisseurs",
     couleur: "#0891b2"
   },
@@ -193,8 +186,8 @@ const formesJuridiques = [
     associes: "2 et plus",
     capital: "À partir de 1 €",
     responsabilite: "Illimitée mais subsidiaire",
-    greffe2025: "55 à 80 €",
-    jal: "120 à 200 € HT",
+    greffe2026: "55 à 80 €",
+    jal: "130 à 200 € HT",
     ideal: "Gestion et transmission de patrimoine immobilier",
     couleur: "#b45309"
   }
@@ -251,8 +244,8 @@ const inclus = [
 ]
 
 const nonInclus = [
-  "Droits de greffe (gratuits micro-entreprise / 55 à 80 € pour les sociétés)",
-  "Frais de publication au journal d'annonces légales (120 à 230 € HT selon forme et département)",
+  "Droits de greffe (gratuits micro-entreprise / 55 à 80 € pour les sociétés, DBE incluse)",
+  "Frais de publication au journal d'annonces légales (130 à 250 € HT selon forme et département)",
   "Frais de dépôt du capital social (selon votre banque, certaines sont gratuites)",
   "Honoraires du comptable (non compris mais recommandé dès la création)"
 ]
@@ -260,15 +253,15 @@ const nonInclus = [
 const faqs = [
   {
     question: "Qu'est-ce qui est inclus dans la création d'entreprise offerte ?",
-    reponse: "La préparation et l'assistance à la rédaction des statuts, la constitution du dossier complet et le dépôt au Guichet Unique sont offerts. Restent à votre charge les droits de greffe (gratuits pour la micro-entreprise, entre 55 et 80 euros pour les sociétés) et les frais de publication au journal d'annonces légales (120 à 230 euros HT selon la forme juridique et le département)."
+    reponse: "La préparation et l'assistance à la rédaction des statuts, la constitution du dossier complet et le dépôt au Guichet Unique sont offerts. Restent à votre charge les droits de greffe (gratuits pour la micro-entreprise, entre 55 et 80 euros pour les sociétés, DBE incluse) et les frais de publication au journal d'annonces légales (130 à 250 euros HT selon la forme juridique et le département)."
   },
   {
     question: "Quelle forme juridique choisir pour créer son entreprise ?",
     reponse: "Le choix dépend de votre situation personnelle, de votre activité et de vos objectifs. La micro-entreprise est adaptée aux démarrages en solo avec peu de charges. La SASU et l'EURL conviennent à l'associé unique souhaitant protéger son patrimoine. La SARL et la SAS sont adaptées aux projets à plusieurs associés. Notre juriste vous fournit une information complète pour prendre votre décision en connaissance de cause."
   },
   {
-    question: "Combien coûtent les droits de greffe et le journal d'annonces légales en 2025 ?",
-    reponse: "En 2025, l'immatriculation d'une micro-entreprise est gratuite. Pour les sociétés (SASU, SARL, SAS, EURL, SCI), les droits de greffe varient entre 55 et 80 euros selon la forme juridique. Les frais de publication au journal d'annonces légales varient entre 120 et 230 euros HT selon la forme et le département d'immatriculation."
+    question: "Combien coûtent les droits de greffe et le journal d'annonces légales en 2026 ?",
+    reponse: "En 2026, l'immatriculation d'une micro-entreprise est gratuite. Pour les sociétés (SASU, SARL, SAS, EURL, SCI), les droits de greffe (immatriculation + déclaration des bénéficiaires effectifs obligatoire) varient entre 55 et 80 euros selon la forme juridique. Les frais de publication au journal d'annonces légales varient entre 130 et 250 euros HT selon la forme et le département d'immatriculation."
   },
   {
     question: "Qu'est-ce qu'un formaliste CRFF et quel est son rôle ?",
@@ -294,7 +287,6 @@ export default function AccompagnementProfessionnelsPage() {
 
   return (
     <>
-      {/* Schema.org */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
@@ -317,11 +309,10 @@ export default function AccompagnementProfessionnelsPage() {
 
       <main style={{ background: '#f8fafc', minHeight: '80vh' }}>
 
-        {/* ─── HERO ─── */}
+        {/* HERO */}
         <section style={{ background: 'linear-gradient(135deg, #0f2d6e 0%, #1a4fba 100%)', padding: '4rem 1.5rem 3.5rem', color: 'white' }}>
           <div style={{ maxWidth: 1100, margin: '0 auto' }}>
 
-            {/* Badge animé */}
             <div style={{ marginBottom: '1.2rem' }}>
               <span style={{
                 display: 'inline-block',
@@ -334,7 +325,7 @@ export default function AccompagnementProfessionnelsPage() {
                 letterSpacing: '0.08em',
                 textTransform: 'uppercase'
               }}>
-                Creation offerte
+                Création offerte
               </span>
             </div>
 
@@ -362,7 +353,6 @@ export default function AccompagnementProfessionnelsPage() {
               </div>
             </div>
 
-            {/* Stats rapides */}
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '2rem', marginTop: '2.5rem', paddingTop: '2rem', borderTop: '1px solid rgba(255,255,255,0.2)' }}>
               {[
                 { valeur: "6", label: "Formes juridiques accompagnées" },
@@ -379,7 +369,7 @@ export default function AccompagnementProfessionnelsPage() {
           </div>
         </section>
 
-        {/* ─── MENTION LOI 1971 ─── */}
+        {/* MENTION LOI 1971 */}
         <div style={{ background: '#eff6ff', borderBottom: '1px solid #bfdbfe', padding: '0.75rem 1.5rem' }}>
           <div style={{ maxWidth: 1100, margin: '0 auto', display: 'flex', alignItems: 'flex-start', gap: '0.75rem' }}>
             <Info size={16} strokeWidth={1.5} style={{ color: '#1a4fba', marginTop: 2, flexShrink: 0 }} />
@@ -395,7 +385,7 @@ export default function AccompagnementProfessionnelsPage() {
 
         <div style={{ maxWidth: 1100, margin: '0 auto', padding: '3rem 1.5rem' }}>
 
-          {/* ─── CE QUI EST INCLUS / EXCLU ─── */}
+          {/* CE QUI EST INCLUS / EXCLU */}
           <section id="inclus" style={{ marginBottom: '3.5rem' }}>
             <h2 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#0f2d6e', marginBottom: '0.5rem' }}>
               Ce qui est offert, ce qui reste à votre charge
@@ -405,7 +395,6 @@ export default function AccompagnementProfessionnelsPage() {
             </p>
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem' }}>
-              {/* Inclus */}
               <div style={{
                 background: 'white', border: '1px solid #bbf7d0', borderRadius: 12,
                 padding: '1.5rem', borderTop: '4px solid #16a34a'
@@ -426,7 +415,6 @@ export default function AccompagnementProfessionnelsPage() {
                 </ul>
               </div>
 
-              {/* Non inclus */}
               <div style={{
                 background: 'white', border: '1px solid #fecaca', borderRadius: 12,
                 padding: '1.5rem', borderTop: '4px solid #dc2626'
@@ -434,7 +422,7 @@ export default function AccompagnementProfessionnelsPage() {
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1.2rem' }}>
                   <AlertCircle size={20} strokeWidth={1.5} style={{ color: '#dc2626' }} />
                   <h3 style={{ fontSize: '1rem', fontWeight: 700, color: '#b91c1c', margin: 0 }}>
-                    A votre charge (tiers)
+                    À votre charge (tiers)
                   </h3>
                 </div>
                 <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.7rem' }}>
@@ -453,7 +441,7 @@ export default function AccompagnementProfessionnelsPage() {
             </div>
           </section>
 
-          {/* ─── ETAPES ─── */}
+          {/* ETAPES */}
           <section id="etapes" style={{ marginBottom: '3.5rem' }}>
             <h2 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#0f2d6e', marginBottom: '0.5rem' }}>
               Les étapes de votre création d'entreprise
@@ -473,9 +461,7 @@ export default function AccompagnementProfessionnelsPage() {
                     background: i % 2 === 0 ? '#0f2d6e' : '#1a4fba'
                   }} />
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.75rem' }}>
-                    <span style={{
-                      fontSize: '1.4rem', fontWeight: 800, color: '#e5e7eb', lineHeight: 1
-                    }}>{etape.numero}</span>
+                    <span style={{ fontSize: '1.4rem', fontWeight: 800, color: '#e5e7eb', lineHeight: 1 }}>{etape.numero}</span>
                     <div style={{ color: '#1a4fba' }}>{etape.icone}</div>
                   </div>
                   <h3 style={{ fontSize: '0.95rem', fontWeight: 700, color: '#0f2d6e', marginBottom: '0.5rem' }}>
@@ -489,13 +475,13 @@ export default function AccompagnementProfessionnelsPage() {
             </div>
           </section>
 
-          {/* ─── TABLEAU FORMES JURIDIQUES ─── */}
+          {/* TABLEAU FORMES JURIDIQUES */}
           <section id="formes-juridiques" style={{ marginBottom: '3.5rem' }}>
             <h2 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#0f2d6e', marginBottom: '0.5rem' }}>
-              Comparatif des formes juridiques en 2025
+              Comparatif des formes juridiques en 2026
             </h2>
             <p style={{ color: '#6b7280', fontSize: 13, marginBottom: '2rem' }}>
-              Informations en vigueur au 1er janvier 2025. Ces éléments constituent une information juridique
+              Informations en vigueur au 1er janvier 2026. Ces éléments constituent une information juridique
               générale au sens de la loi n°71-1130 du 31 décembre 1971 et non une recommandation personnalisée.
             </p>
 
@@ -503,7 +489,7 @@ export default function AccompagnementProfessionnelsPage() {
               <table style={{ width: '100%', borderCollapse: 'collapse', background: 'white', fontSize: 13 }}>
                 <thead>
                   <tr style={{ background: '#0f2d6e', color: 'white' }}>
-                    {['Forme', 'Associés', 'Capital', 'Responsabilité', 'Greffe 2025', 'JAL 2025 (HT)', 'Idéal pour'].map((col, i) => (
+                    {['Forme', 'Associés', 'Capital', 'Responsabilité', 'Greffe 2026', 'JAL 2026 (HT)', 'Idéal pour'].map((col, i) => (
                       <th key={i} style={{ padding: '0.75rem 1rem', textAlign: 'left', fontWeight: 600, fontSize: 12, whiteSpace: 'nowrap' }}>
                         {col}
                       </th>
@@ -519,8 +505,8 @@ export default function AccompagnementProfessionnelsPage() {
                       <td style={{ padding: '0.75rem 1rem', color: '#374151' }}>{forme.associes}</td>
                       <td style={{ padding: '0.75rem 1rem', color: '#374151' }}>{forme.capital}</td>
                       <td style={{ padding: '0.75rem 1rem', color: '#374151', fontSize: 12 }}>{forme.responsabilite}</td>
-                      <td style={{ padding: '0.75rem 1rem', fontWeight: 600, color: forme.greffe2025 === 'Gratuit' ? '#16a34a' : '#374151' }}>
-                        {forme.greffe2025}
+                      <td style={{ padding: '0.75rem 1rem', fontWeight: 600, color: forme.greffe2026 === 'Gratuit' ? '#16a34a' : '#374151' }}>
+                        {forme.greffe2026}
                       </td>
                       <td style={{ padding: '0.75rem 1rem', color: '#374151' }}>{forme.jal}</td>
                       <td style={{ padding: '0.75rem 1rem', color: '#6b7280', fontSize: 12 }}>{forme.ideal}</td>
@@ -530,13 +516,13 @@ export default function AccompagnementProfessionnelsPage() {
               </table>
             </div>
             <p style={{ fontSize: 11, color: '#9ca3af', marginTop: '0.5rem' }}>
-              Tarifs indicatifs 2025. Les frais de JAL varient selon le département d'immatriculation.
-              Les tarifs de greffe peuvent évoluer. Notre juriste vous communique les montants exacts applicables
-              à votre situation avant toute démarche.
+              Tarifs indicatifs 2026. Les frais de JAL varient selon le département d'immatriculation.
+              Les frais de greffe incluent l'immatriculation et la déclaration des bénéficiaires effectifs (DBE), obligatoire pour toutes les sociétés.
+              Notre juriste vous communique les montants exacts applicables à votre situation avant toute démarche.
             </p>
           </section>
 
-          {/* ─── POURQUOI UN FORMALISTE CRFF ─── */}
+          {/* POURQUOI UN FORMALISTE CRFF */}
           <section id="pourquoi-formaliste" style={{ marginBottom: '3.5rem' }}>
             <h2 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#0f2d6e', marginBottom: '0.5rem' }}>
               Pourquoi confier vos formalités à un formaliste CRFF ?
@@ -581,7 +567,7 @@ export default function AccompagnementProfessionnelsPage() {
             </div>
           </section>
 
-          {/* ─── CTA INTERMÉDIAIRE ─── */}
+          {/* CTA INTERMÉDIAIRE */}
           <section style={{
             background: 'linear-gradient(135deg, #0f2d6e 0%, #1a4fba 100%)',
             borderRadius: 16, padding: '2.5rem 2rem', marginBottom: '3.5rem',
@@ -590,7 +576,7 @@ export default function AccompagnementProfessionnelsPage() {
           }}>
             <div>
               <div style={{ fontSize: 12, fontWeight: 600, color: '#d4a017', marginBottom: '0.4rem', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
-                Creation offerte
+                Création offerte
               </div>
               <h2 style={{ fontSize: '1.3rem', fontWeight: 700, margin: '0 0 0.5rem' }}>
                 Prêt à créer votre entreprise ?
@@ -609,7 +595,7 @@ export default function AccompagnementProfessionnelsPage() {
             </a>
           </section>
 
-          {/* ─── FAQ ─── */}
+          {/* FAQ */}
           <section id="faq" style={{ marginBottom: '3.5rem' }}>
             <h2 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#0f2d6e', marginBottom: '0.5rem' }}>
               Questions fréquentes sur la création d'entreprise
@@ -659,7 +645,7 @@ export default function AccompagnementProfessionnelsPage() {
             </div>
           </section>
 
-          {/* ─── AUTEUR + CRÉDENTIALS ─── */}
+          {/* AUTEUR + CRÉDENTIALS */}
           <section style={{
             background: 'white', border: '1px solid #e5e7eb', borderRadius: 12,
             padding: '1.5rem', marginBottom: '3.5rem',
@@ -690,7 +676,7 @@ export default function AccompagnementProfessionnelsPage() {
             </div>
           </section>
 
-          {/* ─── CTA FINAL ─── */}
+          {/* CTA FINAL */}
           <section style={{
             background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: 12,
             padding: '2rem', textAlign: 'center'
