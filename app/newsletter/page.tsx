@@ -2,7 +2,7 @@
 import Footer from '@/components/FooterMinimal'
 
 export const metadata = {
-  title: 'S\'inscrire à la newsletter · Docuthèque — Cabinet Cholez-Pagotto',
+  title: 'S\'inscrire à la newsletter · Docuthèque · Cabinet Cholez-Pagotto',
   description: 'Restez informé : actualités juridiques, offres sur les documents, services complémentaires et partenaires sélectionnés. Newsletter gratuite ou exclusive abonnés Optimal.',
 }
 
@@ -36,7 +36,7 @@ export default function Newsletter() {
               Restez informé, bénéficiez d'offres exclusives<br />et ne manquez aucune nouveauté.
             </h1>
             <p style={{color: 'rgba(255,255,255,0.8)', fontSize: '1rem', margin: '0 0 28px', lineHeight: '1.8', maxWidth: '580px', marginLeft: 'auto', marginRight: 'auto'}}>
-              Informations juridiques pratiques, nouveaux documents disponibles, offres sur nos services, sélections partenaires et contenus exclusifs abonnés — tout ce qui compte, directement dans votre boîte mail.
+              Informations juridiques pratiques, nouveaux documents disponibles, offres sur nos services, sélections partenaires et contenus exclusifs abonnés : tout ce qui compte, directement dans votre boîte mail.
             </p>
             <div style={{display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap'}}>
               <a href="/connexion" style={{display: 'inline-block', background: 'white', color: '#0f2d6e', padding: '12px 28px', borderRadius: '8px', fontSize: '14px', fontWeight: '700', textDecoration: 'none'}}>
@@ -67,12 +67,12 @@ export default function Newsletter() {
               {[
                 {
                   titre: 'Informations juridiques pratiques',
-                  desc: "Actualités législatives, analyses de jurisprudence et informations sur le droit du quotidien — rédigées par un juriste, sans jargon.",
+                  desc: "Actualités législatives, analyses de jurisprudence et informations sur le droit du quotidien, rédigées par un juriste, sans jargon.",
                   icon: '⚖️'
                 },
                 {
                   titre: 'Nouveaux documents disponibles',
-                  desc: "Soyez alerté dès qu'un nouveau modèle de document est ajouté à la Docuthèque — contrats, mises en demeure, RGPD, statuts et plus.",
+                  desc: "Soyez alerté dès qu'un nouveau modèle de document est ajouté à la Docuthèque : contrats, mises en demeure, RGPD, statuts et plus.",
                   icon: '📂'
                 },
                 {
@@ -159,7 +159,7 @@ export default function Newsletter() {
               </div>
               <div style={{borderTop: '1px solid #f3f4f6', paddingTop: '1.25rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '12px'}}>
                 <div>
-                  <p style={{color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: '0 0 2px'}}>Abonnement Optimal — à partir de 12,49 €/mois</p>
+                  <p style={{color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: '0 0 2px'}}>Abonnement Optimal à partir de 17,90 €/mois</p>
                   <p style={{color: '#6b7280', fontSize: '12px', margin: 0}}>Newsletter exclusive incluse · 1 question juriste/mois · Bibliothèque complète</p>
                 </div>
                 <a href="/tarifs" style={{display: 'inline-block', background: 'linear-gradient(135deg, #b8860b 0%, #d4a017 50%, #b8860b 100%)', color: 'white', padding: '10px 24px', borderRadius: '8px', fontSize: '13px', fontWeight: '700', textDecoration: 'none', whiteSpace: 'nowrap'}}>
@@ -238,7 +238,7 @@ export default function Newsletter() {
           <section style={{background: 'linear-gradient(135deg, #0f2d6e 0%, #1a4fba 100%)', borderRadius: '16px', padding: '2.5rem', textAlign: 'center'}}>
             <p style={{color: 'white', fontSize: '1.3rem', fontWeight: '700', margin: '0 0 8px'}}>Rejoignez la communauté Docuthèque</p>
             <p style={{color: 'rgba(255,255,255,0.75)', fontSize: '13px', margin: '0 0 20px', lineHeight: '1.7'}}>
-              Informations pratiques, offres exclusives et nouveautés directement dans votre boîte mail — sans jargon et sans IA.
+              Informations pratiques, offres exclusives et nouveautés directement dans votre boîte mail, sans jargon et sans IA.
             </p>
             <div style={{display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap'}}>
               <a href="/connexion" style={{display: 'inline-block', background: 'white', color: '#0f2d6e', padding: '11px 24px', borderRadius: '8px', fontSize: '13px', fontWeight: '700', textDecoration: 'none'}}>
