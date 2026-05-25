@@ -441,7 +441,7 @@ export default function FormationsPage() {
           {/* ETAPES */}
           <section id="processus" style={{ marginBottom: '3.5rem' }}>
             <h2 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#0f2d6e', marginBottom: '0.5rem' }}>
-              De l'audit à la formation : comment ca se passe ?
+              De l'audit à la formation : comment ça se passe ?
             </h2>
             <p style={{ color: '#6b7280', fontSize: 13, marginBottom: '2rem' }}>
               Un processus structuré pour que la formation réponde vraiment à vos besoins.
@@ -518,9 +518,9 @@ export default function FormationsPage() {
               <h3 style={{ fontSize: '1rem', fontWeight: 700, color: '#0f2d6e', margin: '0 0 0.3rem' }}>François CHOLEZ</h3>
               <p style={{ fontSize: 13, color: '#6b7280', margin: 0, lineHeight: 1.6 }}>
                 Juriste - Formaliste - Conseil en assurances. Membre du CRFF. Chercheur associé,
-                co-auteur de "L'éducation, ça se partage ?" (L'Harmattan, 2021) et contributeur
-                de "Agir en situation de discrédit" (Le Cavalier Bleu, 2026).
-                Plus de 10 ans d'expérience terrain dans le secteur juridique, associatif et ESS.
+                contributeur aux ouvrages "L'éducation, ça se partage ?" (L'Harmattan, 2021) et
+                "Agir en situation de discrédit" (Le Cavalier Bleu, 2026).
+                Membre du CRFF (Conseil Représentatif des Formalistes de France), investi dans des instances de gouvernances associatives à différents échelons (en local, départemental et national). Co-fondateur et secrétaire national d'un fonds de dotation. Plus de 30 ans d'engagement dans l'ESS.
               </p>
             </div>
           </section>

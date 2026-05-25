@@ -36,10 +36,7 @@ const schemaData = {
         }
       },
       "serviceType": "Information juridique et conseil en assurances pour particuliers",
-      "areaServed": {
-        "@type": "Country",
-        "name": "France"
-      },
+      "areaServed": { "@type": "Country", "name": "France" },
       "offers": [
         {
           "@type": "Offer",
@@ -51,7 +48,7 @@ const schemaData = {
         {
           "@type": "Offer",
           "name": "Information sur vos droits - Abonnés Optimal",
-          "price": "9.90",
+          "price": "14.90",
           "priceCurrency": "EUR",
           "description": "Question supplémentaire pour les abonnés Optimal"
         },
@@ -98,7 +95,7 @@ const schemaData = {
           "name": "Qu'est-ce que l'abonnement Optimal ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "L'abonnement Optimal donne accès à la bibliothèque complète de documents téléchargeables au format DOCX, ainsi qu'à un tarif préférentiel pour le service Information sur vos droits (9,90 euros au lieu de 47 euros). L'abonnement est disponible en formule mensuelle (14,90 euros par mois) ou annuelle (147,97 euros par an, soit deux mois offerts)."
+            "text": "L'abonnement Optimal donne accès à la bibliothèque complète de documents téléchargeables au format DOCX, ainsi qu'à un tarif préférentiel pour le service Information sur vos droits (14,90 euros au lieu de 47 euros). L'abonnement Optimal Particulier est disponible en formule mensuelle sans engagement (17,90 euros par mois) ou annuelle (149 euros par an, soit trois mois offerts)."
           }
         },
         {
@@ -115,18 +112,8 @@ const schemaData = {
       "@type": "BreadcrumbList",
       "@id": "https://cholez-pagotto.fr/accompagnement-particuliers#breadcrumb",
       "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Accueil",
-          "item": "https://cholez-pagotto.fr"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Accompagnement particuliers",
-          "item": "https://cholez-pagotto.fr/accompagnement-particuliers"
-        }
+        { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://cholez-pagotto.fr" },
+        { "@type": "ListItem", "position": 2, "name": "Accompagnement particuliers", "item": "https://cholez-pagotto.fr/accompagnement-particuliers" }
       ]
     }
   ]
@@ -241,8 +228,8 @@ const offres = [
   },
   {
     titre: "Abonnement Optimal",
-    tarif: "14,90 €",
-    unite: "/mois ou 147,97 €/an",
+    tarif: "17,90 €",
+    unite: "/mois ou 149 €/an",
     couleur: "#d4a017",
     fond: "#fffbeb",
     border: "#fde68a",
@@ -251,7 +238,7 @@ const offres = [
     inclus: [
       "Accès à la bibliothèque complète de documents DOCX",
       "Documents téléchargeables et personnalisables",
-      "Question supplémentaire au tarif de 9,90 € (au lieu de 47 €)",
+      "Question supplémentaire au tarif de 14,90 € (au lieu de 47 €)",
       "Mises à jour des documents incluses",
       "Accès à l'espace client"
     ],
@@ -297,7 +284,7 @@ const faqs = [
   },
   {
     question: "Qu'est-ce que l'abonnement Optimal ?",
-    reponse: "L'abonnement Optimal donne accès à la bibliothèque complète de documents téléchargeables au format DOCX, ainsi qu'à un tarif préférentiel pour le service Information sur vos droits (9,90 euros par question au lieu de 47 euros). L'abonnement est disponible en formule mensuelle (14,90 euros par mois) ou annuelle (147,97 euros par an, soit environ deux mois offerts)."
+    reponse: "L'abonnement Optimal donne accès à la bibliothèque complète de documents téléchargeables au format DOCX, ainsi qu'à un tarif préférentiel pour le service Information sur vos droits (14,90 euros par question au lieu de 47 euros). L'abonnement Optimal Particulier est disponible en formule mensuelle sans engagement (17,90 euros par mois) ou annuelle (149 euros par an, soit trois mois offerts)."
   },
   {
     question: "Les documents de la bibliothèque sont-ils conformes à la loi française ?",
@@ -312,7 +299,6 @@ export default function AccompagnementParticuliersPage() {
 
   return (
     <>
-      {/* Schema.org */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
@@ -335,22 +321,11 @@ export default function AccompagnementParticuliersPage() {
 
       <main style={{ background: '#f8fafc', minHeight: '80vh' }}>
 
-        {/* ─── HERO ─── */}
+        {/* HERO */}
         <section style={{ background: 'linear-gradient(135deg, #0f2d6e 0%, #1a4fba 100%)', padding: '4rem 1.5rem 3.5rem', color: 'white' }}>
           <div style={{ maxWidth: 1100, margin: '0 auto' }}>
-
             <div style={{ marginBottom: '1.2rem' }}>
-              <span style={{
-                display: 'inline-block',
-                background: 'rgba(255,255,255,0.2)',
-                color: 'white',
-                fontSize: 12,
-                fontWeight: 700,
-                padding: '5px 18px',
-                borderRadius: 20,
-                letterSpacing: '0.08em',
-                textTransform: 'uppercase'
-              }}>
+              <span style={{ display: 'inline-block', background: 'rgba(255,255,255,0.2)', color: 'white', fontSize: 12, fontWeight: 700, padding: '5px 18px', borderRadius: 20, letterSpacing: '0.08em', textTransform: 'uppercase' }}>
                 Particuliers
               </span>
             </div>
@@ -370,7 +345,7 @@ export default function AccompagnementParticuliersPage() {
                 background: '#d4a017', color: 'white', textDecoration: 'none',
                 padding: '13px 28px', borderRadius: 8, fontWeight: 700, fontSize: '0.95rem'
               }}>
-                Poser ma question - 47 € <ArrowRight size={18} />
+                Poser ma question · 47 € <ArrowRight size={18} />
               </a>
               <a href="/catalogue" style={{
                 display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
@@ -414,7 +389,7 @@ export default function AccompagnementParticuliersPage() {
 
         <div style={{ maxWidth: 1100, margin: '0 auto', padding: '3rem 1.5rem' }}>
 
-          {/* ─── OFFRES ─── */}
+          {/* OFFRES */}
           <section id="offres" style={{ marginBottom: '3.5rem' }}>
             <h2 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#0f2d6e', marginBottom: '0.5rem' }}>
               Nos services pour les particuliers
@@ -426,39 +401,26 @@ export default function AccompagnementParticuliersPage() {
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
               {offres.map((offre, i) => (
                 <div key={i} style={{
-                  background: 'white',
-                  border: `2px solid ${offre.border}`,
-                  borderRadius: 12,
-                  padding: '1.5rem',
-                  position: 'relative',
-                  display: 'flex',
-                  flexDirection: 'column'
+                  background: 'white', border: `2px solid ${offre.border}`,
+                  borderRadius: 12, padding: '1.5rem', position: 'relative', display: 'flex', flexDirection: 'column'
                 }}>
                   {offre.badge && (
                     <div style={{
                       position: 'absolute', top: -12, left: '50%', transform: 'translateX(-50%)',
                       background: offre.couleur, color: 'white', fontSize: 11,
-                      fontWeight: 700, padding: '3px 14px', borderRadius: 20,
-                      whiteSpace: 'nowrap'
+                      fontWeight: 700, padding: '3px 14px', borderRadius: 20, whiteSpace: 'nowrap'
                     }}>
                       {offre.badge}
                     </div>
                   )}
-
                   <div style={{ marginBottom: '1rem' }}>
-                    <h3 style={{ fontSize: '1.05rem', fontWeight: 700, color: '#0f2d6e', margin: '0 0 0.5rem' }}>
-                      {offre.titre}
-                    </h3>
+                    <h3 style={{ fontSize: '1.05rem', fontWeight: 700, color: '#0f2d6e', margin: '0 0 0.5rem' }}>{offre.titre}</h3>
                     <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.3rem' }}>
                       <span style={{ fontSize: '2rem', fontWeight: 800, color: offre.couleur }}>{offre.tarif}</span>
                       <span style={{ fontSize: 13, color: '#6b7280' }}>{offre.unite}</span>
                     </div>
                   </div>
-
-                  <p style={{ fontSize: 13, color: '#374151', lineHeight: 1.6, marginBottom: '1rem' }}>
-                    {offre.description}
-                  </p>
-
+                  <p style={{ fontSize: 13, color: '#374151', lineHeight: 1.6, marginBottom: '1rem' }}>{offre.description}</p>
                   <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 1.5rem', display: 'flex', flexDirection: 'column', gap: '0.5rem', flex: 1 }}>
                     {offre.inclus.map((item, j) => (
                       <li key={j} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem', fontSize: 12, color: '#374151' }}>
@@ -467,7 +429,6 @@ export default function AccompagnementParticuliersPage() {
                       </li>
                     ))}
                   </ul>
-
                   <a href={offre.cta} style={{
                     display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem',
                     background: offre.couleur, color: 'white', textDecoration: 'none',
@@ -480,17 +441,16 @@ export default function AccompagnementParticuliersPage() {
             </div>
           </section>
 
-          {/* ─── DOMAINES JURIDIQUES ─── */}
+          {/* DOMAINES JURIDIQUES */}
           <section id="domaines" style={{ marginBottom: '3.5rem' }}>
             <h2 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#0f2d6e', marginBottom: '0.5rem' }}>
               Domaines juridiques couverts
             </h2>
             <p style={{ color: '#6b7280', fontSize: 13, marginBottom: '2rem' }}>
               Notre juriste répond aux questions sur les principales branches du droit qui concernent
-              les particuliers dans leur vie quotidienne. En vigueur au 1er janvier 2025.
+              les particuliers dans leur vie quotidienne. En vigueur au 1er janvier 2026.
             </p>
 
-            {/* Navigation domaines */}
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '1.5rem' }}>
               {domainesJuridiques.map((d, i) => (
                 <button
@@ -517,9 +477,7 @@ export default function AccompagnementParticuliersPage() {
               borderRadius: 12, padding: '1.5rem'
             }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-                <div style={{ color: domainesJuridiques[domaineActif].couleur }}>
-                  {domainesJuridiques[domaineActif].icone}
-                </div>
+                <div style={{ color: domainesJuridiques[domaineActif].couleur }}>{domainesJuridiques[domaineActif].icone}</div>
                 <h3 style={{ fontSize: '1rem', fontWeight: 700, color: '#0f2d6e', margin: 0 }}>
                   {domainesJuridiques[domaineActif].domaine} : exemples de questions traitées
                 </h3>
@@ -539,7 +497,7 @@ export default function AccompagnementParticuliersPage() {
             </div>
           </section>
 
-          {/* ─── COMMENT CA MARCHE ─── */}
+          {/* COMMENT CA MARCHE */}
           <section id="comment-ca-marche" style={{ marginBottom: '3.5rem' }}>
             <h2 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#0f2d6e', marginBottom: '0.5rem' }}>
               Comment fonctionne le service Information sur vos droits ?
@@ -559,7 +517,7 @@ export default function AccompagnementParticuliersPage() {
                 {
                   num: "2",
                   titre: "Vous réglez en ligne",
-                  texte: "Le règlement de 47 euros s'effectue en ligne de manière sécurisée via Stripe. Vous recevez immédiatement un reçu. Pour les abonnés Optimal, le tarif est de 9,90 euros.",
+                  texte: "Le règlement de 47 euros s'effectue en ligne de manière sécurisée. Vous recevez immédiatement un reçu. Pour les abonnés Optimal, le tarif est de 14,90 euros par question supplémentaire.",
                   couleur: "#1a4fba"
                 },
                 {
@@ -588,19 +546,15 @@ export default function AccompagnementParticuliersPage() {
                     {etape.num}
                   </div>
                   <div>
-                    <h3 style={{ fontSize: '0.9rem', fontWeight: 700, color: '#0f2d6e', margin: '0 0 0.3rem' }}>
-                      {etape.titre}
-                    </h3>
-                    <p style={{ fontSize: 13, color: '#6b7280', lineHeight: 1.6, margin: 0 }}>
-                      {etape.texte}
-                    </p>
+                    <h3 style={{ fontSize: '0.9rem', fontWeight: 700, color: '#0f2d6e', margin: '0 0 0.3rem' }}>{etape.titre}</h3>
+                    <p style={{ fontSize: 13, color: '#6b7280', lineHeight: 1.6, margin: 0 }}>{etape.texte}</p>
                   </div>
                 </div>
               ))}
             </div>
           </section>
 
-          {/* ─── ASSURANCES (ORIAS) ─── */}
+          {/* ASSURANCES (ORIAS) */}
           <section id="assurances" style={{
             background: '#fffbeb', border: '1px solid #fde68a', borderRadius: 12,
             padding: '1.5rem', marginBottom: '3.5rem'
@@ -618,14 +572,7 @@ export default function AccompagnementParticuliersPage() {
               (Autorité de Contrôle Prudentiel et de Résolution), adhérent <strong>ENDYA</strong>.
             </p>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '0.75rem', marginBottom: '1rem' }}>
-              {[
-                "RC Pro",
-                "Multirisques habitation",
-                "Assurance vie",
-                "Prévoyance",
-                "Complémentaire sante",
-                "Assurance auto"
-              ].map((produit, i) => (
+              {["RC Pro", "Multirisques habitation", "Assurance vie", "Prévoyance", "Complémentaire santé", "Assurance auto"].map((produit, i) => (
                 <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: 13, color: '#78350f' }}>
                   <CheckCircle size={14} strokeWidth={2} style={{ color: '#b45309' }} />
                   {produit}
@@ -637,13 +584,11 @@ export default function AccompagnementParticuliersPage() {
               dont vous êtes informé avant toute souscription, conformément à l'article L.521-2
               du Code des assurances et à la Directive sur la Distribution d'Assurances (DDA).
               Enregistrement vérifiable sur{' '}
-              <a href="https://www.orias.fr" target="_blank" rel="noopener noreferrer" style={{ color: '#b45309' }}>
-                www.orias.fr
-              </a>.
+              <a href="https://www.orias.fr" target="_blank" rel="noopener noreferrer" style={{ color: '#b45309' }}>www.orias.fr</a>.
             </p>
           </section>
 
-          {/* ─── FAQ ─── */}
+          {/* FAQ */}
           <section id="faq" style={{ marginBottom: '3.5rem' }}>
             <h2 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#0f2d6e', marginBottom: '0.5rem' }}>
               Questions fréquentes
@@ -656,24 +601,10 @@ export default function AccompagnementParticuliersPage() {
                 <div key={i} style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: 12, overflow: 'hidden' }}>
                   <button
                     onClick={() => setFaqOuverte(faqOuverte === i ? null : i)}
-                    style={{
-                      width: '100%', display: 'flex', justifyContent: 'space-between',
-                      alignItems: 'center', padding: '1.1rem 1.5rem',
-                      background: 'none', border: 'none', cursor: 'pointer', textAlign: 'left', gap: '1rem'
-                    }}
+                    style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '1.1rem 1.5rem', background: 'none', border: 'none', cursor: 'pointer', textAlign: 'left', gap: '1rem' }}
                   >
-                    <span style={{ fontSize: '0.9rem', fontWeight: 600, color: '#0f2d6e', lineHeight: 1.4 }}>
-                      {faq.question}
-                    </span>
-                    <ChevronDown
-                      size={18}
-                      strokeWidth={2}
-                      style={{
-                        color: '#1a4fba', flexShrink: 0,
-                        transform: faqOuverte === i ? 'rotate(180deg)' : 'rotate(0deg)',
-                        transition: 'transform 0.2s'
-                      }}
-                    />
+                    <span style={{ fontSize: '0.9rem', fontWeight: 600, color: '#0f2d6e', lineHeight: 1.4 }}>{faq.question}</span>
+                    <ChevronDown size={18} strokeWidth={2} style={{ color: '#1a4fba', flexShrink: 0, transform: faqOuverte === i ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.2s' }} />
                   </button>
                   {faqOuverte === i && (
                     <div style={{ padding: '0 1.5rem 1.1rem', fontSize: 13, color: '#374151', lineHeight: 1.7, borderTop: '1px solid #f3f4f6' }}>
@@ -685,7 +616,7 @@ export default function AccompagnementParticuliersPage() {
             </div>
           </section>
 
-          {/* ─── AUTEUR ─── */}
+          {/* AUTEUR */}
           <section style={{
             background: 'white', border: '1px solid #e5e7eb', borderRadius: 12,
             padding: '1.5rem', marginBottom: '3.5rem',
@@ -699,28 +630,29 @@ export default function AccompagnementParticuliersPage() {
             <div>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '0.5rem' }}>
                 {['Juriste', 'Formaliste CRFF', 'ORIAS 26003943', 'Sous contrôle ACPR'].map((badge, i) => (
-                  <span key={i} style={{
-                    background: '#eff6ff', color: '#1a4fba', fontSize: 11,
-                    fontWeight: 600, padding: '3px 10px', borderRadius: 20
-                  }}>{badge}</span>
+                  <span key={i} style={{ background: '#eff6ff', color: '#1a4fba', fontSize: 11, fontWeight: 600, padding: '3px 10px', borderRadius: 20 }}>{badge}</span>
                 ))}
               </div>
               <h3 style={{ fontSize: '1rem', fontWeight: 700, color: '#0f2d6e', margin: '0 0 0.3rem' }}>François CHOLEZ</h3>
+              <p style={{ fontSize: 13, color: '#6b7280', margin: '0 0 0.4rem', lineHeight: 1.6 }}>
+                Membre du CRFF (Conseil Représentatif des Formalistes de France). Sous contrôle de l'ACPR. Adhérent ENDYA.
+              </p>
               <p style={{ fontSize: 13, color: '#6b7280', margin: 0, lineHeight: 1.6 }}>
-                Juriste - Formaliste - Conseil en assurances. Membre du CRFF. Sous contrôle de l'ACPR.
-                Adhérent ENDYA. Auteur et chercheur associé dans le domaine du droit et de l'éducation.
+                Chercheur associé, contributeur aux ouvrages
+                {' '}<em>«&nbsp;L'éducation, ça se partage&nbsp;?&nbsp;»</em> (L'Harmattan, 2021)
+                {' '}et <em>«&nbsp;Agir en situation de discrédit&nbsp;»</em> (Le Cavalier Bleu, 2026).
               </p>
             </div>
           </section>
 
-          {/* ─── CTA FINAL ─── */}
+          {/* CTA FINAL */}
           <section style={{ background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: 12, padding: '2rem', textAlign: 'center' }}>
             <h2 style={{ fontSize: '1.3rem', fontWeight: 700, color: '#0f2d6e', marginBottom: '0.5rem' }}>
               Vous avez une question juridique ?
             </h2>
             <p style={{ fontSize: 13, color: '#374151', marginBottom: '1.5rem', maxWidth: 500, margin: '0.5rem auto 1.5rem' }}>
               47 euros pour une réponse pédagogique et documentée sous 24 à 48h ouvrées.
-              Abonnés Optimal : 9,90 euros.
+              Abonnés Optimal : 14,90 euros par question supplémentaire.
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', justifyContent: 'center' }}>
               <a href="/information-sur-vos-droits" style={{
