@@ -6,13 +6,22 @@ import Footer from '@/components/Footer'
 import { ChevronRight, Mail, Clock, MapPin, Send, CheckCircle, AlertCircle } from 'lucide-react'
 
 const SUJETS = [
-  'Question générale',
-  'Demande de devis : Accompagnement créateurs',
+  // ── Services ──────────────────────────────────────────────────────
+  'Information sur mes droits (question juridique)',
+  'Conseil en assurances',
+  // ── Devis accompagnement ──────────────────────────────────────────
+  'Devis : Accompagnement professionnels',
+  'Devis : Accompagnement associations · ESS',
+  'Devis : Formation sur mesure',
+  'Devis : Mission RGPD · DPO externalisé',
+  // ── Compte & abonnement ───────────────────────────────────────────
   'Mon abonnement Optimal',
-  'Problème technique',
+  'Résiliation abonnement',
+  'Problème technique · Espace client',
+  // ── Autres ────────────────────────────────────────────────────────
   'Exercice de mes droits (RGPD)',
-  'Partenariat / Presse',
-  'Autre',
+  'Partenariat · Presse',
+  'Autre demande',
 ]
 
 type Status = 'idle' | 'loading' | 'success' | 'error'
@@ -296,7 +305,7 @@ export default function Contact() {
                   <MapPin size={15} color="#1a4fba" style={{ flexShrink: 0, marginTop: '2px' }} strokeWidth={1.5} />
                   <div>
                     <p style={{ color: '#374151', fontSize: '12px', fontWeight: '600', margin: '0 0 2px' }}>Service digital 100% humain</p>
-                    <p style={{ color: '#6b7280', fontSize: '12px', margin: 0, lineHeight: '1.5' }}>Legaltech & Assurtech</p>
+                    <p style={{ color: '#6b7280', fontSize: '12px', margin: 0, lineHeight: '1.5' }}>Juridique · Assurances · Formalités</p>
                   </div>
                 </div>
               </div>

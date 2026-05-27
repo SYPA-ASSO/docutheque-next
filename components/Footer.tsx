@@ -1,95 +1,128 @@
-import { Scale } from 'lucide-react'
+import Link from 'next/link'
+import Image from 'next/image'
 
 export default function Footer() {
   return (
-    <>
-      {/* CTA FINAL */}
-      <section style={{background: '#0f2d6e', padding: '3rem 0', textAlign: 'center'}}>
-        <div style={{maxWidth: '1200px', margin: '0 auto', padding: '0 2rem'}}>
-          <h2 style={{color: 'white', fontSize: '1.5rem', fontWeight: 'bold', lineHeight: '1.4'}}>Prêt à sécuriser vos documents et votre quotidien dans la compréhension de vos droits ?</h2>
-          <p style={{color: 'rgba(255,255,255,0.7)', fontSize: '0.875rem', marginTop: '0.75rem', maxWidth: '600px', margin: '0.75rem auto 0', lineHeight: '1.7'}}>Accès immédiat à des modèles fiables, conformes et téléchargeables et personnalisables, juriste dédié pour vous éclairer et vous apporter une meilleure compréhension du droit.</p>
-          <div style={{display: 'flex', justifyContent: 'center', marginTop: '1.5rem'}}>
-            <a href="/tarifs" style={{background: 'white', color: '#1a4fba', border: 'none', padding: '10px 24px', borderRadius: '6px', fontSize: '12px', fontWeight: '600', cursor: 'pointer', textDecoration: 'none', display: 'inline-block'}}>Voir les tarifs</a>
+    <footer style={{ background: '#0f2d6e', color: 'white' }}>
+
+      {/* CORPS */}
+      <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '3rem 2rem 2rem' }}>
+
+        {/* LOGO + TAGLINE */}
+        <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', flexWrap: 'wrap', gap: '2rem', marginBottom: '2.5rem', paddingBottom: '2rem', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
+          <div>
+            <Image
+              src="/logo-cholez-pagotto-fond-marine.svg"
+              alt="Cabinet Cholez-Pagotto"
+              width={220}
+              height={52}
+              style={{ height: '44px', width: 'auto', marginBottom: '10px', display: 'block' }}
+            />
+            <p style={{ color: '#c8a84b', fontSize: '11px', letterSpacing: '1.5px', fontWeight: '600', margin: 0 }}>
+              COMPRENDRE · DÉCIDER · AGIR
+            </p>
+          </div>
+          <div style={{ maxWidth: '360px' }}>
+            <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '12px', lineHeight: '1.8', margin: '0 0 8px' }}>
+              Information juridique, conseil en assurances et formalités administratives. Juriste formaliste, membre CRFF.
+            </p>
+            <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '11px', margin: 0 }}>
+              ORIAS n°26003943 · Sous contrôle ACPR · Adhérent ENDYA
+            </p>
           </div>
         </div>
-      </section>
 
-      {/* FOOTER */}
-      <footer style={{background: '#111827', padding: '2rem 0'}}>
-        <div style={{maxWidth: '1200px', margin: '0 auto', padding: '0 2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '2rem'}}>
+        {/* COLONNES */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '2rem', marginBottom: '2.5rem' }}>
 
-          {/* LOGO + DESCRIPTION */}
-          <div style={{minWidth: '180px'}}>
-            <div style={{display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px'}}>
-              <div style={{width: '24px', height: '24px', background: '#1a4fba', borderRadius: '5px', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-                <Scale size={14} color="white" strokeWidth={1.5} />
-              </div>
-              <span style={{fontSize: '13px', fontWeight: '600', color: 'white'}}>Docuthèque par le Cabinet Cholez-Pagotto</span>
+          {/* Services */}
+          <div>
+            <p style={{ color: 'rgba(255,255,255,0.45)', fontSize: '10px', fontWeight: '700', letterSpacing: '2px', textTransform: 'uppercase', margin: '0 0 14px' }}>Services</p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              {[
+                { label: 'Information sur vos droits', href: '/information-sur-vos-droits' },
+                { label: 'Conseil en assurances', href: '/accompagnement-particuliers' },
+                { label: 'Formalités entreprise', href: '/accompagnement-professionnels' },
+                { label: 'Formations', href: '/formations' },
+                { label: 'Catalogue de documents', href: '/catalogue' },
+              ].map((l) => (
+                <Link key={l.href} href={l.href} style={{ color: 'rgba(255,255,255,0.7)', fontSize: '12px', textDecoration: 'none', lineHeight: '1.5' }}>
+                  {l.label}
+                </Link>
+              ))}
             </div>
-            <p style={{color: '#6b7280', fontSize: '11px', maxWidth: '200px', lineHeight: '1.6'}}>Modèles de documents actualisés régulièrement.</p>
-            <p style={{color: '#6b7280', fontSize: '11px', marginTop: '6px', lineHeight: '1.6'}}>Cabinet Cholez-Pagotto</p>
           </div>
 
-          {/* COLONNES LIENS */}
-          <div style={{display: 'flex', gap: '2.5rem', flexWrap: 'wrap'}}>
-
-            {/* Navigation */}
-            <div>
-              <p style={{fontSize: '11px', fontWeight: '600', color: 'white', marginBottom: '8px'}}>Navigation</p>
-              <div style={{display: 'flex', flexDirection: 'column', gap: '5px'}}>
-                <a href="/services" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>Services</a>
-                <a href="/information-sur-vos-droits" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>Information sur vos droits</a>
-                <a href="/tarifs" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>Tarifs</a>
-                <a href="/blog" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>Blog</a>
-                <a href="/newsletter" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>Newsletter</a>
-              </div>
+          {/* Accompagnement */}
+          <div>
+            <p style={{ color: 'rgba(255,255,255,0.45)', fontSize: '10px', fontWeight: '700', letterSpacing: '2px', textTransform: 'uppercase', margin: '0 0 14px' }}>Accompagnement</p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              {[
+                { label: 'Particuliers', href: '/accompagnement-particuliers' },
+                { label: 'Professionnels', href: '/accompagnement-professionnels' },
+                { label: 'Associations · ESS', href: '/accompagnement-associations' },
+                { label: 'Espace client', href: '/espace-client' },
+                { label: 'Connexion', href: '/connexion' },
+              ].map((l) => (
+                <Link key={l.href} href={l.href} style={{ color: 'rgba(255,255,255,0.7)', fontSize: '12px', textDecoration: 'none', lineHeight: '1.5' }}>
+                  {l.label}
+                </Link>
+              ))}
             </div>
-
-            {/* Accompagnement - NOUVEAU */}
-            <div>
-              <p style={{fontSize: '11px', fontWeight: '600', color: 'white', marginBottom: '8px'}}>Accompagnement</p>
-              <div style={{display: 'flex', flexDirection: 'column', gap: '5px'}}>
-                <a href="/accompagnement-professionnels" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>Professionnels</a>
-                <a href="/accompagnement-associations" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>Associations · ESS</a>
-                <a href="/accompagnement-particuliers" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>Particuliers</a>
-                <a href="/formations" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>Formations</a>
-              </div>
-            </div>
-
-            {/* Légal */}
-            <div>
-              <p style={{fontSize: '11px', fontWeight: '600', color: 'white', marginBottom: '8px'}}>Légal</p>
-              <div style={{display: 'flex', flexDirection: 'column', gap: '5px'}}>
-                <a href="/mentions-legales" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>Mentions légales</a>
-                <a href="/cgu" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>CGU</a>
-                <a href="/confidentialite" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>Politique de confidentialité</a>
-                <a href="/contact" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>Contact</a>
-              </div>
-            </div>
-
-            {/* Le Cabinet */}
-            <div>
-              <p style={{fontSize: '11px', fontWeight: '600', color: 'white', marginBottom: '8px'}}>Le Cabinet</p>
-              <div style={{display: 'flex', flexDirection: 'column', gap: '5px'}}>
-                <a href="/a-propos" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>À propos</a>
-              </div>
-            </div>
-
           </div>
+
+          {/* Ressources */}
+          <div>
+            <p style={{ color: 'rgba(255,255,255,0.45)', fontSize: '10px', fontWeight: '700', letterSpacing: '2px', textTransform: 'uppercase', margin: '0 0 14px' }}>Ressources</p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              {[
+                { label: 'Blog juridique', href: '/blog' },
+                { label: 'Newsletter', href: '/newsletter' },
+                { label: 'À propos', href: '/a-propos' },
+                { label: 'Contact', href: '/contact' },
+              ].map((l) => (
+                <Link key={l.href} href={l.href} style={{ color: 'rgba(255,255,255,0.7)', fontSize: '12px', textDecoration: 'none', lineHeight: '1.5' }}>
+                  {l.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* Légal */}
+          <div>
+            <p style={{ color: 'rgba(255,255,255,0.45)', fontSize: '10px', fontWeight: '700', letterSpacing: '2px', textTransform: 'uppercase', margin: '0 0 14px' }}>Informations légales</p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              {[
+                { label: 'Mentions légales', href: '/mentions-legales' },
+                { label: 'CGU', href: '/cgu' },
+                { label: 'Politique de confidentialité', href: '/confidentialite' },
+              ].map((l) => (
+                <Link key={l.href} href={l.href} style={{ color: 'rgba(255,255,255,0.7)', fontSize: '12px', textDecoration: 'none', lineHeight: '1.5' }}>
+                  {l.label}
+                </Link>
+              ))}
+              <p style={{ color: 'rgba(255,255,255,0.35)', fontSize: '11px', margin: '6px 0 0', lineHeight: '1.6' }}>
+                SIRET 490 889 516 00053<br />
+                12 rue d'Olima, 88000 Épinal
+              </p>
+            </div>
+          </div>
+
         </div>
-      </footer>
+      </div>
 
-      {/* NOTE RÉGLEMENTAIRE */}
-      <div style={{background: '#0f172a', padding: '12px 0'}}>
-        <div style={{maxWidth: '1200px', margin: '0 auto', padding: '0 2rem'}}>
-          <p style={{color: '#4b5563', fontSize: '10px', lineHeight: '1.7', marginBottom: '6px'}}>
-            <sup>(1)</sup> Activité de conseil en assurances et réassurances réglementée, exercée sous le contrôle de l'ACPR (Autorité de Contrôle Prudentiel et de Résolution), déclarée à l'ORIAS sous le numéro 26003943. Membre de l'association d'autorégulation ENDYA. Membre du CRFF (Conseil Représentatif des Formalistes de France).
+      {/* BARRE BASSE */}
+      <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)', padding: '1rem 2rem' }}>
+        <div style={{ maxWidth: '1100px', margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '8px' }}>
+          <p style={{ color: 'rgba(255,255,255,0.35)', fontSize: '11px', margin: 0 }}>
+            © {new Date().getFullYear()} Cabinet Cholez-Pagotto · Tous droits réservés
           </p>
-          <p style={{color: '#4b5563', fontSize: '10px', textAlign: 'center'}}>
-            © 2026 · Cabinet Cholez-Pagotto · Les modèles fournis ne constituent pas une consultation juridique personnalisée.
+          <p style={{ color: 'rgba(255,255,255,0.25)', fontSize: '10px', margin: 0 }}>
+            Information juridique au sens de la loi n°71-1130 du 31 décembre 1971 · Pas de consultation juridique personnalisée
           </p>
         </div>
       </div>
-    </>
+
+    </footer>
   )
 }

@@ -1,0 +1,17 @@
+import { NextResponse } from 'next/server'
+import { supabaseAdmin } from '@/lib/supabase-admin'
+
+export async function GET(request: Request) {
+  const adminPassword = request.headers.get('x-admin-password')
+  if (adminPassword !== process.env.ADMIN_PASSWORD) {
+    return NextResponse.json({ error: 'Non autorisé.' }, { status: 401 })
+  }
+
+  const { data, error } = await supabaseAdmin
+    .from('questions')
+    .select('*, users(prenom, nom, email)')
+    .order('created_at', { ascending: false })
+
+  if (error) return NextResponse.json({ error: error.message }, { status: 500 })
+  return NextResponse.json({ questions: data })
+}

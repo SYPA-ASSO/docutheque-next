@@ -1,33 +1,53 @@
-import { Inter } from "next/font/google";
-import "./globals.css";
+import type { Metadata } from 'next'
 import CookieBanner from '@/components/CookieBanner'
+import './globals.css'
 
-const inter = Inter({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-});
+export const metadata: Metadata = {
+  title: 'Docuthèque · Cabinet Cholez-Pagotto',
+  description: 'Information juridique, documents téléchargeables et personnalisables, conseil en assurances. Comprendre. Décider. Agir. Juriste formaliste, membre CRFF, ORIAS n°26003943.',
+  icons: {
+    icon: '/favicon-32x32.png',
+    shortcut: '/favicon-16x16.png',
+    apple: '/apple-touch-icon.png',
+  },
+  alternates: {
+    canonical: 'https://cholez-pagotto.fr',
+  },
+  openGraph: {
+    title: 'Docuthèque · Cabinet Cholez-Pagotto',
+    description: 'Information juridique, documents téléchargeables et personnalisables, conseil en assurances. Comprendre. Décider. Agir.',
+    url: 'https://cholez-pagotto.fr',
+    siteName: 'Docuthèque · Cabinet Cholez-Pagotto',
+    images: [
+      {
+        url: '/logo-social-512x512.png',
+        width: 512,
+        height: 512,
+        alt: 'Cabinet Cholez-Pagotto · Comprendre. Décider. Agir.',
+      },
+    ],
+    locale: 'fr_FR',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary',
+    title: 'Docuthèque · Cabinet Cholez-Pagotto',
+    description: 'Information juridique, documents téléchargeables et personnalisables, conseil en assurances.',
+    images: ['/logo-social-512x512.png'],
+  },
+}
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: {
+  children: React.ReactNode
+}) {
   return (
-    <html lang="fr" className={inter.className}>
-      <head>
-        <title>Docuthèque : documents juridiques téléchargeables et informations sur vos droits, sans jargon</title>
-        <meta name="description" content="Modèles de documents juridiques et administratifs conformes au droit en vigueur : contrats, mises en demeure, RGPD, RH, recouvrement, statuts de société. Téléchargez en DOCX. Vos droits expliqués sans jargon par un juriste dédié." />
-        <meta name="keywords" content="modèles de documents, documents pédagogiques, documents juridiques, contrats, mise en demeure, RGPD, documents RH, statuts SASU, statuts SARL, auto-entrepreneur, micro-entreprise, juriste en ligne, assistance juridique, formalités, création d'entreprise, information juridique, droit du travail, protection juridique" />
-        <meta property="og:title" content="Docuthèque : documents juridiques et informations sur vos droits. Juriste et formaliste dédié" />
-        <meta property="og:description" content="Modèles de documents téléchargeables et personnalisables, information juridique pédagogique, juriste formaliste et conseil en assurances dédié." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://cholez-pagotto.fr" />
-        <meta property="og:locale" content="fr_FR" />
-        <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://cholez-pagotto.fr" />
-        <meta name="theme-color" content="#0f2d6e" />
-      </head>
-      <body>{children}<CookieBanner /></body>
+    <html lang="fr">
+      <body style={{ margin: 0, fontFamily: 'Arial, sans-serif' }}>
+        {children}
+        <CookieBanner />
+      </body>
     </html>
-  );
+  )
 }

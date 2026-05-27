@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 108 80" width="108" height="80">
+  <!-- Fond transparent -->
+  <!-- Filet or -->
+  <rect x="6" y="8" width="5" height="64" rx="2.5" fill="#c8a84b"/>
+  <!-- Initiales CP -->
+  <text x="18" y="68" font-family="Georgia,'Times New Roman',serif" font-size="58" fill="#0f2d6e" font-weight="400" letter-spacing="2">CP</text>
+</svg>

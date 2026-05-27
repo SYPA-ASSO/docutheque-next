@@ -1,84 +1,49 @@
-import { Scale } from 'lucide-react'
+import Link from 'next/link'
+import Image from 'next/image'
 
 export default function FooterMinimal() {
   return (
-    <>
-      {/* FOOTER */}
-      <footer style={{background: '#111827', padding: '2rem 0'}}>
-        <div style={{maxWidth: '1200px', margin: '0 auto', padding: '0 2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '2rem'}}>
+    <footer style={{ background: 'white', borderTop: '1px solid #e5e7eb', padding: '1.25rem 2rem' }}>
+      <div style={{ maxWidth: '1100px', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px' }}>
 
-          {/* LOGO + DESCRIPTION */}
-          <div style={{minWidth: '180px'}}>
-            <div style={{display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px'}}>
-              <div style={{width: '24px', height: '24px', background: '#1a4fba', borderRadius: '5px', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-                <Scale size={14} color="white" strokeWidth={1.5} />
-              </div>
-              <span style={{fontSize: '13px', fontWeight: '600', color: 'white'}}>Docuthèque par le Cabinet Cholez-Pagotto</span>
-            </div>
-            <p style={{color: '#6b7280', fontSize: '11px', maxWidth: '200px', lineHeight: '1.6'}}>Modèles de documents actualisés régulièrement.</p>
-            <p style={{color: '#6b7280', fontSize: '11px', marginTop: '6px', lineHeight: '1.6'}}>Cabinet Cholez-Pagotto</p>
-          </div>
-
-          {/* COLONNES LIENS */}
-          <div style={{display: 'flex', gap: '2.5rem', flexWrap: 'wrap'}}>
-
-            {/* Navigation */}
-            <div>
-              <p style={{fontSize: '11px', fontWeight: '600', color: 'white', marginBottom: '8px'}}>Navigation</p>
-              <div style={{display: 'flex', flexDirection: 'column', gap: '5px'}}>
-                <a href="/services" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>Services</a>
-                <a href="/information-sur-vos-droits" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>Information sur vos droits</a>
-                <a href="/tarifs" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>Tarifs</a>
-                <a href="/blog" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>Blog</a>
-              </div>
-            </div>
-
-            {/* Accompagnement - NOUVEAU */}
-            <div>
-              <p style={{fontSize: '11px', fontWeight: '600', color: 'white', marginBottom: '8px'}}>Accompagnement</p>
-              <div style={{display: 'flex', flexDirection: 'column', gap: '5px'}}>
-                <a href="/accompagnement-professionnels" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>Professionnels</a>
-                <a href="/accompagnement-associations" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>Associations · ESS</a>
-                <a href="/accompagnement-particuliers" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>Particuliers</a>
-                <a href="/formations" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>Formations</a>
-              </div>
-            </div>
-
-            {/* Légal */}
-            <div>
-              <p style={{fontSize: '11px', fontWeight: '600', color: 'white', marginBottom: '8px'}}>Légal</p>
-              <div style={{display: 'flex', flexDirection: 'column', gap: '5px'}}>
-                <a href="/mentions-legales" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>Mentions légales</a>
-                <a href="/cgu" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>CGU</a>
-                <a href="/confidentialite" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>Politique de confidentialité</a>
-                <a href="/contact" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>Contact</a>
-              </div>
-            </div>
-
-            {/* Le Cabinet */}
-            <div>
-              <p style={{fontSize: '11px', fontWeight: '600', color: 'white', marginBottom: '8px'}}>Le Cabinet</p>
-              <div style={{display: 'flex', flexDirection: 'column', gap: '5px'}}>
-                <a href="https://cholez-pagotto.fr" target="_blank" rel="noopener noreferrer" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>cholez-pagotto.fr</a>
-                <a href="/a-propos" style={{color: '#6b7280', fontSize: '11px', textDecoration: 'none'}}>À propos</a>
-              </div>
-            </div>
-
+        {/* SIGNE + TAGLINE */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <Image
+            src="/logo-cholez-pagotto-signe-seul.svg"
+            alt="Cabinet Cholez-Pagotto"
+            width={54}
+            height={40}
+            style={{ height: '32px', width: 'auto' }}
+          />
+          <div>
+            <p style={{ color: '#0f2d6e', fontSize: '12px', fontWeight: '700', margin: '0 0 2px', lineHeight: 1 }}>
+              Cabinet Cholez-Pagotto
+            </p>
+            <p style={{ color: '#c8a84b', fontSize: '9px', letterSpacing: '1.2px', fontWeight: '600', margin: 0 }}>
+              COMPRENDRE · DÉCIDER · AGIR
+            </p>
           </div>
         </div>
-      </footer>
 
-      {/* NOTE RÉGLEMENTAIRE */}
-      <div style={{background: '#0f172a', padding: '12px 0'}}>
-        <div style={{maxWidth: '1200px', margin: '0 auto', padding: '0 2rem'}}>
-          <p style={{color: '#4b5563', fontSize: '10px', lineHeight: '1.7', marginBottom: '6px'}}>
-            <sup>(1)</sup> Activité de conseil en assurances et réassurances réglementée, exercée sous le contrôle de l'ACPR (Autorité de Contrôle Prudentiel et de Résolution), déclarée à l'ORIAS sous le numéro 26003943. Membre de l'association d'autorégulation ENDYA. Membre du CRFF (Conseil Représentatif des Formalistes de France).
-          </p>
-          <p style={{color: '#4b5563', fontSize: '10px', textAlign: 'center'}}>
-            © 2026 · Cabinet Cholez-Pagotto · Les modèles fournis ne constituent pas une consultation juridique personnalisée.
+        {/* LIENS LÉGAUX */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap' }}>
+          {[
+            { label: 'Mentions légales', href: '/mentions-legales' },
+            { label: 'CGU', href: '/cgu' },
+            { label: 'Confidentialité', href: '/confidentialite' },
+            { label: 'Contact', href: '/contact' },
+          ].map((l) => (
+            <Link key={l.href} href={l.href} style={{ color: '#9ca3af', fontSize: '11px', textDecoration: 'none' }}>
+              {l.label}
+            </Link>
+          ))}
+          <span style={{ color: '#d1d5db', fontSize: '11px' }}>·</span>
+          <p style={{ color: '#d1d5db', fontSize: '10px', margin: 0 }}>
+            © {new Date().getFullYear()} Cabinet Cholez-Pagotto
           </p>
         </div>
+
       </div>
-    </>
+    </footer>
   )
 }

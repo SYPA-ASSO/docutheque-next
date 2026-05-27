@@ -1,189 +1,97 @@
 'use client'
 
-// app/mot-de-passe-oublie/page.tsx
-// Cabinet Cholez-Pagotto - Mot de passe oublié
-// Formulaire simple - envoi email via Brevo (à connecter à l'API reset)
-
 import { useState } from 'react'
 import Header from '@/components/Header'
 import FooterMinimal from '@/components/FooterMinimal'
-import { Mail, ArrowRight, CheckCircle, ArrowLeft, Lock } from 'lucide-react'
+import { supabase } from '@/lib/supabase'
+import { Mail, CheckCircle, ArrowLeft } from 'lucide-react'
+import Link from 'next/link'
 
-export default function MotDePasseOubliePage() {
+export default function MotDePasseOublie() {
   const [email, setEmail] = useState('')
   const [statut, setStatut] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
   const [erreur, setErreur] = useState('')
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    if (!email) { setErreur('Veuillez saisir votre adresse email.'); return }
+    setStatut('loading')
     setErreur('')
 
-    if (!email || !email.includes('@')) {
-      setErreur('Veuillez saisir une adresse email valide.')
-      return
-    }
+    const { error } = await supabase.auth.resetPasswordForEmail(email, {
+      redirectTo: `${process.env.NEXT_PUBLIC_SITE_URL}/api/auth/callback?type=recovery`,
+    })
 
-    setStatut('loading')
-
-    try {
-      // À connecter à l'endpoint de reset quand NextAuth sera en place
-      // Pour l'instant : simulation d'envoi
-      await new Promise(resolve => setTimeout(resolve, 1200))
-      setStatut('success')
-    } catch {
+    if (error) {
       setStatut('error')
-      setErreur('Une erreur est survenue. Veuillez réessayer ou contacter le support.')
+      setErreur('Une erreur est survenue. Vérifiez votre adresse email.')
+    } else {
+      setStatut('success')
     }
   }
 
   return (
     <>
       <Header />
+      <main style={{ background: '#f8fafc', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2rem' }}>
+        <div style={{ width: '100%', maxWidth: '440px' }}>
+          <Link href="/connexion" style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#6b7280', fontSize: '13px', textDecoration: 'none', marginBottom: '1.5rem' }}>
+            <ArrowLeft size={14} /> Retour à la connexion
+          </Link>
 
-      <main style={{
-        background: '#f8fafc', minHeight: '100vh',
-        display: 'flex', alignItems: 'center', justifyContent: 'center',
-        padding: '2rem 1.5rem'
-      }}>
-        <div style={{ width: '100%', maxWidth: 440 }}>
-
-          {/* Icône */}
-          <div style={{ textAlign: 'center', marginBottom: '1.5rem' }}>
-            <div style={{
-              width: 56, height: 56, borderRadius: '50%',
-              background: '#eff6ff', border: '1px solid #bfdbfe',
-              display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-              marginBottom: '1rem'
-            }}>
-              <Lock size={24} strokeWidth={1.5} style={{ color: '#1a4fba' }} />
+          <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '14px', padding: '2.5rem' }}>
+            <div style={{ textAlign: 'center', marginBottom: '1.5rem' }}>
+              <div style={{ width: '52px', height: '52px', background: '#eff6ff', borderRadius: '50%', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', marginBottom: '12px' }}>
+                <Mail size={22} color="#1a4fba" strokeWidth={1.5} />
+              </div>
+              <h1 style={{ color: '#0f2d6e', fontSize: '1.3rem', fontWeight: '700', margin: '0 0 8px' }}>Mot de passe oublié</h1>
+              <p style={{ color: '#6b7280', fontSize: '13px', margin: 0, lineHeight: '1.6' }}>
+                Saisissez votre adresse email. Vous recevrez un lien pour réinitialiser votre mot de passe.
+              </p>
             </div>
-            <h1 style={{ fontSize: '1.4rem', fontWeight: 700, color: '#0f2d6e', margin: '0 0 0.4rem' }}>
-              Mot de passe oublié
-            </h1>
-            <p style={{ fontSize: 13, color: '#6b7280', margin: 0, lineHeight: 1.6 }}>
-              Saisissez votre adresse email. Nous vous enverrons un lien pour réinitialiser votre mot de passe.
-            </p>
-          </div>
-
-          {/* Carte formulaire */}
-          <div style={{
-            background: 'white', border: '1px solid #e5e7eb',
-            borderRadius: 14, padding: '1.75rem'
-          }}>
 
             {statut === 'success' ? (
-              /* ─── SUCCÈS ─── */
               <div style={{ textAlign: 'center' }}>
-                <div style={{
-                  width: 48, height: 48, borderRadius: '50%',
-                  background: '#f0fdf4', border: '1px solid #bbf7d0',
-                  display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-                  marginBottom: '1rem'
-                }}>
-                  <CheckCircle size={22} strokeWidth={1.5} style={{ color: '#16a34a' }} />
+                <div style={{ background: '#f0fdf4', border: '1px solid #bbf7d0', borderRadius: '10px', padding: '1.5rem', marginBottom: '1.25rem' }}>
+                  <CheckCircle size={24} color="#16a34a" style={{ marginBottom: '10px' }} />
+                  <p style={{ color: '#15803d', fontSize: '14px', fontWeight: '700', margin: '0 0 6px' }}>Email envoyé</p>
+                  <p style={{ color: '#374151', fontSize: '13px', margin: 0, lineHeight: '1.6' }}>
+                    Si un compte existe avec l'adresse <strong>{email}</strong>, vous recevrez un lien de réinitialisation dans les prochaines minutes.
+                  </p>
                 </div>
-                <h2 style={{ fontSize: '1rem', fontWeight: 700, color: '#0f2d6e', marginBottom: '0.5rem' }}>
-                  Email envoyé
-                </h2>
-                <p style={{ fontSize: 13, color: '#374151', lineHeight: 1.7, marginBottom: '1.25rem' }}>
-                  Si l'adresse <strong>{email}</strong> correspond à un compte Docuthèque,
-                  vous recevrez un email avec un lien de réinitialisation sous quelques minutes.
+                <p style={{ color: '#9ca3af', fontSize: '12px', margin: '0 0 16px', lineHeight: '1.6' }}>
+                  Vérifiez vos spams si vous ne trouvez pas l'email.
                 </p>
-                <p style={{ fontSize: 12, color: '#6b7280', lineHeight: 1.6, marginBottom: '1.5rem' }}>
-                  Pensez à vérifier vos courriers indésirables (spam) si vous ne recevez pas l'email.
-                </p>
-                <a href="/connexion" style={{
-                  display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
-                  color: '#1a4fba', textDecoration: 'none', fontSize: 13, fontWeight: 600
-                }}>
-                  <ArrowLeft size={14} /> Retour à la connexion
-                </a>
+                <Link href="/connexion"
+                  style={{ display: 'inline-block', background: '#0f2d6e', color: 'white', padding: '11px 24px', borderRadius: '8px', fontSize: '13px', fontWeight: '700', textDecoration: 'none' }}>
+                  Retour à la connexion
+                </Link>
               </div>
             ) : (
-              /* ─── FORMULAIRE ─── */
-              <form onSubmit={handleSubmit} noValidate>
-                <div style={{ marginBottom: '1.25rem' }}>
-                  <label style={{
-                    display: 'block', fontSize: 13, fontWeight: 600,
-                    color: '#374151', marginBottom: '0.5rem'
-                  }}>
-                    Adresse email
+              <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                <div>
+                  <label style={{ display: 'block', fontSize: '12px', fontWeight: '600', color: '#374151', marginBottom: '6px' }}>
+                    Adresse email *
                   </label>
-                  <div style={{ position: 'relative' }}>
-                    <Mail
-                      size={16}
-                      strokeWidth={1.5}
-                      style={{
-                        position: 'absolute', left: 12, top: '50%',
-                        transform: 'translateY(-50%)', color: '#9ca3af'
-                      }}
-                    />
-                    <input
-                      type="email"
-                      value={email}
-                      onChange={e => { setEmail(e.target.value); setErreur('') }}
-                      placeholder="votre@email.fr"
-                      autoComplete="email"
-                      disabled={statut === 'loading'}
-                      style={{
-                        width: '100%', padding: '10px 12px 10px 38px',
-                        border: `1px solid ${erreur ? '#dc2626' : '#e5e7eb'}`,
-                        borderRadius: 8, fontSize: 13, outline: 'none',
-                        background: statut === 'loading' ? '#f9fafb' : 'white',
-                        boxSizing: 'border-box' as const,
-                        color: '#374151'
-                      }}
-                    />
-                  </div>
-                  {erreur && (
-                    <p style={{ fontSize: 12, color: '#dc2626', marginTop: '0.4rem' }}>
-                      {erreur}
-                    </p>
-                  )}
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={e => { setEmail(e.target.value); setErreur('') }}
+                    placeholder="votre@email.fr"
+                    required
+                    style={{ width: '100%', padding: '11px 12px', border: `1px solid ${erreur ? '#dc2626' : '#d1d5db'}`, borderRadius: '8px', fontSize: '13px', boxSizing: 'border-box' as const, outline: 'none' }}
+                  />
+                  {erreur && <p style={{ color: '#dc2626', fontSize: '12px', margin: '6px 0 0' }}>{erreur}</p>}
                 </div>
-
-                <button
-                  type="submit"
-                  disabled={statut === 'loading'}
-                  style={{
-                    width: '100%', background: statut === 'loading' ? '#6b7280' : '#0f2d6e',
-                    color: 'white', border: 'none', padding: '11px',
-                    borderRadius: 8, fontWeight: 700, fontSize: 13,
-                    cursor: statut === 'loading' ? 'not-allowed' : 'pointer',
-                    display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem',
-                    transition: 'background 0.15s'
-                  }}
-                >
-                  {statut === 'loading' ? (
-                    'Envoi en cours...'
-                  ) : (
-                    <>Envoyer le lien de réinitialisation <ArrowRight size={15} /></>
-                  )}
+                <button type="submit" disabled={statut === 'loading'}
+                  style={{ background: statut === 'loading' ? '#6b7280' : '#0f2d6e', color: 'white', border: 'none', padding: '12px', borderRadius: '8px', fontSize: '13px', fontWeight: '700', cursor: statut === 'loading' ? 'not-allowed' : 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
+                  {statut === 'loading' ? 'Envoi en cours...' : <><Mail size={15} /> Envoyer le lien de réinitialisation</>}
                 </button>
-
-                {statut === 'error' && (
-                  <p style={{ fontSize: 12, color: '#dc2626', marginTop: '0.75rem', textAlign: 'center' }}>
-                    {erreur}
-                  </p>
-                )}
               </form>
             )}
           </div>
-
-          {/* Liens bas de page */}
-          <div style={{ textAlign: 'center', marginTop: '1.25rem', display: 'flex', justifyContent: 'center', gap: '1.5rem' }}>
-            <a href="/connexion" style={{ fontSize: 13, color: '#6b7280', textDecoration: 'none' }}>
-              Retour à la connexion
-            </a>
-            <span style={{ color: '#e5e7eb' }}>|</span>
-            <a href="/contact" style={{ fontSize: 13, color: '#6b7280', textDecoration: 'none' }}>
-              Contacter le support
-            </a>
-          </div>
-
         </div>
       </main>
-
       <FooterMinimal />
     </>
   )
