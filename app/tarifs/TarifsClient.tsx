@@ -20,8 +20,8 @@ export default function TarifsClient() {
       "@type": "ItemList",
       "itemListElement": [
         { "@type": "Offer", "name": "Accès Gratuit", "price": "0", "priceCurrency": "EUR", "description": "Accès gratuit à tous les documents disponibles en accès libre, en format DOCX." },
-        { "@type": "Offer", "name": "Abonnement Optimal Particulier", "price": "17.90", "priceCurrency": "EUR", "description": "Accès à toute la bibliothèque de documents juridiques en DOCX, notices explicatives, fiches pédagogiques, 1 question juriste incluse par mois non cumulable sous 24 à 48h, support prioritaire. Sans engagement mensuel ou 149 €/an." },
-        { "@type": "Offer", "name": "Abonnement Optimal Pro", "price": "27.90", "priceCurrency": "EUR", "description": "Accès à toute la bibliothèque, 2 questions juriste incluses par mois, alertes légales événementielles, support prioritaire. Sans engagement mensuel ou 249 €/an." },
+        { "@type": "Offer", "name": "Abonnement Optimal Particulier", "price": "17.90", "priceCurrency": "EUR", "description": "Accès à toute la bibliothèque de documents juridiques en DOCX, notices explicatives, fiches pédagogiques, 1 question juriste incluse par mois non cumulable sous 24 à 48h, support prioritaire. Sans engagement mensuel ou 149 €/an." },
+        { "@type": "Offer", "name": "Abonnement Optimal Pro", "price": "27.90", "priceCurrency": "EUR", "description": "Accès à toute la bibliothèque, 2 questions juriste incluses par mois, alertes légales événementielles, support prioritaire. Sans engagement mensuel ou 249 €/an." },
         { "@type": "Offer", "name": "Information sur vos droits", "price": "47", "priceCurrency": "EUR", "description": "Réponse pédagogique rédigée par un juriste sous 24 à 48h ouvrées, sans abonnement ni engagement." },
         { "@type": "Offer", "name": "Accompagnement Créateurs", "price": "0", "priceCurrency": "EUR", "description": "Création d'entreprise offerte (hors frais de greffe et JAL). Statuts, formalités, accompagnement juriste formaliste inclus. Sur devis personnalisé." }
       ]
@@ -55,7 +55,7 @@ export default function TarifsClient() {
     },
     {
       q: "Puis-je cumuler les questions incluses dans mon abonnement Optimal ?",
-      a: "Non. Les questions mensuelles incluses dans l'abonnement Optimal ne sont pas cumulables d'un mois sur l'autre. Si vous avez besoin de poser des questions supplémentaires dans le même mois, elles sont disponibles à 14,90 € l'unité pour les abonnés. Sans abonnement, chaque question est à 47 €. Si vous posez régulièrement des questions, l'abonnement Optimal devient plus économique dès la deuxième question mensuelle."
+      a: "Non. Les questions mensuelles incluses dans l'abonnement Optimal ne sont pas cumulables d'un mois sur l'autre. Si vous avez besoin de poser des questions supplémentaires dans le même mois, elles sont disponibles à 14,90 € l'unité pour les abonnés. Sans abonnement, chaque question est à 47 €. Si vous posez régulièrement des questions, l'abonnement Optimal devient plus économique dès la deuxième question mensuelle."
     },
   ]
 
@@ -102,7 +102,7 @@ export default function TarifsClient() {
             {/* GRATUIT */}
             <div style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '14px', padding: '1.5rem', display: 'flex', flexDirection: 'column'}}>
               <p style={{fontSize: '11px', fontWeight: '600', color: '#6b7280', letterSpacing: '0.08em', margin: 0}}>ACCÈS GRATUIT</p>
-              <div style={{margin: '10px 0 4px'}}><span style={{fontSize: '2rem', fontWeight: '700', color: '#0f2d6e'}}>0 €</span></div>
+              <div style={{margin: '10px 0 4px'}}><span style={{fontSize: '2rem', fontWeight: '700', color: '#0f2d6e'}}>0 €</span></div>
               <p style={{color: '#6b7280', fontSize: '11px', marginBottom: '16px'}}>Inscription gratuite requise</p>
               <div style={{display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '20px', flex: 1}}>
                 {[
@@ -126,18 +126,18 @@ export default function TarifsClient() {
               <div style={{position: 'absolute', top: '12px', right: '12px', background: '#1a4fba', color: 'white', fontSize: '9px', fontWeight: '700', padding: '3px 8px', borderRadius: '10px', letterSpacing: '0.05em'}}>RECOMMANDÉ</div>
               <p style={{fontSize: '11px', fontWeight: '600', color: 'rgba(255,255,255,0.6)', letterSpacing: '0.08em', margin: 0}}>OPTIMAL PARTICULIER</p>
               <div style={{margin: '10px 0 4px'}}>
-                <span style={{fontSize: '2rem', fontWeight: '700', color: 'white'}}>{annuel ? '12,42 €' : '17,90 €'}</span>
+                <span style={{fontSize: '2rem', fontWeight: '700', color: 'white'}}>{annuel ? '12,42 €' : '17,90 €'}</span>
                 <span style={{color: 'rgba(255,255,255,0.6)', fontSize: '12px', marginLeft: '4px'}}>/mois</span>
               </div>
               <p style={{color: 'rgba(255,255,255,0.6)', fontSize: '11px', marginBottom: '16px'}}>
-                {annuel ? '149 €/an · 3 mois offerts' : 'Sans engagement · résiliation 30 j'}
+                {annuel ? '149 €/an · 3 mois offerts' : 'Sans engagement · résiliation 30 j'}
               </p>
               <div style={{display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '20px', flex: 1}}>
                 {[
                   "Bibliothèque complète de documents DOCX",
                   'Notices et fiches pédagogiques',
                   '1 question juriste/mois · non cumulable',
-                  '14,90 € par question supplémentaire',
+                  '14,90 € par question supplémentaire',
                   'Newsletter abonnés',
                   'Support prioritaire par mail',
                 ].map((item, i) => (
@@ -155,18 +155,18 @@ export default function TarifsClient() {
               <div style={{position: 'absolute', top: '12px', right: '12px', background: '#b8860b', color: 'white', fontSize: '9px', fontWeight: '700', padding: '3px 8px', borderRadius: '10px', letterSpacing: '0.05em'}}>PRO</div>
               <p style={{fontSize: '11px', fontWeight: '600', color: '#0f2d6e', letterSpacing: '0.08em', margin: 0}}>OPTIMAL PRO</p>
               <div style={{margin: '10px 0 4px'}}>
-                <span style={{fontSize: '2rem', fontWeight: '700', color: '#0f2d6e'}}>{annuel ? '20,75 €' : '27,90 €'}</span>
+                <span style={{fontSize: '2rem', fontWeight: '700', color: '#0f2d6e'}}>{annuel ? '20,75 €' : '27,90 €'}</span>
                 <span style={{color: '#6b7280', fontSize: '12px', marginLeft: '4px'}}>/mois</span>
               </div>
               <p style={{color: '#6b7280', fontSize: '11px', marginBottom: '16px'}}>
-                {annuel ? '249 €/an · 3 mois offerts' : 'Sans engagement · résiliation 30 j'}
+                {annuel ? '249 €/an · 3 mois offerts' : 'Sans engagement · résiliation 30 j'}
               </p>
               <div style={{display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '20px', flex: 1}}>
                 {[
                   "Bibliothèque complète de documents DOCX",
                   'Notices et fiches pédagogiques',
                   '2 questions juriste/mois · non cumulables',
-                  '14,90 € par question supplémentaire',
+                  '14,90 € par question supplémentaire',
                   'Alertes légales événementielles',
                   'Support prioritaire par mail',
                 ].map((item, i) => (
@@ -182,7 +182,7 @@ export default function TarifsClient() {
             {/* INFORMATION SUR VOS DROITS */}
             <div style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '14px', padding: '1.5rem', display: 'flex', flexDirection: 'column'}}>
               <p style={{fontSize: '11px', fontWeight: '600', color: '#6b7280', letterSpacing: '0.08em', margin: 0}}>INFORMATION SUR VOS DROITS</p>
-              <div style={{margin: '10px 0 4px'}}><span style={{fontSize: '2rem', fontWeight: '700', color: '#0f2d6e'}}>47 €</span></div>
+              <div style={{margin: '10px 0 4px'}}><span style={{fontSize: '2rem', fontWeight: '700', color: '#0f2d6e'}}>47 €</span></div>
               <p style={{color: '#6b7280', fontSize: '11px', marginBottom: '8px'}}>À l'unité · sans abonnement</p>
               <p style={{color: '#9ca3af', fontSize: '10px', marginBottom: '16px', lineHeight: '1.6', fontStyle: 'italic'}}>Information juridique au sens de la loi n°71-1130 du 31 décembre 1971. Ne constitue pas une consultation juridique personnalisée.</p>
               <div style={{display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '16px', flex: 1}}>
@@ -199,7 +199,7 @@ export default function TarifsClient() {
               </div>
               <div style={{background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '8px', padding: '8px 10px', marginBottom: '16px'}}>
                 <p style={{color: '#1e3a5f', fontSize: '10px', lineHeight: '1.6', margin: 0}}>
-                  Abonnés Optimal : 14,90 € par question supplémentaire (au lieu de 47 €).
+                  Abonnés Optimal : 14,90 € par question supplémentaire (au lieu de 47 €).
                 </p>
               </div>
               <a href="/information-sur-vos-droits" style={{display: 'block', width: '100%', padding: '10px', borderRadius: '8px', background: '#1a4fba', color: 'white', fontSize: '12px', fontWeight: '600', cursor: 'pointer', textDecoration: 'none', textAlign: 'center', boxSizing: 'border-box'}}>Poser ma question</a>
@@ -227,10 +227,10 @@ export default function TarifsClient() {
               <div style={{display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '24px', flexWrap: 'wrap'}}>
                 <div style={{flex: 1, background: 'rgba(255,255,255,0.1)', borderRadius: '10px', padding: '12px 16px'}}>
                   <p style={{color: 'rgba(255,255,255,0.6)', fontSize: '11px', lineHeight: '1.7', margin: 0}}>
-                    Frais indépendants de nos services, réglés directement auprès des organismes concernés : greffe (gratuit pour la micro-entreprise, entre 55 et 80 € pour les sociétés) et journal d'annonces légales (entre 130 et 250 € HT selon la forme juridique et le département), tarifs 2026.
+                    Frais indépendants de nos services, réglés directement auprès des organismes concernés : greffe (gratuit pour la micro-entreprise, entre 55 et 80 € pour les sociétés) et journal d'annonces légales (entre 130 et 250 € HT selon la forme juridique et le département), tarifs 2026.
                   </p>
                   <p style={{color: 'rgba(255,255,255,0.6)', fontSize: '11px', lineHeight: '1.7', margin: '8px 0 0'}}>
-                    Conseil en assurances professionnelles (RC Pro, multirisques) : forfait conseil 150 € — individualisé, documenté et motivé (art. L.521-4 Code des assurances / DDA). Commission assureur séparée, communiquée avant souscription.
+                    Conseil en assurances professionnelles (RC Pro, multirisques) : forfait conseil 150 € — individualisé, documenté et motivé (art. L.521-4 Code des assurances / DDA). Commission assureur séparée, communiquée avant souscription.
                   </p>
                 </div>
               </div>
@@ -269,7 +269,7 @@ export default function TarifsClient() {
           {/* NOTE BAS DE PAGE */}
           <div style={{borderTop: '1px solid #e5e7eb', marginTop: '3rem', paddingTop: '1.5rem'}}>
             <p style={{color: '#9ca3af', fontSize: '11px', lineHeight: '1.7', textAlign: 'center', maxWidth: '700px', margin: '0 auto'}}>
-              L'abonnement mensuel (Particulier ou Pro) est sans engagement de durée, résiliable avec 30 jours de préavis. L'abonnement annuel est souscrit pour 12 mois fermes et se renouvelle automatiquement sauf résiliation adressée par écrit au moins 30 jours avant l'échéance. Le tarif mensuel affiché en mode annuel est calculé sur la base du paiement annuel (149 € pour le Particulier, 249 € pour le Pro). Les questions mensuelles incluses sont non cumulables d'un mois sur l'autre.
+              L'abonnement mensuel (Particulier ou Pro) est sans engagement de durée, résiliable avec 30 jours de préavis. L'abonnement annuel est souscrit pour 12 mois fermes et se renouvelle automatiquement sauf résiliation adressée par écrit au moins 30 jours avant l'échéance. Le tarif mensuel affiché en mode annuel est calculé sur la base du paiement annuel (149 € pour le Particulier, 249 € pour le Pro). Les questions mensuelles incluses sont non cumulables d'un mois sur l'autre.
             </p>
           </div>
 

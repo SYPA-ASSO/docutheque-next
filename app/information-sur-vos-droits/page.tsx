@@ -4,7 +4,7 @@ import { ChevronRight, FileText, Clock, CheckCircle, MessageSquare, Send, Shield
 
 export const metadata = {
   title: "Information sur vos droits · Posez votre question à un juriste · Cabinet Cholez-Pagotto",
-  description: "Un juriste vous répond par écrit sous 24 à 48h. Service d'information juridique accessible à tous : droit du travail, logement, consommation, assurances, création d'entreprise. 47 € à l'unité, sans abonnement.",
+  description: "Un juriste vous répond par écrit sous 24 à 48h. Service d'information juridique accessible à tous : droit du travail, logement, consommation, assurances, création d'entreprise. 47 € à l'unité, sans abonnement.",
 }
 
 const schema = {
@@ -60,7 +60,7 @@ const schema = {
           "name": "Quelle est la différence avec l'Abonnement Optimal ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "L'Abonnement Optimal inclut une question mensuelle au tarif préférentiel de 14,90 € pour les questions supplémentaires, plus l'accès à toute la bibliothèque de documents juridiques. Si vous posez régulièrement des questions, l'abonnement devient plus économique dès la deuxième question mensuelle."
+            "text": "L'Abonnement Optimal inclut une question mensuelle au tarif préférentiel de 14,90 € pour les questions supplémentaires, plus l'accès à toute la bibliothèque de documents juridiques. Si vous posez régulièrement des questions, l'abonnement devient plus économique dès la deuxième question mensuelle."
           }
         },
         {
@@ -167,7 +167,7 @@ const faqs = [
   },
   {
     q: "Quelle est la différence avec l'Abonnement Optimal ?",
-    a: "L'Abonnement Optimal inclut une question mensuelle, plus l'accès à toute la bibliothèque de documents juridiques (DOCX). Les questions supplémentaires sont à 14,90 € pour les abonnés au lieu de 47 €. Si vous posez régulièrement des questions, l'abonnement devient plus économique dès la deuxième question mensuelle."
+    a: "L'Abonnement Optimal inclut une question mensuelle, plus l'accès à toute la bibliothèque de documents juridiques (DOCX). Les questions supplémentaires sont à 14,90 € pour les abonnés au lieu de 47 €. Si vous posez régulièrement des questions, l'abonnement devient plus économique dès la deuxième question mensuelle."
   },
   {
     q: "Ma question est-elle confidentielle ?",
@@ -205,12 +205,12 @@ export default function InformationDroits() {
               <h1 style={{color: 'white', fontSize: '2rem', fontWeight: '700', margin: '0 0 16px', lineHeight: '1.3'}}>
                 Comprenez vos droits.<br />Un juriste vous répond.
               </h1>
-              <p style={{color: 'rgba(255,255,255,0.85)', fontSize: '1rem', lineHeight: '1.8', margin: '0 0 24px', maxWidth: '520px'}}>
+              <p style={{color: 'rgba(255,255,255,0.85)', fontSize: '1rem', lineHeight: '1.8', margin: '0 0 24px'}}>
                 Vous avez une question juridique et vous ne savez pas quels sont vos droits ? Un juriste identifie les règles et textes applicables à votre situation et vous apporte une réponse pédagogique, rédigée en langage clair, sous 24 à 48h ouvrées.
               </p>
               <div style={{display: 'flex', gap: '12px', flexWrap: 'wrap', alignItems: 'center'}}>
                 <a href="/connexion" style={{display: 'inline-block', background: 'white', color: '#0f2d6e', padding: '13px 28px', borderRadius: '8px', fontSize: '14px', fontWeight: '700', textDecoration: 'none'}}>
-                  Poser ma question · 47 €
+                  Poser ma question · 47 €
                 </a>
                 <a href="/tarifs" style={{display: 'inline-block', background: 'transparent', color: 'white', border: '1px solid rgba(255,255,255,0.5)', padding: '13px 24px', borderRadius: '8px', fontSize: '13px', fontWeight: '600', textDecoration: 'none'}}>
                   Voir l'Abonnement Optimal
@@ -375,7 +375,7 @@ export default function InformationDroits() {
               </p>
               <div style={{display: 'flex', gap: '20px', flexWrap: 'wrap'}}>
                 <div style={{background: 'rgba(255,255,255,0.1)', borderRadius: '10px', padding: '14px 20px', textAlign: 'center'}}>
-                  <p style={{color: 'white', fontSize: '1.8rem', fontWeight: '700', margin: 0}}>47 €</p>
+                  <p style={{color: 'white', fontSize: '1.8rem', fontWeight: '700', margin: 0}}>47 €</p>
                   <p style={{color: 'rgba(255,255,255,0.7)', fontSize: '12px', margin: 0}}>À l'unité · sans abonnement</p>
                 </div>
                 <div style={{background: 'rgba(255,255,255,0.1)', borderRadius: '10px', padding: '14px 20px', textAlign: 'center'}}>
@@ -390,7 +390,7 @@ export default function InformationDroits() {
             </div>
             <div style={{flex: '0 0 260px', display: 'flex', flexDirection: 'column', gap: '12px'}}>
               <a href="/connexion" style={{display: 'block', background: 'white', color: '#0f2d6e', padding: '14px', borderRadius: '8px', fontSize: '14px', fontWeight: '700', textDecoration: 'none', textAlign: 'center'}}>
-                Poser ma question · 47 €
+                Poser ma question · 47 €
               </a>
               <a href="/tarifs" style={{display: 'block', background: 'transparent', color: 'white', border: '1px solid rgba(255,255,255,0.4)', padding: '12px', borderRadius: '8px', fontSize: '13px', fontWeight: '600', textDecoration: 'none', textAlign: 'center'}}>
                 Voir l'Abonnement Optimal

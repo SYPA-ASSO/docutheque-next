@@ -103,7 +103,7 @@ const schemaData = {
           "name": "Le conseil en assurances couvre-t-il les associations et structures ESS ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Oui. Le cabinet accompagne les associations loi 1901, les fondations, les coopératives et les structures ESS dans leur stratégie assurantielle. Les besoins des structures associatives sont spécifiques : responsabilité civile des dirigeants, protection des bénévoles, multirisques des locaux, assurance des manifestations et événements, assurance des véhicules associatifs, prévoyance des salariés. Le forfait est de 150 € pour les professionnels et associations."
+            "text": "Oui. Le cabinet accompagne les associations loi 1901, les fondations, les coopératives et les structures ESS dans leur stratégie assurantielle. Les besoins des structures associatives sont spécifiques : responsabilité civile des dirigeants, protection des bénévoles, multirisques des locaux, assurance des manifestations et événements, assurance des véhicules associatifs, prévoyance des salariés. Le forfait est de 150 € pour les professionnels et associations."
           }
         }
       ]
@@ -153,7 +153,7 @@ const etapes = [
   {
     numero: "02",
     titre: "Règlement du forfait conseil",
-    description: "Le forfait conseil (90 € pour les particuliers, 150 € pour les professionnels et associations) est réglé en ligne. Ce paiement préalable garantit l'objectivité du rapport, indépendamment de toute souscription ultérieure.",
+    description: "Le forfait conseil (90 € pour les particuliers, 150 € pour les professionnels et associations) est réglé en ligne. Ce paiement préalable garantit l'objectivité du rapport, indépendamment de toute souscription ultérieure.",
     icone: <Euro size={22} strokeWidth={1.5} />
   },
   {
@@ -199,7 +199,7 @@ const faqs = [
   },
   {
     question: "Le conseil couvre-t-il les associations et structures ESS ?",
-    reponse: "Oui. Le cabinet accompagne les associations loi 1901, fondations, coopératives et structures ESS. Les besoins associatifs sont spécifiques : RC des dirigeants, protection des bénévoles, multirisques des locaux, assurance des manifestations, prévoyance collective. Le forfait est de 150 € pour les professionnels et associations."
+    reponse: "Oui. Le cabinet accompagne les associations loi 1901, fondations, coopératives et structures ESS. Les besoins associatifs sont spécifiques : RC des dirigeants, protection des bénévoles, multirisques des locaux, assurance des manifestations, prévoyance collective. Le forfait est de 150 € pour les professionnels et associations."
   }
 ]
 
@@ -232,7 +232,7 @@ export default function ConseilAssurancesPage() {
       <main style={{ background: '#f8fafc', minHeight: '80vh' }}>
 
         {/* HERO */}
-        <section style={{ background: 'linear-gradient(135deg, #78350f 0%, #b45309 60%, #d97706 100%)', padding: '4rem 1.5rem 3.5rem', color: 'white' }}>
+        <section style={{ background: 'linear-gradient(135deg, #064e3b 0%, #065f46 60%, #047857 100%)', padding: '4rem 1.5rem 3.5rem', color: 'white' }}>
           <div style={{ maxWidth: 1100, margin: '0 auto' }}>
 
             <div style={{ marginBottom: '1.2rem', display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
@@ -248,16 +248,16 @@ export default function ConseilAssurancesPage() {
               Un conseil en assurances<br />
               documenté, motivé et conforme DDA
             </h1>
-            <p style={{ fontSize: '1.1rem', color: 'rgba(255,255,255,0.88)', maxWidth: 620, marginBottom: '1.5rem', lineHeight: 1.7 }}>
+            <p style={{ fontSize: '1.1rem', color: 'rgba(255,255,255,0.88)', marginBottom: '1.5rem', lineHeight: 1.7 }}>
               Particuliers, professionnels et associations. Audit de vos contrats existants,
               comparaison des offres du marché, rapport de conseil écrit.
-              Forfait conseil 90 € (particuliers) · 150 € (professionnels et associations).
+              Forfait conseil 90 € (particuliers) · 150 € (professionnels et associations).
             </p>
 
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', alignItems: 'center' }}>
               <a href="/contact" style={{
                 display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
-                background: 'white', color: '#b45309', textDecoration: 'none',
+                background: 'white', color: '#065f46', textDecoration: 'none',
                 padding: '13px 28px', borderRadius: 8, fontWeight: 700, fontSize: '0.95rem'
               }}>
                 Demander un conseil <ArrowRight size={18} />
@@ -276,7 +276,7 @@ export default function ConseilAssurancesPage() {
                 { valeur: "Multimarque", label: "Aucun lien exclusif assureur" }
               ].map((s, i) => (
                 <div key={i}>
-                  <div style={{ fontSize: '1rem', fontWeight: 800, color: '#fde68a' }}>{s.valeur}</div>
+                  <div style={{ fontSize: '1rem', fontWeight: 800, color: '#a7f3d0' }}>{s.valeur}</div>
                   <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.75)', marginTop: 2 }}>{s.label}</div>
                 </div>
               ))}
@@ -285,12 +285,12 @@ export default function ConseilAssurancesPage() {
         </section>
 
         {/* ENCART RÉGLEMENTAIRE */}
-        <div style={{ background: '#fffbeb', borderBottom: '1px solid #fde68a', padding: '0.75rem 1.5rem' }}>
+        <div style={{ background: '#ecfdf5', borderBottom: '1px solid #a7f3d0', padding: '0.75rem 1.5rem' }}>
           <div style={{ maxWidth: 1100, margin: '0 auto', display: 'flex', alignItems: 'flex-start', gap: '0.75rem' }}>
-            <Info size={16} strokeWidth={1.5} style={{ color: '#b45309', marginTop: 2, flexShrink: 0 }} />
-            <p style={{ fontSize: 12, color: '#78350f', lineHeight: 1.6, margin: 0 }}>
+            <Info size={16} strokeWidth={1.5} style={{ color: '#065f46', marginTop: 2, flexShrink: 0 }} />
+            <p style={{ fontSize: 12, color: '#064e3b', lineHeight: 1.6, margin: 0 }}>
               Le cabinet est enregistré à l'ORIAS sous le numéro <strong>26003943</strong>. Conformément à l'article L.521-4 du Code des assurances (devoir de conseil DDA) et à la recommandation ACPR 2024-R-01, le conseil est individualisé, documenté et motivé. Le forfait est dû avant remise du rapport, indépendamment de toute souscription. En cas de souscription via le cabinet, une commission assureur s'ajoute, séparée du forfait, communiquée avant souscription (art. L.521-2 Code des assurances).
-              Immatriculation vérifiable sur <a href="https://www.orias.fr" target="_blank" rel="noopener noreferrer" style={{ color: '#b45309' }}>www.orias.fr</a>.
+              Immatriculation vérifiable sur <a href="https://www.orias.fr" target="_blank" rel="noopener noreferrer" style={{ color: '#065f46' }}>www.orias.fr</a>.
             </p>
           </div>
         </div>
@@ -310,11 +310,11 @@ export default function ConseilAssurancesPage() {
               {[
                 {
                   titre: "Particulier",
-                  tarif: "90 €",
+                  tarif: "90 €",
                   unite: "forfait conseil",
                   cible: "Personnes physiques, usage personnel",
-                  couleur: "#b45309",
-                  border: "#fde68a",
+                  couleur: "#065f46",
+                  border: "#a7f3d0",
                   inclus: [
                     "Formulaire de recueil horodaté (archivé espace client)",
                     "Audit de vos contrats existants",
@@ -326,7 +326,7 @@ export default function ConseilAssurancesPage() {
                 },
                 {
                   titre: "Professionnel · Association",
-                  tarif: "150 €",
+                  tarif: "150 €",
                   unite: "forfait conseil",
                   cible: "Entreprises, associations, structures ESS",
                   couleur: "#0f2d6e",
@@ -391,7 +391,7 @@ export default function ConseilAssurancesPage() {
                 <button
                   key={p.key}
                   onClick={() => setProfil(p.key as 'particulier' | 'pro')}
-                  style={{ padding: '8px 18px', borderRadius: 20, border: profil === p.key ? 'none' : '1px solid #e5e7eb', background: profil === p.key ? '#b45309' : 'white', color: profil === p.key ? 'white' : '#374151', fontSize: 13, fontWeight: 600, cursor: 'pointer' }}
+                  style={{ padding: '8px 18px', borderRadius: 20, border: profil === p.key ? 'none' : '1px solid #e5e7eb', background: profil === p.key ? '#065f46' : 'white', color: profil === p.key ? 'white' : '#374151', fontSize: 13, fontWeight: 600, cursor: 'pointer' }}
                 >
                   {p.label}
                 </button>
@@ -400,7 +400,7 @@ export default function ConseilAssurancesPage() {
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1rem' }}>
               {(profil === 'particulier' ? produitsParticuliers : produitsProAssoc).map((produit, i) => (
-                <div key={i} style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: 12, padding: '1.25rem', borderLeft: '4px solid #b45309' }}>
+                <div key={i} style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: 12, padding: '1.25rem', borderLeft: '4px solid #065f46' }}>
                   <p style={{ color: '#0f2d6e', fontSize: '0.875rem', fontWeight: 700, margin: '0 0 6px' }}>{produit.nom}</p>
                   <p style={{ color: '#6b7280', fontSize: 12, lineHeight: 1.6, margin: 0 }}>{produit.desc}</p>
                 </div>
@@ -420,10 +420,10 @@ export default function ConseilAssurancesPage() {
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.2rem' }}>
               {etapes.map((etape, i) => (
                 <div key={i} style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: 12, padding: '1.5rem', position: 'relative', overflow: 'hidden' }}>
-                  <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 4, background: i % 2 === 0 ? '#b45309' : '#d97706' }} />
+                  <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 4, background: i % 2 === 0 ? '#065f46' : '#047857' }} />
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.75rem' }}>
                     <span style={{ fontSize: '1.4rem', fontWeight: 800, color: '#e5e7eb', lineHeight: 1 }}>{etape.numero}</span>
-                    <div style={{ color: '#b45309' }}>{etape.icone}</div>
+                    <div style={{ color: '#065f46' }}>{etape.icone}</div>
                   </div>
                   <h3 style={{ fontSize: '0.95rem', fontWeight: 700, color: '#0f2d6e', marginBottom: '0.5rem' }}>{etape.titre}</h3>
                   <p style={{ fontSize: 13, color: '#6b7280', lineHeight: 1.6, margin: 0 }}>{etape.description}</p>
@@ -433,10 +433,10 @@ export default function ConseilAssurancesPage() {
           </section>
 
           {/* POURQUOI UN CONSEIL DOCUMENTÉ */}
-          <section style={{ background: '#fffbeb', border: '1px solid #fde68a', borderRadius: 12, padding: '1.75rem', marginBottom: '3.5rem' }}>
+          <section style={{ background: '#ecfdf5', border: '1px solid #a7f3d0', borderRadius: 12, padding: '1.75rem', marginBottom: '3.5rem' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-              <AlertCircle size={20} strokeWidth={1.5} style={{ color: '#b45309' }} />
-              <h2 style={{ fontSize: '1.2rem', fontWeight: 700, color: '#92400e', margin: 0 }}>
+              <AlertCircle size={20} strokeWidth={1.5} style={{ color: '#065f46' }} />
+              <h2 style={{ fontSize: '1.2rem', fontWeight: 700, color: '#064e3b', margin: 0 }}>
                 Pourquoi le conseil en assurances doit-il être documenté ?
               </h2>
             </div>
@@ -459,19 +459,19 @@ export default function ConseilAssurancesPage() {
                   texte: "Le formulaire de recueil, le rapport de conseil et le justificatif de paiement sont archivés dans votre espace client Docuthèque. Vous y accédez à tout moment."
                 }
               ].map((item, i) => (
-                <div key={i} style={{ background: 'white', borderRadius: 8, padding: '1rem', border: '1px solid #fde68a' }}>
-                  <p style={{ color: '#92400e', fontSize: '0.8rem', fontWeight: 700, margin: '0 0 6px' }}>{item.titre}</p>
-                  <p style={{ color: '#78350f', fontSize: 12, lineHeight: 1.6, margin: 0 }}>{item.texte}</p>
+                <div key={i} style={{ background: 'white', borderRadius: 8, padding: '1rem', border: '1px solid #a7f3d0' }}>
+                  <p style={{ color: '#064e3b', fontSize: '0.8rem', fontWeight: 700, margin: '0 0 6px' }}>{item.titre}</p>
+                  <p style={{ color: '#064e3b', fontSize: 12, lineHeight: 1.6, margin: 0 }}>{item.texte}</p>
                 </div>
               ))}
             </div>
           </section>
 
           {/* CTA INTERMÉDIAIRE */}
-          <section style={{ background: 'linear-gradient(135deg, #78350f 0%, #b45309 100%)', borderRadius: 16, padding: '2.5rem 2rem', marginBottom: '3.5rem', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '1.5rem', color: 'white' }}>
+          <section style={{ background: 'linear-gradient(135deg, #064e3b 0%, #065f46 100%)', borderRadius: 16, padding: '2.5rem 2rem', marginBottom: '3.5rem', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '1.5rem', color: 'white' }}>
             <div>
-              <div style={{ fontSize: 12, fontWeight: 600, color: '#fde68a', marginBottom: '0.4rem', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
-                Forfait 90 € · 150 €
+              <div style={{ fontSize: 12, fontWeight: 600, color: '#a7f3d0', marginBottom: '0.4rem', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+                Forfait 90 € · 150 €
               </div>
               <h2 style={{ fontSize: '1.3rem', fontWeight: 700, margin: '0 0 0.5rem' }}>
                 Vous souhaitez un conseil en assurances ?
@@ -480,7 +480,7 @@ export default function ConseilAssurancesPage() {
                 Décrivez votre situation. Notre conseiller analyse vos besoins et compare les offres du marché.
               </p>
             </div>
-            <a href="/contact" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: 'white', color: '#b45309', textDecoration: 'none', padding: '13px 28px', borderRadius: 8, fontWeight: 700, fontSize: '0.95rem', whiteSpace: 'nowrap' }}>
+            <a href="/contact" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: 'white', color: '#065f46', textDecoration: 'none', padding: '13px 28px', borderRadius: 8, fontWeight: 700, fontSize: '0.95rem', whiteSpace: 'nowrap' }}>
               Contacter le cabinet <ArrowRight size={18} />
             </a>
           </section>
@@ -502,7 +502,7 @@ export default function ConseilAssurancesPage() {
                     style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '1.1rem 1.5rem', background: 'none', border: 'none', cursor: 'pointer', textAlign: 'left', gap: '1rem' }}
                   >
                     <span style={{ fontSize: '0.9rem', fontWeight: 600, color: '#0f2d6e', lineHeight: 1.4 }}>{faq.question}</span>
-                    <ChevronDown size={18} strokeWidth={2} style={{ color: '#b45309', flexShrink: 0, transform: faqOuverte === i ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.2s' }} />
+                    <ChevronDown size={18} strokeWidth={2} style={{ color: '#065f46', flexShrink: 0, transform: faqOuverte === i ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.2s' }} />
                   </button>
                   {faqOuverte === i && (
                     <div style={{ padding: '0 1.5rem 1.1rem', fontSize: 13, color: '#374151', lineHeight: 1.7, borderTop: '1px solid #f3f4f6' }}>
@@ -519,12 +519,12 @@ export default function ConseilAssurancesPage() {
             <img
               src="https://secure.gravatar.com/avatar/6c4917275b124957f449a0eb107866858eaaf8ab6f17ccc1d2262120d3c04478?s=80"
               alt="François Cholez, conseil en assurances ORIAS 26003943"
-              style={{ width: 80, height: 80, borderRadius: '50%', border: '3px solid #fffbeb', flexShrink: 0 }}
+              style={{ width: 80, height: 80, borderRadius: '50%', border: '3px solid #ecfdf5', flexShrink: 0 }}
             />
             <div>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '0.5rem' }}>
                 {['ORIAS 26003943', 'IAS Niveau 1', 'Sous contrôle ACPR', 'Adhérent ENDYA'].map((badge, i) => (
-                  <span key={i} style={{ background: '#fffbeb', color: '#b45309', fontSize: 11, fontWeight: 600, padding: '3px 10px', borderRadius: 20 }}>{badge}</span>
+                  <span key={i} style={{ background: '#ecfdf5', color: '#065f46', fontSize: 11, fontWeight: 600, padding: '3px 10px', borderRadius: 20 }}>{badge}</span>
                 ))}
               </div>
               <h3 style={{ fontSize: '1rem', fontWeight: 700, color: '#0f2d6e', margin: '0 0 0.3rem' }}>François CHOLEZ</h3>
@@ -538,19 +538,19 @@ export default function ConseilAssurancesPage() {
           </section>
 
           {/* CTA FINAL */}
-          <section style={{ background: '#fffbeb', border: '1px solid #fde68a', borderRadius: 12, padding: '2rem', textAlign: 'center' }}>
-            <h2 style={{ fontSize: '1.3rem', fontWeight: 700, color: '#92400e', marginBottom: '0.5rem' }}>
+          <section style={{ background: '#ecfdf5', border: '1px solid #a7f3d0', borderRadius: 12, padding: '2rem', textAlign: 'center' }}>
+            <h2 style={{ fontSize: '1.3rem', fontWeight: 700, color: '#064e3b', marginBottom: '0.5rem' }}>
               Prêt à obtenir un conseil objectif sur vos assurances ?
             </h2>
-            <p style={{ fontSize: 13, color: '#78350f', marginBottom: '1.5rem', maxWidth: 500, margin: '0.5rem auto 1.5rem' }}>
-              Forfait conseil 90 € (particuliers) · 150 € (professionnels et associations).
+            <p style={{ fontSize: 13, color: '#064e3b', marginBottom: '1.5rem', maxWidth: 500, margin: '0.5rem auto 1.5rem' }}>
+              Forfait conseil 90 € (particuliers) · 150 € (professionnels et associations).
               Conseil multimarque, rapport écrit et motivé. ORIAS n°26003943.
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', justifyContent: 'center' }}>
-              <a href="/contact" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: '#b45309', color: 'white', textDecoration: 'none', padding: '13px 28px', borderRadius: 8, fontWeight: 700, fontSize: '0.95rem' }}>
+              <a href="/contact" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: '#065f46', color: 'white', textDecoration: 'none', padding: '13px 28px', borderRadius: 8, fontWeight: 700, fontSize: '0.95rem' }}>
                 Demander un conseil <ArrowRight size={18} />
               </a>
-              <a href="/services" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: 'transparent', color: '#92400e', textDecoration: 'none', padding: '13px 28px', borderRadius: 8, fontWeight: 600, fontSize: '0.95rem', border: '1px solid #b45309' }}>
+              <a href="/services" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: 'transparent', color: '#064e3b', textDecoration: 'none', padding: '13px 28px', borderRadius: 8, fontWeight: 600, fontSize: '0.95rem', border: '1px solid #065f46' }}>
                 Voir tous les services
               </a>
             </div>
