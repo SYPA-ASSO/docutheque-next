@@ -101,37 +101,37 @@ export default function APropos() {
 
           {/* VALEURS ET PHILOSOPHIE */}
           <section style={{ marginBottom: '2rem' }}>
-            <h2 style={{ color: '#0f2d6e', fontSize: '1.2rem', fontWeight: '700', margin: '0 0 1.25rem' }}>Notre philosophie</h2>
+            <h2 style={{ color: '#0f2d6e', fontSize: '1.2rem', fontWeight: '700', margin: '0 0 1.25rem' }}>Nos valeurs</h2>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '16px' }}>
               {[
                 {
                   titre: 'Le droit, simplement expliqué',
-                  desc: "Le droit régit chaque aspect de la vie des personnes et des organisations. Pourtant, il reste largement inaccessible à ceux qui en ont le plus besoin. Notre conviction : l'information juridique de qualité ne devrait pas être réservée à ceux qui peuvent s'offrir un avocat. Elle est un outil d'émancipation.",
+                  desc: "L'information juridique de qualité ne devrait pas être réservée à ceux qui peuvent s'offrir un avocat. Tarifs fixes et affichés, création d'entreprise offerte, bibliothèque accessible dès 17,90 €/mois : chaque service est conçu pour lever les barrières d'accès au droit.",
                   couleur: '#0f2d6e',
                 },
                 {
                   titre: 'Humain par choix, pas par défaut',
-                  desc: "À une époque où l'intelligence artificielle s'infiltre dans tous les secteurs, nous faisons un choix assumé : chaque réponse, chaque document, chaque conseil est produit par un être humain qualifié. Pas parce que nous ne connaissons pas l'IA, mais parce que la responsabilité que nous engageons ne peut pas être déléguée à un algorithme.",
+                  desc: "Chaque réponse, chaque document, chaque conseil est produit par un être humain qualifié. Ce n'est pas un parti pris technophobe — c'est la conséquence directe d'une exigence de responsabilité que l'on ne peut pas déléguer à un algorithme.",
                   couleur: '#0f2d6e',
                 },
                 {
                   titre: 'Transparent sur tout',
-                  desc: "Les prix sont affichés avant toute démarche. Les commissions perçues en cas de souscription d'assurance sont communiquées avant souscription. Le périmètre de ce que nous faisons et de ce que nous ne faisons pas est clairement délimité. La confiance se construit sur la clarté, pas sur le vague.",
+                  desc: "Les prix sont affichés avant toute démarche. Les commissions d'assurance sont déclarées avant souscription. Ce que le cabinet fait — et ce qu'il ne fait pas — est clairement délimité. La confiance se construit sur la clarté.",
                   couleur: '#0f2d6e',
                 },
                 {
                   titre: 'Indépendant dans nos recommandations',
-                  desc: "Aucun lien exclusif avec un assureur, aucune affiliation à un réseau qui orienterait nos conseils. Les recommandations que nous formulons reposent exclusivement sur l'analyse des besoins du client et la comparaison objective des offres disponibles sur le marché.",
+                  desc: "Aucun lien exclusif avec un assureur. Aucune affiliation à un réseau qui orienterait nos conseils. Les recommandations reposent uniquement sur l'analyse des besoins et la comparaison objective des offres du marché.",
                   couleur: '#0f2d6e',
                 },
                 {
                   titre: 'Rigoureux dans les fondamentaux',
-                  desc: "Information juridique fondée sur les textes en vigueur. Documents mis à jour à chaque évolution législative. Conseil en assurances conforme à la Directive sur la Distribution d'Assurances. Formalités réalisées selon les exigences des organismes compétents. La rigueur n'est pas une option.",
+                  desc: "Textes en vigueur, références précises, mises à jour à chaque évolution législative. Des réponses fondées sur le droit réel, pas sur des généralités. Rédigées pour être comprises, pas pour impressionner.",
                   couleur: '#0f2d6e',
                 },
                 {
-                  titre: 'Engagé dans l'économie sociale et solidaire',
-                  desc: "Plus de 30 ans d'engagement aux côtés des acteurs associatifs, coopératifs et mutualistes. Le secteur ESS a des besoins juridiques et assurantiels spécifiques, souvent mal servis. Le cabinet en a fait un axe majeur de son activité, pas un marché de niche.",
+                  titre: "Engagé dans l'économie sociale et solidaire",
+                  desc: "Plus de 30 ans d'engagement associatif et coopératif. Co-fondateur d'un fonds de dotation, publications académiques sur l'éducation et le lien social. L'ESS n'est pas un segment commercial pour le cabinet — c'est une conviction.",
                   couleur: '#0f2d6e',
                 },
               ].map((item, i) => (

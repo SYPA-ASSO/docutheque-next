@@ -21,7 +21,7 @@ const schemaData = {
       "@type": "Service",
       "@id": "https://cholez-pagotto.fr/accompagnement-particuliers#service",
       "name": "Accompagnement particuliers - Information juridique et conseil en assurances",
-      "description": "Service d'information juridique pour particuliers au sens de la loi n°71-1130 du 31 décembre 1971. Réponse pédagogique sous 24 à 48h ouvrées. Conseil en assurances gratuit. Bibliothèque de documents téléchargeables.",
+      "description": "Service d'information juridique pour particuliers au sens de la loi n°71-1130 du 31 décembre 1971. Réponse pédagogique sous 24 à 48h ouvrées. Conseil en assurances réglementé ORIAS 26003943. Bibliothèque de documents téléchargeables.",
       "provider": {
         "@type": "LegalService",
         "@id": "https://cholez-pagotto.fr/#cabinet",
@@ -55,9 +55,9 @@ const schemaData = {
         {
           "@type": "Offer",
           "name": "Conseil en assurances",
-          "price": "0",
+          "price": "90",
           "priceCurrency": "EUR",
-          "description": "Forfait conseil 90 € HT, individualisé, documenté et motivé (art. L.521-4 Code des assurances / DDA). Commission assureur éventuelle séparée, communiquée avant souscription."
+          "description": "Forfait conseil 90 €, individualisé, documenté et motivé (art. L.521-4 Code des assurances / DDA). Commission assureur éventuelle séparée, communiquée avant souscription."
         }
       ],
       "url": "https://cholez-pagotto.fr/accompagnement-particuliers"
@@ -84,10 +84,10 @@ const schemaData = {
         },
         {
           "@type": "Question",
-          "name": "Le conseil en assurances est-il vraiment gratuit ?",
+          "name": "Comment fonctionne le forfait conseil en assurances ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Le cabinet Cholez-Pagotto ne perçoit pas d'honoraires directs pour le conseil en assurances. Sa rémunération prend la forme de commissions versées par les assureurs dont vous souscrivez les produits. Ces commissions sont incluses dans la prime d'assurance et vous sont communiquées avant toute souscription, conformément à l'article L.521-2 du Code des assurances et à la Directive sur la Distribution d'Assurances (DDA). François Cholez est enregistré à l'ORIAS sous le numéro 26003943, catégorie IAS Niveau 1."
+            "text": "Le cabinet est enregistré à l'ORIAS sous le numéro 26003943. Conformément à l'article L.521-4 du Code des assurances (devoir de conseil DDA), le conseil est individualisé, documenté et motivé. Un forfait de 90 € est dû avant la remise du rapport, indépendamment de toute souscription. En cas de souscription via le cabinet, une commission versée par l'assureur s'y ajoute, séparée du forfait, communiquée avant souscription (art. L.521-2 Code des assurances)."
           }
         },
         {
@@ -248,7 +248,7 @@ const offres = [
   {
     titre: "Conseil en assurances",
     tarif: "90 €",
-    unite: "HT · forfait conseil",
+    unite: "forfait conseil",
     couleur: "#16a34a",
     fond: "#f0fdf4",
     border: "#bbf7d0",
@@ -258,10 +258,10 @@ const offres = [
       "Formulaire de recueil en ligne (horodaté, archivé dans votre espace client)",
       "Audit de vos contrats existants",
       "Comparaison des offres du marché adaptées à votre situation",
-      "Rapport de conseil écrit et motivé sous 24 à 48h ouvrées",
+      "Rapport de conseil écrit et motivé",
       "Archivage complet dans votre espace client (formulaire + facture + rapport)"
     ],
-    cta: "/contact",
+    cta: "/conseil-assurances",
     ctaLabel: "Demander un conseil"
   }
 ]
@@ -281,7 +281,7 @@ const faqs = [
   },
   {
     question: "Comment fonctionne le forfait conseil en assurances ?",
-    reponse: "Conformément à l'article L.521-4 du Code des assurances (devoir de conseil DDA), notre conseil est individualisé, documenté et motivé. Un forfait de 90 € HT est dû avant la remise du rapport de conseil, indépendamment de toute souscription. En cas de souscription d'un contrat via le cabinet, celui-ci perçoit en complément une commission versée par l'assureur — séparée du forfait, dont le montant vous est communiqué avant toute souscription conformément à l'article L.521-2 du Code des assurances et à la recommandation ACPR 2024-R-01 relative à la rémunération et aux conflits d'intérêts. François CHOLEZ est enregistré à l'ORIAS sous le numéro 26003943, catégorie IAS Niveau 1, sous contrôle de l'ACPR."
+    reponse: "Conformément à l'article L.521-4 du Code des assurances (devoir de conseil DDA), notre conseil est individualisé, documenté et motivé. Un forfait de 90 € est dû avant la remise du rapport de conseil, indépendamment de toute souscription. En cas de souscription d'un contrat via le cabinet, celui-ci perçoit en complément une commission versée par l'assureur — séparée du forfait, dont le montant vous est communiqué avant toute souscription conformément à l'article L.521-2 du Code des assurances et à la recommandation ACPR 2024-R-01. Le cabinet est enregistré à l'ORIAS sous le numéro 26003943, catégorie IAS Niveau 1, sous contrôle de l'ACPR."
   },
   {
     question: "Qu'est-ce que l'abonnement Optimal ?",
@@ -336,7 +336,7 @@ export default function AccompagnementParticuliersPage() {
               prenez vos décisions en toute connaissance de cause
             </h1>
             <p style={{ fontSize: '1.1rem', color: 'rgba(255,255,255,0.88)', maxWidth: 620, marginBottom: '1.5rem', lineHeight: 1.7 }}>
-              Information juridique sur vos droits (47 euros), forfait conseil en assurances 90 € HT (art. L.521-4 Code des assurances),
+              Information juridique sur vos droits (47 euros), forfait conseil en assurances 90 € (art. L.521-4 Code des assurances),
               bibliothèque de documents téléchargeables. Notre juriste répond sous 24 à 48h ouvrées.
             </p>
 
@@ -567,13 +567,16 @@ export default function AccompagnementParticuliersPage() {
               </h2>
             </div>
             <p style={{ fontSize: 13, color: '#78350f', lineHeight: 1.7, marginBottom: '1rem' }}>
-              François CHOLEZ est enregistré à l'ORIAS sous le numéro{' '}
-              <strong>26003943</strong>, catégorie <strong>IAS Niveau 1</strong>
-              (Intermédiaire en Assurances), sous contrôle de l'<strong>ACPR</strong>{' '}
-              (Autorité de Contrôle Prudentiel et de Résolution), adhérent <strong>ENDYA</strong>.
-              Conformément à l'article L.521-4 du Code des assurances (devoir de conseil DDA) et à la recommandation ACPR 2024-R-01 relative à la rémunération et aux conflits d'intérêts, le conseil est individualisé, documenté et motivé.
-              Le forfait de <strong>90 € HT</strong> est dû avant remise du rapport, indépendamment de toute souscription.
-              En cas de souscription via le cabinet, une commission versée par l'assureur s'y ajoute — séparée du forfait, communiquée avant souscription conformément à l'article L.521-2 du Code des assurances.
+              François CHOLEZ exerce le conseil en assurances dans un cadre réglementé : intermédiaire en assurances
+              immatriculé à l'ORIAS sous le numéro <strong>26003943</strong>, sous contrôle de l'Autorité de Contrôle
+              Prudentiel et de Résolution (<strong>ACPR</strong>). Cette immatriculation garantit le respect d'obligations
+              professionnelles strictes : formation continue, capacité professionnelle vérifiée, responsabilité civile
+              professionnelle et garantie financière. Membre de l'association d'autorégulation <strong>ENDYA</strong>.
+              Conformément à l'article L.521-4 du Code des assurances (devoir de conseil DDA) et à la recommandation
+              ACPR 2024-R-01, le conseil est individualisé, documenté et motivé.
+              Le forfait de <strong>90 €</strong> est dû avant remise du rapport, indépendamment de toute souscription.
+              En cas de souscription via le cabinet, une commission versée par l'assureur s'y ajoute — séparée du forfait,
+              communiquée avant souscription conformément à l'article L.521-2 du Code des assurances.
             </p>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '0.75rem', marginBottom: '1rem' }}>
               {["RC Pro", "Multirisques habitation", "Assurance vie", "Prévoyance", "Complémentaire santé", "Assurance auto"].map((produit, i) => (
@@ -584,7 +587,7 @@ export default function AccompagnementParticuliersPage() {
               ))}
             </div>
             <p style={{ fontSize: 12, color: '#92400e', margin: 0, lineHeight: 1.6 }}>
-              Forfait conseil : <strong>90 € HT</strong>, dû avant remise du rapport, indépendamment de toute souscription. En cas de souscription, commission assureur séparée versée par l'assureur,
+              Forfait conseil : <strong>90 €</strong>, dû avant remise du rapport, indépendamment de toute souscription. En cas de souscription, commission assureur séparée versée par l'assureur,
               dont vous êtes informé avant toute souscription, conformément à l'article L.521-2
               du Code des assurances et à la Directive sur la Distribution d'Assurances (DDA).
               Enregistrement vérifiable sur{' '}
@@ -639,7 +642,7 @@ export default function AccompagnementParticuliersPage() {
               </div>
               <h3 style={{ fontSize: '1rem', fontWeight: 700, color: '#0f2d6e', margin: '0 0 0.3rem' }}>François CHOLEZ</h3>
               <p style={{ fontSize: 13, color: '#6b7280', margin: '0 0 0.4rem', lineHeight: 1.6 }}>
-                Membre du CRFF (Conseil Représentatif des Formalistes de France). Sous contrôle de l'ACPR. Adhérent ENDYA.
+                Membre du CRFF (Conseil Représentatif des Formalistes de France). Intermédiaire en assurances immatriculé à l'ORIAS sous le numéro 26003943, sous contrôle de l'ACPR. Adhérent ENDYA.
               </p>
               <p style={{ fontSize: 13, color: '#6b7280', margin: 0, lineHeight: 1.6 }}>
                 Chercheur associé, contributeur aux ouvrages
@@ -656,7 +659,7 @@ export default function AccompagnementParticuliersPage() {
             </h2>
             <p style={{ fontSize: 13, color: '#374151', marginBottom: '1.5rem', maxWidth: 500, margin: '0.5rem auto 1.5rem' }}>
               47 euros pour une réponse pédagogique et documentée sous 24 à 48h ouvrées.
-              Abonnés Optimal : 14,90 euros par question supplémentaire. Conseil en assurances : forfait 90 € HT.
+              Abonnés Optimal : 14,90 euros par question supplémentaire. Conseil en assurances : forfait 90 €.
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', justifyContent: 'center' }}>
               <a href="/information-sur-vos-droits" style={{

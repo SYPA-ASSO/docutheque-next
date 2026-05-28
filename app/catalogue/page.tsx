@@ -306,7 +306,7 @@ export default function CataloguePage() {
               L'abonnement Optimal
             </h2>
             <p style={{ color: '#6b7280', fontSize: 13, marginBottom: '2rem' }}>
-              Deux formules selon votre profil. Chaque formule est disponible en mensuel sans engagement ou en annuel avec 2 mois offerts.
+              Deux formules selon votre profil. Chaque formule est disponible en mensuel sans engagement ou en annuel avec 3 mois offerts.
             </p>
 
             {/* TOGGLE MENSUEL / ANNUEL */}
@@ -317,7 +317,7 @@ export default function CataloguePage() {
                     onClick={() => setPeriode(p)}
                     style={{ padding: '8px 20px', borderRadius: 8, border: 'none', background: periode === p ? 'white' : 'transparent', color: periode === p ? '#0f2d6e' : '#6b7280', fontSize: 13, fontWeight: periode === p ? 700 : 500, cursor: 'pointer', boxShadow: periode === p ? '0 1px 3px rgba(0,0,0,0.1)' : 'none', transition: 'all 0.15s' }}>
                     {p === 'monthly' ? 'Mensuel' : 'Annuel'}
-                    {p === 'yearly' && <span style={{ marginLeft: 6, background: '#0f2d6e', color: 'white', fontSize: 9, fontWeight: 700, padding: '1px 6px', borderRadius: 10 }}>2 mois offerts</span>}
+                    {p === 'yearly' && <span style={{ marginLeft: 6, background: '#0f2d6e', color: 'white', fontSize: 9, fontWeight: 700, padding: '1px 6px', borderRadius: 10 }}>3 mois offerts</span>}
                   </button>
                 ))}
               </div>

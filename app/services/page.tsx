@@ -23,7 +23,7 @@ const schema = {
         { "@type": "ListItem", "position": 4, "name": "Accompagnement associations & ESS", "url": "https://cholez-pagotto.fr/accompagnement-associations" },
         { "@type": "ListItem", "position": 5, "name": "Accompagnement RGPD & conformité", "url": "https://cholez-pagotto.fr/contact" },
         { "@type": "ListItem", "position": 6, "name": "DPO externalisé", "url": "https://cholez-pagotto.fr/contact" },
-        { "@type": "ListItem", "position": 7, "name": "Conseil en assurances", "url": "https://cholez-pagotto.fr/contact" },
+        { "@type": "ListItem", "position": 7, "name": "Conseil en assurances", "url": "https://cholez-pagotto.fr/conseil-assurances" },
         { "@type": "ListItem", "position": 8, "name": "Formations sur-mesure", "url": "https://cholez-pagotto.fr/contact" },
       ]
     },
@@ -195,9 +195,9 @@ const services = [
     badge: "ORIAS N°26003943",
     icon: <Umbrella size={22} color="#1a4fba" strokeWidth={1.5} />,
     titre: "Conseil en assurances",
-    accroche: "Un courtier immatriculé à l'ORIAS pour vous orienter vers les garanties adaptées à votre situation.",
+    accroche: "Un intermédiaire en assurances réglementé pour vous orienter vers les garanties adaptées à votre situation.",
     pourQui: "Particuliers, associations, entreprises, professions libérales, structures ESS.",
-    description: "Conformément à l'article L.521-4 du Code des assurances (devoir de conseil DDA), le conseil est individualisé, documenté et motivé. Un forfait couvre l'analyse des besoins, l'audit des contrats existants et la comparaison des offres du marché. Il est dû avant remise du rapport, indépendamment de toute souscription. En cas de souscription via le cabinet, une commission versée par l'assureur s'y ajoute — séparée du forfait, communiquée avant souscription conformément à l'article L.521-2 du Code des assurances et à la recommandation ACPR 2024-R-01 (rémunération et conflits d'intérêts). ORIAS n°26003943, sous contrôle de l'ACPR.",
+    description: "Conformément à l'article L.521-4 du Code des assurances (devoir de conseil DDA), le conseil est individualisé, documenté et motivé. Un forfait couvre l'analyse des besoins, l'audit des contrats existants et la comparaison des offres du marché. Il est dû avant remise du rapport, indépendamment de toute souscription. En cas de souscription via le cabinet, une commission versée par l'assureur s'y ajoute, séparée du forfait, communiquée avant souscription conformément à l'article L.521-2 du Code des assurances et à la recommandation ACPR 2024-R-01. ORIAS n°26003943, sous contrôle de l'ACPR.",
     comprend: [
       "Recueil des besoins via formulaire en ligne (horodaté, archivé dans l'espace client)",
       "Audit des contrats existants et identification des lacunes ou doublons",
@@ -207,10 +207,10 @@ const services = [
       "Accompagnement en cas de sinistre ou d'insatisfaction vis-à-vis de l'assureur",
       "Suivi annuel pour les contrats actifs",
     ],
-    tarif: "Forfait conseil : 90 € HT (particuliers) · 150 € HT (professionnels, associations) · Sur devis (structures complexes) · Commissions assureurs séparées, communiquées avant souscription (art. L.521-2 Code des assurances)",
-    lien: "/contact",
+    tarif: "Forfait conseil : 90 € (particuliers) · 150 € (professionnels, associations) · Commissions assureurs séparées, communiquées avant souscription (art. L.521-2 Code des assurances)",
+    lien: "/conseil-assurances",
     disponible: true,
-    cta: "Nous contacter",
+    cta: "En savoir plus",
   },
 ]
 
@@ -243,7 +243,7 @@ export default function Services() {
               Le Cabinet Cholez-Pagotto accompagne particuliers, professionnels, associations et structures ESS dans la compréhension de leurs droits, la sécurisation de leurs activités et la réalisation de leurs formalités, à distance, avec rigueur et sans jargon.
             </p>
             <div style={{display: 'flex', gap: '10px', flexWrap: 'wrap'}}>
-              {['Juriste', 'Formaliste membre du CRFF', 'Courtier ORIAS 26003943', '100% distanciel'].map((tag, i) => (
+              {['Juriste', 'Formaliste membre du CRFF', 'ORIAS 26003943 · Conseil en assurances', '100% distanciel'].map((tag, i) => (
                 <span key={i} style={{background: 'rgba(255,255,255,0.12)', color: 'white', border: '1px solid rgba(255,255,255,0.2)', borderRadius: '20px', padding: '4px 14px', fontSize: '11px'}}>
                   {tag}
                 </span>
@@ -327,7 +327,7 @@ export default function Services() {
 
           {/* NOTE LÉGALE */}
           <p style={{color: '#9ca3af', fontSize: '11px', lineHeight: '1.7', textAlign: 'center', maxWidth: '700px', margin: '0 auto'}}>
-            Cabinet Cholez-Pagotto · Juriste-Formaliste · Formaliste membre du CRFF (Conseil Représentatif des Formalistes de France) · Courtier en assurances et réassurances immatriculé à l'ORIAS n°26003943 · Sous contrôle de l'ACPR · Les services d'information juridique sont proposés au sens de la loi n°71-1130 du 31 décembre 1971 et ne constituent pas des consultations juridiques personnalisées.
+            Cabinet Cholez-Pagotto · Juriste-Formaliste · Formaliste membre du CRFF (Conseil Représentatif des Formalistes de France) · Intermédiaire en assurances immatriculé à l'ORIAS n°26003943 · Sous contrôle de l'ACPR · Les services d'information juridique sont proposés au sens de la loi n°71-1130 du 31 décembre 1971 et ne constituent pas des consultations juridiques personnalisées.
           </p>
 
         </div>
