@@ -95,7 +95,7 @@ const schemaData = {
           "name": "Que contient le rapport de conseil ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Le rapport de conseil est un document écrit, daté et archivé dans votre espace client. Il comprend : la synthèse de votre situation assurantielle actuelle, l'analyse de vos besoins identifiés lors du recueil d'informations, la comparaison des offres disponibles sur le marché adaptées à votre profil, la recommandation motivée avec les raisons du choix proposé, et les modalités de souscription. Ce rapport est transmis sous 24 à 48h ouvrées suivant la réception du dossier complet."
+            "text": "Le rapport de conseil est un document écrit, daté et archivé dans votre espace client. Il comprend : la synthèse de votre situation assurantielle actuelle, l'analyse de vos besoins identifiés lors du recueil d'informations, la comparaison des offres disponibles sur le marché adaptées à votre profil, la recommandation motivée avec les raisons du choix proposé, et les modalités de souscription."
           }
         },
         {
@@ -103,7 +103,7 @@ const schemaData = {
           "name": "Le conseil en assurances couvre-t-il les associations et structures ESS ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Oui. Le cabinet accompagne les associations loi 1901, les fondations, les coopératives et les structures ESS dans leur stratégie assurantielle. Les besoins des structures associatives sont spécifiques : responsabilité civile des dirigeants, protection des bénévoles, multirisques des locaux, assurance des manifestations et événements, assurance des véhicules associatifs, prévoyance des salariés. Le forfait est de 150 € HT pour les professionnels et associations."
+            "text": "Oui. Le cabinet accompagne les associations loi 1901, les fondations, les coopératives et les structures ESS dans leur stratégie assurantielle. Les besoins des structures associatives sont spécifiques : responsabilité civile des dirigeants, protection des bénévoles, multirisques des locaux, assurance des manifestations et événements, assurance des véhicules associatifs, prévoyance des salariés. Le forfait est de 150 € pour les professionnels et associations."
           }
         }
       ]
@@ -127,7 +127,9 @@ const produitsParticuliers = [
   { nom: "Assurance vie", desc: "Épargne, transmission patrimoniale, désignation de bénéficiaire, fiscalité. Sélection du contrat adapté à vos objectifs." },
   { nom: "Prévoyance individuelle", desc: "Arrêt maladie, invalidité, décès. Analyse des garanties existantes et identification des lacunes de couverture." },
   { nom: "Complémentaire santé", desc: "Remboursements optique, dentaire, hospitalisation. Comparatif des contrats individuels et familiaux." },
-  { nom: "Protection juridique", desc: "Couverture des litiges de la vie quotidienne : travail, consommation, logement, famille." }
+  { nom: "Protection juridique", desc: "Couverture des litiges de la vie quotidienne : travail, consommation, logement, famille." },
+  { nom: "Assurance emprunteur", desc: "Comparatif des offres alternatives au contrat groupe bancaire. Délégation d'assurance et économies réalisables." },
+  { nom: "Responsabilité civile vie privée", desc: "Couverture des dommages causés à des tiers dans le cadre de la vie privée. Vérification des garanties incluses dans vos contrats existants." }
 ]
 
 const produitsProAssoc = [
@@ -135,8 +137,10 @@ const produitsProAssoc = [
   { nom: "Multirisques professionnelle", desc: "Locaux, matériel, marchandises, pertes d'exploitation. Adaptation aux spécificités de votre activité." },
   { nom: "Responsabilité civile dirigeants", desc: "Protection personnelle des dirigeants contre les fautes de gestion. Obligatoire pour les associations employeuses." },
   { nom: "Assurance des bénévoles", desc: "Couverture des accidents et responsabilités des bénévoles lors des activités associatives." },
-  { nom: "Assurance événements et manifestations", desc: "Responsabilité civile événementielle, annulation, protection des participants. Devis adapté à chaque manifestation." },
-  { nom: "Prévoyance collective", desc: "Contrats collectifs obligatoires pour les associations employeuses : arrêt maladie, invalidité, décès, frais de santé." }
+  { nom: "Assurance événements et manifestations", desc: "Responsabilité civile événementielle, annulation, protection des participants." },
+  { nom: "Prévoyance collective", desc: "Contrats collectifs obligatoires pour les associations employeuses : arrêt maladie, invalidité, décès, frais de santé." },
+  { nom: "Assurance des véhicules professionnels", desc: "Flotte automobile, véhicules utilitaires, engins de chantier. Analyse des niveaux de couverture adaptés à votre activité." },
+  { nom: "Protection juridique professionnelle", desc: "Couverture des litiges commerciaux, prud'homaux, fiscaux. Analyse des garanties selon votre secteur d'activité." }
 ]
 
 const etapes = [
@@ -149,7 +153,7 @@ const etapes = [
   {
     numero: "02",
     titre: "Règlement du forfait conseil",
-    description: "Le forfait conseil (90 € HT pour les particuliers, 150 € HT pour les professionnels et associations) est réglé en ligne. Ce paiement préalable garantit l'objectivité du rapport, indépendamment de toute souscription ultérieure.",
+    description: "Le forfait conseil (90 € pour les particuliers, 150 € pour les professionnels et associations) est réglé en ligne. Ce paiement préalable garantit l'objectivité du rapport, indépendamment de toute souscription ultérieure.",
     icone: <Euro size={22} strokeWidth={1.5} />
   },
   {
@@ -161,7 +165,7 @@ const etapes = [
   {
     numero: "04",
     titre: "Remise du rapport de conseil",
-    description: "Vous recevez un rapport de conseil écrit et motivé sous 24 à 48h ouvrées, archivé dans votre espace client avec le formulaire de recueil et le justificatif de paiement. Le rapport identifie les contrats recommandés et les raisons du choix.",
+    description: "Vous recevez un rapport de conseil écrit et motivé, archivé dans votre espace client avec le formulaire de recueil et le justificatif de paiement. Le rapport identifie les contrats recommandés et les raisons du choix.",
     icone: <Award size={22} strokeWidth={1.5} />
   },
   {
@@ -175,11 +179,11 @@ const etapes = [
 const faqs = [
   {
     question: "Pourquoi un forfait conseil est-il facturé avant toute souscription ?",
-    reponse: "Conformément à l'article L.521-4 du Code des assurances (devoir de conseil DDA) et à la recommandation ACPR 2024-R-01, le conseil doit être individualisé, documenté et motivé. Le forfait rémunère ce travail indépendamment de toute souscription, garantissant l'objectivité du rapport et l'absence de conflit d'intérêts. En cas de souscription via le cabinet, une commission assureur s'y ajoute, séparée du forfait, dont le montant vous est communiqué avant toute souscription (art. L.521-2 Code des assurances)."
+    reponse: "Conformément à l'article L.521-4 du Code des assurances (devoir de conseil DDA) et à la recommandation ACPR 2024-R-01, le conseil doit être individualisé, documenté et motivé. Le forfait rémunère ce travail indépendamment de toute souscription, garantissant l'objectivité du rapport et l'absence de conflit d'intérêts. En cas de souscription via le cabinet, une commission assureur s'ajoute, séparée du forfait, dont le montant vous est communiqué avant toute souscription (art. L.521-2 Code des assurances)."
   },
   {
     question: "Qu'est-ce que l'ORIAS et comment vérifier l'immatriculation du cabinet ?",
-    reponse: "L'ORIAS est le registre national des intermédiaires en assurance. L'immatriculation est obligatoire pour exercer l'intermédiation en assurances en France. Le Cabinet Cholez-Pagotto est immatriculé sous le numéro 26003943, catégorie IAS Niveau 1, sous contrôle de l'ACPR. Vérification sur www.orias.fr."
+    reponse: "L'ORIAS est le registre national des intermédiaires en assurance. L'immatriculation est obligatoire pour exercer l'intermédiation en assurances en France. Le cabinet est immatriculé sous le numéro 26003943, catégorie IAS Niveau 1, sous contrôle de l'ACPR. Vérification sur www.orias.fr."
   },
   {
     question: "Quels types de contrats le cabinet peut-il conseiller ?",
@@ -191,11 +195,11 @@ const faqs = [
   },
   {
     question: "Que contient le rapport de conseil ?",
-    reponse: "Le rapport est un document écrit, daté et archivé dans votre espace client. Il comprend : la synthèse de votre situation assurantielle, l'analyse de vos besoins, la comparaison des offres disponibles, la recommandation motivée et les modalités de souscription. Transmis sous 24 à 48h ouvrées suivant la réception du dossier complet."
+    reponse: "Le rapport est un document écrit, daté et archivé dans votre espace client. Il comprend : la synthèse de votre situation assurantielle, l'analyse de vos besoins, la comparaison des offres disponibles, la recommandation motivée et les modalités de souscription."
   },
   {
     question: "Le conseil couvre-t-il les associations et structures ESS ?",
-    reponse: "Oui. Le cabinet accompagne les associations loi 1901, fondations, coopératives et structures ESS. Les besoins associatifs sont spécifiques : RC des dirigeants, protection des bénévoles, multirisques des locaux, assurance des manifestations, prévoyance collective. Le forfait est de 150 € HT pour les professionnels et associations."
+    reponse: "Oui. Le cabinet accompagne les associations loi 1901, fondations, coopératives et structures ESS. Les besoins associatifs sont spécifiques : RC des dirigeants, protection des bénévoles, multirisques des locaux, assurance des manifestations, prévoyance collective. Le forfait est de 150 € pour les professionnels et associations."
   }
 ]
 
@@ -246,8 +250,8 @@ export default function ConseilAssurancesPage() {
             </h1>
             <p style={{ fontSize: '1.1rem', color: 'rgba(255,255,255,0.88)', maxWidth: 620, marginBottom: '1.5rem', lineHeight: 1.7 }}>
               Particuliers, professionnels et associations. Audit de vos contrats existants,
-              comparaison des offres du marché, rapport de conseil écrit sous 24 à 48h ouvrées.
-              Forfait conseil 90 € HT (particuliers) · 150 € HT (professionnels et associations).
+              comparaison des offres du marché, rapport de conseil écrit.
+              Forfait conseil 90 € (particuliers) · 150 € (professionnels et associations).
             </p>
 
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', alignItems: 'center' }}>
@@ -260,19 +264,19 @@ export default function ConseilAssurancesPage() {
               </a>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: 13, color: 'rgba(255,255,255,0.8)' }}>
                 <Shield size={16} strokeWidth={1.5} />
-                <span>Sous contrôle ACPR · Adhérent ENDYA</span>
+                <span>Conseil multimarque · Comparaison objective du marché</span>
               </div>
             </div>
 
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '2rem', marginTop: '2.5rem', paddingTop: '2rem', borderTop: '1px solid rgba(255,255,255,0.2)' }}>
               {[
-                { valeur: "90 €", label: "Forfait conseil particulier HT" },
-                { valeur: "150 €", label: "Forfait conseil pro/association HT" },
-                { valeur: "24-48h", label: "Délai remise du rapport" },
-                { valeur: "IAS N.1", label: "ORIAS 26003943" }
+                { valeur: "Particuliers", label: "Habitation, auto, vie, prévoyance, santé" },
+                { valeur: "Professionnels", label: "RC Pro, multirisques, prévoyance collective" },
+                { valeur: "Associations", label: "Dirigeants, bénévoles, manifestations" },
+                { valeur: "Multimarque", label: "Aucun lien exclusif assureur" }
               ].map((s, i) => (
                 <div key={i}>
-                  <div style={{ fontSize: '1.8rem', fontWeight: 800, color: '#fde68a' }}>{s.valeur}</div>
+                  <div style={{ fontSize: '1rem', fontWeight: 800, color: '#fde68a' }}>{s.valeur}</div>
                   <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.75)', marginTop: 2 }}>{s.label}</div>
                 </div>
               ))}
@@ -285,10 +289,7 @@ export default function ConseilAssurancesPage() {
           <div style={{ maxWidth: 1100, margin: '0 auto', display: 'flex', alignItems: 'flex-start', gap: '0.75rem' }}>
             <Info size={16} strokeWidth={1.5} style={{ color: '#b45309', marginTop: 2, flexShrink: 0 }} />
             <p style={{ fontSize: 12, color: '#78350f', lineHeight: 1.6, margin: 0 }}>
-              François CHOLEZ est enregistré à l'ORIAS sous le numéro <strong>26003943</strong>, catégorie IAS Niveau 1, sous contrôle de l'<strong>ACPR</strong>, adhérent <strong>ENDYA</strong>.
-              Conformément à l'article L.521-4 du Code des assurances (devoir de conseil DDA) et à la recommandation ACPR 2024-R-01, le conseil est individualisé, documenté et motivé.
-              Le forfait est dû avant remise du rapport, indépendamment de toute souscription.
-              En cas de souscription via le cabinet, une commission assureur s'ajoute, séparée du forfait, communiquée avant souscription (art. L.521-2 Code des assurances).
+              Le cabinet est enregistré à l'ORIAS sous le numéro <strong>26003943</strong>. Conformément à l'article L.521-4 du Code des assurances (devoir de conseil DDA) et à la recommandation ACPR 2024-R-01, le conseil est individualisé, documenté et motivé. Le forfait est dû avant remise du rapport, indépendamment de toute souscription. En cas de souscription via le cabinet, une commission assureur s'ajoute, séparée du forfait, communiquée avant souscription (art. L.521-2 Code des assurances).
               Immatriculation vérifiable sur <a href="https://www.orias.fr" target="_blank" rel="noopener noreferrer" style={{ color: '#b45309' }}>www.orias.fr</a>.
             </p>
           </div>
@@ -310,7 +311,7 @@ export default function ConseilAssurancesPage() {
                 {
                   titre: "Particulier",
                   tarif: "90 €",
-                  unite: "HT · forfait conseil",
+                  unite: "forfait conseil",
                   cible: "Personnes physiques, usage personnel",
                   couleur: "#b45309",
                   border: "#fde68a",
@@ -318,7 +319,7 @@ export default function ConseilAssurancesPage() {
                     "Formulaire de recueil horodaté (archivé espace client)",
                     "Audit de vos contrats existants",
                     "Comparaison des offres du marché adaptées à votre profil",
-                    "Rapport de conseil écrit et motivé sous 24 à 48h ouvrées",
+                    "Rapport de conseil écrit et motivé",
                     "Archivage complet dans votre espace client",
                     "Accompagnement à la souscription si vous le souhaitez"
                   ]
@@ -326,7 +327,7 @@ export default function ConseilAssurancesPage() {
                 {
                   titre: "Professionnel · Association",
                   tarif: "150 €",
-                  unite: "HT · forfait conseil",
+                  unite: "forfait conseil",
                   cible: "Entreprises, associations, structures ESS",
                   couleur: "#0f2d6e",
                   border: "#bfdbfe",
@@ -335,7 +336,7 @@ export default function ConseilAssurancesPage() {
                     "Formulaire de recueil horodaté (archivé espace client)",
                     "Audit de vos contrats existants (RC Pro, multirisques, prévoyance collective)",
                     "Comparaison des offres du marché adaptées à votre activité",
-                    "Rapport de conseil écrit et motivé sous 24 à 48h ouvrées",
+                    "Rapport de conseil écrit et motivé",
                     "Analyse spécifique : obligations légales selon votre secteur",
                     "Archivage complet dans votre espace client"
                   ]
@@ -369,17 +370,17 @@ export default function ConseilAssurancesPage() {
               ))}
             </div>
             <p style={{ color: '#9ca3af', fontSize: 11, textAlign: 'center', marginTop: '1rem' }}>
-              Tarifs HT · Commission assureur séparée, communiquée avant toute souscription (art. L.521-2 Code des assurances)
+              Commission assureur séparée, communiquée avant toute souscription (art. L.521-2 Code des assurances)
             </p>
           </section>
 
           {/* PRODUITS PAR PROFIL */}
           <section id="produits" style={{ marginBottom: '3.5rem' }}>
             <h2 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#0f2d6e', marginBottom: '0.5rem' }}>
-              Contrats conseillés selon votre profil
+              Domaines assurantiels couverts
             </h2>
             <p style={{ color: '#6b7280', fontSize: 13, marginBottom: '1.5rem' }}>
-              Le cabinet intervient sur l'ensemble des assurances de personnes et de biens.
+              Le cabinet intervient sur l'ensemble des assurances de personnes et de biens, sans lien exclusif avec aucun assureur.
             </p>
 
             <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '1.5rem' }}>
@@ -443,19 +444,19 @@ export default function ConseilAssurancesPage() {
               {[
                 {
                   titre: "Une obligation légale (art. L.521-4)",
-                  texte: "La DDA (Directive sur la Distribution d'Assurances, transposée en droit français) impose que tout intermédiaire fournisse un conseil individualisé, documenté et motivé avant toute souscription. Un conseil oral sans trace écrite ne remplit pas cette obligation."
+                  texte: "La DDA impose que tout intermédiaire fournisse un conseil individualisé, documenté et motivé avant toute souscription. Un conseil oral sans trace écrite ne remplit pas cette obligation."
                 },
                 {
                   titre: "Une protection pour le client",
-                  texte: "Le rapport écrit vous permet de vérifier que le conseil correspond à vos besoins réels, de comparer les recommandations sur la durée et de disposer d'une preuve en cas de litige avec un assureur."
+                  texte: "Le rapport écrit vous permet de vérifier que le conseil correspond à vos besoins réels, de comparer les recommandations sur la durée et de disposer d'une preuve en cas de litige."
                 },
                 {
                   titre: "Une transparence sur la rémunération",
-                  texte: "La recommandation ACPR 2024-R-01 impose la communication préalable des commissions perçues par l'intermédiaire. Le forfait conseil, séparé de la commission assureur, garantit l'objectivité de la recommandation."
+                  texte: "La recommandation ACPR 2024-R-01 impose la communication préalable des commissions. Le forfait conseil, séparé de la commission assureur, garantit l'objectivité de la recommandation."
                 },
                 {
                   titre: "Un archivage dans votre espace client",
-                  texte: "Le formulaire de recueil, le rapport de conseil et le justificatif de paiement sont archivés dans votre espace client Docuthèque. Vous y accédez à tout moment, sans limitation de durée."
+                  texte: "Le formulaire de recueil, le rapport de conseil et le justificatif de paiement sont archivés dans votre espace client Docuthèque. Vous y accédez à tout moment."
                 }
               ].map((item, i) => (
                 <div key={i} style={{ background: 'white', borderRadius: 8, padding: '1rem', border: '1px solid #fde68a' }}>
@@ -470,13 +471,13 @@ export default function ConseilAssurancesPage() {
           <section style={{ background: 'linear-gradient(135deg, #78350f 0%, #b45309 100%)', borderRadius: 16, padding: '2.5rem 2rem', marginBottom: '3.5rem', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '1.5rem', color: 'white' }}>
             <div>
               <div style={{ fontSize: 12, fontWeight: 600, color: '#fde68a', marginBottom: '0.4rem', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
-                Forfait 90 € HT / 150 € HT
+                Forfait 90 € · 150 €
               </div>
               <h2 style={{ fontSize: '1.3rem', fontWeight: 700, margin: '0 0 0.5rem' }}>
                 Vous souhaitez un conseil en assurances ?
               </h2>
               <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.8)', margin: 0 }}>
-                Décrivez votre situation. Notre conseiller vous répond sous 24 à 48h ouvrées.
+                Décrivez votre situation. Notre conseiller analyse vos besoins et compare les offres du marché.
               </p>
             </div>
             <a href="/contact" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: 'white', color: '#b45309', textDecoration: 'none', padding: '13px 28px', borderRadius: 8, fontWeight: 700, fontSize: '0.95rem', whiteSpace: 'nowrap' }}>
@@ -528,10 +529,10 @@ export default function ConseilAssurancesPage() {
               </div>
               <h3 style={{ fontSize: '1rem', fontWeight: 700, color: '#0f2d6e', margin: '0 0 0.3rem' }}>François CHOLEZ</h3>
               <p style={{ fontSize: 13, color: '#6b7280', margin: '0 0 0.4rem', lineHeight: 1.6 }}>
-                Intermédiaire en assurances (IAS Niveau 1), immatriculé à l'ORIAS sous le numéro 26003943, sous contrôle de l'ACPR (Autorité de Contrôle Prudentiel et de Résolution), adhérent ENDYA.
+                Intermédiaire en assurances (IAS Niveau 1), immatriculé à l'ORIAS sous le numéro 26003943, sous contrôle de l'ACPR, adhérent ENDYA.
               </p>
               <p style={{ fontSize: 13, color: '#6b7280', margin: 0, lineHeight: 1.6 }}>
-                Juriste formaliste, membre du CRFF (Conseil Représentatif des Formalistes de France). Accompagnement des particuliers, professionnels et associations depuis plus de 10 ans.
+                Juriste formaliste, membre du CRFF. Accompagnement des particuliers, professionnels et associations depuis plus de 10 ans.
               </p>
             </div>
           </section>
@@ -542,8 +543,8 @@ export default function ConseilAssurancesPage() {
               Prêt à obtenir un conseil objectif sur vos assurances ?
             </h2>
             <p style={{ fontSize: 13, color: '#78350f', marginBottom: '1.5rem', maxWidth: 500, margin: '0.5rem auto 1.5rem' }}>
-              Forfait conseil 90 € HT (particuliers) · 150 € HT (professionnels et associations).
-              Rapport écrit et motivé sous 24 à 48h ouvrées. ORIAS n°26003943.
+              Forfait conseil 90 € (particuliers) · 150 € (professionnels et associations).
+              Conseil multimarque, rapport écrit et motivé. ORIAS n°26003943.
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', justifyContent: 'center' }}>
               <a href="/contact" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: '#b45309', color: 'white', textDecoration: 'none', padding: '13px 28px', borderRadius: 8, fontWeight: 700, fontSize: '0.95rem' }}>
