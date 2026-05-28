@@ -1,442 +1,420 @@
+'use client'
+
+// app/accompagnement-particuliers/page.tsx
+// Page hub particuliers — présentation des 3 services, liens vers pages dédiées
+// Règles : zéro tiret long, cholez-pagotto.fr, \u00a0 avant €
+
+import { useState } from 'react'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-import { ChevronRight, FileText, Clock, CheckCircle, MessageSquare, Send, Shield, User } from 'lucide-react'
+import {
+  Scale, Shield, BookOpen, CheckCircle, ArrowRight,
+  ChevronRight, Briefcase, Heart, Home, Car, Info
+} from 'lucide-react'
 
-export const metadata = {
-  title: "Information sur vos droits · Posez votre question à un juriste · Cabinet Cholez-Pagotto",
-  description: "Un juriste vous répond par écrit sous 24 à 48h. Service d'information juridique accessible à tous : droit du travail, logement, consommation, assurances, création d'entreprise. 47 € à l'unité, sans abonnement.",
-}
-
-const schema = {
+// ─── SCHEMA.ORG ───
+const schemaData = {
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "Service",
-      "name": "Information sur vos droits",
-      "description": "Service d'information juridique rédigée par un juriste sous 24 à 48h ouvrées. Réponse pédagogique sur le droit applicable à votre situation, rédigée en fonction des éléments transmis.",
+      "@id": "https://cholez-pagotto.fr/accompagnement-particuliers#service",
+      "name": "Accompagnement particuliers - Cabinet Cholez-Pagotto",
+      "description": "Accompagnement juridique des particuliers : information sur vos droits (47\u00a0€), bibliothèque de documents (abonnement dès 17,90\u00a0€/mois) et conseil en assurances réglementé (ORIAS 26003943). Réponse juriste sous 24 à 48h ouvrées.",
       "provider": {
-        "@type": "Organization",
+        "@type": "LegalService",
+        "@id": "https://cholez-pagotto.fr/#cabinet",
         "name": "Cabinet Cholez-Pagotto",
         "url": "https://cholez-pagotto.fr"
       },
-      "offers": {
-        "@type": "Offer",
-        "price": "47",
-        "priceCurrency": "EUR",
-        "description": "Réponse rédigée par un juriste sous 24 à 48h ouvrées. À l'unité, sans abonnement ni engagement."
-      },
-      "serviceType": "Information juridique",
-      "url": "https://cholez-pagotto.fr/information-sur-vos-droits"
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
+      "serviceType": "Information juridique et conseil en assurances pour particuliers",
+      "areaServed": { "@type": "Country", "name": "France" },
+      "offers": [
         {
-          "@type": "Question",
-          "name": "Ce service remplace-t-il un avocat ?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Non. Ce service constitue une information juridique au sens de la loi n°71-1130 du 31 décembre 1971. Il vous permet de comprendre vos droits, d'identifier les règles applicables à votre situation et de préparer vos démarches. Si votre situation nécessite une représentation en justice ou la rédaction d'actes, vous serez orienté vers le professionnel compétent."
-          }
+          "@type": "Offer",
+          "name": "Information sur vos droits",
+          "price": "47",
+          "priceCurrency": "EUR"
         },
         {
-          "@type": "Question",
-          "name": "Quels types de questions puis-je poser ?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Toutes les questions relatives à vos droits peuvent être posées : droit du travail, droit immobilier, droit de la consommation, droit des assurances, droit social, droit des associations, création d'entreprise, formalités administratives, RGPD, et bien d'autres. Aucun domaine juridique n'est exclu pour l'information pédagogique."
-          }
+          "@type": "Offer",
+          "name": "Abonnement Optimal Particulier",
+          "price": "17.90",
+          "priceCurrency": "EUR"
         },
         {
-          "@type": "Question",
-          "name": "Comment la réponse m'est-elle transmise ?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "La réponse vous est adressée par écrit sous 24 à 48h ouvrées suivant la réception de votre question et la confirmation du paiement. Elle est rédigée en langage clair, sans jargon, avec les références juridiques applicables."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Quelle est la différence avec l'Abonnement Optimal ?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "L'Abonnement Optimal inclut une question mensuelle au tarif préférentiel de 14,90 € pour les questions supplémentaires, plus l'accès à toute la bibliothèque de documents juridiques. Si vous posez régulièrement des questions, l'abonnement devient plus économique dès la deuxième question mensuelle."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Ma question est-elle confidentielle ?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Oui. Toutes les informations transmises dans le cadre de ce service sont traitées de manière strictement confidentielle, conformément à notre politique de confidentialité et au RGPD."
-          }
+          "@type": "Offer",
+          "name": "Conseil en assurances",
+          "price": "90",
+          "priceCurrency": "EUR"
         }
-      ]
+      ],
+      "url": "https://cholez-pagotto.fr/accompagnement-particuliers"
     },
     {
       "@type": "BreadcrumbList",
+      "@id": "https://cholez-pagotto.fr/accompagnement-particuliers#breadcrumb",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://cholez-pagotto.fr" },
-        { "@type": "ListItem", "position": 2, "name": "Information sur vos droits" }
+        { "@type": "ListItem", "position": 2, "name": "Accompagnement particuliers", "item": "https://cholez-pagotto.fr/accompagnement-particuliers" }
       ]
     }
   ]
 }
 
-const exemples = [
+// ─── DOMAINES ───
+const domaines = [
   {
-    domaine: "Droit du travail",
-    question: "Mon patron veut changer mon poste et mes horaires sans me demander mon avis. Il dit que je suis obligé d'accepter. Est-ce qu'il a le droit ?",
-    contexte: "Modification du contrat de travail imposée unilatéralement par l'employeur.",
-    color: "#0f2d6e",
+    label: "Droit du travail",
+    icone: <Briefcase size={18} strokeWidth={1.5} />,
+    couleur: "#0f2d6e",
+    exemples: ["Licenciement, rupture conventionnelle", "Harcèlement moral ou sexuel", "Modification du contrat", "Congés, RTT, arrêt maladie"]
   },
   {
-    domaine: "Droit du travail",
-    question: "Mon employeur me propose une rupture conventionnelle. Je ne sais pas si c'est intéressant pour moi, ce que je vais toucher, ni si j'aurai droit au chômage.",
-    contexte: "Rupture conventionnelle : conditions, indemnités et accès à l'assurance chômage.",
-    color: "#1a4fba",
+    label: "Logement",
+    icone: <Home size={18} strokeWidth={1.5} />,
+    couleur: "#16a34a",
+    exemples: ["Dépôt de garantie, baux", "Charges locatives", "Procédure d'expulsion", "Travaux, obligations du propriétaire"]
   },
   {
-    domaine: "Droit immobilier",
-    question: "Je viens de quitter mon appartement. Mon propriétaire refuse de me rendre ma caution en disant qu'il y a des dégâts. Je ne suis pas d'accord. Qu'est-ce que je peux faire ?",
-    contexte: "Retenue sur dépôt de garantie contestée par le locataire à la sortie du logement.",
-    color: "#0f2d6e",
+    label: "Famille",
+    icone: <Heart size={18} strokeWidth={1.5} />,
+    couleur: "#dc2626",
+    exemples: ["Divorce, pension alimentaire", "Autorité parentale", "Succession, héritiers", "Donation, PACS"]
   },
   {
-    domaine: "Droit de la consommation",
-    question: "J'ai commandé un produit sur internet, je ne l'ai jamais reçu et le vendeur ne répond plus à mes messages. Comment est-ce que je peux me faire rembourser ?",
-    contexte: "Achat en ligne non livré : recours contre le vendeur et droit au remboursement.",
-    color: "#1a4fba",
+    label: "Consommation",
+    icone: <Scale size={18} strokeWidth={1.5} />,
+    couleur: "#7c3aed",
+    exemples: ["Garantie légale (2 ans)", "Droit de rétractation", "Litige avec un professionnel", "Crédit, surendettement"]
   },
   {
-    domaine: "Droit social",
-    question: "Je me suis blessé au travail la semaine dernière. Je ne sais pas ce que je dois faire, ce que je vais toucher et si mon employeur peut me licencier pendant mon arrêt.",
-    contexte: "Accident du travail : déclaration, indemnisation et protection contre le licenciement.",
-    color: "#0f2d6e",
+    label: "Assurances",
+    icone: <Shield size={18} strokeWidth={1.5} />,
+    couleur: "#065f46",
+    exemples: ["Refus de sinistre, recours", "Niveaux de couverture", "Assurance vie, prévoyance", "Responsabilité civile"]
   },
   {
-    domaine: "Droit des assurances",
-    question: "Mon assurance refuse de rembourser mon sinistre en invoquant une clause que je ne comprends pas. Est-ce que ce refus est justifié et qu'est-ce que je peux faire ?",
-    contexte: "Refus de prise en charge d'un sinistre : exclusions de garantie et recours possibles.",
-    color: "#1a4fba",
-  },
+    label: "Droit routier",
+    icone: <Car size={18} strokeWidth={1.5} />,
+    couleur: "#0891b2",
+    exemples: ["Accident, droits de la victime", "Permis : suspension, points", "Refus d'indemnisation", "Loi Badinter"]
+  }
 ]
 
-const etapes = [
-  {
-    num: "1",
-    titre: "Vous posez votre question",
-    desc: "En langage courant, sans jargon. Décrivez votre situation avec le maximum de détails pour permettre une réponse précise et utile.",
-    icon: <MessageSquare size={24} color="#1a4fba" strokeWidth={1.5} />,
-  },
-  {
-    num: "2",
-    titre: "Un juriste identifie le droit applicable",
-    desc: "Votre question est traitée par un juriste qui identifie les textes et règles juridiques applicables à votre situation, puis rédige une réponse pédagogique avec les références correspondantes.",
-    icon: <User size={24} color="#1a4fba" strokeWidth={1.5} />,
-  },
-  {
-    num: "3",
-    titre: "Vous recevez votre réponse sous 24 à 48h",
-    desc: "Une réponse écrite, claire, avec les références juridiques applicables. Vous comprenez vos droits et savez comment agir.",
-    icon: <Send size={24} color="#1a4fba" strokeWidth={1.5} />,
-  },
-]
+export default function AccompagnementParticuliersPage() {
+  const [domaineActif, setDomaineActif] = useState(0)
 
-const garanties = [
-  "Réponse rédigée par un juriste, 100% humain, aucune IA",
-  "Délai de 24 à 48h ouvrées",
-  "Réponse en langage clair, sans jargon",
-  "Références juridiques précises (articles de loi, jurisprudences)",
-  "Confidentialité totale de vos échanges",
-  "Orientation vers le professionnel compétent si nécessaire",
-]
-
-const faqs = [
-  {
-    q: "Ce service remplace-t-il un avocat ?",
-    a: "Non. Ce service constitue une information juridique au sens de la loi n°71-1130 du 31 décembre 1971. Il vous permet de comprendre vos droits, d'identifier les règles applicables à votre situation et de préparer vos démarches. Si votre situation nécessite une représentation en justice ou la rédaction d'actes, vous serez orienté vers le professionnel compétent."
-  },
-  {
-    q: "Quels types de questions puis-je poser ?",
-    a: "Toutes les questions relatives à vos droits peuvent être posées : droit du travail, droit immobilier, droit de la consommation, droit des assurances, droit social, droit des associations, création d'entreprise, formalités administratives, RGPD, et bien d'autres. Aucun domaine juridique n'est exclu pour l'information pédagogique."
-  },
-  {
-    q: "Comment la réponse m'est-elle transmise ?",
-    a: "La réponse vous est adressée par écrit sous 24 à 48h ouvrées suivant la réception de votre question et la confirmation du paiement. Elle est rédigée en langage clair, avec les références juridiques applicables à votre situation."
-  },
-  {
-    q: "Quelle est la différence avec l'Abonnement Optimal ?",
-    a: "L'Abonnement Optimal inclut une question mensuelle, plus l'accès à toute la bibliothèque de documents juridiques (DOCX). Les questions supplémentaires sont à 14,90 € pour les abonnés au lieu de 47 €. Si vous posez régulièrement des questions, l'abonnement devient plus économique dès la deuxième question mensuelle."
-  },
-  {
-    q: "Ma question est-elle confidentielle ?",
-    a: "Oui. Toutes les informations transmises dans le cadre de ce service sont traitées de manière strictement confidentielle, conformément à notre politique de confidentialité et au RGPD."
-  },
-  {
-    q: "Puis-je poser une question en urgence ?",
-    a: "Ce service n'est pas adapté aux situations d'urgence judiciaire (garde à vue, audience imminente) pour lesquelles seul un avocat est habilité à intervenir en temps réel. Pour toute question d'information juridique, nous traitons votre demande dans le délai de 24 à 48h ouvrées."
-  },
-]
-
-export default function InformationDroits() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
-      <Header />
-      <main style={{background: '#f8fafc', minHeight: '100vh'}}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
+      />
 
-        {/* BREADCRUMB */}
-        <div style={{background: 'white', borderBottom: '1px solid #e5e7eb', padding: '10px 0'}}>
-          <div style={{maxWidth: '1100px', margin: '0 auto', padding: '0 2rem', display: 'flex', alignItems: 'center', gap: '6px', fontSize: '12px', color: '#6b7280'}}>
-            <a href="/" style={{color: '#6b7280', textDecoration: 'none'}}>Accueil</a>
-            <ChevronRight size={12} />
-            <span style={{color: '#0f2d6e', fontWeight: '500'}}>Information sur vos droits</span>
-          </div>
+      <Header />
+
+      {/* Breadcrumb */}
+      <div style={{ background: 'white', borderBottom: '1px solid #e5e7eb', padding: '0.6rem 0' }}>
+        <div style={{ maxWidth: 1100, margin: '0 auto', padding: '0 1.5rem' }}>
+          <nav aria-label="Fil d'Ariane" style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: 13, color: '#6b7280' }}>
+            <a href="/" style={{ color: '#1a4fba', textDecoration: 'none' }}>Accueil</a>
+            <ChevronRight size={14} />
+            <a href="/services" style={{ color: '#1a4fba', textDecoration: 'none' }}>Services</a>
+            <ChevronRight size={14} />
+            <span style={{ color: '#374151', fontWeight: 600 }}>Particuliers</span>
+          </nav>
         </div>
+      </div>
+
+      <main style={{ background: '#f8fafc', minHeight: '80vh' }}>
 
         {/* HERO */}
-        <section style={{background: 'linear-gradient(135deg, #0f2d6e 0%, #1a4fba 100%)', padding: '4rem 0'}}>
-          <div style={{maxWidth: '1100px', margin: '0 auto', padding: '0 2rem', display: 'flex', gap: '4rem', alignItems: 'center'}}>
-            <div style={{flex: 1}}>
-              <span style={{display: 'inline-block', background: 'rgba(255,255,255,0.15)', color: 'white', border: '1px solid rgba(255,255,255,0.3)', borderRadius: '20px', padding: '4px 14px', fontSize: '11px', fontWeight: '600', marginBottom: '16px', letterSpacing: '0.05em'}}>
-                SERVICE D'INFORMATION JURIDIQUE
-              </span>
-              <h1 style={{color: 'white', fontSize: '2rem', fontWeight: '700', margin: '0 0 16px', lineHeight: '1.3'}}>
-                Comprenez vos droits.<br />Un juriste vous répond.
-              </h1>
-              <p style={{color: 'rgba(255,255,255,0.85)', fontSize: '1rem', lineHeight: '1.8', margin: '0 0 24px'}}>
-                Vous avez une question juridique et vous ne savez pas quels sont vos droits ? Un juriste identifie les règles et textes applicables à votre situation et vous apporte une réponse pédagogique, rédigée en langage clair, sous 24 à 48h ouvrées.
-              </p>
-              <div style={{display: 'flex', gap: '12px', flexWrap: 'wrap', alignItems: 'center'}}>
-                <a href="/connexion" style={{display: 'inline-block', background: 'white', color: '#0f2d6e', padding: '13px 28px', borderRadius: '8px', fontSize: '14px', fontWeight: '700', textDecoration: 'none'}}>
-                  Poser ma question · 47 €
-                </a>
-                <a href="/tarifs" style={{display: 'inline-block', background: 'transparent', color: 'white', border: '1px solid rgba(255,255,255,0.5)', padding: '13px 24px', borderRadius: '8px', fontSize: '13px', fontWeight: '600', textDecoration: 'none'}}>
-                  Voir l'Abonnement Optimal
-                </a>
-              </div>
-            </div>
-            <div style={{flex: '0 0 280px', background: 'rgba(255,255,255,0.1)', borderRadius: '16px', padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '12px'}}>
-              {garanties.map((g, i) => (
-                <div key={i} style={{display: 'flex', gap: '10px', alignItems: 'flex-start'}}>
-                  <CheckCircle size={15} color="#93c5fd" style={{flexShrink: 0, marginTop: '2px'}} strokeWidth={2} />
-                  <span style={{color: 'rgba(255,255,255,0.85)', fontSize: '13px', lineHeight: '1.5'}}>{g}</span>
+        <section style={{ background: 'linear-gradient(135deg, #0f2d6e 0%, #1a4fba 100%)', padding: '4rem 1.5rem 3.5rem', color: 'white' }}>
+          <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+            <span style={{ display: 'inline-block', background: 'rgba(255,255,255,0.2)', color: 'white', fontSize: 12, fontWeight: 700, padding: '5px 18px', borderRadius: 20, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '1.2rem' }}>
+              Particuliers
+            </span>
+            <h1 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)', fontWeight: 700, marginBottom: '1rem', lineHeight: 1.2 }}>
+              Comprenez vos droits,<br />
+              prenez vos décisions en toute connaissance de cause
+            </h1>
+            <p style={{ fontSize: '1.1rem', color: 'rgba(255,255,255,0.88)', marginBottom: '2rem', lineHeight: 1.7 }}>
+              Trois façons de bénéficier de l'expertise du cabinet : information juridique, bibliothèque de documents et conseil en assurances réglementé.
+              Réponse juriste sous 24 à 48h ouvrées. 100% humain, aucune IA.
+            </p>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '2rem', paddingTop: '2rem', borderTop: '1px solid rgba(255,255,255,0.2)' }}>
+              {[
+                { valeur: "6", label: "Domaines juridiques couverts" },
+                { valeur: "47\u00a0€", label: "Information sur vos droits" },
+                { valeur: "24-48h", label: "Délai indicatif de réponse" },
+                { valeur: "100%", label: "Humain — aucune IA" }
+              ].map((s, i) => (
+                <div key={i}>
+                  <div style={{ fontSize: '1.8rem', fontWeight: 800, color: '#93c5fd' }}>{s.valeur}</div>
+                  <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.7)', marginTop: 2 }}>{s.label}</div>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        <div style={{maxWidth: '1100px', margin: '0 auto', padding: '4rem 2rem', display: 'flex', flexDirection: 'column', gap: '4rem'}}>
+        {/* MENTION LOI 1971 */}
+        <div style={{ background: '#eff6ff', borderBottom: '1px solid #bfdbfe', padding: '0.75rem 1.5rem' }}>
+          <div style={{ maxWidth: 1100, margin: '0 auto', display: 'flex', alignItems: 'flex-start', gap: '0.75rem' }}>
+            <Info size={15} strokeWidth={1.5} style={{ color: '#1a4fba', marginTop: 2, flexShrink: 0 }} />
+            <p style={{ fontSize: 12, color: '#374151', lineHeight: 1.6, margin: 0 }}>
+              Le service d'information juridique est proposé au sens de la loi n°71-1130 du 31 décembre 1971
+              et ne constitue pas une consultation juridique personnalisée. Le cas échéant, vous serez orienté vers le professionnel du droit compétent.
+            </p>
+          </div>
+        </div>
 
-          {/* QU'EST-CE QUE CE SERVICE */}
-          <section>
-            <div style={{textAlign: 'center', maxWidth: '700px', margin: '0 auto 2.5rem'}}>
-              <h2 style={{color: '#0f2d6e', fontSize: '1.5rem', fontWeight: '700', margin: '0 0 12px'}}>Un service d'information juridique, pas une consultation d'avocat</h2>
-              <p style={{color: '#6b7280', fontSize: '14px', lineHeight: '1.8', margin: 0}}>
-                Le droit encadre chaque aspect de votre vie, personnelle et professionnelle : logement, famille, consommation, assurances, contrats, relations de travail. Pourtant, face à une situation juridique, la plupart des personnes ne savent pas quels textes s'appliquent, quels sont leurs droits réels, ni comment agir efficacement.
-              </p>
-            </div>
-            <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px'}}>
-              <div style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.75rem'}}>
-                <p style={{color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: '0 0 12px'}}>Ce service vous permet de :</p>
-                <div style={{display: 'flex', flexDirection: 'column', gap: '10px'}}>
-                  {[
-                    "Comprendre le cadre juridique applicable à votre situation",
-                    "Identifier vos droits et obligations selon les textes en vigueur",
-                    "Identifier les recours légaux applicables à votre type de situation",
-                    "Préparer un échange avec un avocat ou une démarche administrative",
-                    "Prendre vos décisions en toute connaissance de cause",
-                    "Être orienté vers le professionnel compétent si nécessaire",
-                  ].map((item, i) => (
-                    <div key={i} style={{display: 'flex', gap: '8px', alignItems: 'flex-start'}}>
-                      <CheckCircle size={14} color="#16a34a" style={{flexShrink: 0, marginTop: '2px'}} strokeWidth={2} />
-                      <span style={{color: '#374151', fontSize: '13px', lineHeight: '1.5'}}>{item}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div style={{background: '#f8fafc', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.75rem'}}>
-                <p style={{color: '#6b7280', fontSize: '14px', fontWeight: '700', margin: '0 0 12px'}}>Ce service ne remplace pas :</p>
-                <div style={{display: 'flex', flexDirection: 'column', gap: '10px'}}>
-                  {[
-                    "La consultation d'un avocat pour une représentation en justice",
-                    "La rédaction d'actes juridiques par un professionnel habilité",
-                    "L'intervention d'un notaire pour les actes authentiques",
-                    "L'assistance d'urgence en cas de garde à vue ou d'audience imminente",
-                  ].map((item, i) => (
-                    <div key={i} style={{display: 'flex', gap: '8px', alignItems: 'flex-start'}}>
-                      <span style={{color: '#9ca3af', fontSize: '14px', flexShrink: 0, marginTop: '1px'}}>·</span>
-                      <span style={{color: '#6b7280', fontSize: '13px', lineHeight: '1.5'}}>{item}</span>
-                    </div>
-                  ))}
-                </div>
-                <div style={{marginTop: '16px', background: '#eff6ff', borderRadius: '8px', padding: '12px', fontSize: '12px', color: '#1e3a5f', lineHeight: '1.6', fontStyle: 'italic'}}>
-                  Ce service constitue une information juridique au sens de la loi n°71-1130 du 31 décembre 1971. La réponse apportée vous permettra de mieux comprendre vos droits, d'identifier les règles juridiques applicables à votre situation et de prendre vos décisions en toute connaissance de cause. Le cas échéant, vous serez orienté vers le professionnel du droit compétent.
-                </div>
-              </div>
-            </div>
-          </section>
+        <div style={{ maxWidth: 1100, margin: '0 auto', padding: '3rem 1.5rem' }}>
 
-          {/* COMMENT ÇA MARCHE */}
-          <section>
-            <h2 style={{color: '#0f2d6e', fontSize: '1.5rem', fontWeight: '700', margin: '0 0 2rem', textAlign: 'center'}}>Comment ça marche ?</h2>
-            <div style={{display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px'}}>
-              {etapes.map((e, i) => (
-                <div key={i} style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.75rem', display: 'flex', flexDirection: 'column', gap: '12px', position: 'relative'}}>
-                  <div style={{display: 'flex', alignItems: 'center', gap: '12px'}}>
-                    <div style={{width: '36px', height: '36px', background: '#eff6ff', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0}}>
-                      {e.icon}
-                    </div>
-                    <span style={{background: '#0f2d6e', color: 'white', fontSize: '11px', fontWeight: '700', padding: '2px 10px', borderRadius: '20px'}}>Étape {e.num}</span>
+          {/* 3 SERVICES */}
+          <section style={{ marginBottom: '3.5rem' }}>
+            <h2 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#0f2d6e', marginBottom: '0.5rem' }}>
+              Nos services pour les particuliers
+            </h2>
+            <p style={{ color: '#6b7280', fontSize: 13, marginBottom: '2rem' }}>
+              Choisissez le service adapté à votre besoin. Chaque page détaille le fonctionnement, le tarif et les garanties.
+            </p>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem' }}>
+
+              {/* Service 1 : Information sur vos droits */}
+              <div style={{ background: 'white', border: '2px solid #bfdbfe', borderRadius: 14, padding: '1.75rem', display: 'flex', flexDirection: 'column' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
+                  <div style={{ width: 44, height: 44, background: '#eff6ff', borderRadius: 10, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                    <Scale size={22} color="#1a4fba" strokeWidth={1.5} />
                   </div>
-                  <p style={{color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: 0}}>{e.titre}</p>
-                  <p style={{color: '#6b7280', fontSize: '13px', lineHeight: '1.7', margin: 0}}>{e.desc}</p>
+                  <div>
+                    <p style={{ color: '#1a4fba', fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', margin: 0 }}>Information juridique</p>
+                    <h3 style={{ fontSize: '1.05rem', fontWeight: 700, color: '#0f2d6e', margin: 0 }}>Sur vos droits</h3>
+                  </div>
                 </div>
-              ))}
+                <p style={{ fontSize: 13, color: '#374151', lineHeight: 1.7, marginBottom: '1rem', flex: 1 }}>
+                  Vous posez votre question en langage courant. Un juriste identifie les textes applicables à votre situation
+                  et vous apporte une réponse pédagogique et documentée sous 24 à 48h ouvrées.
+                  Sans abonnement, sans engagement.
+                </p>
+                <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 1.5rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                  {[
+                    "Réponse 100% humaine, aucune IA",
+                    "Références juridiques précises",
+                    "Orientation vers un avocat si nécessaire",
+                    "Confidentialité totale"
+                  ].map((item, j) => (
+                    <li key={j} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem', fontSize: 12, color: '#374151' }}>
+                      <CheckCircle size={14} strokeWidth={2} style={{ color: '#1a4fba', marginTop: 2, flexShrink: 0 }} />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.3rem', marginBottom: '1rem' }}>
+                  <span style={{ fontSize: '2rem', fontWeight: 800, color: '#0f2d6e' }}>47\u00a0€</span>
+                  <span style={{ fontSize: 13, color: '#6b7280' }}>par question · sans abonnement</span>
+                </div>
+                <a href="/information-sur-vos-droits" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', background: '#0f2d6e', color: 'white', textDecoration: 'none', padding: '12px 20px', borderRadius: 8, fontWeight: 700, fontSize: '0.875rem' }}>
+                  Poser ma question <ArrowRight size={16} />
+                </a>
+              </div>
+
+              {/* Service 2 : Abonnement Optimal */}
+              <div style={{ background: '#0f2d6e', border: '2px solid #1a4fba', borderRadius: 14, padding: '1.75rem', display: 'flex', flexDirection: 'column', position: 'relative', overflow: 'hidden' }}>
+                <div style={{ position: 'absolute', top: 12, right: 12, background: '#c8a84b', color: 'white', fontSize: 9, fontWeight: 700, padding: '3px 10px', borderRadius: 12, letterSpacing: '0.05em' }}>RECOMMANDÉ</div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
+                  <div style={{ width: 44, height: 44, background: 'rgba(255,255,255,0.15)', borderRadius: 10, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                    <BookOpen size={22} color="white" strokeWidth={1.5} />
+                  </div>
+                  <div>
+                    <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', margin: 0 }}>Bibliothèque + questions</p>
+                    <h3 style={{ fontSize: '1.05rem', fontWeight: 700, color: 'white', margin: 0 }}>Abonnement Optimal</h3>
+                  </div>
+                </div>
+                <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.85)', lineHeight: 1.7, marginBottom: '1rem', flex: 1 }}>
+                  Accès complet à la bibliothèque de documents juridiques en DOCX, personnalisables et mis à jour.
+                  Une question juriste incluse par mois, questions supplémentaires à tarif préférentiel.
+                </p>
+                <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 1.5rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                  {[
+                    "Bibliothèque complète de documents DOCX",
+                    "1 question juriste/mois incluse",
+                    "Questions supplémentaires à 14,90\u00a0€",
+                    "Mises à jour législatives incluses"
+                  ].map((item, j) => (
+                    <li key={j} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem', fontSize: 12, color: 'rgba(255,255,255,0.85)' }}>
+                      <CheckCircle size={14} strokeWidth={2} style={{ color: '#93c5fd', marginTop: 2, flexShrink: 0 }} />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.3rem', marginBottom: '4px' }}>
+                  <span style={{ fontSize: '2rem', fontWeight: 800, color: 'white' }}>17,90\u00a0€</span>
+                  <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.6)' }}>/mois · sans engagement</span>
+                </div>
+                <p style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)', margin: '0 0 1rem' }}>ou 149\u00a0€/an · 3 mois offerts</p>
+                <a href="/catalogue" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', background: 'white', color: '#0f2d6e', textDecoration: 'none', padding: '12px 20px', borderRadius: 8, fontWeight: 700, fontSize: '0.875rem' }}>
+                  Voir la bibliothèque <ArrowRight size={16} />
+                </a>
+              </div>
+
+              {/* Service 3 : Conseil en assurances */}
+              <div style={{ background: 'white', border: '2px solid #a7f3d0', borderRadius: 14, padding: '1.75rem', display: 'flex', flexDirection: 'column' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
+                  <div style={{ width: 44, height: 44, background: '#ecfdf5', borderRadius: 10, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                    <Shield size={22} color="#065f46" strokeWidth={1.5} />
+                  </div>
+                  <div>
+                    <p style={{ color: '#065f46', fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', margin: 0 }}>ORIAS 26003943</p>
+                    <h3 style={{ fontSize: '1.05rem', fontWeight: 700, color: '#0f2d6e', margin: 0 }}>Conseil en assurances</h3>
+                  </div>
+                </div>
+                <p style={{ fontSize: 13, color: '#374151', lineHeight: 1.7, marginBottom: '1rem', flex: 1 }}>
+                  Intermédiaire en assurances réglementé. Audit de vos contrats existants, comparaison des offres du marché,
+                  rapport de conseil écrit et motivé. Aucun lien exclusif avec aucune compagnie.
+                  Conforme à l'article L.521-4 du Code des assurances (DDA).
+                </p>
+                <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 1.5rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                  {[
+                    "Conseil multimarque · objectif",
+                    "Rapport écrit archivé dans votre espace",
+                    "Commission assureur séparée et déclarée",
+                    "Habitation, auto, vie, prévoyance, santé"
+                  ].map((item, j) => (
+                    <li key={j} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem', fontSize: 12, color: '#374151' }}>
+                      <CheckCircle size={14} strokeWidth={2} style={{ color: '#065f46', marginTop: 2, flexShrink: 0 }} />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.3rem', marginBottom: '1rem' }}>
+                  <span style={{ fontSize: '2rem', fontWeight: 800, color: '#065f46' }}>90\u00a0€</span>
+                  <span style={{ fontSize: 13, color: '#6b7280' }}>forfait conseil particulier</span>
+                </div>
+                <a href="/conseil-assurances" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', background: '#065f46', color: 'white', textDecoration: 'none', padding: '12px 20px', borderRadius: 8, fontWeight: 700, fontSize: '0.875rem' }}>
+                  En savoir plus <ArrowRight size={16} />
+                </a>
+              </div>
+
             </div>
           </section>
 
-          {/* ENCART LIMITES IA */}
-          <section style={{background: 'white', border: '1px solid #bfdbfe', borderRadius: '12px', padding: '1.75rem 2rem'}}>
-            <div style={{display: 'flex', gap: '16px', alignItems: 'flex-start', marginBottom: '1.25rem'}}>
-              <div style={{flexShrink: 0, width: '40px', height: '40px', background: '#eff6ff', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-                <Shield size={20} color="#0f2d6e" strokeWidth={1.5} />
-              </div>
-              <div>
-                <p style={{color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: '0 0 4px'}}>Pourquoi ne pas se fier à une IA pour vos questions juridiques ?</p>
-                <p style={{color: '#6b7280', fontSize: '13px', margin: 0, lineHeight: '1.6'}}>Les outils d'intelligence artificielle (ChatGPT, Gemini, Copilot...) sont souvent consultés pour des questions de droit. Leurs réponses paraissent confiantes et structurées. Pourtant, leurs limites en matière juridique sont réelles et peuvent avoir des conséquences sérieuses.</p>
-              </div>
+          {/* DOMAINES COUVERTS */}
+          <section style={{ marginBottom: '3.5rem' }}>
+            <h2 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#0f2d6e', marginBottom: '0.5rem' }}>
+              Domaines juridiques couverts
+            </h2>
+            <p style={{ color: '#6b7280', fontSize: 13, marginBottom: '1.5rem' }}>
+              Notre juriste répond aux questions de droit courant qui concernent les particuliers au quotidien.
+            </p>
+
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '1.5rem' }}>
+              {domaines.map((d, i) => (
+                <button key={i} onClick={() => setDomaineActif(i)} style={{
+                  display: 'inline-flex', alignItems: 'center', gap: '0.4rem',
+                  padding: '7px 14px', borderRadius: 20,
+                  border: domaineActif === i ? 'none' : '1px solid #e5e7eb',
+                  background: domaineActif === i ? domaines[i].couleur : 'white',
+                  color: domaineActif === i ? 'white' : '#374151',
+                  fontSize: 12, fontWeight: 600, cursor: 'pointer'
+                }}>
+                  {d.label}
+                </button>
+              ))}
             </div>
-            <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', marginBottom: '1.25rem'}}>
+
+            <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: 12, padding: '1.5rem', borderLeft: `4px solid ${domaines[domaineActif].couleur}` }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '1rem', color: domaines[domaineActif].couleur }}>
+                {domaines[domaineActif].icone}
+                <span style={{ fontWeight: 700, fontSize: '0.95rem', color: '#0f2d6e' }}>
+                  {domaines[domaineActif].label} — exemples de questions traitées
+                </span>
+              </div>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '0.6rem' }}>
+                {domaines[domaineActif].exemples.map((ex, i) => (
+                  <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem', fontSize: 13, color: '#374151' }}>
+                    <CheckCircle size={14} strokeWidth={2} style={{ color: domaines[domaineActif].couleur, marginTop: 2, flexShrink: 0 }} />
+                    {ex}
+                  </div>
+                ))}
+              </div>
+              <p style={{ fontSize: 12, color: '#9ca3af', fontStyle: 'italic', margin: '1rem 0 0' }}>
+                Liste indicative. En cas d'urgence judiciaire imminente, vous serez orienté vers l'avocat compétent.
+              </p>
+            </div>
+          </section>
+
+          {/* POURQUOI LE CABINET */}
+          <section style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: 14, padding: '2rem', marginBottom: '3.5rem' }}>
+            <h2 style={{ fontSize: '1.3rem', fontWeight: 700, color: '#0f2d6e', marginBottom: '1.5rem' }}>
+              Pourquoi choisir le Cabinet Cholez-Pagotto ?
+            </h2>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.2rem' }}>
               {[
-                {
-                  titre: "Les hallucinations juridiques",
-                  desc: "Une IA peut citer des articles de loi inexistants, inventer des arrêts de jurisprudence ou donner un numéro de décret erroné. Avec la même assurance que pour une information exacte. Impossible à distinguer sans vérification."
-                },
-                {
-                  titre: "Une connaissance figée dans le temps",
-                  desc: "Le droit évolue constamment : nouvelles lois, décrets, revirements de jurisprudence. Une IA a une date de coupure et peut vous citer des textes abrogés ou des règles modifiées sans le signaler."
-                },
-                {
-                  titre: "Aucune prise en compte de votre situation réelle",
-                  desc: "Une IA ignore votre convention collective, votre département, votre type de contrat, votre situation familiale. Elle donne une réponse générique là où le droit exige une analyse contextualisée."
-                },
-                {
-                  titre: "Aucune responsabilité, aucun recours",
-                  desc: "Si une IA vous donne une réponse erronée et que vous agissez sur cette base (délai raté, mauvaise procédure, droit non exercé), vous n'avez aucun recours. Un juriste est responsable de ses réponses."
-                },
+                { titre: "100% humain", desc: "Chaque réponse est rédigée par un juriste. Aucune IA dans la chaîne de production." },
+                { titre: "Tarifs fixes et affichés", desc: "47\u00a0€ la question, 17,90\u00a0€/mois l'abonnement. Aucune surprise." },
+                { titre: "Indépendant", desc: "Aucun lien exclusif avec un assureur. Les recommandations reposent sur votre intérêt." },
+                { titre: "Réglementé", desc: "Juriste formaliste (CRFF), intermédiaire en assurances (ORIAS 26003943, ACPR)." }
               ].map((item, i) => (
-                <div key={i} style={{background: '#f0f4ff', borderRadius: '8px', padding: '1rem'}}>
-                  <p style={{color: '#0f2d6e', fontSize: '12px', fontWeight: '700', margin: '0 0 6px'}}>{item.titre}</p>
-                  <p style={{color: '#6b7280', fontSize: '12px', lineHeight: '1.6', margin: 0}}>{item.desc}</p>
+                <div key={i} style={{ borderTop: '3px solid #0f2d6e', paddingTop: '0.75rem' }}>
+                  <p style={{ fontSize: '0.875rem', fontWeight: 700, color: '#0f2d6e', margin: '0 0 6px' }}>{item.titre}</p>
+                  <p style={{ fontSize: 12, color: '#6b7280', lineHeight: 1.6, margin: 0 }}>{item.desc}</p>
                 </div>
               ))}
-            </div>
-            <div style={{background: '#f8fafc', borderRadius: '8px', padding: '12px 16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '16px', flexWrap: 'wrap'}}>
-              <p style={{color: '#374151', fontSize: '13px', margin: 0, lineHeight: '1.6'}}>
-                <strong>Notre position :</strong> l'IA peut être utile pour une première approche. Elle ne remplace pas une réponse rédigée par un juriste en veille permanente sur l'actualité législative et jurisprudentielle, qui identifie les règles applicables en tenant compte des éléments spécifiques de votre situation.
-              </p>
-              <a href="/blog/lintelligence-artificielle-en-droit-une-fausse-bonne-idee" style={{display: 'inline-block', background: '#0f2d6e', color: 'white', padding: '9px 18px', borderRadius: '8px', fontSize: '12px', fontWeight: '700', textDecoration: 'none', whiteSpace: 'nowrap', flexShrink: 0}}>
-                Lire notre analyse →
-              </a>
             </div>
           </section>
 
-          {/* EXEMPLES DE QUESTIONS */}
-          <section>
-            <div style={{textAlign: 'center', maxWidth: '700px', margin: '0 auto 2rem'}}>
-              <h2 style={{color: '#0f2d6e', fontSize: '1.5rem', fontWeight: '700', margin: '0 0 12px'}}>Des exemples de questions que vous pouvez poser</h2>
-              <p style={{color: '#6b7280', fontSize: '14px', lineHeight: '1.7', margin: 0}}>
-                Ces questions figurent parmi les plus fréquemment posées sur les moteurs de recherche et les outils d'intelligence artificielle. Ce sont aussi celles pour lesquelles une réponse imprécise peut avoir des conséquences importantes.
+          {/* AUTEUR */}
+          <section style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: 12, padding: '1.5rem', marginBottom: '3.5rem', display: 'flex', alignItems: 'flex-start', gap: '1.5rem', flexWrap: 'wrap' }}>
+            <img
+              src="https://secure.gravatar.com/avatar/6c4917275b124957f449a0eb107866858eaaf8ab6f17ccc1d2262120d3c04478?s=80"
+              alt="François Cholez, juriste formaliste Cabinet Cholez-Pagotto"
+              style={{ width: 80, height: 80, borderRadius: '50%', border: '3px solid #eff6ff', flexShrink: 0 }}
+            />
+            <div>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '0.5rem' }}>
+                {['Juriste', 'Formaliste CRFF', 'ORIAS 26003943', 'Sous contrôle ACPR'].map((badge, i) => (
+                  <span key={i} style={{ background: '#eff6ff', color: '#1a4fba', fontSize: 11, fontWeight: 600, padding: '3px 10px', borderRadius: 20 }}>{badge}</span>
+                ))}
+              </div>
+              <h3 style={{ fontSize: '1rem', fontWeight: 700, color: '#0f2d6e', margin: '0 0 0.3rem' }}>François CHOLEZ</h3>
+              <p style={{ fontSize: 13, color: '#6b7280', margin: '0 0 0.3rem', lineHeight: 1.6 }}>
+                Membre du CRFF (Conseil Représentatif des Formalistes de France). Intermédiaire en assurances immatriculé à l'ORIAS sous le numéro 26003943, sous contrôle de l'ACPR. Adhérent ENDYA.
+              </p>
+              <p style={{ fontSize: 13, color: '#6b7280', margin: 0, lineHeight: 1.6 }}>
+                Chercheur associé, contributeur aux ouvrages <em>«&nbsp;L'éducation, ça se partage&nbsp;?&nbsp;»</em> (L'Harmattan, 2021) et <em>«&nbsp;Agir en situation de discrédit&nbsp;»</em> (Le Cavalier Bleu, 2026).
               </p>
             </div>
-            <div style={{display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '16px'}}>
-              {exemples.map((ex, i) => (
-                <div key={i} style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '8px'}}>
-                  <span style={{background: '#eff6ff', color: '#1a4fba', fontSize: '11px', fontWeight: '600', padding: '2px 10px', borderRadius: '20px', alignSelf: 'flex-start'}}>{ex.domaine}</span>
-                  <p style={{color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: 0, lineHeight: '1.4'}}>« {ex.question} »</p>
-                  <p style={{color: '#9ca3af', fontSize: '12px', margin: 0, lineHeight: '1.5', fontStyle: 'italic'}}>{ex.contexte}</p>
-                </div>
-              ))}
-            </div>
-            <p style={{color: '#6b7280', fontSize: '13px', textAlign: 'center', margin: '1.5rem 0 0', lineHeight: '1.6'}}>
-              Ces exemples sont illustratifs. Vous pouvez poser toute question relative à vos droits dans tous les domaines juridiques, sans restriction de thème pour l'information pédagogique.
+          </section>
+
+          {/* CTA FINAL */}
+          <section style={{ background: 'linear-gradient(135deg, #0f2d6e 0%, #1a4fba 100%)', borderRadius: 14, padding: '2.5rem', textAlign: 'center', color: 'white' }}>
+            <h2 style={{ fontSize: '1.3rem', fontWeight: 700, margin: '0 0 0.5rem' }}>
+              Par où commencer ?
+            </h2>
+            <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.8)', margin: '0 0 1.5rem', lineHeight: 1.7 }}>
+              Une question précise → Information sur vos droits (47\u00a0€).<br />
+              Besoin de documents régulièrement → Abonnement Optimal (17,90\u00a0€/mois).<br />
+              Vos assurances à revoir → Conseil en assurances (90\u00a0€ forfait).
             </p>
-          </section>
-
-          {/* TARIF + CTA */}
-          <section style={{background: '#0f2d6e', borderRadius: '16px', padding: '2.5rem', display: 'flex', gap: '3rem', alignItems: 'center'}}>
-            <div style={{flex: 1}}>
-              <h2 style={{color: 'white', fontSize: '1.5rem', fontWeight: '700', margin: '0 0 12px'}}>Prêt à poser votre question ?</h2>
-              <p style={{color: 'rgba(255,255,255,0.8)', fontSize: '14px', lineHeight: '1.8', margin: '0 0 20px'}}>
-                Créez votre compte, posez votre question en langage courant, et recevez une réponse rédigée par un juriste sous 24 à 48h ouvrées. Sans abonnement, sans engagement.
-              </p>
-              <div style={{display: 'flex', gap: '20px', flexWrap: 'wrap'}}>
-                <div style={{background: 'rgba(255,255,255,0.1)', borderRadius: '10px', padding: '14px 20px', textAlign: 'center'}}>
-                  <p style={{color: 'white', fontSize: '1.8rem', fontWeight: '700', margin: 0}}>47 €</p>
-                  <p style={{color: 'rgba(255,255,255,0.7)', fontSize: '12px', margin: 0}}>À l'unité · sans abonnement</p>
-                </div>
-                <div style={{background: 'rgba(255,255,255,0.1)', borderRadius: '10px', padding: '14px 20px', textAlign: 'center'}}>
-                  <p style={{color: 'white', fontSize: '1.8rem', fontWeight: '700', margin: 0}}>24–48h</p>
-                  <p style={{color: 'rgba(255,255,255,0.7)', fontSize: '12px', margin: 0}}>Délai de réponse</p>
-                </div>
-                <div style={{background: 'rgba(255,255,255,0.1)', borderRadius: '10px', padding: '14px 20px', textAlign: 'center'}}>
-                  <p style={{color: 'white', fontSize: '1.8rem', fontWeight: '700', margin: 0}}>100%</p>
-                  <p style={{color: 'rgba(255,255,255,0.7)', fontSize: '12px', margin: 0}}>Humain · Aucune IA</p>
-                </div>
-              </div>
-            </div>
-            <div style={{flex: '0 0 260px', display: 'flex', flexDirection: 'column', gap: '12px'}}>
-              <a href="/connexion" style={{display: 'block', background: 'white', color: '#0f2d6e', padding: '14px', borderRadius: '8px', fontSize: '14px', fontWeight: '700', textDecoration: 'none', textAlign: 'center'}}>
-                Poser ma question · 47 €
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', justifyContent: 'center' }}>
+              <a href="/information-sur-vos-droits" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: 'white', color: '#0f2d6e', textDecoration: 'none', padding: '12px 24px', borderRadius: 8, fontWeight: 700, fontSize: '0.875rem' }}>
+                Poser une question · 47\u00a0€ <ArrowRight size={16} />
               </a>
-              <a href="/tarifs" style={{display: 'block', background: 'transparent', color: 'white', border: '1px solid rgba(255,255,255,0.4)', padding: '12px', borderRadius: '8px', fontSize: '13px', fontWeight: '600', textDecoration: 'none', textAlign: 'center'}}>
-                Voir l'Abonnement Optimal
+              <a href="/catalogue" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: 'transparent', color: 'white', textDecoration: 'none', padding: '12px 24px', borderRadius: 8, fontWeight: 600, fontSize: '0.875rem', border: '1px solid rgba(255,255,255,0.5)' }}>
+                Voir la bibliothèque
               </a>
-              <div style={{background: 'rgba(255,255,255,0.08)', borderRadius: '8px', padding: '12px', display: 'flex', alignItems: 'flex-start', gap: '8px'}}>
-                <Shield size={14} color="rgba(255,255,255,0.6)" style={{flexShrink: 0, marginTop: '2px'}} strokeWidth={1.5} />
-                <p style={{color: 'rgba(255,255,255,0.6)', fontSize: '11px', lineHeight: '1.6', margin: 0}}>Paiement sécurisé. Vos données sont protégées conformément au RGPD.</p>
-              </div>
+              <a href="/conseil-assurances" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: 'transparent', color: 'white', textDecoration: 'none', padding: '12px 24px', borderRadius: 8, fontWeight: 600, fontSize: '0.875rem', border: '1px solid rgba(255,255,255,0.5)' }}>
+                Conseil en assurances
+              </a>
             </div>
-          </section>
-
-          {/* FAQ */}
-          <section>
-            <h2 style={{color: '#0f2d6e', fontSize: '1.5rem', fontWeight: '700', margin: '0 0 1.5rem', textAlign: 'center'}}>Questions fréquentes</h2>
-            <div style={{display: 'flex', flexDirection: 'column', gap: '10px', maxWidth: '760px', margin: '0 auto'}}>
-              {faqs.map((faq, i) => (
-                <details key={i} style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '10px', padding: '1rem 1.25rem'}}>
-                  <summary style={{fontWeight: '600', color: '#0f2d6e', fontSize: '14px', cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '12px'}}>
-                    <span>{faq.q}</span>
-                    <span style={{color: '#1a4fba', fontSize: '18px', flexShrink: 0, lineHeight: 1}}>＋</span>
-                  </summary>
-                  <p style={{color: '#374151', fontSize: '13px', lineHeight: '1.75', marginTop: '12px', marginBottom: 0}}>{faq.a}</p>
-                </details>
-              ))}
-            </div>
-          </section>
-
-          {/* RASSURANCE FINALE */}
-          <section style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '2rem', textAlign: 'center'}}>
-            <div style={{display: 'flex', alignItems: 'center', gap: '10px', justifyContent: 'center', marginBottom: '12px'}}>
-              <img src="https://secure.gravatar.com/avatar/6c4917275b124957f449a0eb107866858eaaf8ab6f17ccc1d2262120d3c04478?s=200&d=mm&r=g" alt="François CHOLEZ" style={{width: '48px', height: '48px', borderRadius: '50%', objectFit: 'cover'}} />
-              <div style={{textAlign: 'left'}}>
-                <p style={{color: '#374151', fontSize: '13px', fontWeight: '700', margin: 0}}>François CHOLEZ</p>
-                <p style={{color: '#9ca3af', fontSize: '11px', margin: 0}}>Juriste · Formaliste · Conseil en assurances</p>
-              </div>
-            </div>
-            <p style={{color: '#6b7280', fontSize: '13px', lineHeight: '1.8', margin: '0 0 16px', maxWidth: '600px', marginLeft: 'auto', marginRight: 'auto'}}>
-              Membre du CRFF. Intermédiaire en assurances immatriculé à l'ORIAS sous le numéro 26003943, sous contrôle de l'Autorité de Contrôle Prudentiel et de Résolution (ACPR). Chaque réponse est rédigée avec rigueur, dans un langage accessible, en citant les textes applicables.
-            </p>
-            <a href="/connexion" style={{display: 'inline-block', background: '#0f2d6e', color: 'white', padding: '12px 32px', borderRadius: '8px', fontSize: '14px', fontWeight: '700', textDecoration: 'none'}}>
-              Poser ma question →
-            </a>
           </section>
 
         </div>
       </main>
+
       <Footer />
     </>
   )
