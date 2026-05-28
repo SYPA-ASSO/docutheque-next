@@ -5,7 +5,7 @@ import Image from 'next/image'
 
 export const metadata = {
   title: 'À propos · François CHOLEZ · Cabinet Cholez-Pagotto',
-  description: "François CHOLEZ, juriste et formaliste, fondateur du Cabinet Cholez-Pagotto à Épinal. Membre du CRFF, courtier en assurances ORIAS n°26003943. Comprendre. Décider. Agir.",
+  description: "François CHOLEZ, juriste et formaliste, fondateur du Cabinet Cholez-Pagotto à Épinal. Membre du CRFF, intermédiaire en assurances immatriculé à l'ORIAS n°26003943. Comprendre. Décider. Agir.",
   alternates: {
     canonical: 'https://cholez-pagotto.fr/a-propos',
   },
@@ -15,7 +15,7 @@ const schema = {
   "@context": "https://schema.org",
   "@type": "AboutPage",
   "name": "À propos du Cabinet Cholez-Pagotto",
-  "description": "François CHOLEZ, juriste et formaliste, fondateur du Cabinet Cholez-Pagotto à Épinal. Membre du CRFF, courtier en assurances ORIAS n°26003943.",
+  "description": "François CHOLEZ, juriste et formaliste, fondateur du Cabinet Cholez-Pagotto à Épinal. Membre du CRFF, intermédiaire en assurances immatriculé à l'ORIAS n°26003943.",
   "url": "https://cholez-pagotto.fr/a-propos",
   "publisher": {
     "@type": "Organization",
@@ -31,7 +31,7 @@ const schema = {
       "name": "Cabinet Cholez-Pagotto"
     },
     "image": "https://secure.gravatar.com/avatar/6c4917275b124957f449a0eb107866858eaaf8ab6f17ccc1d2262120d3c04478?s=200",
-    "description": "Juriste - Formaliste - Conseil en assurances. Membre du CRFF. Cabinet Cholez-Pagotto."
+    "description": "Juriste - Formaliste - Conseil en assurances réglementé. Membre du CRFF. Intermédiaire en assurances immatriculé à l'ORIAS n°26003943. Cabinet Cholez-Pagotto."
   }
 }
 
@@ -71,7 +71,7 @@ export default function APropos() {
 
         <div style={{ maxWidth: '900px', margin: '0 auto', padding: '3rem 2rem' }}>
 
-          {/* PROFIL JURISTE */}
+          {/* PROFIL */}
           <section style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '16px', padding: '2.5rem', marginBottom: '2rem' }}>
             <div style={{ display: 'flex', gap: '2rem', alignItems: 'flex-start', flexWrap: 'wrap' }}>
               <div style={{ flexShrink: 0 }}>
@@ -86,16 +86,60 @@ export default function APropos() {
               </div>
               <div style={{ flex: 1 }}>
                 <p style={{ color: '#0f2d6e', fontSize: '1.3rem', fontWeight: '700', margin: '0 0 4px' }}>François CHOLEZ</p>
-                <p style={{ color: '#c8a84b', fontSize: '13px', fontWeight: '600', margin: '0 0 12px' }}>
+                <p style={{ color: '#c8a84b', fontSize: '13px', fontWeight: '600', margin: '0 0 16px' }}>
                   Juriste · Formaliste · Conseil en assurances
                 </p>
-                <p style={{ color: '#374151', fontSize: '14px', lineHeight: '1.8', margin: '0 0 12px' }}>
-                  Fondateur du Cabinet Cholez-Pagotto, François CHOLEZ accompagne les particuliers, professionnels et associations dans leurs démarches juridiques et administratives depuis de nombreuses années. Membre adhérent du Conseil Représentatif des Formalistes de France (CRFF).
+                <p style={{ color: '#374151', fontSize: '14px', lineHeight: '1.8', margin: '0 0 14px' }}>
+                  Fondateur du Cabinet Cholez-Pagotto, François CHOLEZ accompagne les particuliers, professionnels et associations dans leurs démarches juridiques et administratives. Membre adhérent du Conseil Représentatif des Formalistes de France (CRFF).
                 </p>
                 <p style={{ color: '#374151', fontSize: '14px', lineHeight: '1.8', margin: 0 }}>
-                  Courtier en assurances et réassurances de niveau IAS 1, immatriculé à l'ORIAS sous le numéro <strong>26003943</strong>, sous contrôle de l'ACPR. Membre de l'association d'autorégulation <strong>ENDYA</strong>.
+                  François CHOLEZ exerce le conseil en assurances dans un cadre réglementé : intermédiaire en assurances immatriculé à l'ORIAS sous le numéro <strong>26003943</strong>, sous contrôle de l'Autorité de Contrôle Prudentiel et de Résolution (ACPR). Cette immatriculation garantit le respect d'obligations professionnelles strictes : formation continue, capacité professionnelle vérifiée, responsabilité civile professionnelle et garantie financière. Membre de l'association d'autorégulation <strong>ENDYA</strong>.
                 </p>
               </div>
+            </div>
+          </section>
+
+          {/* VALEURS ET PHILOSOPHIE */}
+          <section style={{ marginBottom: '2rem' }}>
+            <h2 style={{ color: '#0f2d6e', fontSize: '1.2rem', fontWeight: '700', margin: '0 0 1.25rem' }}>Notre philosophie</h2>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '16px' }}>
+              {[
+                {
+                  titre: 'Le droit, simplement expliqué',
+                  desc: "Le droit régit chaque aspect de la vie des personnes et des organisations. Pourtant, il reste largement inaccessible à ceux qui en ont le plus besoin. Notre conviction : l'information juridique de qualité ne devrait pas être réservée à ceux qui peuvent s'offrir un avocat. Elle est un outil d'émancipation.",
+                  couleur: '#0f2d6e',
+                },
+                {
+                  titre: 'Humain par choix, pas par défaut',
+                  desc: "À une époque où l'intelligence artificielle s'infiltre dans tous les secteurs, nous faisons un choix assumé : chaque réponse, chaque document, chaque conseil est produit par un être humain qualifié. Pas parce que nous ne connaissons pas l'IA, mais parce que la responsabilité que nous engageons ne peut pas être déléguée à un algorithme.",
+                  couleur: '#0f2d6e',
+                },
+                {
+                  titre: 'Transparent sur tout',
+                  desc: "Les prix sont affichés avant toute démarche. Les commissions perçues en cas de souscription d'assurance sont communiquées avant souscription. Le périmètre de ce que nous faisons et de ce que nous ne faisons pas est clairement délimité. La confiance se construit sur la clarté, pas sur le vague.",
+                  couleur: '#0f2d6e',
+                },
+                {
+                  titre: 'Indépendant dans nos recommandations',
+                  desc: "Aucun lien exclusif avec un assureur, aucune affiliation à un réseau qui orienterait nos conseils. Les recommandations que nous formulons reposent exclusivement sur l'analyse des besoins du client et la comparaison objective des offres disponibles sur le marché.",
+                  couleur: '#0f2d6e',
+                },
+                {
+                  titre: 'Rigoureux dans les fondamentaux',
+                  desc: "Information juridique fondée sur les textes en vigueur. Documents mis à jour à chaque évolution législative. Conseil en assurances conforme à la Directive sur la Distribution d'Assurances. Formalités réalisées selon les exigences des organismes compétents. La rigueur n'est pas une option.",
+                  couleur: '#0f2d6e',
+                },
+                {
+                  titre: 'Engagé dans l'économie sociale et solidaire',
+                  desc: "Plus de 30 ans d'engagement aux côtés des acteurs associatifs, coopératifs et mutualistes. Le secteur ESS a des besoins juridiques et assurantiels spécifiques, souvent mal servis. Le cabinet en a fait un axe majeur de son activité, pas un marché de niche.",
+                  couleur: '#0f2d6e',
+                },
+              ].map((item, i) => (
+                <div key={i} style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.5rem', borderTop: `3px solid ${item.couleur}` }}>
+                  <p style={{ color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px' }}>{item.titre}</p>
+                  <p style={{ color: '#6b7280', fontSize: '13px', lineHeight: '1.7', margin: 0 }}>{item.desc}</p>
+                </div>
+              ))}
             </div>
           </section>
 
@@ -106,22 +150,22 @@ export default function APropos() {
               {[
                 {
                   titre: 'Membre CRFF',
-                  desc: 'Conseil Représentatif des Formalistes de France. Organisation représentative des juristes et formalistes en France.',
+                  desc: 'Conseil Représentatif des Formalistes de France. Organisation représentative des juristes et formalistes en France, garante d\'un exercice déontologique de l\'activité formaliste.',
                   badge: 'CRFF'
                 },
                 {
                   titre: 'ORIAS n°26003943',
-                  desc: "Immatriculation au registre des intermédiaires en assurance. Vérifiable sur orias.fr.",
+                  desc: "Immatriculation obligatoire au registre des intermédiaires en assurance, banque et finance. Atteste de la capacité professionnelle vérifiée et du respect des obligations légales d'exercice. Vérifiable sur orias.fr.",
                   badge: 'IAS Niv. 1'
                 },
                 {
                   titre: 'Contrôle ACPR',
-                  desc: "Activité de courtage exercée sous le contrôle de l'Autorité de Contrôle Prudentiel et de Résolution.",
+                  desc: "Activité de conseil en assurances exercée sous le contrôle de l'Autorité de Contrôle Prudentiel et de Résolution, autorité de supervision des secteurs de la banque et de l'assurance en France.",
                   badge: 'ACPR'
                 },
                 {
                   titre: 'Membre ENDYA',
-                  desc: "Adhérent de l'association d'autorégulation des intermédiaires en assurance.",
+                  desc: "Adhérent de l'association professionnelle d'autorégulation des intermédiaires en assurance, engagée pour des pratiques de distribution conformes aux exigences de la Directive sur la Distribution d'Assurances (DDA).",
                   badge: 'ENDYA'
                 },
               ].map((item, i) => (
@@ -136,71 +180,24 @@ export default function APropos() {
             </div>
           </section>
 
-          {/* PUBLICATIONS */}
+          {/* CE QUE LE CABINET PROPOSE */}
           <section style={{ marginBottom: '2rem' }}>
-            <h2 style={{ color: '#0f2d6e', fontSize: '1.2rem', fontWeight: '700', margin: '0 0 1.25rem' }}>Publications</h2>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-              {[
-                {
-                  annee: '2026',
-                  editeur: 'Le Cavalier Bleu',
-                  desc: "Publication aux Éditions Le Cavalier Bleu.",
-                },
-                {
-                  annee: '2021',
-                  editeur: "L'Harmattan",
-                  desc: "Publication aux Éditions L'Harmattan.",
-                },
-              ].map((pub, i) => (
-                <div key={i} style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '10px', padding: '1rem 1.25rem', display: 'flex', gap: '1rem', alignItems: 'center' }}>
-                  <span style={{ background: '#0f2d6e', color: 'white', fontSize: '11px', fontWeight: '700', padding: '3px 10px', borderRadius: '6px', flexShrink: 0 }}>{pub.annee}</span>
-                  <div>
-                    <p style={{ color: '#0f2d6e', fontSize: '13px', fontWeight: '600', margin: '0 0 2px' }}>{pub.editeur}</p>
-                    <p style={{ color: '#6b7280', fontSize: '12px', margin: 0 }}>{pub.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          {/* SERVICES */}
-          <section style={{ marginBottom: '2rem' }}>
-            <h2 style={{ color: '#0f2d6e', fontSize: '1.2rem', fontWeight: '700', margin: '0 0 1.25rem' }}>Ce que nous proposons</h2>
+            <h2 style={{ color: '#0f2d6e', fontSize: '1.2rem', fontWeight: '700', margin: '0 0 1.25rem' }}>Ce que le cabinet propose</h2>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '12px' }}>
               {[
-                "Bibliothèque de documents juridiques téléchargeables et personnalisables",
-                "Information sur vos droits par un juriste sous 24 à 48h",
-                "Accompagnement à la création d'entreprise",
-                "Accompagnement des associations · ESS",
-                "Accompagnement RGPD et conformité",
-                "Conseil en assurances, sans honoraires directs",
-                "DPO externalisé",
-                "Formations sur-mesure",
+                { label: "Bibliothèque de documents juridiques téléchargeables et personnalisables", lien: "/catalogue" },
+                { label: "Information sur vos droits par un juriste sous 24 à 48h ouvrées", lien: "/information-sur-vos-droits" },
+                { label: "Accompagnement à la création d'entreprise — formalités offertes", lien: "/accompagnement-professionnels" },
+                { label: "Accompagnement des associations et structures ESS", lien: "/accompagnement-associations" },
+                { label: "Accompagnement RGPD et conformité", lien: "/contact" },
+                { label: "Conseil en assurances réglementé — forfait conseil 90 € / 150 €", lien: "/conseil-assurances" },
+                { label: "DPO externalisé", lien: "/contact" },
+                { label: "Formations sur-mesure", lien: "/formations" },
               ].map((service, i) => (
-                <div key={i} style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '10px', padding: '0.875rem 1rem', display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
+                <a key={i} href={service.lien} style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '10px', padding: '0.875rem 1rem', display: 'flex', gap: '10px', alignItems: 'flex-start', textDecoration: 'none' }}>
                   <span style={{ color: '#1a4fba', fontSize: '14px', flexShrink: 0, marginTop: '1px' }}>✓</span>
-                  <p style={{ color: '#374151', fontSize: '13px', lineHeight: '1.5', margin: 0 }}>{service}</p>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          {/* INFOS LÉGALES */}
-          <section style={{ background: '#0f2d6e', borderRadius: '16px', padding: '2rem', marginBottom: '2rem' }}>
-            <p style={{ color: 'white', fontSize: '1rem', fontWeight: '700', margin: '0 0 16px' }}>Informations légales</p>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '10px', fontSize: '12px' }}>
-              {[
-                ['Dénomination', 'Cabinet Cholez-Pagotto'],
-                ['Forme juridique', 'Entreprise individuelle (E.I.)'],
-                ['SIRET', '490 889 516 00053'],
-                ['Siège social', "12 rue d'Olima, 88000 Épinal"],
-                ['ORIAS', "n°26003943 · IAS Niveau 1"],
-                ['Franchise TVA', 'Art. 293 B CGI · TVA non applicable'],
-              ].map(([label, value], i) => (
-                <div key={i}>
-                  <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '10px', fontWeight: '600', margin: '0 0 2px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>{label}</p>
-                  <p style={{ color: 'rgba(255,255,255,0.9)', fontSize: '12px', margin: 0 }}>{value}</p>
-                </div>
+                  <p style={{ color: '#374151', fontSize: '13px', lineHeight: '1.5', margin: 0 }}>{service.label}</p>
+                </a>
               ))}
             </div>
           </section>
