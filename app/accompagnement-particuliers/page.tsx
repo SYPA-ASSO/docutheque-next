@@ -1,18 +1,11 @@
 'use client'
 
-// app/accompagnement-particuliers/page.tsx
-// Page hub particuliers — présentation des 3 services, liens vers pages dédiées
-// Règles : zéro tiret long, cholez-pagotto.fr, \u00a0 avant €
-
-import { useState } from 'react'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import {
-  Scale, Shield, BookOpen, CheckCircle, ArrowRight,
-  ChevronRight, Briefcase, Heart, Home, Car, Info
+  Scale, Shield, BookOpen, CheckCircle, ArrowRight, ChevronRight, Info
 } from 'lucide-react'
 
-// ─── SCHEMA.ORG ───
 const schemaData = {
   "@context": "https://schema.org",
   "@graph": [
@@ -20,7 +13,7 @@ const schemaData = {
       "@type": "Service",
       "@id": "https://cholez-pagotto.fr/accompagnement-particuliers#service",
       "name": "Accompagnement particuliers - Cabinet Cholez-Pagotto",
-      "description": "Accompagnement juridique des particuliers : information sur vos droits (47\u00a0€), bibliothèque de documents (abonnement dès 17,90\u00a0€/mois) et conseil en assurances réglementé (ORIAS 26003943). Réponse juriste sous 24 à 48h ouvrées.",
+      "description": "Accompagnement juridique des particuliers : information sur vos droits (47 €), bibliothèque de documents (dès 17,90 €/mois), conseil en assurances réglementé ORIAS 26003943. Tous les domaines du droit.",
       "provider": {
         "@type": "LegalService",
         "@id": "https://cholez-pagotto.fr/#cabinet",
@@ -30,24 +23,9 @@ const schemaData = {
       "serviceType": "Information juridique et conseil en assurances pour particuliers",
       "areaServed": { "@type": "Country", "name": "France" },
       "offers": [
-        {
-          "@type": "Offer",
-          "name": "Information sur vos droits",
-          "price": "47",
-          "priceCurrency": "EUR"
-        },
-        {
-          "@type": "Offer",
-          "name": "Abonnement Optimal Particulier",
-          "price": "17.90",
-          "priceCurrency": "EUR"
-        },
-        {
-          "@type": "Offer",
-          "name": "Conseil en assurances",
-          "price": "90",
-          "priceCurrency": "EUR"
-        }
+        { "@type": "Offer", "name": "Information sur vos droits", "price": "47", "priceCurrency": "EUR" },
+        { "@type": "Offer", "name": "Abonnement Optimal Particulier", "price": "17.90", "priceCurrency": "EUR" },
+        { "@type": "Offer", "name": "Conseil en assurances", "price": "90", "priceCurrency": "EUR" }
       ],
       "url": "https://cholez-pagotto.fr/accompagnement-particuliers"
     },
@@ -62,56 +40,52 @@ const schemaData = {
   ]
 }
 
-// ─── DOMAINES ───
 const domaines = [
-  {
-    label: "Droit du travail",
-    icone: <Briefcase size={18} strokeWidth={1.5} />,
-    couleur: "#0f2d6e",
-    exemples: ["Licenciement, rupture conventionnelle", "Harcèlement moral ou sexuel", "Modification du contrat", "Congés, RTT, arrêt maladie"]
-  },
-  {
-    label: "Logement",
-    icone: <Home size={18} strokeWidth={1.5} />,
-    couleur: "#16a34a",
-    exemples: ["Dépôt de garantie, baux", "Charges locatives", "Procédure d'expulsion", "Travaux, obligations du propriétaire"]
-  },
-  {
-    label: "Famille",
-    icone: <Heart size={18} strokeWidth={1.5} />,
-    couleur: "#dc2626",
-    exemples: ["Divorce, pension alimentaire", "Autorité parentale", "Succession, héritiers", "Donation, PACS"]
-  },
-  {
-    label: "Consommation",
-    icone: <Scale size={18} strokeWidth={1.5} />,
-    couleur: "#7c3aed",
-    exemples: ["Garantie légale (2 ans)", "Droit de rétractation", "Litige avec un professionnel", "Crédit, surendettement"]
-  },
-  {
-    label: "Assurances",
-    icone: <Shield size={18} strokeWidth={1.5} />,
-    couleur: "#065f46",
-    exemples: ["Refus de sinistre, recours", "Niveaux de couverture", "Assurance vie, prévoyance", "Responsabilité civile"]
-  },
-  {
-    label: "Droit routier",
-    icone: <Car size={18} strokeWidth={1.5} />,
-    couleur: "#0891b2",
-    exemples: ["Accident, droits de la victime", "Permis : suspension, points", "Refus d'indemnisation", "Loi Badinter"]
-  }
+  "Droit du travail",
+  "Droit immobilier",
+  "Droit des contrats",
+  "Droit associatif · ESS",
+  "Protection sociale · CAF · Sécurité sociale",
+  "Retraite · Droits et démarches",
+  "Action sociale · Médico-social",
+  "RGPD · DPO · Données personnelles",
+  "Droit de la famille",
+  "Droit des successions",
+  "Droit des sociétés",
+  "Droit fiscal",
+  "Droit administratif",
+  "Droit de la santé",
+  "Protection des personnes vulnérables",
+  "Droit de l'éducation · Formation",
+  "Éducation nationale",
+  "Droit de la fonction publique",
+  "Droit du bénévole",
+  "Droit du sport · Licencié · Adhérent",
+  "Droit du locataire",
+  "Droit du bailleur",
+  "Location courte durée · Plateformes",
+  "Copropriété",
+  "Accession à la propriété",
+  "Droit des aidants · Proches aidants",
+  "Droit des étrangers · Nationalité",
+  "Droit funéraire",
+  "Assurance habitation · Sinistres",
+  "Assurance auto · Responsabilité",
+  "Assurance vie · Prévoyance",
+  "Assurance professionnelle · RC Pro",
+  "Droit civil",
+  "Droit numérique",
+  "Droit des collectivités territoriales",
+  "Droit du consommateur numérique",
+  "Droit pénal · Défense",
+  "Droit de la vie privée · Image",
+  "Droit animal"
 ]
 
 export default function AccompagnementParticuliersPage() {
-  const [domaineActif, setDomaineActif] = useState(0)
-
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
-      />
-
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }} />
       <Header />
 
       {/* Breadcrumb */}
@@ -145,8 +119,8 @@ export default function AccompagnementParticuliersPage() {
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '2rem', paddingTop: '2rem', borderTop: '1px solid rgba(255,255,255,0.2)' }}>
               {[
-                { valeur: "6", label: "Domaines juridiques couverts" },
-                { valeur: "47\u00a0€", label: "Information sur vos droits" },
+                { valeur: "39", label: "Domaines du droit couverts" },
+                { valeur: "47 €", label: "Information sur vos droits" },
                 { valeur: "24-48h", label: "Délai indicatif de réponse" },
                 { valeur: "100%", label: "Humain — aucune IA" }
               ].map((s, i) => (
@@ -183,7 +157,7 @@ export default function AccompagnementParticuliersPage() {
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem' }}>
 
-              {/* Service 1 : Information sur vos droits */}
+              {/* Service 1 — Information sur vos droits */}
               <div style={{ background: 'white', border: '2px solid #bfdbfe', borderRadius: 14, padding: '1.75rem', display: 'flex', flexDirection: 'column' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
                   <div style={{ width: 44, height: 44, background: '#eff6ff', borderRadius: 10, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
@@ -196,32 +170,26 @@ export default function AccompagnementParticuliersPage() {
                 </div>
                 <p style={{ fontSize: 13, color: '#374151', lineHeight: 1.7, marginBottom: '1rem', flex: 1 }}>
                   Vous posez votre question en langage courant. Un juriste identifie les textes applicables à votre situation
-                  et vous apporte une réponse pédagogique et documentée sous 24 à 48h ouvrées.
-                  Sans abonnement, sans engagement.
+                  et vous apporte une réponse pédagogique et documentée sous 24 à 48h ouvrées. Sans abonnement, sans engagement.
                 </p>
                 <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 1.5rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                  {[
-                    "Réponse 100% humaine, aucune IA",
-                    "Références juridiques précises",
-                    "Orientation vers un avocat si nécessaire",
-                    "Confidentialité totale"
-                  ].map((item, j) => (
+                  {["Réponse 100% humaine, aucune IA", "Références juridiques précises", "Orientation vers un avocat si nécessaire", "Confidentialité totale"].map((item, j) => (
                     <li key={j} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem', fontSize: 12, color: '#374151' }}>
                       <CheckCircle size={14} strokeWidth={2} style={{ color: '#1a4fba', marginTop: 2, flexShrink: 0 }} />
                       {item}
                     </li>
                   ))}
                 </ul>
-                <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.3rem', marginBottom: '1rem' }}>
-                  <span style={{ fontSize: '2rem', fontWeight: 800, color: '#0f2d6e' }}>47\u00a0€</span>
-                  <span style={{ fontSize: 13, color: '#6b7280' }}>par question · sans abonnement</span>
+                <div style={{ marginBottom: '1rem' }}>
+                  <span style={{ fontSize: '2rem', fontWeight: 800, color: '#0f2d6e' }}>47 €</span>
+                  <span style={{ fontSize: 13, color: '#6b7280', marginLeft: '0.4rem' }}>par question · sans abonnement</span>
                 </div>
                 <a href="/information-sur-vos-droits" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', background: '#0f2d6e', color: 'white', textDecoration: 'none', padding: '12px 20px', borderRadius: 8, fontWeight: 700, fontSize: '0.875rem' }}>
                   Poser ma question <ArrowRight size={16} />
                 </a>
               </div>
 
-              {/* Service 2 : Abonnement Optimal */}
+              {/* Service 2 — Abonnement Optimal */}
               <div style={{ background: '#0f2d6e', border: '2px solid #1a4fba', borderRadius: 14, padding: '1.75rem', display: 'flex', flexDirection: 'column', position: 'relative', overflow: 'hidden' }}>
                 <div style={{ position: 'absolute', top: 12, right: 12, background: '#c8a84b', color: 'white', fontSize: 9, fontWeight: 700, padding: '3px 10px', borderRadius: 12, letterSpacing: '0.05em' }}>RECOMMANDÉ</div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
@@ -240,8 +208,8 @@ export default function AccompagnementParticuliersPage() {
                 <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 1.5rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                   {[
                     "Bibliothèque complète de documents DOCX",
-                    "1 question juriste/mois incluse",
-                    "Questions supplémentaires à 14,90\u00a0€",
+                    "1 question juriste / mois incluse",
+                    `Questions supplémentaires à 14,90 €`,
                     "Mises à jour législatives incluses"
                   ].map((item, j) => (
                     <li key={j} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem', fontSize: 12, color: 'rgba(255,255,255,0.85)' }}>
@@ -250,17 +218,17 @@ export default function AccompagnementParticuliersPage() {
                     </li>
                   ))}
                 </ul>
-                <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.3rem', marginBottom: '4px' }}>
-                  <span style={{ fontSize: '2rem', fontWeight: 800, color: 'white' }}>17,90\u00a0€</span>
-                  <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.6)' }}>/mois · sans engagement</span>
+                <div style={{ marginBottom: '4px' }}>
+                  <span style={{ fontSize: '2rem', fontWeight: 800, color: 'white' }}>17,90 €</span>
+                  <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.6)', marginLeft: '0.4rem' }}>/ mois · sans engagement</span>
                 </div>
-                <p style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)', margin: '0 0 1rem' }}>ou 149\u00a0€/an · 3 mois offerts</p>
+                <p style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)', margin: '0 0 1rem' }}>ou 149 € / an · 3 mois offerts</p>
                 <a href="/catalogue" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', background: 'white', color: '#0f2d6e', textDecoration: 'none', padding: '12px 20px', borderRadius: 8, fontWeight: 700, fontSize: '0.875rem' }}>
                   Voir la bibliothèque <ArrowRight size={16} />
                 </a>
               </div>
 
-              {/* Service 3 : Conseil en assurances */}
+              {/* Service 3 — Conseil en assurances */}
               <div style={{ background: 'white', border: '2px solid #a7f3d0', borderRadius: 14, padding: '1.75rem', display: 'flex', flexDirection: 'column' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
                   <div style={{ width: 44, height: 44, background: '#ecfdf5', borderRadius: 10, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
@@ -277,21 +245,16 @@ export default function AccompagnementParticuliersPage() {
                   Conforme à l'article L.521-4 du Code des assurances (DDA).
                 </p>
                 <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 1.5rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                  {[
-                    "Conseil multimarque · objectif",
-                    "Rapport écrit archivé dans votre espace",
-                    "Commission assureur séparée et déclarée",
-                    "Habitation, auto, vie, prévoyance, santé"
-                  ].map((item, j) => (
+                  {["Conseil multimarque, objectif", "Rapport écrit archivé dans votre espace", "Commission assureur séparée et déclarée", "Habitation, auto, vie, prévoyance, santé"].map((item, j) => (
                     <li key={j} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem', fontSize: 12, color: '#374151' }}>
                       <CheckCircle size={14} strokeWidth={2} style={{ color: '#065f46', marginTop: 2, flexShrink: 0 }} />
                       {item}
                     </li>
                   ))}
                 </ul>
-                <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.3rem', marginBottom: '1rem' }}>
-                  <span style={{ fontSize: '2rem', fontWeight: 800, color: '#065f46' }}>90\u00a0€</span>
-                  <span style={{ fontSize: 13, color: '#6b7280' }}>forfait conseil particulier</span>
+                <div style={{ marginBottom: '1rem' }}>
+                  <span style={{ fontSize: '2rem', fontWeight: 800, color: '#065f46' }}>90 €</span>
+                  <span style={{ fontSize: 13, color: '#6b7280', marginLeft: '0.4rem' }}>forfait conseil particulier</span>
                 </div>
                 <a href="/conseil-assurances" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', background: '#065f46', color: 'white', textDecoration: 'none', padding: '12px 20px', borderRadius: 8, fontWeight: 700, fontSize: '0.875rem' }}>
                   En savoir plus <ArrowRight size={16} />
@@ -301,49 +264,34 @@ export default function AccompagnementParticuliersPage() {
             </div>
           </section>
 
-          {/* DOMAINES COUVERTS */}
+          {/* DOMAINES — grille complète */}
           <section style={{ marginBottom: '3.5rem' }}>
             <h2 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#0f2d6e', marginBottom: '0.5rem' }}>
-              Domaines juridiques couverts
+              Tous les domaines du droit
             </h2>
             <p style={{ color: '#6b7280', fontSize: 13, marginBottom: '1.5rem' }}>
-              Notre juriste répond aux questions de droit courant qui concernent les particuliers au quotidien.
+              Le cabinet couvre l'ensemble des branches du droit. Quelle que soit votre situation, notre juriste identifie les règles applicables et vous apporte une réponse documentée.
             </p>
-
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '1.5rem' }}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '1.25rem' }}>
               {domaines.map((d, i) => (
-                <button key={i} onClick={() => setDomaineActif(i)} style={{
-                  display: 'inline-flex', alignItems: 'center', gap: '0.4rem',
-                  padding: '7px 14px', borderRadius: 20,
-                  border: domaineActif === i ? 'none' : '1px solid #e5e7eb',
-                  background: domaineActif === i ? domaines[i].couleur : 'white',
-                  color: domaineActif === i ? 'white' : '#374151',
-                  fontSize: 12, fontWeight: 600, cursor: 'pointer'
+                <span key={i} style={{
+                  display: 'inline-block',
+                  background: 'white',
+                  border: '1px solid #e5e7eb',
+                  color: '#374151',
+                  fontSize: 12,
+                  fontWeight: 500,
+                  padding: '5px 12px',
+                  borderRadius: 20,
+                  lineHeight: 1.4
                 }}>
-                  {d.label}
-                </button>
+                  {d}
+                </span>
               ))}
             </div>
-
-            <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: 12, padding: '1.5rem', borderLeft: `4px solid ${domaines[domaineActif].couleur}` }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '1rem', color: domaines[domaineActif].couleur }}>
-                {domaines[domaineActif].icone}
-                <span style={{ fontWeight: 700, fontSize: '0.95rem', color: '#0f2d6e' }}>
-                  {domaines[domaineActif].label} — exemples de questions traitées
-                </span>
-              </div>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '0.6rem' }}>
-                {domaines[domaineActif].exemples.map((ex, i) => (
-                  <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem', fontSize: 13, color: '#374151' }}>
-                    <CheckCircle size={14} strokeWidth={2} style={{ color: domaines[domaineActif].couleur, marginTop: 2, flexShrink: 0 }} />
-                    {ex}
-                  </div>
-                ))}
-              </div>
-              <p style={{ fontSize: 12, color: '#9ca3af', fontStyle: 'italic', margin: '1rem 0 0' }}>
-                Liste indicative. En cas d'urgence judiciaire imminente, vous serez orienté vers l'avocat compétent.
-              </p>
-            </div>
+            <p style={{ fontSize: 12, color: '#9ca3af', fontStyle: 'italic', margin: 0 }}>
+              En cas d'urgence judiciaire imminente (audience, garde à vue, délai de recours imminent), vous serez orienté vers l'avocat compétent.
+            </p>
           </section>
 
           {/* POURQUOI LE CABINET */}
@@ -354,7 +302,7 @@ export default function AccompagnementParticuliersPage() {
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.2rem' }}>
               {[
                 { titre: "100% humain", desc: "Chaque réponse est rédigée par un juriste. Aucune IA dans la chaîne de production." },
-                { titre: "Tarifs fixes et affichés", desc: "47\u00a0€ la question, 17,90\u00a0€/mois l'abonnement. Aucune surprise." },
+                { titre: "Tarifs fixes et affichés", desc: `47 € la question, 17,90 €/mois l'abonnement. Aucune surprise.` },
                 { titre: "Indépendant", desc: "Aucun lien exclusif avec un assureur. Les recommandations reposent sur votre intérêt." },
                 { titre: "Réglementé", desc: "Juriste formaliste (CRFF), intermédiaire en assurances (ORIAS 26003943, ACPR)." }
               ].map((item, i) => (
@@ -384,24 +332,24 @@ export default function AccompagnementParticuliersPage() {
                 Membre du CRFF (Conseil Représentatif des Formalistes de France). Intermédiaire en assurances immatriculé à l'ORIAS sous le numéro 26003943, sous contrôle de l'ACPR. Adhérent ENDYA.
               </p>
               <p style={{ fontSize: 13, color: '#6b7280', margin: 0, lineHeight: 1.6 }}>
-                Chercheur associé, contributeur aux ouvrages <em>«&nbsp;L'éducation, ça se partage&nbsp;?&nbsp;»</em> (L'Harmattan, 2021) et <em>«&nbsp;Agir en situation de discrédit&nbsp;»</em> (Le Cavalier Bleu, 2026).
+                Chercheur associé, contributeur aux ouvrages{' '}
+                <em>« L'éducation, ça se partage ?»</em> (L'Harmattan, 2021)
+                {' '}et <em>« Agir en situation de discrédit »</em> (Le Cavalier Bleu, 2026).
               </p>
             </div>
           </section>
 
           {/* CTA FINAL */}
           <section style={{ background: 'linear-gradient(135deg, #0f2d6e 0%, #1a4fba 100%)', borderRadius: 14, padding: '2.5rem', textAlign: 'center', color: 'white' }}>
-            <h2 style={{ fontSize: '1.3rem', fontWeight: 700, margin: '0 0 0.5rem' }}>
-              Par où commencer ?
-            </h2>
-            <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.8)', margin: '0 0 1.5rem', lineHeight: 1.7 }}>
-              Une question précise → Information sur vos droits (47\u00a0€).<br />
-              Besoin de documents régulièrement → Abonnement Optimal (17,90\u00a0€/mois).<br />
-              Vos assurances à revoir → Conseil en assurances (90\u00a0€ forfait).
+            <h2 style={{ fontSize: '1.3rem', fontWeight: 700, margin: '0 0 0.5rem' }}>Par où commencer ?</h2>
+            <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.8)', margin: '0 0 1.5rem', lineHeight: 1.9 }}>
+              Une question précise : <strong>Information sur vos droits</strong> — 47 €.<br />
+              Besoin de documents régulièrement : <strong>Abonnement Optimal</strong> — à partir de 17,90 € / mois.<br />
+              Vos assurances à revoir : <strong>Conseil en assurances</strong> — forfait 90 €.
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', justifyContent: 'center' }}>
               <a href="/information-sur-vos-droits" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: 'white', color: '#0f2d6e', textDecoration: 'none', padding: '12px 24px', borderRadius: 8, fontWeight: 700, fontSize: '0.875rem' }}>
-                Poser une question · 47\u00a0€ <ArrowRight size={16} />
+                Poser une question · 47 € <ArrowRight size={16} />
               </a>
               <a href="/catalogue" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: 'transparent', color: 'white', textDecoration: 'none', padding: '12px 24px', borderRadius: 8, fontWeight: 600, fontSize: '0.875rem', border: '1px solid rgba(255,255,255,0.5)' }}>
                 Voir la bibliothèque
@@ -414,7 +362,6 @@ export default function AccompagnementParticuliersPage() {
 
         </div>
       </main>
-
       <Footer />
     </>
   )
