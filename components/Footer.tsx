@@ -19,7 +19,7 @@ export default function Footer() {
               style={{ height: '44px', width: 'auto', marginBottom: '10px', display: 'block' }}
             />
             <p style={{ color: '#c8a84b', fontSize: '11px', letterSpacing: '1.5px', fontWeight: '600', margin: 0 }}>
-              COMPRENDRE · DÉCIDER · AGIR
+              Comprendre. Décider. Agir.
             </p>
           </div>
           <div style={{ maxWidth: '360px' }}>
@@ -41,7 +41,7 @@ export default function Footer() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
               {[
                 { label: 'Information sur vos droits', href: '/information-sur-vos-droits' },
-                { label: 'Conseil en assurances', href: '/accompagnement-particuliers' },
+                { label: 'Conseil en assurances', href: '/conseil-assurances' },
                 { label: 'Formalités entreprise', href: '/accompagnement-professionnels' },
                 { label: 'Formations', href: '/formations' },
                 { label: 'Catalogue de documents', href: '/catalogue' },
@@ -62,7 +62,6 @@ export default function Footer() {
                 { label: 'Professionnels', href: '/accompagnement-professionnels' },
                 { label: 'Associations · ESS', href: '/accompagnement-associations' },
                 { label: 'Espace client', href: '/espace-client' },
-                { label: 'Connexion', href: '/connexion' },
               ].map((l) => (
                 <Link key={l.href} href={l.href} style={{ color: 'rgba(255,255,255,0.7)', fontSize: '12px', textDecoration: 'none', lineHeight: '1.5' }}>
                   {l.label}
@@ -101,10 +100,6 @@ export default function Footer() {
                   {l.label}
                 </Link>
               ))}
-              <p style={{ color: 'rgba(255,255,255,0.35)', fontSize: '11px', margin: '6px 0 0', lineHeight: '1.6' }}>
-                SIRET 490 889 516 00053<br />
-                12 rue d'Olima, 88000 Épinal
-              </p>
             </div>
           </div>
 

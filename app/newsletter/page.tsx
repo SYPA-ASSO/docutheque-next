@@ -1,8 +1,9 @@
 ﻿import Header from '@/components/Header'
 import Footer from '@/components/FooterMinimal'
+import NewsletterForm from '@/components/NewsletterForm'
 
 export const metadata = {
-  title: 'S\'inscrire à la newsletter · Docuthèque · Cabinet Cholez-Pagotto',
+  title: "S'inscrire à la newsletter · Docuthèque · Cabinet Cholez-Pagotto",
   description: 'Restez informé : actualités juridiques, offres sur les documents, services complémentaires et partenaires sélectionnés. Newsletter gratuite ou exclusive abonnés Optimal.',
 }
 
@@ -38,17 +39,12 @@ export default function Newsletter() {
             <p style={{color: 'rgba(255,255,255,0.8)', fontSize: '1rem', margin: '0 0 28px', lineHeight: '1.8', maxWidth: '580px', marginLeft: 'auto', marginRight: 'auto'}}>
               Informations juridiques pratiques, nouveaux documents disponibles, offres sur nos services, sélections partenaires et contenus exclusifs abonnés : tout ce qui compte, directement dans votre boîte mail.
             </p>
-            <div style={{display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap'}}>
-              <a href="/connexion" style={{display: 'inline-block', background: 'white', color: '#0f2d6e', padding: '12px 28px', borderRadius: '8px', fontSize: '14px', fontWeight: '700', textDecoration: 'none'}}>
-                S'inscrire gratuitement →
-              </a>
-              <a href="#premium" style={{display: 'inline-block', background: 'transparent', color: 'white', border: '1px solid rgba(255,255,255,0.6)', padding: '12px 28px', borderRadius: '8px', fontSize: '14px', fontWeight: '600', textDecoration: 'none'}}>
-                Voir la version abonnés ↓
+            <NewsletterForm variant="hero" />
+            <div style={{marginTop: '16px'}}>
+              <a href="#premium" style={{color: 'rgba(255,255,255,0.6)', fontSize: '12px', textDecoration: 'none'}}>
+                Voir la version abonnés Optimal ↓
               </a>
             </div>
-            <p style={{color: 'rgba(255,255,255,0.5)', fontSize: '11px', marginTop: '14px'}}>
-              Inscription à la newsletter sans engagement · Désinscription possible à tout moment en un clic
-            </p>
           </div>
         </section>
 
@@ -61,7 +57,7 @@ export default function Newsletter() {
               <h2 style={{color: '#0f2d6e', fontSize: '1.3rem', fontWeight: '700', margin: 0}}>La newsletter</h2>
             </div>
             <p style={{color: '#6b7280', fontSize: '14px', lineHeight: '1.8', marginBottom: '1.5rem'}}>
-              Accessible à tous avec un compte gratuit. Une newsletter pensée pour être utile : informations juridiques pratiques, alertes sur les nouveaux documents, offres sur nos services et sélections partenaires.
+              Accessible à tous. Une newsletter pensée pour être utile : informations juridiques pratiques, alertes sur les nouveaux documents, offres sur nos services et sélections partenaires.
             </p>
             <div style={{display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '16px', marginBottom: '2rem'}}>
               {[
@@ -92,15 +88,6 @@ export default function Newsletter() {
                   <p style={{color: '#6b7280', fontSize: '12px', lineHeight: '1.6', margin: 0}}>{item.desc}</p>
                 </div>
               ))}
-            </div>
-            <div style={{background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '12px', padding: '1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '1rem', flexWrap: 'wrap'}}>
-              <div>
-                <p style={{color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: '0 0 4px'}}>Newsletter gratuite, inscription sans engagement</p>
-                <p style={{color: '#6b7280', fontSize: '12px', margin: 0}}>Accessible avec un compte gratuit · Désinscription possible à tout moment</p>
-              </div>
-              <a href="/connexion" style={{display: 'inline-block', background: '#0f2d6e', color: 'white', padding: '10px 24px', borderRadius: '8px', fontSize: '13px', fontWeight: '700', textDecoration: 'none', whiteSpace: 'nowrap'}}>
-                S'inscrire gratuitement →
-              </a>
             </div>
           </section>
 
@@ -240,17 +227,12 @@ export default function Newsletter() {
             <p style={{color: 'rgba(255,255,255,0.75)', fontSize: '13px', margin: '0 0 20px', lineHeight: '1.7'}}>
               Informations pratiques, offres exclusives et nouveautés directement dans votre boîte mail, sans jargon et sans IA.
             </p>
-            <div style={{display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap'}}>
-              <a href="/connexion" style={{display: 'inline-block', background: 'white', color: '#0f2d6e', padding: '11px 24px', borderRadius: '8px', fontSize: '13px', fontWeight: '700', textDecoration: 'none'}}>
-                S'inscrire gratuitement →
-              </a>
-              <a href="/tarifs" style={{display: 'inline-block', background: 'transparent', color: 'white', border: '1px solid rgba(255,255,255,0.5)', padding: '11px 24px', borderRadius: '8px', fontSize: '13px', fontWeight: '600', textDecoration: 'none'}}>
-                Voir l'Abonnement Optimal
+            <NewsletterForm variant="cta" />
+            <div style={{marginTop: '16px'}}>
+              <a href="/tarifs" style={{color: 'rgba(255,255,255,0.5)', fontSize: '12px', textDecoration: 'none'}}>
+                Voir l'Abonnement Optimal →
               </a>
             </div>
-            <p style={{color: 'rgba(255,255,255,0.4)', fontSize: '10px', marginTop: '14px'}}>
-              Inscription à la newsletter sans engagement · Désinscription en un clic · Abonnement Optimal soumis à engagement de 12 mois
-            </p>
           </section>
 
         </div>

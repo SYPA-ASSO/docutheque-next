@@ -42,13 +42,39 @@ export async function POST(request: Request) {
         rna: rna || null,
         newsletter: newsletter || false,
         abonnement_actif: false,
+        role: 'user',
       })
 
     if (profileError) {
       return NextResponse.json({ error: profileError.message }, { status: 500 })
     }
 
-    // Récupérer l'email admin depuis les settings
+    // Ajout Brevo si consentement newsletter
+    if (newsletter) {
+      const listId = parseInt(process.env.BREVO_NEWSLETTER_LIST_ID || '0')
+      if (listId) {
+        try {
+          await fetch('https://api.brevo.com/v3/contacts', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'api-key': process.env.BREVO_API_KEY!,
+            },
+            body: JSON.stringify({
+              email,
+              attributes: { PRENOM: prenom, NOM: nom },
+              listIds: [listId],
+              updateEnabled: true,
+            }),
+          })
+        } catch (brevoError) {
+          // Non bloquant : l'inscription utilisateur est déjà faite
+          console.error('Brevo inscription error:', brevoError)
+        }
+      }
+    }
+
+    // Notification à François si activée
     const { data: settingData } = await supabaseAdmin
       .from('settings')
       .select('valeur')
@@ -64,7 +90,6 @@ export async function POST(request: Request) {
     const emailAdmin = settingData?.valeur || 'contact@cholez-pagotto.fr'
     const notifActive = notifData?.valeur === 'true'
 
-    // Notification à François si activée
     if (notifActive) {
       await fetch('https://api.brevo.com/v3/smtp/email', {
         method: 'POST',
@@ -73,7 +98,7 @@ export async function POST(request: Request) {
           'api-key': process.env.BREVO_API_KEY!,
         },
         body: JSON.stringify({
-          sender: { name: 'Docuthèque · Cabinet Cholez-Pagotto', email: 'contact@cholez-pagotto.fr' },
+          sender: { name: "Docutheque · Cabinet Cholez-Pagotto", email: 'contact@cholez-pagotto.fr' },
           to: [{ email: emailAdmin, name: 'François Cholez' }],
           subject: `Nouvelle inscription — ${prenom} ${nom}`,
           htmlContent: `
@@ -86,9 +111,10 @@ export async function POST(request: Request) {
                 <p style="color: #374151; font-size: 14px;"><strong>Email :</strong> ${email}</p>
                 <p style="color: #374151; font-size: 14px;"><strong>Type :</strong> ${type || 'particulier'}</p>
                 <p style="color: #374151; font-size: 14px;"><strong>Ville :</strong> ${ville || '-'}</p>
+                <p style="color: #374151; font-size: 14px;"><strong>Newsletter :</strong> ${newsletter ? 'Oui' : 'Non'}</p>
                 ${nom_structure ? `<p style="color: #374151; font-size: 14px;"><strong>Structure :</strong> ${nom_structure}</p>` : ''}
                 <div style="margin-top: 16px; text-align: center;">
-                  <a href="${process.env.NEXT_PUBLIC_SITE_URL}/admin/clients" style="background: #0f2d6e; color: white; padding: 10px 24px; border-radius: 6px; text-decoration: none; font-size: 13px; font-weight: bold;">
+                  <a href="${process.env.SITE_URL}/admin/clients" style="background: #0f2d6e; color: white; padding: 10px 24px; border-radius: 6px; text-decoration: none; font-size: 13px; font-weight: bold;">
                     Voir dans l'admin →
                   </a>
                 </div>

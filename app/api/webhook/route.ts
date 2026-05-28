@@ -23,37 +23,54 @@ export async function POST(request: Request) {
   switch (event.type) {
 
     case 'checkout.session.completed': {
-const session = event.data.object as Stripe.Checkout.Session      
-const priceKey = session.metadata?.priceKey
+      const session = event.data.object as Stripe.Checkout.Session
+      const priceKey = session.metadata?.priceKey
       const customerEmail = session.customer_email
+      const metaUserId = session.metadata?.userId || null
 
       if (!customerEmail) break
 
-      // Abonnement
+      // Résoudre userId : metadata en priorité, sinon lookup par email
+      const resolveUserId = async (): Promise<string | null> => {
+        if (metaUserId) return metaUserId
+        const { data } = await supabaseAdmin
+          .from('users')
+          .select('id')
+          .eq('email', customerEmail)
+          .single()
+        return data?.id || null
+      }
+
+      // Abonnement Optimal
       if (priceKey?.includes('optimal')) {
         const isYearly = priceKey.includes('yearly')
         const dateExpiration = new Date()
         dateExpiration.setMonth(dateExpiration.getMonth() + (isYearly ? 12 : 1))
 
-        await supabaseAdmin
-          .from('users')
-          .update({
-            abonnement_actif: true,
-            abonnement_type: priceKey.includes('pro') ? 'optimal_pro' : 'optimal_particulier',
-            abonnement_periode: isYearly ? 'yearly' : 'monthly',
-            stripe_customer_id: session.customer as string,
-            date_expiration: dateExpiration.toISOString(),
-          })
-          .eq('email', customerEmail)
+        const updateData = {
+          abonnement_actif: true,
+          abonnement_type: priceKey.includes('pro') ? 'optimal_pro' : 'optimal_particulier',
+          abonnement_periode: isYearly ? 'yearly' : 'monthly',
+          stripe_customer_id: session.customer as string,
+          date_expiration: dateExpiration.toISOString(),
+        }
+
+        const userId = await resolveUserId()
+        if (userId) {
+          await supabaseAdmin.from('users').update(updateData).eq('id', userId)
+        } else {
+          await supabaseAdmin.from('users').update(updateData).eq('email', customerEmail)
+        }
       }
 
-      // Question unitaire
+      // Question unitaire ou abonne
       if (priceKey === 'question_unitaire' || priceKey === 'question_abonne') {
+        const userId = await resolveUserId()
         await supabaseAdmin
           .from('questions')
           .insert({
-            user_id: null, // sera mis à jour après identification
-            question: '',
+            user_id: userId,
+            question: null,
             statut: 'en_attente',
             type: priceKey === 'question_unitaire' ? 'unitaire' : 'abonne',
             stripe_payment_id: session.payment_intent as string,
@@ -62,10 +79,11 @@ const priceKey = session.metadata?.priceKey
 
       // Forfait conseil assurances
       if (priceKey?.includes('conseil_assurances')) {
+        const userId = await resolveUserId()
         await supabaseAdmin
           .from('dossiers_assurances')
           .insert({
-            user_id: null,
+            user_id: userId,
             statut: 'en_attente',
             type: priceKey.includes('pro') ? 'pro' : 'particulier',
             stripe_payment_id: session.payment_intent as string,

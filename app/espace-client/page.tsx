@@ -13,7 +13,7 @@ import {
   User, FileText, MessageSquare, Shield, LogOut,
   Crown, Clock, CheckCircle, AlertCircle, Lock,
   ChevronRight, Calendar, Star, Zap, TrendingUp,
-  ShoppingBag, Receipt, Download, Filter
+  ShoppingBag, Receipt, Download, Filter, Send
 } from 'lucide-react'
 
 type UserProfile = {
@@ -35,7 +35,7 @@ type UserProfile = {
 
 type Question = {
   id: string
-  question: string
+  question: string | null
   reponse: string | null
   statut: string
   type: string
@@ -60,8 +60,6 @@ type DossierAssurance = {
   stripe_payment_id: string | null
 }
 
-const CATALOGUE_CATEGORIES: Categorie[] = [] // chargé dynamiquement
-
 export default function EspaceClient() {
   const router = useRouter()
   const [onglet, setOnglet] = useState<'tableau-bord' | 'questions' | 'documents' | 'commandes' | 'factures' | 'abonnement' | 'profil'>('tableau-bord')
@@ -76,8 +74,32 @@ export default function EspaceClient() {
   const [loading, setLoading] = useState(true)
   const [periodeChoisie, setPeriodeChoisie] = useState<'monthly' | 'yearly'>('yearly')
   const [downloadEnCours, setDownloadEnCours] = useState<string | null>(null)
+  const [successMessage, setSuccessMessage] = useState('')
+
+  // Saisie de question
+  const [questionSaisie, setQuestionSaisie] = useState<{ id: string; type: string } | null>(null)
+  const [questionTexte, setQuestionTexte] = useState('')
+  const [questionErreur, setQuestionErreur] = useState('')
+  const [questionLoading, setQuestionLoading] = useState(false)
 
   useEffect(() => { checkAuth() }, [])
+
+  // Lecture des paramètres URL après chargement
+  useEffect(() => {
+    if (!loading) {
+      const params = new URLSearchParams(window.location.search)
+      const ongletParam = params.get('onglet')
+      const validOnglets = ['tableau-bord', 'questions', 'documents', 'commandes', 'factures', 'abonnement', 'profil']
+      if (ongletParam && validOnglets.includes(ongletParam)) {
+        setOnglet(ongletParam as typeof onglet)
+      }
+      if (params.get('success') === 'abonnement') {
+        setSuccessMessage('Votre abonnement est maintenant actif. Bienvenue dans Optimal !')
+      }
+      // Nettoyer l'URL
+      window.history.replaceState({}, '', '/espace-client')
+    }
+  }, [loading])
 
   const checkAuth = async () => {
     let session = (await supabase.auth.getSession()).data.session
@@ -133,7 +155,11 @@ export default function EspaceClient() {
     const res = await fetch('/api/checkout', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ priceKey, userEmail: profile.email }),
+      body: JSON.stringify({
+        priceKey,
+        userEmail: profile.email,
+        userId: profile.id,
+      }),
     })
     const data = await res.json()
     if (data.url) window.location.href = data.url
@@ -158,6 +184,34 @@ export default function EspaceClient() {
       }
     } catch { alert('Erreur lors du téléchargement.') }
     finally { setDownloadEnCours(null) }
+  }
+
+  const handleSubmitQuestion = async (questionId: string) => {
+    if (questionTexte.trim().length < 10) {
+      setQuestionErreur('Veuillez développer votre question (10 caractères minimum).')
+      return
+    }
+    setQuestionLoading(true)
+    setQuestionErreur('')
+    try {
+      const res = await fetch('/api/questions/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ questionId, userId: profile?.id, texte: questionTexte }),
+      })
+      const data = await res.json()
+      if (res.ok && data.success) {
+        setQuestionSaisie(null)
+        setQuestionTexte('')
+        if (profile) await loadQuestions(profile.id)
+      } else {
+        setQuestionErreur(data.error || 'Erreur lors de la soumission.')
+      }
+    } catch {
+      setQuestionErreur('Erreur réseau. Veuillez réessayer.')
+    } finally {
+      setQuestionLoading(false)
+    }
   }
 
   // Filtre catalogue par catégories sélectionnées
@@ -217,7 +271,19 @@ export default function EspaceClient() {
     if (doc.acces_optimal && estAbonne) return { label: 'Optimal', color: '#1a4fba', bg: '#eff6ff', accessible: true }
     if (doc.acces_optimal && !estAbonne) return { label: 'Optimal', color: '#9ca3af', bg: '#f3f4f6', accessible: false }
     if (doc.acces_payant) return { label: `${doc.prix_unitaire ?? '?'} €`, color: '#d97706', bg: '#fff7ed', accessible: false }
-    return { label: '—', color: '#9ca3af', bg: '#f3f4f6', accessible: false }
+    return { label: '-', color: '#9ca3af', bg: '#f3f4f6', accessible: false }
+  }
+
+  const inputStyle = {
+    width: '100%',
+    padding: '10px 12px',
+    border: '1px solid #d1d5db',
+    borderRadius: '8px',
+    fontSize: '13px',
+    boxSizing: 'border-box' as const,
+    outline: 'none',
+    fontFamily: 'inherit',
+    lineHeight: '1.6',
   }
 
   return (
@@ -243,8 +309,8 @@ export default function EspaceClient() {
             {!estAbonne && (
               <div style={{ background: '#f8fafc', borderRadius: '8px', padding: '10px 12px', marginBottom: '1rem' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
-                  <p style={{ color: '#6b7280', fontSize: '10px', fontWeight: '600', margin: 0 }}>Accès Optimal utilisé</p>
-                  <p style={{ color: '#1a4fba', fontSize: '10px', fontWeight: '700', margin: 0 }}>0 %</p>
+                  <p style={{ color: '#6b7280', fontSize: '10px', fontWeight: '600', margin: 0 }}>Accès Optimal</p>
+                  <p style={{ color: '#1a4fba', fontSize: '10px', fontWeight: '700', margin: 0 }}>Non actif</p>
                 </div>
                 <div style={{ height: '4px', background: '#e5e7eb', borderRadius: '4px' }}>
                   <div style={{ height: '4px', background: 'linear-gradient(90deg, #1a4fba, #93c5fd)', borderRadius: '4px', width: '0%' }} />
@@ -256,11 +322,11 @@ export default function EspaceClient() {
             <nav style={{ display: 'flex', flexDirection: 'column', gap: '4px', marginBottom: '1.25rem' }}>
               {navItems.map((item) => (
                 <button key={item.id} onClick={() => setOnglet(item.id as typeof onglet)}
-                  style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '10px 12px', borderRadius: '8px', border: 'none', background: onglet === item.id ? '#eff6ff' : 'transparent', color: onglet === item.id ? '#1a4fba' : item.highlight ? '#d97706' : '#6b7280', fontSize: '13px', fontWeight: onglet === item.id ? '700' : '500', cursor: 'pointer', textAlign: 'left', width: '100%', transition: 'all 0.15s' }}>
-                  {item.locked ? <Lock size={14} strokeWidth={1.5} /> : item.icon}
+                  style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '10px 12px', borderRadius: '8px', border: 'none', background: onglet === item.id ? '#eff6ff' : 'transparent', color: onglet === item.id ? '#1a4fba' : (item as any).highlight ? '#d97706' : '#6b7280', fontSize: '13px', fontWeight: onglet === item.id ? '700' : '500', cursor: 'pointer', textAlign: 'left', width: '100%', transition: 'all 0.15s' }}>
+                  {(item as any).locked ? <Lock size={14} strokeWidth={1.5} /> : item.icon}
                   <span style={{ flex: 1 }}>{item.label}</span>
-                  {item.locked && <Lock size={11} color="#d1d5db" style={{ flexShrink: 0 }} />}
-                  {item.highlight && !item.locked && <Star size={11} color="#d97706" style={{ flexShrink: 0 }} />}
+                  {(item as any).locked && <Lock size={11} color="#d1d5db" style={{ flexShrink: 0 }} />}
+                  {(item as any).highlight && !(item as any).locked && <Star size={11} color="#d97706" style={{ flexShrink: 0 }} />}
                   {item.badge ? <span style={{ background: '#16a34a', color: 'white', fontSize: '9px', fontWeight: '700', padding: '1px 6px', borderRadius: '10px' }}>{item.badge}</span> : null}
                 </button>
               ))}
@@ -289,6 +355,14 @@ export default function EspaceClient() {
               <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
                 <h1 style={{ color: '#0f2d6e', fontSize: '1.4rem', fontWeight: '700', margin: 0 }}>Bonjour, {profile?.prenom} 👋</h1>
 
+                {/* Message de succès abonnement */}
+                {successMessage && (
+                  <div style={{ background: '#f0fdf4', border: '1px solid #bbf7d0', borderRadius: '10px', padding: '12px 16px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                    <CheckCircle size={18} color="#16a34a" strokeWidth={1.5} style={{ flexShrink: 0 }} />
+                    <p style={{ color: '#15803d', fontSize: '13px', fontWeight: '600', margin: 0 }}>{successMessage}</p>
+                  </div>
+                )}
+
                 {!estAbonne && (
                   <div style={{ background: 'linear-gradient(135deg, #0f2d6e 0%, #1a4fba 100%)', borderRadius: '14px', padding: '1.75rem', position: 'relative', overflow: 'hidden' }}>
                     <div style={{ position: 'absolute', top: '-20px', right: '-20px', width: '120px', height: '120px', background: 'rgba(255,255,255,0.05)', borderRadius: '50%' }} />
@@ -299,7 +373,7 @@ export default function EspaceClient() {
                           <span style={{ color: '#fcd34d', fontSize: '11px', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Abonnement Optimal</span>
                         </div>
                         <p style={{ color: 'white', fontSize: '1.1rem', fontWeight: '700', margin: '0 0 6px' }}>Bibliothèque complète + 1 question juriste / mois</p>
-                        <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: '13px', margin: 0 }}>À partir de <strong style={{ color: 'white' }}>12,42 €/mois</strong> en annuel · Moins de <strong style={{ color: 'white' }}>0,42 €/jour</strong></p>
+                        <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: '13px', margin: 0 }}>À partir de <strong style={{ color: 'white' }}>12,42 €/mois</strong> en annuel</p>
                       </div>
                       <button onClick={() => setOnglet('abonnement')} style={{ background: 'white', color: '#0f2d6e', border: 'none', padding: '11px 22px', borderRadius: '8px', fontSize: '13px', fontWeight: '700', cursor: 'pointer', flexShrink: 0 }}>
                         Voir les offres
@@ -367,7 +441,7 @@ export default function EspaceClient() {
                 <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.5rem' }}>
                   <p style={{ color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: '0 0 8px' }}>Poser une question juridique</p>
                   <p style={{ color: '#6b7280', fontSize: '13px', margin: '0 0 12px', lineHeight: '1.6' }}>
-                    {estAbonne ? 'Votre abonnement inclut 1 question par mois. Questions supplémentaires à 14,90 €.' : "Réponse rédigée par un juriste sous 24 à 48h ouvrées. 47 € à l'unité, sans abonnement."}
+                    {estAbonne ? "Votre abonnement inclut 1 question par mois. Questions supplémentaires à 14,90 €." : "Réponse rédigée par un juriste sous 24 à 48h ouvrées. 47 € à l'unité, sans abonnement."}
                   </p>
                   {!estAbonne && (
                     <div style={{ background: '#eff6ff', borderRadius: '8px', padding: '10px 12px', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}>
@@ -376,8 +450,11 @@ export default function EspaceClient() {
                     </div>
                   )}
                   <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
-                    <button onClick={() => handlePaiement(estAbonne ? 'question_abonne' : 'question_unitaire')} style={{ background: '#0f2d6e', color: 'white', border: 'none', padding: '11px 24px', borderRadius: '8px', fontSize: '13px', fontWeight: '700', cursor: 'pointer' }}>
-                      {estAbonne ? 'Poser ma question · 14,90 €' : 'Poser ma question · 47 €'}
+                    <button
+                      onClick={() => handlePaiement(estAbonne ? 'question_abonne' : 'question_unitaire')}
+                      style={{ background: '#0f2d6e', color: 'white', border: 'none', padding: '11px 24px', borderRadius: '8px', fontSize: '13px', fontWeight: '700', cursor: 'pointer' }}
+                    >
+                      {estAbonne ? "Poser ma question · 14,90 €" : "Poser ma question · 47 €"}
                     </button>
                     {!estAbonne && (
                       <button onClick={() => setOnglet('abonnement')} style={{ background: 'white', color: '#1a4fba', border: '1px solid #bfdbfe', padding: '11px 20px', borderRadius: '8px', fontSize: '13px', fontWeight: '600', cursor: 'pointer' }}>
@@ -385,6 +462,9 @@ export default function EspaceClient() {
                       </button>
                     )}
                   </div>
+                  <p style={{ color: '#9ca3af', fontSize: '11px', margin: '10px 0 0', lineHeight: '1.6', fontStyle: 'italic' }}>
+                    Après paiement, vous serez invité à rédiger votre question dans votre espace client. Notre juriste vous répondra par écrit sous 24 à 48h ouvrées.
+                  </p>
                 </div>
               </div>
             )}
@@ -394,10 +474,14 @@ export default function EspaceClient() {
               <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <h1 style={{ color: '#0f2d6e', fontSize: '1.4rem', fontWeight: '700', margin: 0 }}>Mes questions</h1>
-                  <button onClick={() => handlePaiement(estAbonne ? 'question_abonne' : 'question_unitaire')} style={{ background: '#0f2d6e', color: 'white', border: 'none', padding: '10px 20px', borderRadius: '8px', fontSize: '13px', fontWeight: '700', cursor: 'pointer' }}>
+                  <button
+                    onClick={() => handlePaiement(estAbonne ? 'question_abonne' : 'question_unitaire')}
+                    style={{ background: '#0f2d6e', color: 'white', border: 'none', padding: '10px 20px', borderRadius: '8px', fontSize: '13px', fontWeight: '700', cursor: 'pointer' }}
+                  >
                     + Nouvelle question {estAbonne ? '· 14,90 €' : '· 47 €'}
                   </button>
                 </div>
+
                 {!estAbonne && (
                   <div style={{ background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '10px', padding: '12px 16px', display: 'flex', alignItems: 'center', gap: '10px' }}>
                     <Zap size={16} color="#1a4fba" style={{ flexShrink: 0 }} />
@@ -407,10 +491,24 @@ export default function EspaceClient() {
                     </p>
                   </div>
                 )}
+
+                {/* Questions avec paiement effectué mais texte non saisi */}
+                {questions.some(q => !q.question) && (
+                  <div style={{ background: '#fff7ed', border: '1px solid #fed7aa', borderRadius: '10px', padding: '12px 16px', display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
+                    <AlertCircle size={16} color="#d97706" style={{ flexShrink: 0, marginTop: '1px' }} />
+                    <p style={{ color: '#92400e', fontSize: '12px', margin: 0, lineHeight: '1.6' }}>
+                      Vous avez une ou plusieurs questions payées en attente de rédaction. Cliquez sur "Rédiger ma question" pour les compléter.
+                    </p>
+                  </div>
+                )}
+
                 {questions.length === 0 ? (
                   <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '3rem', textAlign: 'center' }}>
                     <MessageSquare size={32} color="#d1d5db" strokeWidth={1} style={{ marginBottom: '12px' }} />
-                    <p style={{ color: '#6b7280', fontSize: '14px', margin: '0 0 16px' }}>Vous n'avez pas encore posé de question.</p>
+                    <p style={{ color: '#6b7280', fontSize: '14px', margin: '0 0 6px' }}>Vous n'avez pas encore posé de question.</p>
+                    <p style={{ color: '#9ca3af', fontSize: '12px', margin: '0 0 16px', lineHeight: '1.6' }}>
+                      Après paiement, vous pourrez rédiger votre question ici. Notre juriste vous répondra sous 24 à 48h ouvrées.
+                    </p>
                     <button onClick={() => handlePaiement(estAbonne ? 'question_abonne' : 'question_unitaire')} style={{ background: '#0f2d6e', color: 'white', border: 'none', padding: '11px 24px', borderRadius: '8px', fontSize: '13px', fontWeight: '700', cursor: 'pointer' }}>
                       Poser ma première question
                     </button>
@@ -418,16 +516,80 @@ export default function EspaceClient() {
                 ) : (
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                     {questions.map(q => (
-                      <div key={q.id} style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.5rem' }}>
+                      <div key={q.id} style={{ background: 'white', border: `1px solid ${!q.question ? '#fed7aa' : '#e5e7eb'}`, borderRadius: '12px', padding: '1.5rem' }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
                           <span style={{ fontSize: '10px', fontWeight: '700', padding: '2px 8px', borderRadius: '20px', background: q.statut === 'repondu' ? '#f0fdf4' : q.statut === 'en_cours' ? '#fff7ed' : '#f3f4f6', color: q.statut === 'repondu' ? '#15803d' : q.statut === 'en_cours' ? '#d97706' : '#6b7280' }}>
                             {q.statut === 'repondu' ? '✓ Répondu' : q.statut === 'en_cours' ? '⋯ En cours' : '○ En attente'}
                           </span>
                           <span style={{ color: '#9ca3af', fontSize: '11px' }}>{new Date(q.created_at).toLocaleDateString('fr-FR')}</span>
+                          <span style={{ color: '#9ca3af', fontSize: '11px' }}>
+                            · {q.type === 'unitaire' ? '47 €' : q.type === 'abonne' ? '14,90 €' : 'Incluse'}
+                          </span>
                         </div>
-                        <p style={{ color: '#374151', fontSize: '13px', margin: '0 0 12px', lineHeight: '1.6' }}>
-                          {q.question || <em style={{ color: '#9ca3af' }}>Question en attente de saisie après paiement</em>}
-                        </p>
+
+                        {/* Texte de la question ou formulaire de saisie */}
+                        {q.question ? (
+                          <p style={{ color: '#374151', fontSize: '13px', margin: '0 0 12px', lineHeight: '1.6' }}>{q.question}</p>
+                        ) : (
+                          <div style={{ marginBottom: '12px' }}>
+                            {questionSaisie?.id !== q.id ? (
+                              <div style={{ background: '#fff7ed', borderRadius: '8px', padding: '12px 14px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '12px' }}>
+                                <p style={{ color: '#92400e', fontSize: '13px', margin: 0, fontStyle: 'italic' }}>
+                                  Paiement reçu. Rédigez votre question pour que notre juriste puisse vous répondre.
+                                </p>
+                                <button
+                                  onClick={() => { setQuestionSaisie({ id: q.id, type: q.type }); setQuestionTexte(''); setQuestionErreur('') }}
+                                  style={{ background: '#0f2d6e', color: 'white', border: 'none', padding: '9px 18px', borderRadius: '7px', fontSize: '12px', fontWeight: '700', cursor: 'pointer', flexShrink: 0 }}
+                                >
+                                  Rédiger ma question →
+                                </button>
+                              </div>
+                            ) : (
+                              <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                                <div>
+                                  <label style={{ display: 'block', fontSize: '12px', fontWeight: '600', color: '#374151', marginBottom: '6px' }}>
+                                    Votre question
+                                    <span style={{ color: '#9ca3af', fontWeight: '400', marginLeft: '8px' }}>{questionTexte.length}/2000</span>
+                                  </label>
+                                  <textarea
+                                    value={questionTexte}
+                                    onChange={e => setQuestionTexte(e.target.value)}
+                                    maxLength={2000}
+                                    rows={6}
+                                    placeholder="Décrivez votre situation et posez votre question avec le plus de précisions possible. Notre juriste vous répondra sous 24 à 48h ouvrées."
+                                    style={{ ...inputStyle, resize: 'vertical' }}
+                                  />
+                                </div>
+                                {questionErreur && (
+                                  <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+                                    <AlertCircle size={14} color="#dc2626" style={{ flexShrink: 0 }} />
+                                    <p style={{ color: '#dc2626', fontSize: '12px', margin: 0 }}>{questionErreur}</p>
+                                  </div>
+                                )}
+                                <div style={{ display: 'flex', gap: '10px' }}>
+                                  <button
+                                    onClick={() => handleSubmitQuestion(q.id)}
+                                    disabled={questionLoading}
+                                    style={{ background: questionLoading ? '#6b7280' : '#0f2d6e', color: 'white', border: 'none', padding: '10px 22px', borderRadius: '8px', fontSize: '13px', fontWeight: '700', cursor: questionLoading ? 'not-allowed' : 'pointer', display: 'flex', alignItems: 'center', gap: '7px' }}
+                                  >
+                                    <Send size={13} strokeWidth={2} />
+                                    {questionLoading ? 'Envoi en cours...' : 'Envoyer ma question'}
+                                  </button>
+                                  <button
+                                    onClick={() => { setQuestionSaisie(null); setQuestionTexte(''); setQuestionErreur('') }}
+                                    style={{ background: 'transparent', color: '#6b7280', border: '1px solid #e5e7eb', padding: '10px 16px', borderRadius: '8px', fontSize: '13px', cursor: 'pointer' }}
+                                  >
+                                    Annuler
+                                  </button>
+                                </div>
+                                <p style={{ color: '#9ca3af', fontSize: '11px', margin: 0, lineHeight: '1.6' }}>
+                                  Ce service constitue une information juridique au sens de la loi n°71-1130 du 31 décembre 1971. La réponse vous sera transmise par écrit dans votre espace client.
+                                </p>
+                              </div>
+                            )}
+                          </div>
+                        )}
+
                         {q.reponse && (
                           <div style={{ background: '#f0fdf4', border: '1px solid #bbf7d0', borderRadius: '8px', padding: '1rem' }}>
                             <p style={{ color: '#15803d', fontSize: '12px', fontWeight: '700', margin: '0 0 8px', display: 'flex', alignItems: 'center', gap: '6px' }}>
@@ -462,7 +624,6 @@ export default function EspaceClient() {
                   </div>
                 )}
 
-                {/* Filtres */}
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                   <DocumentSearch documents={catalogue} onChange={(filtered: DocItem[]) => setCatalogueFiltre(filtered)} placeholder="Rechercher un document..." />
                   <div>
@@ -487,7 +648,6 @@ export default function EspaceClient() {
                   )}
                 </div>
 
-                {/* Liste documents */}
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
                   {catalogueFiltre.map(doc => {
                     const acces = accesDocLabel(doc)
@@ -529,7 +689,6 @@ export default function EspaceClient() {
               <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
                 <h1 style={{ color: '#0f2d6e', fontSize: '1.4rem', fontWeight: '700', margin: 0 }}>Mes commandes</h1>
 
-                {/* Abonnement actif */}
                 {estAbonne && (
                   <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.5rem' }}>
                     <p style={{ color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 12px' }}>Abonnement en cours</p>
@@ -544,7 +703,6 @@ export default function EspaceClient() {
                   </div>
                 )}
 
-                {/* Questions */}
                 {questions.length > 0 && (
                   <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.5rem' }}>
                     <p style={{ color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 12px' }}>Questions juridiques</p>
@@ -554,7 +712,7 @@ export default function EspaceClient() {
                           <MessageSquare size={16} color="#6b7280" strokeWidth={1.5} style={{ flexShrink: 0 }} />
                           <div style={{ flex: 1, minWidth: 0 }}>
                             <p style={{ color: '#374151', fontSize: '12px', fontWeight: '600', margin: '0 0 2px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                              {q.question || 'Question en attente'}
+                              {q.question || 'Question en attente de rédaction'}
                             </p>
                             <p style={{ color: '#9ca3af', fontSize: '11px', margin: 0 }}>
                               {new Date(q.created_at).toLocaleDateString('fr-FR')} ·{' '}
@@ -570,7 +728,6 @@ export default function EspaceClient() {
                   </div>
                 )}
 
-                {/* Dossiers assurances */}
                 {dossiers.length > 0 && (
                   <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.5rem' }}>
                     <p style={{ color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 12px' }}>Forfaits conseil assurances</p>
@@ -580,7 +737,7 @@ export default function EspaceClient() {
                           <Shield size={16} color="#6b7280" strokeWidth={1.5} style={{ flexShrink: 0 }} />
                           <div style={{ flex: 1 }}>
                             <p style={{ color: '#374151', fontSize: '12px', fontWeight: '600', margin: '0 0 2px' }}>
-                              Forfait conseil assurances — {d.type === 'pro' ? 'Pro/Association' : 'Particulier'}
+                              Forfait conseil assurances · {d.type === 'pro' ? 'Pro / Association' : 'Particulier'}
                             </p>
                             <p style={{ color: '#9ca3af', fontSize: '11px', margin: 0 }}>
                               {new Date(d.created_at).toLocaleDateString('fr-FR')} · {d.type === 'pro' ? '150 € HT' : '90 € HT'}
@@ -640,7 +797,7 @@ export default function EspaceClient() {
                         </div>
                         <div style={{ flex: 1 }}>
                           <p style={{ color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 2px' }}>
-                            Facture {f.type ? `— ${f.type}` : ''} {f.montant ? `· ${f.montant} €` : ''}
+                            Facture {f.type ? `· ${f.type}` : ''} {f.montant ? `· ${f.montant} €` : ''}
                           </p>
                           <p style={{ color: '#9ca3af', fontSize: '11px', margin: 0 }}>
                             Émise le {new Date(f.created_at).toLocaleDateString('fr-FR')}
@@ -675,7 +832,7 @@ export default function EspaceClient() {
                       <span style={{ marginLeft: 'auto', background: '#f0fdf4', color: '#15803d', fontSize: '11px', fontWeight: '700', padding: '3px 10px', borderRadius: '20px' }}>Actif</span>
                     </div>
                     <p style={{ color: '#9ca3af', fontSize: '12px', margin: 0 }}>
-                      Pour gérer votre abonnement (résiliation, changement de carte), contactez-nous à <a href="mailto:contact@cholez-pagotto.fr" style={{ color: '#1a4fba' }}>contact@cholez-pagotto.fr</a>
+                      Pour gérer votre abonnement (résiliation, changement de moyen de paiement), contactez-nous à <a href="mailto:contact@cholez-pagotto.fr" style={{ color: '#1a4fba' }}>contact@cholez-pagotto.fr</a>
                     </p>
                   </div>
                 ) : (
@@ -720,7 +877,7 @@ export default function EspaceClient() {
                         { label: 'Bibliothèque complète (DOCX)', gratuit: '✗', part: '✓', pro: '✓' },
                         { label: 'Question juriste incluse / mois', gratuit: '✗', part: '1 incluse', pro: '1 incluse' },
                         { label: 'Questions supplémentaires', gratuit: '47 €', part: '14,90 €', pro: '14,90 €' },
-                        { label: 'Délai de réponse', gratuit: '24-48h', part: '24-48h', pro: '24-48h' },
+                        { label: "Délai de réponse", gratuit: '24-48h', part: '24-48h', pro: '24-48h' },
                         { label: 'Professionnels / associations', gratuit: '✗', part: '✗', pro: '✓' },
                       ].map((row, i) => (
                         <div key={i} style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr 1fr 1fr', borderBottom: i < 5 ? '1px solid #f3f4f6' : 'none' }}>
@@ -731,10 +888,10 @@ export default function EspaceClient() {
                             <p style={{ color: row.gratuit === '✗' ? '#d1d5db' : '#374151', fontSize: '12px', fontWeight: '600', margin: 0 }}>{row.gratuit}</p>
                           </div>
                           <div style={{ padding: '12px 1.25rem', borderRight: '1px solid #e5e7eb', background: '#f8fafc', textAlign: 'center' }}>
-                            <p style={{ color: row.part === '✗' ? '#d1d5db' : '#0f2d6e', fontSize: '12px', fontWeight: '600', margin: 0, background: row.part !== '✗' && row.part !== '✓' && row.part !== '47 €' && row.part !== '24-48h' ? '#eff6ff' : 'transparent', display: 'inline-block', padding: row.part !== '✗' && row.part !== '✓' && row.part !== '47 €' && row.part !== '24-48h' ? '2px 8px' : '0', borderRadius: '4px' }}>{row.part}</p>
+                            <p style={{ color: row.part === '✗' ? '#d1d5db' : '#0f2d6e', fontSize: '12px', fontWeight: '600', margin: 0 }}>{row.part}</p>
                           </div>
                           <div style={{ padding: '12px 1.25rem', background: '#fafafa', textAlign: 'center' }}>
-                            <p style={{ color: row.pro === '✗' ? '#d1d5db' : 'white', fontSize: '12px', fontWeight: '600', margin: 0, background: row.pro !== '✗' ? '#0f2d6e' : 'transparent', display: 'inline-block', padding: row.pro !== '✗' ? '2px 8px' : '0', borderRadius: '4px' }}>{row.pro}</p>
+                            <p style={{ color: row.pro === '✗' ? '#d1d5db' : '#374151', fontSize: '12px', fontWeight: '600', margin: 0 }}>{row.pro}</p>
                           </div>
                         </div>
                       ))}
@@ -758,7 +915,7 @@ export default function EspaceClient() {
                         </div>
                       </div>
                     </div>
-                    <p style={{ color: '#9ca3af', fontSize: '11px', textAlign: 'center', margin: 0 }}>Sans engagement pour les formules mensuelles · Paiement sécurisé</p>
+                    <p style={{ color: '#9ca3af', fontSize: '11px', textAlign: 'center', margin: 0 }}>Sans engagement pour les formules mensuelles · Paiement sécurisé par carte bancaire</p>
                   </>
                 )}
               </div>
@@ -827,7 +984,6 @@ function ProfilOnglet({ profile }: { profile: UserProfile }) {
     <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
       <h1 style={{ color: '#0f2d6e', fontSize: '1.4rem', fontWeight: '700', margin: 0 }}>Mon profil</h1>
 
-      {/* Infos fixes */}
       <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.5rem' }}>
         <p style={{ color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 1rem' }}>Informations du compte</p>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '1rem' }}>
@@ -848,7 +1004,6 @@ function ProfilOnglet({ profile }: { profile: UserProfile }) {
         </p>
       </div>
 
-      {/* Coordonnées modifiables */}
       <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.5rem' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
           <p style={{ color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: 0 }}>Coordonnées</p>
@@ -901,7 +1056,6 @@ function ProfilOnglet({ profile }: { profile: UserProfile }) {
         )}
       </div>
 
-      {/* Migration Pro */}
       {profile.type === 'particulier' && (
         <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.5rem' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '1rem' }}>

@@ -6,7 +6,7 @@
 // À intégrer dans app/layout.tsx : <CookieBanner />
 
 import { useState, useEffect } from 'react'
-import { X, Settings, CheckCircle, XCircle, ChevronDown, ChevronUp, Scale, SlidersHorizontal } from 'lucide-react'
+import { X, Settings, CheckCircle, XCircle, ChevronDown, ChevronUp, SlidersHorizontal } from 'lucide-react'
 
 type ConsentState = {
   analytics: boolean
@@ -29,6 +29,29 @@ function getCookieConsent(): string | null {
   return match ? decodeURIComponent(match[2]) : null
 }
 
+// Logo SVG Cabinet Cholez-Pagotto — identique au Header/Footer
+function LogoCP({ size = 28 }: { size?: number }) {
+  const hauteur = size
+  const largeur = Math.round(size * 2.8)
+  return (
+    <svg width={largeur} height={hauteur} viewBox={`0 0 ${largeur} ${hauteur}`} xmlns="http://www.w3.org/2000/svg" aria-label="Cabinet Cholez-Pagotto">
+      {/* Filet vertical or */}
+      <rect x="2" y={Math.round(hauteur * 0.1)} width="4" height={Math.round(hauteur * 0.8)} rx="2" fill="#c8a84b" />
+      {/* Initiales CP */}
+      <text
+        x="12"
+        y={Math.round(hauteur * 0.72)}
+        fontFamily="Georgia, serif"
+        fontWeight="700"
+        fontSize={Math.round(hauteur * 0.62)}
+        fill="#0f2d6e"
+      >
+        CP
+      </text>
+    </svg>
+  )
+}
+
 export default function CookieBanner() {
   const [bannerState, setBannerState] = useState<BannerState>('hidden')
   const [consent, setConsent] = useState<ConsentState>({ analytics: false, marketing: false })
@@ -40,7 +63,6 @@ export default function CookieBanner() {
       const timer = setTimeout(() => setBannerState('visible'), 900)
       return () => clearTimeout(timer)
     } else {
-      // Consentement déjà donné : icône persistante uniquement
       setBannerState('minimized')
     }
   }, [])
@@ -63,7 +85,6 @@ export default function CookieBanner() {
   }
 
   // ─── ICÔNE PERSISTANTE ───
-  // Obligation CNIL : l'utilisateur doit pouvoir modifier ses choix à tout moment
   if (bannerState === 'minimized') {
     return (
       <button
@@ -84,6 +105,31 @@ export default function CookieBanner() {
     )
   }
 
+  // En-tête logo commun aux deux panneaux
+  const EnTeteLogo = ({ onClose }: { onClose: () => void }) => (
+    <div style={{
+      display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+      padding: '1rem 1.25rem 0.75rem', borderBottom: '1px solid #f3f4f6',
+    }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+        <div style={{ background: 'white', borderRadius: 6, padding: '2px 4px', display: 'flex', alignItems: 'center' }}>
+          <LogoCP size={24} />
+        </div>
+        <div>
+          <p style={{ fontSize: '0.8rem', fontWeight: 700, color: '#0f2d6e', margin: 0 }}>Cabinet Cholez-Pagotto</p>
+          <p style={{ fontSize: 10, color: '#6b7280', margin: 0 }}>Vos préférences cookies</p>
+        </div>
+      </div>
+      <button
+        onClick={onClose}
+        aria-label="Fermer"
+        style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#9ca3af', padding: 4 }}
+      >
+        <X size={16} />
+      </button>
+    </div>
+  )
+
   // ─── PANNEAU PARAMÉTRAGE ───
   if (bannerState === 'settings') {
     return (
@@ -100,29 +146,8 @@ export default function CookieBanner() {
           border: '1px solid #e5e7eb'
         }}>
 
-          {/* En-tête */}
-          <div style={{
-            display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-            padding: '1rem 1.25rem', borderBottom: '1px solid #e5e7eb',
-            position: 'sticky', top: 0, background: 'white', zIndex: 1,
-            borderRadius: '16px 16px 0 0'
-          }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
-              <div style={{ width: 28, height: 28, background: '#0f2d6e', borderRadius: 7, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                <Scale size={14} color="white" strokeWidth={1.5} />
-              </div>
-              <div>
-                <p style={{ fontSize: '0.85rem', fontWeight: 700, color: '#0f2d6e', margin: 0 }}>Cabinet Cholez-Pagotto</p>
-                <p style={{ fontSize: 10, color: '#6b7280', margin: 0 }}>Mes préférences cookies</p>
-              </div>
-            </div>
-            <button
-              onClick={() => setBannerState('minimized')}
-              aria-label="Fermer"
-              style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#6b7280', padding: 4 }}
-            >
-              <X size={18} />
-            </button>
+          <div style={{ position: 'sticky', top: 0, background: 'white', zIndex: 1, borderRadius: '16px 16px 0 0' }}>
+            <EnTeteLogo onClose={() => setBannerState('minimized')} />
           </div>
 
           <div style={{ padding: '1.25rem' }}>
@@ -247,27 +272,8 @@ export default function CookieBanner() {
         animation: 'slideUp 0.3s ease-out'
       }}>
 
-        {/* En-tête */}
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '1rem 1.25rem 0.75rem', borderBottom: '1px solid #f3f4f6' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
-            <div style={{ width: 28, height: 28, background: '#0f2d6e', borderRadius: 7, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-              <Scale size={14} color="white" strokeWidth={1.5} />
-            </div>
-            <div>
-              <p style={{ fontSize: '0.8rem', fontWeight: 700, color: '#0f2d6e', margin: 0 }}>Cabinet Cholez-Pagotto</p>
-              <p style={{ fontSize: 10, color: '#6b7280', margin: 0 }}>Vos préférences cookies</p>
-            </div>
-          </div>
-          <button
-            onClick={() => setBannerState('minimized')}
-            aria-label="Fermer"
-            style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#9ca3af', padding: 4 }}
-          >
-            <X size={16} />
-          </button>
-        </div>
+        <EnTeteLogo onClose={() => setBannerState('minimized')} />
 
-        {/* Corps */}
         <div style={{ padding: '0.875rem 1.25rem' }}>
           <p style={{ fontSize: 12, color: '#374151', lineHeight: 1.7, margin: '0 0 1rem' }}>
             Docuthèque utilise des cookies pour améliorer votre navigation et mesurer l'audience de ses pages.

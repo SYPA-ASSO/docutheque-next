@@ -18,7 +18,7 @@ type Stats = {
   nb_inscriptions_30j: number
   migrations_en_attente: number
   dernieres_inscriptions: Array<{ id: string; prenom: string; nom: string; email: string; type: string; abonnement_actif: boolean; created_at: string }>
-  dernieres_questions: Array<{ id: string; question: string; statut: string; type: string; created_at: string; users: { prenom: string; nom: string } | null }>
+  dernieres_questions: Array<{ id: string; question: string | null; statut: string; type: string; created_at: string; users: { prenom: string; nom: string } | null }>
 }
 
 export default function AdminDashboard() {
@@ -28,6 +28,7 @@ export default function AdminDashboard() {
 
   useEffect(() => {
     if (!password) return
+    setLoading(true)
     fetch('/api/admin/stats', { headers: { 'x-admin-password': password } })
       .then(r => r.json())
       .then(d => { setStats(d); setLoading(false) })
@@ -35,8 +36,9 @@ export default function AdminDashboard() {
   }, [password])
 
   if (loading) return <p style={{ color: '#6b7280', fontSize: '14px' }}>Chargement...</p>
+  if (!stats) return <p style={{ color: '#6b7280', fontSize: '14px' }}>Impossible de charger les données.</p>
 
-  const tauxConversion = stats && stats.nb_clients > 0
+  const tauxConversion = stats.nb_clients > 0
     ? Math.round((stats.nb_abonnes / stats.nb_clients) * 100)
     : 0
 
@@ -47,8 +49,7 @@ export default function AdminDashboard() {
         <p style={{ color: '#9ca3af', fontSize: '13px', margin: 0 }}>Vue d'ensemble Cabinet Cholez-Pagotto</p>
       </div>
 
-      {/* Alerte questions en attente */}
-      {stats && stats.questions_en_attente > 0 && (
+      {stats.questions_en_attente > 0 && (
         <div style={{ background: '#fef3c7', border: '1px solid #fcd34d', borderRadius: '10px', padding: '12px 16px', display: 'flex', alignItems: 'center', gap: '10px' }}>
           <AlertCircle size={18} color="#d97706" style={{ flexShrink: 0 }} />
           <div>
@@ -62,8 +63,7 @@ export default function AdminDashboard() {
         </div>
       )}
 
-      {/* Alerte migrations en attente */}
-      {stats && stats.migrations_en_attente > 0 && (
+      {stats.migrations_en_attente > 0 && (
         <div style={{ background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '10px', padding: '12px 16px', display: 'flex', alignItems: 'center', gap: '10px' }}>
           <UserPlus size={18} color="#1a4fba" style={{ flexShrink: 0 }} />
           <p style={{ color: '#1e3a5f', fontSize: '13px', margin: 0 }}>
@@ -73,13 +73,12 @@ export default function AdminDashboard() {
         </div>
       )}
 
-      {/* Cartes stats principales */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '14px' }}>
         {[
-          { label: 'Clients inscrits', value: stats?.nb_clients || 0, sub: `+${stats?.nb_inscriptions_30j || 0} ce mois`, icon: <Users size={20} color="#1a4fba" strokeWidth={1.5} />, bg: '#eff6ff', href: '/admin/clients' },
-          { label: 'Abonnés actifs', value: stats?.nb_abonnes || 0, sub: `${tauxConversion}% de conversion`, icon: <Crown size={20} color="#d97706" strokeWidth={1.5} />, bg: '#fff7ed', href: '/admin/clients' },
-          { label: 'Documents actifs', value: stats?.nb_documents || 0, sub: 'dans le catalogue', icon: <FileText size={20} color="#15803d" strokeWidth={1.5} />, bg: '#f0fdf4', href: '/admin/documents' },
-          { label: 'Questions posées', value: stats?.nb_questions_total || 0, sub: `${stats?.questions_en_attente || 0} en attente`, icon: <MessageSquare size={20} color="#7c3aed" strokeWidth={1.5} />, bg: '#f5f3ff', href: '/admin/questions' },
+          { label: 'Clients inscrits', value: stats.nb_clients, sub: `+${stats.nb_inscriptions_30j} ce mois`, icon: <Users size={20} color="#1a4fba" strokeWidth={1.5} />, bg: '#eff6ff', href: '/admin/clients' },
+          { label: 'Abonnés actifs', value: stats.nb_abonnes, sub: `${tauxConversion}% de conversion`, icon: <Crown size={20} color="#d97706" strokeWidth={1.5} />, bg: '#fff7ed', href: '/admin/clients' },
+          { label: 'Documents actifs', value: stats.nb_documents, sub: 'dans le catalogue', icon: <FileText size={20} color="#15803d" strokeWidth={1.5} />, bg: '#f0fdf4', href: '/admin/documents' },
+          { label: 'Questions posées', value: stats.nb_questions_total, sub: `${stats.questions_en_attente} en attente`, icon: <MessageSquare size={20} color="#7c3aed" strokeWidth={1.5} />, bg: '#f5f3ff', href: '/admin/questions' },
         ].map((card, i) => (
           <a key={i} href={card.href} style={{ textDecoration: 'none' }}>
             <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.25rem', transition: 'all 0.15s', cursor: 'pointer' }}
@@ -96,14 +95,13 @@ export default function AdminDashboard() {
         ))}
       </div>
 
-      {/* Stats secondaires */}
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px' }}>
         <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.25rem' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
             <Receipt size={16} color="#6b7280" strokeWidth={1.5} />
             <p style={{ color: '#374151', fontSize: '13px', fontWeight: '600', margin: 0 }}>Factures émises</p>
           </div>
-          <p style={{ color: '#0f2d6e', fontSize: '1.4rem', fontWeight: '700', margin: '0 0 4px' }}>{stats?.nb_factures || 0}</p>
+          <p style={{ color: '#0f2d6e', fontSize: '1.4rem', fontWeight: '700', margin: '0 0 4px' }}>{stats.nb_factures}</p>
           <a href="/admin/factures" style={{ color: '#1a4fba', fontSize: '12px', textDecoration: 'none' }}>Gérer les factures →</a>
         </div>
         <div style={{ background: 'linear-gradient(135deg, #0f2d6e, #1a4fba)', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.25rem' }}>
@@ -116,16 +114,14 @@ export default function AdminDashboard() {
         </div>
       </div>
 
-      {/* Dernières activités */}
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
 
-        {/* Dernières inscriptions */}
         <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.5rem' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
             <p style={{ color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: 0 }}>Dernières inscriptions</p>
             <a href="/admin/clients" style={{ color: '#1a4fba', fontSize: '12px', textDecoration: 'none' }}>Tout voir →</a>
           </div>
-          {!stats?.dernieres_inscriptions.length ? (
+          {!stats.dernieres_inscriptions?.length ? (
             <p style={{ color: '#9ca3af', fontSize: '13px', margin: 0 }}>Aucun client inscrit.</p>
           ) : (
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
@@ -142,20 +138,21 @@ export default function AdminDashboard() {
                       {new Date(u.created_at).toLocaleDateString('fr-FR')} · {u.type}
                     </p>
                   </div>
-                  {u.abonnement_actif && <span style={{ background: '#eff6ff', color: '#1a4fba', fontSize: '9px', fontWeight: '700', padding: '1px 6px', borderRadius: '4px', flexShrink: 0 }}>Abonné</span>}
+                  {u.abonnement_actif && (
+                    <span style={{ background: '#eff6ff', color: '#1a4fba', fontSize: '9px', fontWeight: '700', padding: '1px 6px', borderRadius: '4px', flexShrink: 0 }}>Abonné</span>
+                  )}
                 </div>
               ))}
             </div>
           )}
         </div>
 
-        {/* Dernières questions */}
         <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.5rem' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
             <p style={{ color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: 0 }}>Dernières questions</p>
             <a href="/admin/questions" style={{ color: '#1a4fba', fontSize: '12px', textDecoration: 'none' }}>Tout voir →</a>
           </div>
-          {!stats?.dernieres_questions.length ? (
+          {!stats.dernieres_questions?.length ? (
             <p style={{ color: '#9ca3af', fontSize: '13px', margin: 0 }}>Aucune question posée.</p>
           ) : (
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
@@ -179,7 +176,6 @@ export default function AdminDashboard() {
         </div>
       </div>
 
-      {/* Accès rapides */}
       <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.5rem' }}>
         <p style={{ color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 1rem' }}>Accès rapides</p>
         <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
@@ -190,7 +186,7 @@ export default function AdminDashboard() {
             { label: 'Voir tous les clients', href: '/admin/clients', color: '#d97706' },
           ].map((btn, i) => (
             <a key={i} href={btn.href}
-              style={{ background: '#f8fafc', color: btn.color, border: `1px solid #e5e7eb`, padding: '9px 16px', borderRadius: '8px', fontSize: '12px', fontWeight: '700', textDecoration: 'none', transition: 'all 0.15s' }}
+              style={{ background: '#f8fafc', color: btn.color, border: '1px solid #e5e7eb', padding: '9px 16px', borderRadius: '8px', fontSize: '12px', fontWeight: '700', textDecoration: 'none', transition: 'all 0.15s' }}
               onMouseEnter={e => (e.currentTarget as HTMLAnchorElement).style.background = '#eff6ff'}
               onMouseLeave={e => (e.currentTarget as HTMLAnchorElement).style.background = '#f8fafc'}>
               {btn.label}

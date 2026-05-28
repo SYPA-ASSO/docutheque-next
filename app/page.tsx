@@ -1,6 +1,5 @@
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-import Image from 'next/image'
 
 export const metadata = {
   title: 'Docuthèque · Cabinet Cholez-Pagotto · Comprendre. Décider. Agir.',
@@ -49,23 +48,14 @@ export default function Home() {
         {/* HERO */}
         <section style={{ background: 'linear-gradient(135deg, #0f2d6e 0%, #1a4fba 100%)', padding: '5rem 0' }}>
           <div style={{ maxWidth: '900px', margin: '0 auto', padding: '0 2rem', textAlign: 'center' }}>
-            <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '24px' }}>
-              <Image
-                src="/logo-cholez-pagotto-transparent.svg"
-                alt="Cabinet Cholez-Pagotto · Comprendre. Décider. Agir."
-                width={220}
-                height={52}
-                priority
-              />
-            </div>
             <h1 style={{ color: 'white', fontSize: '2.2rem', fontWeight: '700', margin: '0 0 12px', lineHeight: '1.3' }}>
               Votre droit, simplement expliqué.<br />Vos démarches, professionnellement accompagnées.
             </h1>
             <p style={{ color: '#c8a84b', fontSize: '1.1rem', fontWeight: '600', margin: '0 0 16px', letterSpacing: '0.03em' }}>
               Comprendre. Décider. Agir.
             </p>
-            <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '1rem', lineHeight: '1.8', maxWidth: '620px', margin: '0 auto 32px' }}>
-              Information juridique, documents téléchargeables et personnalisables, conseil en assurances. Un juriste humain, zéro intelligence artificielle, réponse sous 24 à 48 heures ouvrées.
+            <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '1rem', lineHeight: '1.8', maxWidth: '620px', margin: '0 auto 24px' }}>
+              Information juridique, documents téléchargeables et personnalisables, conseil en assurances. Pour les particuliers, les professionnels et les associations. Un juriste humain, zéro intelligence artificielle, réponse sous 24 à 48 heures ouvrées.
             </p>
             <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
               <a href="/catalogue" style={{ display: 'inline-block', background: 'white', color: '#0f2d6e', padding: '13px 28px', borderRadius: '8px', fontSize: '14px', fontWeight: '700', textDecoration: 'none' }}>
@@ -75,18 +65,9 @@ export default function Home() {
                 Poser une question à un juriste
               </a>
             </div>
-            <div style={{ display: 'flex', gap: '24px', justifyContent: 'center', marginTop: '28px', flexWrap: 'wrap' }}>
-              {[
-                '100% humain · zéro IA',
-                'ORIAS n°26003943',
-                'Membre CRFF',
-                'Réponse 24 à 48h',
-              ].map((badge, i) => (
-                <span key={i} style={{ color: 'rgba(255,255,255,0.6)', fontSize: '11px', fontWeight: '600', letterSpacing: '0.05em' }}>
-                  · {badge}
-                </span>
-              ))}
-            </div>
+            <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '12px', margin: '16px auto 0', maxWidth: '560px', lineHeight: '1.7' }}>
+              47 € la question · Abonnement Optimal dès 17,90 €/mois · Forfait conseil assurances dès 90 €
+            </p>
           </div>
         </section>
 
@@ -122,8 +103,8 @@ export default function Home() {
                 },
                 {
                   titre: "Conseil en assurances",
-                  desc: "Analyse de vos besoins, comparaison des offres, accompagnement à la souscription. Sans honoraires directs, rémunération par commission.",
-                  lien: '/services',
+                  desc: "Analyse de vos besoins, audit des contrats existants, comparaison des offres. Forfait conseil 90 € HT (particuliers) · 150 € HT (professionnels). Commission assureur séparée, communiquée avant souscription.",
+                  lien: '/conseil-assurances',
                   cta: 'En savoir plus',
                   badge: 'ORIAS 26003943',
                   badgeColor: '#fef3c7',
