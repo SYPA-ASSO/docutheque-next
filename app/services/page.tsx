@@ -236,10 +236,10 @@ export default function Services() {
             <span style={{display: 'inline-block', background: 'rgba(255,255,255,0.15)', color: 'white', border: '1px solid rgba(255,255,255,0.3)', borderRadius: '20px', padding: '4px 14px', fontSize: '11px', fontWeight: '600', marginBottom: '16px', letterSpacing: '0.05em'}}>
               NOS SERVICES
             </span>
-            <h1 style={{color: 'white', fontSize: '2rem', fontWeight: '700', margin: '0 0 16px', lineHeight: '1.3', maxWidth: '620px'}}>
+            <h1 style={{color: 'white', fontSize: '2rem', fontWeight: '700', margin: '0 0 16px', lineHeight: '1.3', }}>
               Une offre complète de services juridiques, formalistes et d'assurances.
             </h1>
-            <p style={{color: 'rgba(255,255,255,0.8)', fontSize: '0.95rem', lineHeight: '1.8', margin: '0 0 28px', maxWidth: '580px'}}>
+            <p style={{color: 'rgba(255,255,255,0.8)', fontSize: '0.95rem', lineHeight: '1.8', margin: '0 0 28px', }}>
               Le Cabinet Cholez-Pagotto accompagne particuliers, professionnels, associations et structures ESS dans la compréhension de leurs droits, la sécurisation de leurs activités et la réalisation de leurs formalités, à distance, avec rigueur et sans jargon.
             </p>
             <div style={{display: 'flex', gap: '10px', flexWrap: 'wrap'}}>

@@ -319,7 +319,7 @@ export default function AccompagnementAssociationsPage() {
               Accompagnement des associations,<br />
               fondations et structures ESS
             </h1>
-            <p style={{ fontSize: '1.1rem', color: 'rgba(255,255,255,0.88)', maxWidth: 620, marginBottom: '1.5rem', lineHeight: 1.7 }}>
+            <p style={{ fontSize: '1.1rem', color: 'rgba(255,255,255,0.88)', marginBottom: '1.5rem', lineHeight: 1.7 }}>
               Préparation et assistance à la rédaction des statuts, formalités déclaratives,
               conformité RGPD, DPO externalisé. Notre juriste accompagne les associations
               loi 1901, coopératives, mutuelles et fondations depuis plus de 10 ans.

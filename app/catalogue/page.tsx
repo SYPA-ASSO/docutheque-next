@@ -153,7 +153,7 @@ export default function CataloguePage() {
             <h1 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.2rem)', fontWeight: 700, marginBottom: '1rem', lineHeight: 1.2 }}>
               Documents juridiques téléchargeables et personnalisables
             </h1>
-            <p style={{ fontSize: '1rem', color: 'rgba(255,255,255,0.85)', lineHeight: 1.8, marginBottom: '2rem', maxWidth: 580, margin: '0 auto 2rem' }}>
+            <p style={{ fontSize: '1rem', color: 'rgba(255,255,255,0.85)', lineHeight: 1.8, marginBottom: '2rem', margin: '0 auto 2rem' }}>
               Modèles au format DOCX élaborés sur la base du droit français en vigueur. Contrats, baux, statuts, RGPD, courriers. Accès libre ou abonnement Optimal.
             </p>
 

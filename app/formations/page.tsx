@@ -297,7 +297,7 @@ export default function FormationsPage() {
               Formations sur-mesure<br />
               Droit, RGPD, assurances et formalités
             </h1>
-            <p style={{ fontSize: '1.1rem', color: 'rgba(255,255,255,0.88)', maxWidth: 620, marginBottom: '1.5rem', lineHeight: 1.7 }}>
+            <p style={{ fontSize: '1.1rem', color: 'rgba(255,255,255,0.88)', marginBottom: '1.5rem', lineHeight: 1.7 }}>
               Programmes construits à partir de vos besoins réels. Présentiel ou distanciel,
               individuel ou collectif. Entreprises, associations, professions libérales,
               structures ESS : notre juriste forme vos équipes aux thématiques juridiques et réglementaires.

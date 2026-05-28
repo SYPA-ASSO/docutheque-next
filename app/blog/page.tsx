@@ -160,7 +160,7 @@ export default function Blog() {
             <h1 style={{color: 'white', fontSize: '1.8rem', fontWeight: '700', margin: '0 0 10px', lineHeight: '1.3'}}>
               Actualités, analyses et informations juridiques
             </h1>
-            <p style={{color: 'rgba(255,255,255,0.8)', fontSize: '0.95rem', margin: 0, maxWidth: '560px', lineHeight: '1.7'}}>
+            <p style={{color: 'rgba(255,255,255,0.8)', fontSize: '0.95rem', margin: 0, lineHeight: '1.7'}}>
               Des articles rédigés par un juriste, pour mieux comprendre le droit du quotidien, sans jargon, avec rigueur.
             </p>
           </div>

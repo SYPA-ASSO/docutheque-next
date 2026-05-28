@@ -54,7 +54,7 @@ export default function Home() {
             <p style={{ color: '#c8a84b', fontSize: '1.1rem', fontWeight: '600', margin: '0 0 16px', letterSpacing: '0.03em' }}>
               Comprendre. Décider. Agir.
             </p>
-            <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '1rem', lineHeight: '1.8', maxWidth: '620px', margin: '0 auto 24px' }}>
+            <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '1rem', lineHeight: '1.8', margin: '0 auto 24px' }}>
               Information juridique, documents téléchargeables et personnalisables, conseil en assurances. Pour les particuliers, les professionnels et les associations. Un juriste humain, zéro intelligence artificielle, réponse sous 24 à 48 heures ouvrées.
             </p>
             <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
