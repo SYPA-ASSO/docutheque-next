@@ -7,7 +7,7 @@ import { supabase } from '@/lib/supabase'
 import type { DocItem, Categorie } from '@/lib/types'
 import {
   FileText, Lock, Star, ArrowRight, ChevronRight,
-  CheckCircle, Shield, Scale, Info, Download, Crown
+  CheckCircle, Scale, Info, Download, Crown
 } from 'lucide-react'
 
 const schemaData = {
@@ -34,10 +34,17 @@ const schemaData = {
         },
         {
           "@type": "Offer",
-          "name": "Abonnement Optimal",
+          "name": "Abonnement Optimal Particulier",
           "price": "17.90",
           "priceCurrency": "EUR",
           "description": "Accès complet à la bibliothèque, 17,90 €/mois ou 149 €/an"
+        },
+        {
+          "@type": "Offer",
+          "name": "Abonnement Optimal Pro",
+          "price": "27.90",
+          "priceCurrency": "EUR",
+          "description": "Accès complet à la bibliothèque, 2 questions juriste/mois, 27,90 €/mois ou 249 €/an"
         }
       ],
       "url": "https://cholez-pagotto.fr/catalogue"
@@ -54,10 +61,26 @@ const schemaData = {
 }
 
 const avantages = [
-  { titre: "Rédigés par un juriste", texte: "Chaque document est préparé par François CHOLEZ, juriste et membre du CRFF, sur la base du droit français en vigueur.", icone: <Scale size={18} strokeWidth={1.5} /> },
-  { titre: "Format DOCX", texte: "Téléchargeables et personnalisables directement dans Word, LibreOffice ou Google Docs. Adaptez chaque document à votre situation.", icone: <FileText size={18} strokeWidth={1.5} /> },
-  { titre: "Mis à jour régulièrement", texte: "Les documents sont actualisés à chaque évolution législative ou réglementaire significative.", icone: <CheckCircle size={18} strokeWidth={1.5} /> },
-  { titre: "Accès immédiat", texte: "Après inscription, accès instantané aux documents en accès libre. L'abonnement Optimal débloque la bibliothèque complète.", icone: <Star size={18} strokeWidth={1.5} /> }
+  {
+    titre: "Élaborés avec rigueur",
+    texte: "Nos documents sont élaborés sur la base du droit français en vigueur et mis à jour régulièrement.",
+    icone: <Scale size={18} strokeWidth={1.5} />
+  },
+  {
+    titre: "Format DOCX",
+    texte: "Téléchargeables et personnalisables directement dans Word, LibreOffice ou Google Docs. Adaptez chaque document à votre situation.",
+    icone: <FileText size={18} strokeWidth={1.5} />
+  },
+  {
+    titre: "Mis à jour régulièrement",
+    texte: "Les documents sont actualisés à chaque évolution législative ou réglementaire significative.",
+    icone: <CheckCircle size={18} strokeWidth={1.5} />
+  },
+  {
+    titre: "Accès immédiat",
+    texte: "Après inscription, accès instantané aux documents en accès libre. L'abonnement Optimal débloque l'intégralité de la bibliothèque.",
+    icone: <Star size={18} strokeWidth={1.5} />
+  }
 ]
 
 export default function CataloguePage() {
@@ -65,6 +88,7 @@ export default function CataloguePage() {
   const [categories, setCategories] = useState<Categorie[]>([])
   const [categorieActive, setCategorieActive] = useState<string | null>(null)
   const [loading, setLoading] = useState(true)
+  const [periode, setPeriode] = useState<'monthly' | 'yearly'>('yearly')
 
   useEffect(() => {
     const loadData = async () => {
@@ -130,10 +154,9 @@ export default function CataloguePage() {
               Documents juridiques téléchargeables et personnalisables
             </h1>
             <p style={{ fontSize: '1rem', color: 'rgba(255,255,255,0.85)', lineHeight: 1.8, marginBottom: '2rem', maxWidth: 580, margin: '0 auto 2rem' }}>
-              Modèles au format DOCX préparés par un juriste formaliste CRFF. Contrats, baux, statuts, RGPD, courriers. Accès libre ou abonnement Optimal.
+              Modèles au format DOCX élaborés sur la base du droit français en vigueur. Contrats, baux, statuts, RGPD, courriers. Accès libre ou abonnement Optimal.
             </p>
 
-            {/* Compteurs */}
             {!loading && (
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', justifyContent: 'center', marginBottom: '2rem' }}>
                 <div style={{ background: 'rgba(255,255,255,0.15)', borderRadius: 12, padding: '1rem 1.5rem', border: '1px solid rgba(255,255,255,0.3)', minWidth: 140 }}>
@@ -279,55 +302,69 @@ export default function CataloguePage() {
 
           {/* ABONNEMENT */}
           <section style={{ marginBottom: '3.5rem' }}>
-            <h2 style={{ fontSize: '1.4rem', fontWeight: 700, color: '#0f2d6e', marginBottom: '2rem' }}>
+            <h2 style={{ fontSize: '1.4rem', fontWeight: 700, color: '#0f2d6e', marginBottom: '0.5rem' }}>
               L'abonnement Optimal
             </h2>
+            <p style={{ color: '#6b7280', fontSize: 13, marginBottom: '2rem' }}>
+              Deux formules selon votre profil. Chaque formule est disponible en mensuel sans engagement ou en annuel avec 2 mois offerts.
+            </p>
+
+            {/* TOGGLE MENSUEL / ANNUEL */}
+            <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '2rem' }}>
+              <div style={{ background: '#f3f4f6', borderRadius: 10, padding: '4px', display: 'inline-flex', gap: '4px' }}>
+                {(['monthly', 'yearly'] as const).map(p => (
+                  <button key={p}
+                    onClick={() => setPeriode(p)}
+                    style={{ padding: '8px 20px', borderRadius: 8, border: 'none', background: periode === p ? 'white' : 'transparent', color: periode === p ? '#0f2d6e' : '#6b7280', fontSize: 13, fontWeight: periode === p ? 700 : 500, cursor: 'pointer', boxShadow: periode === p ? '0 1px 3px rgba(0,0,0,0.1)' : 'none', transition: 'all 0.15s' }}>
+                    {p === 'monthly' ? 'Mensuel' : 'Annuel'}
+                    {p === 'yearly' && <span style={{ marginLeft: 6, background: '#0f2d6e', color: 'white', fontSize: 9, fontWeight: 700, padding: '1px 6px', borderRadius: 10 }}>2 mois offerts</span>}
+                  </button>
+                ))}
+              </div>
+            </div>
+
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1.5rem' }}>
               {[
                 {
-                  titre: "Mensuel",
-                  prix: "17,90 €",
-                  unite: "/mois",
-                  detail: "Sans engagement",
+                  profil: 'Optimal Particulier',
+                  cible: 'Particulier · Usage personnel',
+                  prix: periode === 'yearly' ? '12,42 €' : '17,90 €',
+                  detail: periode === 'yearly' ? '149 € / an' : 'Sans engagement',
                   inclus: [
-                    "Accès complet à la bibliothèque",
-                    "Documents téléchargeables et personnalisables",
-                    "Mises à jour incluses",
-                    "1 question juriste incluse par mois",
-                    "Questions supplémentaires à 14,90 €",
-                    "Accès espace client",
+                    'Accès complet à la bibliothèque',
+                    'Documents téléchargeables et personnalisables',
+                    'Mises à jour incluses',
+                    '1 question juriste incluse par mois (non cumulable)',
+                    'Questions supplémentaires à 14,90 €',
+                    'Accès espace client',
                   ],
-                  cta: "/connexion",
-                  couleur: "#1a4fba"
+                  couleur: '#1a4fba',
                 },
                 {
-                  titre: "Annuel",
-                  prix: "149 €",
-                  unite: "/an",
-                  detail: "soit 12,42 €/mois",
-                  badge: "2 mois offerts",
+                  profil: 'Optimal Pro',
+                  cible: 'Professionnel · Association · Collectivité',
+                  prix: periode === 'yearly' ? '20,75 €' : '27,90 €',
+                  detail: periode === 'yearly' ? '249 € / an' : 'Sans engagement',
                   inclus: [
-                    "Accès complet à la bibliothèque",
-                    "Documents téléchargeables et personnalisables",
-                    "Mises à jour incluses",
-                    "1 question juriste incluse par mois",
-                    "Questions supplémentaires à 14,90 €",
-                    "Accès espace client",
+                    'Accès complet à la bibliothèque',
+                    'Documents téléchargeables et personnalisables',
+                    'Mises à jour incluses',
+                    '2 questions juriste incluses par mois (non cumulables)',
+                    'Questions supplémentaires à 14,90 €',
+                    'Alertes légales événementielles',
+                    'Accès espace client',
                   ],
-                  cta: "/connexion",
-                  couleur: "#b8860b"
-                }
+                  couleur: '#0f2d6e',
+                },
               ].map((offre, i) => (
-                <div key={i} style={{ background: 'white', border: `2px solid ${offre.couleur}40`, borderRadius: 12, padding: '1.5rem', position: 'relative' }}>
-                  {offre.badge && (
-                    <div style={{ position: 'absolute', top: -12, left: '50%', transform: 'translateX(-50%)', background: offre.couleur, color: 'white', fontSize: 11, fontWeight: 700, padding: '3px 14px', borderRadius: 20, whiteSpace: 'nowrap' }}>
-                      {offre.badge}
-                    </div>
-                  )}
-                  <h3 style={{ fontSize: '1rem', fontWeight: 700, color: '#0f2d6e', marginBottom: '0.5rem' }}>{offre.titre}</h3>
+                <div key={i} style={{ background: 'white', border: `2px solid ${offre.couleur}40`, borderRadius: 12, padding: '1.5rem' }}>
+                  <div style={{ marginBottom: '0.75rem' }}>
+                    <p style={{ color: offre.couleur, fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', margin: '0 0 2px' }}>{offre.profil}</p>
+                    <p style={{ color: '#9ca3af', fontSize: 11, margin: 0 }}>{offre.cible}</p>
+                  </div>
                   <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.3rem', marginBottom: '4px' }}>
                     <span style={{ fontSize: '2rem', fontWeight: 800, color: offre.couleur }}>{offre.prix}</span>
-                    <span style={{ fontSize: 13, color: '#6b7280' }}>{offre.unite}</span>
+                    <span style={{ fontSize: 13, color: '#6b7280' }}>/mois</span>
                   </div>
                   <p style={{ color: '#9ca3af', fontSize: 11, margin: '0 0 1rem' }}>{offre.detail}</p>
                   <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 1.5rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
@@ -338,12 +375,15 @@ export default function CataloguePage() {
                       </li>
                     ))}
                   </ul>
-                  <a href={offre.cta} style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', background: offre.couleur, color: 'white', textDecoration: 'none', padding: '11px 20px', borderRadius: 8, fontWeight: 700, fontSize: '0.875rem', width: '100%', boxSizing: 'border-box' as const }}>
+                  <a href="/connexion" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', background: offre.couleur, color: 'white', textDecoration: 'none', padding: '11px 20px', borderRadius: 8, fontWeight: 700, fontSize: '0.875rem', width: '100%', boxSizing: 'border-box' as const }}>
                     S'inscrire <ArrowRight size={16} />
                   </a>
                 </div>
               ))}
             </div>
+            <p style={{ color: '#9ca3af', fontSize: 11, textAlign: 'center', marginTop: '1rem' }}>
+              Sans engagement pour les formules mensuelles · Engagement 12 mois pour les formules annuelles · Paiement sécurisé
+            </p>
           </section>
 
           {/* CTA FINAL */}
