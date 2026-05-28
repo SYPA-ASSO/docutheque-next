@@ -517,10 +517,11 @@ export default function FormationsPage() {
               </div>
               <h3 style={{ fontSize: '1rem', fontWeight: 700, color: '#0f2d6e', margin: '0 0 0.3rem' }}>François CHOLEZ</h3>
               <p style={{ fontSize: 13, color: '#6b7280', margin: 0, lineHeight: 1.6 }}>
-                Juriste - Formaliste - Conseil en assurances. Membre du CRFF. Chercheur associé,
-                contributeur aux ouvrages "L'éducation, ça se partage ?" (L'Harmattan, 2021) et
-                "Agir en situation de discrédit" (Le Cavalier Bleu, 2026).
-                Membre du CRFF (Conseil Représentatif des Formalistes de France), investi dans des instances de gouvernances associatives à différents échelons (en local, départemental et national). Co-fondateur et secrétaire national d'un fonds de dotation. Plus de 30 ans d'engagement dans l'ESS.
+                Juriste · Formaliste · Conseil en assurances. Membre du CRFF (Conseil Représentatif des Formalistes de France).
+                Chercheur associé, contributeur aux ouvrages{' '}
+                <em>«&nbsp;L'éducation, ça se partage&nbsp;?&nbsp;»</em> (L'Harmattan, 2021)
+                {' '}et <em>«&nbsp;Agir en situation de discrédit&nbsp;»</em> (Le Cavalier Bleu, 2026).
+                Investi dans des instances de gouvernance associative à différents échelons. Co-fondateur et secrétaire national d'un fonds de dotation. Plus de 30 ans d'engagement dans l'ESS.
               </p>
             </div>
           </section>

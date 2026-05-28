@@ -298,7 +298,6 @@ export default function InformationDroits() {
             </div>
           </section>
 
-
           {/* ENCART LIMITES IA */}
           <section style={{background: 'white', border: '1px solid #bfdbfe', borderRadius: '12px', padding: '1.75rem 2rem'}}>
             <div style={{display: 'flex', gap: '16px', alignItems: 'flex-start', marginBottom: '1.25rem'}}>
@@ -429,7 +428,7 @@ export default function InformationDroits() {
               </div>
             </div>
             <p style={{color: '#6b7280', fontSize: '13px', lineHeight: '1.8', margin: '0 0 16px', maxWidth: '600px', marginLeft: 'auto', marginRight: 'auto'}}>
-              Membre du CRFF. Courtier en assurances immatriculé à l'ORIAS n°26003943, sous contrôle de l'ACPR. Chaque réponse est rédigée avec rigueur, dans un langage accessible, en citant les textes applicables.
+              Membre du CRFF. Intermédiaire en assurances immatriculé à l'ORIAS sous le numéro 26003943, sous contrôle de l'Autorité de Contrôle Prudentiel et de Résolution (ACPR). Chaque réponse est rédigée avec rigueur, dans un langage accessible, en citant les textes applicables.
             </p>
             <a href="/connexion" style={{display: 'inline-block', background: '#0f2d6e', color: 'white', padding: '12px 32px', borderRadius: '8px', fontSize: '14px', fontWeight: '700', textDecoration: 'none'}}>
               Poser ma question →
