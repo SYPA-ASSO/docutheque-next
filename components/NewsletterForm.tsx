@@ -8,11 +8,14 @@ type Status = 'idle' | 'loading' | 'success' | 'error'
 export default function NewsletterForm({ variant = 'hero' }: { variant?: 'hero' | 'cta' }) {
   const [email, setEmail] = useState('')
   const [prenom, setPrenom] = useState('')
+  const [nom, setNom] = useState('')
   const [status, setStatus] = useState<Status>('idle')
   const [erreur, setErreur] = useState('')
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    if (!prenom.trim()) { setErreur('Veuillez saisir votre prénom.'); return }
+    if (!nom.trim()) { setErreur('Veuillez saisir votre nom.'); return }
     if (!email.trim()) { setErreur('Veuillez saisir votre adresse email.'); return }
     setStatus('loading')
     setErreur('')
@@ -21,7 +24,7 @@ export default function NewsletterForm({ variant = 'hero' }: { variant?: 'hero' 
       const res = await fetch('/api/newsletter/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email.trim(), prenom: prenom.trim() }),
+        body: JSON.stringify({ email: email.trim(), prenom: prenom.trim(), nom: nom.trim() }),
       })
       const data = await res.json()
       if (!res.ok) {
@@ -55,7 +58,9 @@ export default function NewsletterForm({ variant = 'hero' }: { variant?: 'hero' 
             Inscription confirmée
           </p>
           <p style={{ color: variant === 'hero' ? 'rgba(255,255,255,0.8)' : '#374151', fontSize: '12px', margin: 0 }}>
-            Vérifiez votre boîte mail pour confirmer votre inscription. Vérifiez vos spams si nécessaire.
+            {variant === 'hero'
+              ? 'Vous êtes bien inscrit à la newsletter Docuthèque.'
+              : 'Vous recevrez prochainement nos actualités et offres exclusives.'}
           </p>
         </div>
       </div>
@@ -64,6 +69,18 @@ export default function NewsletterForm({ variant = 'hero' }: { variant?: 'hero' 
 
   const isHero = variant === 'hero'
 
+  const inputStyle = (hasError = false) => ({
+    padding: '11px 14px',
+    borderRadius: '8px',
+    border: isHero ? 'none' : `1px solid ${hasError ? '#dc2626' : '#d1d5db'}`,
+    fontSize: '13px',
+    background: isHero ? 'rgba(255,255,255,0.15)' : 'white',
+    color: isHero ? 'white' : '#374151',
+    outline: 'none',
+    width: '100%',
+    boxSizing: 'border-box' as const,
+  })
+
   return (
     <form onSubmit={handleSubmit} style={{ maxWidth: '480px', margin: '0 auto' }}>
       <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
@@ -71,35 +88,28 @@ export default function NewsletterForm({ variant = 'hero' }: { variant?: 'hero' 
           <input
             type="text"
             value={prenom}
-            onChange={e => setPrenom(e.target.value)}
-            placeholder="Prénom (facultatif)"
-            style={{
-              padding: '11px 14px',
-              borderRadius: '8px',
-              border: isHero ? 'none' : '1px solid #d1d5db',
-              fontSize: '13px',
-              background: isHero ? 'rgba(255,255,255,0.15)' : 'white',
-              color: isHero ? 'white' : '#374151',
-              outline: 'none',
-            }}
+            onChange={e => { setPrenom(e.target.value); setErreur('') }}
+            placeholder="Prénom *"
+            required
+            style={inputStyle(!!erreur && !prenom.trim())}
           />
           <input
-            type="email"
-            value={email}
-            onChange={e => { setEmail(e.target.value); setErreur('') }}
-            placeholder="votre@email.fr *"
+            type="text"
+            value={nom}
+            onChange={e => { setNom(e.target.value); setErreur('') }}
+            placeholder="Nom *"
             required
-            style={{
-              padding: '11px 14px',
-              borderRadius: '8px',
-              border: isHero ? 'none' : `1px solid ${erreur ? '#dc2626' : '#d1d5db'}`,
-              fontSize: '13px',
-              background: isHero ? 'rgba(255,255,255,0.15)' : 'white',
-              color: isHero ? 'white' : '#374151',
-              outline: 'none',
-            }}
+            style={inputStyle(!!erreur && !nom.trim())}
           />
         </div>
+        <input
+          type="email"
+          value={email}
+          onChange={e => { setEmail(e.target.value); setErreur('') }}
+          placeholder="votre@email.fr *"
+          required
+          style={inputStyle(!!erreur && !email.trim())}
+        />
         <button
           type="submit"
           disabled={status === 'loading'}
@@ -132,7 +142,7 @@ export default function NewsletterForm({ variant = 'hero' }: { variant?: 'hero' 
       )}
 
       <p style={{ color: isHero ? 'rgba(255,255,255,0.4)' : '#9ca3af', fontSize: '10px', margin: '8px 0 0', textAlign: 'center' }}>
-        Inscription sans engagement · Désinscription en un clic · Conforme RGPD
+        Tous les champs sont obligatoires · Désinscription en un clic · Conforme RGPD
       </p>
     </form>
   )
