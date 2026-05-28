@@ -42,11 +42,13 @@ export default function Footer() {
               {[
                 { label: 'Information sur vos droits', href: '/information-sur-vos-droits' },
                 { label: 'Conseil en assurances', href: '/conseil-assurances' },
-                { label: 'Formalités entreprise', href: '/accompagnement-professionnels' },
+                { label: 'RGPD & conformité', href: '/contact' },
+                { label: 'DPO externalisé', href: '/contact' },
                 { label: 'Formations', href: '/formations' },
                 { label: 'Catalogue de documents', href: '/catalogue' },
+                { label: 'Tarifs', href: '/tarifs' },
               ].map((l) => (
-                <Link key={l.href} href={l.href} style={{ color: 'rgba(255,255,255,0.7)', fontSize: '12px', textDecoration: 'none', lineHeight: '1.5' }}>
+                <Link key={l.href + l.label} href={l.href} style={{ color: 'rgba(255,255,255,0.7)', fontSize: '12px', textDecoration: 'none', lineHeight: '1.5' }}>
                   {l.label}
                 </Link>
               ))}

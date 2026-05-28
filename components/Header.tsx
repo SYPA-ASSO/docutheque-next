@@ -16,12 +16,16 @@ export default function Header() {
       children: [
         { label: 'Information sur vos droits', href: '/information-sur-vos-droits' },
         { label: 'Conseil en assurances', href: '/conseil-assurances' },
+        { label: 'Accompagnement particuliers', href: '/accompagnement-particuliers' },
         { label: 'Accompagnement professionnels', href: '/accompagnement-professionnels' },
         { label: 'Accompagnement associations · ESS', href: '/accompagnement-associations' },
+        { label: 'RGPD & conformité', href: '/contact' },
+        { label: 'DPO externalisé', href: '/contact' },
         { label: 'Formations', href: '/formations' },
       ],
     },
     { label: 'Catalogue', href: '/catalogue' },
+    { label: 'Tarifs', href: '/tarifs' },
     { label: 'Blog', href: '/blog' },
     { label: 'Contact', href: '/contact' },
   ]
@@ -90,7 +94,7 @@ export default function Header() {
                     left: 0,
                     paddingTop: '8px',
                     zIndex: 100,
-                    minWidth: '260px',
+                    minWidth: '280px',
                   }}>
                     <div style={{
                       background: 'white',
@@ -101,7 +105,7 @@ export default function Header() {
                       overflow: 'hidden',
                     }}>
                       {item.children.map((child) => (
-                        <Link key={child.href} href={child.href} style={{
+                        <Link key={child.href + child.label} href={child.href} style={{
                           display: 'block',
                           padding: '10px 16px',
                           fontSize: '13px',
