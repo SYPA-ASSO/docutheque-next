@@ -41,9 +41,10 @@ export default function Footer() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
               {[
                 { label: 'Information sur vos droits', href: '/information-sur-vos-droits' },
+                { label: "Création d'entreprise", href: '/creation-entreprise' },
                 { label: 'Conseil en assurances', href: '/conseil-assurances' },
-                { label: 'RGPD & conformité', href: '/contact' },
-                { label: 'DPO externalisé', href: '/contact' },
+                { label: 'RGPD & conformité', href: '/rgpd-conformite' },
+                { label: 'DPO externalisé', href: '/dpo-externalise' },
                 { label: 'Formations', href: '/formations' },
                 { label: 'Catalogue de documents', href: '/catalogue' },
                 { label: 'Tarifs', href: '/tarifs' },
@@ -63,6 +64,7 @@ export default function Footer() {
                 { label: 'Particuliers', href: '/accompagnement-particuliers' },
                 { label: 'Professionnels', href: '/accompagnement-professionnels' },
                 { label: 'Associations · ESS', href: '/accompagnement-associations' },
+                { label: 'Vie des entreprises', href: '/vie-des-entreprises' },
                 { label: 'Espace client', href: '/espace-client' },
               ].map((l) => (
                 <Link key={l.href} href={l.href} style={{ color: 'rgba(255,255,255,0.7)', fontSize: '12px', textDecoration: 'none', lineHeight: '1.5' }}>

@@ -13,15 +13,25 @@ export default function Header() {
     {
       label: 'Services',
       href: '#',
-      children: [
-        { label: 'Information sur vos droits', href: '/information-sur-vos-droits' },
-        { label: 'Conseil en assurances', href: '/conseil-assurances' },
-        { label: 'Accompagnement particuliers', href: '/accompagnement-particuliers' },
-        { label: 'Accompagnement professionnels', href: '/accompagnement-professionnels' },
-        { label: 'Accompagnement associations · ESS', href: '/accompagnement-associations' },
-        { label: 'RGPD & conformité', href: '/contact' },
-        { label: 'DPO externalisé', href: '/contact' },
-        { label: 'Formations', href: '/formations' },
+      groups: [
+        {
+          label: 'Par profil',
+          children: [
+            { label: 'Particuliers', href: '/accompagnement-particuliers' },
+            { label: 'Professionnels', href: '/accompagnement-professionnels' },
+            { label: 'Associations · ESS', href: '/accompagnement-associations' },
+          ],
+        },
+        {
+          label: 'Services',
+          children: [
+            { label: 'Information sur vos droits', href: '/information-sur-vos-droits' },
+            { label: "Création d'entreprise", href: '/creation-entreprise' },
+            { label: 'Conseil en assurances', href: '/conseil-assurances' },
+            { label: 'RGPD & conformité', href: '/rgpd-conformite' },
+            { label: 'DPO externalisé', href: '/dpo-externalise' },
+          ],
+        },
       ],
     },
     { label: 'Catalogue', href: '/catalogue' },
@@ -63,7 +73,7 @@ export default function Header() {
         {/* NAV DESKTOP */}
         <nav style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
           {nav.map((item) =>
-            item.children ? (
+            (item.children || item.groups) ? (
               <div
                 key={item.label}
                 style={{ position: 'relative' }}
