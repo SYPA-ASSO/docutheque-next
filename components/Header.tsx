@@ -122,7 +122,7 @@ export default function Header() {
                               padding: '4px 16px 2px',
                               fontSize: '10px',
                               fontWeight: '700',
-                              color: '#9ca3af',
+                              color: '#374151',
                               letterSpacing: '0.08em',
                               textTransform: 'uppercase',
                             }}>
