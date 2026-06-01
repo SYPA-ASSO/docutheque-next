@@ -111,23 +111,39 @@ export default function Header() {
                       border: '1px solid #e5e7eb',
                       borderRadius: '10px',
                       boxShadow: '0 8px 24px rgba(0,0,0,0.08)',
-                      padding: '6px 0',
+                      padding: '8px 0',
                       overflow: 'hidden',
                     }}>
-                      {item.children.map((child) => (
-                        <Link key={child.href + child.label} href={child.href} style={{
-                          display: 'block',
-                          padding: '10px 16px',
-                          fontSize: '13px',
-                          color: '#374151',
-                          textDecoration: 'none',
-                          transition: 'background 0.1s',
-                        }}
-                        onMouseEnter={(e) => (e.currentTarget.style.background = '#f8fafc')}
-                        onMouseLeave={(e) => (e.currentTarget.style.background = 'transparent')}
-                        >
-                          {child.label}
-                        </Link>
+                      {((item as any).groups ?? [{ label: '', children: (item as any).children }]).map((group: any, gi: number) => (
+                        <div key={gi}>
+                          {gi > 0 && <div style={{ height: '1px', background: '#f3f4f6', margin: '4px 0' }} />}
+                          {group.label && (
+                            <div style={{
+                              padding: '4px 16px 2px',
+                              fontSize: '10px',
+                              fontWeight: '700',
+                              color: '#9ca3af',
+                              letterSpacing: '0.08em',
+                              textTransform: 'uppercase',
+                            }}>
+                              {group.label}
+                            </div>
+                          )}
+                          {group.children.map((child: any) => (
+                            <Link key={child.href + child.label} href={child.href} style={{
+                              display: 'block',
+                              padding: '9px 16px',
+                              fontSize: '13px',
+                              color: '#374151',
+                              textDecoration: 'none',
+                            }}
+                            onMouseEnter={(e) => (e.currentTarget.style.background = '#f8fafc')}
+                            onMouseLeave={(e) => (e.currentTarget.style.background = 'transparent')}
+                            >
+                              {child.label}
+                            </Link>
+                          ))}
+                        </div>
                       ))}
                     </div>
                   </div>
