@@ -8,7 +8,10 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [dropdownOpen, setDropdownOpen] = useState<string | null>(null)
 
-  const nav = [
+  type NavGroup = { label: string; children: { label: string; href: string }[] }
+  type NavItem = { label: string; href: string; groups?: NavGroup[] }
+
+  const nav: NavItem[] = [
     { label: 'Accueil', href: '/' },
     {
       label: 'Services',
@@ -73,7 +76,7 @@ export default function Header() {
         {/* NAV DESKTOP */}
         <nav style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
           {nav.map((item) =>
-            (item.children || item.groups) ? (
+            item.groups ? (
               <div
                 key={item.label}
                 style={{ position: 'relative' }}
@@ -114,7 +117,7 @@ export default function Header() {
                       padding: '8px 0',
                       overflow: 'hidden',
                     }}>
-                      {((item as any).groups ?? [{ label: '', children: (item as any).children }]).map((group: any, gi: number) => (
+                      {(item.groups ?? []).map((group, gi) => (
                         <div key={gi}>
                           {gi > 0 && <div style={{ height: '1px', background: '#f3f4f6', margin: '4px 0' }} />}
                           {group.label && (
@@ -129,7 +132,7 @@ export default function Header() {
                               {group.label}
                             </div>
                           )}
-                          {group.children.map((child: any) => (
+                          {group.children.map((child) => (
                             <Link key={child.href + child.label} href={child.href} style={{
                               display: 'block',
                               padding: '9px 16px',
