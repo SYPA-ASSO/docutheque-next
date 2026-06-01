@@ -26,7 +26,7 @@ export default function Header() {
           ],
         },
         {
-          label: 'Services',
+          label: 'Par services',
           children: [
             { label: 'Information sur vos droits', href: '/information-sur-vos-droits' },
             { label: "Création d'entreprise", href: '/creation-entreprise' },
