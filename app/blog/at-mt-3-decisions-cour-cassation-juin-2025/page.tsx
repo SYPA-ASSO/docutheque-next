@@ -23,7 +23,7 @@ const schema = {
       },
       "publisher": {
         "@type": "Organization",
-        "name": "Docuthèque — Cabinet Cholez-Pagotto",
+        "name": "Docuthèque · Cabinet Cholez-Pagotto",
         "url": "https://cholez-pagotto.fr"
       },
       "url": "https://cholez-pagotto.fr/blog/at-mt-3-decisions-cour-cassation-juin-2025",

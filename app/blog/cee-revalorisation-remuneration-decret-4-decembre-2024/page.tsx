@@ -23,7 +23,7 @@ const schema = {
       },
       "publisher": {
         "@type": "Organization",
-        "name": "Docuthèque — Cabinet Cholez-Pagotto",
+        "name": "Docuthèque · Cabinet Cholez-Pagotto",
         "url": "https://cholez-pagotto.fr"
       },
       "url": "https://cholez-pagotto.fr/blog/cee-revalorisation-remuneration-decret-4-decembre-2024",

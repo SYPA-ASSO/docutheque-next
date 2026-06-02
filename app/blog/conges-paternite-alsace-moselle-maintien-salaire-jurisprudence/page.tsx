@@ -23,7 +23,7 @@ const schema = {
       },
       "publisher": {
         "@type": "Organization",
-        "name": "Docuthèque — Cabinet Cholez-Pagotto",
+        "name": "Docuthèque · Cabinet Cholez-Pagotto",
         "url": "https://cholez-pagotto.fr"
       },
       "url": "https://cholez-pagotto.fr/blog/conges-paternite-alsace-moselle-maintien-salaire-jurisprudence",
