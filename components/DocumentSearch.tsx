@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState, useRef, useEffect } from 'react'
 import { FileText } from 'lucide-react'
@@ -52,7 +52,7 @@ export function DocumentSearch({
     if (doc.acces_gratuit) parts.push('Gratuit')
     if (doc.acces_optimal) parts.push('Optimal')
     if (doc.acces_payant) parts.push(`${doc.prix_unitaire ?? '?'} €`)
-    return parts.join(' · ') || '—'
+    return parts.join(' · ') || '-'
   }
 
   const accesColor = (doc: DocItem) => {

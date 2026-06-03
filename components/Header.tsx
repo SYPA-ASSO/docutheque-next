@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState } from 'react'
 import Link from 'next/link'
@@ -65,7 +65,7 @@ export default function Header() {
         <Link href="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', flexShrink: 0 }}>
           <Image
             src="/logo-cholez-pagotto-transparent.svg"
-            alt="Cabinet Cholez-Pagotto — Comprendre. Décider. Agir."
+            alt="Cabinet Cholez-Pagotto · Comprendre. Décider. Agir."
             width={220}
             height={52}
             priority

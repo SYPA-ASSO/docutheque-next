@@ -1,4 +1,4 @@
-import { Building2, Heart, Shield, Lock, Umbrella, GraduationCap } from 'lucide-react'
+﻿import { Building2, Heart, Shield, Lock, Umbrella, GraduationCap } from 'lucide-react'
 
 const services = [
   {
@@ -37,7 +37,7 @@ const services = [
   {
     icon: <Umbrella size={24} color="#1a4fba" strokeWidth={1.5} />,
     titre: "Conseil en assurances",
-    desc: "Forfait conseil individualisé, documenté et motivé — art. L.521-4 Code des assurances (DDA). Analyse des besoins, audit des contrats existants, comparaison des offres, rapport écrit archivé. 90 € HT (particuliers) · 150 € HT (professionnels, associations). Commission assureur séparée, communiquée avant souscription.",
+    desc: "Forfait conseil individualisé, documenté et motivé : art. L.521-4 Code des assurances (DDA). Analyse des besoins, audit des contrats existants, comparaison des offres, rapport écrit archivé. 90 € HT (particuliers) · 150 € HT (professionnels, associations). Commission assureur séparée, communiquée avant souscription.",
     cible: "Particuliers, professionnels, associations, créateurs d'entreprise",
     lien: "/services#assurances",
     featured: false,
