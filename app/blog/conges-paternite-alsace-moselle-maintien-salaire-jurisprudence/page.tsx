@@ -146,7 +146,7 @@ export default function ArticleCongesPaternite() {
                 <p style={{marginBottom: '1rem'}}>Dans un arrêt rendu le 27 mai 2025, la Cour de cassation s'est prononcée sur la situation d'un salarié soumis au droit local alsacien-mosellan, qui n'avait pas perçu sa rémunération pendant son congé paternité.</p>
                 <p style={{marginBottom: '1rem'}}>L'employeur justifiait cette absence de maintien salarial en expliquant que ce congé était un <em>choix personnel</em> et non une obligation légale, ce qui, selon lui, excluait tout maintien de rémunération.</p>
                 <p style={{marginBottom: '1rem'}}>Les magistrats ont <strong>rejeté cet argument</strong>, se fondant sur le droit local qui prévoit, via l'article <strong>L.1226-23 du Code du travail</strong>, que tout salarié dont le contrat est suspendu pour un motif personnel indépendant de sa volonté et pour une durée relativement courte conserve son droit à rémunération.</p>
-                <p style={{marginBottom: '1rem'}}>La Haute juridiction a ainsi estimé que le congé paternité — qui est une absence justifiée sans comportement fautif — entre dans ce cadre et ouvre donc droit au maintien du salaire.</p>
+                <p style={{marginBottom: '1rem'}}>La Haute juridiction a ainsi estimé que le congé paternité, qui est une absence justifiée sans comportement fautif, entre dans ce cadre et ouvre donc droit au maintien du salaire.</p>
               </section>
 
               <section id="portee">

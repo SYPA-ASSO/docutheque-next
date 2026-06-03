@@ -178,7 +178,7 @@ export default function ArticleArnaqueRSE() {
                     <strong>Zéro sollicitation postale :</strong> les organismes officiels (INPI, Greffe, URSSAF) ne vous demanderont jamais de payer une « cotisation » ou des « frais d'inscription » par courrier postal pour un registre européen.
                   </li>
                   <li>
-                    <strong>La règle de vigilance :</strong> tout document mentionnant des « Conditions Générales de Vente » ou une « Offre commerciale » est par définition un acte commercial privé — non une démarche d'État.
+                    <strong>La règle de vigilance :</strong> tout document mentionnant des « Conditions Générales de Vente » ou une « Offre commerciale » est par définition un acte commercial privé, et non une démarche d'État.
                   </li>
                 </ul>
               </section>

@@ -141,7 +141,7 @@ export default function ArticleESAT() {
             <div style={{color: '#374151', fontSize: '0.95rem', lineHeight: '1.9'}}>
 
               <section id="intro">
-                <p style={{marginBottom: '1rem'}}>Une série de textes réglementaires — deux décrets et un arrêté — concernant les <strong>Établissements et Services d'Accompagnement par le Travail (ESAT)</strong> ont été publiés au Journal Officiel du 25 août 2025.</p>
+                <p style={{marginBottom: '1rem'}}>Une série de textes réglementaires, deux décrets et un arrêté, concernant les <strong>Établissements et Services d'Accompagnement par le Travail (ESAT)</strong> ont été publiés au Journal Officiel du 25 août 2025.</p>
                 <p style={{marginBottom: '1rem'}}>Ces publications concrétisent les dispositions de la <strong>loi n°2023-1196 du 18 décembre 2023</strong> pour le plein emploi, qui avait introduit des droits étendus pour les travailleurs en situation de handicap admis en ESAT.</p>
               </section>
 
@@ -176,7 +176,7 @@ export default function ArticleESAT() {
                 <h2 style={{color: '#0f2d6e', fontSize: '1.3rem', fontWeight: '700', margin: '2rem 0 16px', paddingTop: '1rem'}}>
                   III. Compensation étatique pour la complémentaire santé (arrêté)
                 </h2>
-                <p style={{marginBottom: '1rem'}}>L'<strong>arrêté du 25 août 2025</strong> finalise le dispositif de prise en charge de la couverture collective obligatoire pour les frais de santé des travailleurs en ESAT — un droit aligné sur celui des salariés, prévu par l'article L.344-2-10 du Code de l'action sociale et des familles (CASF).</p>
+                <p style={{marginBottom: '1rem'}}>L'<strong>arrêté du 25 août 2025</strong> finalise le dispositif de prise en charge de la couverture collective obligatoire pour les frais de santé des travailleurs en ESAT, un droit aligné sur celui des salariés, prévu par l'article L.344-2-10 du Code de l'action sociale et des familles (CASF).</p>
                 <p style={{marginBottom: '1rem'}}>L'arrêté établit l'assiette et le taux de la compensation accordée par l'État aux organismes gestionnaires d'ESAT :</p>
                 <div style={{background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '10px', padding: '1rem 1.25rem', margin: '1rem 0'}}>
                   <p style={{color: '#0f2d6e', fontSize: '13px', lineHeight: '1.7', margin: 0}}>

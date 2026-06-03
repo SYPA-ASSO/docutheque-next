@@ -178,7 +178,7 @@ export default function ArticleATMP() {
                   <li>L'interruption de prescription bénéficie également aux actions dérivées du même fait.</li>
                 </ul>
                 <div style={{background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '10px', padding: '1rem 1.25rem', margin: '1.5rem 0', fontSize: '12px', color: '#1e3a5f'}}>
-                  <strong>Références</strong> — Cass. 2e civ., 26 juin 2025, n°23-16.183 ; n°23-15.112 ; n°23-13.295.
+                  <strong>Références</strong> : Cass. 2e civ., 26 juin 2025, n°23-16.183 ; n°23-15.112 ; n°23-13.295.
                 </div>
               </section>
 

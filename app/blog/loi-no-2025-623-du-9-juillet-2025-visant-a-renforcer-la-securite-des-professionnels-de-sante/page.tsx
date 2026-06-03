@@ -220,7 +220,7 @@ export default function ArticleLoisante() {
                 </div>
                 <div style={{background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '10px', padding: '1rem 1.25rem', margin: '1.5rem 0'}}>
                   <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '600', margin: '0 0 6px'}}>Texte de référence</p>
-                  <a href="https://www.legifrance.gouv.fr/download/pdf?id=rUzV-KwVubczTVGwjiQsiuZ-PkK9A6thiDb3sgQcNsM=" target="_blank" rel="noopener noreferrer" style={{color: '#1a4fba', fontSize: '13px', fontWeight: '600', textDecoration: 'none'}}>Loi n°2025-623 du 9 juillet 2025 — Journal officiel du 10 juillet 2025 sur Légifrance →</a>
+                  <a href="https://www.legifrance.gouv.fr/download/pdf?id=rUzV-KwVubczTVGwjiQsiuZ-PkK9A6thiDb3sgQcNsM=" target="_blank" rel="noopener noreferrer" style={{color: '#1a4fba', fontSize: '13px', fontWeight: '600', textDecoration: 'none'}}>Loi n°2025-623 du 9 juillet 2025 · Journal officiel du 10 juillet 2025 sur Légifrance →</a>
                 </div>
               </section>
               <section id="faq" style={{marginTop: '3rem'}}>

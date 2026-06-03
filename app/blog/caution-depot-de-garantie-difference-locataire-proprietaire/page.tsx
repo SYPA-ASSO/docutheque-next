@@ -250,17 +250,17 @@ export default function ArticleCaution() {
                 </h2>
                 <div style={{background: '#f8fafc', border: '1px solid #e5e7eb', borderRadius: '10px', padding: '1rem 1.25rem', margin: '1rem 0'}}>
                   <ul style={{paddingLeft: '1.5rem', margin: 0, display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '13px', color: '#374151'}}>
-                    <li><strong>Article 22 de la loi n°89-462 du 6 juillet 1989</strong> — Dépôt de garantie : montant maximal, délais de restitution, obligation de justification des retenues. <a href="https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000028806696/" target="_blank" rel="noopener noreferrer" style={{color: '#1a4fba'}}>Lire sur Légifrance →</a></li>
-                    <li><strong>Article 22-1</strong> — Cautionnement : conditions de validité et de protection de la caution dans les baux d'habitation.</li>
-                    <li><strong>Article 2288 du Code civil</strong> — Définition du cautionnement comme l'engagement de payer à la place du débiteur.</li>
-                    <li><strong>Cass. 3e civ., 6 mai 2021</strong> — Toute retenue sur le dépôt de garantie doit être justifiée.</li>
-                    <li><strong>Cass. 3e civ., 2 octobre 2007, n°06-18.142</strong> — Des devis sérieux peuvent suffire à justifier des retenues.</li>
-                    <li><strong>Cass. 3e civ., 23 janvier 2020, n°18-23.900</strong> — Le non-respect des formalités protectrices peut entraîner la nullité du cautionnement.</li>
+                    <li><strong>Article 22 de la loi n°89-462 du 6 juillet 1989</strong> : Dépôt de garantie : montant maximal, délais de restitution, obligation de justification des retenues. <a href="https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000028806696/" target="_blank" rel="noopener noreferrer" style={{color: '#1a4fba'}}>Lire sur Légifrance →</a></li>
+                    <li><strong>Article 22-1</strong> : Cautionnement : conditions de validité et de protection de la caution dans les baux d'habitation.</li>
+                    <li><strong>Article 2288 du Code civil</strong> : Définition du cautionnement comme l'engagement de payer à la place du débiteur.</li>
+                    <li><strong>Cass. 3e civ., 6 mai 2021</strong> : Toute retenue sur le dépôt de garantie doit être justifiée.</li>
+                    <li><strong>Cass. 3e civ., 2 octobre 2007, n°06-18.142</strong> : Des devis sérieux peuvent suffire à justifier des retenues.</li>
+                    <li><strong>Cass. 3e civ., 23 janvier 2020, n°18-23.900</strong> : Le non-respect des formalités protectrices peut entraîner la nullité du cautionnement.</li>
                   </ul>
                 </div>
                 <div style={{background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '10px', padding: '1rem 1.25rem', margin: '1.5rem 0'}}>
                   <p style={{color: '#1e3a5f', fontSize: '12px', lineHeight: '1.7', margin: 0}}>
-                    <strong>Information importante</strong> — Les informations et documents proposés sont fournis à titre purement informatif et pédagogique. Ils ne constituent en aucun cas une consultation juridique ou un conseil personnalisé. Pour toute situation spécifique ou en cas de doute, il est recommandé de consulter un professionnel habilité du droit.
+                    <strong>Information importante</strong> : Les informations et documents proposés sont fournis à titre purement informatif et pédagogique. Ils ne constituent en aucun cas une consultation juridique ou un conseil personnalisé. Pour toute situation spécifique ou en cas de doute, il est recommandé de consulter un professionnel habilité du droit.
                   </p>
                 </div>
               </section>

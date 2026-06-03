@@ -215,7 +215,7 @@ export default function ArticleSaisieSalaire() {
                 </div>
                 <div style={{background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '10px', padding: '1rem 1.25rem', margin: '1rem 0'}}>
                   <p style={{color: '#1e3a5f', fontSize: '13px', lineHeight: '1.7', margin: 0}}>
-                    <strong>Majoration :</strong> une majoration de <strong>143,33 € par personne à charge</strong> s'ajoute à chaque tranche — ce qui réduit le montant saisissable. À noter dans les entreprises de plus de 10 salariés : la part soumise à CSG-CRDS est également assujettie à la taxe sur les salaires.
+                    <strong>Majoration :</strong> une majoration de <strong>143,33 € par personne à charge</strong> s'ajoute à chaque tranche, ce qui réduit le montant saisissable. À noter dans les entreprises de plus de 10 salariés : la part soumise à CSG-CRDS est également assujettie à la taxe sur les salaires.
                   </p>
                 </div>
               </section>

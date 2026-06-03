@@ -151,7 +151,7 @@ export default function ArticleCEE() {
                 <h2 style={{color: '#0f2d6e', fontSize: '1.3rem', fontWeight: '700', margin: '2rem 0 16px', paddingTop: '1rem'}}>
                   I. La revalorisation : ce qu'il faut retenir
                 </h2>
-                <p style={{marginBottom: '1rem'}}>Il est important de savoir que la <strong>rémunération journalière en CEE est forfaitaire</strong> — le salarié perçoit le même montant pour une journée de travail, qu'il travaille 4 ou 8 heures.</p>
+                <p style={{marginBottom: '1rem'}}>Il est important de savoir que la <strong>rémunération journalière en CEE est forfaitaire</strong> : le salarié perçoit le même montant pour une journée de travail, qu'il travaille 4 ou 8 heures.</p>
                 <div style={{overflowX: 'auto', margin: '1.5rem 0'}}>
                   <table style={{width: '100%', borderCollapse: 'collapse', fontSize: '13px'}}>
                     <thead>
