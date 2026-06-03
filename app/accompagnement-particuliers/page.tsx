@@ -343,9 +343,9 @@ export default function AccompagnementParticuliersPage() {
           <section style={{ background: 'linear-gradient(135deg, #0f2d6e 0%, #1a4fba 100%)', borderRadius: 14, padding: '2.5rem', textAlign: 'center', color: 'white' }}>
             <h2 style={{ fontSize: '1.3rem', fontWeight: 700, margin: '0 0 0.5rem' }}>Par où commencer ?</h2>
             <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.8)', margin: '0 0 1.5rem', lineHeight: 1.9 }}>
-              Une question précise : <strong>Information sur vos droits</strong> — 47 €.<br />
-              Besoin de documents régulièrement : <strong>Abonnement Optimal</strong> — à partir de 17,90 € / mois.<br />
-              Vos assurances à revoir : <strong>Conseil en assurances</strong> — forfait 90 €.
+              Une question précise : <strong>Information sur vos droits</strong> : 47 €.<br />
+              Besoin de documents régulièrement : <strong>Abonnement Optimal</strong> : à partir de 17,90 € / mois.<br />
+              Vos assurances à revoir : <strong>Conseil en assurances</strong> : forfait 90 €.
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', justifyContent: 'center' }}>
               <a href="/information-sur-vos-droits" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: 'white', color: '#0f2d6e', textDecoration: 'none', padding: '12px 24px', borderRadius: 8, fontWeight: 700, fontSize: '0.875rem' }}>
