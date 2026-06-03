@@ -152,7 +152,7 @@ export default function CGU() {
                       <li><strong>Professionnel, association, structure ESS :</strong> 150 € HT</li>
                       <li><strong>Structure complexe (PME, structure multi-contrats) :</strong> sur devis</li>
                     </ul>
-                    <p style={plastyle}>En cas de souscription d'un contrat d'assurance via le Cabinet, celui-ci perçoit en complément une commission versée par l'assureur — indépendante du forfait, dont le montant est communiqué au Client avant toute souscription, conformément à l'article L.521-2 du Code des assurances et à la Directive sur la Distribution d'Assurances (DDA). Le Cabinet est enregistré à l'ORIAS sous le numéro 26003943, catégorie IAS Niveau 1, sous contrôle de l'ACPR.</p>
+                    <p style={plastyle}>En cas de souscription d'un contrat d'assurance via le Cabinet, celui-ci perçoit en complément une commission versée par l'assureur, indépendante du forfait, dont le montant est communiqué au Client avant toute souscription, conformément à l'article L.521-2 du Code des assurances et à la Directive sur la Distribution d'Assurances (DDA). Le Cabinet est enregistré à l'ORIAS sous le numéro 26003943, catégorie IAS Niveau 1, sous contrôle de l'ACPR.</p>
                   </div>
                   <div>
                     <p style={h3style}>5.6 Accompagnement à la création d'entreprise</p>

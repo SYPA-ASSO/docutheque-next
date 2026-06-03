@@ -134,12 +134,12 @@ const articles = [
 const schema = {
   "@context": "https://schema.org",
   "@type": "Blog",
-  "name": "Blog Cabinet Cholez-Pagotto — Docuthèque",
+  "name": "Blog Cabinet Cholez-Pagotto · Docuthèque",
   "description": "Articles juridiques rédigés par un juriste pour particuliers et professionnels.",
   "url": "https://cholez-pagotto.fr/blog",
   "publisher": {
     "@type": "Organization",
-    "name": "Cabinet Cholez-Pagotto — Docuthèque",
+    "name": "Cabinet Cholez-Pagotto · Docuthèque",
     "url": "https://cholez-pagotto.fr"
   }
 }

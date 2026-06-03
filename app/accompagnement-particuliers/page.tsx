@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
@@ -122,7 +122,7 @@ export default function AccompagnementParticuliersPage() {
                 { valeur: "39", label: "Domaines du droit couverts" },
                 { valeur: "47 €", label: "Information sur vos droits" },
                 { valeur: "24-48h", label: "Délai indicatif de réponse" },
-                { valeur: "100%", label: "Humain — aucune IA" }
+                { valeur: "100%", label: "Humain · aucune IA" }
               ].map((s, i) => (
                 <div key={i}>
                   <div style={{ fontSize: '1.8rem', fontWeight: 800, color: '#93c5fd' }}>{s.valeur}</div>

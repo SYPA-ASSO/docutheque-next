@@ -1,4 +1,4 @@
-import Header from '@/components/Header'
+﻿import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { ChevronRight } from 'lucide-react'
 import Image from 'next/image'
@@ -187,10 +187,10 @@ export default function APropos() {
               {[
                 { label: "Bibliothèque de documents juridiques téléchargeables et personnalisables", lien: "/catalogue" },
                 { label: "Information sur vos droits par un juriste sous 24 à 48h ouvrées", lien: "/information-sur-vos-droits" },
-                { label: "Accompagnement à la création d'entreprise — formalités offertes", lien: "/accompagnement-professionnels" },
+                { label: "Accompagnement à la création d'entreprise : formalités offertes", lien: "/accompagnement-professionnels" },
                 { label: "Accompagnement des associations et structures ESS", lien: "/accompagnement-associations" },
                 { label: "Accompagnement RGPD et conformité", lien: "/contact" },
-                { label: "Conseil en assurances réglementé — forfait conseil 90 € / 150 €", lien: "/conseil-assurances" },
+                { label: "Conseil en assurances réglementé : forfait conseil 90 € / 150 €", lien: "/conseil-assurances" },
                 { label: "DPO externalisé", lien: "/contact" },
                 { label: "Formations sur-mesure", lien: "/formations" },
               ].map((service, i) => (

@@ -10,12 +10,12 @@ export const metadata = {
 const schema = {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  "name": "S'inscrire à la newsletter — Docuthèque",
+  "name": "S'inscrire à la newsletter · Docuthèque",
   "description": "Newsletter Docuthèque : informations juridiques pratiques, offres sur les documents, services complémentaires et sélections partenaires. Version gratuite et version exclusive abonnés Optimal.",
   "url": "https://cholez-pagotto.fr/newsletter",
   "publisher": {
     "@type": "Organization",
-    "name": "Cabinet Cholez-Pagotto — Docuthèque",
+    "name": "Cabinet Cholez-Pagotto · Docuthèque",
     "url": "https://cholez-pagotto.fr"
   }
 }

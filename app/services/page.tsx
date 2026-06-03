@@ -1,4 +1,4 @@
-import Header from '@/components/Header'
+﻿import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { ChevronRight, FileText, Scale, Building2, Heart, Shield, Lock, Umbrella, GraduationCap, ArrowRight } from 'lucide-react'
 
@@ -202,7 +202,7 @@ const services = [
       "Recueil des besoins via formulaire en ligne (horodaté, archivé dans l'espace client)",
       "Audit des contrats existants et identification des lacunes ou doublons",
       "Comparaison des offres du marché dans les catégories couvertes (ORIAS n°26003943)",
-      "Rapport de conseil écrit, documenté et motivé — conforme à l'article L.521-4 du Code des assurances (DDA)",
+      "Rapport de conseil écrit, documenté et motivé : conforme à l'article L.521-4 du Code des assurances (DDA)",
       "Archivage du dossier complet dans l'espace client (formulaire + facture + rapport)",
       "Accompagnement en cas de sinistre ou d'insatisfaction vis-à-vis de l'assureur",
       "Suivi annuel pour les contrats actifs",
