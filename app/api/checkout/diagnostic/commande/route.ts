@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { getForfait } from '@/lib/diagnostic-forfaits'
 
-// app/api/diagnostic/commande/route.ts
-// Commande du Diagnostic Essentiel par virement. Genere une reference, envoie a l'acheteur
+// app/api/diagnostic/commande/route.ts (deploye sous app/api/checkout/diagnostic/commande/route.ts)
+// Commande d'un forfait de diagnostic par virement. Genere une reference, envoie a l'acheteur
 // le RIB (depuis les variables d'environnement) + le questionnaire, et notifie le cabinet.
 // Le RIB n'est jamais code en dur : il provient de CABINET_TITULAIRE / CABINET_IBAN / CABINET_BIC / CABINET_BANQUE.
 // Regles : zero tiret long, NBSP avant euro, Notre juriste singulier.
@@ -31,6 +32,7 @@ export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
     const { nom, structure, email, telephone, rgpd, website } = body
+    const f = getForfait(body.forfait)
 
     // 1. Honeypot
     if (website && website.length > 0) {
@@ -63,8 +65,9 @@ export async function POST(request: NextRequest) {
     const emailSafe = sanitize(email)
     const telSafe = sanitize(telephone).slice(0, 20)
 
-    // 6. Reference de paiement
-    const reference = `DIAG-${Date.now().toString(36).toUpperCase()}`
+    // 6. Reference de paiement (prefixe selon le forfait)
+    const codeForfait = f.id === 'standard' ? 'STD' : 'ESS'
+    const reference = `DIAG-${codeForfait}-${Date.now().toString(36).toUpperCase()}`
 
     // 7. Cle API
     const brevoKey = process.env.BREVO_API_KEY
@@ -95,12 +98,12 @@ export async function POST(request: NextRequest) {
 <head><meta charset="UTF-8"></head>
 <body style="font-family:Arial,sans-serif;color:#374151;font-size:14px;max-width:600px;margin:0 auto;">
   <div style="background:linear-gradient(135deg,#0f2d6e 0%,#7c3aed 100%);padding:24px;border-radius:8px 8px 0 0;">
-    <h2 style="color:#ffffff;margin:0;font-size:16px;">Diagnostic RGPD Essentiel : règlement par virement</h2>
-    <p style="color:#e9d5ff;font-size:12px;margin:6px 0 0;">Montant : 350,00&nbsp;&euro;</p>
+    <h2 style="color:#ffffff;margin:0;font-size:16px;">${f.label} : règlement par virement</h2>
+    <p style="color:#e9d5ff;font-size:12px;margin:6px 0 0;">Montant : ${f.prixEmail}</p>
   </div>
   <div style="background:#f8fafc;padding:24px;border:1px solid #e5e7eb;border-top:none;border-radius:0 0 8px 8px;">
     <p>Bonjour ${nomSafe},</p>
-    <p>Merci pour votre commande du Diagnostic RGPD Essentiel pour <strong>${structureSafe}</strong>. Pour finaliser, merci d'effectuer un virement de <strong>350,00&nbsp;&euro;</strong> avec les coordonnées suivantes :</p>
+    <p>Merci pour votre commande du ${f.label} pour <strong>${structureSafe}</strong>. Pour finaliser, merci d'effectuer un virement de <strong>${f.prixEmail}</strong> avec les coordonnées suivantes :</p>
     <table style="width:100%;border-collapse:collapse;background:#ffffff;border-radius:8px;overflow:hidden;border:1px solid #e5e7eb;margin:16px 0;">
       <tr><td style="padding:11px 16px;border-bottom:1px solid #f3f4f6;color:#6b7280;font-size:11px;font-weight:700;text-transform:uppercase;width:130px;background:#f8fafc;">Titulaire</td><td style="padding:11px 16px;border-bottom:1px solid #f3f4f6;">${titulaireAff}</td></tr>
       <tr><td style="padding:11px 16px;border-bottom:1px solid #f3f4f6;color:#6b7280;font-size:11px;font-weight:700;text-transform:uppercase;background:#f8fafc;">IBAN</td><td style="padding:11px 16px;border-bottom:1px solid #f3f4f6;font-family:monospace;">${ibanAff}</td></tr>
@@ -114,7 +117,7 @@ export async function POST(request: NextRequest) {
       ${questionsHtml}
     </ol>
     <p style="background:#f5f3ff;border:1px solid #e9d5ff;border-radius:8px;padding:12px 14px;font-size:13px;color:#5b21b6;line-height:1.6;">
-      Le délai de livraison de <strong>15 jours</strong> démarre à la réception de votre virement et de vos réponses au questionnaire. Un justificatif de paiement vous sera adressé après encaissement.
+      Le délai de livraison de <strong>${f.delai}</strong> démarre à la réception de votre virement et de vos réponses au questionnaire. Un justificatif de paiement vous sera adressé après encaissement.
     </p>
     <p style="margin-top:24px;">Cordialement,</p>
     <p style="margin:8px 0 0;line-height:1.7;">
@@ -129,7 +132,7 @@ export async function POST(request: NextRequest) {
     </p>
     <hr style="border:none;border-top:1px solid #e5e7eb;margin:20px 0;">
     <p style="color:#9ca3af;font-size:11px;line-height:1.6;">
-      Le Diagnostic RGPD Essentiel constitue une information juridique au sens de la loi n&deg;71-1130 du 31 décembre 1971 et ne constitue pas une consultation juridique personnalisée.
+      Le ${f.label} constitue une information juridique au sens de la loi n&deg;71-1130 du 31 décembre 1971 et ne constitue pas une consultation juridique personnalisée.
     </p>
   </div>
 </body>
@@ -141,7 +144,7 @@ export async function POST(request: NextRequest) {
       body: JSON.stringify({
         sender: { name: 'Cabinet CHOLEZ PAGOTTO', email: 'contact@cholez-pagotto.fr' },
         to: [{ email: emailSafe, name: nomSafe }],
-        subject: `Diagnostic RGPD Essentiel : RIB et référence ${reference}`,
+        subject: `${f.label} : RIB et référence ${reference}`,
         htmlContent: htmlAcheteur,
       }),
     })
@@ -159,7 +162,7 @@ export async function POST(request: NextRequest) {
 <head><meta charset="UTF-8"></head>
 <body style="font-family:Arial,sans-serif;color:#374151;font-size:14px;max-width:600px;margin:0 auto;">
   <div style="background:#0f2d6e;padding:20px 24px;border-radius:8px 8px 0 0;">
-    <h2 style="color:#ffffff;margin:0;font-size:16px;">Nouvelle commande à régler : Diagnostic Essentiel (virement)</h2>
+    <h2 style="color:#ffffff;margin:0;font-size:16px;">Nouvelle commande à régler : ${f.label} (virement)</h2>
   </div>
   <div style="background:#f8fafc;padding:20px 24px;border:1px solid #e5e7eb;border-top:none;border-radius:0 0 8px 8px;">
     <p style="margin:0 0 8px;">Référence : <strong>${reference}</strong></p>
@@ -167,8 +170,8 @@ export async function POST(request: NextRequest) {
     <p style="margin:0 0 8px;">Structure : ${structureSafe}</p>
     <p style="margin:0 0 8px;">Email : <a href="mailto:${emailSafe}" style="color:#7c3aed;">${emailSafe}</a></p>
     <p style="margin:0 0 8px;">Téléphone : ${telSafe}</p>
-    <p style="margin:0 0 8px;">Montant attendu : 350,00&nbsp;&euro; par virement</p>
-    <p style="margin:12px 0 0;font-size:12px;color:#6b7280;">Le RIB et le questionnaire ont été envoyés à l'acheteur. À rapprocher dès réception du virement (livrable 15 jours à compter de l'encaissement et des réponses).</p>
+    <p style="margin:0 0 8px;">Montant attendu : ${f.prixEmail} par virement</p>
+    <p style="margin:12px 0 0;font-size:12px;color:#6b7280;">Le RIB et le questionnaire ont été envoyés à l'acheteur. À rapprocher dès réception du virement (livrable ${f.delai} à compter de l'encaissement et des réponses).</p>
   </div>
 </body>
 </html>`

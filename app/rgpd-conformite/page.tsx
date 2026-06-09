@@ -69,7 +69,7 @@ const schemaData = {
           "name": "Combien coûte un diagnostic RGPD ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Le diagnostic RGPD existe en trois forfaits : Essentiel à 350\u00a0€ (micro-entreprise, freelance, petite association de moins de 5 traitements), Standard à 900\u00a0€ (TPE, association établie, profession libérale de 5 à 15 traitements) et Approfondi sur devis à partir de 1\u00a0400\u00a0€ (structures complexes, données sensibles, plus de 15 traitements). Le forfait Essentiel est commandable directement en ligne par carte bancaire ou virement et livré sous 15 jours à compter de la réception de vos réponses. Le Standard est livré sous 30 jours, l'Approfondi selon le délai indiqué au devis."
+            "text": "Le diagnostic RGPD existe en trois forfaits : Essentiel à 350\u00a0€ (micro-entreprise, freelance, petite association de moins de 5 traitements), Standard à 900\u00a0€ (TPE, association établie, profession libérale de 5 à 15 traitements) et Approfondi sur devis à partir de 1\u00a0400\u00a0€ (structures complexes, données sensibles, plus de 15 traitements). Les forfaits Essentiel et Standard sont commandables directement en ligne par carte bancaire ou virement : Essentiel livré sous 15 jours, Standard sous 30 jours, à compter de la réception de vos réponses. L'Approfondi est réalisé sur devis, selon le délai indiqué."
           }
         },
         {
@@ -179,6 +179,7 @@ const forfaits = [
     tarifSub: "",
     delai: "Livrable sous 15 jours",
     note: "Commandable directement en ligne",
+    lien: "/rgpd-conformite/diagnostic-essentiel",
     couleur: "#7c3aed",
     fond: "#f5f3ff",
     border: "#c4b5fd",
@@ -192,10 +193,11 @@ const forfaits = [
     tarifSub: "",
     delai: "Livrable sous 30 jours",
     note: "Entretien visio de cadrage et de restitution inclus",
+    lien: "/rgpd-conformite/diagnostic-standard",
     couleur: "#0f2d6e",
     fond: "#eff6ff",
     border: "#93c5fd",
-    achat: false,
+    achat: true,
     badge: "Le plus demandé"
   },
   {
@@ -205,6 +207,7 @@ const forfaits = [
     tarifSub: "à partir de 1\u00a0400\u00a0€",
     delai: "Délai précisé au devis",
     note: "Cartographie multi-niveaux et rapport étendu",
+    lien: "/contact",
     couleur: "#065f46",
     fond: "#ecfdf5",
     border: "#6ee7b7",
@@ -248,7 +251,7 @@ const eligibiliteDPO = [
 const faqs = [
   {
     q: "Combien coûte un diagnostic RGPD ?",
-    r: "Le diagnostic RGPD existe en trois forfaits : Essentiel à 350\u00a0€ (micro-entreprise, freelance, petite association de moins de 5 traitements), Standard à 900\u00a0€ (TPE, association établie, profession libérale de 5 à 15 traitements) et Approfondi sur devis à partir de 1\u00a0400\u00a0€ (structures complexes, données sensibles, plus de 15 traitements). Le forfait Essentiel est commandable directement en ligne par carte bancaire ou virement et livré sous 15 jours à compter de la réception de vos réponses. Le Standard est livré sous 30 jours, l'Approfondi selon le délai indiqué au devis."
+    r: "Le diagnostic RGPD existe en trois forfaits : Essentiel à 350\u00a0€ (micro-entreprise, freelance, petite association de moins de 5 traitements), Standard à 900\u00a0€ (TPE, association établie, profession libérale de 5 à 15 traitements) et Approfondi sur devis à partir de 1\u00a0400\u00a0€ (structures complexes, données sensibles, plus de 15 traitements). Les forfaits Essentiel et Standard sont commandables directement en ligne par carte bancaire ou virement : Essentiel livré sous 15 jours, Standard sous 30 jours, à compter de la réception de vos réponses. L'Approfondi est réalisé sur devis, selon le délai indiqué."
   },
   {
     q: "Qu'est-ce que l'Audit RGPD Express offert ?",
@@ -380,7 +383,7 @@ export default function RGPDConformitePage() {
             </h2>
             <p style={{ color: '#6b7280', fontSize: 13, marginBottom: '2rem' }}>
               Diagnostic à partir de 350&nbsp;€, abonnement DPO mensuel à partir de 150&nbsp;€/mois selon volumétrie.
-              Le forfait Essentiel se commande directement en ligne, les forfaits Standard et Approfondi sur devis personnalisé.
+              Les forfaits Essentiel et Standard se commandent directement en ligne, le forfait Approfondi sur devis personnalisé.
             </p>
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem', marginBottom: '2.5rem' }}>
@@ -403,11 +406,11 @@ export default function RGPDConformitePage() {
                   <p style={{ color: '#6b7280', fontSize: 12, lineHeight: 1.6, margin: '0 0 1.25rem' }}>{f.note}</p>
                   <div style={{ marginTop: 'auto' }}>
                     {f.achat ? (
-                      <a href="/rgpd-conformite/diagnostic-essentiel" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', background: f.couleur, color: 'white', textDecoration: 'none', padding: '11px 20px', borderRadius: 8, fontWeight: 700, fontSize: '0.875rem', width: '100%', boxSizing: 'border-box' as const }}>
+                      <a href={f.lien} style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', background: f.couleur, color: 'white', textDecoration: 'none', padding: '11px 20px', borderRadius: 8, fontWeight: 700, fontSize: '0.875rem', width: '100%', boxSizing: 'border-box' as const }}>
                         Commander mon Diagnostic <ArrowRight size={16} />
                       </a>
                     ) : (
-                      <a href="/contact" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', background: 'white', color: f.couleur, textDecoration: 'none', padding: '11px 20px', borderRadius: 8, fontWeight: 700, fontSize: '0.875rem', width: '100%', boxSizing: 'border-box' as const, border: `1px solid ${f.couleur}` }}>
+                      <a href={f.lien} style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', background: 'white', color: f.couleur, textDecoration: 'none', padding: '11px 20px', borderRadius: 8, fontWeight: 700, fontSize: '0.875rem', width: '100%', boxSizing: 'border-box' as const, border: `1px solid ${f.couleur}` }}>
                         Demander un devis <ArrowRight size={16} />
                       </a>
                     )}

@@ -179,7 +179,7 @@ export default function DiagnosticEssentielPage() {
               <h2 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#0f2d6e', marginBottom: '1rem' }}>
                 Commander mon Diagnostic
               </h2>
-              <DiagnosticEssentielCommande />
+              <DiagnosticEssentielCommande forfait="essentiel" />
             </section>
 
           </div>

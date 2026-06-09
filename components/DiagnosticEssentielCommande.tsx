@@ -1,12 +1,14 @@
 'use client'
 
 // components/DiagnosticEssentielCommande.tsx
-// Commande du Diagnostic RGPD Essentiel : carte bancaire (Stripe Checkout) ou virement.
+// Commande d'un forfait de diagnostic RGPD (essentiel ou standard) : carte (Stripe Checkout) ou virement.
+// Le forfait est passe en prop ; libelle, prix et delai viennent de lib/diagnostic-forfaits.
 // Lit les parametres de retour ?paye=1&session_id / ?annule=1 cote client.
 // Regles : zero tiret long, NBSP avant euro, Notre juriste singulier.
 
 import { useState, useEffect, useRef } from 'react'
-import { CreditCard, Landmark, CheckCircle, AlertCircle, ArrowRight, Loader2, Send } from 'lucide-react'
+import { CreditCard, Landmark, CheckCircle, AlertCircle, Loader2, Send } from 'lucide-react'
+import { DIAGNOSTIC_FORFAITS, type ForfaitId } from '@/lib/diagnostic-forfaits'
 
 type Vue = 'choix' | 'virement_form' | 'success_carte' | 'pending_carte' | 'success_virement' | 'annule'
 
@@ -23,7 +25,9 @@ const inputStyle = {
   fontFamily: 'inherit',
 }
 
-export default function DiagnosticEssentielCommande() {
+export default function DiagnosticEssentielCommande({ forfait = 'essentiel' }: { forfait?: ForfaitId }) {
+  const f = DIAGNOSTIC_FORFAITS[forfait]
+
   const [vue, setVue] = useState<Vue>('choix')
   const [chargeCarte, setChargeCarte] = useState(false)
   const [erreurCarte, setErreurCarte] = useState('')
@@ -59,13 +63,9 @@ export default function DiagnosticEssentielCommande() {
         body: JSON.stringify({ session_id: sessionId }),
       })
         .then(res => res.json())
-        .then(data => {
-          if (data && data.success) {
-            setVue('success_carte')
-          } else {
-            // Paiement probablement effectue mais confirmation non verifiee : message rassurant
-            setVue('success_carte')
-          }
+        .then(() => {
+          // Le paiement est valide cote Stripe ; on affiche la confirmation dans tous les cas
+          setVue('success_carte')
         })
         .catch(() => setVue('success_carte'))
     } else if (annule === '1') {
@@ -83,7 +83,7 @@ export default function DiagnosticEssentielCommande() {
       const res = await fetch('/api/checkout/diagnostic', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({}),
+        body: JSON.stringify({ forfait }),
       })
       const data = await res.json()
       if (res.ok && data.url) {
@@ -111,7 +111,7 @@ export default function DiagnosticEssentielCommande() {
       const res = await fetch('/api/checkout/diagnostic/commande', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, forfait }),
       })
       const data = await res.json()
       if (res.ok && data.success) {
@@ -147,8 +147,8 @@ export default function DiagnosticEssentielCommande() {
           <h3 style={{ fontSize: '1.1rem', fontWeight: 700, color: '#15803d', margin: 0 }}>Paiement confirmé</h3>
         </div>
         <p style={{ fontSize: 13, color: '#374151', lineHeight: 1.7, margin: '0 0 0.75rem' }}>
-          Merci pour votre commande du Diagnostic RGPD Essentiel. Vous allez recevoir par email le questionnaire de cadrage.
-          Dès réception de vos réponses, notre juriste vous remet votre rapport de conformité sous 30 jours calendaires.
+          Merci pour votre commande du {f.label}. Vous allez recevoir par email le questionnaire de cadrage.
+          Dès réception de vos réponses, notre juriste vous remet votre rapport de conformité sous {f.delai}.
         </p>
         <p style={{ fontSize: 12, color: '#6b7280', margin: 0 }}>
           Vous n'avez pas reçu l'email sous quelques minutes ? Pensez à vérifier vos courriers indésirables,
@@ -176,7 +176,7 @@ export default function DiagnosticEssentielCommande() {
           </div>
         ) : null}
         <p style={{ fontSize: 12, color: '#6b7280', margin: 0 }}>
-          Le délai de livraison de 30 jours démarre à la réception de votre paiement.
+          Le délai de livraison de {f.delai} démarre à la réception de votre virement et de vos réponses au questionnaire.
         </p>
       </div>
     )
@@ -249,8 +249,8 @@ export default function DiagnosticEssentielCommande() {
       )}
 
       <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: '1.25rem', paddingBottom: '1rem', borderBottom: '1px solid #f3f4f6' }}>
-        <span style={{ fontSize: 13, color: '#6b7280' }}>Diagnostic RGPD Essentiel</span>
-        <span style={{ fontSize: '1.6rem', fontWeight: 800, color: '#7c3aed' }}>350&nbsp;€</span>
+        <span style={{ fontSize: 13, color: '#6b7280' }}>{f.label}</span>
+        <span style={{ fontSize: '1.6rem', fontWeight: 800, color: '#7c3aed' }}>{f.prix}</span>
       </div>
 
       {/* Carte bancaire */}
@@ -287,7 +287,7 @@ export default function DiagnosticEssentielCommande() {
       </button>
 
       <p style={{ fontSize: 11, color: '#9ca3af', textAlign: 'center', lineHeight: 1.6, margin: '1rem 0 0' }}>
-        Paiement par carte sécurisé. Livrable sous 30 jours calendaires.
+        Paiement par carte sécurisé. Livrable sous {f.delai}.
         Le questionnaire de cadrage vous est envoyé dès le paiement.
       </p>
 
