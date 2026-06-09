@@ -1,14 +1,15 @@
 // app/rgpd-conformite/page.tsx
-// Cabinet Cholez-Pagotto - RGPD & conformité
-// Règles : zéro tiret long, cholez-pagotto.fr, Notre juriste singulier
+// Cabinet Cholez-Pagotto - RGPD & conformite (v2 : tarification visible, achat Essentiel, Audit Express)
+// Regles : zero tiret long, cholez-pagotto.fr, Notre juriste singulier, NBSP avant euro
 
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-import { CheckCircle, ArrowRight, ChevronRight, Shield, FileText, Users, Lock, AlertCircle, Info } from 'lucide-react'
+import AuditExpressForm from '@/components/AuditExpressForm'
+import { CheckCircle, ArrowRight, ChevronRight, Shield, FileText, Users, Lock, AlertCircle, Info, Gift, Clock, Phone } from 'lucide-react'
 
 export const metadata = {
-  title: "RGPD & conformité · Mise en conformité pour entreprises et associations · Cabinet Cholez-Pagotto",
-  description: "Diagnostic RGPD, registre des activités de traitement, politique de confidentialité, mentions d'information. Accompagnement des entreprises, associations et collectivités dans leur mise en conformité.",
+  title: "RGPD & conformité · Diagnostic à partir de 350\u00a0€ · Cabinet Cholez-Pagotto",
+  description: "Diagnostic RGPD à partir de 350\u00a0€, registre des activités de traitement, politique de confidentialité, mentions d'information. Audit RGPD Express offert, restitution sous 72\u00a0h. Entreprises, associations et collectivités.",
   alternates: {
     canonical: 'https://cholez-pagotto.fr/rgpd-conformite',
   },
@@ -21,7 +22,7 @@ const schemaData = {
       "@type": "Service",
       "@id": "https://cholez-pagotto.fr/rgpd-conformite#service",
       "name": "RGPD et conformité - Cabinet Cholez-Pagotto",
-      "description": "Accompagnement à la mise en conformité RGPD : diagnostic documentaire, registre des activités de traitement, politique de confidentialité, mentions d'information, formation des équipes.",
+      "description": "Accompagnement à la mise en conformité RGPD : diagnostic documentaire, registre des activités de traitement, politique de confidentialité, mentions d'information, formation des équipes. Diagnostic en trois forfaits et Audit RGPD Express offert.",
       "provider": {
         "@type": "LegalService",
         "@id": "https://cholez-pagotto.fr/#cabinet",
@@ -30,17 +31,55 @@ const schemaData = {
       },
       "serviceType": "Conformité RGPD",
       "areaServed": { "@type": "Country", "name": "France" },
-      "offers": {
-        "@type": "Offer",
-        "description": "Sur devis selon la taille de la structure et le périmètre de la mission",
-        "availability": "https://schema.org/InStock"
-      },
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Diagnostic RGPD Essentiel",
+          "price": "350",
+          "priceCurrency": "EUR",
+          "availability": "https://schema.org/InStock",
+          "url": "https://cholez-pagotto.fr/rgpd-conformite/diagnostic-essentiel",
+          "description": "Diagnostic de conformité pour micro-entreprise, freelance, petite association (moins de 5 traitements). Livrable sous 30 jours calendaires. Paiement par carte bancaire ou virement."
+        },
+        {
+          "@type": "Offer",
+          "name": "Diagnostic RGPD Standard",
+          "price": "900",
+          "priceCurrency": "EUR",
+          "availability": "https://schema.org/InStock",
+          "description": "Diagnostic de conformité pour TPE, association établie, profession libérale (5 à 15 traitements). Entretien visio de cadrage et de restitution inclus. Livrable sous 30 jours calendaires."
+        },
+        {
+          "@type": "Offer",
+          "name": "Diagnostic RGPD Approfondi",
+          "price": "1400",
+          "priceCurrency": "EUR",
+          "availability": "https://schema.org/InStock",
+          "description": "Diagnostic de conformité pour PME, structure de santé ou sociale, collectivité, GIE, structures de plus de 15 traitements ou traitant des données sensibles. Sur devis, à partir de 1 400 euros."
+        }
+      ],
       "url": "https://cholez-pagotto.fr/rgpd-conformite"
     },
     {
       "@type": "FAQPage",
       "@id": "https://cholez-pagotto.fr/rgpd-conformite#faq",
       "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Combien coûte un diagnostic RGPD ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Le diagnostic RGPD existe en trois forfaits : Essentiel à 350\u00a0€ (micro-entreprise, freelance, petite association de moins de 5 traitements), Standard à 900\u00a0€ (TPE, association établie, profession libérale de 5 à 15 traitements) et Approfondi sur devis à partir de 1\u00a0400\u00a0€ (structures complexes, données sensibles, plus de 15 traitements). Le forfait Essentiel est commandable directement en ligne par carte bancaire ou virement, avec un livrable sous 30 jours calendaires."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Qu'est-ce que l'Audit RGPD Express offert ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "L'Audit RGPD Express est un diagnostic flash offert, d'une valeur de 150\u00a0€, sans engagement. À partir de cinq questions clés, notre juriste identifie vos trois risques prioritaires et vous remet une note de synthèse de deux à trois pages sous 72\u00a0heures ouvrées, avec une mini-feuille de route et une orientation vers le forfait de diagnostic adapté. Un échange téléphonique de dix minutes est proposé si vous le souhaitez."
+          }
+        },
         {
           "@type": "Question",
           "name": "Le RGPD s'applique-t-il aux petites structures ?",
@@ -132,14 +171,89 @@ const prestations = [
   }
 ]
 
+const forfaits = [
+  {
+    nom: "Essentiel",
+    cible: "Micro-entreprise, freelance, petite association (moins de 5 traitements)",
+    tarif: "350\u00a0€",
+    tarifSub: "",
+    duree: "Environ 4\u00a0h de travail",
+    note: "Commandable en ligne, livrable sous 30 jours calendaires",
+    couleur: "#7c3aed",
+    fond: "#f5f3ff",
+    border: "#c4b5fd",
+    achat: true,
+    badge: ""
+  },
+  {
+    nom: "Standard",
+    cible: "TPE, association établie, profession libérale (5 à 15 traitements)",
+    tarif: "900\u00a0€",
+    tarifSub: "",
+    duree: "Environ 10\u00a0h de travail",
+    note: "Entretien visio de cadrage et de restitution inclus",
+    couleur: "#0f2d6e",
+    fond: "#eff6ff",
+    border: "#93c5fd",
+    achat: false,
+    badge: "Le plus demandé"
+  },
+  {
+    nom: "Approfondi",
+    cible: "PME, structure de santé ou sociale, collectivité, GIE, plus de 15 traitements ou données sensibles",
+    tarif: "Sur devis",
+    tarifSub: "à partir de 1\u00a0400\u00a0€",
+    duree: "16\u00a0h de travail et plus",
+    note: "Cartographie multi-niveaux et rapport étendu",
+    couleur: "#065f46",
+    fond: "#ecfdf5",
+    border: "#6ee7b7",
+    achat: false,
+    badge: ""
+  }
+]
+
+const phases = [
+  { phase: "Questionnaire et échange initial par email", e: "Inclus", s: "Inclus", a: "Inclus" },
+  { phase: "Analyse des réponses, des outils et du site", e: "Inclus", s: "Inclus", a: "Inclus" },
+  { phase: "Entretien visio de cadrage", e: "Non", s: "Inclus", a: "Inclus" },
+  { phase: "Cartographie des traitements (finalités, bases légales, durées, destinataires)", e: "Simplifiée", s: "Complète", a: "Multi-niveaux" },
+  { phase: "Analyse des écarts (RGPD et loi Informatique et Libertés)", e: "Inclus", s: "Inclus", a: "Détaillée" },
+  { phase: "Hiérarchisation des actions par niveau de risque", e: "Inclus", s: "Inclus", a: "Multi-niveaux" },
+  { phase: "Rapport écrit avec recommandations", e: "Synthétique", s: "Rédigé", a: "Étendu" },
+  { phase: "Restitution visio (sans caméra cabinet, partage d'écran)", e: "Par email", s: "Inclus", a: "Inclus" }
+]
+
+const auditQuestions = [
+  "Quelle est votre activité principale et combien de personnes ou de clients gérez-vous ?",
+  "Quels types de données collectez-vous (identité, contact, paiement, santé, autres) ?",
+  "Quels outils utilisez-vous (CRM, emailing, hébergement, sous-traitants) ?",
+  "Disposez-vous d'un registre des traitements, d'une politique de confidentialité, de mentions d'information ?",
+  "Avez-vous déjà eu une violation de données, une plainte, ou un contrôle CNIL ?"
+]
+
 const basesLegales = [
   { base: "Consentement (art. 6.1.a)", desc: "Accord explicite et libre de la personne. Révocable à tout moment. Souvent requis pour les cookies analytics et le marketing." },
   { base: "Contrat (art. 6.1.b)", desc: "Traitement nécessaire à l'exécution d'un contrat avec la personne. Ex : gestion d'une commande, d'un abonnement." },
   { base: "Obligation légale (art. 6.1.c)", desc: "Traitement requis par une obligation légale applicable. Ex : conservation des bulletins de paie, facturation." },
-  { base: "Intérêt légitime (art. 6.1.f)", desc: "Intérêt légitime du responsable, sous réserve qu'il ne prévale pas sur les droits des personnes. Ex : sécurité du SI, prévention de la fraude." },
+  { base: "Intérêt légitime (art. 6.1.f)", desc: "Intérêt légitime du responsable, sous réserve qu'il ne prévale pas sur les droits des personnes. Ex : sécurité du SI, prévention de la fraude." }
+]
+
+const eligibiliteDPO = [
+  "Vous êtes un organisme public ou une autorité publique.",
+  "Votre activité de base implique un suivi régulier et systématique des personnes à grande échelle.",
+  "Votre activité de base implique le traitement à grande échelle de données sensibles (santé, biométrie, opinions, infractions)."
 ]
 
 const faqs = [
+  {
+    q: "Combien coûte un diagnostic RGPD ?",
+    r: "Le diagnostic RGPD existe en trois forfaits : Essentiel à 350\u00a0€ (micro-entreprise, freelance, petite association de moins de 5 traitements), Standard à 900\u00a0€ (TPE, association établie, profession libérale de 5 à 15 traitements) et Approfondi sur devis à partir de 1\u00a0400\u00a0€ (structures complexes, données sensibles, plus de 15 traitements). Le forfait Essentiel est commandable directement en ligne par carte bancaire ou virement, avec un livrable sous 30 jours calendaires."
+  },
+  {
+    q: "Qu'est-ce que l'Audit RGPD Express offert ?",
+    r: "C'est un diagnostic flash offert, d'une valeur de 150\u00a0€, sans engagement. À partir de cinq questions clés, notre juriste identifie vos trois risques prioritaires et vous remet une note de synthèse de deux à trois pages sous 72\u00a0heures ouvrées, avec une mini-feuille de route et une orientation vers le forfait de diagnostic adapté. Un échange téléphonique de dix minutes est proposé si vous le souhaitez."
+  },
   {
     q: "Le RGPD s'applique-t-il aux petites structures ?",
     r: "Oui. Le RGPD s'applique à toute organisation qui traite des données personnelles, quelle que soit sa taille. Une TPE, une association ou une micro-entreprise sont soumises aux mêmes obligations, avec certains aménagements pour les structures de moins de 250 personnes (notamment une tenue simplifiée du registre pour les traitements non réguliers)."
@@ -194,23 +308,23 @@ export default function RGPDConformitePage() {
               pour les entreprises, associations et collectivités
             </h1>
             <p style={{ fontSize: '1.1rem', color: 'rgba(255,255,255,0.88)', marginBottom: '1.5rem', lineHeight: 1.7 }}>
-              Diagnostic documentaire, registre des traitements, politique de confidentialité, mentions d'information,
-              gestion des violations de données, réponses aux droits des personnes.
-              Accompagnement sur-mesure selon la taille et l'activité de votre structure.
+              Diagnostic de conformité à partir de 350&nbsp;€, registre des traitements, politique de confidentialité,
+              mentions d'information, gestion des violations de données. Et pour commencer sans engagement,
+              un Audit RGPD Express offert, restitué sous 72&nbsp;heures.
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem' }}>
-              <a href="/contact" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: 'white', color: '#7c3aed', textDecoration: 'none', padding: '13px 28px', borderRadius: 8, fontWeight: 700, fontSize: '0.95rem' }}>
-                Demander un diagnostic <ArrowRight size={18} />
+              <a href="/rgpd-conformite/diagnostic-essentiel" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: 'white', color: '#7c3aed', textDecoration: 'none', padding: '13px 28px', borderRadius: 8, fontWeight: 700, fontSize: '0.95rem' }}>
+                Commander le Diagnostic Essentiel <ArrowRight size={18} />
               </a>
-              <a href="/dpo-externalise" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: 'rgba(255,255,255,0.15)', color: 'white', textDecoration: 'none', padding: '13px 28px', borderRadius: 8, fontWeight: 600, fontSize: '0.95rem', border: '1px solid rgba(255,255,255,0.4)' }}>
-                DPO externalisé
+              <a href="#audit-express" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: 'rgba(255,255,255,0.15)', color: 'white', textDecoration: 'none', padding: '13px 28px', borderRadius: 8, fontWeight: 600, fontSize: '0.95rem', border: '1px solid rgba(255,255,255,0.4)' }}>
+                <Gift size={17} /> Audit Express offert
               </a>
             </div>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '2rem', marginTop: '2.5rem', paddingTop: '2rem', borderTop: '1px solid rgba(255,255,255,0.2)' }}>
               {[
-                { valeur: "6", label: "Prestations RGPD disponibles" },
-                { valeur: "25 mai 2018", label: "Date d'entrée en vigueur" },
-                { valeur: "Sur devis", label: "Tarification transparente" },
+                { valeur: "Dès 350\u00a0€", label: "Diagnostic de conformité" },
+                { valeur: "Offert", label: "Audit RGPD Express (valeur 150\u00a0€)" },
+                { valeur: "72\u00a0h", label: "Restitution de l'Audit Express" },
                 { valeur: "CNIL", label: "Référentiel applicable" }
               ].map((s, i) => (
                 <div key={i}>
@@ -222,7 +336,7 @@ export default function RGPDConformitePage() {
           </div>
         </section>
 
-        {/* ENCART RÉGLEMENTAIRE */}
+        {/* ENCART REGLEMENTAIRE */}
         <div style={{ background: '#f5f3ff', borderBottom: '1px solid #e9d5ff', padding: '0.75rem 1.5rem' }}>
           <div style={{ maxWidth: 1100, margin: '0 auto', display: 'flex', alignItems: 'flex-start', gap: '0.75rem' }}>
             <Info size={15} strokeWidth={1.5} style={{ color: '#7c3aed', marginTop: 2, flexShrink: 0 }} />
@@ -243,7 +357,7 @@ export default function RGPDConformitePage() {
             </h2>
             <p style={{ color: '#6b7280', fontSize: 13, marginBottom: '2rem' }}>
               Un accompagnement modulaire, de la première mise en conformité à la gestion continue.
-              Chaque prestation est sur devis selon le périmètre défini lors du premier contact.
+              Le diagnostic de conformité existe en trois forfaits aux tarifs affichés ci-dessous.
             </p>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.2rem' }}>
               {prestations.map((p, i) => (
@@ -259,7 +373,101 @@ export default function RGPDConformitePage() {
             </div>
           </section>
 
-          {/* QUI EST CONCERNÉ */}
+          {/* TARIFICATION */}
+          <section id="tarifs" style={{ marginBottom: '3.5rem' }}>
+            <h2 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#0f2d6e', marginBottom: '0.5rem' }}>
+              Diagnostic de conformité : trois forfaits
+            </h2>
+            <p style={{ color: '#6b7280', fontSize: 13, marginBottom: '2rem' }}>
+              Diagnostic à partir de 350&nbsp;€, abonnement DPO mensuel à partir de 150&nbsp;€/mois selon volumétrie.
+              Le forfait Essentiel se commande directement en ligne, les forfaits Standard et Approfondi sur devis personnalisé.
+            </p>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem', marginBottom: '2.5rem' }}>
+              {forfaits.map((f, i) => (
+                <div key={i} style={{ background: f.fond, border: `2px solid ${f.border}`, borderRadius: 12, padding: '1.5rem', position: 'relative', display: 'flex', flexDirection: 'column' }}>
+                  {f.badge ? (
+                    <div style={{ position: 'absolute', top: -12, left: '50%', transform: 'translateX(-50%)', background: f.couleur, color: 'white', fontSize: 11, fontWeight: 700, padding: '3px 14px', borderRadius: 20, whiteSpace: 'nowrap' }}>
+                      {f.badge}
+                    </div>
+                  ) : null}
+                  <p style={{ color: f.couleur, fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', margin: '0 0 6px' }}>Forfait {f.nom}</p>
+                  <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.4rem', marginBottom: '2px' }}>
+                    <span style={{ fontSize: '2rem', fontWeight: 800, color: f.couleur }}>{f.tarif}</span>
+                  </div>
+                  {f.tarifSub ? (
+                    <p style={{ color: '#6b7280', fontSize: 12, margin: '0 0 10px' }}>{f.tarifSub}</p>
+                  ) : (
+                    <p style={{ color: '#9ca3af', fontSize: 12, margin: '0 0 10px' }}>{f.duree}</p>
+                  )}
+                  <p style={{ color: '#374151', fontSize: 12.5, lineHeight: 1.6, margin: '0 0 0.5rem', minHeight: 54 }}>{f.cible}</p>
+                  <p style={{ color: '#6b7280', fontSize: 12, lineHeight: 1.6, margin: '0 0 1.25rem' }}>{f.note}</p>
+                  <div style={{ marginTop: 'auto' }}>
+                    {f.achat ? (
+                      <a href="/rgpd-conformite/diagnostic-essentiel" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', background: f.couleur, color: 'white', textDecoration: 'none', padding: '11px 20px', borderRadius: 8, fontWeight: 700, fontSize: '0.875rem', width: '100%', boxSizing: 'border-box' as const }}>
+                        Commander mon Diagnostic <ArrowRight size={16} />
+                      </a>
+                    ) : (
+                      <a href="/contact" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', background: 'white', color: f.couleur, textDecoration: 'none', padding: '11px 20px', borderRadius: 8, fontWeight: 700, fontSize: '0.875rem', width: '100%', boxSizing: 'border-box' as const, border: `1px solid ${f.couleur}` }}>
+                        Demander un devis <ArrowRight size={16} />
+                      </a>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* TABLEAU DETAIL DES PHASES */}
+            <h3 style={{ fontSize: '1.05rem', fontWeight: 700, color: '#0f2d6e', marginBottom: '0.75rem' }}>
+              Le détail de chaque forfait
+            </h3>
+            <div style={{ overflowX: 'auto', border: '1px solid #e5e7eb', borderRadius: 12, background: 'white' }}>
+              <table style={{ width: '100%', minWidth: 640, borderCollapse: 'collapse', fontSize: 12.5 }}>
+                <thead>
+                  <tr style={{ background: '#f5f3ff' }}>
+                    <th style={{ textAlign: 'left', padding: '12px 14px', color: '#5b21b6', fontWeight: 700, borderBottom: '1px solid #e9d5ff' }}>Étape</th>
+                    <th style={{ textAlign: 'center', padding: '12px 14px', color: '#7c3aed', fontWeight: 700, borderBottom: '1px solid #e9d5ff', whiteSpace: 'nowrap' }}>Essentiel</th>
+                    <th style={{ textAlign: 'center', padding: '12px 14px', color: '#0f2d6e', fontWeight: 700, borderBottom: '1px solid #e9d5ff', whiteSpace: 'nowrap' }}>Standard</th>
+                    <th style={{ textAlign: 'center', padding: '12px 14px', color: '#065f46', fontWeight: 700, borderBottom: '1px solid #e9d5ff', whiteSpace: 'nowrap' }}>Approfondi</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {phases.map((ph, i) => (
+                    <tr key={i} style={{ background: i % 2 === 0 ? 'white' : '#fafafa' }}>
+                      <td style={{ padding: '11px 14px', color: '#374151', borderBottom: '1px solid #f3f4f6', lineHeight: 1.5 }}>{ph.phase}</td>
+                      <td style={{ padding: '11px 14px', color: ph.e === 'Non' ? '#9ca3af' : '#374151', textAlign: 'center', borderBottom: '1px solid #f3f4f6' }}>{ph.e}</td>
+                      <td style={{ padding: '11px 14px', color: '#374151', textAlign: 'center', borderBottom: '1px solid #f3f4f6' }}>{ph.s}</td>
+                      <td style={{ padding: '11px 14px', color: '#374151', textAlign: 'center', borderBottom: '1px solid #f3f4f6' }}>{ph.a}</td>
+                    </tr>
+                  ))}
+                  <tr style={{ background: '#f8fafc' }}>
+                    <td style={{ padding: '11px 14px', fontWeight: 700, color: '#0f2d6e', borderBottom: '1px solid #f3f4f6' }}>Durée de travail</td>
+                    <td style={{ padding: '11px 14px', textAlign: 'center', borderBottom: '1px solid #f3f4f6' }}>Environ 4&nbsp;h</td>
+                    <td style={{ padding: '11px 14px', textAlign: 'center', borderBottom: '1px solid #f3f4f6' }}>Environ 10&nbsp;h</td>
+                    <td style={{ padding: '11px 14px', textAlign: 'center', borderBottom: '1px solid #f3f4f6' }}>16&nbsp;h et plus</td>
+                  </tr>
+                  <tr style={{ background: '#f8fafc' }}>
+                    <td style={{ padding: '11px 14px', fontWeight: 700, color: '#0f2d6e', borderBottom: '1px solid #f3f4f6' }}>Tarif</td>
+                    <td style={{ padding: '11px 14px', textAlign: 'center', fontWeight: 800, color: '#7c3aed', borderBottom: '1px solid #f3f4f6' }}>350&nbsp;€</td>
+                    <td style={{ padding: '11px 14px', textAlign: 'center', fontWeight: 800, color: '#0f2d6e', borderBottom: '1px solid #f3f4f6' }}>900&nbsp;€</td>
+                    <td style={{ padding: '11px 14px', textAlign: 'center', fontWeight: 800, color: '#065f46', borderBottom: '1px solid #f3f4f6' }}>Dès 1&nbsp;400&nbsp;€</td>
+                  </tr>
+                  <tr>
+                    <td style={{ padding: '11px 14px', fontWeight: 700, color: '#0f2d6e' }}>Livrable</td>
+                    <td style={{ padding: '11px 14px', textAlign: 'center' }}>30&nbsp;jours</td>
+                    <td style={{ padding: '11px 14px', textAlign: 'center' }}>30&nbsp;jours</td>
+                    <td style={{ padding: '11px 14px', textAlign: 'center' }}>30&nbsp;jours</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p style={{ color: '#9ca3af', fontSize: 11, marginTop: '0.75rem' }}>
+              Les entretiens et restitutions visio se déroulent sans caméra côté cabinet, par partage d'écran avec support commenté.
+              Tarifs affichés en montant net. Le cabinet n'est pas assujetti à la TVA.
+            </p>
+          </section>
+
+          {/* QUI EST CONCERNE */}
           <section style={{ marginBottom: '3.5rem' }}>
             <h2 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#0f2d6e', marginBottom: '0.5rem' }}>
               Toutes les organisations sont concernées
@@ -282,7 +490,7 @@ export default function RGPDConformitePage() {
             </div>
           </section>
 
-          {/* BASES LÉGALES */}
+          {/* BASES LEGALES */}
           <section style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: 12, padding: '2rem', marginBottom: '3.5rem' }}>
             <h2 style={{ fontSize: '1.3rem', fontWeight: 700, color: '#0f2d6e', marginBottom: '0.5rem' }}>
               Les bases légales du traitement (article 6 RGPD)
@@ -316,19 +524,71 @@ export default function RGPDConformitePage() {
               </p>
               <p style={{ fontSize: 12, color: '#9a3412', margin: 0, lineHeight: 1.6 }}>
                 Un diagnostic préalable permet d'identifier les risques prioritaires et d'engager les corrections
-                avant tout contrôle. Contactez le cabinet pour un premier échange.
+                avant tout contrôle. Commencez par l'Audit RGPD Express offert ci-dessous.
               </p>
             </div>
           </section>
 
+          {/* AUDIT RGPD EXPRESS OFFERT */}
+          <section id="audit-express" style={{ marginBottom: '3.5rem', scrollMarginTop: '90px' }}>
+            <div style={{ background: 'linear-gradient(135deg, #faf5ff 0%, #eff6ff 100%)', border: '1px solid #e9d5ff', borderRadius: 16, padding: '2rem' }}>
+              <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'flex-start', gap: '2rem' }}>
+
+                <div style={{ flex: '1 1 320px', minWidth: 0 }}>
+                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', background: '#7c3aed', color: 'white', fontSize: 11, fontWeight: 700, padding: '5px 14px', borderRadius: 20, letterSpacing: '0.05em', textTransform: 'uppercase', marginBottom: '1rem' }}>
+                    <Gift size={14} /> Offert · Valeur 150&nbsp;€
+                  </span>
+                  <h2 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#5b21b6', margin: '0 0 0.5rem' }}>
+                    Audit RGPD Express
+                  </h2>
+                  <p style={{ fontSize: 13, color: '#374151', lineHeight: 1.7, margin: '0 0 1.25rem' }}>
+                    Un diagnostic flash sans engagement. Vous répondez à cinq questions clés, notre juriste identifie
+                    vos trois risques prioritaires et vous remet une note de synthèse de deux à trois pages.
+                  </p>
+
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem', marginBottom: '1.25rem' }}>
+                    {[
+                      { icone: <Clock size={16} strokeWidth={1.75} />, txt: "Restitution sous 72\u00a0heures ouvrées par email" },
+                      { icone: <FileText size={16} strokeWidth={1.75} />, txt: "Note PDF de 2 à 3 pages : 3 risques prioritaires et mini-feuille de route" },
+                      { icone: <Phone size={16} strokeWidth={1.75} />, txt: "Échange téléphonique de 10 minutes offert si vous le souhaitez" }
+                    ].map((item, i) => (
+                      <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.6rem', fontSize: 13, color: '#374151' }}>
+                        <span style={{ color: '#7c3aed', flexShrink: 0, marginTop: 1 }}>{item.icone}</span>
+                        <span>{item.txt}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <p style={{ fontSize: 12, fontWeight: 700, color: '#5b21b6', margin: '0 0 0.5rem' }}>Les cinq questions de l'audit :</p>
+                  <ol style={{ margin: 0, padding: '0 0 0 1.1rem', display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
+                    {auditQuestions.map((q, i) => (
+                      <li key={i} style={{ fontSize: 12.5, color: '#4b5563', lineHeight: 1.55 }}>{q}</li>
+                    ))}
+                  </ol>
+                </div>
+
+                <div style={{ flex: '1 1 320px', minWidth: 0 }}>
+                  <div style={{ background: 'white', border: '1px solid #e9d5ff', borderRadius: 12, padding: '1.5rem' }}>
+                    <h3 style={{ fontSize: '1rem', fontWeight: 700, color: '#0f2d6e', margin: '0 0 0.3rem' }}>Demander mon Audit Express</h3>
+                    <p style={{ fontSize: 12, color: '#6b7280', margin: '0 0 1.25rem', lineHeight: 1.6 }}>
+                      Renseignez vos coordonnées : nous vous envoyons le questionnaire et votre restitution sous 72&nbsp;heures ouvrées.
+                    </p>
+                    <AuditExpressForm />
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </section>
+
           {/* DPO RENVOI */}
-          <section style={{ background: '#0f2d6e', borderRadius: 12, padding: '2rem', marginBottom: '3.5rem', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '1.5rem', color: 'white' }}>
+          <section style={{ background: '#0f2d6e', borderRadius: 12, padding: '2rem', marginBottom: '1.25rem', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '1.5rem', color: 'white' }}>
             <div>
               <p style={{ color: '#c4b5fd', fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', margin: '0 0 0.4rem' }}>Conformité dans la durée</p>
               <h2 style={{ fontSize: '1.2rem', fontWeight: 700, margin: '0 0 0.4rem' }}>La conformité RGPD ne s'arrête pas à la première mise en conformité</h2>
               <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.8)', margin: 0 }}>
                 Le service DPO externalisé assure la conformité continue : veille réglementaire, mise à jour
-                du registre, gestion des incidents, interlocuteur CNIL désigné.
+                du registre, gestion des incidents, interlocuteur CNIL désigné. À partir de 150&nbsp;€/mois selon volumétrie.
               </p>
             </div>
             <a href="/dpo-externalise" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: '#7c3aed', color: 'white', textDecoration: 'none', padding: '12px 24px', borderRadius: 8, fontWeight: 700, fontSize: '0.875rem', whiteSpace: 'nowrap' }}>
@@ -336,10 +596,32 @@ export default function RGPDConformitePage() {
             </a>
           </section>
 
+          {/* MINI-TEST ELIGIBILITE DPO */}
+          <section style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: 12, padding: '1.75rem', marginBottom: '3.5rem' }}>
+            <h3 style={{ fontSize: '1.05rem', fontWeight: 700, color: '#0f2d6e', margin: '0 0 0.4rem' }}>
+              Suis-je obligé de désigner un DPO ? Auto-évaluation (article 37.1 RGPD)
+            </h3>
+            <p style={{ fontSize: 12.5, color: '#6b7280', lineHeight: 1.6, margin: '0 0 1.25rem' }}>
+              La désignation d'un DPO est obligatoire si vous vous reconnaissez dans au moins une des trois situations suivantes :
+            </p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem', marginBottom: '1.25rem' }}>
+              {eligibiliteDPO.map((c, i) => (
+                <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.6rem', background: '#f8fafc', border: '1px solid #e5e7eb', borderRadius: 8, padding: '0.75rem 1rem' }}>
+                  <CheckCircle size={16} strokeWidth={1.75} style={{ color: '#7c3aed', flexShrink: 0, marginTop: 1 }} />
+                  <span style={{ fontSize: 12.5, color: '#374151', lineHeight: 1.55 }}>{c}</span>
+                </div>
+              ))}
+            </div>
+            <p style={{ fontSize: 12.5, color: '#374151', lineHeight: 1.6, margin: 0 }}>
+              Au moins un critère coché : la désignation est probablement obligatoire. Aucun critère : elle reste
+              recommandée si vous traitez des données sensibles. Notre juriste confirme votre situation lors du diagnostic.
+            </p>
+          </section>
+
           {/* FAQ */}
           <section style={{ marginBottom: '3.5rem' }}>
             <h2 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#0f2d6e', marginBottom: '0.5rem' }}>Questions fréquentes</h2>
-            <p style={{ color: '#6b7280', fontSize: 13, marginBottom: '2rem' }}>Les réponses aux questions les plus courantes sur le RGPD.</p>
+            <p style={{ color: '#6b7280', fontSize: 13, marginBottom: '2rem' }}>Les réponses aux questions les plus courantes sur le RGPD et nos forfaits.</p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
               {faqs.map((faq, i) => (
                 <details key={i} style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: 12, padding: '1rem 1.5rem' }}>
@@ -356,18 +638,18 @@ export default function RGPDConformitePage() {
           {/* CTA FINAL */}
           <section style={{ background: '#f5f3ff', border: '1px solid #e9d5ff', borderRadius: 12, padding: '2rem', textAlign: 'center' }}>
             <h2 style={{ fontSize: '1.3rem', fontWeight: 700, color: '#5b21b6', marginBottom: '0.5rem' }}>
-              Votre structure est-elle en conformité RGPD ?
+              Prêt à évaluer votre conformité RGPD ?
             </h2>
-            <p style={{ fontSize: 13, color: '#374151', margin: '0.5rem auto 1.5rem', maxWidth: 500, lineHeight: 1.7 }}>
-              Un diagnostic préalable permet d'évaluer votre situation et de prioriser les actions correctives.
-              Tarification sur devis selon la taille et l'activité de votre structure.
+            <p style={{ fontSize: 13, color: '#374151', margin: '0.5rem auto 1.5rem', maxWidth: 520, lineHeight: 1.7 }}>
+              Commencez par l'Audit RGPD Express offert, ou commandez directement votre Diagnostic Essentiel à 350&nbsp;€,
+              livrable sous 30 jours, réglable par carte bancaire ou virement.
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', justifyContent: 'center' }}>
-              <a href="/contact" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: '#7c3aed', color: 'white', textDecoration: 'none', padding: '13px 28px', borderRadius: 8, fontWeight: 700, fontSize: '0.95rem' }}>
-                Demander un diagnostic <ArrowRight size={18} />
+              <a href="/rgpd-conformite/diagnostic-essentiel" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: '#7c3aed', color: 'white', textDecoration: 'none', padding: '13px 28px', borderRadius: 8, fontWeight: 700, fontSize: '0.95rem' }}>
+                Commander le Diagnostic Essentiel <ArrowRight size={18} />
               </a>
-              <a href="/dpo-externalise" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: 'transparent', color: '#5b21b6', textDecoration: 'none', padding: '13px 28px', borderRadius: 8, fontWeight: 600, fontSize: '0.95rem', border: '1px solid #7c3aed' }}>
-                DPO externalisé
+              <a href="#audit-express" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: 'transparent', color: '#5b21b6', textDecoration: 'none', padding: '13px 28px', borderRadius: 8, fontWeight: 600, fontSize: '0.95rem', border: '1px solid #7c3aed' }}>
+                <Gift size={17} /> Audit RGPD Express offert
               </a>
             </div>
           </section>
