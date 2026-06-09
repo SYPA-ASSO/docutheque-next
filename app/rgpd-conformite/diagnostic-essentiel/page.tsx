@@ -10,7 +10,7 @@ import { CheckCircle, X, ChevronRight, Info, Clock, FileText, ShieldCheck } from
 
 export const metadata = {
   title: "Diagnostic RGPD Essentiel · 350\u00a0€ · Cabinet Cholez-Pagotto",
-  description: "Commandez votre Diagnostic RGPD Essentiel à 350\u00a0€, livrable sous 30 jours calendaires. Cartographie simplifiée des traitements, analyse des écarts, rapport de conformité priorisé. Paiement par carte bancaire ou virement.",
+  description: "Commandez votre Diagnostic RGPD Essentiel à 350\u00a0€, livrable sous 15 jours. Cartographie simplifiée des traitements, analyse des écarts, rapport de conformité priorisé. Paiement par carte bancaire ou virement.",
   alternates: {
     canonical: 'https://cholez-pagotto.fr/rgpd-conformite/diagnostic-essentiel',
   },
@@ -23,7 +23,7 @@ const schemaData = {
       "@type": "Service",
       "@id": "https://cholez-pagotto.fr/rgpd-conformite/diagnostic-essentiel#service",
       "name": "Diagnostic RGPD Essentiel",
-      "description": "Diagnostic de conformité RGPD pour micro-entreprise, freelance et petite association (moins de 5 traitements). Cartographie simplifiée des traitements, analyse des écarts au regard du RGPD et de la loi Informatique et Libertés, hiérarchisation des actions, rapport écrit synthétique. Livrable sous 30 jours calendaires.",
+      "description": "Diagnostic de conformité RGPD pour micro-entreprise, freelance et petite association (moins de 5 traitements). Cartographie simplifiée des traitements, analyse des écarts au regard du RGPD et de la loi Informatique et Libertés, hiérarchisation des actions, rapport écrit synthétique. Livrable sous 15 jours à compter de la réception de vos réponses.",
       "provider": {
         "@type": "LegalService",
         "@id": "https://cholez-pagotto.fr/#cabinet",
@@ -39,7 +39,7 @@ const schemaData = {
         "priceCurrency": "EUR",
         "availability": "https://schema.org/InStock",
         "url": "https://cholez-pagotto.fr/rgpd-conformite/diagnostic-essentiel",
-        "description": "Paiement par carte bancaire ou virement. Livrable sous 30 jours calendaires."
+        "description": "Paiement par carte bancaire ou virement. Livrable sous 15 jours."
       },
       "url": "https://cholez-pagotto.fr/rgpd-conformite/diagnostic-essentiel"
     },
@@ -98,7 +98,7 @@ export default function DiagnosticEssentielPage() {
               Diagnostic RGPD Essentiel
             </span>
             <h1 style={{ fontSize: 'clamp(1.7rem, 4vw, 2.4rem)', fontWeight: 700, marginBottom: '1rem', lineHeight: 1.2 }}>
-              Évaluez votre conformité RGPD en 30 jours
+              Évaluez votre conformité RGPD en 15 jours
             </h1>
             <p style={{ fontSize: '1.05rem', color: 'rgba(255,255,255,0.88)', marginBottom: '1.5rem', lineHeight: 1.7 }}>
               Le forfait pensé pour les micro-entreprises, freelances et petites associations de moins de cinq traitements.
@@ -110,7 +110,7 @@ export default function DiagnosticEssentielPage() {
                 <span style={{ fontSize: 14, color: 'rgba(255,255,255,0.75)' }}>forfait unique</span>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: 13, color: 'rgba(255,255,255,0.85)' }}>
-                <Clock size={16} strokeWidth={1.5} /> Livrable sous 30 jours calendaires
+                <Clock size={16} strokeWidth={1.5} /> Livrable sous 15 jours
               </div>
             </div>
           </div>
@@ -163,7 +163,7 @@ export default function DiagnosticEssentielPage() {
                   <p style={{ fontSize: 12.5, fontWeight: 700, color: '#0f2d6e', margin: '0 0 0.3rem' }}>Comment ça se passe ensuite ?</p>
                   <p style={{ fontSize: 12, color: '#374151', lineHeight: 1.6, margin: 0 }}>
                     Dès votre paiement (ou la réception de votre virement), vous recevez par email le questionnaire de cadrage.
-                    Notre juriste analyse vos réponses et vous remet le rapport sous 30 jours calendaires.
+                    Notre juriste analyse vos réponses et vous remet le rapport sous 15 jours à compter de la réception de vos réponses.
                   </p>
                 </div>
               </div>

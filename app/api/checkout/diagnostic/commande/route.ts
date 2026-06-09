@@ -114,7 +114,7 @@ export async function POST(request: NextRequest) {
       ${questionsHtml}
     </ol>
     <p style="background:#f5f3ff;border:1px solid #e9d5ff;border-radius:8px;padding:12px 14px;font-size:13px;color:#5b21b6;line-height:1.6;">
-      Le délai de livraison de <strong>30 jours calendaires</strong> démarre à la réception de votre virement. Un justificatif de paiement vous sera adressé après encaissement.
+      Le délai de livraison de <strong>15 jours</strong> démarre à la réception de votre virement et de vos réponses au questionnaire. Un justificatif de paiement vous sera adressé après encaissement.
     </p>
     <p style="margin-top:24px;">Cordialement,</p>
     <p style="margin:8px 0 0;line-height:1.7;">
@@ -168,7 +168,7 @@ export async function POST(request: NextRequest) {
     <p style="margin:0 0 8px;">Email : <a href="mailto:${emailSafe}" style="color:#7c3aed;">${emailSafe}</a></p>
     <p style="margin:0 0 8px;">Téléphone : ${telSafe}</p>
     <p style="margin:0 0 8px;">Montant attendu : 350,00&nbsp;&euro; par virement</p>
-    <p style="margin:12px 0 0;font-size:12px;color:#6b7280;">Le RIB et le questionnaire ont été envoyés à l'acheteur. À rapprocher dès réception du virement (livrable 30 jours à compter de l'encaissement).</p>
+    <p style="margin:12px 0 0;font-size:12px;color:#6b7280;">Le RIB et le questionnaire ont été envoyés à l'acheteur. À rapprocher dès réception du virement (livrable 15 jours à compter de l'encaissement et des réponses).</p>
   </div>
 </body>
 </html>`

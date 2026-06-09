@@ -69,7 +69,7 @@ export async function POST(request: NextRequest) {
       ${questionsHtml}
     </ol>
     <p style="background:#f5f3ff;border:1px solid #e9d5ff;border-radius:8px;padding:12px 14px;font-size:13px;color:#5b21b6;line-height:1.6;">
-      Dès réception de vos réponses, notre juriste réalise la cartographie simplifiée et l'analyse des écarts, puis vous remet votre rapport de conformité priorisé sous <strong>30 jours calendaires</strong>.
+      Dès réception de vos réponses, notre juriste réalise la cartographie simplifiée et l'analyse des écarts, puis vous remet votre rapport de conformité priorisé sous <strong>15 jours</strong>.
     </p>
     <p style="margin-top:24px;">Cordialement,</p>
     <p style="margin:8px 0 0;line-height:1.7;">

@@ -39,7 +39,7 @@ const schemaData = {
           "priceCurrency": "EUR",
           "availability": "https://schema.org/InStock",
           "url": "https://cholez-pagotto.fr/rgpd-conformite/diagnostic-essentiel",
-          "description": "Diagnostic de conformité pour micro-entreprise, freelance, petite association (moins de 5 traitements). Livrable sous 30 jours calendaires. Paiement par carte bancaire ou virement."
+          "description": "Diagnostic de conformité pour micro-entreprise, freelance, petite association (moins de 5 traitements). Livrable sous 15 jours à compter de la réception de vos réponses. Paiement par carte bancaire ou virement."
         },
         {
           "@type": "Offer",
@@ -47,7 +47,7 @@ const schemaData = {
           "price": "900",
           "priceCurrency": "EUR",
           "availability": "https://schema.org/InStock",
-          "description": "Diagnostic de conformité pour TPE, association établie, profession libérale (5 à 15 traitements). Entretien visio de cadrage et de restitution inclus. Livrable sous 30 jours calendaires."
+          "description": "Diagnostic de conformité pour TPE, association établie, profession libérale (5 à 15 traitements). Entretien visio de cadrage et de restitution inclus. Livrable sous 30 jours à compter de la réception de vos réponses."
         },
         {
           "@type": "Offer",
@@ -69,7 +69,7 @@ const schemaData = {
           "name": "Combien coûte un diagnostic RGPD ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Le diagnostic RGPD existe en trois forfaits : Essentiel à 350\u00a0€ (micro-entreprise, freelance, petite association de moins de 5 traitements), Standard à 900\u00a0€ (TPE, association établie, profession libérale de 5 à 15 traitements) et Approfondi sur devis à partir de 1\u00a0400\u00a0€ (structures complexes, données sensibles, plus de 15 traitements). Le forfait Essentiel est commandable directement en ligne par carte bancaire ou virement, avec un livrable sous 30 jours calendaires."
+            "text": "Le diagnostic RGPD existe en trois forfaits : Essentiel à 350\u00a0€ (micro-entreprise, freelance, petite association de moins de 5 traitements), Standard à 900\u00a0€ (TPE, association établie, profession libérale de 5 à 15 traitements) et Approfondi sur devis à partir de 1\u00a0400\u00a0€ (structures complexes, données sensibles, plus de 15 traitements). Le forfait Essentiel est commandable directement en ligne par carte bancaire ou virement et livré sous 15 jours à compter de la réception de vos réponses. Le Standard est livré sous 30 jours, l'Approfondi selon le délai indiqué au devis."
           }
         },
         {
@@ -177,8 +177,8 @@ const forfaits = [
     cible: "Micro-entreprise, freelance, petite association (moins de 5 traitements)",
     tarif: "350\u00a0€",
     tarifSub: "",
-    duree: "Environ 4\u00a0h de travail",
-    note: "Commandable en ligne, livrable sous 30 jours calendaires",
+    delai: "Livrable sous 15 jours",
+    note: "Commandable directement en ligne",
     couleur: "#7c3aed",
     fond: "#f5f3ff",
     border: "#c4b5fd",
@@ -190,7 +190,7 @@ const forfaits = [
     cible: "TPE, association établie, profession libérale (5 à 15 traitements)",
     tarif: "900\u00a0€",
     tarifSub: "",
-    duree: "Environ 10\u00a0h de travail",
+    delai: "Livrable sous 30 jours",
     note: "Entretien visio de cadrage et de restitution inclus",
     couleur: "#0f2d6e",
     fond: "#eff6ff",
@@ -203,7 +203,7 @@ const forfaits = [
     cible: "PME, structure de santé ou sociale, collectivité, GIE, plus de 15 traitements ou données sensibles",
     tarif: "Sur devis",
     tarifSub: "à partir de 1\u00a0400\u00a0€",
-    duree: "16\u00a0h de travail et plus",
+    delai: "Délai précisé au devis",
     note: "Cartographie multi-niveaux et rapport étendu",
     couleur: "#065f46",
     fond: "#ecfdf5",
@@ -248,7 +248,7 @@ const eligibiliteDPO = [
 const faqs = [
   {
     q: "Combien coûte un diagnostic RGPD ?",
-    r: "Le diagnostic RGPD existe en trois forfaits : Essentiel à 350\u00a0€ (micro-entreprise, freelance, petite association de moins de 5 traitements), Standard à 900\u00a0€ (TPE, association établie, profession libérale de 5 à 15 traitements) et Approfondi sur devis à partir de 1\u00a0400\u00a0€ (structures complexes, données sensibles, plus de 15 traitements). Le forfait Essentiel est commandable directement en ligne par carte bancaire ou virement, avec un livrable sous 30 jours calendaires."
+    r: "Le diagnostic RGPD existe en trois forfaits : Essentiel à 350\u00a0€ (micro-entreprise, freelance, petite association de moins de 5 traitements), Standard à 900\u00a0€ (TPE, association établie, profession libérale de 5 à 15 traitements) et Approfondi sur devis à partir de 1\u00a0400\u00a0€ (structures complexes, données sensibles, plus de 15 traitements). Le forfait Essentiel est commandable directement en ligne par carte bancaire ou virement et livré sous 15 jours à compter de la réception de vos réponses. Le Standard est livré sous 30 jours, l'Approfondi selon le délai indiqué au devis."
   },
   {
     q: "Qu'est-ce que l'Audit RGPD Express offert ?",
@@ -396,10 +396,9 @@ export default function RGPDConformitePage() {
                     <span style={{ fontSize: '2rem', fontWeight: 800, color: f.couleur }}>{f.tarif}</span>
                   </div>
                   {f.tarifSub ? (
-                    <p style={{ color: '#6b7280', fontSize: 12, margin: '0 0 10px' }}>{f.tarifSub}</p>
-                  ) : (
-                    <p style={{ color: '#9ca3af', fontSize: 12, margin: '0 0 10px' }}>{f.duree}</p>
-                  )}
+                    <p style={{ color: '#6b7280', fontSize: 12, margin: '0 0 4px' }}>{f.tarifSub}</p>
+                  ) : null}
+                  <p style={{ color: '#9ca3af', fontSize: 12, margin: '0 0 10px' }}>{f.delai}</p>
                   <p style={{ color: '#374151', fontSize: 12.5, lineHeight: 1.6, margin: '0 0 0.5rem', minHeight: 54 }}>{f.cible}</p>
                   <p style={{ color: '#6b7280', fontSize: 12, lineHeight: 1.6, margin: '0 0 1.25rem' }}>{f.note}</p>
                   <div style={{ marginTop: 'auto' }}>
@@ -441,12 +440,6 @@ export default function RGPDConformitePage() {
                     </tr>
                   ))}
                   <tr style={{ background: '#f8fafc' }}>
-                    <td style={{ padding: '11px 14px', fontWeight: 700, color: '#0f2d6e', borderBottom: '1px solid #f3f4f6' }}>Durée de travail</td>
-                    <td style={{ padding: '11px 14px', textAlign: 'center', borderBottom: '1px solid #f3f4f6' }}>Environ 4&nbsp;h</td>
-                    <td style={{ padding: '11px 14px', textAlign: 'center', borderBottom: '1px solid #f3f4f6' }}>Environ 10&nbsp;h</td>
-                    <td style={{ padding: '11px 14px', textAlign: 'center', borderBottom: '1px solid #f3f4f6' }}>16&nbsp;h et plus</td>
-                  </tr>
-                  <tr style={{ background: '#f8fafc' }}>
                     <td style={{ padding: '11px 14px', fontWeight: 700, color: '#0f2d6e', borderBottom: '1px solid #f3f4f6' }}>Tarif</td>
                     <td style={{ padding: '11px 14px', textAlign: 'center', fontWeight: 800, color: '#7c3aed', borderBottom: '1px solid #f3f4f6' }}>350&nbsp;€</td>
                     <td style={{ padding: '11px 14px', textAlign: 'center', fontWeight: 800, color: '#0f2d6e', borderBottom: '1px solid #f3f4f6' }}>900&nbsp;€</td>
@@ -454,14 +447,15 @@ export default function RGPDConformitePage() {
                   </tr>
                   <tr>
                     <td style={{ padding: '11px 14px', fontWeight: 700, color: '#0f2d6e' }}>Livrable</td>
+                    <td style={{ padding: '11px 14px', textAlign: 'center' }}>15&nbsp;jours</td>
                     <td style={{ padding: '11px 14px', textAlign: 'center' }}>30&nbsp;jours</td>
-                    <td style={{ padding: '11px 14px', textAlign: 'center' }}>30&nbsp;jours</td>
-                    <td style={{ padding: '11px 14px', textAlign: 'center' }}>30&nbsp;jours</td>
+                    <td style={{ padding: '11px 14px', textAlign: 'center' }}>Au devis</td>
                   </tr>
                 </tbody>
               </table>
             </div>
             <p style={{ color: '#9ca3af', fontSize: 11, marginTop: '0.75rem' }}>
+              Les délais de livraison courent à compter de la réception de vos réponses complètes au questionnaire de cadrage.
               Les entretiens et restitutions visio se déroulent sans caméra côté cabinet, par partage d'écran avec support commenté.
               Tarifs affichés en montant net. Le cabinet n'est pas assujetti à la TVA.
             </p>
@@ -642,7 +636,7 @@ export default function RGPDConformitePage() {
             </h2>
             <p style={{ fontSize: 13, color: '#374151', margin: '0.5rem auto 1.5rem', maxWidth: 520, lineHeight: 1.7 }}>
               Commencez par l'Audit RGPD Express offert, ou commandez directement votre Diagnostic Essentiel à 350&nbsp;€,
-              livrable sous 30 jours, réglable par carte bancaire ou virement.
+              livrable sous 15 jours, réglable par carte bancaire ou virement.
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', justifyContent: 'center' }}>
               <a href="/rgpd-conformite/diagnostic-essentiel" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: '#7c3aed', color: 'white', textDecoration: 'none', padding: '13px 28px', borderRadius: 8, fontWeight: 700, fontSize: '0.95rem' }}>
