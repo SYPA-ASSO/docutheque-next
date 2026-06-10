@@ -1,6 +1,6 @@
 'use client'
 
-// components/DiagnosticEssentielCommande.tsx
+// components/DiagnosticCommande.tsx
 // Commande d'un forfait de diagnostic RGPD (essentiel ou standard) : carte (Stripe Checkout) ou virement.
 // Le forfait est passe en prop ; libelle, prix et delai viennent de lib/diagnostic-forfaits.
 // Lit les parametres de retour ?paye=1&session_id / ?annule=1 cote client.
@@ -25,7 +25,7 @@ const inputStyle = {
   fontFamily: 'inherit',
 }
 
-export default function DiagnosticEssentielCommande({ forfait = 'essentiel' }: { forfait?: ForfaitId }) {
+export default function DiagnosticCommande({ forfait = 'essentiel' }: { forfait?: ForfaitId }) {
   const f = DIAGNOSTIC_FORFAITS[forfait]
 
   const [vue, setVue] = useState<Vue>('choix')

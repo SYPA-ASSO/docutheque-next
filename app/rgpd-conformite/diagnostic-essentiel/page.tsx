@@ -5,7 +5,7 @@
 
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-import DiagnosticEssentielCommande from '@/components/DiagnosticEssentielCommande'
+import DiagnosticCommande from '@/components/DiagnosticCommande'
 import { CheckCircle, X, ChevronRight, Info, Clock, FileText, ShieldCheck } from 'lucide-react'
 
 export const metadata = {
@@ -179,7 +179,7 @@ export default function DiagnosticEssentielPage() {
               <h2 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#0f2d6e', marginBottom: '1rem' }}>
                 Commander mon Diagnostic
               </h2>
-              <DiagnosticEssentielCommande forfait="essentiel" />
+              <DiagnosticCommande forfait="essentiel" />
             </section>
 
           </div>
