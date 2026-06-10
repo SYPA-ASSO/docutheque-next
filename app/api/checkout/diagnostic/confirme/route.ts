@@ -1,10 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { stripe } from '@/lib/stripe'
 import { getForfait } from '@/lib/diagnostic-forfaits'
+import { findOrCreateDiagnosticUser, createDossierRgpd, dossierExistsForSession, espaceClientEmailBlock } from '@/lib/diagnostic-account'
 
-// app/api/diagnostic/confirme/route.ts (deploye sous app/api/checkout/diagnostic/confirme/route.ts)
+// app/api/checkout/diagnostic/confirme/route.ts
 // Appelee depuis la page de retour Stripe. Verifie le paiement, lit le forfait depuis les metadata,
-// puis envoie a l'acheteur le questionnaire de cadrage et notifie le cabinet. Pas de webhook requis pour la v1.
+// rattache la commande a un espace client (cree si besoin), puis envoie a l'acheteur le questionnaire
+// de cadrage et notifie le cabinet. Idempotent : un rechargement de la page de retour ne cree ni
+// doublon de compte, ni doublon de dossier, ni second email.
 // Regles : zero tiret long, NBSP avant euro, Notre juriste singulier.
 
 const QUESTIONNAIRE = [
@@ -44,18 +47,61 @@ export async function POST(request: NextRequest) {
     const email = session.customer_details && session.customer_details.email ? session.customer_details.email : null
     const nom = session.customer_details && session.customer_details.name ? session.customer_details.name : 'Client'
 
+    const origin =
+      request.headers.get('origin') ||
+      process.env.NEXT_PUBLIC_SITE_URL ||
+      'https://cholez-pagotto.fr'
+
+    // Idempotence : si une commande existe deja pour cette session, on ne refait rien (ni email).
+    let dejaTraite = false
+    try {
+      dejaTraite = await dossierExistsForSession(session.id)
+    } catch (e) {
+      console.error('[Diagnostic Confirme] Verification idempotence echouee:', e)
+    }
+    if (dejaTraite) {
+      return NextResponse.json({ success: true, dejaTraite: true })
+    }
+
+    // Rattachement espace client + ligne de suivi (best effort : ne bloque jamais la commande payee).
+    let accessLink: string | null = null
+    if (email) {
+      try {
+        const compte = await findOrCreateDiagnosticUser({
+          email,
+          fullName: nom,
+          telephone: null,
+          structure: null,
+          origin,
+        })
+        if (compte.userId) {
+          await createDossierRgpd({
+            userId: compte.userId,
+            forfaitId: f.id,
+            montantEuros: Math.round(f.montantCents / 100),
+            mode: 'carte',
+            reference: null,
+            stripeSessionId: session.id,
+            statut: 'en_cours',
+          })
+        }
+        if (compte.created) accessLink = compte.accessLink
+      } catch (e) {
+        console.error('[Diagnostic Confirme] Rattachement espace client echoue:', e)
+      }
+    }
+
     const brevoKey = process.env.BREVO_API_KEY
     if (!brevoKey || !email) {
-      // Le paiement est valide cote Stripe : on renvoie un succes pour ne pas inquieter l'acheteur,
-      // le cabinet recevra de toute facon la notification de paiement Stripe.
       console.error('[Diagnostic Confirme] Cle Brevo ou email acheteur manquant', { hasKey: Boolean(brevoKey), hasEmail: Boolean(email) })
       return NextResponse.json({ success: true, emailEnvoye: false })
     }
 
     const dateFr = new Date().toLocaleDateString('fr-FR', { day: '2-digit', month: 'long', year: 'numeric' })
     const questionsHtml = QUESTIONNAIRE.map((q, i) => `<li style="margin-bottom:8px;line-height:1.6;">${i + 1}. ${q}</li>`).join('')
+    const espaceBloc = espaceClientEmailBlock(accessLink, origin)
 
-    // Email acheteur : confirmation + questionnaire de cadrage
+    // Email acheteur : confirmation + acces espace client + questionnaire de cadrage
     const htmlAcheteur = `
 <!DOCTYPE html>
 <html lang="fr">
@@ -68,6 +114,7 @@ export async function POST(request: NextRequest) {
   <div style="background:#f8fafc;padding:24px;border:1px solid #e5e7eb;border-top:none;border-radius:0 0 8px 8px;">
     <p>Bonjour ${nom},</p>
     <p>Merci pour votre commande du ${f.label}. Votre paiement de ${f.prixEmail} a bien été enregistré. Un justificatif de paiement vous parvient séparément.</p>
+    ${espaceBloc}
     <p><strong>Pour démarrer</strong>, merci de répondre directement à cet email au questionnaire de cadrage suivant :</p>
     <ol style="padding-left:20px;margin:16px 0;">
       ${questionsHtml}
@@ -120,7 +167,7 @@ export async function POST(request: NextRequest) {
     <p style="margin:0 0 8px;">Email : <a href="mailto:${email}" style="color:#7c3aed;">${email}</a></p>
     <p style="margin:0 0 8px;">Montant : ${f.prixEmail} (payé par carte)</p>
     <p style="margin:0 0 8px;">Référence session : ${session.id}</p>
-    <p style="margin:12px 0 0;font-size:12px;color:#6b7280;">Le questionnaire de cadrage a été envoyé automatiquement à l'acheteur.</p>
+    <p style="margin:12px 0 0;font-size:12px;color:#6b7280;">Le questionnaire de cadrage a été envoyé automatiquement à l'acheteur. La commande est suivie dans l'espace client (statut en cours).</p>
   </div>
 </body>
 </html>`

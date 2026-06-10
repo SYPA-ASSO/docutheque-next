@@ -4,6 +4,7 @@ import { useEffect, useState, useCallback } from 'react'
 import { useRouter } from 'next/navigation'
 import { supabase } from '@/lib/supabase'
 import type { DocItem, Categorie } from '@/lib/types'
+import { DIAGNOSTIC_FORFAITS } from '@/lib/diagnostic-forfaits'
 import Header from '@/components/Header'
 import FooterMinimal from '@/components/FooterMinimal'
 import { CategorySearch } from '@/components/CategorySearch'
@@ -60,6 +61,17 @@ type DossierAssurance = {
   stripe_payment_id: string | null
 }
 
+type DossierRgpd = {
+  id: string
+  forfait: string
+  montant: number | null
+  mode_paiement: string
+  reference: string | null
+  statut: string
+  livrable_url: string | null
+  created_at: string
+}
+
 export default function EspaceClient() {
   const router = useRouter()
   const [onglet, setOnglet] = useState<'tableau-bord' | 'questions' | 'documents' | 'commandes' | 'factures' | 'abonnement' | 'profil'>('tableau-bord')
@@ -67,6 +79,7 @@ export default function EspaceClient() {
   const [questions, setQuestions] = useState<Question[]>([])
   const [factures, setFactures] = useState<Facture[]>([])
   const [dossiers, setDossiers] = useState<DossierAssurance[]>([])
+  const [dossiersRgpd, setDossiersRgpd] = useState<DossierRgpd[]>([])
   const [catalogue, setCatalogue] = useState<DocItem[]>([])
   const [catalogueFiltre, setCatalogueFiltre] = useState<DocItem[]>([])
   const [categoriesFiltres, setCategoriesFiltres] = useState<string[]>([])
@@ -113,6 +126,7 @@ export default function EspaceClient() {
       loadQuestions(session.user.id),
       loadFactures(session.user.id),
       loadDossiers(session.user.id),
+      loadDossiersRgpd(session.user.id),
       loadCatalogue(),
     ])
     setLoading(false)
@@ -136,6 +150,11 @@ export default function EspaceClient() {
   const loadDossiers = async (userId: string) => {
     const { data } = await supabase.from('dossiers_assurances').select('*').eq('user_id', userId).order('created_at', { ascending: false })
     if (data) setDossiers(data)
+  }
+
+  const loadDossiersRgpd = async (userId: string) => {
+    const { data } = await supabase.from('dossiers_rgpd').select('*').eq('user_id', userId).order('created_at', { ascending: false })
+    if (data) setDossiersRgpd(data)
   }
 
   const loadCatalogue = async () => {
@@ -728,6 +747,43 @@ export default function EspaceClient() {
                   </div>
                 )}
 
+                {/* Diagnostics RGPD */}
+                {dossiersRgpd.length > 0 && (
+                  <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.5rem' }}>
+                    <p style={{ color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 12px' }}>Diagnostics RGPD</p>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                      {dossiersRgpd.map(d => {
+                        const conf = DIAGNOSTIC_FORFAITS[d.forfait as 'essentiel' | 'standard'] || DIAGNOSTIC_FORFAITS.essentiel
+                        return (
+                          <div key={d.id} style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '12px', background: '#f8fafc', borderRadius: '8px' }}>
+                            <Shield size={16} color="#7c3aed" strokeWidth={1.5} style={{ flexShrink: 0 }} />
+                            <div style={{ flex: 1, minWidth: 0 }}>
+                              <p style={{ color: '#374151', fontSize: '12px', fontWeight: '600', margin: '0 0 2px' }}>{conf.label}</p>
+                              <p style={{ color: '#9ca3af', fontSize: '11px', margin: 0 }}>
+                                {new Date(d.created_at).toLocaleDateString('fr-FR')} · {d.montant ? `${d.montant}\u00a0€` : conf.prix} · {d.mode_paiement === 'virement' ? 'Virement' : 'Carte'}
+                                {d.mode_paiement === 'virement' && d.reference ? ` · ${d.reference}` : ''}
+                              </p>
+                            </div>
+                            {d.livrable_url ? (
+                              <a href={d.livrable_url} target="_blank" rel="noopener noreferrer"
+                                style={{ background: '#0f2d6e', color: 'white', padding: '7px 12px', borderRadius: '6px', fontSize: '11px', fontWeight: '700', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '5px', flexShrink: 0 }}>
+                                <Download size={12} /> Rapport
+                              </a>
+                            ) : (
+                              <span style={{ fontSize: '10px', fontWeight: '700', padding: '2px 8px', borderRadius: '20px', flexShrink: 0, background: d.statut === 'livre' ? '#f0fdf4' : d.statut === 'en_cours' ? '#fff7ed' : '#f3f4f6', color: d.statut === 'livre' ? '#15803d' : d.statut === 'en_cours' ? '#d97706' : '#6b7280' }}>
+                                {d.statut === 'livre' ? 'Livré' : d.statut === 'en_cours' ? 'En cours' : 'En attente'}
+                              </span>
+                            )}
+                          </div>
+                        )
+                      })}
+                    </div>
+                    <p style={{ color: '#9ca3af', fontSize: '11px', margin: '12px 0 0', lineHeight: '1.6' }}>
+                      Le rapport de conformité est déposé ici dès qu'il est prêt, et vous est également envoyé par email. Le délai court à compter de la réception de vos réponses au questionnaire de cadrage.
+                    </p>
+                  </div>
+                )}
+
                 {dossiers.length > 0 && (
                   <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.5rem' }}>
                     <p style={{ color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 12px' }}>Forfaits conseil assurances</p>
@@ -740,7 +796,7 @@ export default function EspaceClient() {
                               Forfait conseil assurances · {d.type === 'pro' ? 'Pro / Association' : 'Particulier'}
                             </p>
                             <p style={{ color: '#9ca3af', fontSize: '11px', margin: 0 }}>
-                              {new Date(d.created_at).toLocaleDateString('fr-FR')} · {d.type === 'pro' ? '150 € HT' : '90 € HT'}
+                              {new Date(d.created_at).toLocaleDateString('fr-FR')} · {d.type === 'pro' ? '150\u00a0€' : '90\u00a0€'}
                             </p>
                           </div>
                           <span style={{ fontSize: '10px', fontWeight: '700', padding: '2px 8px', borderRadius: '20px', flexShrink: 0, background: d.statut === 'livre' ? '#f0fdf4' : d.statut === 'en_cours' ? '#fff7ed' : '#f3f4f6', color: d.statut === 'livre' ? '#15803d' : d.statut === 'en_cours' ? '#d97706' : '#6b7280' }}>
@@ -752,7 +808,7 @@ export default function EspaceClient() {
                   </div>
                 )}
 
-                {questions.length === 0 && dossiers.length === 0 && !estAbonne && (
+                {questions.length === 0 && dossiers.length === 0 && dossiersRgpd.length === 0 && !estAbonne && (
                   <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '3rem', textAlign: 'center' }}>
                     <ShoppingBag size={32} color="#d1d5db" strokeWidth={1} style={{ marginBottom: '12px' }} />
                     <p style={{ color: '#6b7280', fontSize: '14px', margin: '0 0 16px' }}>Aucune commande pour l'instant.</p>

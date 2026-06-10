@@ -1,10 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getForfait } from '@/lib/diagnostic-forfaits'
+import { findOrCreateDiagnosticUser, createDossierRgpd, espaceClientEmailBlock } from '@/lib/diagnostic-account'
 
-// app/api/diagnostic/commande/route.ts (deploye sous app/api/checkout/diagnostic/commande/route.ts)
-// Commande d'un forfait de diagnostic par virement. Genere une reference, envoie a l'acheteur
-// le RIB (depuis les variables d'environnement) + le questionnaire, et notifie le cabinet.
-// Le RIB n'est jamais code en dur : il provient de CABINET_TITULAIRE / CABINET_IBAN / CABINET_BIC / CABINET_BANQUE.
+// app/api/checkout/diagnostic/commande/route.ts
+// Commande d'un forfait de diagnostic par virement. Genere une reference, rattache la commande a un
+// espace client (cree si besoin, statut en attente), envoie a l'acheteur le RIB (depuis les variables
+// d'environnement) + l'acces espace client + le questionnaire, et notifie le cabinet.
+// Le RIB n'est jamais code en dur : CABINET_TITULAIRE / CABINET_IBAN / CABINET_BIC / CABINET_BANQUE.
 // Regles : zero tiret long, NBSP avant euro, Notre juriste singulier.
 
 const QUESTIONNAIRE = [
@@ -76,7 +78,38 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Erreur de configuration serveur. Veuillez réessayer ultérieurement.' }, { status: 500 })
     }
 
-    // 8. Coordonnees bancaires depuis l'environnement (jamais codees en dur)
+    const origin =
+      request.headers.get('origin') ||
+      process.env.NEXT_PUBLIC_SITE_URL ||
+      'https://cholez-pagotto.fr'
+
+    // 8. Rattachement espace client + ligne de suivi (best effort : ne bloque pas la commande).
+    let accessLink: string | null = null
+    try {
+      const compte = await findOrCreateDiagnosticUser({
+        email: emailSafe,
+        fullName: nomSafe,
+        telephone: telSafe,
+        structure: structureSafe,
+        origin,
+      })
+      if (compte.userId) {
+        await createDossierRgpd({
+          userId: compte.userId,
+          forfaitId: f.id,
+          montantEuros: Math.round(f.montantCents / 100),
+          mode: 'virement',
+          reference,
+          stripeSessionId: null,
+          statut: 'en_attente',
+        })
+      }
+      if (compte.created) accessLink = compte.accessLink
+    } catch (e) {
+      console.error('[Diagnostic Commande] Rattachement espace client echoue:', e)
+    }
+
+    // 9. Coordonnees bancaires depuis l'environnement (jamais codees en dur)
     const titulaire = process.env.CABINET_TITULAIRE
     const iban = process.env.CABINET_IBAN
     const bic = process.env.CABINET_BIC
@@ -90,8 +123,9 @@ export async function POST(request: NextRequest) {
     const banqueAff = banque || ''
 
     const questionsHtml = QUESTIONNAIRE.map((q, i) => `<li style="margin-bottom:8px;line-height:1.6;">${i + 1}. ${q}</li>`).join('')
+    const espaceBloc = espaceClientEmailBlock(accessLink, origin)
 
-    // 9. Email acheteur : RIB + reference + questionnaire
+    // 10. Email acheteur : RIB + reference + acces espace client + questionnaire
     const htmlAcheteur = `
 <!DOCTYPE html>
 <html lang="fr">
@@ -112,6 +146,7 @@ export async function POST(request: NextRequest) {
       <tr><td style="padding:11px 16px;color:#6b7280;font-size:11px;font-weight:700;text-transform:uppercase;background:#f8fafc;">Référence</td><td style="padding:11px 16px;"><strong style="color:#0f2d6e;letter-spacing:0.03em;">${reference}</strong></td></tr>
     </table>
     <p style="font-size:13px;color:#374151;">Merci d'indiquer impérativement la référence <strong>${reference}</strong> dans le libellé de votre virement, afin que nous puissions le rapprocher de votre commande.</p>
+    ${espaceBloc}
     <p><strong>Vous pouvez déjà préparer vos réponses</strong> au questionnaire de cadrage ci-dessous (à nous renvoyer par retour d'email) :</p>
     <ol style="padding-left:20px;margin:16px 0;">
       ${questionsHtml}
@@ -155,7 +190,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "L'envoi a échoué. Veuillez réessayer ou nous contacter directement." }, { status: 500 })
     }
 
-    // 10. Notification cabinet
+    // 11. Notification cabinet
     const htmlCabinet = `
 <!DOCTYPE html>
 <html lang="fr">
@@ -171,7 +206,7 @@ export async function POST(request: NextRequest) {
     <p style="margin:0 0 8px;">Email : <a href="mailto:${emailSafe}" style="color:#7c3aed;">${emailSafe}</a></p>
     <p style="margin:0 0 8px;">Téléphone : ${telSafe}</p>
     <p style="margin:0 0 8px;">Montant attendu : ${f.prixEmail} par virement</p>
-    <p style="margin:12px 0 0;font-size:12px;color:#6b7280;">Le RIB et le questionnaire ont été envoyés à l'acheteur. À rapprocher dès réception du virement (livrable ${f.delai} à compter de l'encaissement et des réponses).</p>
+    <p style="margin:12px 0 0;font-size:12px;color:#6b7280;">Le RIB et le questionnaire ont été envoyés à l'acheteur. La commande figure dans l'espace client (statut en attente). À passer en cours dès réception du virement, livrable ${f.delai} à compter de l'encaissement et des réponses.</p>
   </div>
 </body>
 </html>`
