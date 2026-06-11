@@ -163,7 +163,7 @@ export default function DiagnosticEssentielPage() {
                   <p style={{ fontSize: 12.5, fontWeight: 700, color: '#0f2d6e', margin: '0 0 0.3rem' }}>Comment ça se passe ensuite ?</p>
                   <p style={{ fontSize: 12, color: '#374151', lineHeight: 1.6, margin: 0 }}>
                     Dès votre paiement (ou la réception de votre virement), vous recevez par email le questionnaire de cadrage.
-                    Notre juriste analyse vos réponses et vous remet le rapport sous 15 jours à compter de la réception de vos réponses.
+                    Notre juriste analyse vos réponses et vous remet le rapport sous 15 jours à compter de la réception de vos réponses. Le rapport est également mis à disposition dans votre espace client.
                   </p>
                 </div>
               </div>

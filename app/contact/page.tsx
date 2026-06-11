@@ -4,25 +4,7 @@ import { useState } from 'react'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { ChevronRight, Mail, Clock, MapPin, Send, CheckCircle, AlertCircle } from 'lucide-react'
-
-const SUJETS = [
-  // ── Services ──────────────────────────────────────────────────────
-  'Information sur mes droits (question juridique)',
-  'Conseil en assurances',
-  // ── Devis accompagnement ──────────────────────────────────────────
-  'Devis : Accompagnement professionnels',
-  'Devis : Accompagnement associations · ESS',
-  'Devis : Formation sur mesure',
-  'Devis : Mission RGPD · DPO externalisé',
-  // ── Compte & abonnement ───────────────────────────────────────────
-  'Mon abonnement Optimal',
-  'Résiliation abonnement',
-  'Problème technique · Espace client',
-  // ── Autres ────────────────────────────────────────────────────────
-  'Exercice de mes droits (RGPD)',
-  'Partenariat · Presse',
-  'Autre demande',
-]
+import { SUJETS } from '@/lib/contact-sujets'
 
 type Status = 'idle' | 'loading' | 'success' | 'error'
 

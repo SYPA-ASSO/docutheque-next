@@ -4,7 +4,7 @@ import { useState, useEffect, createContext, useContext } from 'react'
 import { useRouter, usePathname } from 'next/navigation'
 import {
   LayoutDashboard, FileText, Receipt, MessageSquare,
-  Users, TrendingUp, LogOut, Shield, Settings, AlertCircle
+  Users, TrendingUp, LogOut, Shield, ShieldCheck, Settings, AlertCircle
 } from 'lucide-react'
 
 type AdminContextType = {
@@ -91,6 +91,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     { href: '/admin/questions', label: 'Questions', icon: <MessageSquare size={16} strokeWidth={1.5} />, badge: questionsEnAttente },
     { href: '/admin/clients', label: 'Clients', icon: <Users size={16} strokeWidth={1.5} />, badge: migrationEnAttente },
     { href: '/admin/dossiers', label: 'Dossiers assurances', icon: <Shield size={16} strokeWidth={1.5} /> },
+    { href: '/admin/dossiers-rgpd', label: 'Diagnostics RGPD', icon: <ShieldCheck size={16} strokeWidth={1.5} /> },
     { href: '/admin/documents', label: 'Documents', icon: <FileText size={16} strokeWidth={1.5} /> },
     { href: '/admin/factures', label: 'Factures', icon: <Receipt size={16} strokeWidth={1.5} /> },
     { href: '/admin/revenus', label: 'Revenus', icon: <TrendingUp size={16} strokeWidth={1.5} /> },
