@@ -16,6 +16,45 @@ export const metadata = {
   },
 }
 
+const faq = [
+  {
+    q: "À qui s'adresse le Diagnostic RGPD Essentiel ?",
+    r: "Il s'adresse aux indépendants, micro-entreprises et petites associations dont l'activité repose sur un nombre limité de traitements de données, en pratique moins de cinq : fichier clients, prospects, contacts, newsletter. Si votre structure gère davantage de traitements ou des données sensibles, le forfait Standard est plus adapté."
+  },
+  {
+    q: "Sous combien de temps je reçois mon rapport ?",
+    r: "Le rapport vous est remis sous quinze jours à compter de la réception de vos réponses au questionnaire de cadrage. Le délai démarre donc à vos réponses, et non à la commande, afin que l'analyse porte sur des informations complètes."
+  },
+  {
+    q: "Comment se déroule la démarche après la commande ?",
+    r: "Dès votre paiement, ou la réception de votre virement, vous recevez par email un questionnaire de cadrage. Vous le complétez à votre rythme, notre juriste analyse vos réponses, vos outils et votre site, puis vous remet un rapport écrit. Le rapport est aussi déposé dans votre espace client."
+  },
+  {
+    q: "Puis-je régler par virement plutôt que par carte ?",
+    r: "Oui. Vous choisissez à la commande entre le paiement par carte bancaire et le virement. En cas de virement, vous recevez par email nos coordonnées bancaires et une référence à reporter dans le libellé ; le délai démarre à la réception du virement et de vos réponses."
+  },
+  {
+    q: "Quelle différence avec le Diagnostic Standard ?",
+    r: "Le Standard couvre cinq à quinze traitements, inclut un entretien de cadrage et une restitution en visio, une cartographie complète et un rapport plus détaillé, sous trente jours. L'Essentiel en est une version simplifiée, menée par email, pour les très petites structures."
+  },
+  {
+    q: "Le rapport est-il accessible dans mon espace client ?",
+    r: "Oui. Au moment de la commande, un espace client est créé à votre nom. Vous y suivez l'avancement et vous y retrouvez le rapport une fois déposé, en plus de son envoi par email."
+  },
+  {
+    q: "Mon entreprise est-elle vraiment concernée par le RGPD ?",
+    r: "Oui dès lors que vous traitez des données personnelles, c'est-à-dire dès que vous détenez le nom, l'adresse email ou le téléphone de clients, de prospects ou de membres. Le RGPD ne prévoit pas de seuil de taille ou de chiffre d'affaires en dessous duquel il ne s'appliquerait pas."
+  },
+  {
+    q: "Le registre des traitements est-il obligatoire, même pour une petite structure ?",
+    r: "Oui dans la quasi-totalité des cas. L'article 30 du RGPD impose un registre des activités de traitement. Une dérogation existe pour les structures de moins de 250 salariés, mais elle ne joue que si les traitements sont occasionnels, sans données sensibles et sans risque, ce qui ne concerne presque aucune structure active. Le diagnostic vous aide à constituer ce registre."
+  },
+  {
+    q: "Ce diagnostic me met-il en conformité ou remplace-t-il un DPO ?",
+    r: "Non. Le diagnostic établit un état des lieux et un plan d'action priorisé : il identifie les écarts et les corrections à apporter, la mise en conformité se faisant ensuite à partir de ses recommandations. Il ne remplace pas la désignation d'un délégué à la protection des données ; si vous en avez besoin, le DPO externalisé est un service distinct."
+  }
+]
+
 const schemaData = {
   "@context": "https://schema.org",
   "@graph": [
@@ -51,6 +90,15 @@ const schemaData = {
         { "@type": "ListItem", "position": 2, "name": "RGPD & conformité", "item": "https://cholez-pagotto.fr/rgpd-conformite" },
         { "@type": "ListItem", "position": 3, "name": "Diagnostic Essentiel", "item": "https://cholez-pagotto.fr/rgpd-conformite/diagnostic-essentiel" }
       ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://cholez-pagotto.fr/rgpd-conformite/diagnostic-essentiel#faq",
+      "mainEntity": faq.map((item) => ({
+        "@type": "Question",
+        "name": item.q,
+        "acceptedAnswer": { "@type": "Answer", "text": item.r }
+      }))
     }
   ]
 }
@@ -94,6 +142,9 @@ export default function DiagnosticEssentielPage() {
         {/* HERO */}
         <section style={{ background: 'linear-gradient(135deg, #0f2d6e 0%, #7c3aed 100%)', padding: '3.5rem 1.5rem 3rem', color: 'white' }}>
           <div style={{ maxWidth: 1000, margin: '0 auto' }}>
+            <div style={{ marginBottom: '1.1rem' }}>
+              <a href="/rgpd-conformite#tarifs" style={{ color: 'rgba(255,255,255,0.85)', textDecoration: 'none', fontSize: 13, fontWeight: 600 }}>← Voir toutes les formules</a>
+            </div>
             <span style={{ display: 'inline-block', background: 'rgba(255,255,255,0.2)', color: 'white', fontSize: 12, fontWeight: 700, padding: '5px 18px', borderRadius: 20, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '1.2rem' }}>
               Diagnostic RGPD Essentiel
             </span>
@@ -185,6 +236,21 @@ export default function DiagnosticEssentielPage() {
           </div>
 
         </div>
+
+        {/* FAQ */}
+        <section style={{ background: 'white', borderTop: '1px solid #e5e7eb', padding: '3rem 1.5rem' }}>
+          <div style={{ maxWidth: 760, margin: '0 auto' }}>
+            <h2 style={{ fontSize: '1.4rem', fontWeight: 700, color: '#0f2d6e', marginBottom: '1.5rem' }}>Questions fréquentes</h2>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+              {faq.map((item, i) => (
+                <details key={i} style={{ background: '#f8fafc', border: '1px solid #e5e7eb', borderRadius: 10, padding: '1rem 1.25rem' }}>
+                  <summary style={{ fontSize: 14, fontWeight: 600, color: '#0f2d6e', cursor: 'pointer' }}>{item.q}</summary>
+                  <p style={{ fontSize: 13.5, color: '#374151', lineHeight: 1.7, margin: '0.75rem 0 0' }}>{item.r}</p>
+                </details>
+              ))}
+            </div>
+          </div>
+        </section>
       </main>
       <Footer />
     </>

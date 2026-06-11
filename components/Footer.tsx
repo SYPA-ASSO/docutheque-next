@@ -23,11 +23,9 @@ export default function Footer() {
             </p>
           </div>
           <div style={{ maxWidth: '360px' }}>
-            <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '12px', lineHeight: '1.8', margin: '0 0 8px' }}>
-              Information juridique, conseil en assurances et formalités administratives. Juriste formaliste, membre CRFF.
-            </p>
-            <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '11px', margin: 0 }}>
-              ORIAS n°26003943 · Sous contrôle ACPR · Adhérent ENDYA
+            <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '12px', lineHeight: '1.8', margin: 0 }}>
+              Information juridique, conseil en assurances et formalités administratives, pour les particuliers,
+              les professionnels, les associations et les collectivités.
             </p>
           </div>
         </div>
@@ -108,6 +106,14 @@ export default function Footer() {
           </div>
 
         </div>
+
+        {/* MENTION REGLEMENTAIRE */}
+        <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '11px', lineHeight: '1.7', margin: 0, paddingTop: '1.5rem', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
+          Activité de conseil en assurances et réassurances réglementée, exercée sous le contrôle de l'ACPR
+          (Autorité de Contrôle Prudentiel et de Résolution), déclarée à l'ORIAS sous le numéro 26003943.
+          Membre de l'association d'autorégulation ENDYA. Membre du CRFF (Conseil Représentatif des Formalistes de France).
+        </p>
+
       </div>
 
       {/* BARRE BASSE */}

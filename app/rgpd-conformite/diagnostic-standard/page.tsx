@@ -16,6 +16,45 @@ export const metadata = {
   },
 }
 
+const faq = [
+  {
+    q: "À qui s'adresse le Diagnostic RGPD Standard ?",
+    r: "Il s'adresse aux TPE, aux associations établies et aux professions libérales qui mettent en œuvre cinq à quinze traitements de données : clients, fournisseurs, salariés ou bénévoles, prospection, site web. En deçà, l'Essentiel suffit ; au-delà, l'Approfondi est plus adapté."
+  },
+  {
+    q: "L'entretien de cadrage et la restitution sont-ils inclus en visio ?",
+    r: "Oui, et c'est la principale différence avec l'Essentiel. Le Standard comprend un entretien de cadrage en visio en début de mission et une restitution commentée en visio à la remise du rapport, pour échanger directement sur les constats et les priorités."
+  },
+  {
+    q: "Sous combien de temps je reçois mon rapport ?",
+    r: "Le rapport vous est remis sous trente jours à compter de la réception de vos réponses au questionnaire et de l'entretien de cadrage. Le délai court à partir de ces éléments, afin que l'analyse soit menée sur une base complète."
+  },
+  {
+    q: "Comment se déroule la démarche après la commande ?",
+    r: "Après votre paiement ou votre virement, vous recevez le questionnaire de cadrage et nous planifions l'entretien visio. Notre juriste analyse vos traitements, vos outils et votre site, rédige le rapport, puis vous le restitue en visio. Le rapport est également déposé dans votre espace client."
+  },
+  {
+    q: "Quelle différence avec l'Essentiel et l'Approfondi ?",
+    r: "L'Essentiel est une version simplifiée, par email, pour les très petites structures de moins de cinq traitements. L'Approfondi, sur devis, vise les organisations plus complexes ou à risque, avec une cartographie multi-niveaux et un rapport étendu. Le Standard se situe entre les deux."
+  },
+  {
+    q: "Suis-je obligé de désigner un DPO ?",
+    r: "Rarement. La désignation d'un délégué à la protection des données n'est obligatoire que dans trois cas : les autorités et organismes publics, le suivi régulier et systématique des personnes à grande échelle, et le traitement à grande échelle de données sensibles. La plupart des TPE et associations n'y sont donc pas tenues, même si un référent interne reste recommandé."
+  },
+  {
+    q: "Quelles sanctions en cas de non-conformité ?",
+    r: "Les sanctions peuvent atteindre vingt millions d'euros ou quatre pour cent du chiffre d'affaires annuel mondial. En pratique, pour une petite structure, les sanctions de la CNIL sont proportionnées, mais l'absence de registre ou le défaut de notification d'une violation aggravent sensiblement la situation."
+  },
+  {
+    q: "Puis-je régler par virement ?",
+    r: "Oui. À la commande, vous choisissez entre la carte bancaire et le virement. Pour un virement, vous recevez par email nos coordonnées et une référence à indiquer dans le libellé ; le délai démarre à la réception du virement et de vos réponses."
+  },
+  {
+    q: "Le rapport est-il accessible dans mon espace client ?",
+    r: "Oui. Un espace client est créé à votre nom lors de la commande. Vous y suivez l'avancement de la mission et vous y téléchargez le rapport une fois déposé, en complément de son envoi par email."
+  }
+]
+
 const schemaData = {
   "@context": "https://schema.org",
   "@graph": [
@@ -51,6 +90,15 @@ const schemaData = {
         { "@type": "ListItem", "position": 2, "name": "RGPD & conformité", "item": "https://cholez-pagotto.fr/rgpd-conformite" },
         { "@type": "ListItem", "position": 3, "name": "Diagnostic Standard", "item": "https://cholez-pagotto.fr/rgpd-conformite/diagnostic-standard" }
       ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://cholez-pagotto.fr/rgpd-conformite/diagnostic-standard#faq",
+      "mainEntity": faq.map((item) => ({
+        "@type": "Question",
+        "name": item.q,
+        "acceptedAnswer": { "@type": "Answer", "text": item.r }
+      }))
     }
   ]
 }
@@ -93,6 +141,9 @@ export default function DiagnosticStandardPage() {
         {/* HERO */}
         <section style={{ background: 'linear-gradient(135deg, #0f2d6e 0%, #7c3aed 100%)', padding: '3.5rem 1.5rem 3rem', color: 'white' }}>
           <div style={{ maxWidth: 1000, margin: '0 auto' }}>
+            <div style={{ marginBottom: '1.1rem' }}>
+              <a href="/rgpd-conformite#tarifs" style={{ color: 'rgba(255,255,255,0.85)', textDecoration: 'none', fontSize: 13, fontWeight: 600 }}>← Voir toutes les formules</a>
+            </div>
             <span style={{ display: 'inline-block', background: 'rgba(255,255,255,0.2)', color: 'white', fontSize: 12, fontWeight: 700, padding: '5px 18px', borderRadius: 20, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '1.2rem' }}>
               Diagnostic RGPD Standard
             </span>
@@ -162,7 +213,7 @@ export default function DiagnosticStandardPage() {
                   <p style={{ fontSize: 12.5, fontWeight: 700, color: '#0f2d6e', margin: '0 0 0.3rem' }}>Comment ça se passe ensuite ?</p>
                   <p style={{ fontSize: 12, color: '#374151', lineHeight: 1.6, margin: 0 }}>
                     Dès votre paiement (ou la réception de votre virement), vous recevez par email le questionnaire de cadrage.
-                    Après l'entretien visio et l'analyse de vos réponses, notre juriste vous remet le rapport sous 30 jours à compter de la réception de vos réponses.
+                    Après l'entretien visio et l'analyse de vos réponses, notre juriste vous remet le rapport sous 30 jours à compter de la réception de vos réponses. Le rapport est également mis à disposition dans votre espace client.
                   </p>
                 </div>
               </div>
@@ -184,6 +235,21 @@ export default function DiagnosticStandardPage() {
           </div>
 
         </div>
+
+        {/* FAQ */}
+        <section style={{ background: 'white', borderTop: '1px solid #e5e7eb', padding: '3rem 1.5rem' }}>
+          <div style={{ maxWidth: 760, margin: '0 auto' }}>
+            <h2 style={{ fontSize: '1.4rem', fontWeight: 700, color: '#0f2d6e', marginBottom: '1.5rem' }}>Questions fréquentes</h2>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+              {faq.map((item, i) => (
+                <details key={i} style={{ background: '#f8fafc', border: '1px solid #e5e7eb', borderRadius: 10, padding: '1rem 1.25rem' }}>
+                  <summary style={{ fontSize: 14, fontWeight: 600, color: '#0f2d6e', cursor: 'pointer' }}>{item.q}</summary>
+                  <p style={{ fontSize: 13.5, color: '#374151', lineHeight: 1.7, margin: '0.75rem 0 0' }}>{item.r}</p>
+                </details>
+              ))}
+            </div>
+          </div>
+        </section>
       </main>
       <Footer />
     </>

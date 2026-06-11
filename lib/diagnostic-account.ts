@@ -91,7 +91,7 @@ export async function findOrCreateDiagnosticUser(params: {
         email,
         prenom,
         nom,
-        type: 'pro',
+        type: 'professionnel',
         telephone: params.telephone || null,
         nom_structure: params.structure || null,
         newsletter: false,

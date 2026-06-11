@@ -106,7 +106,15 @@ export async function POST(request: NextRequest) {
       }
       if (compte.created) accessLink = compte.accessLink
     } catch (e) {
-      console.error('[Diagnostic Commande] Rattachement espace client echoue:', e)
+      const err = e as { name?: string; message?: string; status?: number; code?: string; details?: string; hint?: string }
+      console.error('[Diagnostic Commande] Rattachement espace client echoue:', JSON.stringify({
+        name: err?.name ?? null,
+        message: err?.message ?? null,
+        status: err?.status ?? null,
+        code: err?.code ?? null,
+        details: err?.details ?? null,
+        hint: err?.hint ?? null,
+      }))
     }
 
     // 9. Coordonnees bancaires depuis l'environnement (jamais codees en dur)
