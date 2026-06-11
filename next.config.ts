@@ -149,6 +149,22 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  async headers() {
+    return [
+      {
+        // Revalidation systematique : le navigateur verifie toujours la fraicheur
+        // avant de reutiliser une page ou un fichier du dossier public.
+        // Les fichiers versionnes de /_next/static restent immuables (Next les protege).
+        source: '/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=0, must-revalidate',
+          },
+        ],
+      },
+    ];
+  },
 };
 
 export default nextConfig;
