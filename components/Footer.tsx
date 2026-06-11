@@ -6,7 +6,7 @@ export default function Footer() {
     <footer style={{ background: '#0f2d6e', color: 'white' }}>
 
       {/* CORPS */}
-      <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '3rem 2rem 2rem' }}>
+      <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '3rem 1.5rem 2rem' }}>
 
         {/* LOGO + TAGLINE */}
         <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', flexWrap: 'wrap', gap: '2rem', marginBottom: '2.5rem', paddingBottom: '2rem', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
@@ -31,7 +31,7 @@ export default function Footer() {
         </div>
 
         {/* COLONNES */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '2rem', marginBottom: '2.5rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '2rem 1.5rem', marginBottom: '2.5rem' }}>
 
           {/* Services */}
           <div>
@@ -117,7 +117,7 @@ export default function Footer() {
       </div>
 
       {/* BARRE BASSE */}
-      <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)', padding: '1rem 2rem' }}>
+      <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)', padding: '1rem 1.5rem' }}>
         <div style={{ maxWidth: '1100px', margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '8px' }}>
           <p style={{ color: 'rgba(255,255,255,0.35)', fontSize: '11px', margin: 0 }}>
             © {new Date().getFullYear()} Cabinet Cholez-Pagotto · Tous droits réservés

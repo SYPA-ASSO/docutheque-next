@@ -29,9 +29,9 @@ export default function About() {
 
   return (
     <section style={{background: '#f8fafc', borderTop: '1px solid #e5e7eb', padding: '4rem 0'}}>
-      <div style={{maxWidth: '1200px', margin: '0 auto', padding: '0 2rem', display: 'flex', gap: '2rem', alignItems: 'flex-start'}}>
+      <div style={{maxWidth: '1200px', margin: '0 auto', padding: '0 2rem', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', alignItems: 'flex-start'}}>
 
-        <div style={{flex: '0 0 48%'}}>
+        <div>
           <span style={{background: '#eff6ff', color: '#1a4fba', fontSize: '11px', fontWeight: '600', padding: '3px 12px', borderRadius: '20px', letterSpacing: '0.05em'}}>
             QUI SOMMES-NOUS
           </span>
@@ -60,7 +60,7 @@ export default function About() {
           </div>
         </div>
 
-        <div style={{flex: '0 0 48%', display: 'flex', flexDirection: 'column', gap: '14px'}}>
+        <div style={{display: 'flex', flexDirection: 'column', gap: '14px'}}>
           <div style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.25rem'}}>
             <div style={{display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px'}}>
               <UserCheck size={22} color="#1a4fba" strokeWidth={1.5} />

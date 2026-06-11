@@ -61,8 +61,8 @@ export default function HowItWorks() {
       {/* SECTION 3 - INFORMATION JURIDIQUE */}
       <section style={{background: 'white', padding: '4rem 0', borderBottom: '1px solid #e5e7eb'}}>
         <div style={{maxWidth: '1200px', margin: '0 auto', padding: '0 2rem'}}>
-          <div style={{display: 'flex', gap: '3rem', alignItems: 'flex-start'}}>
-            <div style={{flex: '0 0 48%'}}>
+          <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem', alignItems: 'flex-start'}}>
+            <div>
               <span style={{background: '#eff6ff', color: '#1a4fba', fontSize: '11px', fontWeight: '600', padding: '3px 12px', borderRadius: '20px', letterSpacing: '0.05em'}}>INFORMATION JURIDIQUE</span>
               <h2 style={{fontSize: '1.3rem', fontWeight: '700', color: '#0f2d6e', margin: '12px 0 16px 0', lineHeight: '1.4'}}>L'information juridique, qu'est-ce que c'est ?</h2>
               <p style={{color: '#374151', fontSize: '0.95rem', lineHeight: '1.8', marginBottom: '16px'}}>
@@ -75,7 +75,7 @@ export default function HowItWorks() {
                 Deux formes d'accompagnement complémentaires : une bibliothèque de modèles de documents téléchargeables et personnalisables, et un service de réponse pédagogique pour éclairer vos droits avant d'agir.
               </p>
             </div>
-            <div style={{flex: '0 0 48%', display: 'flex', flexDirection: 'column', gap: '14px'}}>
+            <div style={{display: 'flex', flexDirection: 'column', gap: '14px'}}>
               <div style={{background: '#f8fafc', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.25rem'}}>
                 <div style={{display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px'}}>
                   <ClipboardList size={22} color="#1a4fba" strokeWidth={1.5} />

@@ -1,14 +1,26 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
 @import "tailwindcss";
 
-* {
+*, *::before, *::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
 }
 
 body {
   font-family: "Inter", system-ui, sans-serif;
   color: #1a1a2e;
   background: white;
+}
+
+/* ===== Responsive : replie les grilles multi-colonnes en une colonne sous 768px ===== */
+@media (max-width: 768px) {
+  [style*="grid-template-columns"] {
+    grid-template-columns: 1fr !important;
+  }
 }
