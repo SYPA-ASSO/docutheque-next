@@ -24,3 +24,23 @@ body {
     grid-template-columns: 1fr !important;
   }
 }
+
+/* ===== Responsive : empile les mises en page a deux colonnes en flex sous 768px =====
+   Cible les conteneurs qui possedent une colonne a largeur fixe (flex: 0 0 ...),
+   typiquement les barres laterales, sommaires et vignettes. Le conteneur passe en
+   colonne et la colonne fixe prend toute la largeur. Les variantes avec et sans
+   espace apres le deux-points couvrent le rendu serveur (Next.js) et le rendu
+   client. N'affecte pas les rangees icone + texte (qui utilisent flex-shrink, pas
+   le raccourci flex). ===== */
+@media (max-width: 768px) {
+  :has(> [style*="flex: 0 0"]),
+  :has(> [style*="flex:0 0"]) {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+  [style*="flex: 0 0"],
+  [style*="flex:0 0"] {
+    flex: none !important;
+    width: 100% !important;
+  }
+}
