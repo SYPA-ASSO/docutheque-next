@@ -3,7 +3,8 @@ import CookieBanner from '@/components/CookieBanner'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Docuthèque · Cabinet Cholez-Pagotto',
+  metadataBase: new URL('https://cholez-pagotto.fr'),
+  title: 'Cabinet Cholez-Pagotto',
   description: 'Information juridique, documents téléchargeables et personnalisables, conseil en assurances. Comprendre. Décider. Agir. Juriste formaliste, membre CRFF, ORIAS n°26003943.',
   icons: {
     icon: '/favicon-32x32.png',
@@ -11,13 +12,13 @@ export const metadata: Metadata = {
     apple: '/apple-touch-icon.png',
   },
   alternates: {
-    canonical: 'https://cholez-pagotto.fr',
+    canonical: './',
   },
   openGraph: {
-    title: 'Docuthèque · Cabinet Cholez-Pagotto',
+    title: 'Cabinet Cholez-Pagotto',
     description: 'Information juridique, documents téléchargeables et personnalisables, conseil en assurances. Comprendre. Décider. Agir.',
-    url: 'https://cholez-pagotto.fr',
-    siteName: 'Docuthèque · Cabinet Cholez-Pagotto',
+    url: './',
+    siteName: 'Cabinet Cholez-Pagotto',
     images: [
       {
         url: '/logo-social-512x512.png',
@@ -31,7 +32,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary',
-    title: 'Docuthèque · Cabinet Cholez-Pagotto',
+    title: 'Cabinet Cholez-Pagotto',
     description: 'Information juridique, documents téléchargeables et personnalisables, conseil en assurances.',
     images: ['/logo-social-512x512.png'],
   },
