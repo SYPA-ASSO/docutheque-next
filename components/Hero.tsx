@@ -18,7 +18,7 @@ export default function Hero() {
           <p style={{color: 'rgba(255,255,255,0.75)', fontSize: '1rem', lineHeight: '1.7', maxWidth: '480px', margin: '0 0 24px 0'}}>
             Modèles de documents conformes au droit français, téléchargeables en DOCX, prêts à l'emploi et personnalisables. Et si vous avez une question sur vos droits, un juriste vous répond sous 24 à 48h, en clair, sans jargon.
           </p>
-          <div style={{display: 'flex', gap: '12px', marginBottom: '20px'}}>
+          <div style={{display: 'flex', gap: '12px', marginBottom: '20px', flexWrap: 'wrap', rowGap: '12px'}}>
             <button style={{background: 'white', color: '#1a4fba', border: 'none', padding: '11px 22px', borderRadius: '6px', fontSize: '13px', fontWeight: '600', cursor: 'pointer'}}>
               Trouver mon document →
             </button>
@@ -47,8 +47,12 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* COLONNE DROITE — STATS */}
-        <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gridTemplateRows: '1fr 1fr', gap: '14px', minWidth: '400px', maxWidth: '400px', alignSelf: 'stretch'}}>
+        {/* COLONNE DROITE — STATS
+           flex: 0 0 400px remplace minWidth/maxWidth 400px : largeur identique sur
+           ordinateur, mais la colonne entre desormais dans la regle globale qui
+           empile les colonnes fixes sous 768px (le bloc passe sous le texte en
+           pleine largeur sur mobile). */}
+        <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gridTemplateRows: '1fr 1fr', gap: '14px', flex: '0 0 400px', alignSelf: 'stretch'}}>
           {[
             { icon: <FileText size={32} color="#93c5fd" strokeWidth={1.5} />, text: 'Des milliers de situations juridiques couvertes' },
             { icon: <Scale size={32} color="#93c5fd" strokeWidth={1.5} />, text: 'À jour des jurisprudences' },
