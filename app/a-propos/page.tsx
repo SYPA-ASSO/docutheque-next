@@ -69,7 +69,7 @@ export default function APropos() {
           </div>
         </section>
 
-        <div style={{ margin: '0 auto', padding: '3rem 2rem' }}>
+        <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '3rem 2rem' }}>
 
           {/* PROFIL */}
           <section style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '16px', padding: '2.5rem', marginBottom: '2rem' }}>
@@ -174,6 +174,35 @@ export default function APropos() {
                     <p style={{ color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: 0 }}>{item.titre}</p>
                     <span style={{ background: '#eff6ff', color: '#1a4fba', fontSize: '10px', fontWeight: '700', padding: '2px 8px', borderRadius: '10px', whiteSpace: 'nowrap', marginLeft: '8px' }}>{item.badge}</span>
                   </div>
+                  <p style={{ color: '#6b7280', fontSize: '12px', lineHeight: '1.6', margin: 0 }}>{item.desc}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* RESEAU DE PARTENAIRES */}
+          <section style={{ marginBottom: '2rem' }}>
+            <h2 style={{ color: '#0f2d6e', fontSize: '1.2rem', fontWeight: '700', margin: '0 0 0.75rem' }}>Un réseau de professionnels partenaires</h2>
+            <p style={{ color: '#6b7280', fontSize: '14px', lineHeight: '1.8', margin: '0 0 1.25rem' }}>
+              Le cabinet délimite clairement ce qu'il prend en charge et ce qui relève d'autres professions réglementées. Pour que vous gardiez un seul interlocuteur, il travaille en collaboration avec un réseau de professionnels et coordonne, lorsque c'est nécessaire, l'intervention de la bonne expertise.
+            </p>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px' }}>
+              {[
+                {
+                  titre: 'Avocats',
+                  desc: "Pour la consultation juridique personnalisée, la rédaction d'actes et la représentation en justice, réservées à la profession d'avocat par la loi du 31 décembre 1971. Le cabinet collabore avec des avocats et oriente vers eux.",
+                },
+                {
+                  titre: 'Notaires',
+                  desc: "Pour les actes authentiques et les formalités relevant de leur compétence exclusive. Le cabinet coordonne, le cas échéant, l'intervention d'un notaire partenaire.",
+                },
+                {
+                  titre: 'Experts-comptables',
+                  desc: "La tenue de la comptabilité et l'établissement des comptes annuels, réservés à cette profession par l'ordonnance du 19 septembre 1945, ne relèvent pas du cabinet : ils sont confiés à des experts-comptables partenaires, notamment lors de la création d'entreprise.",
+                },
+              ].map((item, i) => (
+                <div key={i} style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.25rem', borderTop: '3px solid #c8a84b' }}>
+                  <p style={{ color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 8px' }}>{item.titre}</p>
                   <p style={{ color: '#6b7280', fontSize: '12px', lineHeight: '1.6', margin: 0 }}>{item.desc}</p>
                 </div>
               ))}
