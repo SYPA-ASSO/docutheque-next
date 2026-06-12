@@ -93,7 +93,7 @@ export default function Contact() {
           </div>
         </div>
 
-        <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '3rem 2rem', display: 'flex', gap: '3rem', alignItems: 'flex-start' }}>
+        <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '3rem 2rem', display: 'grid', gridTemplateColumns: '1fr 280px', gap: '3rem', alignItems: 'start' }}>
 
           {/* FORMULAIRE */}
           <div style={{ flex: 1, minWidth: 0 }}>
@@ -299,7 +299,7 @@ export default function Contact() {
                 Pour une réponse rédigée par un juriste sous 24 à 48h, utilisez notre service dédié.
               </p>
               <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '11px', lineHeight: '1.6', margin: '0 0 14px', fontStyle: 'italic' }}>
-                Ce service constitue une information juridique au sens de la loi n°71-1130 du 31 décembre 1971 et ne constitue pas une consultation juridique personnalisée. La réponse apportée vous permettra de mieux comprendre vos droits, d'identifier les règles juridiques applicables à votre situation et de prendre vos décisions en toute connaissance de cause. Le cas échéant, vous serez orienté vers le professionnel du droit compétent.
+                Ce service constitue une information juridique au sens de la loi n°71-1130 du 31 décembre 1971 et ne constitue pas une consultation juridique personnalisée. La réponse apportée vous permettra de mieux comprendre vos droits, d'identifier les règles juridiques applicables à votre situation et de prendre vos décisions en toute connaissance de cause. Le cas échéant, votre situation est traitée en collaboration avec un avocat ou un professionnel du droit partenaire, ou vous êtes orienté vers lui.
               </p>
               <a href="/information-sur-vos-droits" style={{ display: 'block', background: 'white', color: '#0f2d6e', padding: '10px', borderRadius: '8px', fontSize: '12px', fontWeight: '700', textDecoration: 'none', textAlign: 'center' }}>
                 Poser ma question →

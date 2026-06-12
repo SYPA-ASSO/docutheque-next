@@ -36,7 +36,7 @@ export default function MentionsLegales() {
           </div>
         </div>
 
-        <div style={{maxWidth: '1100px', margin: '0 auto', padding: '3rem 2rem', display: 'flex', gap: '3rem', alignItems: 'flex-start'}}>
+        <div style={{maxWidth: '1100px', margin: '0 auto', padding: '3rem 2rem', display: 'grid', gridTemplateColumns: '1fr 240px', gap: '3rem', alignItems: 'start'}}>
 
           {/* COLONNE PRINCIPALE */}
           <div style={{flex: 1, minWidth: 0}}>
@@ -79,7 +79,7 @@ export default function MentionsLegales() {
 
                   <div style={{background: '#eff6ff', borderRadius: '8px', padding: '12px 14px'}}>
                     <p style={{color: '#1e3a5f', fontSize: '12px', lineHeight: '1.7', margin: 0}}>
-                      Le Cabinet Cholez-Pagotto n'est pas un cabinet d'avocats. Les informations et documents proposés sur ce site sont à visée informative et pédagogique. Ils ne constituent pas un conseil juridique personnalisé ni un acte sous seing privé au sens de la loi n°71-1130 du 31 décembre 1971. Toute situation nécessitant une consultation juridique ou la rédaction d'actes fera l'objet d'une orientation vers les professionnels du droit compétents (avocats, notaires).
+                      Le Cabinet Cholez-Pagotto n'est pas un cabinet d'avocats. Les informations et documents proposés sur ce site sont à visée informative et pédagogique. Ils ne constituent pas un conseil juridique personnalisé ni un acte sous seing privé au sens de la loi n°71-1130 du 31 décembre 1971. Le cabinet travaille en collaboration avec des avocats et d'autres professionnels du droit réglementés (notaires). Toute situation nécessitant une consultation juridique ou la rédaction d'actes est traitée avec ces partenaires ou orientée vers eux.
                     </p>
                   </div>
                 </div>

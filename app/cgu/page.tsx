@@ -56,7 +56,7 @@ export default function CGU() {
           </div>
         </div>
 
-        <div style={{maxWidth: '1100px', margin: '0 auto', padding: '3rem 2rem', display: 'flex', gap: '3rem', alignItems: 'flex-start'}}>
+        <div style={{maxWidth: '1100px', margin: '0 auto', padding: '3rem 2rem', display: 'grid', gridTemplateColumns: '1fr 240px', gap: '3rem', alignItems: 'start'}}>
 
           <div style={{flex: 1, minWidth: 0}}>
 
@@ -159,7 +159,7 @@ export default function CGU() {
                     <p style={plastyle}>Ce service fait l'objet d'un devis personnalisé communiqué avant toute souscription. Les frais de greffe et de publication au journal d'annonces légales sont indépendants des honoraires du Prestataire et restent à la charge exclusive du Client.</p>
                   </div>
                   <div style={hlstyle}>
-                    <strong>Nature des services : information importante</strong>. Les Contenus numériques et le Service d'information juridique sont fournis à titre informatif et pédagogique. Ils ne constituent pas un conseil juridique personnalisé ni un acte sous seing privé au sens de la loi n°71-1130 du 31 décembre 1971. Le Cabinet Cholez-Pagotto n'est pas un cabinet d'avocats. Pour toute situation nécessitant un acte juridique ou une représentation, le Client sera orienté vers un professionnel du droit habilité.
+                    <strong>Nature des services : information importante</strong>. Les Contenus numériques et le Service d'information juridique sont fournis à titre informatif et pédagogique. Ils ne constituent pas un conseil juridique personnalisé ni un acte sous seing privé au sens de la loi n°71-1130 du 31 décembre 1971. Le Cabinet Cholez-Pagotto n'est pas un cabinet d'avocats ; il travaille en collaboration avec des avocats et d'autres professionnels du droit réglementés (notaires). Pour toute situation nécessitant un acte juridique ou une représentation, le Client est accompagné avec le concours de ces partenaires ou orienté vers le professionnel du droit habilité.
                   </div>
                 </div>
               </section>
@@ -299,7 +299,7 @@ export default function CGU() {
                   <li>Ne pas utiliser la Plateforme à des fins illicites, contraires à l'ordre public ou aux bonnes mœurs ;</li>
                   <li>Ne pas soumettre de questions relevant d'une urgence judiciaire (garde à vue, audience imminente) pour lesquelles seul un avocat est habilité à intervenir.</li>
                 </ul>
-                <p style={plastyle}>Le Client reconnaît que les Contenus numériques mis à disposition sont des modèles généraux à visée pédagogique. Leur adaptation à sa situation particulière lui incombe et relève de sa seule responsabilité. Pour toute situation complexe ou contentieuse, le Client est invité à consulter un professionnel du droit habilité.</p>
+                <p style={plastyle}>Le Client reconnaît que les Contenus numériques mis à disposition sont des modèles généraux à visée pédagogique. Leur adaptation à sa situation particulière lui incombe et relève de sa seule responsabilité. Pour toute situation complexe ou contentieuse, le Client est accompagné en lien avec un avocat partenaire ou orienté vers le professionnel du droit habilité.</p>
               </section>
 
               {/* ART. 15 */}
