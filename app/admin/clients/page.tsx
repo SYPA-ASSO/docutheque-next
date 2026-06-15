@@ -28,6 +28,7 @@ export default function AdminClients() {
   const [search, setSearch] = useState('')
   const [filtre, setFiltre] = useState<'tous' | 'abonnes' | 'gratuits' | 'migration'>('tous')
   const [selectedClient, setSelectedClient] = useState<Client | null>(null)
+  const [inclusesMois, setInclusesMois] = useState<Set<string>>(new Set())
 
   useEffect(() => {
     if (!password) return
@@ -35,6 +36,20 @@ export default function AdminClients() {
       .then(r => r.json())
       .then(d => { setClients(d.clients || []); setLoading(false) })
       .catch(() => setLoading(false))
+    // Questions incluses du mois en cours, pour badger les abonnes (mois civil, comme partout)
+    fetch('/api/admin/questions-list', { headers: { 'x-admin-password': password } })
+      .then(r => r.ok ? r.json() : { questions: [] })
+      .then(d => {
+        const now = new Date()
+        const ids = (d.questions || [])
+          .filter((q: { type: string; created_at: string }) =>
+            q.type === 'incluse' &&
+            new Date(q.created_at).getFullYear() === now.getFullYear() &&
+            new Date(q.created_at).getMonth() === now.getMonth())
+          .map((q: { user_id: string }) => q.user_id)
+        setInclusesMois(new Set<string>(ids))
+      })
+      .catch(() => {})
   }, [password])
 
   const clientsFiltres = clients.filter(c => {
@@ -70,6 +85,10 @@ export default function AdminClients() {
     const periode = c.abonnement_periode === 'yearly' ? 'annuel' : 'mensuel'
     return `Optimal ${type} · ${periode}`
   }
+
+  // 1er du mois prochain : date de reinitialisation de la question incluse
+  const dateReinitIncluse = new Date(new Date().getFullYear(), new Date().getMonth() + 1, 1)
+    .toLocaleDateString('fr-FR', { day: 'numeric', month: 'long' })
 
   if (loading) return <p style={{ color: '#6b7280', fontSize: '14px' }}>Chargement...</p>
 
@@ -124,11 +143,16 @@ export default function AdminClients() {
               <div style={{ flex: 1, minWidth: 0 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
                   <p style={{ color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: 0 }}>{client.prenom} {client.nom}</p>
-                  {client.nom_structure && <span style={{ color: '#6b7280', fontSize: '12px' }}>— {client.nom_structure}</span>}
+                  {client.nom_structure && <span style={{ color: '#6b7280', fontSize: '12px' }}>· {client.nom_structure}</span>}
                   {abonnementLabel(client) && (
                     <span style={{ background: '#eff6ff', color: '#1a4fba', fontSize: '9px', fontWeight: '700', padding: '1px 6px', borderRadius: '4px' }}>
                       {abonnementLabel(client)}
                     </span>
+                  )}
+                  {client.abonnement_actif && (
+                    inclusesMois.has(client.id)
+                      ? <span style={{ background: '#f3f4f6', color: '#6b7280', fontSize: '9px', fontWeight: '700', padding: '1px 6px', borderRadius: '4px' }}>Incluse consommée</span>
+                      : <span style={{ background: '#f0fdf4', color: '#15803d', fontSize: '9px', fontWeight: '700', padding: '1px 6px', borderRadius: '4px' }}>Incluse disponible</span>
                   )}
                   {client.type === 'particulier' && client.siret && (
                     <span style={{ background: '#fef3c7', color: '#d97706', fontSize: '9px', fontWeight: '700', padding: '1px 6px', borderRadius: '4px' }}>
@@ -166,7 +190,7 @@ export default function AdminClients() {
             </p>
             <button onClick={() => setSelectedClient(null)} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#9ca3af', fontSize: '18px', padding: 0, lineHeight: 1 }}>×</button>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '16px' }}>
             {[
               { label: 'Email', value: selectedClient.email },
               { label: 'Téléphone', value: selectedClient.telephone || '-' },
@@ -174,6 +198,7 @@ export default function AdminClients() {
               { label: 'Type de compte', value: selectedClient.type },
               { label: 'Abonnement', value: abonnementLabel(selectedClient) || 'Accès gratuit' },
               { label: 'Expiration', value: selectedClient.date_expiration ? new Date(selectedClient.date_expiration).toLocaleDateString('fr-FR') : '-' },
+              { label: 'Question incluse (ce mois)', value: !selectedClient.abonnement_actif ? 'Non applicable' : inclusesMois.has(selectedClient.id) ? `Consommée (réinit. le ${dateReinitIncluse})` : 'Disponible' },
               { label: 'Structure', value: selectedClient.nom_structure || '-' },
               { label: 'SIRET', value: selectedClient.siret || '-' },
               { label: 'Inscrit le', value: new Date(selectedClient.created_at).toLocaleDateString('fr-FR') },
