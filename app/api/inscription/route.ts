@@ -1,6 +1,14 @@
 import { NextResponse } from 'next/server'
 import { supabaseAdmin } from '@/lib/supabase-admin'
 
+// app/api/inscription/route.ts
+// Option A (confirmation d'email obligatoire) : le compte est cree NON confirme (email_confirm: false),
+// puis un lien d'activation (lien magique) est genere cote serveur et envoye par Brevo, en francais,
+// aux couleurs du cabinet. Cliquer sur le lien confirme l'email et connecte l'utilisateur.
+// La connexion par mot de passe reste impossible tant que l'email n'est pas confirme
+// (reglage Confirm email active dans Supabase).
+// Regles : zero tiret long dans le contenu visible, Notre juriste singulier.
+
 export async function POST(request: Request) {
   try {
     const body = await request.json()
@@ -10,11 +18,16 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Champs obligatoires manquants.' }, { status: 400 })
     }
 
-    // Créer l'utilisateur Supabase Auth
+    const origin =
+      request.headers.get('origin') ||
+      process.env.NEXT_PUBLIC_SITE_URL ||
+      'https://cholez-pagotto.fr'
+
+    // Créer l'utilisateur Supabase Auth, NON confirmé (la confirmation se fait via le lien d'activation)
     const { data: authData, error: authError } = await supabaseAdmin.auth.admin.createUser({
       email,
       password,
-      email_confirm: true,
+      email_confirm: false,
     })
 
     if (authError) {
@@ -47,6 +60,66 @@ export async function POST(request: Request) {
 
     if (profileError) {
       return NextResponse.json({ error: profileError.message }, { status: 500 })
+    }
+
+    // Lien d'activation (lien magique) genere cote serveur, sans declencher l'email Supabase.
+    // Cliquer dessus confirme l'email et ouvre l'espace client.
+    let actionLink: string | null = null
+    try {
+      const { data: linkData } = await supabaseAdmin.auth.admin.generateLink({
+        type: 'magiclink',
+        email,
+        options: { redirectTo: `${origin}/espace-client` },
+      })
+      actionLink = (linkData && linkData.properties && linkData.properties.action_link) || null
+    } catch (linkErr) {
+      console.error('[Inscription] generateLink activation a echoue:', linkErr)
+    }
+
+    // Envoi de l'email d'activation par Brevo (best effort : ne bloque pas la creation du compte).
+    // En cas d'echec, l'utilisateur peut activer son compte via la fonction mot de passe oublie.
+    if (actionLink && process.env.BREVO_API_KEY) {
+      const htmlActivation = `
+<!DOCTYPE html>
+<html lang="fr">
+<head><meta charset="UTF-8"></head>
+<body style="font-family:Arial,sans-serif;color:#374151;font-size:14px;max-width:600px;margin:0 auto;">
+  <div style="background:linear-gradient(135deg,#0f2d6e 0%,#1a4fba 100%);padding:24px;border-radius:8px 8px 0 0;">
+    <h2 style="color:#ffffff;margin:0;font-size:16px;">Activez votre compte</h2>
+    <p style="color:#bfdbfe;font-size:12px;margin:6px 0 0;">Cabinet CHOLEZ PAGOTTO &middot; Docuthèque</p>
+  </div>
+  <div style="background:#f8fafc;padding:24px;border:1px solid #e5e7eb;border-top:none;border-radius:0 0 8px 8px;">
+    <p>Bonjour ${prenom},</p>
+    <p>Merci de votre inscription à l'espace client de la Docuthèque du Cabinet CHOLEZ PAGOTTO. Pour activer votre compte et accéder à votre espace, cliquez sur le bouton ci-dessous.</p>
+    <div style="text-align:center;margin:24px 0;">
+      <a href="${actionLink}" style="display:inline-block;background:#0f2d6e;color:#ffffff;text-decoration:none;font-size:14px;font-weight:700;padding:13px 28px;border-radius:8px;">
+        Activer mon compte
+      </a>
+    </div>
+    <p style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:12px 14px;font-size:13px;color:#1e3a5f;line-height:1.6;">
+      Ce lien est valable un temps limité. Tant que votre compte n'est pas activé, la connexion par mot de passe reste impossible. Si vous n'êtes pas à l'origine de cette inscription, ignorez cet email.
+    </p>
+    <p style="margin-top:24px;">Cordialement,</p>
+    <p style="margin:8px 0 0;line-height:1.7;">
+      <strong>Cabinet CHOLEZ PAGOTTO</strong><br>
+      <a href="https://cholez-pagotto.fr" style="color:#1a4fba;text-decoration:none;">cholez-pagotto.fr</a>
+    </p>
+  </div>
+</body>
+</html>`
+
+      await fetch('https://api.brevo.com/v3/smtp/email', {
+        method: 'POST',
+        headers: { 'accept': 'application/json', 'api-key': process.env.BREVO_API_KEY, 'content-type': 'application/json' },
+        body: JSON.stringify({
+          sender: { name: 'Cabinet CHOLEZ PAGOTTO', email: 'contact@cholez-pagotto.fr' },
+          to: [{ email, name: `${prenom} ${nom}` }],
+          subject: 'Activez votre compte Docuthèque',
+          htmlContent: htmlActivation,
+        }),
+      }).catch(err => console.error('[Inscription] Erreur email activation Brevo:', err))
+    } else if (!actionLink) {
+      console.error('[Inscription] Lien d activation indisponible, aucun email envoye')
     }
 
     // Ajout Brevo si consentement newsletter
@@ -100,7 +173,7 @@ export async function POST(request: Request) {
         body: JSON.stringify({
           sender: { name: "Docutheque · Cabinet Cholez-Pagotto", email: 'contact@cholez-pagotto.fr' },
           to: [{ email: emailAdmin, name: 'François Cholez' }],
-          subject: `Nouvelle inscription — ${prenom} ${nom}`,
+          subject: `Nouvelle inscription : ${prenom} ${nom}`,
           htmlContent: `
             <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
               <div style="background: #0f2d6e; padding: 20px; text-align: center;">
@@ -112,6 +185,7 @@ export async function POST(request: Request) {
                 <p style="color: #374151; font-size: 14px;"><strong>Type :</strong> ${type || 'particulier'}</p>
                 <p style="color: #374151; font-size: 14px;"><strong>Ville :</strong> ${ville || '-'}</p>
                 <p style="color: #374151; font-size: 14px;"><strong>Newsletter :</strong> ${newsletter ? 'Oui' : 'Non'}</p>
+                <p style="color: #374151; font-size: 14px;"><strong>Statut :</strong> en attente d'activation de l'email</p>
                 ${nom_structure ? `<p style="color: #374151; font-size: 14px;"><strong>Structure :</strong> ${nom_structure}</p>` : ''}
                 <div style="margin-top: 16px; text-align: center;">
                   <a href="${process.env.SITE_URL}/admin/clients" style="background: #0f2d6e; color: white; padding: 10px 24px; border-radius: 6px; text-decoration: none; font-size: 13px; font-weight: bold;">
@@ -125,7 +199,7 @@ export async function POST(request: Request) {
       })
     }
 
-    return NextResponse.json({ success: true, userId: authData.user.id })
+    return NextResponse.json({ success: true, userId: authData.user.id, confirmationRequise: true })
   } catch (error) {
     console.error('Inscription error:', error)
     return NextResponse.json({ error: 'Erreur serveur.' }, { status: 500 })

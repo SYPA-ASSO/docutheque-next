@@ -53,6 +53,8 @@ export default function Connexion() {
       if (error) {
         if (error.message.includes('Invalid login credentials')) {
           setErreur('Email ou mot de passe incorrect.')
+        } else if (error.message.includes('not confirmed')) {
+          setErreur("Votre compte n'est pas encore activé. Cliquez sur le lien d'activation reçu par email lors de votre inscription.")
         } else {
           setErreur(error.message)
         }
@@ -116,13 +118,11 @@ export default function Connexion() {
         return
       }
 
-      setSucces('Compte créé avec succès. Connexion en cours...')
-
-      // Connexion automatique après inscription
-      const { error: loginError } = await supabase.auth.signInWithPassword({ email, password })
-      if (!loginError) {
-        router.push('/espace-client')
-      }
+      // Compte créé non confirmé : pas de connexion automatique.
+      // On renvoie vers le formulaire de connexion avec un message d'activation, email pré-rempli.
+      setLoginEmail(email)
+      setSucces("Compte créé. Un email d'activation vient d'être envoyé à " + email + ". Cliquez sur le lien qu'il contient pour activer votre compte, puis connectez-vous.")
+      setMode('connexion')
     } catch {
       setErreur('Une erreur est survenue. Veuillez réessayer.')
     } finally {
