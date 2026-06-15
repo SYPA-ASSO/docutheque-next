@@ -17,10 +17,36 @@ export default function NouveauMotDePasse() {
   const [sessionValide, setSessionValide] = useState<boolean | null>(null)
 
   useEffect(() => {
-    // Vérifier qu'une session recovery est bien active
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setSessionValide(!!session)
+    // Supabase detecte le jeton de recuperation present dans l'URL (fragment ou code)
+    // et etablit une session de facon asynchrone. On ecoute donc l'evenement plutot que
+    // de lire la session une seule fois, ce qui creait une course : si la lecture arrivait
+    // avant que la session soit etablie, la page concluait a tort que le lien etait invalide.
+    let resolu = false
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      if (session) {
+        resolu = true
+        setSessionValide(true)
+      }
     })
+
+    // Cas ou la session est deja etablie au moment du montage
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (session) {
+        resolu = true
+        setSessionValide(true)
+      }
+    })
+
+    // Delai de grace : si aucune session ne s'est etablie, on considere le lien invalide
+    const minuteur = setTimeout(() => {
+      if (!resolu) setSessionValide(false)
+    }, 3000)
+
+    return () => {
+      subscription.unsubscribe()
+      clearTimeout(minuteur)
+    }
   }, [])
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -60,7 +86,7 @@ export default function NouveauMotDePasse() {
     outline: 'none',
   }
 
-  // Session non vérifiée — chargement
+  // Session non verifiee : chargement
   if (sessionValide === null) {
     return (
       <>
@@ -73,7 +99,7 @@ export default function NouveauMotDePasse() {
     )
   }
 
-  // Session invalide — lien expiré ou accès direct sans token
+  // Session invalide : lien expire ou acces direct sans jeton
   if (!sessionValide) {
     return (
       <>

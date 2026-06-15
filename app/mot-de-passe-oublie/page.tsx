@@ -3,7 +3,6 @@
 import { useState } from 'react'
 import Header from '@/components/Header'
 import FooterMinimal from '@/components/FooterMinimal'
-import { supabase } from '@/lib/supabase'
 import { Mail, CheckCircle, ArrowLeft } from 'lucide-react'
 import Link from 'next/link'
 
@@ -18,15 +17,23 @@ export default function MotDePasseOublie() {
     setStatut('loading')
     setErreur('')
 
-    const { error } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: `${process.env.NEXT_PUBLIC_SITE_URL}/api/auth/callback?type=recovery`,
-    })
+    try {
+      const res = await fetch('/api/compte/mot-de-passe-oublie', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      })
+      const data = await res.json().catch(() => ({}))
 
-    if (error) {
+      if (res.ok && data.success) {
+        setStatut('success')
+      } else {
+        setStatut('error')
+        setErreur(data.error || 'Une erreur est survenue. Veuillez réessayer.')
+      }
+    } catch {
       setStatut('error')
-      setErreur('Une erreur est survenue. Vérifiez votre adresse email.')
-    } else {
-      setStatut('success')
+      setErreur('Erreur réseau. Veuillez réessayer.')
     }
   }
 
