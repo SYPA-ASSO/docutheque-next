@@ -10,9 +10,9 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Produit invalide' }, { status: 400 })
     }
 
-    // Résolution de l'URL de base — côté serveur uniquement
-    // SITE_URL (sans préfixe NEXT_PUBLIC_) est disponible à runtime serveur
-    // Fallback sur l'origin de la requête si non défini
+    // Résolution de l'URL de base, côté serveur uniquement.
+    // SITE_URL (sans préfixe NEXT_PUBLIC_) est disponible à runtime serveur.
+    // Fallback sur l'origin de la requête si non défini.
     const origin = new URL(request.url).origin
     const baseUrl = process.env.SITE_URL || origin
 
@@ -36,6 +36,7 @@ export async function POST(request: Request) {
       success_url: successUrl,
       cancel_url: `${baseUrl}/espace-client`,
       locale: 'fr',
+      allow_promotion_codes: true,
       metadata: {
         priceKey,
         userId: userId || '',
