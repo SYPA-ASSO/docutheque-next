@@ -32,6 +32,8 @@ type UserProfile = {
   abonnement_periode: string | null
   date_expiration: string | null
   stripe_customer_id: string | null
+  resiliation_programmee: boolean | null
+  resiliation_fin: string | null
 }
 
 type Question = {
@@ -351,6 +353,11 @@ export default function EspaceClient() {
   const dateExpiration = profile?.date_expiration
     ? new Date(profile.date_expiration).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })
     : null
+
+  const resiliationProgrammee = !!profile?.resiliation_programmee
+  const resiliationFinTexte = profile?.resiliation_fin
+    ? new Date(profile.resiliation_fin).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })
+    : dateExpiration
 
   const prixOptimal = typeProfil === 'particulier'
     ? { monthly: { key: 'optimal_particulier_monthly', prix: '17,90 €' }, yearly: { key: 'optimal_particulier_yearly', prix: '149 €', parMois: '12,42 €' } }
@@ -991,9 +998,23 @@ export default function EspaceClient() {
                         <p style={{ color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: '0 0 2px' }}>{abonnementLabel()}</p>
                         <p style={{ color: '#6b7280', fontSize: '12px', margin: 0 }}>Renouvellement le {dateExpiration}</p>
                       </div>
-                      <span style={{ marginLeft: 'auto', background: '#f0fdf4', color: '#15803d', fontSize: '11px', fontWeight: '700', padding: '3px 10px', borderRadius: '20px' }}>Actif</span>
+                      {resiliationProgrammee
+                        ? <span style={{ marginLeft: 'auto', background: '#fff7ed', color: '#d97706', fontSize: '11px', fontWeight: '700', padding: '3px 10px', borderRadius: '20px' }}>Résiliation programmée</span>
+                        : <span style={{ marginLeft: 'auto', background: '#f0fdf4', color: '#15803d', fontSize: '11px', fontWeight: '700', padding: '3px 10px', borderRadius: '20px' }}>Actif</span>}
                     </div>
                     <div style={{ borderTop: '1px solid #f3f4f6', paddingTop: '1.25rem' }}>
+                      {resiliationProgrammee ? (
+                        <div style={{ background: '#fff7ed', border: '1px solid #fed7aa', borderRadius: '8px', padding: '14px 16px', display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
+                          <Clock size={16} color="#d97706" style={{ flexShrink: 0, marginTop: '1px' }} />
+                          <div>
+                            <p style={{ color: '#92400e', fontSize: '13px', fontWeight: '700', margin: '0 0 4px' }}>Résiliation programmée</p>
+                            <p style={{ color: '#374151', fontSize: '12px', margin: 0, lineHeight: '1.6' }}>
+                              Votre abonnement prendra fin le {resiliationFinTexte || 'la fin de la période en cours'}, sans renouvellement. Vous conservez l'accès jusque-là. Pour revenir sur cette décision, écrivez-nous à <a href="mailto:contact@cholez-pagotto.fr" style={{ color: '#1a4fba' }}>contact@cholez-pagotto.fr</a>.
+                            </p>
+                          </div>
+                        </div>
+                      ) : (
+                      <>
                       {resiliationEtape === 0 && (
                         <>
                           <div style={{ background: '#f8fafc', border: '1px solid #e5e7eb', borderRadius: '8px', padding: '12px 14px', marginBottom: '14px' }}>
@@ -1070,6 +1091,8 @@ export default function EspaceClient() {
                             </p>
                           </div>
                         </div>
+                      )}
+                      </>
                       )}
                     </div>
                   </div>

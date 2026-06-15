@@ -58,6 +58,15 @@ export async function POST(request: NextRequest) {
       ? finPeriode.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })
       : null
 
+    // Marquer la resiliation comme programmee des maintenant, sans dependre du webhook Stripe
+    await supabaseAdmin
+      .from('users')
+      .update({
+        resiliation_programmee: true,
+        resiliation_fin: finPeriode ? finPeriode.toISOString() : null,
+      })
+      .eq('id', userId)
+
     // Accuse de reception de la resiliation, par email, via Brevo
     const brevoKey = process.env.BREVO_API_KEY
     if (brevoKey && profil.email) {

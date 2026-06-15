@@ -93,6 +93,34 @@ export async function POST(request: Request) {
       break
     }
 
+    case 'customer.subscription.updated': {
+      const subscription = event.data.object as Stripe.Subscription
+      const customerId = subscription.customer as string
+
+      // Resiliation programmee : Stripe positionne cancel_at_period_end (et cancel_at)
+      // quand une fin de periode est demandee, et les remet a false/null en cas de reactivation.
+      if (subscription.cancel_at_period_end) {
+        const finUnix = subscription.cancel_at
+        await supabaseAdmin
+          .from('users')
+          .update({
+            resiliation_programmee: true,
+            resiliation_fin: finUnix ? new Date(finUnix * 1000).toISOString() : null,
+          })
+          .eq('stripe_customer_id', customerId)
+      } else {
+        await supabaseAdmin
+          .from('users')
+          .update({
+            resiliation_programmee: false,
+            resiliation_fin: null,
+          })
+          .eq('stripe_customer_id', customerId)
+      }
+
+      break
+    }
+
     case 'customer.subscription.deleted': {
       const subscription = event.data.object as Stripe.Subscription
       const customerId = subscription.customer as string
@@ -103,6 +131,8 @@ export async function POST(request: Request) {
           abonnement_actif: false,
           abonnement_type: null,
           date_expiration: null,
+          resiliation_programmee: false,
+          resiliation_fin: null,
         })
         .eq('stripe_customer_id', customerId)
 
