@@ -95,6 +95,12 @@ export default function EspaceClient() {
   const [questionErreur, setQuestionErreur] = useState('')
   const [questionLoading, setQuestionLoading] = useState(false)
 
+  // Question incluse (gratuite) et resiliation en ligne
+  const [questionInclLoading, setQuestionInclLoading] = useState(false)
+  const [resiliationEtape, setResiliationEtape] = useState<0 | 1 | 2>(0)
+  const [resiliationLoading, setResiliationLoading] = useState(false)
+  const [resiliationErreur, setResiliationErreur] = useState('')
+
   useEffect(() => { checkAuth() }, [])
 
   // Lecture des paramètres URL après chargement
@@ -184,6 +190,66 @@ export default function EspaceClient() {
     if (data.url) window.location.href = data.url
   }
 
+  // Poser une question : gratuite si la question incluse du mois est disponible, sinon payante
+  const poserQuestion = async () => {
+    if (questionIncluseDisponible) {
+      if (!profile) return
+      setQuestionInclLoading(true)
+      try {
+        const { data: { session } } = await supabase.auth.getSession()
+        if (!session) { router.push('/connexion'); return }
+        const res = await fetch('/api/questions/incluse', {
+          method: 'POST',
+          headers: { 'Authorization': `Bearer ${session.access_token}` },
+        })
+        const data = await res.json()
+        if (res.ok && data.success) {
+          await loadQuestions(profile.id)
+          setOnglet('questions')
+          if (data.questionId) {
+            setQuestionSaisie({ id: data.questionId, type: 'incluse' })
+            setQuestionTexte('')
+            setQuestionErreur('')
+          }
+        } else {
+          alert(data.error || 'Votre question incluse de ce mois a deja ete utilisee.')
+          await loadQuestions(profile.id)
+        }
+      } catch {
+        alert('Une erreur est survenue. Veuillez reessayer.')
+      } finally {
+        setQuestionInclLoading(false)
+      }
+      return
+    }
+    handlePaiement(estAbonne ? 'question_abonne' : 'question_unitaire')
+  }
+
+  // Resiliation en ligne de l'abonnement (article L215-1-1 du Code de la consommation)
+  const handleResiliation = async () => {
+    setResiliationLoading(true)
+    setResiliationErreur('')
+    try {
+      const { data: { session } } = await supabase.auth.getSession()
+      if (!session) { router.push('/connexion'); return }
+      const res = await fetch('/api/compte/resilier', {
+        method: 'POST',
+        headers: { 'Authorization': `Bearer ${session.access_token}` },
+      })
+      const data = await res.json()
+      if (res.ok && data.success) {
+        setResiliationEtape(2)
+        if (profile) await loadProfile(profile.id)
+      } else {
+        setResiliationErreur(data.error || 'La resiliation a echoue. Veuillez reessayer ou nous contacter.')
+      }
+    } catch {
+      setResiliationErreur('Une erreur est survenue. Veuillez reessayer.')
+    } finally {
+      setResiliationLoading(false)
+    }
+  }
+
   const handleDownload = async (documentId: string, nomDoc: string) => {
     setDownloadEnCours(documentId)
     try {
@@ -259,6 +325,21 @@ export default function EspaceClient() {
   const estAbonne = profile?.abonnement_actif
   const estPro = profile?.abonnement_type === 'optimal_pro'
   const typeProfil = profile?.type || 'particulier'
+
+  // Question incluse Optimal : 1 par mois calendaire, non cumulable.
+  // On regarde si une question de type 'incluse' a deja ete creee ce mois-ci.
+  const maintenant = new Date()
+  const questionIncluseUtilisee = questions.some(q => {
+    if (q.type !== 'incluse') return false
+    const d = new Date(q.created_at)
+    return d.getFullYear() === maintenant.getFullYear() && d.getMonth() === maintenant.getMonth()
+  })
+  const questionIncluseDisponible = !!estAbonne && !questionIncluseUtilisee
+  const prochaineQuestionIncluse = new Date(maintenant.getFullYear(), maintenant.getMonth() + 1, 1)
+    .toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })
+  const labelPoserQuestion = questionIncluseDisponible
+    ? 'Poser ma question incluse'
+    : estAbonne ? 'Poser ma question · 14,90\u00a0€' : 'Poser ma question · 47\u00a0€'
 
   const abonnementLabel = () => {
     if (!estAbonne) return null
@@ -462,6 +543,18 @@ export default function EspaceClient() {
                   <p style={{ color: '#6b7280', fontSize: '13px', margin: '0 0 12px', lineHeight: '1.6' }}>
                     {estAbonne ? "Votre abonnement inclut 1 question par mois. Questions supplémentaires à 14,90 €." : "Réponse rédigée par un juriste sous 24 à 48h ouvrées. 47 € à l'unité, sans abonnement."}
                   </p>
+                  {estAbonne && (
+                    <div style={{ background: questionIncluseDisponible ? '#f0fdf4' : '#f8fafc', border: `1px solid ${questionIncluseDisponible ? '#bbf7d0' : '#e5e7eb'}`, borderRadius: '8px', padding: '10px 12px', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                      {questionIncluseDisponible
+                        ? <CheckCircle size={14} color="#16a34a" style={{ flexShrink: 0 }} />
+                        : <Clock size={14} color="#6b7280" style={{ flexShrink: 0 }} />}
+                      <p style={{ color: questionIncluseDisponible ? '#15803d' : '#6b7280', fontSize: '12px', margin: 0 }}>
+                        {questionIncluseDisponible
+                          ? 'Question incluse de ce mois : disponible.'
+                          : `Question incluse de ce mois : utilisée. Prochaine disponible le ${prochaineQuestionIncluse}.`}
+                      </p>
+                    </div>
+                  )}
                   {!estAbonne && (
                     <div style={{ background: '#eff6ff', borderRadius: '8px', padding: '10px 12px', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}>
                       <TrendingUp size={14} color="#1a4fba" style={{ flexShrink: 0 }} />
@@ -470,10 +563,11 @@ export default function EspaceClient() {
                   )}
                   <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
                     <button
-                      onClick={() => handlePaiement(estAbonne ? 'question_abonne' : 'question_unitaire')}
-                      style={{ background: '#0f2d6e', color: 'white', border: 'none', padding: '11px 24px', borderRadius: '8px', fontSize: '13px', fontWeight: '700', cursor: 'pointer' }}
+                      onClick={poserQuestion}
+                      disabled={questionInclLoading}
+                      style={{ background: '#0f2d6e', color: 'white', border: 'none', padding: '11px 24px', borderRadius: '8px', fontSize: '13px', fontWeight: '700', cursor: questionInclLoading ? 'not-allowed' : 'pointer' }}
                     >
-                      {estAbonne ? "Poser ma question · 14,90 €" : "Poser ma question · 47 €"}
+                      {questionInclLoading ? 'Ouverture...' : labelPoserQuestion}
                     </button>
                     {!estAbonne && (
                       <button onClick={() => setOnglet('abonnement')} style={{ background: 'white', color: '#1a4fba', border: '1px solid #bfdbfe', padding: '11px 20px', borderRadius: '8px', fontSize: '13px', fontWeight: '600', cursor: 'pointer' }}>
@@ -494,10 +588,11 @@ export default function EspaceClient() {
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <h1 style={{ color: '#0f2d6e', fontSize: '1.4rem', fontWeight: '700', margin: 0 }}>Mes questions</h1>
                   <button
-                    onClick={() => handlePaiement(estAbonne ? 'question_abonne' : 'question_unitaire')}
-                    style={{ background: '#0f2d6e', color: 'white', border: 'none', padding: '10px 20px', borderRadius: '8px', fontSize: '13px', fontWeight: '700', cursor: 'pointer' }}
+                    onClick={poserQuestion}
+                    disabled={questionInclLoading}
+                    style={{ background: '#0f2d6e', color: 'white', border: 'none', padding: '10px 20px', borderRadius: '8px', fontSize: '13px', fontWeight: '700', cursor: questionInclLoading ? 'not-allowed' : 'pointer' }}
                   >
-                    + Nouvelle question {estAbonne ? '· 14,90 €' : '· 47 €'}
+                    {questionIncluseDisponible ? '+ Question incluse' : `+ Nouvelle question ${estAbonne ? '· 14,90\u00a0€' : '· 47\u00a0€'}`}
                   </button>
                 </div>
 
@@ -511,12 +606,23 @@ export default function EspaceClient() {
                   </div>
                 )}
 
+                {estAbonne && (
+                  <div style={{ background: questionIncluseDisponible ? '#f0fdf4' : '#f8fafc', border: `1px solid ${questionIncluseDisponible ? '#bbf7d0' : '#e5e7eb'}`, borderRadius: '10px', padding: '12px 16px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                    {questionIncluseDisponible ? <CheckCircle size={16} color="#16a34a" style={{ flexShrink: 0 }} /> : <Clock size={16} color="#6b7280" style={{ flexShrink: 0 }} />}
+                    <p style={{ color: questionIncluseDisponible ? '#15803d' : '#6b7280', fontSize: '12px', margin: 0 }}>
+                      {questionIncluseDisponible
+                        ? 'Votre question incluse de ce mois est disponible. Questions supplémentaires à 14,90\u00a0€.'
+                        : `Votre question incluse de ce mois a été utilisée. Prochaine disponible le ${prochaineQuestionIncluse}. Questions supplémentaires à 14,90\u00a0€.`}
+                    </p>
+                  </div>
+                )}
+
                 {/* Questions avec paiement effectué mais texte non saisi */}
                 {questions.some(q => !q.question) && (
                   <div style={{ background: '#fff7ed', border: '1px solid #fed7aa', borderRadius: '10px', padding: '12px 16px', display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
                     <AlertCircle size={16} color="#d97706" style={{ flexShrink: 0, marginTop: '1px' }} />
                     <p style={{ color: '#92400e', fontSize: '12px', margin: 0, lineHeight: '1.6' }}>
-                      Vous avez une ou plusieurs questions payées en attente de rédaction. Cliquez sur "Rédiger ma question" pour les compléter.
+                      Vous avez une ou plusieurs questions en attente de rédaction. Cliquez sur "Rédiger ma question" pour les compléter.
                     </p>
                   </div>
                 )}
@@ -528,8 +634,8 @@ export default function EspaceClient() {
                     <p style={{ color: '#9ca3af', fontSize: '12px', margin: '0 0 16px', lineHeight: '1.6' }}>
                       Après paiement, vous pourrez rédiger votre question ici. Notre juriste vous répondra sous 24 à 48h ouvrées.
                     </p>
-                    <button onClick={() => handlePaiement(estAbonne ? 'question_abonne' : 'question_unitaire')} style={{ background: '#0f2d6e', color: 'white', border: 'none', padding: '11px 24px', borderRadius: '8px', fontSize: '13px', fontWeight: '700', cursor: 'pointer' }}>
-                      Poser ma première question
+                    <button onClick={poserQuestion} disabled={questionInclLoading} style={{ background: '#0f2d6e', color: 'white', border: 'none', padding: '11px 24px', borderRadius: '8px', fontSize: '13px', fontWeight: '700', cursor: questionInclLoading ? 'not-allowed' : 'pointer' }}>
+                      {questionIncluseDisponible ? 'Poser ma question incluse' : 'Poser ma première question'}
                     </button>
                   </div>
                 ) : (
@@ -554,7 +660,7 @@ export default function EspaceClient() {
                             {questionSaisie?.id !== q.id ? (
                               <div style={{ background: '#fff7ed', borderRadius: '8px', padding: '12px 14px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '12px' }}>
                                 <p style={{ color: '#92400e', fontSize: '13px', margin: 0, fontStyle: 'italic' }}>
-                                  Paiement reçu. Rédigez votre question pour que notre juriste puisse vous répondre.
+                                  {q.type === 'incluse' ? 'Question incluse de ce mois. Rédigez-la pour que notre juriste puisse vous répondre.' : 'Paiement reçu. Rédigez votre question pour que notre juriste puisse vous répondre.'}
                                 </p>
                                 <button
                                   onClick={() => { setQuestionSaisie({ id: q.id, type: q.type }); setQuestionTexte(''); setQuestionErreur('') }}
@@ -887,9 +993,85 @@ export default function EspaceClient() {
                       </div>
                       <span style={{ marginLeft: 'auto', background: '#f0fdf4', color: '#15803d', fontSize: '11px', fontWeight: '700', padding: '3px 10px', borderRadius: '20px' }}>Actif</span>
                     </div>
-                    <p style={{ color: '#9ca3af', fontSize: '12px', margin: 0 }}>
-                      Pour gérer votre abonnement (résiliation, changement de moyen de paiement), contactez-nous à <a href="mailto:contact@cholez-pagotto.fr" style={{ color: '#1a4fba' }}>contact@cholez-pagotto.fr</a>
-                    </p>
+                    <div style={{ borderTop: '1px solid #f3f4f6', paddingTop: '1.25rem' }}>
+                      {resiliationEtape === 0 && (
+                        <>
+                          <div style={{ background: '#f8fafc', border: '1px solid #e5e7eb', borderRadius: '8px', padding: '12px 14px', marginBottom: '14px' }}>
+                            <p style={{ color: '#6b7280', fontSize: '12px', margin: 0, lineHeight: '1.6' }}>
+                              Conformément à l'article L215-1-1 du Code de la consommation, vous pouvez résilier votre abonnement directement en ligne, ci-dessous, sans avoir à nous contacter.
+                            </p>
+                          </div>
+                          <button
+                            onClick={() => { setResiliationErreur(''); setResiliationEtape(1) }}
+                            style={{ background: 'white', color: '#b91c1c', border: '1px solid #fecaca', padding: '10px 20px', borderRadius: '8px', fontSize: '13px', fontWeight: '700', cursor: 'pointer' }}
+                          >
+                            Résilier mon contrat
+                          </button>
+                          <p style={{ color: '#9ca3af', fontSize: '11px', margin: '12px 0 0', lineHeight: '1.6' }}>
+                            Pour un changement de moyen de paiement, écrivez-nous à <a href="mailto:contact@cholez-pagotto.fr" style={{ color: '#1a4fba' }}>contact@cholez-pagotto.fr</a>
+                          </p>
+                        </>
+                      )}
+
+                      {resiliationEtape === 1 && (
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+                          <div style={{ background: '#fff7ed', border: '1px solid #fed7aa', borderRadius: '8px', padding: '14px 16px' }}>
+                            <p style={{ color: '#92400e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px' }}>Confirmer la résiliation</p>
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                              <div style={{ display: 'flex', justifyContent: 'space-between', gap: '12px' }}>
+                                <span style={{ color: '#9ca3af', fontSize: '12px' }}>Contrat concerné</span>
+                                <span style={{ color: '#374151', fontSize: '12px', fontWeight: '600', textAlign: 'right' }}>{abonnementLabel()}</span>
+                              </div>
+                              <div style={{ display: 'flex', justifyContent: 'space-between', gap: '12px' }}>
+                                <span style={{ color: '#9ca3af', fontSize: '12px' }}>Effet</span>
+                                <span style={{ color: '#374151', fontSize: '12px', fontWeight: '600', textAlign: 'right', lineHeight: '1.6' }}>
+                                  {dateExpiration ? `Actif jusqu'au ${dateExpiration}, puis non renouvelé` : "Actif jusqu'à la fin de la période en cours, puis non renouvelé"}
+                                </span>
+                              </div>
+                            </div>
+                            <p style={{ color: '#92400e', fontSize: '12px', margin: '10px 0 0', lineHeight: '1.6' }}>
+                              Vous conservez l'accès à vos avantages jusqu'à cette date. Aucun nouveau prélèvement ne sera effectué ensuite. La période en cours n'est pas remboursée.
+                            </p>
+                          </div>
+                          {resiliationErreur && (
+                            <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+                              <AlertCircle size={14} color="#dc2626" style={{ flexShrink: 0 }} />
+                              <p style={{ color: '#dc2626', fontSize: '12px', margin: 0 }}>{resiliationErreur}</p>
+                            </div>
+                          )}
+                          <div style={{ display: 'flex', gap: '10px' }}>
+                            <button
+                              onClick={handleResiliation}
+                              disabled={resiliationLoading}
+                              style={{ background: resiliationLoading ? '#9ca3af' : '#b91c1c', color: 'white', border: 'none', padding: '10px 22px', borderRadius: '8px', fontSize: '13px', fontWeight: '700', cursor: resiliationLoading ? 'not-allowed' : 'pointer' }}
+                            >
+                              {resiliationLoading ? 'Résiliation en cours...' : 'Confirmer la résiliation'}
+                            </button>
+                            <button
+                              onClick={() => { setResiliationEtape(0); setResiliationErreur('') }}
+                              disabled={resiliationLoading}
+                              style={{ background: 'transparent', color: '#6b7280', border: '1px solid #e5e7eb', padding: '10px 18px', borderRadius: '8px', fontSize: '13px', cursor: resiliationLoading ? 'not-allowed' : 'pointer' }}
+                            >
+                              Annuler
+                            </button>
+                          </div>
+                        </div>
+                      )}
+
+                      {resiliationEtape === 2 && (
+                        <div style={{ background: '#f0fdf4', border: '1px solid #bbf7d0', borderRadius: '8px', padding: '14px 16px', display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
+                          <CheckCircle size={16} color="#16a34a" style={{ flexShrink: 0, marginTop: '1px' }} />
+                          <div>
+                            <p style={{ color: '#15803d', fontSize: '13px', fontWeight: '700', margin: '0 0 4px' }}>Résiliation enregistrée</p>
+                            <p style={{ color: '#374151', fontSize: '12px', margin: 0, lineHeight: '1.6' }}>
+                              {dateExpiration
+                                ? `Votre abonnement prendra fin le ${dateExpiration}, sans renouvellement. Vous conservez l'accès jusque-là. Un email de confirmation vient de vous être envoyé.`
+                                : "Votre abonnement ne sera pas renouvelé. Un email de confirmation vient de vous être envoyé."}
+                            </p>
+                          </div>
+                        </div>
+                      )}
+                    </div>
                   </div>
                 ) : (
                   <>
