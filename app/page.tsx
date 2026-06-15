@@ -103,7 +103,7 @@ export default function Home() {
                 },
                 {
                   titre: "Conseil en assurances",
-                  desc: "Analyse de vos besoins, audit des contrats existants, comparaison des offres. Forfait conseil 90 € HT (particuliers) · 150 € HT (professionnels). Commission assureur séparée, communiquée avant souscription.",
+                  desc: "Analyse de vos besoins, audit des contrats existants, comparaison des offres. Forfait conseil 90 € (particuliers) · 150 € (professionnels). Commission assureur séparée, communiquée avant souscription.",
                   lien: '/conseil-assurances',
                   cta: 'En savoir plus',
                   badge: 'ORIAS 26003943',
