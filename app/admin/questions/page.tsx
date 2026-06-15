@@ -24,6 +24,7 @@ export default function AdminQuestions() {
   const [expanded, setExpanded] = useState<string | null>(null)
   const [reponses, setReponses] = useState<Record<string, string>>({})
   const [envoiStatut, setEnvoiStatut] = useState<Record<string, 'idle' | 'loading' | 'success' | 'error'>>({})
+  const [filtreType, setFiltreType] = useState<'tous' | 'incluse' | 'payante'>('tous')
 
   useEffect(() => {
     if (!password) return
@@ -61,16 +62,41 @@ export default function AdminQuestions() {
   }
 
   const questionsFiltrees = questions.filter(q => {
-    if (filtre === 'en_attente') return q.statut !== 'repondu'
-    if (filtre === 'repondu') return q.statut === 'repondu'
-    return true
+    const okStatut = filtre === 'en_attente' ? q.statut !== 'repondu' : filtre === 'repondu' ? q.statut === 'repondu' : true
+    const okType = filtreType === 'incluse' ? q.type === 'incluse' : filtreType === 'payante' ? (q.type === 'unitaire' || q.type === 'abonne') : true
+    return okStatut && okType
   })
 
-  const typeLabel = (type: string) => {
-    if (type === 'unitaire') return '47 €'
-    if (type === 'abonne') return '14,90 €'
-    return 'Incluse'
+  const typeBadge = (type: string) => {
+    const conf = type === 'incluse'
+      ? { label: 'Incluse', bg: '#f0fdf4', color: '#15803d', border: '#bbf7d0' }
+      : type === 'abonne'
+        ? { label: '14,90\u00a0€', bg: '#eff6ff', color: '#1a4fba', border: '#bfdbfe' }
+        : { label: '47\u00a0€', bg: '#fff7ed', color: '#d97706', border: '#fed7aa' }
+    return (
+      <span style={{ background: conf.bg, color: conf.color, border: `1px solid ${conf.border}`, fontSize: '10px', fontWeight: '700', padding: '1px 6px', borderRadius: '4px' }}>
+        {conf.label}
+      </span>
+    )
   }
+
+  // Decompte du mois calendaire en cours : incluses (gratuites) vs payantes, et encaisse
+  const maintenant = new Date()
+  const questionsDuMois = questions.filter(q => {
+    const d = new Date(q.created_at)
+    return d.getFullYear() === maintenant.getFullYear() && d.getMonth() === maintenant.getMonth()
+  })
+  const inclusesDuMois = questionsDuMois.filter(q => q.type === 'incluse')
+  const payantesDuMois = questionsDuMois.filter(q => q.type === 'unitaire' || q.type === 'abonne')
+  const abonnesIncluseDuMois = new Set(inclusesDuMois.map(q => q.user_id)).size
+  // Calcul en centimes pour eviter les erreurs de virgule flottante
+  const encaisseCentimesMois = questionsDuMois.reduce((acc, q) => acc + (q.type === 'unitaire' ? 4700 : q.type === 'abonne' ? 1490 : 0), 0)
+  const encaisseMois = (encaisseCentimesMois / 100).toLocaleString('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+  const moisLabel = maintenant.toLocaleDateString('fr-FR', { month: 'long', year: 'numeric' })
+
+  // Comptes par type, tous mois confondus, pour les filtres
+  const totalIncluses = questions.filter(q => q.type === 'incluse').length
+  const totalPayantes = questions.filter(q => q.type === 'unitaire' || q.type === 'abonne').length
 
   if (loading) return <p style={{ color: '#6b7280', fontSize: '14px' }}>Chargement...</p>
 
@@ -81,18 +107,55 @@ export default function AdminQuestions() {
         <p style={{ color: '#9ca3af', fontSize: '13px', margin: 0 }}>{questions.filter(q => q.statut !== 'repondu').length} en attente · {questions.length} au total</p>
       </div>
 
+      {/* Decompte du mois en cours */}
+      <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.25rem' }}>
+        <p style={{ color: '#6b7280', fontSize: '11px', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.05em', margin: '0 0 12px' }}>Ce mois · {moisLabel}</p>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: '12px' }}>
+          <div style={{ background: '#f8fafc', border: '1px solid #e5e7eb', borderRadius: '10px', padding: '12px 14px' }}>
+            <p style={{ color: '#0f2d6e', fontSize: '1.4rem', fontWeight: '700', margin: '0 0 2px' }}>{questionsDuMois.length}</p>
+            <p style={{ color: '#6b7280', fontSize: '12px', margin: 0 }}>Questions</p>
+          </div>
+          <div style={{ background: '#f0fdf4', border: '1px solid #bbf7d0', borderRadius: '10px', padding: '12px 14px' }}>
+            <p style={{ color: '#15803d', fontSize: '1.4rem', fontWeight: '700', margin: '0 0 2px' }}>{inclusesDuMois.length}</p>
+            <p style={{ color: '#6b7280', fontSize: '12px', margin: 0 }}>Incluses · {abonnesIncluseDuMois} abonné{abonnesIncluseDuMois > 1 ? 's' : ''}</p>
+          </div>
+          <div style={{ background: '#fff7ed', border: '1px solid #fed7aa', borderRadius: '10px', padding: '12px 14px' }}>
+            <p style={{ color: '#d97706', fontSize: '1.4rem', fontWeight: '700', margin: '0 0 2px' }}>{payantesDuMois.length}</p>
+            <p style={{ color: '#6b7280', fontSize: '12px', margin: 0 }}>Payantes</p>
+          </div>
+          <div style={{ background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '10px', padding: '12px 14px' }}>
+            <p style={{ color: '#1a4fba', fontSize: '1.4rem', fontWeight: '700', margin: '0 0 2px' }}>{encaisseMois}&nbsp;€</p>
+            <p style={{ color: '#6b7280', fontSize: '12px', margin: 0 }}>Encaissé</p>
+          </div>
+        </div>
+      </div>
+
       {/* Filtres */}
-      <div style={{ display: 'flex', gap: '8px' }}>
-        {[
-          { key: 'en_attente', label: 'En attente', count: questions.filter(q => q.statut !== 'repondu').length },
-          { key: 'repondu', label: 'Répondues', count: questions.filter(q => q.statut === 'repondu').length },
-          { key: 'toutes', label: 'Toutes', count: questions.length },
-        ].map(f => (
-          <button key={f.key} onClick={() => setFiltre(f.key as typeof filtre)}
-            style={{ padding: '8px 16px', borderRadius: '8px', border: filtre === f.key ? 'none' : '1px solid #e5e7eb', background: filtre === f.key ? '#0f2d6e' : 'white', color: filtre === f.key ? 'white' : '#6b7280', fontSize: '12px', fontWeight: '600', cursor: 'pointer' } as React.CSSProperties}>
-            {f.label} ({f.count})
-          </button>
-        ))}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+        <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+          {[
+            { key: 'en_attente', label: 'En attente', count: questions.filter(q => q.statut !== 'repondu').length },
+            { key: 'repondu', label: 'Répondues', count: questions.filter(q => q.statut === 'repondu').length },
+            { key: 'toutes', label: 'Toutes', count: questions.length },
+          ].map(f => (
+            <button key={f.key} onClick={() => setFiltre(f.key as typeof filtre)}
+              style={{ padding: '8px 16px', borderRadius: '8px', border: filtre === f.key ? 'none' : '1px solid #e5e7eb', background: filtre === f.key ? '#0f2d6e' : 'white', color: filtre === f.key ? 'white' : '#6b7280', fontSize: '12px', fontWeight: '600', cursor: 'pointer' } as React.CSSProperties}>
+              {f.label} ({f.count})
+            </button>
+          ))}
+        </div>
+        <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+          {[
+            { key: 'tous', label: 'Tous types', count: questions.length },
+            { key: 'incluse', label: 'Incluses', count: totalIncluses },
+            { key: 'payante', label: 'Payantes', count: totalPayantes },
+          ].map(f => (
+            <button key={f.key} onClick={() => setFiltreType(f.key as typeof filtreType)}
+              style={{ padding: '7px 14px', borderRadius: '8px', border: filtreType === f.key ? '1px solid #1a4fba' : '1px solid #e5e7eb', background: filtreType === f.key ? '#eff6ff' : 'white', color: filtreType === f.key ? '#1a4fba' : '#9ca3af', fontSize: '12px', fontWeight: '600', cursor: 'pointer' } as React.CSSProperties}>
+              {f.label} ({f.count})
+            </button>
+          ))}
+        </div>
       </div>
 
       {questionsFiltrees.length === 0 ? (
@@ -118,7 +181,7 @@ export default function AdminQuestions() {
                       {q.users ? `${q.users.prenom} ${q.users.nom}` : 'Client'}
                     </p>
                     <span style={{ color: '#9ca3af', fontSize: '11px' }}>{q.users?.email}</span>
-                    <span style={{ background: '#f3f4f6', color: '#6b7280', fontSize: '10px', fontWeight: '600', padding: '1px 6px', borderRadius: '4px' }}>{typeLabel(q.type)}</span>
+                    {typeBadge(q.type)}
                     <span style={{ color: '#9ca3af', fontSize: '11px' }}>{new Date(q.created_at).toLocaleDateString('fr-FR')}</span>
                   </div>
                   <p style={{ color: '#374151', fontSize: '13px', margin: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: expanded === q.id ? 'normal' : 'nowrap' }}>
@@ -136,7 +199,7 @@ export default function AdminQuestions() {
                   {q.reponse && (
                     <div style={{ background: '#f0fdf4', border: '1px solid #bbf7d0', borderRadius: '8px', padding: '1rem', margin: '1rem 0' }}>
                       <p style={{ color: '#15803d', fontSize: '12px', fontWeight: '700', margin: '0 0 8px', display: 'flex', alignItems: 'center', gap: '6px' }}>
-                        <CheckCircle size={13} /> Réponse envoyée le {q.repondu_at ? new Date(q.repondu_at).toLocaleDateString('fr-FR') : '—'}
+                        <CheckCircle size={13} /> Réponse envoyée le {q.repondu_at ? new Date(q.repondu_at).toLocaleDateString('fr-FR') : '-'}
                       </p>
                       <p style={{ color: '#374151', fontSize: '13px', margin: 0, lineHeight: '1.7', whiteSpace: 'pre-line' }}>{q.reponse}</p>
                     </div>
@@ -158,7 +221,7 @@ export default function AdminQuestions() {
                       {envoiStatut[q.id] === 'error' && (
                         <p style={{ color: '#dc2626', fontSize: '12px', margin: '6px 0 0' }}>Erreur lors de l'envoi. Veuillez réessayer.</p>
                       )}
-                      <div style={{ display: 'flex', gap: '10px', marginTop: '10px' }}>
+                      <div style={{ display: 'flex', gap: '10px', marginTop: '10px', flexWrap: 'wrap' }}>
                         <button
                           onClick={() => handleRepondre(q.id, q.user_id, q.users?.email || '')}
                           disabled={!reponses[q.id]?.trim() || envoiStatut[q.id] === 'loading'}
