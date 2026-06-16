@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
       // Pages de services
       {
         source: '/juriste-formaliste-vos-formalites',
-        destination: '/accompagnement-professionnels',
+        destination: '/formalites-juridiques-externalisees',
         permanent: true,
       },
       {
