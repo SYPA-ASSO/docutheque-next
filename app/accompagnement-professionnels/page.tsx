@@ -56,9 +56,9 @@ const services = [
         badge: "Offert",
         badgeColor: "#d4a017",
         href: "/creation-entreprise",
-        description: "Rédaction des statuts, constitution du dossier, dépôt au Guichet Unique. SASU, SARL, SAS, EURL, micro-entreprise, SCI. Formalités offertes hors droits de greffe et frais JAL.",
+        description: "Préparation et assistance à la rédaction des statuts, constitution du dossier, dépôt au Guichet Unique. SASU, SARL, SAS, EURL, micro-entreprise, SCI. Formalités offertes hors droits de greffe et frais JAL.",
         points: [
-          "Préparation et rédaction des statuts",
+          "Préparation et assistance à la rédaction des statuts",
           "Dépôt au Guichet Unique (INPI)",
           "Suivi jusqu'au Kbis",
           "Comparatif des formes juridiques",
@@ -82,7 +82,7 @@ const services = [
     ],
   },
   {
-    groupe: "Information et conseil juridique",
+    groupe: "Information juridique",
     couleurGroupe: "#7c3aed",
     items: [
       {
@@ -370,6 +370,28 @@ export default function AccompagnementProfessionnelsPage() {
           </section>
 
         </div>
+
+        {/* MAILLAGE INTERNE */}
+        <section style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 1.5rem 3.5rem' }}>
+          <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '14px', padding: '1.75rem 2rem' }}>
+            <h2 style={{ color: '#0f2d6e', fontSize: '1.05rem', fontWeight: 700, margin: '0 0 14px' }}>Pour aller plus loin</h2>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+              {[
+                { label: 'Formalités externalisées', href: '/formalites-juridiques-externalisees' },
+                { label: "Création d'entreprise", href: '/creation-entreprise' },
+                { label: 'RGPD & conformité', href: '/rgpd-conformite' },
+                { label: 'Juriste ou avocat ?', href: '/juriste-formaliste-ou-avocat' },
+                { label: 'Tous nos services', href: '/services' },
+                { label: 'Nous contacter', href: '/contact' },
+              ].map((l) => (
+                <a key={l.href} href={l.href} style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: '#f8fafc', border: '1px solid #e5e7eb', borderRadius: 999, padding: '8px 16px', fontSize: '13px', color: '#1a4fba', fontWeight: 600, textDecoration: 'none' }}>
+                  {l.label}<span aria-hidden="true" style={{ marginLeft: '2px' }}>→</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+
       </main>
       <Footer />
     </>

@@ -557,6 +557,25 @@ export default function ConseilAssurancesPage() {
           </section>
 
         </div>
+
+        {/* MAILLAGE INTERNE */}
+        <section style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 1.5rem 3.5rem' }}>
+          <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '14px', padding: '1.75rem 2rem' }}>
+            <h2 style={{ color: '#0f2d6e', fontSize: '1.05rem', fontWeight: 700, margin: '0 0 14px' }}>Pour aller plus loin</h2>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+              {[
+                { label: 'Juriste ou avocat ?', href: '/juriste-formaliste-ou-avocat' },
+                { label: 'Information sur vos droits', href: '/information-sur-vos-droits' },
+                { label: 'Catalogue de documents', href: '/catalogue' },
+              ].map((l) => (
+                <a key={l.href} href={l.href} style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: '#f8fafc', border: '1px solid #e5e7eb', borderRadius: 999, padding: '8px 16px', fontSize: '13px', color: '#1a4fba', fontWeight: 600, textDecoration: 'none' }}>
+                  {l.label}<span aria-hidden="true" style={{ marginLeft: '2px' }}>→</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+
       </main>
 
       <Footer />

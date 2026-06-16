@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { ChevronDown, User, Building2, Heart, Scale, Briefcase, Shield, ShieldCheck, UserCheck, BookOpen, Menu, X, type LucideIcon } from 'lucide-react'
+import { ChevronDown, User, Building2, Heart, Scale, Briefcase, Shield, ShieldCheck, UserCheck, BookOpen, Layers, LayoutGrid, Menu, X, type LucideIcon } from 'lucide-react'
 
 type NavChild = { label: string; href: string; desc?: string; icon?: LucideIcon }
 type NavGroup = { label: string; children: NavChild[] }
@@ -32,10 +32,12 @@ export default function Header() {
           children: [
             { label: 'Information sur vos droits', href: '/information-sur-vos-droits', desc: 'Une réponse rédigée par notre juriste', icon: Scale },
             { label: "Création d'entreprise", href: '/creation-entreprise', desc: 'Statuts et formalités', icon: Briefcase },
+            { label: 'Formalités externalisées', href: '/formalites-juridiques-externalisees', desc: 'Sous-traitance pour avocats et experts-comptables', icon: Layers },
             { label: 'Conseil en assurances', href: '/conseil-assurances', desc: 'Courtage, ORIAS', icon: Shield },
             { label: 'RGPD & conformité', href: '/rgpd-conformite', desc: 'Diagnostic et mise en conformité', icon: ShieldCheck },
             { label: 'DPO externalisé', href: '/dpo-externalise', desc: 'Conformité dans la durée', icon: UserCheck },
             { label: 'Formations', href: '/formations', desc: 'Sur-mesure, présentiel ou distanciel', icon: BookOpen },
+            { label: 'Tous nos services', href: '/services', desc: "Vue d'ensemble de l'accompagnement", icon: LayoutGrid },
           ],
         },
       ],

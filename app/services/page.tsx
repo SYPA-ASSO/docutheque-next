@@ -1,6 +1,6 @@
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-import { ChevronRight, FileText, Scale, Building2, Heart, Shield, Lock, Umbrella, GraduationCap, ArrowRight } from 'lucide-react'
+import { ChevronRight, FileText, Scale, Building2, Heart, Shield, Lock, Umbrella, GraduationCap, Layers, ArrowRight } from 'lucide-react'
 
 export const metadata = {
   title: "Nos services · Cabinet Cholez-Pagotto · Juriste, Formaliste, Conseil en assurances",
@@ -15,7 +15,7 @@ const schema = {
       "name": "Services du Cabinet Cholez-Pagotto",
       "description": "Ensemble des services proposés par le Cabinet Cholez-Pagotto : information juridique, formalités, RGPD, DPO externalisé, conseil en assurances.",
       "url": "https://cholez-pagotto.fr/services",
-      "numberOfItems": 8,
+      "numberOfItems": 9,
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Bibliothèque de documents juridiques", "url": "https://cholez-pagotto.fr/catalogue" },
         { "@type": "ListItem", "position": 2, "name": "Information sur vos droits", "url": "https://cholez-pagotto.fr/information-sur-vos-droits" },
@@ -24,7 +24,8 @@ const schema = {
         { "@type": "ListItem", "position": 5, "name": "Accompagnement RGPD & conformité", "url": "https://cholez-pagotto.fr/rgpd-conformite" },
         { "@type": "ListItem", "position": 6, "name": "DPO externalisé", "url": "https://cholez-pagotto.fr/dpo-externalise" },
         { "@type": "ListItem", "position": 7, "name": "Conseil en assurances", "url": "https://cholez-pagotto.fr/conseil-assurances" },
-        { "@type": "ListItem", "position": 8, "name": "Formations sur-mesure", "url": "https://cholez-pagotto.fr/contact" },
+        { "@type": "ListItem", "position": 8, "name": "Formalités juridiques externalisées", "url": "https://cholez-pagotto.fr/formalites-juridiques-externalisees" },
+        { "@type": "ListItem", "position": 9, "name": "Formations sur-mesure", "url": "https://cholez-pagotto.fr/formations" },
       ]
     },
     {
@@ -99,6 +100,26 @@ const services = [
     lien: "/accompagnement-professionnels",
     disponible: false,
     cta: "Nous contacter",
+  },
+  {
+    id: "formalites-externalisees",
+    badge: "SOUS-TRAITANCE ENTRE PROFESSIONNELS",
+    icon: <Layers size={22} color="#1a4fba" strokeWidth={1.5} />,
+    titre: "Formalités juridiques externalisées",
+    accroche: "Avocats, experts-comptables et professionnels : confiez l'exécution de vos formalités à un formaliste dédié.",
+    pourQui: "Avocats, experts-comptables, directions juridiques et professionnels ayant des formalités à déléguer.",
+    description: "Le cabinet réalise, en sous-traitance et en marque blanche, les formalités juridiques des professionnels : immatriculations, modifications statutaires, cessations, dépôts de comptes, registre des bénéficiaires effectifs, via le guichet unique de l'INPI. Vous apportez l'acte, le cabinet exécute la formalité. La réalisation de formalités est une activité distincte de la consultation juridique et de la rédaction d'actes.",
+    comprend: [
+      "Exécution des formalités à partir des actes que vous fournissez",
+      "Intervention en marque blanche, invisible auprès de votre client final",
+      "Contrôle de complétude administrative avant chaque dépôt",
+      "Engagement de confidentialité et sous-traitance RGPD (art. 28)",
+      "Suivi du guichet unique et des greffes jusqu'au justificatif",
+    ],
+    tarif: "Offre à la carte : à l'acte, forfaits par type de formalité, dégressif au volume ou sur devis",
+    lien: "/formalites-juridiques-externalisees",
+    disponible: true,
+    cta: "Découvrir le service",
   },
   {
     id: "associations",
@@ -186,9 +207,9 @@ const services = [
       "Accompagnement post-formation sur demande",
     ],
     tarif: "Sur devis selon périmètre, durée et nombre de participants",
-    lien: "/contact",
+    lien: "/formations",
     disponible: true,
-    cta: "Nous contacter",
+    cta: "En savoir plus",
   },
   {
     id: "assurances",

@@ -40,10 +40,12 @@ export default function Footer() {
               {[
                 { label: 'Information sur vos droits', href: '/information-sur-vos-droits' },
                 { label: "Création d'entreprise", href: '/creation-entreprise' },
+                { label: 'Formalités externalisées', href: '/formalites-juridiques-externalisees' },
                 { label: 'Conseil en assurances', href: '/conseil-assurances' },
                 { label: 'RGPD & conformité', href: '/rgpd-conformite' },
                 { label: 'DPO externalisé', href: '/dpo-externalise' },
                 { label: 'Formations', href: '/formations' },
+                { label: 'Tous nos services', href: '/services' },
                 { label: 'Catalogue de documents', href: '/catalogue' },
                 { label: 'Tarifs', href: '/tarifs' },
               ].map((l) => (
@@ -78,6 +80,7 @@ export default function Footer() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
               {[
                 { label: 'Blog juridique', href: '/blog' },
+                { label: 'Juriste ou avocat ?', href: '/juriste-formaliste-ou-avocat' },
                 { label: 'Newsletter', href: '/newsletter' },
                 { label: 'À propos', href: '/a-propos' },
                 { label: 'Contact', href: '/contact' },
