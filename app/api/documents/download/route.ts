@@ -25,9 +25,9 @@ export async function GET(request: Request) {
     if (document.acces_gratuit) autorise = true
     if (!autorise && document.acces_optimal && profile?.abonnement_actif) autorise = true
     if (!autorise && document.acces_payant) {
-      const { data: achat } = await supabaseAdmin
-        .from('achats_documents').select('id').eq('user_id', user.id).eq('document_id', documentId).single()
-      autorise = !!achat
+      const { data: achats } = await supabaseAdmin
+        .from('achats_documents').select('id').eq('user_id', user.id).eq('document_id', documentId).eq('statut', 'paye').limit(1)
+      autorise = !!(achats && achats.length > 0)
     }
 
     if (!autorise) return NextResponse.json({ error: 'Accès non autorisé.', code: 'UNAUTHORIZED' }, { status: 403 })
@@ -53,7 +53,7 @@ export async function GET(request: Request) {
         body: JSON.stringify({
           sender: { name: 'Docuthèque', email: 'contact@cholez-pagotto.fr' },
           to: [{ email: emailAdmin, name: 'François Cholez' }],
-          subject: `Téléchargement — ${document.nom}`,
+          subject: `Téléchargement · ${document.nom}`,
           htmlContent: `<p>${profile?.prenom} ${profile?.nom} (${profile?.email}) a téléchargé <strong>${document.nom}</strong>.</p>`,
         }),
       })

@@ -90,6 +90,30 @@ export async function POST(request: Request) {
           })
       }
 
+      // Achat de document a l'unite (carte) : acces accorde via achats_documents
+      if (session.metadata?.produit === 'document' && session.metadata?.documentId) {
+        const userId = await resolveUserId()
+        const paymentId = session.payment_intent as string
+        // Idempotence : ne pas inserer deux fois pour la meme transaction Stripe
+        const { data: existant } = await supabaseAdmin
+          .from('achats_documents')
+          .select('id')
+          .eq('stripe_payment_id', paymentId)
+          .limit(1)
+        if (userId && (!existant || existant.length === 0)) {
+          await supabaseAdmin
+            .from('achats_documents')
+            .insert({
+              user_id: userId,
+              document_id: session.metadata.documentId,
+              stripe_payment_id: paymentId,
+              montant: session.amount_total != null ? session.amount_total / 100 : null,
+              mode_paiement: 'carte',
+              statut: 'paye',
+            })
+        }
+      }
+
       break
     }
 
