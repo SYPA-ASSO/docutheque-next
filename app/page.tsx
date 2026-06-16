@@ -66,7 +66,7 @@ export default function Home() {
               </a>
             </div>
             <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '12px', margin: '16px auto 0', maxWidth: '560px', lineHeight: '1.7' }}>
-              47 € la question · Abonnement Optimal dès 17,90 €/mois · Forfait conseil assurances dès 90 €
+              47 € la question · Abonnement Optimal dès 17,90 €/mois · Forfait conseil assurances dès 90 €
             </p>
           </div>
         </section>
@@ -94,7 +94,7 @@ export default function Home() {
                 },
                 {
                   titre: "Information sur vos droits",
-                  desc: "Posez votre question à notre juriste. Réponse rédigée sous 24 à 48 heures ouvrées. 47 € à l'unité, inclus dans l'abonnement Optimal.",
+                  desc: "Posez votre question à notre juriste. Réponse rédigée sous 24 à 48 heures ouvrées. 47 € à l'unité, inclus dans l'abonnement Optimal.",
                   lien: '/information-sur-vos-droits',
                   cta: 'Poser une question',
                   badge: '24 à 48h',
@@ -103,7 +103,7 @@ export default function Home() {
                 },
                 {
                   titre: "Conseil en assurances",
-                  desc: "Analyse de vos besoins, audit des contrats existants, comparaison des offres. Forfait conseil 90 € (particuliers) · 150 € (professionnels). Commission assureur séparée, communiquée avant souscription.",
+                  desc: "Analyse de vos besoins, audit des contrats existants, comparaison des offres. Forfait conseil 90 € (particuliers) · 150 € (professionnels). Commission assureur séparée, communiquée avant souscription.",
                   lien: '/conseil-assurances',
                   cta: 'En savoir plus',
                   badge: 'ORIAS 26003943',
@@ -125,6 +125,24 @@ export default function Home() {
                   lien: '/accompagnement-associations',
                   cta: 'Accompagnement associations',
                   badge: 'Sur devis',
+                  badgeColor: '#eff6ff',
+                  badgeText: '#1a4fba',
+                },
+                {
+                  titre: "RGPD & conformité",
+                  desc: "Diagnostic de conformité, registre des traitements, AIPD, politique de confidentialité. Mise en conformité de votre structure au RGPD, audit RGPD Express offert.",
+                  lien: '/rgpd-conformite',
+                  cta: 'Voir les forfaits',
+                  badge: 'Dès 350 €',
+                  badgeColor: '#eff6ff',
+                  badgeText: '#1a4fba',
+                },
+                {
+                  titre: "DPO externalisé",
+                  desc: "Externalisez votre Délégué à la Protection des Données : point de contact CNIL, veille réglementaire, suivi de conformité, sans recrutement interne.",
+                  lien: '/dpo-externalise',
+                  cta: 'En savoir plus',
+                  badge: 'Dès 150 €/mois',
                   badgeColor: '#eff6ff',
                   badgeText: '#1a4fba',
                 },
@@ -169,14 +187,14 @@ export default function Home() {
               <div style={{ display: 'flex', gap: '32px', justifyContent: 'center', marginBottom: '24px', flexWrap: 'wrap' }}>
                 <div style={{ textAlign: 'center' }}>
                   <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '11px', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em', margin: '0 0 6px' }}>Particulier</p>
-                  <p style={{ color: 'white', fontSize: '1.4rem', fontWeight: '700', margin: '0 0 4px' }}>à partir de 17,90 €</p>
-                  <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '12px', margin: 0 }}>par mois · ou 149 €/an</p>
+                  <p style={{ color: 'white', fontSize: '1.4rem', fontWeight: '700', margin: '0 0 4px' }}>à partir de 17,90 €</p>
+                  <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '12px', margin: 0 }}>par mois · ou 149 €/an</p>
                 </div>
                 <div style={{ width: '1px', background: 'rgba(255,255,255,0.2)' }} />
                 <div style={{ textAlign: 'center' }}>
                   <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '11px', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em', margin: '0 0 6px' }}>Pro · Association</p>
-                  <p style={{ color: 'white', fontSize: '1.4rem', fontWeight: '700', margin: '0 0 4px' }}>à partir de 27,90 €</p>
-                  <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '12px', margin: 0 }}>par mois · ou 249 €/an</p>
+                  <p style={{ color: 'white', fontSize: '1.4rem', fontWeight: '700', margin: '0 0 4px' }}>à partir de 27,90 €</p>
+                  <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '12px', margin: 0 }}>par mois · ou 249 €/an</p>
                 </div>
               </div>
               <a href="/tarifs" style={{ display: 'inline-block', background: 'white', color: '#0f2d6e', padding: '12px 28px', borderRadius: '8px', fontSize: '14px', fontWeight: '700', textDecoration: 'none' }}>

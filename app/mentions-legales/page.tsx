@@ -52,16 +52,22 @@ export default function MentionsLegales() {
               <section id="editeur" style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.75rem'}}>
                 <h2 style={{color: '#0f2d6e', fontSize: '1.1rem', fontWeight: '700', margin: '0 0 1rem', paddingBottom: '0.75rem', borderBottom: '1px solid #f3f4f6'}}>1. Éditeur du site</h2>
                 <div style={{display: 'grid', gridTemplateColumns: '160px 1fr', gap: '8px 16px', fontSize: '14px', color: '#374151', lineHeight: '1.7'}}>
-                  <span style={{color: '#6b7280', fontSize: '13px'}}>Dénomination</span>
-                  <span><strong>Cabinet Cholez-Pagotto</strong></span>
+                  <span style={{color: '#6b7280', fontSize: '13px'}}>Éditeur</span>
+                  <span><strong>François CHOLEZ</strong> (entrepreneur individuel)</span>
+                  <span style={{color: '#6b7280', fontSize: '13px'}}>Nom commercial</span>
+                  <span>CBT CHOLEZ-PAGOTTO (Cabinet Cholez-Pagotto)</span>
                   <span style={{color: '#6b7280', fontSize: '13px'}}>Forme juridique</span>
                   <span>Entreprise individuelle (E.I.)</span>
                   <span style={{color: '#6b7280', fontSize: '13px'}}>SIRET</span>
                   <span>490 889 516 00053</span>
                   <span style={{color: '#6b7280', fontSize: '13px'}}>Siège social</span>
                   <span>12 rue d'Olima, 88000 Épinal</span>
-                  <span style={{color: '#6b7280', fontSize: '13px'}}>Directeur de publication</span>
+                  <span style={{color: '#6b7280', fontSize: '13px'}}>Directeur de la publication</span>
                   <span>François CHOLEZ</span>
+                  <span style={{color: '#6b7280', fontSize: '13px'}}>Téléphone</span>
+                  <span><a href="tel:+33374474055" style={{color: '#1a4fba', textDecoration: 'none'}}>03 74 47 40 55</a></span>
+                  <span style={{color: '#6b7280', fontSize: '13px'}}>Email</span>
+                  <span><a href="mailto:contact@cholez-pagotto.fr" style={{color: '#1a4fba', textDecoration: 'none', fontWeight: '600'}}>contact@cholez-pagotto.fr</a></span>
                   <span style={{color: '#6b7280', fontSize: '13px'}}>Contact</span>
                   <span><a href="/contact" style={{color: '#1a4fba', textDecoration: 'none', fontWeight: '600'}}>Formulaire de contact →</a></span>
                 </div>
@@ -98,12 +104,12 @@ export default function MentionsLegales() {
                 <h2 style={{color: '#0f2d6e', fontSize: '1.1rem', fontWeight: '700', margin: '0 0 1rem', paddingBottom: '0.75rem', borderBottom: '1px solid #f3f4f6'}}>4. Hébergement</h2>
                 <div style={{display: 'flex', flexDirection: 'column', gap: '1rem'}}>
                   <div style={{display: 'grid', gridTemplateColumns: '220px 1fr', gap: '4px 16px', fontSize: '13px'}}>
-                    <span style={{color: '#6b7280', fontWeight: '600'}}>Site · cholez-pagotto.fr</span>
+                    <span style={{color: '#6b7280', fontWeight: '600'}}>Site et application · cholez-pagotto.fr</span>
                     <span style={{color: '#374151'}}>Vercel Inc., 340 Pine Street Suite 701, San Francisco CA 94104, États-Unis · <a href="https://vercel.com" target="_blank" rel="noopener noreferrer" style={{color: '#1a4fba', textDecoration: 'none'}}>vercel.com</a></span>
-                    <span style={{color: '#6b7280', fontWeight: '600'}}>Documents · docs.cholez-pagotto.fr</span>
+                    <span style={{color: '#6b7280', fontWeight: '600'}}>Stockage des documents</span>
+                    <span style={{color: '#374151'}}>Vercel Blob, opéré par Vercel Inc. (même prestataire que ci-dessus)</span>
+                    <span style={{color: '#6b7280', fontWeight: '600'}}>Nom de domaine (registrar)</span>
                     <span style={{color: '#374151'}}>Hostinger International Ltd., 61 Lordou Vironos Street, 6023 Larnaca, Chypre · <a href="https://www.hostinger.fr" target="_blank" rel="noopener noreferrer" style={{color: '#1a4fba', textDecoration: 'none'}}>hostinger.fr</a></span>
-                    <span style={{color: '#6b7280', fontWeight: '600'}}>Nom de domaine</span>
-                    <span style={{color: '#374151'}}>Enregistré et géré via Hostinger International Ltd.</span>
                   </div>
                 </div>
               </section>

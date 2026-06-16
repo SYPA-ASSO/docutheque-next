@@ -1,4 +1,4 @@
-import Header from '@/components/Header'
+﻿import Header from '@/components/Header'
 import FooterMinimal from '@/components/FooterMinimal'
 import { ChevronRight } from 'lucide-react'
 
@@ -113,7 +113,7 @@ export default function CGU() {
                 <p style={pstyle}>Conformément à l'article L.221-5 du Code de la consommation, le Prestataire met à la disposition du Client, avant toute souscription, les informations suivantes :</p>
                 <ul style={ulstyle}>
                   <li>Les caractéristiques essentielles des services proposés, telles que décrites à l'article 5 des présentes ;</li>
-                  <li>Le prix des services, exprimé hors taxes en euros (le Cabinet Cholez-Pagotto bénéficie de la franchise en base de TVA en application de l'article 293 B du Code général des impôts : aucune TVA n'est donc collectée ni facturée) ;</li>
+                  <li>Le prix des services, exprimé en euros (le Cabinet Cholez-Pagotto bénéficie de la franchise en base de TVA en application de l'article 293 B du Code général des impôts : aucune TVA n'est donc collectée ni facturée) ;</li>
                   <li>La durée minimale d'engagement et les modalités de résiliation ;</li>
                   <li>Les conditions d'exercice du droit de rétractation et le formulaire type de rétractation prévu à l'annexe du Règlement délégué (UE) n°2022/689 de la Commission et à l'article R.221-1 du Code de la consommation, accessible sur demande auprès du Prestataire ;</li>
                   <li>Les coordonnées du Prestataire et du médiateur de la consommation désigné ;</li>
@@ -133,23 +133,23 @@ export default function CGU() {
                   <div>
                     <p style={h3style}>5.2 Abonnement Optimal Particulier</p>
                     <p style={pstyle}>L'Abonnement Optimal Particulier donne accès à l'intégralité de la bibliothèque de Contenus numériques de la Plateforme et inclut une question mensuelle au Service d'information juridique. Cette question est strictement <strong>non cumulable d'un mois sur l'autre</strong> : toute question non utilisée au cours d'un mois civil est définitivement perdue et ne peut être reportée.</p>
-                    <p style={plastyle}>Des questions supplémentaires peuvent être acquises par l'abonné au tarif préférentiel de <strong>14,90 € HT</strong> par question.</p>
+                    <p style={plastyle}>Des questions supplémentaires peuvent être acquises par l'abonné au tarif préférentiel de <strong>14,90 €</strong> par question.</p>
                   </div>
                   <div>
                     <p style={h3style}>5.3 Abonnement Optimal Pro</p>
                     <p style={pstyle}>L'Abonnement Optimal Pro donne accès à l'intégralité de la bibliothèque de Contenus numériques de la Plateforme et inclut deux questions mensuelles au Service d'information juridique. Ces questions sont strictement <strong>non cumulables d'un mois sur l'autre</strong>.</p>
-                    <p style={plastyle}>Des questions supplémentaires peuvent être acquises par l'abonné au tarif préférentiel de <strong>14,90 € HT</strong> par question. L'Abonnement Optimal Pro inclut en outre l'accès aux alertes légales événementielles publiées par le Prestataire.</p>
+                    <p style={plastyle}>Des questions supplémentaires peuvent être acquises par l'abonné au tarif préférentiel de <strong>14,90 €</strong> par question. L'Abonnement Optimal Pro inclut en outre l'accès aux alertes légales événementielles publiées par le Prestataire.</p>
                   </div>
                   <div>
                     <p style={h3style}>5.4 Service d'information juridique à l'unité</p>
-                    <p style={plastyle}>Ce service permet à tout Client de poser une question juridique et d'obtenir une réponse rédigée par un juriste, au tarif de <strong>47 € HT</strong> par question, sans abonnement ni engagement de durée.</p>
+                    <p style={plastyle}>Ce service permet à tout Client de poser une question juridique et d'obtenir une réponse rédigée par un juriste, au tarif de <strong>47 €</strong> par question, sans abonnement ni engagement de durée.</p>
                   </div>
                   <div>
                     <p style={h3style}>5.5 Conseil en assurances</p>
                     <p style={pstyle}>Conformément à l'article L.521-4 du Code des assurances (devoir de conseil DDA), le conseil est individualisé, documenté et motivé. Un forfait est dû avant la remise du rapport de conseil, indépendamment de toute souscription ultérieure. Le montant du forfait varie selon le profil du Client :</p>
                     <ul style={ulstyle}>
-                      <li><strong>Particulier :</strong> 90 € HT</li>
-                      <li><strong>Professionnel, association, structure ESS :</strong> 150 € HT</li>
+                      <li><strong>Particulier :</strong> 90 €</li>
+                      <li><strong>Professionnel, association, structure ESS :</strong> 150 €</li>
                       <li><strong>Structure complexe (PME, structure multi-contrats) :</strong> sur devis</li>
                     </ul>
                     <p style={plastyle}>En cas de souscription d'un contrat d'assurance via le Cabinet, celui-ci perçoit en complément une commission versée par l'assureur, indépendante du forfait, dont le montant est communiqué au Client avant toute souscription, conformément à l'article L.521-2 du Code des assurances et à la Directive sur la Distribution d'Assurances (DDA). Le Cabinet est enregistré à l'ORIAS sous le numéro 26003943, catégorie IAS Niveau 1, sous contrôle de l'ACPR.</p>
@@ -175,27 +175,27 @@ export default function CGU() {
               {/* ART. 7 */}
               <section id="tarifs" style={cardstyle}>
                 <h2 style={h2style}>Article 7 : Conditions financières et tarifs</h2>
-                <p style={pstyle}>Les prix sont indiqués en euros hors taxes (HT). Le Cabinet Cholez-Pagotto bénéficie de la franchise en base de TVA en application de l'article 293 B du Code général des impôts : aucune TVA n'est collectée ni facturée sur les prestations proposées.</p>
+                <p style={pstyle}>Les prix sont indiqués en euros. Le Cabinet Cholez-Pagotto bénéficie de la franchise en base de TVA en application de l'article 293 B du Code général des impôts : aucune TVA n'est collectée ni facturée sur les prestations proposées.</p>
                 <div style={{overflowX: 'auto', margin: '12px 0'}}>
                   <table style={{width: '100%', borderCollapse: 'collapse', fontSize: '13px'}}>
                     <thead>
                       <tr style={{background: '#0f2d6e'}}>
                         <th style={{color: 'white', padding: '10px 12px', textAlign: 'left', fontWeight: '600'}}>Offre</th>
-                        <th style={{color: 'white', padding: '10px 12px', textAlign: 'left', fontWeight: '600'}}>Tarif HT</th>
+                        <th style={{color: 'white', padding: '10px 12px', textAlign: 'left', fontWeight: '600'}}>Tarif</th>
                         <th style={{color: 'white', padding: '10px 12px', textAlign: 'left', fontWeight: '600'}}>Engagement</th>
                       </tr>
                     </thead>
                     <tbody>
                       {[
                         ['Accès gratuit', 'Gratuit', 'Aucun'],
-                        ['Abonnement Optimal Particulier mensuel', '17,90 €/mois', 'Aucun (résiliation 30 j)'],
-                        ['Abonnement Optimal Particulier annuel', '149 €/an (soit 12,42 €/mois)', '12 mois'],
-                        ['Abonnement Optimal Pro mensuel', '27,90 €/mois', 'Aucun (résiliation 30 j)'],
-                        ['Abonnement Optimal Pro annuel', '249 €/an (soit 20,75 €/mois)', '12 mois'],
-                        ['Question supplémentaire (abonné)', '14,90 €/question', 'Aucun'],
-                        ['Information sur vos droits (unitaire)', '47 €/question', 'Aucun'],
-                        ['Conseil en assurances - Particulier', '90 €/forfait HT', 'Aucun'],
-                        ['Conseil en assurances - Pro / Association', '150 €/forfait HT', 'Aucun'],
+                        ['Abonnement Optimal Particulier mensuel', '17,90 €/mois', 'Aucun (résiliation 30 j)'],
+                        ['Abonnement Optimal Particulier annuel', '149 €/an (soit 12,42 €/mois)', '12 mois'],
+                        ['Abonnement Optimal Pro mensuel', '27,90 €/mois', 'Aucun (résiliation 30 j)'],
+                        ['Abonnement Optimal Pro annuel', '249 €/an (soit 20,75 €/mois)', '12 mois'],
+                        ['Question supplémentaire (abonné)', '14,90 €/question', 'Aucun'],
+                        ['Information sur vos droits (unitaire)', '47 €/question', 'Aucun'],
+                        ['Conseil en assurances - Particulier', '90 €/forfait', 'Aucun'],
+                        ['Conseil en assurances - Pro / Association', '150 €/forfait', 'Aucun'],
                         ['Conseil en assurances - Structure complexe', 'Sur devis', 'Aucun'],
                       ].map(([offre, tarif, engagement], i) => (
                         <tr key={i} style={{borderBottom: '1px solid #e5e7eb', background: i % 2 === 0 ? 'white' : '#f8fafc'}}>
@@ -307,7 +307,7 @@ export default function CGU() {
                 <h2 style={h2style}>Article 15 : Propriété intellectuelle</h2>
                 <p style={pstyle}>L'ensemble des éléments de la Plateforme (textes, articles, analyses juridiques, documents, charte graphique, logiciels, bases de données) est protégé par le droit d'auteur et les droits de propriété intellectuelle, et demeure la propriété exclusive du Cabinet Cholez-Pagotto, conformément aux articles L.111-1 et suivants du Code de la propriété intellectuelle.</p>
                 <p style={pstyle}>La souscription à un service ou le téléchargement d'un Contenu numérique confère au Client une <strong>licence d'utilisation personnelle, non exclusive, non transférable et non sous-licenciable</strong>, pour ses besoins propres uniquement. Toute reproduction ou diffusion à des tiers, à titre gratuit ou onéreux, est strictement interdite.</p>
-                <p style={plastyle}>Toute violation de ces droits expose son auteur aux sanctions civiles (dommages et intérêts) et pénales (jusqu'à 3 ans d'emprisonnement et 300 000 € d'amende) prévues aux articles L.335-2 et suivants du Code de la propriété intellectuelle.</p>
+                <p style={plastyle}>Toute violation de ces droits expose son auteur aux sanctions civiles (dommages et intérêts) et pénales (jusqu'à 3 ans d'emprisonnement et 300 000 € d'amende) prévues aux articles L.335-2 et suivants du Code de la propriété intellectuelle.</p>
               </section>
 
               {/* ART. 16 */}
@@ -330,7 +330,7 @@ export default function CGU() {
                 <h2 style={h2style}>Article 18 : Données personnelles</h2>
                 <p style={pstyle}>Les données personnelles du Client sont collectées et traitées par le Cabinet Cholez-Pagotto en qualité de responsable de traitement, conformément au Règlement (UE) 2016/679 (RGPD) et à la loi n°78-17 du 6 janvier 1978 modifiée relative à l'informatique, aux fichiers et aux libertés.</p>
                 <p style={pstyle}>Les finalités, bases légales, durées de conservation et destinataires des traitements sont détaillés dans la <a href="/confidentialite" style={{color: '#1a4fba', textDecoration: 'none', fontWeight: '600'}}>Politique de confidentialité</a>, accessible en permanence sur la Plateforme.</p>
-                <p style={plastyle}>Conformément aux articles 15 à 22 du RGPD, le Client dispose d'un droit d'accès, de rectification, d'effacement, de portabilité, d'opposition et de limitation du traitement de ses données, exerceable via le <a href="/contact" style={{color: '#1a4fba', textDecoration: 'none'}}>formulaire de contact</a>. En cas de réclamation non satisfaite, le Client peut saisir la Commission Nationale de l'Informatique et des Libertés (CNIL), <a href="https://www.cnil.fr" target="_blank" rel="noopener noreferrer" style={{color: '#1a4fba', textDecoration: 'none'}}>www.cnil.fr</a>.</p>
+                <p style={plastyle}>Conformément aux articles 15 à 22 du RGPD, le Client dispose d'un droit d'accès, de rectification, d'effacement, de portabilité, d'opposition et de limitation du traitement de ses données, exerçable via le <a href="/contact" style={{color: '#1a4fba', textDecoration: 'none'}}>formulaire de contact</a>. En cas de réclamation non satisfaite, le Client peut saisir la Commission Nationale de l'Informatique et des Libertés (CNIL), <a href="https://www.cnil.fr" target="_blank" rel="noopener noreferrer" style={{color: '#1a4fba', textDecoration: 'none'}}>www.cnil.fr</a>.</p>
               </section>
 
               {/* ART. 19 */}
