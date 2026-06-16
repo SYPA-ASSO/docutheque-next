@@ -37,14 +37,14 @@ const schemaData = {
           "name": "Abonnement Optimal Particulier",
           "price": "17.90",
           "priceCurrency": "EUR",
-          "description": "Accès complet à la bibliothèque, 17,90 €/mois ou 149 €/an"
+          "description": "Accès complet à la bibliothèque, 17,90 €/mois ou 149 €/an"
         },
         {
           "@type": "Offer",
           "name": "Abonnement Optimal Pro",
           "price": "27.90",
           "priceCurrency": "EUR",
-          "description": "Accès complet à la bibliothèque, 2 questions juriste/mois, 27,90 €/mois ou 249 €/an"
+          "description": "Accès complet à la bibliothèque, 2 questions juriste/mois, 27,90 €/mois ou 249 €/an"
         }
       ],
       "url": "https://cholez-pagotto.fr/catalogue"
@@ -88,7 +88,7 @@ export default function CataloguePage() {
   const [categories, setCategories] = useState<Categorie[]>([])
   const [categorieActive, setCategorieActive] = useState<string | null>(null)
   const [loading, setLoading] = useState(true)
-  const [periode, setPeriode] = useState<'monthly' | 'yearly'>('yearly')
+  const [periode, setPeriode] = useState<'monthly' | 'yearly'>('monthly')
 
   useEffect(() => {
     const loadData = async () => {
@@ -119,7 +119,7 @@ export default function CataloguePage() {
   const accesLabel = (doc: DocItem) => {
     if (doc.acces_gratuit) return { label: 'Gratuit', color: '#15803d', bg: '#f0fdf4' }
     if (doc.acces_optimal) return { label: 'Optimal', color: '#1a4fba', bg: '#eff6ff' }
-    if (doc.acces_payant) return { label: `${doc.prix_unitaire ?? '?'} €`, color: '#d97706', bg: '#fff7ed' }
+    if (doc.acces_payant) return { label: `${doc.prix_unitaire ?? '?'} €`, color: '#d97706', bg: '#fff7ed' }
     return { label: '-', color: '#9ca3af', bg: '#f3f4f6' }
   }
 
@@ -180,7 +180,7 @@ export default function CataloguePage() {
             </div>
 
             <p style={{ color: 'rgba(255,255,255,0.45)', fontSize: 11, marginTop: 14 }}>
-              Compte gratuit · Accès libre immédiat · Abonnement Optimal dès 17,90 €/mois
+              Compte gratuit · Accès libre immédiat · Abonnement Optimal dès 17,90 €/mois
             </p>
           </div>
         </section>
@@ -271,7 +271,7 @@ export default function CataloguePage() {
                               <p style={{ color: '#1e3a5f', fontSize: 12, margin: 0 }}>
                                 Les documents Optimal sont accessibles avec l'
                                 <a href="/tarifs" style={{ color: '#1a4fba', fontWeight: 700 }}>Abonnement Optimal</a>
-                                {' '}dès 17,90 €/mois.
+                                {' '}dès 17,90 €/mois.
                               </p>
                             </div>
                           )}
@@ -328,14 +328,14 @@ export default function CataloguePage() {
                 {
                   profil: 'Optimal Particulier',
                   cible: 'Particulier · Usage personnel',
-                  prix: periode === 'yearly' ? '12,42 €' : '17,90 €',
-                  detail: periode === 'yearly' ? '149 € / an' : 'Sans engagement',
+                  prix: periode === 'yearly' ? '12,42 €' : '17,90 €',
+                  detail: periode === 'yearly' ? '149 € / an' : 'Sans engagement',
                   inclus: [
                     'Accès complet à la bibliothèque',
                     'Documents téléchargeables et personnalisables',
                     'Mises à jour incluses',
                     '1 question juriste incluse par mois (non cumulable)',
-                    'Questions supplémentaires à 14,90 €',
+                    'Questions supplémentaires à 14,90 €',
                     'Accès espace client',
                   ],
                   couleur: '#1a4fba',
@@ -343,14 +343,14 @@ export default function CataloguePage() {
                 {
                   profil: 'Optimal Pro',
                   cible: 'Professionnel · Association · Collectivité',
-                  prix: periode === 'yearly' ? '20,75 €' : '27,90 €',
-                  detail: periode === 'yearly' ? '249 € / an' : 'Sans engagement',
+                  prix: periode === 'yearly' ? '20,75 €' : '27,90 €',
+                  detail: periode === 'yearly' ? '249 € / an' : 'Sans engagement',
                   inclus: [
                     'Accès complet à la bibliothèque',
                     'Documents téléchargeables et personnalisables',
                     'Mises à jour incluses',
                     '2 questions juriste incluses par mois (non cumulables)',
-                    'Questions supplémentaires à 14,90 €',
+                    'Questions supplémentaires à 14,90 €',
                     'Alertes légales événementielles',
                     'Accès espace client',
                   ],
@@ -399,7 +399,7 @@ export default function CataloguePage() {
                 Créer mon compte gratuit <ArrowRight size={16} />
               </a>
               <a href="/information-sur-vos-droits" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: 'transparent', color: 'white', textDecoration: 'none', padding: '12px 24px', borderRadius: 8, fontWeight: 600, fontSize: '0.875rem', border: '1px solid rgba(255,255,255,0.5)' }}>
-                Poser une question juridique · 47 €
+                Poser une question juridique · 47 €
               </a>
             </div>
           </section>
