@@ -103,6 +103,13 @@ export default function EspaceClient() {
   const [resiliationLoading, setResiliationLoading] = useState(false)
   const [resiliationErreur, setResiliationErreur] = useState('')
 
+  // Achat de document a l'unite
+  const [documentsAchetes, setDocumentsAchetes] = useState<Record<string, string>>({})
+  const [achatDoc, setAchatDoc] = useState<DocItem | null>(null)
+  const [achatLoading, setAchatLoading] = useState(false)
+  const [achatErreur, setAchatErreur] = useState('')
+  const [achatReference, setAchatReference] = useState('')
+
   useEffect(() => { checkAuth() }, [])
 
   // Lecture des paramètres URL après chargement
@@ -116,6 +123,9 @@ export default function EspaceClient() {
       }
       if (params.get('success') === 'abonnement') {
         setSuccessMessage('Votre abonnement est maintenant actif. Bienvenue dans Optimal !')
+      }
+      if (params.get('achat') === 'succes') {
+        setSuccessMessage('Paiement reçu. Votre document est disponible dans l\'onglet Documents.')
       }
       // Nettoyer l'URL
       window.history.replaceState({}, '', '/espace-client')
@@ -135,6 +145,7 @@ export default function EspaceClient() {
       loadFactures(session.user.id),
       loadDossiers(session.user.id),
       loadDossiersRgpd(session.user.id),
+      loadAchats(session.user.id),
       loadCatalogue(),
     ])
     setLoading(false)
@@ -163,6 +174,15 @@ export default function EspaceClient() {
   const loadDossiersRgpd = async (userId: string) => {
     const { data } = await supabase.from('dossiers_rgpd').select('*').eq('user_id', userId).order('created_at', { ascending: false })
     if (data) setDossiersRgpd(data)
+  }
+
+  const loadAchats = async (userId: string) => {
+    const { data } = await supabase.from('achats_documents').select('document_id, statut').eq('user_id', userId)
+    if (data) {
+      const map: Record<string, string> = {}
+      for (const a of data) { if (a.document_id) map[a.document_id] = a.statut }
+      setDocumentsAchetes(map)
+    }
   }
 
   const loadCatalogue = async () => {
@@ -249,6 +269,38 @@ export default function EspaceClient() {
       setResiliationErreur('Une erreur est survenue. Veuillez reessayer.')
     } finally {
       setResiliationLoading(false)
+    }
+  }
+
+  // Achat d'un document a l'unite : carte (redirection Stripe) ou virement (reference + RIB par email)
+  const acheterDocument = async (mode: 'carte' | 'virement') => {
+    if (!achatDoc) return
+    setAchatLoading(true)
+    setAchatErreur('')
+    try {
+      const { data: { session } } = await supabase.auth.getSession()
+      if (!session) { router.push('/connexion'); return }
+      const res = await fetch('/api/documents/acheter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${session.access_token}` },
+        body: JSON.stringify({ documentId: achatDoc.id, mode }),
+      })
+      const data = await res.json()
+      if (mode === 'carte') {
+        if (res.ok && data.url) { window.location.href = data.url; return }
+        setAchatErreur(data.error || "Le paiement n'a pas pu démarrer. Veuillez réessayer.")
+      } else {
+        if (res.ok && data.success) {
+          setAchatReference(data.reference || '')
+          if (profile) await loadAchats(profile.id)
+        } else {
+          setAchatErreur(data.error || "La commande n'a pas pu être enregistrée. Veuillez réessayer.")
+        }
+      }
+    } catch {
+      setAchatErreur('Une erreur est survenue. Veuillez réessayer.')
+    } finally {
+      setAchatLoading(false)
     }
   }
 
@@ -373,11 +425,14 @@ export default function EspaceClient() {
     { id: 'profil', label: 'Mon profil', icon: <Shield size={16} strokeWidth={1.5} /> },
   ]
 
-  const accesDocLabel = (doc: DocItem) => {
+  const accesDocLabel = (doc: DocItem): { label: string; color: string; bg: string; accessible: boolean; achetable?: boolean; enAttente?: boolean } => {
     if (doc.acces_gratuit) return { label: 'Gratuit', color: '#15803d', bg: '#f0fdf4', accessible: true }
     if (doc.acces_optimal && estAbonne) return { label: 'Optimal', color: '#1a4fba', bg: '#eff6ff', accessible: true }
+    const statutAchat = documentsAchetes[doc.id]
+    if (doc.acces_payant && statutAchat === 'paye') return { label: 'Acheté', color: '#15803d', bg: '#f0fdf4', accessible: true }
+    if (doc.acces_payant && statutAchat === 'en_attente') return { label: 'Virement en attente', color: '#d97706', bg: '#fff7ed', accessible: false, enAttente: true }
     if (doc.acces_optimal && !estAbonne) return { label: 'Optimal', color: '#9ca3af', bg: '#f3f4f6', accessible: false }
-    if (doc.acces_payant) return { label: `${doc.prix_unitaire ?? '?'} €`, color: '#d97706', bg: '#fff7ed', accessible: false }
+    if (doc.acces_payant) return { label: `${doc.prix_unitaire ?? '?'}\u00a0€`, color: '#d97706', bg: '#fff7ed', accessible: false, achetable: true }
     return { label: '-', color: '#9ca3af', bg: '#f3f4f6', accessible: false }
   }
 
@@ -799,8 +854,13 @@ export default function EspaceClient() {
                             style={{ background: '#0f2d6e', color: 'white', border: 'none', padding: '6px 10px', borderRadius: '6px', fontSize: '11px', fontWeight: '700', cursor: downloadEnCours === doc.id ? 'not-allowed' : 'pointer', flexShrink: 0, display: 'flex', alignItems: 'center', gap: '4px' }}>
                             {downloadEnCours === doc.id ? '...' : <><Download size={11} /> DOCX</>}
                           </button>
+                        ) : acces.achetable ? (
+                          <button onClick={() => { setAchatDoc(doc); setAchatErreur(''); setAchatReference('') }}
+                            style={{ background: '#d97706', color: 'white', border: 'none', padding: '6px 10px', borderRadius: '6px', fontSize: '11px', fontWeight: '700', cursor: 'pointer', flexShrink: 0, whiteSpace: 'nowrap' }}>
+                            Acheter · {acces.label}
+                          </button>
                         ) : (
-                          <span style={{ background: acces.bg, color: acces.color, fontSize: '9px', fontWeight: '700', padding: '2px 7px', borderRadius: '4px', flexShrink: 0 }}>{acces.label}</span>
+                          <span style={{ background: acces.bg, color: acces.color, fontSize: '9px', fontWeight: '700', padding: '2px 7px', borderRadius: '4px', flexShrink: 0, whiteSpace: 'nowrap' }}>{acces.label}</span>
                         )}
                       </div>
                     )
@@ -1190,6 +1250,70 @@ export default function EspaceClient() {
           </div>
         </div>
       </main>
+
+      {/* Modale d'achat de document a l'unite */}
+      {achatDoc && (
+        <div onClick={() => { if (!achatLoading) setAchatDoc(null) }}
+          style={{ position: 'fixed', inset: 0, background: 'rgba(15,23,42,0.45)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 50, padding: '1rem' }}>
+          <div onClick={e => e.stopPropagation()}
+            style={{ background: 'white', borderRadius: '14px', padding: '1.5rem', width: '100%', maxWidth: '420px', boxShadow: '0 20px 40px rgba(0,0,0,0.2)' }}>
+            {!achatReference ? (
+              <>
+                <p style={{ color: '#0f2d6e', fontSize: '15px', fontWeight: '700', margin: '0 0 4px' }}>Acheter ce document</p>
+                <p style={{ color: '#374151', fontSize: '13px', margin: '0 0 4px', lineHeight: '1.5' }}>{achatDoc.nom}</p>
+                <p style={{ color: '#d97706', fontSize: '1.3rem', fontWeight: '700', margin: '0 0 16px' }}>{achatDoc.prix_unitaire ?? '?'}&nbsp;€</p>
+                <p style={{ color: '#6b7280', fontSize: '12px', margin: '0 0 16px', lineHeight: '1.6' }}>
+                  Achat définitif : une fois réglé, le document reste téléchargeable depuis votre espace client. Choisissez votre mode de paiement.
+                </p>
+                {achatErreur && (
+                  <div style={{ display: 'flex', gap: '8px', alignItems: 'center', marginBottom: '12px' }}>
+                    <AlertCircle size={14} color="#dc2626" style={{ flexShrink: 0 }} />
+                    <p style={{ color: '#dc2626', fontSize: '12px', margin: 0 }}>{achatErreur}</p>
+                  </div>
+                )}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                  <button onClick={() => acheterDocument('carte')} disabled={achatLoading}
+                    style={{ background: achatLoading ? '#9ca3af' : '#0f2d6e', color: 'white', border: 'none', padding: '12px', borderRadius: '8px', fontSize: '13px', fontWeight: '700', cursor: achatLoading ? 'not-allowed' : 'pointer' }}>
+                    {achatLoading ? 'Redirection...' : 'Payer par carte bancaire'}
+                  </button>
+                  <button onClick={() => acheterDocument('virement')} disabled={achatLoading}
+                    style={{ background: 'white', color: '#0f2d6e', border: '1px solid #cbd5e1', padding: '12px', borderRadius: '8px', fontSize: '13px', fontWeight: '700', cursor: achatLoading ? 'not-allowed' : 'pointer' }}>
+                    Payer par virement
+                  </button>
+                  <button onClick={() => setAchatDoc(null)} disabled={achatLoading}
+                    style={{ background: 'transparent', color: '#6b7280', border: 'none', padding: '8px', borderRadius: '8px', fontSize: '12px', cursor: achatLoading ? 'not-allowed' : 'pointer' }}>
+                    Annuler
+                  </button>
+                </div>
+                <p style={{ color: '#9ca3af', fontSize: '11px', margin: '12px 0 0', lineHeight: '1.6' }}>
+                  Le paiement par carte est immédiat. Le virement ouvre l'accès dès réception, après vérification.
+                </p>
+              </>
+            ) : (
+              <>
+                <div style={{ display: 'flex', gap: '10px', alignItems: 'flex-start', marginBottom: '12px' }}>
+                  <CheckCircle size={20} color="#16a34a" style={{ flexShrink: 0, marginTop: '1px' }} />
+                  <div>
+                    <p style={{ color: '#15803d', fontSize: '14px', fontWeight: '700', margin: '0 0 4px' }}>Commande enregistrée</p>
+                    <p style={{ color: '#374151', fontSize: '12px', margin: 0, lineHeight: '1.6' }}>
+                      Un email contenant le RIB et la référence vient de vous être envoyé. Votre document sera téléchargeable dès réception et vérification de votre virement.
+                    </p>
+                  </div>
+                </div>
+                <div style={{ background: '#f8fafc', border: '1px solid #e5e7eb', borderRadius: '8px', padding: '10px 14px', marginBottom: '16px' }}>
+                  <p style={{ color: '#6b7280', fontSize: '11px', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em', margin: '0 0 2px' }}>Référence de votre virement</p>
+                  <p style={{ color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: 0, letterSpacing: '0.03em' }}>{achatReference}</p>
+                </div>
+                <button onClick={() => { setAchatDoc(null); setAchatReference('') }}
+                  style={{ width: '100%', background: '#0f2d6e', color: 'white', border: 'none', padding: '11px', borderRadius: '8px', fontSize: '13px', fontWeight: '700', cursor: 'pointer' }}>
+                  Fermer
+                </button>
+              </>
+            )}
+          </div>
+        </div>
+      )}
+
       <FooterMinimal />
     </>
   )
