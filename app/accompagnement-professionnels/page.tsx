@@ -79,6 +79,20 @@ const services = [
         ],
         couleur: "#1a4fba",
       },
+      {
+        titre: "Formalités externalisées",
+        badge: "À la carte",
+        badgeColor: "#1a4fba",
+        href: "/formalites-juridiques-externalisees",
+        description: "Pour les avocats, experts-comptables et professionnels qui délèguent l'exécution de leurs formalités. Intervention en marque blanche, à partir des actes que vous fournissez. Le cabinet agit en sous-traitant (RGPD art. 28).",
+        points: [
+          "Immatriculations, modifications, cessations",
+          "Dépôts de comptes et bénéficiaires effectifs",
+          "Intervention en marque blanche",
+          "Engagement de confidentialité",
+        ],
+        couleur: "#1a4fba",
+      },
     ],
   },
   {
@@ -213,7 +227,7 @@ export default function AccompagnementProfessionnelsPage() {
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '2rem', paddingTop: '2rem', borderTop: '1px solid rgba(255,255,255,0.2)' }}>
               {[
-                { valeur: "6", label: "Services disponibles" },
+                { valeur: "8", label: "Services disponibles" },
                 { valeur: "CRFF", label: "Formaliste certifié" },
                 { valeur: "ORIAS", label: "26003943 · IAS Niveau 1" },
                 { valeur: "France", label: "Accompagnement à distance" }
@@ -377,7 +391,7 @@ export default function AccompagnementProfessionnelsPage() {
             <h2 style={{ color: '#0f2d6e', fontSize: '1.05rem', fontWeight: 700, margin: '0 0 14px' }}>Pour aller plus loin</h2>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
               {[
-                { label: 'Formalités externalisées', href: '/formalites-juridiques-externalisees' },
+                { label: 'Catalogue de documents', href: '/catalogue' },
                 { label: "Création d'entreprise", href: '/creation-entreprise' },
                 { label: 'RGPD & conformité', href: '/rgpd-conformite' },
                 { label: 'Juriste ou avocat ?', href: '/juriste-formaliste-ou-avocat' },

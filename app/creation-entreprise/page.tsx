@@ -215,7 +215,7 @@ export default function CreationEntreprisePage() {
             </h1>
             <p style={{ fontSize: '1.1rem', color: 'rgba(255,255,255,0.88)', marginBottom: '1.5rem', lineHeight: 1.7 }}>
               Formalités offertes hors droits de greffe et frais de journal d'annonces légales.
-              SASU, SARL, SAS, EURL, micro-entreprise, SCI : notre juriste prépare et accompagne
+              SASU, SARL, SAS, EURL, micro-entreprise, SCI : notre juriste prépare et vous assiste dans
               la rédaction de vos statuts et le dépôt de votre dossier d'immatriculation.
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', alignItems: 'center' }}>

@@ -77,7 +77,7 @@ const domaines = [
   "Droit numérique",
   "Droit des collectivités territoriales",
   "Droit du consommateur numérique",
-  "Droit pénal · Défense",
+  "Droit pénal",
   "Droit de la vie privée · Image",
   "Droit animal"
 ]
