@@ -1,4 +1,4 @@
-﻿'use client'
+'use client'
 
 import GoogleAvis from '@/components/GoogleAvis'
 
@@ -13,8 +13,8 @@ export default function TarifsClient() {
   const schema = {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "name": "Tarifs Docuthèque",
-    "description": "Offres et tarifs de la plateforme Docuthèque : modèles de documents juridiques, abonnements Optimal, information sur vos droits, accompagnement création d'entreprise.",
+    "name": "Tarifs Cabinet Cholez-Pagotto",
+    "description": "Offres et tarifs du cabinet : modèles de documents juridiques, abonnements Optimal, information sur vos droits, accompagnement création d'entreprise.",
     "url": "https://cholez-pagotto.fr/tarifs",
     "mainEntity": {
       "@type": "ItemList",
@@ -81,7 +81,7 @@ export default function TarifsClient() {
             <h1 style={{fontSize: '2rem', fontWeight: '700', color: '#0f2d6e', margin: 0}}>Nos tarifs</h1>
             <p style={{color: '#6b7280', fontSize: '0.95rem', marginTop: '8px', marginBottom: '16px'}}>Des formules simples, transparentes, sans mauvaise surprise.</p>
             <p style={{color: '#374151', fontSize: '0.95rem', lineHeight: '1.8'}}>
-              Que vous ayez besoin d'un document ponctuel, d'un accès complet à notre bibliothèque juridique ou d'un accompagnement personnalisé pour créer votre entreprise, Docuthèque propose une offre adaptée à chaque situation. Tous nos documents sont rédigés par un juriste, jamais générés par une IA, et mis à jour dès que la législation évolue.
+              Que vous ayez besoin d'un document ponctuel, d'un accès complet à notre bibliothèque juridique ou d'un accompagnement personnalisé pour créer votre entreprise, le cabinet propose une offre adaptée à chaque situation. Tous nos documents sont rédigés par un juriste, jamais générés par une IA, et mis à jour dès que la législation évolue.
             </p>
           </div>
 

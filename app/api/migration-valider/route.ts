@@ -38,7 +38,7 @@ export async function GET(request: Request) {
         body: JSON.stringify({
           sender: { name: 'Cabinet CHOLEZ PAGOTTO', email: 'contact@cholez-pagotto.fr' },
           to: [{ email: user.email, name: `${user.prenom} ${user.nom}` }],
-          subject: 'Votre compte Docuthèque a été mis à jour',
+          subject: 'Votre espace client a été mis à jour',
           htmlContent: `
             <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
               <div style="background-color: #0f2d6e; padding: 24px; text-align: center;">
@@ -47,7 +47,7 @@ export async function GET(request: Request) {
               <div style="padding: 24px; background: #f8fafc; border: 1px solid #e5e7eb;">
                 <p style="color: #374151; font-size: 14px;">Bonjour ${user.prenom},</p>
                 <p style="color: #374151; font-size: 14px;">
-                  Votre compte Docuthèque a bien été migré vers un profil <strong>Professionnel</strong>.
+                  Votre espace client a bien été migré vers un profil <strong>Professionnel</strong>.
                   Vous pouvez désormais souscrire à l'Abonnement Optimal Pro depuis votre espace client.
                 </p>
                 <div style="margin: 24px 0; text-align: center;">

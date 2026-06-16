@@ -59,7 +59,7 @@ export default function NewsletterForm({ variant = 'hero' }: { variant?: 'hero' 
           </p>
           <p style={{ color: variant === 'hero' ? 'rgba(255,255,255,0.8)' : '#374151', fontSize: '12px', margin: 0 }}>
             {variant === 'hero'
-              ? 'Vous êtes bien inscrit à la newsletter Docuthèque.'
+              ? 'Vous êtes bien inscrit à la newsletter du cabinet.'
               : 'Vous recevrez prochainement nos actualités et offres exclusives.'}
           </p>
         </div>

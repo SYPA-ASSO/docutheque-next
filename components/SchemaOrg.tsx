@@ -3,7 +3,7 @@ export default function SchemaOrg() {
     "@context": "https://schema.org",
     "@type": "LegalService",
     "name": "Cabinet Cholez-Pagotto",
-    "alternateName": "Docuthèque",
+    "alternateName": "CBT CHOLEZ PAGOTTO",
     "description": "Plateforme de modèles de documents juridiques français rédigés par un juriste professionnel. Contrats, mises en demeure, RGPD, documents RH, statuts de société. Information sur vos droits, formations sur-mesure, conseil en assurances, accompagnement à la création d'entreprise et formalités.",
     "url": "https://cholez-pagotto.fr",
     "serviceType": [

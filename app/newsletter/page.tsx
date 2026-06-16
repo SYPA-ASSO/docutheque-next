@@ -1,21 +1,21 @@
-﻿import Header from '@/components/Header'
+import Header from '@/components/Header'
 import Footer from '@/components/FooterMinimal'
 import NewsletterForm from '@/components/NewsletterForm'
 
 export const metadata = {
-  title: "S'inscrire à la newsletter · Docuthèque · Cabinet Cholez-Pagotto",
+  title: "S'inscrire à la newsletter · Cabinet Cholez-Pagotto",
   description: 'Restez informé : actualités juridiques, offres sur les documents, services complémentaires et partenaires sélectionnés. Newsletter gratuite ou exclusive abonnés Optimal.',
 }
 
 const schema = {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  "name": "S'inscrire à la newsletter · Docuthèque",
-  "description": "Newsletter Docuthèque : informations juridiques pratiques, offres sur les documents, services complémentaires et sélections partenaires. Version gratuite et version exclusive abonnés Optimal.",
+  "name": "S'inscrire à la newsletter · Cabinet Cholez-Pagotto",
+  "description": "Newsletter du cabinet : informations juridiques pratiques, offres sur les documents, services complémentaires et sélections partenaires. Version gratuite et version exclusive abonnés Optimal.",
   "url": "https://cholez-pagotto.fr/newsletter",
   "publisher": {
     "@type": "Organization",
-    "name": "Cabinet Cholez-Pagotto · Docuthèque",
+    "name": "Cabinet Cholez-Pagotto",
     "url": "https://cholez-pagotto.fr"
   }
 }
@@ -68,7 +68,7 @@ export default function Newsletter() {
                 },
                 {
                   titre: 'Nouveaux documents disponibles',
-                  desc: "Soyez alerté dès qu'un nouveau modèle de document est ajouté à la Docuthèque : contrats, mises en demeure, RGPD, statuts et plus.",
+                  desc: "Soyez alerté dès qu'un nouveau modèle de document est ajouté à la bibliothèque : contrats, mises en demeure, RGPD, statuts et plus.",
                   icon: '📂'
                 },
                 {
@@ -121,7 +121,7 @@ export default function Newsletter() {
                   },
                   {
                     titre: 'Accès prioritaire aux documents',
-                    desc: "Les nouveaux modèles Docuthèque sont signalés aux abonnés en avant-première, avant leur mise en accès libre.",
+                    desc: "Les nouveaux modèles sont signalés aux abonnés en avant-première, avant leur mise en accès libre.",
                     icon: '⭐'
                   },
                   {
@@ -223,7 +223,7 @@ export default function Newsletter() {
 
           {/* CTA FINAL */}
           <section style={{background: 'linear-gradient(135deg, #0f2d6e 0%, #1a4fba 100%)', borderRadius: '16px', padding: '2.5rem', textAlign: 'center'}}>
-            <p style={{color: 'white', fontSize: '1.3rem', fontWeight: '700', margin: '0 0 8px'}}>Rejoignez la communauté Docuthèque</p>
+            <p style={{color: 'white', fontSize: '1.3rem', fontWeight: '700', margin: '0 0 8px'}}>Rejoignez la communauté du cabinet</p>
             <p style={{color: 'rgba(255,255,255,0.75)', fontSize: '13px', margin: '0 0 20px', lineHeight: '1.7'}}>
               Informations pratiques, offres exclusives et nouveautés directement dans votre boîte mail, sans jargon et sans IA.
             </p>

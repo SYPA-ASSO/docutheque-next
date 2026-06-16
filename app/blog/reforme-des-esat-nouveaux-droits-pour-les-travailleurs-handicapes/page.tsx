@@ -1,9 +1,9 @@
-﻿import Header from '@/components/Header'
+import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { Calendar, Clock, User, ChevronRight } from 'lucide-react'
 
 export const metadata = {
-  title: `Réforme des ESAT : nouveaux droits pour les travailleurs handicapés · Blog Docuthèque`,
+  title: `Réforme des ESAT : nouveaux droits pour les travailleurs handicapés · Blog Cabinet Cholez-Pagotto`,
   description: `Trois textes réglementaires publiés au Journal Officiel du 25 août 2025 concrétisent la réforme des ESAT et étendent significativement les droits des travailleurs en situation de handicap.`,
 }
 
@@ -23,7 +23,7 @@ const schema = {
       },
       "publisher": {
         "@type": "Organization",
-        "name": "Docuthèque · Cabinet Cholez-Pagotto",
+        "name": "Cabinet Cholez-Pagotto",
         "url": "https://cholez-pagotto.fr"
       },
       "url": "https://cholez-pagotto.fr/blog/reforme-des-esat-nouveaux-droits-pour-les-travailleurs-handicapes",

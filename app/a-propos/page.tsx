@@ -1,4 +1,4 @@
-﻿import Header from '@/components/Header'
+import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { ChevronRight } from 'lucide-react'
 import Image from 'next/image'
@@ -19,7 +19,7 @@ const schema = {
   "url": "https://cholez-pagotto.fr/a-propos",
   "publisher": {
     "@type": "Organization",
-    "name": "Docuthèque · Cabinet Cholez-Pagotto",
+    "name": "Cabinet Cholez-Pagotto",
     "url": "https://cholez-pagotto.fr"
   },
   "mainEntity": {

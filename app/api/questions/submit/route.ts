@@ -69,7 +69,7 @@ export async function POST(request: Request) {
           'api-key': process.env.BREVO_API_KEY!,
         },
         body: JSON.stringify({
-          sender: { name: "Docutheque · Cabinet Cholez-Pagotto", email: 'contact@cholez-pagotto.fr' },
+          sender: { name: "Cabinet CHOLEZ PAGOTTO", email: 'contact@cholez-pagotto.fr' },
           to: [{ email: emailAdmin, name: 'François Cholez' }],
           subject: `Nouvelle question juridique — ${user.prenom} ${user.nom}`,
           htmlContent: `

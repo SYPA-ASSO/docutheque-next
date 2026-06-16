@@ -1,10 +1,10 @@
-﻿import Header from '@/components/Header'
+import Header from '@/components/Header'
 import FooterMinimal from '@/components/FooterMinimal'
 import { ChevronRight } from 'lucide-react'
 
 export const metadata = {
   title: "Conditions Générales d'Utilisation · Cabinet Cholez-Pagotto",
-  description: "Conditions générales d'utilisation de la plateforme Docuthèque du Cabinet Cholez-Pagotto.",
+  description: "Conditions générales d'utilisation du site du Cabinet Cholez-Pagotto.",
   robots: 'noindex',
   alternates: { canonical: 'https://cholez-pagotto.fr/cgu' },
 }
@@ -63,7 +63,7 @@ export default function CGU() {
             <div style={{marginBottom: '2rem'}}>
               <span style={{display: 'inline-block', background: '#eff6ff', color: '#1a4fba', fontSize: '11px', fontWeight: '600', padding: '3px 12px', borderRadius: '20px', marginBottom: '12px'}}>CONDITIONS D'UTILISATION</span>
               <h1 style={{color: '#0f2d6e', fontSize: '1.8rem', fontWeight: '700', margin: '0 0 8px'}}>Conditions Générales d'Utilisation</h1>
-              <p style={{color: '#6b7280', fontSize: '13px', margin: 0, lineHeight: '1.6'}}>En vigueur au 12 mai 2026 · Plateforme Docuthèque du Cabinet Cholez-Pagotto</p>
+              <p style={{color: '#6b7280', fontSize: '13px', margin: 0, lineHeight: '1.6'}}>En vigueur au 12 mai 2026 · Site du Cabinet Cholez-Pagotto</p>
             </div>
 
             <div style={{display: 'flex', flexDirection: 'column', gap: '1.5rem'}}>
@@ -72,7 +72,7 @@ export default function CGU() {
               <section id="definitions" style={cardstyle}>
                 <h2 style={h2style}>Article 1 : Définitions</h2>
                 <ul style={ulstyle}>
-                  <li><strong>« Prestataire »</strong> : Cabinet Cholez-Pagotto, entreprise individuelle, SIRET 490 889 516 00053, 12 rue d'Olima, 88000 Épinal, exploitant la plateforme Docuthèque.</li>
+                  <li><strong>« Prestataire »</strong> : Cabinet Cholez-Pagotto, entreprise individuelle, SIRET 490 889 516 00053, 12 rue d'Olima, 88000 Épinal, exploitant le présent site.</li>
                   <li><strong>« Plateforme »</strong> : le site internet accessible à l'adresse cholez-pagotto.fr et ses sous-domaines, proposant des services d'information juridique et de mise à disposition de documents.</li>
                   <li><strong>« Client »</strong> : toute personne physique ou morale créant un compte sur la Plateforme et accédant aux services proposés.</li>
                   <li><strong>« Consommateur »</strong> : tout Client agissant à des fins n'entrant pas dans le cadre de son activité commerciale, industrielle, artisanale, libérale ou agricole, au sens de l'article liminaire du Code de la consommation.</li>

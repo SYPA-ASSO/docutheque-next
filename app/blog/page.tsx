@@ -1,4 +1,4 @@
-﻿import Header from '@/components/Header'
+import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { FileText, Calendar, Clock } from 'lucide-react'
 
@@ -134,12 +134,12 @@ const articles = [
 const schema = {
   "@context": "https://schema.org",
   "@type": "Blog",
-  "name": "Blog Cabinet Cholez-Pagotto · Docuthèque",
+  "name": "Blog Cabinet Cholez-Pagotto",
   "description": "Articles juridiques rédigés par un juriste pour particuliers et professionnels.",
   "url": "https://cholez-pagotto.fr/blog",
   "publisher": {
     "@type": "Organization",
-    "name": "Cabinet Cholez-Pagotto · Docuthèque",
+    "name": "Cabinet Cholez-Pagotto",
     "url": "https://cholez-pagotto.fr"
   }
 }

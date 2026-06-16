@@ -456,7 +456,7 @@ export default function ConseilAssurancesPage() {
                 },
                 {
                   titre: "Un archivage dans votre espace client",
-                  texte: "Le formulaire de recueil, le rapport de conseil et le justificatif de paiement sont archivés dans votre espace client Docuthèque. Vous y accédez à tout moment."
+                  texte: "Le formulaire de recueil, le rapport de conseil et le justificatif de paiement sont archivés dans votre espace client. Vous y accédez à tout moment."
                 }
               ].map((item, i) => (
                 <div key={i} style={{ background: 'white', borderRadius: 8, padding: '1rem', border: '1px solid #a7f3d0' }}>

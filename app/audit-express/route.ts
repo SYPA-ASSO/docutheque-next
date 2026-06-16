@@ -94,7 +94,7 @@ export async function POST(request: NextRequest) {
 <head><meta charset="UTF-8"></head>
 <body style="font-family:Arial,sans-serif;color:#374151;font-size:14px;max-width:600px;margin:0 auto;">
   <div style="background:#7c3aed;padding:24px 28px;border-radius:8px 8px 0 0;">
-    <span style="color:#ffffff;font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;opacity:0.8;">Cabinet CHOLEZ PAGOTTO &nbsp;&middot;&nbsp; Docuthèque</span>
+    <span style="color:#ffffff;font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;opacity:0.8;">Cabinet CHOLEZ PAGOTTO</span>
     <h2 style="color:#ffffff;font-size:17px;font-weight:700;margin:10px 0 6px;">Nouvelle demande d'Audit RGPD Express</h2>
     <p style="color:#e9d5ff;font-size:12px;margin:0;">Reçue le ${dateFr} à ${heureFr}</p>
   </div>

@@ -1,9 +1,9 @@
-﻿import Header from '@/components/Header'
+import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { Calendar, Clock, User, ChevronRight } from 'lucide-react'
 
 export const metadata = {
-  title: `Arnaque au « Registre des Sociétés Européennes » : ne laissez pas les fraudeurs saboter votre lancement · Blog Docuthèque`,
+  title: `Arnaque au « Registre des Sociétés Européennes » : ne laissez pas les fraudeurs saboter votre lancement · Blog Cabinet Cholez-Pagotto`,
   description: `La création d'une entreprise vous expose aux fraudes. Découvrez comment l'arnaque au Registre des Sociétés Européennes fonctionne et comment vous protéger efficacement.`,
 }
 
@@ -23,7 +23,7 @@ const schema = {
       },
       "publisher": {
         "@type": "Organization",
-        "name": "Docuthèque · Cabinet Cholez-Pagotto",
+        "name": "Cabinet Cholez-Pagotto",
         "url": "https://cholez-pagotto.fr"
       },
       "url": "https://cholez-pagotto.fr/blog/arnaque-au-registre-des-societes-europeennes-ne-laissez-pas-les-fraudeurs-saboter-votre-lancement",

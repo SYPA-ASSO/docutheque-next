@@ -152,7 +152,7 @@ export default function CookieBanner() {
 
           <div style={{ padding: '1.25rem' }}>
             <p style={{ fontSize: 12, color: '#374151', lineHeight: 1.7, marginBottom: '1.25rem' }}>
-              Le Cabinet Cholez-Pagotto (SIRET 490 889 516 00053) utilise des cookies sur Docuthèque
+              Le Cabinet Cholez-Pagotto (SIRET 490 889 516 00053) utilise des cookies sur son site
               pour améliorer votre navigation et mesurer l'audience de nos pages.
               Les cookies nécessaires ne peuvent pas être refusés.
             </p>
@@ -276,7 +276,7 @@ export default function CookieBanner() {
 
         <div style={{ padding: '0.875rem 1.25rem' }}>
           <p style={{ fontSize: 12, color: '#374151', lineHeight: 1.7, margin: '0 0 1rem' }}>
-            Docuthèque utilise des cookies pour améliorer votre navigation et mesurer l'audience de ses pages.
+            Le site du cabinet utilise des cookies pour améliorer votre navigation et mesurer l'audience de ses pages.
             Vous gardez le contrôle total sur vos choix.{' '}
             <a href="/confidentialite" style={{ color: '#1a4fba', textDecoration: 'underline' }}>
               En savoir plus

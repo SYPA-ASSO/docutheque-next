@@ -1,9 +1,9 @@
-﻿import Header from '@/components/Header'
+import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { Calendar, Clock, User, ChevronRight } from 'lucide-react'
 
 export const metadata = {
-  title: "L'Intelligence Artificielle en droit : une fausse bonne idée ? · Blog Docuthèque",
+  title: "L'Intelligence Artificielle en droit : une fausse bonne idée ? · Blog Cabinet Cholez-Pagotto",
   description: "L'IA promet efficacité et gain de temps en droit. Mais hallucinations, biais algorithmiques et absence de jugement éthique en font un outil risqué. Analyse complète par un juriste.",
 }
 
@@ -27,7 +27,7 @@ const schema = {
       },
       "publisher": {
         "@type": "Organization",
-        "name": "Docuthèque · Cabinet Cholez-Pagotto",
+        "name": "Cabinet Cholez-Pagotto",
         "url": "https://cholez-pagotto.fr"
       },
       "url": "https://cholez-pagotto.fr/blog/lintelligence-artificielle-en-droit-une-fausse-bonne-idee",

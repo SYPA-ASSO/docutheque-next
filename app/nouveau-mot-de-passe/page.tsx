@@ -137,7 +137,7 @@ export default function NouveauMotDePasse() {
               </div>
               <h1 style={{ color: '#0f2d6e', fontSize: '1.3rem', fontWeight: '700', margin: '0 0 8px' }}>Nouveau mot de passe</h1>
               <p style={{ color: '#6b7280', fontSize: '13px', margin: 0, lineHeight: '1.6' }}>
-                Choisissez un nouveau mot de passe pour votre compte Docuthèque.
+                Choisissez un nouveau mot de passe pour votre espace client.
               </p>
             </div>
 

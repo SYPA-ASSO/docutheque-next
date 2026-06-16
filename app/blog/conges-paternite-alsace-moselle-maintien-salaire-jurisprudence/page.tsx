@@ -1,9 +1,9 @@
-﻿import Header from '@/components/Header'
+import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { Calendar, Clock, User, ChevronRight } from 'lucide-react'
 
 export const metadata = {
-  title: `Congés de paternité en Alsace-Moselle : droit à un maintien de salaire · Blog Docuthèque`,
+  title: `Congés de paternité en Alsace-Moselle : droit à un maintien de salaire · Blog Cabinet Cholez-Pagotto`,
   description: `La Cour de cassation rappelle qu'en Alsace-Moselle, les salariés en congé de paternité ont droit au maintien de leur salaire en application du droit local alsacien-mosellan.`,
 }
 
@@ -23,7 +23,7 @@ const schema = {
       },
       "publisher": {
         "@type": "Organization",
-        "name": "Docuthèque · Cabinet Cholez-Pagotto",
+        "name": "Cabinet Cholez-Pagotto",
         "url": "https://cholez-pagotto.fr"
       },
       "url": "https://cholez-pagotto.fr/blog/conges-paternite-alsace-moselle-maintien-salaire-jurisprudence",

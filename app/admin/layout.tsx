@@ -119,7 +119,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
               <LayoutDashboard size={26} color="white" strokeWidth={1.5} />
             </div>
             <h1 style={{ color: '#0f2d6e', fontSize: '1.2rem', fontWeight: '700', margin: '0 0 4px' }}>Administration</h1>
-            <p style={{ color: '#9ca3af', fontSize: '13px', margin: 0 }}>Cabinet Cholez-Pagotto · Docuthèque</p>
+            <p style={{ color: '#9ca3af', fontSize: '13px', margin: 0 }}>Cabinet Cholez-Pagotto</p>
           </div>
           <form onSubmit={handleAuth} style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
             <div>

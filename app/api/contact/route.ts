@@ -115,7 +115,7 @@ export async function POST(request: NextRequest) {
 <div class="wrapper">
   <div class="header">
     <div class="header-top">
-      <span class="logo-text">Cabinet CHOLEZ PAGOTTO &nbsp;·&nbsp; Docuthèque</span>
+      <span class="logo-text">Cabinet CHOLEZ PAGOTTO</span>
     </div>
     <h2>Nouveau message depuis le formulaire de contact</h2>
     <p>Reçu le ${new Date().toLocaleDateString('fr-FR', { weekday: 'long', day: '2-digit', month: 'long', year: 'numeric' })} à ${new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })}</p>
@@ -154,7 +154,7 @@ export async function POST(request: NextRequest) {
           { email: 'contact@cholez-pagotto.fr', name: 'François CHOLEZ' },
         ],
         replyTo: { email: emailSafe, name: nomSafe },
-        subject: `[Docuthèque] ${sujetSafe} — ${nomSafe}`,
+        subject: `[Cabinet Cholez-Pagotto] ${sujetSafe} · ${nomSafe}`,
         htmlContent,
       }),
     })

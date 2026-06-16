@@ -1,9 +1,9 @@
-﻿import Header from '@/components/Header'
+import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 
 export const metadata = {
-  title: 'Politique de confidentialité · Docuthèque · Cabinet Cholez-Pagotto',
-  description: 'Politique de confidentialité et protection des données personnelles de la plateforme Docuthèque, service du Cabinet Cholez-Pagotto. Conforme au RGPD.',
+  title: 'Politique de confidentialité · Cabinet Cholez-Pagotto',
+  description: 'Politique de confidentialité et protection des données personnelles du site du Cabinet Cholez-Pagotto. Conforme au RGPD.',
 }
 
 export default function Confidentialite() {
@@ -31,7 +31,7 @@ export default function Confidentialite() {
           {/* INTRO */}
           <div style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.75rem', marginBottom: '2rem'}}>
             <p style={{color: '#374151', fontSize: '13px', lineHeight: '1.9', margin: 0}}>
-              Le Cabinet Cholez-Pagotto, représenté par François CHOLEZ (ci-après « Nous » ou « le Responsable de traitement »), accorde une importance primordiale à la protection de vos données personnelles. La présente politique s'applique à l'ensemble des traitements effectués via la plateforme <strong>Docuthèque</strong> accessible à l'adresse <strong>cholez-pagotto.fr</strong>, conformément au Règlement (UE) 2016/679 du 27 avril 2016 (RGPD) et à la loi n° 78-17 du 6 janvier 1978 modifiée.
+              Le Cabinet Cholez-Pagotto, représenté par François CHOLEZ (ci-après « Nous » ou « le Responsable de traitement »), accorde une importance primordiale à la protection de vos données personnelles. La présente politique s'applique à l'ensemble des traitements effectués via le site accessible à l'adresse <strong>cholez-pagotto.fr</strong>, conformément au Règlement (UE) 2016/679 du 27 avril 2016 (RGPD) et à la loi n° 78-17 du 6 janvier 1978 modifiée.
             </p>
           </div>
 
@@ -83,7 +83,7 @@ export default function Confidentialite() {
 
                   <div style={{background: '#f8fafc', border: '1px solid #e5e7eb', borderRadius: '8px', padding: '1rem'}}>
                     <p style={{color: '#0f2d6e', fontWeight: '700', margin: '0 0 8px'}}>3.2 Abonnement Optimal et paiement en ligne</p>
-                    <p><strong>Données :</strong> données d'identification, informations de facturation (nom, adresse), données de transaction (montant, date). <em>Les données de carte bancaire ne sont pas collectées ni stockées par Docuthèque : elles sont traitées directement par notre prestataire de paiement.</em></p>
+                    <p><strong>Données :</strong> données d'identification, informations de facturation (nom, adresse), données de transaction (montant, date). <em>Les données de carte bancaire ne sont pas collectées ni stockées par le cabinet : elles sont traitées directement par notre prestataire de paiement.</em></p>
                     <p><strong>Finalité :</strong> gestion de l'abonnement, facturation, obligations comptables</p>
                     <p><strong>Base légale :</strong> exécution du contrat (art. 6.1.b) et obligation légale (art. 6.1.c RGPD)</p>
                     <p><strong>Durée :</strong> durée de la relation contractuelle + 5 ans (prescription de droit commun) ; données de facturation : 10 ans (Code de commerce)</p>
@@ -173,7 +173,7 @@ export default function Confidentialite() {
               titre: '7. Cookies et traceurs',
               contenu: (
                 <p style={{color: '#374151', fontSize: '13px', lineHeight: '1.9'}}>
-                  La plateforme Docuthèque peut utiliser des cookies techniques strictement nécessaires au fonctionnement du site (session, authentification). Aucun cookie publicitaire ou de traçage tiers n'est déposé sans votre consentement préalable. Vous pouvez configurer votre navigateur pour refuser ou supprimer les cookies, ce qui peut affecter certaines fonctionnalités du site.
+                  Le site peut utiliser des cookies techniques strictement nécessaires au fonctionnement du site (session, authentification). Aucun cookie publicitaire ou de traçage tiers n'est déposé sans votre consentement préalable. Vous pouvez configurer votre navigateur pour refuser ou supprimer les cookies, ce qui peut affecter certaines fonctionnalités du site.
                 </p>
               )
             },
@@ -195,7 +195,7 @@ export default function Confidentialite() {
           {/* NOTE FINALE */}
           <div style={{background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '10px', padding: '1rem 1.25rem', marginTop: '1rem'}}>
             <p style={{color: '#1e3a5f', fontSize: '12px', lineHeight: '1.7', margin: 0}}>
-              La présente politique de confidentialité constitue le document unique et exhaustif applicable à l'ensemble des services proposés par le Cabinet Cholez-Pagotto via ce site, qu'il s'agisse de la consultation des contenus, de l'utilisation de la plateforme Docuthèque ou de toute autre prestation disponible à l'adresse <strong>cholez-pagotto.fr</strong>.
+              La présente politique de confidentialité constitue le document unique et exhaustif applicable à l'ensemble des services proposés par le Cabinet Cholez-Pagotto via ce site, qu'il s'agisse de la consultation des contenus, de l'utilisation du site ou de toute autre prestation disponible à l'adresse <strong>cholez-pagotto.fr</strong>.
             </p>
           </div>
 

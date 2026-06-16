@@ -51,7 +51,7 @@ export async function GET(request: Request) {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'api-key': process.env.BREVO_API_KEY! },
         body: JSON.stringify({
-          sender: { name: 'Docuthèque', email: 'contact@cholez-pagotto.fr' },
+          sender: { name: 'Cabinet CHOLEZ PAGOTTO', email: 'contact@cholez-pagotto.fr' },
           to: [{ email: emailAdmin, name: 'François Cholez' }],
           subject: `Téléchargement · ${document.nom}`,
           htmlContent: `<p>${profile?.prenom} ${profile?.nom} (${profile?.email}) a téléchargé <strong>${document.nom}</strong>.</p>`,

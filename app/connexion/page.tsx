@@ -160,7 +160,7 @@ export default function Connexion() {
               <div style={{ width: '32px', height: '32px', background: 'rgba(255,255,255,0.2)', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <Scale size={18} color="white" strokeWidth={1.5} />
               </div>
-              <span style={{ color: 'white', fontWeight: '700', fontSize: '15px' }}>Docuthèque</span>
+              <span style={{ color: 'white', fontWeight: '700', fontSize: '15px' }}>Cabinet Cholez-Pagotto</span>
             </div>
             <h2 style={{ color: 'white', fontSize: '1.3rem', fontWeight: '700', lineHeight: '1.4', marginBottom: '8px' }}>
               Vos documents juridiques et vos droits expliqués, sans jargon.
@@ -219,7 +219,7 @@ export default function Connexion() {
             {mode === 'choix' && (
               <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
                 <div>
-                  <h2 style={{ fontSize: '1.4rem', fontWeight: '700', color: '#0f2d6e', margin: '0 0 6px' }}>Bienvenue sur Docuthèque</h2>
+                  <h2 style={{ fontSize: '1.4rem', fontWeight: '700', color: '#0f2d6e', margin: '0 0 6px' }}>Bienvenue sur votre espace client</h2>
                   <p style={{ color: '#6b7280', fontSize: '13px', margin: 0 }}>Pour commencer, dites-nous où vous en êtes :</p>
                 </div>
                 <button
@@ -233,7 +233,7 @@ export default function Connexion() {
                   </div>
                   <div>
                     <p style={{ color: '#0f2d6e', fontSize: '15px', fontWeight: '700', margin: '0 0 4px' }}>C'est ma première visite</p>
-                    <p style={{ color: '#6b7280', fontSize: '13px', margin: '0 0 8px', lineHeight: '1.5' }}>Je n'ai pas encore de compte Docuthèque et je souhaite en créer un.</p>
+                    <p style={{ color: '#6b7280', fontSize: '13px', margin: '0 0 8px', lineHeight: '1.5' }}>Je n'ai pas encore de compte et je souhaite en créer un.</p>
                     <span style={{ color: '#1a4fba', fontSize: '12px', fontWeight: '600' }}>Créer mon compte →</span>
                   </div>
                 </button>
@@ -253,7 +253,7 @@ export default function Connexion() {
                   </div>
                   <div>
                     <p style={{ color: '#0f2d6e', fontSize: '15px', fontWeight: '700', margin: '0 0 4px' }}>J'ai déjà un compte</p>
-                    <p style={{ color: '#6b7280', fontSize: '13px', margin: '0 0 8px', lineHeight: '1.5' }}>Je suis déjà inscrit sur Docuthèque et je souhaite accéder à mon espace client.</p>
+                    <p style={{ color: '#6b7280', fontSize: '13px', margin: '0 0 8px', lineHeight: '1.5' }}>Je suis déjà inscrit et je souhaite accéder à mon espace client.</p>
                     <span style={{ color: '#16a34a', fontSize: '12px', fontWeight: '600' }}>Me connecter →</span>
                   </div>
                 </button>
@@ -455,7 +455,7 @@ export default function Connexion() {
                 <div style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
                   <input type="checkbox" id="newsletter" checked={newsletter} onChange={e => setNewsletter(e.target.checked)} style={{ marginTop: '2px', flexShrink: 0 }} />
                   <label htmlFor="newsletter" style={{ color: '#6b7280', fontSize: '12px', lineHeight: '1.6' }}>
-                    Je souhaite recevoir la newsletter de Docuthèque (informations juridiques, offres sur nos services)
+                    Je souhaite recevoir la newsletter du cabinet (informations juridiques, offres sur nos services)
                   </label>
                 </div>
 

@@ -39,11 +39,11 @@ export default function About() {
             Des documents conformes, téléchargeables et personnalisables, et vos droits expliqués, sans jargon.
           </h2>
           <p style={{color: '#1a4fba', fontSize: '0.95rem', fontStyle: 'italic', marginBottom: '16px'}}>
-            Docuthèque est la plateforme de ressources du Cabinet Cholez-Pagotto, conçue pour sécuriser vos démarches administratives et juridiques sans la complexité du jargon.
+            Ce site est la plateforme de ressources du Cabinet Cholez-Pagotto, conçue pour sécuriser vos démarches administratives et juridiques sans la complexité du jargon.
           </p>
           <div style={{background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '10px', padding: '1rem 1.25rem', marginBottom: '20px'}}>
             <p style={{color: '#1e3a5f', fontSize: '0.9rem', lineHeight: '1.8', margin: 0}}>
-              Chaque document de la Docuthèque est une création en conformité avec la législation, actualisée autant de fois que nécessaire. Chaque modèle est le fruit d'une expertise dédiée, mise en cohérence avec l'évolution permanente des textes grâce à une veille quotidienne. Résultat : vous profitez de documents simples à utiliser, avec une rigueur juridique constamment actualisée.
+              Chaque document de ce site est une création en conformité avec la législation, actualisée autant de fois que nécessaire. Chaque modèle est le fruit d'une expertise dédiée, mise en cohérence avec l'évolution permanente des textes grâce à une veille quotidienne. Résultat : vous profitez de documents simples à utiliser, avec une rigueur juridique constamment actualisée.
             </p>
           </div>
           <div style={{display: 'flex', gap: '8px', flexWrap: 'wrap'}}>
@@ -94,7 +94,7 @@ export default function About() {
               Le droit du quotidien, pour tous les profils
             </h3>
             <p style={{color: 'rgba(255,255,255,0.85)', fontSize: '12px', lineHeight: '1.8', marginBottom: '12px'}}>
-              Que vous soyez salarié confronté à une situation difficile au travail, employeur face à une obligation légale, consommateur lésé par un prestataire, dirigeant en train de créer votre société, bailleur ou locataire en désaccord, association cherchant à se structurer ou particulier souhaitant simplement comprendre ses droits : Docuthèque a été conçue pour vous.
+              Que vous soyez salarié confronté à une situation difficile au travail, employeur face à une obligation légale, consommateur lésé par un prestataire, dirigeant en train de créer votre société, bailleur ou locataire en désaccord, association cherchant à se structurer ou particulier souhaitant simplement comprendre ses droits : ce site a été conçu pour vous.
             </p>
             <p style={{color: 'rgba(255,255,255,0.85)', fontSize: '12px', lineHeight: '1.8', marginBottom: '16px'}}>
               Nos modèles couvrent l'ensemble des situations juridiques de la vie courante et professionnelle, sans distinction de statut ni de niveau de connaissance juridique. Du contrat de travail aux statuts de société, de la mise en demeure au registre RGPD, du bail rural à la lettre de réclamation auprès d'un assureur : chaque document est accessible, compréhensible et utilisable immédiatement.

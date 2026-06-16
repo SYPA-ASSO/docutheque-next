@@ -1,9 +1,9 @@
-﻿import Header from '@/components/Header'
+import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { Calendar, Clock, User, ChevronRight } from 'lucide-react'
 
 export const metadata = {
-  title: "AT/MP : trois décisions récentes de la Cour de cassation à retenir · Blog Docuthèque",
+  title: "AT/MP : trois décisions récentes de la Cour de cassation à retenir · Blog Cabinet Cholez-Pagotto",
   description: "Découvrez l'essentiel de trois arrêts rendus le 26 juin 2025 par la Cour de cassation en matière d'accidents du travail et maladies professionnelles.",
 }
 
@@ -23,7 +23,7 @@ const schema = {
       },
       "publisher": {
         "@type": "Organization",
-        "name": "Docuthèque · Cabinet Cholez-Pagotto",
+        "name": "Cabinet Cholez-Pagotto",
         "url": "https://cholez-pagotto.fr"
       },
       "url": "https://cholez-pagotto.fr/blog/at-mt-3-decisions-cour-cassation-juin-2025",

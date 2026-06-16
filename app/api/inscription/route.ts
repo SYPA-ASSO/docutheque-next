@@ -86,11 +86,11 @@ export async function POST(request: Request) {
 <body style="font-family:Arial,sans-serif;color:#374151;font-size:14px;max-width:600px;margin:0 auto;">
   <div style="background:linear-gradient(135deg,#0f2d6e 0%,#1a4fba 100%);padding:24px;border-radius:8px 8px 0 0;">
     <h2 style="color:#ffffff;margin:0;font-size:16px;">Activez votre compte</h2>
-    <p style="color:#bfdbfe;font-size:12px;margin:6px 0 0;">Cabinet CHOLEZ PAGOTTO &middot; Docuthèque</p>
+    <p style="color:#bfdbfe;font-size:12px;margin:6px 0 0;">Cabinet CHOLEZ PAGOTTO</p>
   </div>
   <div style="background:#f8fafc;padding:24px;border:1px solid #e5e7eb;border-top:none;border-radius:0 0 8px 8px;">
     <p>Bonjour ${prenom},</p>
-    <p>Merci de votre inscription à l'espace client de la Docuthèque du Cabinet CHOLEZ PAGOTTO. Pour activer votre compte et accéder à votre espace, cliquez sur le bouton ci-dessous.</p>
+    <p>Merci de votre inscription à l'espace client du Cabinet CHOLEZ PAGOTTO. Pour activer votre compte et accéder à votre espace, cliquez sur le bouton ci-dessous.</p>
     <div style="text-align:center;margin:24px 0;">
       <a href="${actionLink}" style="display:inline-block;background:#0f2d6e;color:#ffffff;text-decoration:none;font-size:14px;font-weight:700;padding:13px 28px;border-radius:8px;">
         Activer mon compte
@@ -114,7 +114,7 @@ export async function POST(request: Request) {
         body: JSON.stringify({
           sender: { name: 'Cabinet CHOLEZ PAGOTTO', email: 'contact@cholez-pagotto.fr' },
           to: [{ email, name: `${prenom} ${nom}` }],
-          subject: 'Activez votre compte Docuthèque',
+          subject: 'Activez votre espace client',
           htmlContent: htmlActivation,
         }),
       }).catch(err => console.error('[Inscription] Erreur email activation Brevo:', err))
@@ -171,7 +171,7 @@ export async function POST(request: Request) {
           'api-key': process.env.BREVO_API_KEY!,
         },
         body: JSON.stringify({
-          sender: { name: "Docutheque · Cabinet Cholez-Pagotto", email: 'contact@cholez-pagotto.fr' },
+          sender: { name: "Cabinet CHOLEZ PAGOTTO", email: 'contact@cholez-pagotto.fr' },
           to: [{ email: emailAdmin, name: 'François Cholez' }],
           subject: `Nouvelle inscription : ${prenom} ${nom}`,
           htmlContent: `

@@ -2,7 +2,7 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 
 export const metadata = {
-  title: 'Docuthèque · Cabinet Cholez-Pagotto · Comprendre. Décider. Agir.',
+  title: 'Cabinet Cholez-Pagotto · Comprendre. Décider. Agir.',
   description: "Information juridique, documents téléchargeables et personnalisables, conseil en assurances. Juriste formaliste, membre CRFF, ORIAS n°26003943. Épinal · Grand Est · France.",
   alternates: {
     canonical: 'https://cholez-pagotto.fr',
@@ -12,12 +12,12 @@ export const metadata = {
 const schema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "name": "Docuthèque · Cabinet Cholez-Pagotto",
+  "name": "Cabinet Cholez-Pagotto",
   "url": "https://cholez-pagotto.fr",
   "description": "Information juridique, documents téléchargeables et personnalisables, conseil en assurances. Comprendre. Décider. Agir.",
   "publisher": {
     "@type": "Organization",
-    "name": "Docuthèque · Cabinet Cholez-Pagotto",
+    "name": "Cabinet Cholez-Pagotto",
     "url": "https://cholez-pagotto.fr",
     "logo": {
       "@type": "ImageObject",
@@ -88,7 +88,7 @@ export default function Home() {
                   desc: "Modèles DOCX téléchargeables et personnalisables : contrats, mises en demeure, statuts, RGPD. Accès libre ou abonnement Optimal.",
                   lien: '/catalogue',
                   cta: 'Voir le catalogue',
-                  badge: 'Docuthèque',
+                  badge: 'Information juridique',
                   badgeColor: '#eff6ff',
                   badgeText: '#1a4fba',
                 },

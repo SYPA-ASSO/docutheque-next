@@ -1,4 +1,4 @@
-﻿import Header from '@/components/Header'
+import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { ChevronRight, FileText, Scale, Building2, Heart, Shield, Lock, Umbrella, GraduationCap, ArrowRight } from 'lucide-react'
 
@@ -45,7 +45,7 @@ const services = [
     titre: "Bibliothèque de documents juridiques",
     accroche: "Des modèles de documents rédigés par un juriste, accompagnés de notices explicatives pour les adapter à votre situation.",
     pourQui: "Particuliers, professionnels, associations, dirigeants d'entreprise.",
-    description: "La bibliothèque Docuthèque regroupe des modèles de documents juridiques en format DOCX, rédigés par un juriste et accompagnés de notices explicatives. Certains documents sont disponibles en accès libre. L'Abonnement Optimal donne accès à l'intégralité de la bibliothèque, incluant des fiches pédagogiques de vulgarisation juridique et une question mensuelle d'information juridique rédigée par un juriste.",
+    description: "La bibliothèque du cabinet regroupe des modèles de documents juridiques en format DOCX, rédigés par un juriste et accompagnés de notices explicatives. Certains documents sont disponibles en accès libre. L'Abonnement Optimal donne accès à l'intégralité de la bibliothèque, incluant des fiches pédagogiques de vulgarisation juridique et une question mensuelle d'information juridique rédigée par un juriste.",
     comprend: [
       "Documents DOCX téléchargeables en format éditable",
       "Notices explicatives rédigées par un juriste pour les principaux documents",
