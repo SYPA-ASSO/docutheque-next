@@ -23,8 +23,8 @@ export default function Header() {
           label: 'Par profil',
           children: [
             { label: 'Particuliers', href: '/accompagnement-particuliers', desc: 'Information juridique, bibliothèque de documents, assurances, formations', icon: User },
-            { label: 'Professionnels', href: '/accompagnement-professionnels', desc: 'Création et vie des entreprises, formalités, information juridique, assurances, RGPD et DPO, formations', icon: Building2 },
-            { label: 'Associations · ESS', href: '/accompagnement-associations', desc: 'Création et vie associative, gouvernance, accompagnement de projet, RGPD et DPO, formations', icon: Heart },
+            { label: 'Professionnels', href: '/accompagnement-professionnels', desc: 'Création et vie des entreprises, formalités, information juridique, bibliothèque de documents, assurances, RGPD et DPO, paie et DSN, formations', icon: Building2 },
+            { label: 'Associations · ESS', href: '/accompagnement-associations', desc: 'Création et vie associative, gouvernance, accompagnement de projet, information juridique, bibliothèque de documents, assurances, RGPD et DPO, paie et DSN, formations', icon: Heart },
           ],
         },
         {
