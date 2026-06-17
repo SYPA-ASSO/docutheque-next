@@ -7,6 +7,7 @@
 import { useState } from 'react'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import NewsletterForm from '@/components/NewsletterForm'
 import {
   Heart, CheckCircle, Users, FileText, Shield, Award,
   ArrowRight, ChevronDown, ChevronRight, BookOpen,
@@ -649,7 +650,7 @@ export default function AccompagnementAssociationsPage() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.25rem' }}>
             {[
               { icon: <Info size={22} color="#1a4fba" strokeWidth={1.5} />, fond: '#eff6ff', tag: 'Information juridique', tagColor: '#1a4fba', titre: 'Information sur vos droits', txt: "Une question sur la vie de votre structure ? Notre juriste identifie les textes applicables et vous répond, références à l'appui, sous 24 à 48h.", href: '/information-sur-vos-droits' },
-              { icon: <BookOpen size={22} color="#7c3aed" strokeWidth={1.5} />, fond: '#f5f3ff', tag: 'Bibliothèque', tagColor: '#7c3aed', titre: 'Bibliothèque de documents', txt: "Modèles DOCX pour associations : statuts, PV d'assemblée, registres, documents RGPD, courriers types. Personnalisables et tenus à jour.", href: '/catalogue' },
+              { icon: <BookOpen size={22} color="#7c3aed" strokeWidth={1.5} />, fond: '#f5f3ff', tag: 'Accès libre', tagColor: '#7c3aed', titre: 'Bibliothèque de documents', txt: "Modèles DOCX pour associations : sélection en accès libre avec un compte gratuit, bibliothèque complète via l'abonnement Optimal. Statuts, PV d'assemblée, registres, RGPD, courriers.", href: '/catalogue' },
               { icon: <Shield size={22} color="#065f46" strokeWidth={1.5} />, fond: '#ecfdf5', tag: 'ORIAS 26003943', tagColor: '#065f46', titre: 'Conseil en assurances', txt: "Intermédiaire en assurances réglementé. Responsabilité civile, assurance des dirigeants et bénévoles, locaux, événements. Conseil objectif et motivé.", href: '/conseil-assurances' },
               { icon: <FileText size={22} color="#b45309" strokeWidth={1.5} />, fond: '#fffbeb', tag: 'Site dédié', tagColor: '#b45309', titre: 'Paie et DSN', txt: "Pour les associations employeuses : externalisation de la paie, bulletins de salaire et Déclarations Sociales Nominatives (DSN).", href: 'https://www.paie-et-dsn.fr' },
               { icon: <Award size={22} color="#4338ca" strokeWidth={1.5} />, fond: '#eef2ff', tag: 'Sur-mesure', tagColor: '#4338ca', titre: 'Formations', txt: "Formations sur-mesure pour vos équipes et bénévoles : RGPD, obligations des dirigeants, gouvernance et vie associative. En présentiel ou à distance.", href: '/formations' },
@@ -664,6 +665,17 @@ export default function AccompagnementAssociationsPage() {
                 <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', color: '#0f2d6e', fontWeight: 700, fontSize: 13 }}>En savoir plus <ArrowRight size={15} /></span>
               </a>
             ))}
+          </div>
+        </section>
+
+        {/* NEWSLETTER */}
+        <section style={{ maxWidth: '760px', margin: '0 auto', padding: '0 1.5rem 3.5rem' }}>
+          <div style={{ background: '#f8fafc', border: '1px solid #e5e7eb', borderRadius: 16, padding: '2rem 1.75rem', textAlign: 'center' }}>
+            <h2 style={{ fontSize: '1.3rem', fontWeight: 700, color: '#0f2d6e', margin: '0 0 0.5rem' }}>Restez informé</h2>
+            <p style={{ fontSize: 14, color: '#374151', maxWidth: '520px', margin: '0 auto 1.5rem' }}>
+              Recevez nos analyses juridiques, les évolutions réglementaires et nos actualités. Une lettre claire, sans spam, désinscription en un clic.
+            </p>
+            <NewsletterForm variant="cta" />
           </div>
         </section>
       </main>

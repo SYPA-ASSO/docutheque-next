@@ -4,6 +4,7 @@
 
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import NewsletterForm from '@/components/NewsletterForm'
 import {
   Building2, FileText, Shield, BookOpen, Scale,
   ArrowRight, ChevronRight, CheckCircle, ExternalLink, Info
@@ -115,15 +116,15 @@ const services = [
       },
       {
         titre: "Bibliothèque de documents",
-        badge: "Dès 17,90 €/mois",
+        badge: "Accès libre",
         badgeColor: "#7c3aed",
         href: "/catalogue",
-        description: "Accès à la bibliothèque de modèles juridiques en DOCX, personnalisables et tenus à jour : statuts, contrats, RGPD, registres, courriers types.",
+        description: "Modèles juridiques en DOCX : une sélection en accès libre avec un compte gratuit, et la bibliothèque complète via l'abonnement Optimal. Statuts, contrats, RGPD, registres, courriers.",
         points: [
-          "Modèles DOCX prêts à personnaliser",
-          "Statuts, contrats, RGPD, registres",
-          "Mises à jour incluses",
-          "Sans engagement",
+          "Documents gratuits en accès libre",
+          "Bibliothèque complète sur abonnement Optimal",
+          "Personnalisables dans Word ou LibreOffice",
+          "Mises à jour législatives incluses",
         ],
         couleur: "#7c3aed",
       },
@@ -420,6 +421,17 @@ export default function AccompagnementProfessionnelsPage() {
           </div>
         </section>
 
+
+        {/* NEWSLETTER */}
+        <section style={{ maxWidth: '760px', margin: '0 auto', padding: '0 1.5rem 3.5rem' }}>
+          <div style={{ background: '#f8fafc', border: '1px solid #e5e7eb', borderRadius: 16, padding: '2rem 1.75rem', textAlign: 'center' }}>
+            <h2 style={{ fontSize: '1.3rem', fontWeight: 700, color: '#0f2d6e', margin: '0 0 0.5rem' }}>Restez informé</h2>
+            <p style={{ fontSize: 14, color: '#374151', maxWidth: '520px', margin: '0 auto 1.5rem' }}>
+              Recevez nos analyses juridiques, les évolutions réglementaires et nos actualités. Une lettre claire, sans spam, désinscription en un clic.
+            </p>
+            <NewsletterForm variant="cta" />
+          </div>
+        </section>
       </main>
       <Footer />
     </>

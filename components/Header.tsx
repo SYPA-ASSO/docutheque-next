@@ -11,6 +11,7 @@ type NavItem = { label: string; href: string; groups?: NavGroup[] }
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const [mobileGroupsOpen, setMobileGroupsOpen] = useState<Record<string, boolean>>({})
   const [dropdownOpen, setDropdownOpen] = useState<string | null>(null)
 
   const nav: NavItem[] = [
@@ -48,7 +49,7 @@ export default function Header() {
     { label: 'Contact', href: '/contact' },
   ]
 
-  const allServices = nav.find((i) => i.groups)?.groups?.flatMap((g) => g.children) ?? []
+  const serviceGroups = nav.find((i) => i.groups)?.groups ?? []
 
   return (
     <>
@@ -263,15 +264,27 @@ export default function Header() {
               Accueil
             </Link>
 
-            <div style={{ padding: '6px 0' }}>
-              <div style={{ fontSize: '11px', fontWeight: 700, color: '#9ca3af', letterSpacing: '0.08em', textTransform: 'uppercase', padding: '8px 0 4px' }}>Services</div>
-              {allServices.map((c) => (
-                <Link key={c.href + c.label} href={c.href} onClick={() => setMenuOpen(false)} style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '10px 4px', fontSize: '14px', color: '#0f2d6e', textDecoration: 'none', fontWeight: 500 }}>
-                  {c.icon ? <span style={{ color: '#7c3aed', display: 'flex', flexShrink: 0 }}><c.icon size={17} strokeWidth={1.75} /></span> : null}
-                  {c.label}
-                </Link>
-              ))}
-            </div>
+            {serviceGroups.map((group) => {
+              const isOpen = !!mobileGroupsOpen[group.label]
+              return (
+                <div key={group.label}>
+                  <button type="button" onClick={() => setMobileGroupsOpen((prev) => ({ ...prev, [group.label]: !prev[group.label] }))} aria-expanded={isOpen} style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', background: 'none', border: 'none', cursor: 'pointer', padding: '12px 4px', fontSize: '15px', fontWeight: 600, color: '#0f2d6e', borderBottom: '1px solid #f3f4f6' }}>
+                    {group.label}
+                    <ChevronDown size={18} strokeWidth={2} style={{ transform: isOpen ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s', color: '#9ca3af', flexShrink: 0 }} />
+                  </button>
+                  {isOpen && (
+                    <div style={{ padding: '4px 0 8px' }}>
+                      {group.children.map((c) => (
+                        <Link key={c.href + c.label} href={c.href} onClick={() => setMenuOpen(false)} style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '10px 4px 10px 16px', fontSize: '14px', color: '#0f2d6e', textDecoration: 'none', fontWeight: 500 }}>
+                          {c.icon ? <span style={{ color: '#7c3aed', display: 'flex', flexShrink: 0 }}><c.icon size={17} strokeWidth={1.75} /></span> : null}
+                          {c.label}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              )
+            })}
 
             <Link href="/catalogue" onClick={() => setMenuOpen(false)} style={{ display: 'block', padding: '12px 4px', fontSize: '15px', color: '#0f2d6e', textDecoration: 'none', fontWeight: 600, borderTop: '1px solid #f3f4f6', borderBottom: '1px solid #f3f4f6' }}>
               Catalogue

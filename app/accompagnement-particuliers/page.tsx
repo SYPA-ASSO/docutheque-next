@@ -2,6 +2,7 @@
 
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import NewsletterForm from '@/components/NewsletterForm'
 import {
   Scale, Shield, BookOpen, CheckCircle, ArrowRight, ChevronRight, Info, GraduationCap
 } from 'lucide-react'
@@ -204,7 +205,7 @@ export default function AccompagnementParticuliersPage() {
                 </div>
                 <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.85)', lineHeight: 1.7, marginBottom: '1rem', flex: 1 }}>
                   Accès complet à la bibliothèque de documents juridiques en DOCX, personnalisables et mis à jour.
-                  Une question juriste incluse par mois, questions supplémentaires à tarif préférentiel.
+                  Une question juriste incluse par mois, questions supplémentaires à tarif préférentiel. Une sélection de documents reste aussi accessible gratuitement, avec un simple compte gratuit.
                 </p>
                 <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 1.5rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                   {[
@@ -392,6 +393,17 @@ export default function AccompagnementParticuliersPage() {
           </section>
 
         </div>
+
+        {/* NEWSLETTER */}
+        <section style={{ maxWidth: '760px', margin: '0 auto', padding: '0 1.5rem 3.5rem' }}>
+          <div style={{ background: '#f8fafc', border: '1px solid #e5e7eb', borderRadius: 16, padding: '2rem 1.75rem', textAlign: 'center' }}>
+            <h2 style={{ fontSize: '1.3rem', fontWeight: 700, color: '#0f2d6e', margin: '0 0 0.5rem' }}>Restez informé</h2>
+            <p style={{ fontSize: 14, color: '#374151', maxWidth: '520px', margin: '0 auto 1.5rem' }}>
+              Recevez nos analyses juridiques, les évolutions réglementaires et nos actualités. Une lettre claire, sans spam, désinscription en un clic.
+            </p>
+            <NewsletterForm variant="cta" />
+          </div>
+        </section>
       </main>
       <Footer />
     </>
