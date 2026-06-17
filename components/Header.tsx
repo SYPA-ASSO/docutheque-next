@@ -148,7 +148,6 @@ export default function Header() {
                       left: 0,
                       paddingTop: '8px',
                       zIndex: 100,
-                      minWidth: '320px',
                     }}>
                       <div style={{
                         background: 'white',
@@ -156,11 +155,13 @@ export default function Header() {
                         borderRadius: '12px',
                         boxShadow: '0 8px 24px rgba(0,0,0,0.08)',
                         padding: '8px 0',
-                        overflow: 'hidden',
+                        display: 'flex',
+                        alignItems: 'flex-start',
+                        maxHeight: 'calc(100vh - 130px)',
+                        overflowY: 'auto',
                       }}>
                         {(item.groups ?? []).map((group, gi) => (
-                          <div key={gi}>
-                            {gi > 0 && <div style={{ height: '1px', background: '#f3f4f6', margin: '6px 0' }} />}
+                          <div key={gi} style={{ minWidth: '270px', borderLeft: gi > 0 ? '1px solid #f3f4f6' : 'none' }}>
                             {group.label && (
                               <div style={{
                                 padding: '6px 16px 4px',
