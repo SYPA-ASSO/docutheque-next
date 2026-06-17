@@ -208,6 +208,16 @@ const prestations = [
       "Interlocuteur CNIL désigné",
       "Veille réglementaire et mise à jour documentaire"
     ]
+  },
+  {
+    categorie: "Gouvernance et accompagnement de projet",
+    items: [
+      "Accompagnement à la structuration d'un projet associatif ou ESS",
+      "Aide au choix de la forme juridique adaptée (association, fondation, coopérative)",
+      "Accompagnement de la gouvernance : statuts, règlement intérieur, instances",
+      "Préparation et organisation des assemblées générales",
+      "Information sur les obligations des dirigeants et la vie statutaire"
+    ]
   }
 ]
 
@@ -343,7 +353,7 @@ export default function AccompagnementAssociationsPage() {
               {[
                 { valeur: "6", label: "Types de structures accompagnées" },
                 { valeur: "30+", label: "Ans d'engagement ESS" },
-                { valeur: "4", label: "Domaines de prestations" },
+                { valeur: "5", label: "Domaines de prestations" },
                 { valeur: "Sur devis", label: "Tarification transparente" }
               ].map((s, i) => (
                 <div key={i}>
@@ -629,6 +639,33 @@ export default function AccompagnementAssociationsPage() {
           </section>
 
         </div>
+
+        {/* SERVICES COMPLEMENTAIRES POUR LES STRUCTURES */}
+        <section style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 1.5rem 3.5rem' }}>
+          <h2 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#0f2d6e', marginBottom: '0.5rem' }}>D'autres services pour votre structure</h2>
+          <p style={{ fontSize: 14, color: '#374151', marginBottom: '1.75rem', maxWidth: '640px' }}>
+            Au-delà de la création et de la conformité, le cabinet accompagne votre association ou structure ESS sur l'ensemble de ses besoins juridiques, assurantiels et sociaux.
+          </p>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.25rem' }}>
+            {[
+              { icon: <Info size={22} color="#1a4fba" strokeWidth={1.5} />, fond: '#eff6ff', tag: 'Information juridique', tagColor: '#1a4fba', titre: 'Information sur vos droits', txt: "Une question sur la vie de votre structure ? Notre juriste identifie les textes applicables et vous répond, références à l'appui, sous 24 à 48h.", href: '/information-sur-vos-droits' },
+              { icon: <BookOpen size={22} color="#7c3aed" strokeWidth={1.5} />, fond: '#f5f3ff', tag: 'Bibliothèque', tagColor: '#7c3aed', titre: 'Bibliothèque de documents', txt: "Modèles DOCX pour associations : statuts, PV d'assemblée, registres, documents RGPD, courriers types. Personnalisables et tenus à jour.", href: '/catalogue' },
+              { icon: <Shield size={22} color="#065f46" strokeWidth={1.5} />, fond: '#ecfdf5', tag: 'ORIAS 26003943', tagColor: '#065f46', titre: 'Conseil en assurances', txt: "Intermédiaire en assurances réglementé. Responsabilité civile, assurance des dirigeants et bénévoles, locaux, événements. Conseil objectif et motivé.", href: '/conseil-assurances' },
+              { icon: <FileText size={22} color="#b45309" strokeWidth={1.5} />, fond: '#fffbeb', tag: 'Site dédié', tagColor: '#b45309', titre: 'Paie et DSN', txt: "Pour les associations employeuses : externalisation de la paie, bulletins de salaire et Déclarations Sociales Nominatives (DSN).", href: 'https://www.paie-et-dsn.fr' },
+              { icon: <Award size={22} color="#4338ca" strokeWidth={1.5} />, fond: '#eef2ff', tag: 'Sur-mesure', tagColor: '#4338ca', titre: 'Formations', txt: "Formations sur-mesure pour vos équipes et bénévoles : RGPD, obligations des dirigeants, gouvernance et vie associative. En présentiel ou à distance.", href: '/formations' },
+            ].map((s, i) => (
+              <a key={i} href={s.href} {...(s.href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})} style={{ display: 'flex', flexDirection: 'column', background: 'white', border: '1px solid #e5e7eb', borderRadius: 14, padding: '1.5rem', textDecoration: 'none' }}>
+                <div style={{ width: 44, height: 44, background: s.fond, borderRadius: 10, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '0.9rem' }}>
+                  {s.icon}
+                </div>
+                <p style={{ color: s.tagColor, fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', margin: '0 0 4px' }}>{s.tag}</p>
+                <h3 style={{ fontSize: '1.05rem', fontWeight: 700, color: '#0f2d6e', margin: '0 0 0.5rem' }}>{s.titre}</h3>
+                <p style={{ fontSize: 13, color: '#374151', lineHeight: 1.6, margin: '0 0 1rem', flex: 1 }}>{s.txt}</p>
+                <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', color: '#0f2d6e', fontWeight: 700, fontSize: 13 }}>En savoir plus <ArrowRight size={15} /></span>
+              </a>
+            ))}
+          </div>
+        </section>
       </main>
 
       <Footer />

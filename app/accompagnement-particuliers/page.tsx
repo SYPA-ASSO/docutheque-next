@@ -3,7 +3,7 @@
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import {
-  Scale, Shield, BookOpen, CheckCircle, ArrowRight, ChevronRight, Info
+  Scale, Shield, BookOpen, CheckCircle, ArrowRight, ChevronRight, Info, GraduationCap
 } from 'lucide-react'
 
 const schemaData = {
@@ -20,12 +20,13 @@ const schemaData = {
         "name": "Cabinet Cholez-Pagotto",
         "url": "https://cholez-pagotto.fr"
       },
-      "serviceType": "Information juridique et conseil en assurances pour particuliers",
+      "serviceType": "Information juridique, conseil en assurances et formations pour particuliers",
       "areaServed": { "@type": "Country", "name": "France" },
       "offers": [
         { "@type": "Offer", "name": "Information sur vos droits", "price": "47", "priceCurrency": "EUR" },
         { "@type": "Offer", "name": "Abonnement Optimal Particulier", "price": "17.90", "priceCurrency": "EUR" },
-        { "@type": "Offer", "name": "Conseil en assurances", "price": "90", "priceCurrency": "EUR" }
+        { "@type": "Offer", "name": "Conseil en assurances", "price": "90", "priceCurrency": "EUR" },
+        { "@type": "Offer", "name": "Formations sur-mesure" }
       ],
       "url": "https://cholez-pagotto.fr/accompagnement-particuliers"
     },
@@ -114,7 +115,7 @@ export default function AccompagnementParticuliersPage() {
               prenez vos décisions en toute connaissance de cause
             </h1>
             <p style={{ fontSize: '1.1rem', color: 'rgba(255,255,255,0.88)', marginBottom: '2rem', lineHeight: 1.7 }}>
-              Trois façons de bénéficier de l'expertise du cabinet : information juridique, bibliothèque de documents et conseil en assurances réglementé.
+              Quatre façons de bénéficier de l'expertise du cabinet : information juridique, bibliothèque de documents, conseil en assurances réglementé et formations sur-mesure.
               Réponse juriste sous 24 à 48h ouvrées. 100% humain, aucune IA.
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '2rem', paddingTop: '2rem', borderTop: '1px solid rgba(255,255,255,0.2)' }}>
@@ -257,6 +258,36 @@ export default function AccompagnementParticuliersPage() {
                   <span style={{ fontSize: 13, color: '#6b7280', marginLeft: '0.4rem' }}>forfait conseil particulier</span>
                 </div>
                 <a href="/conseil-assurances" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', background: '#065f46', color: 'white', textDecoration: 'none', padding: '12px 20px', borderRadius: 8, fontWeight: 700, fontSize: '0.875rem' }}>
+                  En savoir plus <ArrowRight size={16} />
+                </a>
+              </div>
+
+              {/* Service 4 — Formations */}
+              <div style={{ background: 'white', border: '2px solid #ddd6fe', borderRadius: 14, padding: '1.75rem', display: 'flex', flexDirection: 'column' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
+                  <div style={{ width: 44, height: 44, background: '#f5f3ff', borderRadius: 10, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                    <GraduationCap size={22} color="#7c3aed" strokeWidth={1.5} />
+                  </div>
+                  <div>
+                    <p style={{ color: '#7c3aed', fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', margin: 0 }}>Sur-mesure</p>
+                    <h3 style={{ fontSize: '1.05rem', fontWeight: 700, color: '#0f2d6e', margin: 0 }}>Formations</h3>
+                  </div>
+                </div>
+                <p style={{ fontSize: 13, color: '#374151', lineHeight: 1.7, marginBottom: '1rem', flex: 1 }}>
+                  Sessions individualisées pour comprendre un sujet juridique ou assurantiel qui vous concerne : droit du travail, baux, succession, assurances. En présentiel ou à distance, adaptées à votre niveau.
+                </p>
+                <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 1.5rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                  {["Programme adapté à votre besoin", "En présentiel ou à distance", "Supports pédagogiques fournis", "Animée par notre juriste"].map((item, j) => (
+                    <li key={j} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem', fontSize: 12, color: '#374151' }}>
+                      <CheckCircle size={14} strokeWidth={2} style={{ color: '#7c3aed', marginTop: 2, flexShrink: 0 }} />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <div style={{ marginBottom: '1rem' }}>
+                  <span style={{ fontSize: '2rem', fontWeight: 800, color: '#7c3aed' }}>Sur devis</span>
+                </div>
+                <a href="/formations" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', background: '#7c3aed', color: 'white', textDecoration: 'none', padding: '12px 20px', borderRadius: 8, fontWeight: 700, fontSize: '0.875rem' }}>
                   En savoir plus <ArrowRight size={16} />
                 </a>
               </div>

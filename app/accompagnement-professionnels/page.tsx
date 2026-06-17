@@ -113,6 +113,20 @@ const services = [
         ],
         couleur: "#7c3aed",
       },
+      {
+        titre: "Bibliothèque de documents",
+        badge: "Dès 17,90 €/mois",
+        badgeColor: "#7c3aed",
+        href: "/catalogue",
+        description: "Accès à la bibliothèque de modèles juridiques en DOCX, personnalisables et tenus à jour : statuts, contrats, RGPD, registres, courriers types.",
+        points: [
+          "Modèles DOCX prêts à personnaliser",
+          "Statuts, contrats, RGPD, registres",
+          "Mises à jour incluses",
+          "Sans engagement",
+        ],
+        couleur: "#7c3aed",
+      },
     ],
   },
   {
@@ -227,7 +241,7 @@ export default function AccompagnementProfessionnelsPage() {
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '2rem', paddingTop: '2rem', borderTop: '1px solid rgba(255,255,255,0.2)' }}>
               {[
-                { valeur: "8", label: "Services disponibles" },
+                { valeur: "9", label: "Services disponibles" },
                 { valeur: "CRFF", label: "Formaliste certifié" },
                 { valeur: "ORIAS", label: "26003943 · IAS Niveau 1" },
                 { valeur: "France", label: "Accompagnement à distance" }
