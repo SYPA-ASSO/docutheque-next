@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useCallback } from 'react'
+import type { CSSProperties } from 'react'
 import { useAdmin } from '@/app/admin/layout'
 import { Upload, FileText, Eye, EyeOff, Plus, X } from 'lucide-react'
 import { CategorySearch } from '@/components/CategorySearch'
@@ -24,6 +25,16 @@ type EditFormType = {
   acces_payant: boolean
   prix: string
   ordre: string
+  type: string
+  slug: string
+  sous_titre: string
+  contenu: string
+  image_url: string
+  modeles_lies: string
+  articles_lies: string
+  services_lies: string
+  inclus_dans: string
+  contient: string
   file: File | null
 }
 
@@ -31,7 +42,78 @@ const emptyForm = {
   nom: '', description: '', categories: [],
   profils: ['particulier', 'professionnel', 'association', 'collectivite'],
   acces_gratuit: false, acces_optimal: true, acces_payant: false,
-  prix: '', ordre: '0', file: null as File | null,
+  prix: '', ordre: '0',
+  type: 'document', slug: '', sous_titre: '', contenu: '', image_url: '',
+  modeles_lies: '', articles_lies: '', services_lies: '', inclus_dans: '', contient: '',
+  file: null as File | null,
+}
+
+function slugify(s: string): string {
+  return s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '').slice(0, 80)
+}
+function toArr(s: string): string[] {
+  return (s || '').split(',').map((x) => x.trim()).filter(Boolean)
+}
+
+function RessourceFields({ f, setF, inputStyle, labelStyle }: { f: EditFormType, setF: (v: EditFormType) => void, inputStyle: CSSProperties, labelStyle: CSSProperties }) {
+  const note = { fontWeight: 400 as const, color: '#9ca3af' }
+  return (
+    <>
+      <div style={{ borderTop: '1px dashed #e5e7eb', paddingTop: '14px' }}>
+        <p style={{ fontSize: '12px', fontWeight: 700, color: '#0f2d6e', margin: '0 0 2px', textTransform: 'uppercase', letterSpacing: '0.04em' }}>Page dediee et maillage (SEO)</p>
+        <p style={{ fontSize: '11px', color: '#9ca3af', margin: 0 }}>Genere la page publique /catalogue/[slug]. Slug vide = pas de page individuelle.</p>
+      </div>
+      <div style={{ display: 'grid', gridTemplateColumns: '160px 1fr', gap: '12px' }}>
+        <div>
+          <label style={labelStyle}>Type</label>
+          <select value={f.type} onChange={(e) => setF({ ...f, type: e.target.value })} style={inputStyle}>
+            <option value="document">Document</option>
+            <option value="pack">Pack</option>
+            <option value="guide">Guide</option>
+            <option value="livre">Livre</option>
+          </select>
+        </div>
+        <div>
+          <label style={labelStyle}>Slug URL <span style={note}>(vide = genere depuis le nom)</span></label>
+          <input type="text" value={f.slug} onChange={(e) => setF({ ...f, slug: e.target.value })} placeholder="modele-mise-en-demeure-impayes" style={inputStyle} />
+        </div>
+      </div>
+      <div>
+        <label style={labelStyle}>Sous-titre (accroche)</label>
+        <input type="text" value={f.sous_titre} onChange={(e) => setF({ ...f, sous_titre: e.target.value })} placeholder="Phrase affichee sous le titre" style={inputStyle} />
+      </div>
+      <div>
+        <label style={labelStyle}>Contenu de la page <span style={note}>(Markdown : ## titre, - liste, **gras**)</span></label>
+        <textarea value={f.contenu} onChange={(e) => setF({ ...f, contenu: e.target.value })} rows={6} placeholder="Texte de la page en Markdown" style={{ ...inputStyle, resize: 'vertical', fontFamily: 'inherit' }} />
+      </div>
+      <div>
+        <label style={labelStyle}>Image de couverture (URL)</label>
+        <input type="text" value={f.image_url} onChange={(e) => setF({ ...f, image_url: e.target.value })} placeholder="https://..." style={inputStyle} />
+      </div>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+        <div>
+          <label style={labelStyle}>Modeles lies <span style={note}>(slugs, virgules)</span></label>
+          <input type="text" value={f.modeles_lies} onChange={(e) => setF({ ...f, modeles_lies: e.target.value })} placeholder="slug-1, slug-2" style={inputStyle} />
+        </div>
+        <div>
+          <label style={labelStyle}>Articles de blog lies <span style={note}>(slugs, virgules)</span></label>
+          <input type="text" value={f.articles_lies} onChange={(e) => setF({ ...f, articles_lies: e.target.value })} placeholder="slug-article" style={inputStyle} />
+        </div>
+        <div>
+          <label style={labelStyle}>Services lies <span style={note}>(chemins, virgules)</span></label>
+          <input type="text" value={f.services_lies} onChange={(e) => setF({ ...f, services_lies: e.target.value })} placeholder="/rgpd-conformite" style={inputStyle} />
+        </div>
+        <div>
+          <label style={labelStyle}>Inclus dans le pack <span style={note}>(slugs, virgules)</span></label>
+          <input type="text" value={f.inclus_dans} onChange={(e) => setF({ ...f, inclus_dans: e.target.value })} placeholder="slug-pack" style={inputStyle} />
+        </div>
+      </div>
+      <div>
+        <label style={labelStyle}>Contient <span style={note}>(pack/guide : slugs des documents inclus, virgules)</span></label>
+        <input type="text" value={f.contient} onChange={(e) => setF({ ...f, contient: e.target.value })} placeholder="slug-doc-1, slug-doc-2" style={inputStyle} />
+      </div>
+    </>
+  )
 }
 
 export default function AdminDocuments() {
@@ -108,11 +190,15 @@ export default function AdminDocuments() {
 
   const handleUpload = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (!form.file || !form.nom) { setUploadErreur('Fichier DOCX et nom obligatoires.'); return }
+    if (!form.nom) { setUploadErreur('Nom obligatoire.'); return }
+    if (form.type === 'document' && !form.file) { setUploadErreur('Fichier DOCX obligatoire pour un document.'); return }
     if (!form.acces_gratuit && !form.acces_optimal && !form.acces_payant) { setUploadErreur("Sélectionnez au moins un niveau d'accès."); return }
     setUploadStatut('loading'); setUploadErreur('')
     const fd = new FormData()
-    fd.append('file', form.file); fd.append('nom', form.nom); fd.append('description', form.description)
+    if (form.file) fd.append('file', form.file)
+    fd.append('nom', form.nom); fd.append('description', form.description)
+    fd.append('type', form.type); fd.append('slug', form.slug); fd.append('sous_titre', form.sous_titre); fd.append('contenu', form.contenu); fd.append('image_url', form.image_url)
+    fd.append('modeles_lies', form.modeles_lies); fd.append('articles_lies', form.articles_lies); fd.append('services_lies', form.services_lies); fd.append('inclus_dans', form.inclus_dans); fd.append('contient', form.contient)
     fd.append('categories', JSON.stringify(form.categories)); fd.append('profils', JSON.stringify(form.profils))
     fd.append('acces_gratuit', String(form.acces_gratuit)); fd.append('acces_optimal', String(form.acces_optimal)); fd.append('acces_payant', String(form.acces_payant))
     if (form.prix) fd.append('prix', form.prix)
@@ -124,7 +210,7 @@ export default function AdminDocuments() {
 
   const ouvrirEdition = (doc: DocItem) => {
     setEditDoc(doc)
-    setEditForm({ nom: doc.nom, description: doc.description || '', categories: doc.categories || [], profils: doc.profils_autorises || [], acces_gratuit: doc.acces_gratuit, acces_optimal: doc.acces_optimal, acces_payant: doc.acces_payant, prix: doc.prix_unitaire ? String(doc.prix_unitaire) : '', ordre: String(doc.ordre), file: null })
+    setEditForm({ nom: doc.nom, description: doc.description || '', categories: doc.categories || [], profils: doc.profils_autorises || [], acces_gratuit: doc.acces_gratuit, acces_optimal: doc.acces_optimal, acces_payant: doc.acces_payant, prix: doc.prix_unitaire ? String(doc.prix_unitaire) : '', ordre: String(doc.ordre), type: doc.type || 'document', slug: doc.slug || '', sous_titre: doc.sous_titre || '', contenu: doc.contenu || '', image_url: doc.image_url || '', modeles_lies: (doc.modeles_lies || []).join(', '), articles_lies: (doc.articles_lies || []).join(', '), services_lies: (doc.services_lies || []).join(', '), inclus_dans: (doc.inclus_dans || []).join(', '), contient: (doc.contient || []).join(', '), file: null })
     setEditStatut('idle'); setEditErreur('')
   }
 
@@ -150,7 +236,7 @@ export default function AdminDocuments() {
       const res = await fetch('/api/admin/documents-update', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'x-admin-password': password },
-        body: JSON.stringify({ id: editDoc.id, nom: editForm.nom, description: editForm.description, categories: editForm.categories, profils_autorises: editForm.profils, acces_gratuit: editForm.acces_gratuit, acces_optimal: editForm.acces_optimal, acces_payant: editForm.acces_payant, prix_unitaire: editForm.prix ? parseFloat(editForm.prix) : null, ordre: parseInt(editForm.ordre), blob_url: blobUrl }),
+        body: JSON.stringify({ id: editDoc.id, nom: editForm.nom, description: editForm.description, categories: editForm.categories, profils_autorises: editForm.profils, acces_gratuit: editForm.acces_gratuit, acces_optimal: editForm.acces_optimal, acces_payant: editForm.acces_payant, prix_unitaire: editForm.prix ? parseFloat(editForm.prix) : null, ordre: parseInt(editForm.ordre), blob_url: blobUrl, type: editForm.type, slug: editForm.slug.trim() ? slugify(editForm.slug) : slugify(editForm.nom), sous_titre: editForm.sous_titre || null, contenu: editForm.contenu || null, image_url: editForm.image_url || null, modeles_lies: toArr(editForm.modeles_lies), articles_lies: toArr(editForm.articles_lies), services_lies: toArr(editForm.services_lies), inclus_dans: toArr(editForm.inclus_dans), contient: toArr(editForm.contient) }),
       })
       if (res.ok) { setEditStatut('success'); setEditDoc(null); setEditForm(null); loadDocuments(password) }
       else { setEditStatut('error'); setEditErreur('Erreur lors de la mise à jour.') }
@@ -282,7 +368,7 @@ export default function AdminDocuments() {
                 </div>
                 <div>
                   <label style={labelStyle}>Fichier DOCX *</label>
-                  <input type="file" accept=".docx" onChange={e => setForm({ ...form, file: e.target.files?.[0] || null })} style={{ ...inputStyle, padding: '8px 12px' }} required />
+                  <input type="file" accept=".docx,.pdf" onChange={e => setForm({ ...form, file: e.target.files?.[0] || null })} style={{ ...inputStyle, padding: '8px 12px' }} required={form.type === 'document'} />
                 </div>
               </div>
               <div>
@@ -307,6 +393,7 @@ export default function AdminDocuments() {
                 <label style={labelStyle}>Ordre d'affichage</label>
                 <input type="number" value={form.ordre} onChange={e => setForm({ ...form, ordre: e.target.value })} style={inputStyle} />
               </div>
+              <RessourceFields f={form} setF={setForm} inputStyle={inputStyle} labelStyle={labelStyle} />
               {uploadErreur && <p style={{ color: '#dc2626', fontSize: '12px', margin: 0 }}>{uploadErreur}</p>}
               <div style={{ display: 'flex', gap: '10px' }}>
                 <button type="submit" disabled={uploadStatut === 'loading'}
@@ -365,6 +452,7 @@ export default function AdminDocuments() {
                 <label style={labelStyle}>Ordre d'affichage</label>
                 <input type="number" value={editForm.ordre} onChange={e => setEditForm({ ...editForm, ordre: e.target.value })} style={inputStyle} />
               </div>
+              <RessourceFields f={editForm} setF={setEditForm} inputStyle={inputStyle} labelStyle={labelStyle} />
               {editErreur && <p style={{ color: '#dc2626', fontSize: '12px', margin: 0 }}>{editErreur}</p>}
               <div style={{ display: 'flex', gap: '10px' }}>
                 <button type="submit" disabled={editStatut === 'loading'}
