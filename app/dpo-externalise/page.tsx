@@ -4,6 +4,7 @@
 
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import NewsletterForm from '@/components/NewsletterForm'
 import { CheckCircle, ArrowRight, ChevronRight, Shield, FileText, Users, Lock, Info, Clock, Award } from 'lucide-react'
 
 export const metadata = {
@@ -377,6 +378,17 @@ export default function DPOExternalisePage() {
           </section>
 
         </div>
+
+        {/* NEWSLETTER */}
+        <section style={{ maxWidth: '760px', margin: '0 auto', padding: '0 1.5rem 3.5rem' }}>
+          <div style={{ background: '#f8fafc', border: '1px solid #e5e7eb', borderRadius: 16, padding: '2rem 1.75rem', textAlign: 'center' }}>
+            <h2 style={{ fontSize: '1.3rem', fontWeight: 700, color: '#0f2d6e', margin: '0 0 0.5rem' }}>Restez informé</h2>
+            <p style={{ fontSize: 14, color: '#374151', maxWidth: '520px', margin: '0 auto 1.5rem' }}>
+              Recevez nos analyses juridiques, les évolutions réglementaires et nos actualités. Une lettre claire, sans spam, désinscription en un clic.
+            </p>
+            <NewsletterForm variant="cta" />
+          </div>
+        </section>
       </main>
       <Footer />
     </>

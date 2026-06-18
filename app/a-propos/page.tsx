@@ -1,5 +1,6 @@
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import NewsletterForm from '@/components/NewsletterForm'
 import { ChevronRight } from 'lucide-react'
 import Image from 'next/image'
 
@@ -219,7 +220,7 @@ export default function APropos() {
                 { label: "Accompagnement à la création d'entreprise : formalités offertes", lien: "/accompagnement-professionnels" },
                 { label: "Accompagnement des associations et structures ESS", lien: "/accompagnement-associations" },
                 { label: "Accompagnement RGPD et conformité", lien: "/contact" },
-                { label: "Conseil en assurances réglementé : forfait conseil 90 € / 150 €", lien: "/conseil-assurances" },
+                { label: "Conseil en assurances réglementé : forfait conseil 90 € / 150 €", lien: "/conseil-assurances" },
                 { label: "DPO externalisé", lien: "/contact" },
                 { label: "Formations sur-mesure", lien: "/formations" },
               ].map((service, i) => (
@@ -248,6 +249,17 @@ export default function APropos() {
           </section>
 
         </div>
+
+        {/* NEWSLETTER */}
+        <section style={{ maxWidth: '760px', margin: '0 auto', padding: '0 1.5rem 3.5rem' }}>
+          <div style={{ background: '#f8fafc', border: '1px solid #e5e7eb', borderRadius: 16, padding: '2rem 1.75rem', textAlign: 'center' }}>
+            <h2 style={{ fontSize: '1.3rem', fontWeight: 700, color: '#0f2d6e', margin: '0 0 0.5rem' }}>Restez informé</h2>
+            <p style={{ fontSize: 14, color: '#374151', maxWidth: '520px', margin: '0 auto 1.5rem' }}>
+              Recevez nos analyses juridiques, les évolutions réglementaires et nos actualités. Une lettre claire, sans spam, désinscription en un clic.
+            </p>
+            <NewsletterForm variant="cta" />
+          </div>
+        </section>
       </main>
       <Footer />
     </>

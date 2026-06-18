@@ -1,5 +1,6 @@
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import NewsletterForm from '@/components/NewsletterForm'
 import { FileText, Calendar, Clock } from 'lucide-react'
 
 export const metadata = {
@@ -110,7 +111,7 @@ const articles = [
   {
     slug: 'cee-revalorisation-remuneration-decret-4-decembre-2024',
     titre: "Contrat d'engagement éducatif (CEE) : le seuil minimum de la rémunération a été revalorisé",
-    resume: "Le décret du 4 décembre 2024 augmente le seuil minimum de rémunération du CEE à 51,08 € bruts/jour à partir du 1er mai 2025.",
+    resume: "Le décret du 4 décembre 2024 augmente le seuil minimum de rémunération du CEE à 51,08 € bruts/jour à partir du 1er mai 2025.",
     date: '30 janvier 2025',
     auteur: 'François CHOLEZ',
     categorie: 'Droit du travail',
@@ -232,6 +233,17 @@ export default function Blog() {
           </div>
         </section>
 
+
+        {/* NEWSLETTER */}
+        <section style={{ maxWidth: '760px', margin: '0 auto', padding: '0 1.5rem 3.5rem' }}>
+          <div style={{ background: '#f8fafc', border: '1px solid #e5e7eb', borderRadius: 16, padding: '2rem 1.75rem', textAlign: 'center' }}>
+            <h2 style={{ fontSize: '1.3rem', fontWeight: 700, color: '#0f2d6e', margin: '0 0 0.5rem' }}>Restez informé</h2>
+            <p style={{ fontSize: 14, color: '#374151', maxWidth: '520px', margin: '0 auto 1.5rem' }}>
+              Recevez nos analyses juridiques, les évolutions réglementaires et nos actualités. Une lettre claire, sans spam, désinscription en un clic.
+            </p>
+            <NewsletterForm variant="cta" />
+          </div>
+        </section>
       </main>
       <Footer />
     </>
