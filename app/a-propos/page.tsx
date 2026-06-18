@@ -1,7 +1,7 @@
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import NewsletterForm from '@/components/NewsletterForm'
-import { ChevronRight } from 'lucide-react'
+import { ChevronRight, ChevronDown } from 'lucide-react'
 import Image from 'next/image'
 
 export const metadata = {
@@ -35,6 +35,15 @@ const schema = {
     "description": "Juriste - Formaliste - Conseil en assurances réglementé. Membre du CRFF. Intermédiaire en assurances immatriculé à l'ORIAS n°26003943. Cabinet Cholez-Pagotto."
   }
 }
+
+const faqAPropos = [
+  { q: "Qui est derrière le Cabinet Cholez-Pagotto ?", r: "Le cabinet réunit les compétences d'un juriste formaliste et d'un intermédiaire en assurances immatriculé à l'ORIAS sous le numéro 26003943. Il accompagne les particuliers, les professionnels, les associations et les collectivités sur le droit des affaires, le droit des associations, la conformité et l'assurance." },
+  { q: "Le Cabinet Cholez-Pagotto est-il un cabinet d'avocats ?", r: "Non. Il s'agit d'un cabinet de juriste formaliste. Notre juriste délivre une information juridique au sens de la loi du 31 décembre 1971 et accompagne vos formalités, mais la consultation personnalisée, la rédaction d'actes pour autrui et la représentation en justice restent réservées à l'avocat." },
+  { q: "Où le cabinet est-il situé et jusqu'où intervient-il ?", r: "Le cabinet est établi à Épinal, dans les Vosges, en région Grand Est. Ses services étant conçus pour fonctionner en ligne, il intervient pour des clients partout en France." },
+  { q: "À qui s'adressent les services du cabinet ?", r: "Aux particuliers comme aux professionnels, aux associations et aux collectivités. Chaque service précise le périmètre couvert selon le profil, des modèles de documents à l'accompagnement à la création d'entreprise, en passant par la conformité RGPD et le conseil en assurances." },
+  { q: "Le cabinet est-il habilité à exercer l'intermédiation en assurance ?", r: "Oui. Il est immatriculé à l'ORIAS sous le numéro 26003943 et placé sous le contrôle de l'ACPR. À ce titre, notre juriste informe sur les garanties d'assurance et oriente selon l'intérêt du client, sans lien d'exclusivité avec un assureur." },
+  { q: "Comment entrer en contact avec le cabinet ?", r: "Vous pouvez écrire au cabinet via le formulaire de contact ou par email. Pour une question de droit précise, la réponse rédigée par notre juriste est proposée à 47 €, sans abonnement ni engagement." }
+]
 
 export default function APropos() {
   return (
@@ -249,6 +258,27 @@ export default function APropos() {
           </section>
 
         </div>
+
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqAPropos.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.r } })) }) }} />
+        {/* FAQ */}
+        <section id="faq" style={{ maxWidth: '900px', margin: '0 auto', padding: '0 1.5rem 3.5rem' }}>
+          <style dangerouslySetInnerHTML={{ __html: 'details.faq-item summary::-webkit-details-marker{display:none}details.faq-item summary{list-style:none}details.faq-item[open] .faq-chevron{transform:rotate(180deg)}' }} />
+          <h2 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#0f2d6e', marginBottom: '0.5rem' }}>Questions fréquentes</h2>
+          <p style={{ color: '#6b7280', fontSize: 13, marginBottom: '2rem' }}>Les réponses aux questions les plus fréquentes sur le cabinet.</p>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+            {faqAPropos.map((faq, i) => (
+              <details key={i} className="faq-item" style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: 12, overflow: 'hidden' }}>
+                <summary style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '1.1rem 1.5rem', cursor: 'pointer', gap: '1rem' }}>
+                  <span style={{ fontSize: '0.9rem', fontWeight: 600, color: '#0f2d6e', lineHeight: 1.4 }}>{faq.q}</span>
+                  <ChevronDown className="faq-chevron" size={18} strokeWidth={2} style={{ color: '#1a4fba', flexShrink: 0, transition: 'transform 0.2s' }} />
+                </summary>
+                <div style={{ padding: '0 1.5rem 1.1rem', fontSize: 13, color: '#374151', lineHeight: 1.7, borderTop: '1px solid #f3f4f6' }}>
+                  <div style={{ paddingTop: '1rem' }}>{faq.r}</div>
+                </div>
+              </details>
+            ))}
+          </div>
+        </section>
 
         {/* NEWSLETTER */}
         <section style={{ maxWidth: '760px', margin: '0 auto', padding: '0 1.5rem 3.5rem' }}>

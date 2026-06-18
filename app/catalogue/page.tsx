@@ -8,7 +8,7 @@ import { supabase } from '@/lib/supabase'
 import type { DocItem, Categorie } from '@/lib/types'
 import {
   FileText, Lock, Star, ArrowRight, ChevronRight,
-  CheckCircle, Scale, Info, Download, Crown
+  CheckCircle, Scale, Info, Download, Crown, ChevronDown
 } from 'lucide-react'
 
 const schemaData = {
@@ -31,7 +31,7 @@ const schemaData = {
           "name": "Accès libre",
           "price": "0",
           "priceCurrency": "EUR",
-          "description": "Documents en accès libre téléchargeables sans inscription"
+          "description": "Documents en accès libre téléchargeables après création d'un compte gratuit"
         },
         {
           "@type": "Offer",
@@ -82,6 +82,15 @@ const avantages = [
     texte: "Après inscription, accès instantané aux documents en accès libre. L'abonnement Optimal débloque l'intégralité de la bibliothèque.",
     icone: <Star size={18} strokeWidth={1.5} />
   }
+]
+
+const faqCatalogue = [
+  { q: "Sous quel format les documents sont-ils livrés ?", r: "Tous les modèles sont fournis au format DOCX (Word), téléchargeables et personnalisables. Vous les complétez et les adaptez librement à votre situation depuis votre traitement de texte habituel." },
+  { q: "Une partie de la bibliothèque est-elle gratuite ?", r: "Oui. Une sélection de modèles est en accès libre, téléchargeable au format DOCX après la création d'un compte gratuit. Le reste de la bibliothèque est accessible via l'abonnement Optimal ou à l'achat à l'unité." },
+  { q: "Puis-je acheter un document seul, sans abonnement ?", r: "Oui. Chaque document payant est disponible à l'unité, à partir de 2,99 € selon sa complexité, avec téléchargement immédiat après paiement. Si vos besoins sont récurrents, l'abonnement Optimal donne accès à toute la bibliothèque et devient vite plus avantageux." },
+  { q: "Que comprend l'abonnement Optimal ?", r: "L'abonnement Optimal donne accès à toute la bibliothèque de modèles DOCX, aux notices explicatives et fiches pédagogiques, et inclut une question juriste par mois non cumulable, traitée sous 24 à 48h. La formule Particulier est à 17,90 €/mois ou 149 €/an, la formule Pro à 27,90 €/mois ou 249 €/an avec deux questions par mois." },
+  { q: "Les modèles remplacent-ils l'avis d'un professionnel ?", r: "Non. Les modèles sont des documents de référence à usage général, conçus pour couvrir les situations courantes. Ils constituent une information documentaire et ne remplacent pas une consultation adaptée à votre situation, laquelle relève de l'avocat. Pour un cas particulier ou un enjeu important, notre juriste peut vous informer sur les points de vigilance ou vous orienter." },
+  { q: "Puis-je être remboursé après avoir téléchargé un document ?", r: "Pour un contenu numérique, en demandant le téléchargement immédiat vous renoncez expressément à votre droit de rétractation, conformément à l'article L.221-28 13° du Code de la consommation. Un document déjà téléchargé n'est donc pas remboursable. Le droit de rétractation de 14 jours reste applicable tant qu'aucun téléchargement n'a été effectué." }
 ]
 
 export default function CataloguePage() {
@@ -406,6 +415,27 @@ export default function CataloguePage() {
           </section>
 
         </div>
+
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqCatalogue.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.r } })) }) }} />
+        {/* FAQ */}
+        <section id="faq" style={{ maxWidth: '900px', margin: '0 auto', padding: '0 1.5rem 3.5rem' }}>
+          <style dangerouslySetInnerHTML={{ __html: 'details.faq-item summary::-webkit-details-marker{display:none}details.faq-item summary{list-style:none}details.faq-item[open] .faq-chevron{transform:rotate(180deg)}' }} />
+          <h2 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#0f2d6e', marginBottom: '0.5rem' }}>Questions fréquentes</h2>
+          <p style={{ color: '#6b7280', fontSize: 13, marginBottom: '2rem' }}>Tout savoir sur la bibliothèque de documents, les formats, l'accès libre et l'abonnement.</p>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+            {faqCatalogue.map((faq, i) => (
+              <details key={i} className="faq-item" style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: 12, overflow: 'hidden' }}>
+                <summary style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '1.1rem 1.5rem', cursor: 'pointer', gap: '1rem' }}>
+                  <span style={{ fontSize: '0.9rem', fontWeight: 600, color: '#0f2d6e', lineHeight: 1.4 }}>{faq.q}</span>
+                  <ChevronDown className="faq-chevron" size={18} strokeWidth={2} style={{ color: '#1a4fba', flexShrink: 0, transition: 'transform 0.2s' }} />
+                </summary>
+                <div style={{ padding: '0 1.5rem 1.1rem', fontSize: 13, color: '#374151', lineHeight: 1.7, borderTop: '1px solid #f3f4f6' }}>
+                  <div style={{ paddingTop: '1rem' }}>{faq.r}</div>
+                </div>
+              </details>
+            ))}
+          </div>
+        </section>
 
         {/* NEWSLETTER */}
         <section style={{ maxWidth: '760px', margin: '0 auto', padding: '0 1.5rem 3.5rem' }}>
