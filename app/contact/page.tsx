@@ -93,7 +93,8 @@ export default function Contact() {
           </div>
         </div>
 
-        <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '3rem 2rem', display: 'grid', gridTemplateColumns: '1fr 280px', gap: '3rem', alignItems: 'start' }}>
+        <style dangerouslySetInnerHTML={{ __html: '@media (max-width: 760px){.contact-grid{grid-template-columns:1fr !important;gap:2rem !important;padding:2rem 1.25rem !important}.contact-row{grid-template-columns:1fr !important}.contact-aside{position:static !important}}' }} />
+        <div className="contact-grid" style={{ maxWidth: '1100px', margin: '0 auto', padding: '3rem 2rem', display: 'grid', gridTemplateColumns: '1fr 280px', gap: '3rem', alignItems: 'start' }}>
 
           {/* FORMULAIRE */}
           <div style={{ flex: 1, minWidth: 0 }}>
@@ -141,7 +142,7 @@ export default function Contact() {
                 </div>
 
                 {/* LIGNE 1 : Nom + Email */}
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+                <div className="contact-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
                   <div>
                     <label style={labelStyle}>Nom et prénom *</label>
                     <input
@@ -169,7 +170,7 @@ export default function Contact() {
                 </div>
 
                 {/* LIGNE 2 : Téléphone + Sujet */}
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+                <div className="contact-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
                   <div>
                     <label style={labelStyle}>Téléphone <span style={{ color: '#9ca3af', fontWeight: '400' }}>(facultatif)</span></label>
                     <input
@@ -264,7 +265,7 @@ export default function Contact() {
           </div>
 
           {/* SIDEBAR INFOS */}
-          <aside style={{ flex: '0 0 280px', display: 'flex', flexDirection: 'column', gap: '16px', position: 'sticky', top: '80px' }}>
+          <aside className="contact-aside" style={{ flex: '0 0 280px', display: 'flex', flexDirection: 'column', gap: '16px', position: 'sticky', top: '80px' }}>
 
             <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.25rem' }}>
               <p style={{ color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 14px' }}>Informations de contact</p>
@@ -273,7 +274,7 @@ export default function Contact() {
                   <Mail size={15} color="#1a4fba" style={{ flexShrink: 0, marginTop: '2px' }} strokeWidth={1.5} />
                   <div>
                     <p style={{ color: '#374151', fontSize: '12px', fontWeight: '600', margin: '0 0 2px' }}>Email</p>
-                    <p style={{ color: '#6b7280', fontSize: '12px', margin: 0 }}>Via le formulaire ci-contre</p>
+                    <p style={{ color: '#6b7280', fontSize: '12px', margin: 0 }}>Via le formulaire de contact</p>
                   </div>
                 </div>
                 <div style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
