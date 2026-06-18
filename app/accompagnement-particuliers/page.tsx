@@ -4,7 +4,7 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import NewsletterForm from '@/components/NewsletterForm'
 import {
-  Scale, Shield, BookOpen, CheckCircle, ArrowRight, ChevronRight, Info, GraduationCap
+  Scale, Shield, BookOpen, CheckCircle, ArrowRight, ChevronRight, ChevronDown, Info, GraduationCap
 } from 'lucide-react'
 
 const schemaData = {
@@ -84,6 +84,15 @@ const domaines = [
   "Droit animal"
 ]
 
+const faqParticuliers = [
+  { q: "Le cabinet peut-il me donner une consultation juridique ?", r: "Notre juriste délivre une information juridique au sens de la loi n°71-1130 du 31 décembre 1971 : il vous explique les règles applicables à votre situation et les démarches possibles, ce qui vous permet de décider en connaissance de cause. Cette information ne constitue pas une consultation juridique personnalisée, laquelle relève de l'avocat. Le cas échéant, vous êtes orienté vers le professionnel du droit compétent." },
+  { q: "Quelle différence entre une question juridique et l'abonnement à la bibliothèque ?", r: "La question juridique, facturée 47 €, vous apporte une réponse écrite sur un point de droit précis. L'abonnement Optimal, à 17,90 €/mois, donne accès à l'intégralité de la bibliothèque de modèles de documents, que vous téléchargez et réutilisez librement. Une partie de la bibliothèque reste par ailleurs accessible gratuitement après la simple création d'un compte." },
+  { q: "Les modèles de documents sont-ils adaptés à ma situation personnelle ?", r: "Les modèles sont des trames générales conformes au droit en vigueur, conçues pour couvrir les situations courantes. Ils vous font gagner du temps mais ne remplacent pas l'analyse d'une situation particulière. Pour un cas complexe ou un enjeu important, notre juriste vous informe sur les points de vigilance ou vous oriente vers l'avocat compétent." },
+  { q: "Le cabinet peut-il rédiger un acte ou me représenter en justice ?", r: "Non. La rédaction d'actes pour le compte d'autrui, la consultation juridique personnalisée et la représentation ou la défense en justice sont des actes réservés à l'avocat. Le cabinet prépare et vous assiste dans la rédaction de vos propres documents et vous accompagne dans vos formalités, dans le respect de la loi du 31 décembre 1971." },
+  { q: "Sous quel délai vais-je obtenir une réponse ?", r: "Le délai dépend de la complexité de votre demande. Vous recevez une estimation dès la prise en charge. Notre juriste privilégie une réponse claire et documentée plutôt qu'une réponse rapide et approximative." },
+  { q: "Puis-je faire appel au cabinet si j'ai déjà un avocat ?", r: "Oui. Les deux interventions sont complémentaires. Notre juriste peut vous fournir une information juridique, des modèles de documents ou un accompagnement dans vos formalités, pendant que votre avocat traite les actes et la représentation qui lui sont réservés. Le cabinet n'a pas vocation à se substituer à votre conseil habituel." }
+]
+
 export default function AccompagnementParticuliersPage() {
   return (
     <>
@@ -148,7 +157,28 @@ export default function AccompagnementParticuliersPage() {
 
         <div style={{ maxWidth: 1100, margin: '0 auto', padding: '3rem 1.5rem' }}>
 
-          {/* 3 SERVICES */}
+          {/* ACCES LIBRE BIBLIOTHEQUE */}
+          <section style={{ marginBottom: '3.5rem' }}>
+            <div style={{ background: '#ecfdf5', border: '1px solid #a7f3d0', borderRadius: 14, padding: '1.5rem 1.75rem', display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '1.25rem', justifyContent: 'space-between' }}>
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.9rem', flex: 1, minWidth: '280px' }}>
+                <div style={{ width: 46, height: 46, background: 'white', borderRadius: 10, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                  <BookOpen size={22} color="#065f46" strokeWidth={1.5} />
+                </div>
+                <div>
+                  <p style={{ color: '#065f46', fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', margin: '0 0 4px' }}>Accès libre · Gratuit</p>
+                  <h3 style={{ fontSize: '1.15rem', fontWeight: 700, color: '#0f2d6e', margin: '0 0 0.35rem' }}>Une partie de la bibliothèque est gratuite</h3>
+                  <p style={{ fontSize: 13, color: '#374151', lineHeight: 1.6, margin: 0 }}>
+                    Créez un compte gratuit et téléchargez immédiatement une sélection de modèles de documents. L'abonnement Optimal débloque ensuite l'intégralité de la bibliothèque.
+                  </p>
+                </div>
+              </div>
+              <a href="/catalogue" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: '#065f46', color: 'white', textDecoration: 'none', padding: '12px 22px', borderRadius: 8, fontWeight: 700, fontSize: '0.9rem', flexShrink: 0 }}>
+                Parcourir le catalogue gratuitement <ArrowRight size={16} />
+              </a>
+            </div>
+          </section>
+
+          {/* SERVICES */}
           <section style={{ marginBottom: '3.5rem' }}>
             <h2 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#0f2d6e', marginBottom: '0.5rem' }}>
               Nos services pour les particuliers
@@ -157,7 +187,7 @@ export default function AccompagnementParticuliersPage() {
               Choisissez le service adapté à votre besoin. Chaque page détaille le fonctionnement, le tarif et les garanties.
             </p>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '1.5rem' }}>
 
               {/* Service 1 — Information sur vos droits */}
               <div style={{ background: 'white', border: '2px solid #bfdbfe', borderRadius: 14, padding: '1.75rem', display: 'flex', flexDirection: 'column' }}>
@@ -296,27 +326,6 @@ export default function AccompagnementParticuliersPage() {
             </div>
           </section>
 
-          {/* ACCES LIBRE BIBLIOTHEQUE */}
-          <section style={{ marginBottom: '3.5rem' }}>
-            <div style={{ background: '#ecfdf5', border: '1px solid #a7f3d0', borderRadius: 14, padding: '1.5rem 1.75rem', display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '1.25rem', justifyContent: 'space-between' }}>
-              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.9rem', flex: 1, minWidth: '280px' }}>
-                <div style={{ width: 46, height: 46, background: 'white', borderRadius: 10, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                  <BookOpen size={22} color="#065f46" strokeWidth={1.5} />
-                </div>
-                <div>
-                  <p style={{ color: '#065f46', fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', margin: '0 0 4px' }}>Accès libre · Gratuit</p>
-                  <h3 style={{ fontSize: '1.15rem', fontWeight: 700, color: '#0f2d6e', margin: '0 0 0.35rem' }}>Une partie de la bibliothèque est gratuite</h3>
-                  <p style={{ fontSize: 13, color: '#374151', lineHeight: 1.6, margin: 0 }}>
-                    Créez un compte gratuit et téléchargez immédiatement une sélection de modèles de documents. L'abonnement Optimal débloque ensuite l'intégralité de la bibliothèque.
-                  </p>
-                </div>
-              </div>
-              <a href="/catalogue" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: '#065f46', color: 'white', textDecoration: 'none', padding: '12px 22px', borderRadius: 8, fontWeight: 700, fontSize: '0.9rem', flexShrink: 0 }}>
-                Parcourir le catalogue gratuitement <ArrowRight size={16} />
-              </a>
-            </div>
-          </section>
-
           {/* DOMAINES — grille complète */}
           <section style={{ marginBottom: '3.5rem' }}>
             <h2 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#0f2d6e', marginBottom: '0.5rem' }}>
@@ -367,6 +376,27 @@ export default function AccompagnementParticuliersPage() {
             </div>
           </section>
 
+          {/* ENCART JURISTE OU AVOCAT */}
+          <section style={{ marginBottom: '3.5rem' }}>
+            <div style={{ background: '#fffbeb', border: '1px solid #fde68a', borderRadius: 14, padding: '1.5rem 1.75rem', display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '1.25rem', justifyContent: 'space-between' }}>
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.9rem', flex: 1, minWidth: '280px' }}>
+                <div style={{ width: 46, height: 46, background: 'white', borderRadius: 10, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                  <Scale size={22} color="#b45309" strokeWidth={1.5} />
+                </div>
+                <div>
+                  <p style={{ color: '#b45309', fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', margin: '0 0 4px' }}>Juriste ou avocat ?</p>
+                  <h3 style={{ fontSize: '1.15rem', fontWeight: 700, color: '#0f2d6e', margin: '0 0 0.35rem' }}>Savoir qui consulter selon votre besoin</h3>
+                  <p style={{ fontSize: 13, color: '#374151', lineHeight: 1.6, margin: 0 }}>
+                    {"L'information juridique, les formalités et le conseil en assurance relèvent du cabinet ; la consultation personnalisée, la rédaction d'actes pour autrui et la représentation en justice relèvent de l'avocat. Notre comparatif détaille ce que fait le cabinet, ce qui revient à l'avocat, et comment les deux interventions se complètent."}
+                  </p>
+                </div>
+              </div>
+              <a href="/juriste-formaliste-ou-avocat" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: '#b45309', color: 'white', textDecoration: 'none', padding: '12px 22px', borderRadius: 8, fontWeight: 700, fontSize: '0.9rem', flexShrink: 0 }}>
+                Comparer juriste et avocat <ArrowRight size={16} />
+              </a>
+            </div>
+          </section>
+
           {/* AUTEUR */}
           <section style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: 12, padding: '1.5rem', marginBottom: '3.5rem', display: 'flex', alignItems: 'flex-start', gap: '1.5rem', flexWrap: 'wrap' }}>
             <img
@@ -414,6 +444,27 @@ export default function AccompagnementParticuliersPage() {
           </section>
 
         </div>
+
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqParticuliers.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.r } })) }) }} />
+        {/* FAQ */}
+        <section id="faq" style={{ maxWidth: '900px', margin: '0 auto', padding: '0 1.5rem 3.5rem' }}>
+          <style dangerouslySetInnerHTML={{ __html: 'details.faq-item summary::-webkit-details-marker{display:none}details.faq-item summary{list-style:none}details.faq-item[open] .faq-chevron{transform:rotate(180deg)}' }} />
+          <h2 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#0f2d6e', marginBottom: '0.5rem' }}>Questions fréquentes</h2>
+          <p style={{ color: '#6b7280', fontSize: 13, marginBottom: '2rem' }}>Les réponses aux questions les plus fréquentes sur nos services aux particuliers.</p>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+            {faqParticuliers.map((faq, i) => (
+              <details key={i} className="faq-item" style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: 12, overflow: 'hidden' }}>
+                <summary style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '1.1rem 1.5rem', cursor: 'pointer', gap: '1rem' }}>
+                  <span style={{ fontSize: '0.9rem', fontWeight: 600, color: '#0f2d6e', lineHeight: 1.4 }}>{faq.q}</span>
+                  <ChevronDown className="faq-chevron" size={18} strokeWidth={2} style={{ color: '#1a4fba', flexShrink: 0, transition: 'transform 0.2s' }} />
+                </summary>
+                <div style={{ padding: '0 1.5rem 1.1rem', fontSize: 13, color: '#374151', lineHeight: 1.7, borderTop: '1px solid #f3f4f6' }}>
+                  <div style={{ paddingTop: '1rem' }}>{faq.r}</div>
+                </div>
+              </details>
+            ))}
+          </div>
+        </section>
 
         {/* NEWSLETTER */}
         <section style={{ maxWidth: '760px', margin: '0 auto', padding: '0 1.5rem 3.5rem' }}>

@@ -9,7 +9,7 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import NewsletterForm from '@/components/NewsletterForm'
 import {
-  Heart, CheckCircle, Users, FileText, Shield, Award,
+  Heart, CheckCircle, Users, FileText, Shield, Award, Scale,
   ArrowRight, ChevronDown, ChevronRight, BookOpen,
   Building2, Globe, Lock, AlertCircle, Info, Star
 } from 'lucide-react'
@@ -665,6 +665,27 @@ export default function AccompagnementAssociationsPage() {
                 <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', color: '#0f2d6e', fontWeight: 700, fontSize: 13 }}>En savoir plus <ArrowRight size={15} /></span>
               </a>
             ))}
+          </div>
+        </section>
+
+        {/* ENCART JURISTE OU AVOCAT */}
+        <section style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 1.5rem 3.5rem' }}>
+          <div style={{ background: '#fffbeb', border: '1px solid #fde68a', borderRadius: 14, padding: '1.5rem 1.75rem', display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '1.25rem', justifyContent: 'space-between' }}>
+            <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.9rem', flex: 1, minWidth: '280px' }}>
+              <div style={{ width: 46, height: 46, background: 'white', borderRadius: 10, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                <Scale size={22} color="#b45309" strokeWidth={1.5} />
+              </div>
+              <div>
+                <p style={{ color: '#b45309', fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', margin: '0 0 4px' }}>Juriste ou avocat ?</p>
+                <h3 style={{ fontSize: '1.15rem', fontWeight: 700, color: '#0f2d6e', margin: '0 0 0.35rem' }}>Savoir qui consulter selon votre besoin</h3>
+                <p style={{ fontSize: 13, color: '#374151', lineHeight: 1.6, margin: 0 }}>
+                  {"L'information juridique, les formalités et le conseil en assurance relèvent du cabinet ; la consultation personnalisée, la rédaction d'actes pour autrui et la représentation en justice relèvent de l'avocat. Notre comparatif détaille ce que fait le cabinet, ce qui revient à l'avocat, et comment les deux interventions se complètent."}
+                </p>
+              </div>
+            </div>
+            <a href="/juriste-formaliste-ou-avocat" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: '#b45309', color: 'white', textDecoration: 'none', padding: '12px 22px', borderRadius: 8, fontWeight: 700, fontSize: '0.9rem', flexShrink: 0 }}>
+              Comparer juriste et avocat <ArrowRight size={16} />
+            </a>
           </div>
         </section>
 

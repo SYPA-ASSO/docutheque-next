@@ -7,7 +7,7 @@ import Footer from '@/components/Footer'
 import NewsletterForm from '@/components/NewsletterForm'
 import {
   Building2, FileText, Shield, BookOpen, Scale,
-  ArrowRight, ChevronRight, CheckCircle, ExternalLink, Info
+  ArrowRight, ChevronRight, ChevronDown, CheckCircle, ExternalLink, Info
 } from 'lucide-react'
 
 export const metadata = {
@@ -204,6 +204,15 @@ const services = [
       },
     ],
   },
+]
+
+const faqProfessionnels = [
+  { q: "Le cabinet peut-il créer ma société à ma place ?", r: "Notre juriste vous accompagne dans la création de votre entreprise : choix de la forme juridique, préparation et assistance à la rédaction des statuts, constitution du dossier et accomplissement des formalités d'immatriculation. La rédaction d'actes pour le compte d'autrui et la consultation juridique personnalisée restant réservées à l'avocat, le cabinet intervient en information et en assistance, dans le respect de la loi n°71-1130 du 31 décembre 1971." },
+  { q: "Qu'est-ce qu'une formalité juridique externalisée ?", r: "Vous confiez au cabinet le suivi de vos formalités récurrentes : modifications statutaires, transferts de siège, approbation et dépôt des comptes annuels, par exemple. Le cabinet prépare les pièces, suit les dépôts auprès du guichet unique et du greffe, et vous tient informé de l'avancement. Vous gardez la maîtrise des décisions, le cabinet exécute la partie administrative et déclarative." },
+  { q: "Le cabinet remplace-t-il mon expert-comptable ?", r: "Non. Le cabinet intervient sur le volet juridique et les formalités, en complément de votre expert-comptable qui traite la comptabilité, la fiscalité et la paie. Pour la paie et les déclarations sociales, le cabinet dispose par ailleurs d'un service dédié, accessible sur paie-et-dsn.fr." },
+  { q: "Êtes-vous habilité à intervenir en assurance pour mon entreprise ?", r: "Oui. Le cabinet est intermédiaire en assurances immatriculé à l'ORIAS sous le numéro 26003943 et placé sous le contrôle de l'ACPR. À ce titre, notre juriste vous informe sur les garanties utiles à votre activité, telles que la responsabilité civile professionnelle, la protection juridique ou l'assurance de flotte, et vous oriente selon votre intérêt, sans lien d'exclusivité avec un assureur." },
+  { q: "Proposez-vous un accompagnement RGPD pour les entreprises ?", r: "Oui. Le cabinet réalise un diagnostic documentaire et juridique de votre conformité, met en place les registres et la documentation obligatoires, et peut assumer la fonction de délégué à la protection des données externalisé. L'objectif est de rendre votre traitement des données conforme au RGPD et aux recommandations de la CNIL." },
+  { q: "Le cabinet peut-il défendre mon entreprise en cas de litige ?", r: "Non. La représentation et la défense en justice sont réservées à l'avocat. Notre juriste vous informe sur le cadre juridique applicable et peut préparer certaines pièces, mais vous oriente vers un avocat dès qu'un contentieux nécessite une consultation personnalisée, la rédaction d'actes ou une représentation devant une juridiction." }
 ]
 
 export default function AccompagnementProfessionnelsPage() {
@@ -421,6 +430,48 @@ export default function AccompagnementProfessionnelsPage() {
           </div>
         </section>
 
+
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqProfessionnels.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.r } })) }) }} />
+        {/* FAQ */}
+        <section id="faq" style={{ maxWidth: '900px', margin: '0 auto', padding: '0 1.5rem 3.5rem' }}>
+          <style dangerouslySetInnerHTML={{ __html: 'details.faq-item summary::-webkit-details-marker{display:none}details.faq-item summary{list-style:none}details.faq-item[open] .faq-chevron{transform:rotate(180deg)}' }} />
+          <h2 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#0f2d6e', marginBottom: '0.5rem' }}>Questions fréquentes</h2>
+          <p style={{ color: '#6b7280', fontSize: 13, marginBottom: '2rem' }}>Les réponses aux questions les plus fréquentes des entreprises et des indépendants.</p>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+            {faqProfessionnels.map((faq, i) => (
+              <details key={i} className="faq-item" style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: 12, overflow: 'hidden' }}>
+                <summary style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '1.1rem 1.5rem', cursor: 'pointer', gap: '1rem' }}>
+                  <span style={{ fontSize: '0.9rem', fontWeight: 600, color: '#0f2d6e', lineHeight: 1.4 }}>{faq.q}</span>
+                  <ChevronDown className="faq-chevron" size={18} strokeWidth={2} style={{ color: '#1a4fba', flexShrink: 0, transition: 'transform 0.2s' }} />
+                </summary>
+                <div style={{ padding: '0 1.5rem 1.1rem', fontSize: 13, color: '#374151', lineHeight: 1.7, borderTop: '1px solid #f3f4f6' }}>
+                  <div style={{ paddingTop: '1rem' }}>{faq.r}</div>
+                </div>
+              </details>
+            ))}
+          </div>
+        </section>
+
+        {/* ENCART JURISTE OU AVOCAT */}
+        <section style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 1.5rem 3.5rem' }}>
+          <div style={{ background: '#fffbeb', border: '1px solid #fde68a', borderRadius: 14, padding: '1.5rem 1.75rem', display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '1.25rem', justifyContent: 'space-between' }}>
+            <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.9rem', flex: 1, minWidth: '280px' }}>
+              <div style={{ width: 46, height: 46, background: 'white', borderRadius: 10, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                <Scale size={22} color="#b45309" strokeWidth={1.5} />
+              </div>
+              <div>
+                <p style={{ color: '#b45309', fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', margin: '0 0 4px' }}>Juriste ou avocat ?</p>
+                <h3 style={{ fontSize: '1.15rem', fontWeight: 700, color: '#0f2d6e', margin: '0 0 0.35rem' }}>Savoir qui consulter selon votre besoin</h3>
+                <p style={{ fontSize: 13, color: '#374151', lineHeight: 1.6, margin: 0 }}>
+                  {"L'information juridique, les formalités et le conseil en assurance relèvent du cabinet ; la consultation personnalisée, la rédaction d'actes pour autrui et la représentation en justice relèvent de l'avocat. Notre comparatif détaille ce que fait le cabinet, ce qui revient à l'avocat, et comment les deux interventions se complètent."}
+                </p>
+              </div>
+            </div>
+            <a href="/juriste-formaliste-ou-avocat" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: '#b45309', color: 'white', textDecoration: 'none', padding: '12px 22px', borderRadius: 8, fontWeight: 700, fontSize: '0.9rem', flexShrink: 0 }}>
+              Comparer juriste et avocat <ArrowRight size={16} />
+            </a>
+          </div>
+        </section>
 
         {/* NEWSLETTER */}
         <section style={{ maxWidth: '760px', margin: '0 auto', padding: '0 1.5rem 3.5rem' }}>
