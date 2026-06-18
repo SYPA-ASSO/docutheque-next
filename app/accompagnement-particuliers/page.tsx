@@ -205,7 +205,7 @@ export default function AccompagnementParticuliersPage() {
                 </div>
                 <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.85)', lineHeight: 1.7, marginBottom: '1rem', flex: 1 }}>
                   Accès complet à la bibliothèque de documents juridiques en DOCX, personnalisables et mis à jour.
-                  Une question juriste incluse par mois, questions supplémentaires à tarif préférentiel. Une sélection de documents reste aussi accessible gratuitement, avec un simple compte gratuit.
+                  Une question juriste incluse par mois, questions supplémentaires à tarif préférentiel.
                 </p>
                 <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 1.5rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                   {[
@@ -293,6 +293,27 @@ export default function AccompagnementParticuliersPage() {
                 </a>
               </div>
 
+            </div>
+          </section>
+
+          {/* ACCES LIBRE BIBLIOTHEQUE */}
+          <section style={{ marginBottom: '3.5rem' }}>
+            <div style={{ background: '#ecfdf5', border: '1px solid #a7f3d0', borderRadius: 14, padding: '1.5rem 1.75rem', display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '1.25rem', justifyContent: 'space-between' }}>
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.9rem', flex: 1, minWidth: '280px' }}>
+                <div style={{ width: 46, height: 46, background: 'white', borderRadius: 10, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                  <BookOpen size={22} color="#065f46" strokeWidth={1.5} />
+                </div>
+                <div>
+                  <p style={{ color: '#065f46', fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', margin: '0 0 4px' }}>Accès libre · Gratuit</p>
+                  <h3 style={{ fontSize: '1.15rem', fontWeight: 700, color: '#0f2d6e', margin: '0 0 0.35rem' }}>Une partie de la bibliothèque est gratuite</h3>
+                  <p style={{ fontSize: 13, color: '#374151', lineHeight: 1.6, margin: 0 }}>
+                    Créez un compte gratuit et téléchargez immédiatement une sélection de modèles de documents. L'abonnement Optimal débloque ensuite l'intégralité de la bibliothèque.
+                  </p>
+                </div>
+              </div>
+              <a href="/catalogue" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: '#065f46', color: 'white', textDecoration: 'none', padding: '12px 22px', borderRadius: 8, fontWeight: 700, fontSize: '0.9rem', flexShrink: 0 }}>
+                Parcourir le catalogue gratuitement <ArrowRight size={16} />
+              </a>
             </div>
           </section>
 
