@@ -526,10 +526,12 @@ export default function AdminDocuments() {
                       style={{ background: '#f3f4f6', border: 'none', padding: '8px', borderRadius: '6px', cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
                       {doc.actif ? <EyeOff size={15} color="#6b7280" /> : <Eye size={15} color="#6b7280" />}
                     </button>
-                    <a href={doc.blob_url} target="_blank" rel="noopener noreferrer"
-                      style={{ background: '#eff6ff', border: 'none', padding: '8px', borderRadius: '6px', cursor: 'pointer', display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
-                      <FileText size={15} color="#1a4fba" />
-                    </a>
+                    {doc.blob_url && (
+                      <a href={doc.blob_url} target="_blank" rel="noopener noreferrer"
+                        style={{ background: '#eff6ff', border: 'none', padding: '8px', borderRadius: '6px', cursor: 'pointer', display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
+                        <FileText size={15} color="#1a4fba" />
+                      </a>
+                    )}
                   </div>
                 </div>
               )
