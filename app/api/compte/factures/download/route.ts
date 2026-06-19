@@ -24,17 +24,15 @@ export async function GET(request: Request) {
       .single()
     if (!facture) return NextResponse.json({ error: 'Facture introuvable.' }, { status: 404 })
 
-    // Controle de propriete : seul le titulaire accede a sa facture.
     if (facture.user_id !== user.id) {
       return NextResponse.json({ error: 'Accès non autorisé.' }, { status: 403 })
     }
 
     const fileRes = await fetch(facture.facture_url)
-    if (!fileRes.ok) return NextResponse.json({ error: 'Fichier introuvable.' }, { status: 404 })
-    const arrayBuffer = await fileRes.arrayBuffer()
+    if (!fileRes.ok || !fileRes.body) return NextResponse.json({ error: 'Fichier introuvable.' }, { status: 404 })
 
     const dateStr = facture.created_at ? new Date(facture.created_at).toISOString().slice(0, 10) : 'facture'
-    return new NextResponse(arrayBuffer, {
+    return new NextResponse(fileRes.body, {
       status: 200,
       headers: {
         'Content-Type': 'application/pdf',

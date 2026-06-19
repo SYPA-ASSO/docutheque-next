@@ -59,7 +59,21 @@ export async function GET(request: Request) {
       })
     }
 
-    return NextResponse.json({ url: document.blob_url, nom: document.nom })
+    if (!document.blob_url) return NextResponse.json({ error: 'Aucun fichier associé.' }, { status: 404 })
+
+    // Telechargement prive : on sert le fichier directement, l'URL Blob publique n'est jamais exposee.
+    const ext = ((document.blob_url || '').split('?')[0].split('/').pop() || '').split('.').pop()?.toLowerCase() || 'docx'
+    const fileRes = await fetch(document.blob_url)
+    if (!fileRes.ok || !fileRes.body) return NextResponse.json({ error: 'Fichier introuvable.' }, { status: 404 })
+    return new NextResponse(fileRes.body, {
+      status: 200,
+      headers: {
+        'Content-Type': fileRes.headers.get('content-type') || 'application/octet-stream',
+        'Content-Disposition': `attachment; filename="document.${ext}"`,
+        'X-File-Ext': ext,
+        'Cache-Control': 'private, no-store',
+      },
+    })
   } catch (error) {
     console.error('Download error:', error)
     return NextResponse.json({ error: 'Erreur serveur.' }, { status: 500 })

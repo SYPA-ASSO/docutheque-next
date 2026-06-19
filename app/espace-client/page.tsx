@@ -313,14 +313,21 @@ export default function EspaceClient() {
       const res = await fetch(`/api/documents/download?id=${documentId}`, {
         headers: { 'Authorization': `Bearer ${session.access_token}` },
       })
-      const data = await res.json()
-      if (res.ok && data.url) {
+      if (res.ok) {
+        const ext = res.headers.get('x-file-ext') || 'docx'
+        const blob = await res.blob()
+        const url = URL.createObjectURL(blob)
         const a = document.createElement('a')
-        a.href = data.url
-        a.download = `${nomDoc}.docx`
+        a.href = url
+        a.download = `${nomDoc}.${ext}`
+        document.body.appendChild(a)
         a.click()
+        document.body.removeChild(a)
+        URL.revokeObjectURL(url)
       } else if (res.status === 403) {
         alert("Vous n'avez pas accès à ce document. Vérifiez votre abonnement.")
+      } else {
+        alert('Erreur lors du téléchargement.')
       }
     } catch { alert('Erreur lors du téléchargement.') }
     finally { setDownloadEnCours(null) }
