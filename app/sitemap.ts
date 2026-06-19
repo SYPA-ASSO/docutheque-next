@@ -1,6 +1,10 @@
 import type { MetadataRoute } from 'next'
+import { supabaseAdmin } from '@/lib/supabase-admin'
 
 const baseUrl = 'https://cholez-pagotto.fr'
+
+// Le sitemap se regenere au plus toutes les heures pour inclure les nouvelles ressources publiees.
+export const revalidate = 3600
 
 type Freq = 'always' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly' | 'never'
 
@@ -60,12 +64,38 @@ const pages: { path: string; priority: number; changeFrequency: Freq }[] = [
   { path: '/confidentialite', priority: 0.3, changeFrequency: 'yearly' },
 ]
 
-export default function sitemap(): MetadataRoute.Sitemap {
+// Pages dediees des ressources du catalogue (documents, packs, guides, livres),
+// recuperees dynamiquement pour qu'elles soient indexees des leur publication.
+async function getRessources(): Promise<MetadataRoute.Sitemap> {
+  try {
+    const { data } = await supabaseAdmin
+      .from('documents')
+      .select('slug')
+      .eq('actif', true)
+      .not('slug', 'is', null)
+    if (!data) return []
+    const now = new Date()
+    return data
+      .filter((d) => d.slug && String(d.slug).trim() !== '')
+      .map((d) => ({
+        url: `${baseUrl}/catalogue/${d.slug}`,
+        lastModified: now,
+        changeFrequency: 'weekly' as Freq,
+        priority: 0.6,
+      }))
+  } catch {
+    return []
+  }
+}
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const lastModified = new Date()
-  return pages.map((p) => ({
+  const statiques: MetadataRoute.Sitemap = pages.map((p) => ({
     url: p.path === '/' ? baseUrl : `${baseUrl}${p.path}`,
     lastModified,
     changeFrequency: p.changeFrequency,
     priority: p.priority,
   }))
+  const ressources = await getRessources()
+  return [...statiques, ...ressources]
 }
