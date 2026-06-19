@@ -80,7 +80,7 @@ async function getRessources(): Promise<MetadataRoute.Sitemap> {
       .map((d) => ({
         url: `${baseUrl}/catalogue/${d.slug}`,
         lastModified: now,
-        changeFrequency: 'weekly' as Freq,
+        changeFrequency: 'hourly' as Freq,
         priority: 0.6,
       }))
   } catch {
