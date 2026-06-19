@@ -89,6 +89,7 @@ export default function EspaceClient() {
   const [loading, setLoading] = useState(true)
   const [periodeChoisie, setPeriodeChoisie] = useState<'monthly' | 'yearly'>('yearly')
   const [downloadEnCours, setDownloadEnCours] = useState<string | null>(null)
+  const [factureEnCours, setFactureEnCours] = useState<string | null>(null)
   const [successMessage, setSuccessMessage] = useState('')
 
   // Saisie de question
@@ -323,6 +324,28 @@ export default function EspaceClient() {
       }
     } catch { alert('Erreur lors du téléchargement.') }
     finally { setDownloadEnCours(null) }
+  }
+
+  const handleDownloadFacture = async (factureId: string) => {
+    setFactureEnCours(factureId)
+    try {
+      const { data: { session } } = await supabase.auth.getSession()
+      if (!session) return
+      const res = await fetch(`/api/compte/factures/download?id=${factureId}`, {
+        headers: { 'Authorization': `Bearer ${session.access_token}` },
+      })
+      if (!res.ok) { alert('Facture indisponible.'); return }
+      const blob = await res.blob()
+      const url = URL.createObjectURL(blob)
+      const a = document.createElement('a')
+      a.href = url
+      a.download = `facture-${factureId.slice(0, 8)}.pdf`
+      document.body.appendChild(a)
+      a.click()
+      document.body.removeChild(a)
+      URL.revokeObjectURL(url)
+    } catch { alert('Erreur lors du téléchargement.') }
+    finally { setFactureEnCours(null) }
   }
 
   const handleSubmitQuestion = async (questionId: string) => {
@@ -1032,10 +1055,10 @@ export default function EspaceClient() {
                             Émise le {new Date(f.created_at).toLocaleDateString('fr-FR')}
                           </p>
                         </div>
-                        <a href={f.facture_url} target="_blank" rel="noopener noreferrer"
-                          style={{ background: '#0f2d6e', color: 'white', padding: '8px 14px', borderRadius: '6px', fontSize: '12px', fontWeight: '700', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '6px', flexShrink: 0 }}>
-                          <Download size={13} /> PDF
-                        </a>
+                        <button onClick={() => handleDownloadFacture(f.id)} disabled={factureEnCours === f.id}
+                          style={{ background: '#0f2d6e', color: 'white', border: 'none', padding: '8px 14px', borderRadius: '6px', fontSize: '12px', fontWeight: '700', cursor: factureEnCours === f.id ? 'not-allowed' : 'pointer', display: 'flex', alignItems: 'center', gap: '6px', flexShrink: 0 }}>
+                          {factureEnCours === f.id ? '...' : <><Download size={13} /> PDF</>}
+                        </button>
                       </div>
                     ))}
                   </div>
