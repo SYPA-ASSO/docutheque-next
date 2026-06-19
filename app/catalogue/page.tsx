@@ -104,7 +104,7 @@ export default function CataloguePage() {
     const loadData = async () => {
       const { data: docs } = await supabase
         .from('documents')
-        .select('id, nom, description, blob_url, categories, profils_autorises, acces_gratuit, acces_optimal, acces_payant, prix_unitaire, actif, ordre')
+        .select('id, nom, slug, description, blob_url, categories, profils_autorises, acces_gratuit, acces_optimal, acces_payant, prix_unitaire, actif, ordre')
         .eq('actif', true)
         .order('ordre', { ascending: true })
 
@@ -260,7 +260,7 @@ export default function CataloguePage() {
                             {docs.map(doc => {
                               const acces = accesLabel(doc)
                               return (
-                                <div key={doc.id} style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '10px 12px', background: doc.acces_gratuit ? '#f0fdf4' : '#f8fafc', borderRadius: 8, border: `1px solid ${doc.acces_gratuit ? '#bbf7d0' : '#e5e7eb'}` }}>
+                                <a key={doc.id} href={doc.slug ? `/catalogue/${doc.slug}` : undefined} style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '10px 12px', background: doc.acces_gratuit ? '#f0fdf4' : '#f8fafc', borderRadius: 8, border: `1px solid ${doc.acces_gratuit ? '#bbf7d0' : '#e5e7eb'}`, textDecoration: 'none', color: 'inherit', cursor: doc.slug ? 'pointer' : 'default' }}>
                                   {doc.acces_gratuit
                                     ? <FileText size={14} color="#16a34a" style={{ flexShrink: 0 }} />
                                     : <Lock size={14} color="#d1d5db" style={{ flexShrink: 0 }} />
@@ -271,7 +271,7 @@ export default function CataloguePage() {
                                   <span style={{ background: acces.bg, color: acces.color, fontSize: 9, fontWeight: 700, padding: '2px 6px', borderRadius: 4, flexShrink: 0 }}>
                                     {acces.label}
                                   </span>
-                                </div>
+                                </a>
                               )
                             })}
                           </div>

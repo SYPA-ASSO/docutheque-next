@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import type { CSSProperties } from 'react'
 import { useAdmin } from '@/app/admin/layout'
-import { Upload, FileText, Eye, EyeOff, Plus, X } from 'lucide-react'
+import { Upload, FileText, Eye, EyeOff, Plus, X, ExternalLink } from 'lucide-react'
 import { CategorySearch } from '@/components/CategorySearch'
 import { DocumentSearch } from '@/components/DocumentSearch'
 import type { DocItem, Categorie } from '@/lib/types'
@@ -526,6 +526,12 @@ export default function AdminDocuments() {
                       style={{ background: '#f3f4f6', border: 'none', padding: '8px', borderRadius: '6px', cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
                       {doc.actif ? <EyeOff size={15} color="#6b7280" /> : <Eye size={15} color="#6b7280" />}
                     </button>
+                    {doc.slug && (
+                      <a href={`/catalogue/${doc.slug}`} target="_blank" rel="noopener noreferrer" title="Voir la page publique"
+                        style={{ background: '#f0fdf4', border: 'none', padding: '8px', borderRadius: '6px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '33px', height: '33px', textDecoration: 'none' }}>
+                        <ExternalLink size={15} color="#15803d" />
+                      </a>
+                    )}
                     {doc.blob_url && (
                       <a href={doc.blob_url} target="_blank" rel="noopener noreferrer"
                         style={{ background: '#eff6ff', border: 'none', padding: '8px', borderRadius: '6px', cursor: 'pointer', display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
