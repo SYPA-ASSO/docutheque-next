@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import type { CSSProperties } from 'react'
+import { ChevronDown } from 'lucide-react'
 import { supabaseAdmin } from '@/lib/supabase-admin'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
@@ -12,8 +13,8 @@ const SITE = 'https://cholez-pagotto.fr'
 const NB = '\u00a0'
 
 const TYPE_LABEL: Record<string, string> = {
-  document: 'Modele de document',
-  pack: 'Pack de modeles',
+  document: 'Modèle de document',
+  pack: 'Pack de modèles',
   guide: 'Guide pratique',
   livre: 'Livre',
 }
@@ -32,6 +33,11 @@ async function getLiees(slugs: string[] | undefined): Promise<DocItem[]> {
     .in('slug', slugs)
     .eq('actif', true)
   return (data as DocItem[]) || []
+}
+
+function cleanLabel(s: string): string {
+  const txt = s.replace(/^https?:\/\//, '').replace(/^\//, '').replace(/\/$/, '').replace(/-/g, ' ').trim()
+  return txt ? txt.charAt(0).toUpperCase() + txt.slice(1) : s
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
@@ -75,6 +81,28 @@ function renderContenu(contenu: string) {
   })
 }
 
+function buildFaq(r: DocItem, typeNom: string): { q: string; a: string }[] {
+  const faq: { q: string; a: string }[] = []
+  if (r.acces_gratuit) {
+    faq.push({ q: `Comment obtenir ce ${typeNom} ?`, a: `Ce ${typeNom} est en accès libre : il vous suffit de créer un compte gratuit pour le télécharger immédiatement.` })
+  } else if (r.acces_payant) {
+    let a = `Vous pouvez l'acheter à l'unité, à partir de 2,99${NB}€, avec téléchargement immédiat après paiement.`
+    if (r.acces_optimal) a += ` Il est également inclus dans l'abonnement Optimal.`
+    faq.push({ q: `Comment obtenir ce ${typeNom} ?`, a })
+  } else {
+    faq.push({ q: `Comment obtenir ce ${typeNom} ?`, a: `Ce ${typeNom} est inclus dans l'abonnement Optimal, qui donne accès à toute la bibliothèque dès 17,90${NB}€/mois.` })
+  }
+  if (r.type !== 'livre') {
+    faq.push({ q: `Ce ${typeNom} est-il personnalisable ?`, a: `Oui. Il est fourni au format Word (DOCX) et reste entièrement modifiable pour l'adapter à votre situation.` })
+  }
+  faq.push({ q: 'Le contenu est-il à jour ?', a: `Nos contenus sont rédigés et vérifiés par notre juriste, puis actualisés selon l'évolution du droit applicable.` })
+  faq.push({ q: "Puis-je poser une question si j'ai besoin d'aide ?", a: `Oui. Notre juriste répond à vos questions d'information juridique, via l'abonnement Optimal ou à l'unité.` })
+  if (r.acces_payant && !r.acces_gratuit) {
+    faq.push({ q: "Vaut-il mieux l'acheter seul ou prendre l'abonnement ?", a: `Pour un besoin ponctuel, l'achat à l'unité suffit. Si vos besoins sont récurrents, l'abonnement Optimal donne accès à toute la bibliothèque et devient vite plus avantageux.` })
+  }
+  return faq
+}
+
 export default async function RessourcePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
   const r = await getRessource(slug)
@@ -89,6 +117,7 @@ export default async function RessourcePage({ params }: { params: Promise<{ slug
   const prix = r.prix_unitaire != null ? `${String(r.prix_unitaire).replace('.', ',')}${NB}€` : null
   const typeLabel = TYPE_LABEL[r.type || 'document'] || 'Ressource'
   const typeNom = TYPE_NOM[r.type || 'document'] || 'document'
+  const faq = buildFaq(r, typeNom)
 
   const offers: Record<string, string>[] = []
   if (r.acces_payant && r.prix_unitaire != null) offers.push({ '@type': 'Offer', price: String(r.prix_unitaire), priceCurrency: 'EUR', availability: 'https://schema.org/InStock', url: `${SITE}/catalogue/${r.slug}` })
@@ -100,7 +129,7 @@ export default async function RessourcePage({ params }: { params: Promise<{ slug
     name: r.nom,
     inLanguage: 'fr-FR',
     url: `${SITE}/catalogue/${r.slug}`,
-    publisher: { '@type': 'Organization', name: 'Docutheque · Cabinet Cholez-Pagotto', url: SITE },
+    publisher: { '@type': 'Organization', name: 'Docuthèque · Cabinet Cholez-Pagotto', url: SITE },
   }
   if (r.description) schema.description = r.description
   if (r.image_url) schema.image = r.image_url
@@ -117,10 +146,17 @@ export default async function RessourcePage({ params }: { params: Promise<{ slug
     ],
   }
 
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+  }
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
+      {faq.length > 0 ? <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} /> : null}
       <Header />
       <main style={{ background: '#f8fafc', minHeight: '100vh' }}>
         <div style={{ maxWidth: '900px', margin: '0 auto', padding: '2.5rem 1.5rem 3.5rem' }}>
@@ -145,7 +181,7 @@ export default async function RessourcePage({ params }: { params: Promise<{ slug
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', alignItems: 'center', justifyContent: 'space-between' }}>
               <div>
                 {r.acces_gratuit ? (
-                  <p style={{ margin: 0, fontWeight: 700, color: '#15803d', fontSize: '1.05rem' }}>Acces libre, gratuit</p>
+                  <p style={{ margin: 0, fontWeight: 700, color: '#15803d', fontSize: '1.05rem' }}>Accès libre, gratuit</p>
                 ) : prix ? (
                   <p style={{ margin: 0, fontWeight: 700, color: '#0f2d6e', fontSize: '1.25rem' }}>{prix} <span style={{ fontSize: 13, fontWeight: 500, color: '#6b7280' }}>{"à l'unité"}</span></p>
                 ) : null}
@@ -154,7 +190,7 @@ export default async function RessourcePage({ params }: { params: Promise<{ slug
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                 {r.acces_gratuit ? (
-                  <Link href="/connexion" style={btnPrimary}>Creer un compte et telecharger</Link>
+                  <Link href="/connexion" style={btnPrimary}>Créer un compte et télécharger</Link>
                 ) : (
                   <Link href="/catalogue" style={btnPrimary}>Obtenir ce {typeNom}</Link>
                 )}
@@ -167,14 +203,14 @@ export default async function RessourcePage({ params }: { params: Promise<{ slug
 
           {contient.length > 0 ? (
             <section style={{ margin: '0 0 2.5rem' }}>
-              <h2 style={sectionTitle}>{r.type === 'pack' ? 'Modeles inclus dans ce pack' : 'Documents inclus'}</h2>
+              <h2 style={sectionTitle}>{r.type === 'pack' ? 'Modèles inclus dans ce pack' : 'Documents inclus'}</h2>
               <div style={{ display: 'grid', gap: 10 }}>{contient.map((d) => <LienRessource key={d.slug} d={d} />)}</div>
             </section>
           ) : null}
 
           {modelesLies.length > 0 ? (
             <section style={{ margin: '0 0 2.5rem' }}>
-              <h2 style={sectionTitle}>Modeles associes</h2>
+              <h2 style={sectionTitle}>Modèles associés</h2>
               <div style={{ display: 'grid', gap: 10 }}>{modelesLies.map((d) => <LienRessource key={d.slug} d={d} />)}</div>
             </section>
           ) : null}
@@ -188,18 +224,36 @@ export default async function RessourcePage({ params }: { params: Promise<{ slug
 
           {r.services_lies && r.services_lies.length > 0 ? (
             <section style={{ margin: '0 0 2.5rem' }}>
-              <h2 style={sectionTitle}>Services associes</h2>
+              <h2 style={sectionTitle}>Services associés</h2>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10 }}>
-                {r.services_lies.map((s) => <Link key={s} href={s} style={chip}>{s.replace(/^\//, '').replace(/-/g, ' ')}</Link>)}
+                {r.services_lies.map((s) => <Link key={s} href={s} style={chip}>{cleanLabel(s)}</Link>)}
               </div>
             </section>
           ) : null}
 
           {r.articles_lies && r.articles_lies.length > 0 ? (
-            <section style={{ margin: '0 0 1rem' }}>
-              <h2 style={sectionTitle}>A lire sur le blog</h2>
+            <section style={{ margin: '0 0 2.5rem' }}>
+              <h2 style={sectionTitle}>À lire sur le blog</h2>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10 }}>
-                {r.articles_lies.map((a) => <Link key={a} href={`/blog/${a}`} style={chip}>{a.replace(/-/g, ' ')}</Link>)}
+                {r.articles_lies.map((a) => <Link key={a} href={`/blog/${a}`} style={chip}>{cleanLabel(a)}</Link>)}
+              </div>
+            </section>
+          ) : null}
+
+          {faq.length > 0 ? (
+            <section style={{ margin: '0 0 1rem' }}>
+              <h2 style={sectionTitle}>Questions fréquentes</h2>
+              <style dangerouslySetInnerHTML={{ __html: '.faq-d summary::-webkit-details-marker{display:none}.faq-d summary{list-style:none}.faq-d[open] .faq-chev{transform:rotate(180deg)}' }} />
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+                {faq.map((f, i) => (
+                  <details key={i} className="faq-d" style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: 12, overflow: 'hidden' }}>
+                    <summary style={{ cursor: 'pointer', padding: '1rem 1.25rem', fontWeight: 700, color: '#0f2d6e', fontSize: 14, display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 10 }}>
+                      <span>{f.q}</span>
+                      <ChevronDown className="faq-chev" size={18} color="#6b7280" style={{ flexShrink: 0, transition: 'transform 0.2s' }} />
+                    </summary>
+                    <div style={{ padding: '0 1.25rem 1.25rem', color: '#374151', fontSize: 14, lineHeight: 1.7 }}>{f.a}</div>
+                  </details>
+                ))}
               </div>
             </section>
           ) : null}
@@ -213,7 +267,7 @@ export default async function RessourcePage({ params }: { params: Promise<{ slug
 
 const btnPrimary: CSSProperties = { display: 'inline-block', background: '#0f2d6e', color: 'white', textDecoration: 'none', padding: '12px 22px', borderRadius: 8, fontWeight: 700, fontSize: 14, textAlign: 'center' }
 const btnSecondary: CSSProperties = { display: 'inline-block', background: 'white', color: '#0f2d6e', textDecoration: 'none', padding: '12px 22px', borderRadius: 8, fontWeight: 700, fontSize: 14, border: '1px solid #0f2d6e', textAlign: 'center' }
-const chip: CSSProperties = { display: 'inline-block', background: 'white', border: '1px solid #e5e7eb', color: '#0f2d6e', textDecoration: 'none', padding: '8px 14px', borderRadius: 999, fontSize: 13, fontWeight: 600, textTransform: 'capitalize' }
+const chip: CSSProperties = { display: 'inline-block', background: 'white', border: '1px solid #e5e7eb', color: '#0f2d6e', textDecoration: 'none', padding: '8px 14px', borderRadius: 999, fontSize: 13, fontWeight: 600 }
 const sectionTitle: CSSProperties = { fontSize: '1.25rem', fontWeight: 700, color: '#0f2d6e', margin: '0 0 1rem' }
 
 function LienRessource({ d }: { d: DocItem }) {
