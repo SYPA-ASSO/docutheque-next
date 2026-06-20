@@ -1,10 +1,13 @@
 import type { MetadataRoute } from 'next'
+import { readdirSync, existsSync } from 'fs'
+import { join } from 'path'
 import { supabaseAdmin } from '@/lib/supabase-admin'
 
 const baseUrl = 'https://cholez-pagotto.fr'
 
-// Le sitemap se regenere au plus toutes les heures pour inclure les nouvelles ressources publiees.
-export const revalidate = 3600
+// Le sitemap est genere a la construction du site (a chaque deploiement).
+// Les articles de blog (qui sont ajoutes via le code, donc via un deploiement)
+// et les ressources du catalogue sont ainsi captures automatiquement a chaque mise en ligne.
 
 type Freq = 'always' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly' | 'never'
 
@@ -43,20 +46,7 @@ const pages: { path: string; priority: number; changeFrequency: Freq }[] = [
   { path: '/newsletter', priority: 0.4, changeFrequency: 'yearly' },
 
   // Blog : listing
-  { path: '/blog', priority: 0.7, changeFrequency: 'weekly' },
-
-  // Blog : articles
-  { path: '/blog/lintelligence-artificielle-en-droit-une-fausse-bonne-idee', priority: 0.6, changeFrequency: 'monthly' },
-  { path: '/blog/at-mt-3-decisions-cour-cassation-juin-2025', priority: 0.6, changeFrequency: 'monthly' },
-  { path: '/blog/arnaque-au-registre-des-societes-europeennes-ne-laissez-pas-les-fraudeurs-saboter-votre-lancement', priority: 0.6, changeFrequency: 'monthly' },
-  { path: '/blog/conges-paternite-alsace-moselle-maintien-salaire-jurisprudence', priority: 0.6, changeFrequency: 'monthly' },
-  { path: '/blog/loi-no-2025-623-du-9-juillet-2025-visant-a-renforcer-la-securite-des-professionnels-de-sante', priority: 0.6, changeFrequency: 'monthly' },
-  { path: '/blog/saisie-sur-salaire-decryptage-complet-de-la-nouvelle-procedure-et-du-cadre-legal', priority: 0.6, changeFrequency: 'monthly' },
-  { path: '/blog/cee-revalorisation-remuneration-decret-4-decembre-2024', priority: 0.6, changeFrequency: 'monthly' },
-  { path: '/blog/caution-depot-de-garantie-difference-locataire-proprietaire', priority: 0.6, changeFrequency: 'monthly' },
-  { path: '/blog/reforme-des-esat-nouveaux-droits-pour-les-travailleurs-handicapes', priority: 0.6, changeFrequency: 'monthly' },
-  { path: '/blog/conges-jurisprudence', priority: 0.6, changeFrequency: 'monthly' },
-  { path: '/blog/apprentissage-evolution-plafond-exoneration-cotisations-salariales', priority: 0.6, changeFrequency: 'monthly' },
+  { path: '/blog', priority: 0.7, changeFrequency: 'daily' },
 
   // Pages legales
   { path: '/mentions-legales', priority: 0.3, changeFrequency: 'yearly' },
@@ -64,8 +54,35 @@ const pages: { path: string; priority: number; changeFrequency: Freq }[] = [
   { path: '/confidentialite', priority: 0.3, changeFrequency: 'yearly' },
 ]
 
+// Articles de blog : decouverte automatique des dossiers de app/blog.
+// Chaque nouvel article publie (un dossier contenant page.tsx) est inclus
+// au prochain deploiement, sans intervention manuelle dans ce fichier.
+function getArticlesBlog(): MetadataRoute.Sitemap {
+  try {
+    const blogDir = join(process.cwd(), 'app', 'blog')
+    const lastModified = new Date()
+    return readdirSync(blogDir, { withFileTypes: true })
+      .filter(
+        (e) =>
+          e.isDirectory() &&
+          !e.name.startsWith('[') &&
+          !e.name.startsWith('.') &&
+          !e.name.startsWith('_'),
+      )
+      .filter((e) => existsSync(join(blogDir, e.name, 'page.tsx')))
+      .map((e) => ({
+        url: `${baseUrl}/blog/${e.name}`,
+        lastModified,
+        changeFrequency: 'monthly' as Freq,
+        priority: 0.6,
+      }))
+  } catch {
+    return []
+  }
+}
+
 // Pages dediees des ressources du catalogue (documents, packs, guides, livres),
-// recuperees dynamiquement pour qu'elles soient indexees des leur publication.
+// recuperees depuis Supabase au moment de la construction du site.
 async function getRessources(): Promise<MetadataRoute.Sitemap> {
   try {
     const { data } = await supabaseAdmin
@@ -80,7 +97,7 @@ async function getRessources(): Promise<MetadataRoute.Sitemap> {
       .map((d) => ({
         url: `${baseUrl}/catalogue/${d.slug}`,
         lastModified: now,
-        changeFrequency: 'hourly' as Freq,
+        changeFrequency: 'weekly' as Freq,
         priority: 0.6,
       }))
   } catch {
@@ -96,6 +113,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     changeFrequency: p.changeFrequency,
     priority: p.priority,
   }))
+  const articles = getArticlesBlog()
   const ressources = await getRessources()
-  return [...statiques, ...ressources]
+  return [...statiques, ...articles, ...ressources]
 }
