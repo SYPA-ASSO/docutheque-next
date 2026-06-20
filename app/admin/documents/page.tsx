@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import type { CSSProperties } from 'react'
 import { useAdmin } from '@/app/admin/layout'
-import { Upload, FileText, Eye, EyeOff, Plus, X, ExternalLink } from 'lucide-react'
+import { Upload, FileText, Eye, EyeOff, Plus, X, ExternalLink, Trash2 } from 'lucide-react'
 import { CategorySearch } from '@/components/CategorySearch'
 import { DocumentSearch } from '@/components/DocumentSearch'
 import type { DocItem, Categorie } from '@/lib/types'
@@ -246,6 +246,17 @@ export default function AdminDocuments() {
   const toggleActif = async (doc: DocItem) => {
     await fetch('/api/admin/documents-update', { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-admin-password': password }, body: JSON.stringify({ id: doc.id, actif: !doc.actif }) })
     loadDocuments(password)
+  }
+
+  const handleDelete = async (doc: DocItem) => {
+    if (!confirm(`Supprimer définitivement « ${doc.nom} » ? Le document et son fichier seront retirés. Cette action est irréversible.`)) return
+    const res = await fetch('/api/admin/documents-delete', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'x-admin-password': password },
+      body: JSON.stringify({ id: doc.id }),
+    })
+    if (res.ok) loadDocuments(password)
+    else alert('Erreur lors de la suppression.')
   }
 
   const accesLabel = (doc: DocItem) => {
@@ -538,6 +549,10 @@ export default function AdminDocuments() {
                         <FileText size={15} color="#1a4fba" />
                       </a>
                     )}
+                    <button onClick={() => handleDelete(doc)} title="Supprimer"
+                      style={{ background: '#fef2f2', border: 'none', padding: '8px', borderRadius: '6px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '33px', height: '33px' }}>
+                      <Trash2 size={15} color="#dc2626" />
+                    </button>
                   </div>
                 </div>
               )
