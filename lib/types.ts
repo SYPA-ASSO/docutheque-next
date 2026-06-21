@@ -26,6 +26,12 @@ export type DocItem = {
   services_lies?: string[]
   inclus_dans?: string[]
   contient?: string[]
+  // Fiche produit (page dediee) : champs additionnels
+  cadre_legal?: string | null
+  conseil?: string | null
+  definitions?: { terme: string; definition: string }[] | null
+  faq?: { question: string; reponse: string }[] | null
+  date_maj?: string | null
 }
 
 export type Categorie = {
