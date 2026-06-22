@@ -38,6 +38,7 @@ type Stats = {
   total_ca_reel: number
   nb_ventes_documents: number
   nb_ventes_documents_30j: number
+  detail_abonnements: Array<{ email: string | null; brut_mensuel: number; net_mensuel: number; remise: boolean; methode: string }>
 }
 
 export default function AdminRevenus() {
@@ -100,6 +101,39 @@ export default function AdminRevenus() {
           </div>
         ))}
       </div>
+
+      {ok && stats.detail_abonnements.length > 0 && (
+        <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: 12, padding: '1.5rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
+            <TrendingUp size={18} color="#0f2d6e" strokeWidth={1.5} />
+            <h2 style={{ color: '#0f2d6e', fontSize: 14, fontWeight: 700, margin: 0 }}>{'Détail du MRR par abonnement'}</h2>
+          </div>
+          <p style={{ color: '#9ca3af', fontSize: 11, margin: '0 0 14px' }}>{'Montant net calculé par Stripe, remises comprises'}</p>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+            {stats.detail_abonnements.map((d, i) => (
+              <div key={i} style={{ display: 'grid', gridTemplateColumns: '1.6fr 1fr 1fr 1fr', gap: 10, alignItems: 'center', background: '#f8fafc', borderRadius: 8, padding: '10px 14px' }}>
+                <div style={{ minWidth: 0 }}>
+                  <p style={{ color: '#0f2d6e', fontSize: 12.5, fontWeight: 600, margin: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{d.email || 'Client'}</p>
+                  <p style={{ color: '#9ca3af', fontSize: 10.5, margin: '1px 0 0' }}>{d.methode}</p>
+                </div>
+                <div>
+                  <p style={{ color: '#6b7280', fontSize: 13, margin: 0, fontWeight: 600 }}>{eur(d.brut_mensuel)}</p>
+                  <p style={{ color: '#9ca3af', fontSize: 10, margin: 0 }}>brut / mois</p>
+                </div>
+                <div>
+                  <span style={{ display: 'inline-block', fontSize: 11, fontWeight: 600, padding: '2px 8px', borderRadius: 999, background: d.remise ? '#fef3c7' : '#f1f5f9', color: d.remise ? '#92400e' : '#64748b' }}>
+                    {d.remise ? 'Remise' : 'Plein tarif'}
+                  </span>
+                </div>
+                <div>
+                  <p style={{ color: d.net_mensuel === 0 ? '#dc2626' : '#15803d', fontSize: 14, margin: 0, fontWeight: 800 }}>{eur(d.net_mensuel)}</p>
+                  <p style={{ color: '#9ca3af', fontSize: 10, margin: 0 }}>net / mois</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
 
       <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: 12, padding: '1.5rem' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 14 }}>

@@ -1,18 +1,19 @@
 // lib/revenus-stripe.ts
 // Agregation des revenus reels depuis Stripe (source de verite des montants).
 //
-// Objectif : des chiffres fideles a la realite, et non au tarif nominal.
-//   - MRR / ARR calcules sur les abonnements actifs NETS de leurs coupons.
-//     Un abonnement remise a 100 % compte donc pour zero.
-//     La duree du coupon est respectee :
-//       * forever   -> reduit le MRR durablement
-//       * repeating -> reduit le MRR tant que la remise court (fenetre non expiree)
-//       * once      -> ne reduit PAS le MRR (seule la premiere echeance etait remisee,
-//                      l'abonnement se renouvelle au tarif plein)
-//   - Encaissements reels = charges Stripe abouties, deduction faite des remboursements.
-//   - Churn = abonnements resilies sur les 30 derniers jours.
+// MRR : pour chaque abonnement actif, on lit le TOTAL de sa prochaine facture
+// (invoices.createPreview), que Stripe calcule deja net de toutes les remises,
+// qu'elles soient portees par l'abonnement OU par le client, et en respectant
+// la duree du coupon. Un abonnement remise a 100 % donne donc un total de 0.
+// Ce montant (sur une periode de facturation) est ensuite ramene au mois.
 //
-// Ce module est appele cote serveur uniquement (routes API admin).
+// Repli : si l'apercu de facture echoue, on calcule le brut a partir des lignes
+// et on applique manuellement les remises de l'abonnement ET du client.
+//
+// Encaissements : charges Stripe abouties, deduction faite des remboursements.
+// Churn : abonnements resilies sur les 30 derniers jours.
+//
+// Module appele cote serveur uniquement (routes API admin).
 
 import Stripe from 'stripe'
 import { stripe, PRICE_IDS } from '@/lib/stripe'
@@ -25,20 +26,27 @@ export type RepartitionAbonnes = {
   autre: number
 }
 
+export type DetailAbonnement = {
+  email: string | null
+  brut_mensuel: number
+  net_mensuel: number
+  remise: boolean
+  methode: string
+}
+
 export type RevenusReels = {
   stripeOk: boolean
   erreur?: string
-  // Abonnements (nets de coupons)
   mrr: number
   arr: number
   nb_abonnes_actifs: number
   repartition: RepartitionAbonnes
   churn_30j: number
-  // Encaissements cartes (Stripe)
   encaisse_stripe_total: number
   encaisse_stripe_30j: number
   nb_paiements: number
   nb_paiements_30j: number
+  detail_abonnements: DetailAbonnement[]
 }
 
 const arrondi = (n: number) => Math.round(n * 100) / 100
@@ -60,8 +68,8 @@ function parMois(montantCents: number, interval: string, intervalCount: number):
   }
 }
 
-// Construit la table inverse priceId -> categorie, a partir des identifiants en vigueur
-// (surcharges d'environnement comprises : on lit donc les prix LIVE en production).
+// Table inverse priceId -> categorie, a partir des identifiants en vigueur
+// (surcharges d'environnement comprises : prix LIVE en production).
 function tablePrix(): Record<string, { type: 'particulier' | 'pro'; periode: 'mensuel' | 'annuel' }> {
   return {
     [PRICE_IDS.optimal_particulier_monthly]: { type: 'particulier', periode: 'mensuel' },
@@ -69,6 +77,12 @@ function tablePrix(): Record<string, { type: 'particulier' | 'pro'; periode: 'me
     [PRICE_IDS.optimal_pro_monthly]: { type: 'pro', periode: 'mensuel' },
     [PRICE_IDS.optimal_pro_yearly]: { type: 'pro', periode: 'annuel' },
   }
+}
+
+function clientObjet(c: string | Stripe.Customer | Stripe.DeletedCustomer | null): Stripe.Customer | null {
+  if (!c || typeof c === 'string') return null
+  if ((c as Stripe.DeletedCustomer).deleted) return null
+  return c as Stripe.Customer
 }
 
 export async function calculeRevenusReels(): Promise<RevenusReels> {
@@ -83,6 +97,7 @@ export async function calculeRevenusReels(): Promise<RevenusReels> {
     encaisse_stripe_30j: 0,
     nb_paiements: 0,
     nb_paiements_30j: 0,
+    detail_abonnements: [],
   }
 
   try {
@@ -90,7 +105,7 @@ export async function calculeRevenusReels(): Promise<RevenusReels> {
     const seuil30j = Math.floor((maintenant - 30 * 24 * 60 * 60 * 1000) / 1000)
     const prix = tablePrix()
 
-    // Cache de coupons resolus par identifiant (evite les appels repetes).
+    // Cache de coupons resolus par identifiant (pour le repli manuel).
     const cacheCoupons = new Map<string, Stripe.Coupon | null>()
     async function resoudreCoupon(c: string | Stripe.Coupon | null): Promise<Stripe.Coupon | null> {
       if (!c) return null
@@ -106,8 +121,30 @@ export async function calculeRevenusReels(): Promise<RevenusReels> {
       }
     }
 
-    // 1. Abonnements actifs -> MRR net de coupons + repartition.
-    const abosActifs = await stripe.subscriptions.list({ status: 'active', limit: 100 }).autoPagingToArray({ limit: 1000 })
+    // Repli : applique manuellement une liste de remises a un brut mensuel.
+    async function netApresRemises(brutMensuel: number, interval: string, count: number, remises: Stripe.Discount[]): Promise<{ net: number; remise: boolean }> {
+      let net = brutMensuel
+      let remiseAppliquee = false
+      for (const d of remises) {
+        const coupon = await resoudreCoupon(d.source.coupon)
+        if (!coupon) continue
+        if (coupon.duration === 'once') continue
+        if (coupon.duration === 'repeating' && d.end && d.end * 1000 < maintenant) continue
+        if (coupon.percent_off != null) {
+          net = net * (1 - coupon.percent_off / 100)
+          remiseAppliquee = true
+        } else if (coupon.amount_off != null) {
+          net = Math.max(0, net - parMois(coupon.amount_off, interval, count))
+          remiseAppliquee = true
+        }
+      }
+      return { net: Math.max(0, net), remise: remiseAppliquee }
+    }
+
+    // 1. Abonnements actifs (client etendu pour lire son eventuelle remise + son email).
+    const abosActifs = await stripe.subscriptions
+      .list({ status: 'active', limit: 100, expand: ['data.customer'] })
+      .autoPagingToArray({ limit: 1000 })
 
     const repartition: RepartitionAbonnes = {
       particulier_mensuel: 0,
@@ -117,27 +154,26 @@ export async function calculeRevenusReels(): Promise<RevenusReels> {
       autre: 0,
     }
     let mrrCents = 0
+    const detail: DetailAbonnement[] = []
 
     for (const sub of abosActifs) {
-      // Montant brut mensuel = somme des lignes de l'abonnement, ramenees au mois.
-      let brutMensuel = 0
-      let intervalPrincipal = 'month'
-      let countPrincipal = 1
-      let premiereLigne = true
+      const client = clientObjet(sub.customer)
 
+      // Brut sur une periode de facturation, a partir des lignes de l'abonnement.
+      let brutPeriodeCents = 0
+      let interval = 'month'
+      let count = 1
+      let premiere = true
       for (const item of sub.items.data) {
         const p = item.price
         if (!p || p.unit_amount == null || !p.recurring) continue
         const qty = item.quantity ?? 1
-        const ligneMensuelle = parMois(p.unit_amount * qty, p.recurring.interval, p.recurring.interval_count)
-        brutMensuel += ligneMensuelle
-        if (premiereLigne) {
-          intervalPrincipal = p.recurring.interval
-          countPrincipal = p.recurring.interval_count
-          premiereLigne = false
+        brutPeriodeCents += p.unit_amount * qty
+        if (premiere) {
+          interval = p.recurring.interval
+          count = p.recurring.interval_count
+          premiere = false
         }
-
-        // Repartition par categorie (sur la base du prix de chaque ligne).
         const cat = prix[p.id]
         if (cat) {
           if (cat.type === 'particulier' && cat.periode === 'mensuel') repartition.particulier_mensuel++
@@ -149,26 +185,37 @@ export async function calculeRevenusReels(): Promise<RevenusReels> {
           repartition.autre++
         }
       }
+      const brutMensuel = parMois(brutPeriodeCents, interval, count)
 
-      // Application des remises (coupons) en respectant leur duree.
+      // Net : on lit le total de la prochaine facture (deja net de toutes les remises).
       let netMensuel = brutMensuel
-      for (const d of sub.discounts) {
-        if (typeof d === 'string') continue // remise non detaillee : ignoree
-        const coupon = await resoudreCoupon(d.source.coupon)
-        if (!coupon) continue
-        if (coupon.duration === 'once') continue // n'affecte que la 1re echeance : pas d'impact recurrent
-        if (coupon.duration === 'repeating' && d.end && d.end * 1000 < maintenant) continue // fenetre expiree
-
-        if (coupon.percent_off != null) {
-          netMensuel = netMensuel * (1 - coupon.percent_off / 100)
-        } else if (coupon.amount_off != null) {
-          const reduction = parMois(coupon.amount_off, intervalPrincipal, countPrincipal)
-          netMensuel = Math.max(0, netMensuel - reduction)
-        }
+      let remiseDetectee = false
+      let methode = 'apercu facture'
+      try {
+        const apercu = await stripe.invoices.createPreview({ subscription: sub.id })
+        netMensuel = parMois(apercu.total, interval, count)
+        remiseDetectee = apercu.total < brutPeriodeCents
+      } catch {
+        // Repli : remises de l'abonnement + du client, calculees manuellement.
+        const remises: Stripe.Discount[] = []
+        for (const d of sub.discounts) if (typeof d !== 'string') remises.push(d)
+        if (client && client.discount) remises.push(client.discount)
+        const r = await netApresRemises(brutMensuel, interval, count, remises)
+        netMensuel = r.net
+        remiseDetectee = r.remise
+        methode = 'calcul manuel'
       }
 
       if (netMensuel < 0) netMensuel = 0
-      mrrCents += netMensuel
+      mrrCents += netMensuel * 100
+
+      detail.push({
+        email: client?.email ?? null,
+        brut_mensuel: arrondi(brutMensuel),
+        net_mensuel: arrondi(netMensuel),
+        remise: remiseDetectee,
+        methode,
+      })
     }
 
     const mrr = arrondi(mrrCents / 100)
@@ -207,6 +254,7 @@ export async function calculeRevenusReels(): Promise<RevenusReels> {
       encaisse_stripe_30j: arrondi(encaisse30jCents / 100),
       nb_paiements: nbPaiements,
       nb_paiements_30j: nbPaiements30j,
+      detail_abonnements: detail,
     }
   } catch (e) {
     return { ...vide, erreur: e instanceof Error ? e.message : 'Erreur Stripe inconnue.' }

@@ -66,5 +66,7 @@ export async function GET(request: Request) {
     // Activite documents (volume)
     nb_ventes_documents: nbVentesDocs,
     nb_ventes_documents_30j: nbVentesDocs30j,
+    // Detail par abonnement (transparence du calcul du MRR)
+    detail_abonnements: reels.detail_abonnements,
   })
 }
