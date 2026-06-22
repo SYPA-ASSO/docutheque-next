@@ -8,7 +8,7 @@ import { supabase } from '@/lib/supabase'
 import type { DocItem, Categorie } from '@/lib/types'
 import {
   FileText, Lock, Star, ArrowRight, ChevronRight,
-  CheckCircle, Scale, Info, Download, Crown, ChevronDown
+  CheckCircle, Scale, Info, Download, Crown, ChevronDown, BookOpen
 } from 'lucide-react'
 
 const schemaData = {
@@ -104,7 +104,7 @@ export default function CataloguePage() {
     const loadData = async () => {
       const { data: docs } = await supabase
         .from('documents')
-        .select('id, nom, slug, description, blob_url, categories, profils_autorises, acces_gratuit, acces_optimal, acces_payant, prix_unitaire, actif, ordre')
+        .select('id, nom, slug, description, blob_url, categories, profils_autorises, acces_gratuit, acces_optimal, acces_payant, prix_unitaire, actif, ordre, type')
         .eq('actif', true)
         .order('ordre', { ascending: true })
 
@@ -121,16 +121,30 @@ export default function CataloguePage() {
   }, [])
 
   const docsParCategorie = (nomCategorie: string) =>
-    documents.filter(doc => doc.categories?.includes(nomCategorie))
+    documents.filter(doc => doc.categories?.includes(nomCategorie) && doc.type !== 'guide' && doc.type !== 'livre')
 
-  const nbGratuits = documents.filter(d => d.acces_gratuit).length
-  const nbOptimal = documents.filter(d => d.acces_optimal && !d.acces_gratuit).length
+  const guides = documents.filter(d => d.type === 'guide')
+  const livres = documents.filter(d => d.type === 'livre')
 
   const accesLabel = (doc: DocItem) => {
     if (doc.acces_gratuit) return { label: 'Gratuit', color: '#15803d', bg: '#f0fdf4' }
     if (doc.acces_optimal) return { label: 'Optimal', color: '#1a4fba', bg: '#eff6ff' }
     if (doc.acces_payant) return { label: `${doc.prix_unitaire ?? '?'} €`, color: '#d97706', bg: '#fff7ed' }
     return { label: '-', color: '#9ca3af', bg: '#f3f4f6' }
+  }
+
+  const carteRessource = (d: DocItem) => {
+    const acces = accesLabel(d)
+    return (
+      <a key={d.id} href={d.slug ? `/catalogue/${d.slug}` : undefined} style={{ display: 'block', background: 'white', border: '1px solid #e5e7eb', borderRadius: 12, padding: '1.1rem 1.25rem', textDecoration: 'none', color: 'inherit', cursor: d.slug ? 'pointer' : 'default' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 10, marginBottom: 10 }}>
+          <BookOpen size={20} color="#1a4fba" strokeWidth={1.5} style={{ flexShrink: 0 }} />
+          <span style={{ background: acces.bg, color: acces.color, fontSize: 10, fontWeight: 700, padding: '3px 8px', borderRadius: 5, flexShrink: 0 }}>{acces.label}</span>
+        </div>
+        <p style={{ color: '#0f2d6e', fontSize: 14, fontWeight: 700, margin: '0 0 4px', lineHeight: 1.35 }}>{d.nom}</p>
+        {d.description ? <p style={{ color: '#6b7280', fontSize: 12, lineHeight: 1.5, margin: 0 }}>{d.description.slice(0, 110)}</p> : null}
+      </a>
+    )
   }
 
   return (
@@ -164,21 +178,8 @@ export default function CataloguePage() {
               Documents juridiques téléchargeables et personnalisables
             </h1>
             <p style={{ fontSize: '1rem', color: 'rgba(255,255,255,0.85)', lineHeight: 1.8, marginBottom: '2rem', margin: '0 auto 2rem' }}>
-              Modèles au format DOCX élaborés sur la base du droit français en vigueur. Contrats, baux, statuts, RGPD, courriers. Accès libre ou abonnement Optimal.
+              Modèles au format DOCX élaborés sur la base du droit français en vigueur. Contrats, baux, statuts, RGPD, courriers. Accès libre ou abonnement Optimal. Packs, guides et ouvrages également disponibles, gratuits ou payants selon les cas.
             </p>
-
-            {!loading && (
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', justifyContent: 'center', marginBottom: '2rem' }}>
-                <div style={{ background: 'rgba(255,255,255,0.15)', borderRadius: 12, padding: '1rem 1.5rem', border: '1px solid rgba(255,255,255,0.3)', minWidth: 140 }}>
-                  <div style={{ fontSize: '1.8rem', fontWeight: 800, color: 'white' }}>{nbGratuits}</div>
-                  <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.75)', marginTop: 4 }}>Documents gratuits</div>
-                </div>
-                <div style={{ background: 'linear-gradient(135deg, #b8860b 0%, #d4a017 50%, #b8860b 100%)', borderRadius: 12, padding: '1rem 1.5rem', minWidth: 140 }}>
-                  <div style={{ fontSize: '1.8rem', fontWeight: 800, color: 'white' }}>{nbOptimal}</div>
-                  <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.9)', marginTop: 4 }}>Documents Optimal</div>
-                </div>
-              </div>
-            )}
 
             <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
               <a href="/connexion" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'white', color: '#0f2d6e', padding: '12px 24px', borderRadius: 8, fontWeight: 700, fontSize: 14, textDecoration: 'none' }}>
@@ -293,6 +294,36 @@ export default function CataloguePage() {
               </div>
             )}
           </section>
+
+          {/* GUIDES */}
+          {!loading && guides.length > 0 && (
+            <section style={{ marginBottom: '3.5rem' }}>
+              <h2 style={{ fontSize: '1.4rem', fontWeight: 700, color: '#0f2d6e', marginBottom: '0.5rem' }}>
+                Guides disponibles
+              </h2>
+              <p style={{ color: '#6b7280', fontSize: 13, marginBottom: '2rem' }}>
+                Guides pratiques pour comprendre et agir, gratuits ou payants selon les cas.
+              </p>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: '12px' }}>
+                {guides.map(carteRessource)}
+              </div>
+            </section>
+          )}
+
+          {/* OUVRAGES */}
+          {!loading && livres.length > 0 && (
+            <section style={{ marginBottom: '3.5rem' }}>
+              <h2 style={{ fontSize: '1.4rem', fontWeight: 700, color: '#0f2d6e', marginBottom: '0.5rem' }}>
+                Ouvrages disponibles
+              </h2>
+              <p style={{ color: '#6b7280', fontSize: 13, marginBottom: '2rem' }}>
+                Ouvrages de fond à télécharger, gratuits ou payants selon les cas.
+              </p>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: '12px' }}>
+                {livres.map(carteRessource)}
+              </div>
+            </section>
+          )}
 
           {/* AVANTAGES */}
           <section style={{ marginBottom: '3.5rem' }}>

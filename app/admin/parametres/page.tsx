@@ -84,7 +84,7 @@ export default function AdminSettings() {
         <div style={{ background: '#fef3c7', border: '1px solid #fcd34d', borderRadius: '8px', padding: '10px 14px', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '8px' }}>
           <AlertCircle size={14} color="#d97706" style={{ flexShrink: 0 }} />
           <p style={{ color: '#92400e', fontSize: '12px', margin: 0 }}>
-            Modification sécurisée — confirmation du mot de passe admin requise.
+            Modification sécurisée : confirmation du mot de passe admin requise.
           </p>
         </div>
 
@@ -179,7 +179,9 @@ export default function AdminSettings() {
             { label: 'Réponse à une question juridique', declencheur: 'Quand François répond depuis l\'admin', statut: 'Actif' },
             { label: 'Validation migration Pro', declencheur: 'Quand François valide une demande migration', statut: 'Actif' },
             { label: 'Confirmation paiement', declencheur: 'Via Stripe (reçu automatique)', statut: 'Actif' },
-            { label: 'Facture disponible', declencheur: 'À définir — post NDD', statut: 'À venir' },
+            { label: 'Facture disponible', declencheur: 'Quand une facture est déposée depuis l\'admin', statut: 'Actif' },
+            { label: 'Réinitialisation de mot de passe', declencheur: 'Depuis « Mot de passe oublié »', statut: 'Actif' },
+            { label: 'Confirmation de résiliation', declencheur: 'À la résiliation de l\'abonnement', statut: 'Actif' },
           ].map((email, i) => (
             <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '10px 14px', background: '#f8fafc', borderRadius: '8px' }}>
               <div style={{ flex: 1 }}>
