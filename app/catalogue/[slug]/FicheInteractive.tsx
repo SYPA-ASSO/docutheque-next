@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import type { CSSProperties } from 'react'
 import { supabase } from '@/lib/supabase'
+import { useCart } from '@/components/CartContext'
 
 const btnPrimary: CSSProperties = {
   display: 'block',
@@ -37,16 +38,19 @@ const msgStyle: CSSProperties = { margin: '10px 0 0', fontSize: 12.5, color: '#b
 export function BoutonsAchat({
   documentId,
   slug,
+  nom,
   accesGratuit,
   accesPayant,
   prixUnitaire,
 }: {
   documentId: string
   slug: string
+  nom: string
   accesGratuit: boolean
   accesPayant: boolean
   prixUnitaire: number | null
 }) {
+  const { add, has } = useCart()
   const [loading, setLoading] = useState(false)
   const [msg, setMsg] = useState<string | null>(null)
 
@@ -87,9 +91,6 @@ export function BoutonsAchat({
     window.location.href = '/espace-client?onglet=documents'
   }
 
-  const msgPanier =
-    "L'achat groupé de plusieurs documents arrive bientôt. Vous pouvez déjà acheter ce document à l'unité ci-dessus."
-
   if (accesGratuit) {
     return (
       <div>
@@ -102,15 +103,26 @@ export function BoutonsAchat({
   }
 
   if (accesPayant && prixUnitaire != null) {
+    const dansPanier = has(documentId)
     return (
       <div>
         <button onClick={acheter} disabled={loading} style={{ ...btnPrimary, opacity: loading ? 0.7 : 1 }}>
           {loading ? 'Redirection en cours...' : 'Acheter et télécharger'}
         </button>
-        <button onClick={() => setMsg(msgPanier)} style={btnSecondary}>
-          Ajouter au panier
-        </button>
-        {msg ? <p style={msgStyle}>{msg}</p> : null}
+        {dansPanier ? (
+          <a href="/panier" style={btnSecondary}>Voir le panier</a>
+        ) : (
+          <button onClick={() => { add({ documentId, nom, prix: prixUnitaire, slug }); setMsg('ajout') }} style={btnSecondary}>
+            Ajouter au panier
+          </button>
+        )}
+        {msg === 'ajout' ? (
+          <p style={{ ...msgStyle, color: '#15803d' }}>
+            Ajouté au panier. <a href="/panier" style={{ color: '#15803d', fontWeight: 700 }}>Voir le panier ›</a>
+          </p>
+        ) : msg ? (
+          <p style={msgStyle}>{msg}</p>
+        ) : null}
       </div>
     )
   }

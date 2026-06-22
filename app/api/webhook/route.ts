@@ -114,6 +114,40 @@ export async function POST(request: Request) {
         }
       }
 
+      // Achat groupe (panier) : acces accorde pour chaque document de la commande
+      if (session.metadata?.produit === 'panier' && session.metadata?.documentIds) {
+        const userId = await resolveUserId()
+        const paymentId = session.payment_intent as string
+        const ids = session.metadata.documentIds.split(',').map((s) => s.trim()).filter(Boolean)
+        if (userId && ids.length > 0) {
+          const { data: docs } = await supabaseAdmin
+            .from('documents')
+            .select('id, prix_unitaire')
+            .in('id', ids)
+          const prixMap = new Map((docs || []).map((d) => [d.id, d.prix_unitaire]))
+          for (const docId of ids) {
+            const { data: existant } = await supabaseAdmin
+              .from('achats_documents')
+              .select('id')
+              .eq('stripe_payment_id', paymentId)
+              .eq('document_id', docId)
+              .limit(1)
+            if (!existant || existant.length === 0) {
+              await supabaseAdmin
+                .from('achats_documents')
+                .insert({
+                  user_id: userId,
+                  document_id: docId,
+                  stripe_payment_id: paymentId,
+                  montant: prixMap.get(docId) ?? null,
+                  mode_paiement: 'carte',
+                  statut: 'paye',
+                })
+            }
+          }
+        }
+      }
+
       break
     }
 

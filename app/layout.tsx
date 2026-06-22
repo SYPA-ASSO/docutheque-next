@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import CookieBanner from '@/components/CookieBanner'
 import SchemaOrganisation from '@/components/SchemaOrganisation'
+import { CartProvider } from '@/components/CartContext'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -47,7 +48,9 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <body style={{ margin: 0, fontFamily: 'Arial, sans-serif' }}>
-        {children}
+        <CartProvider>
+          {children}
+        </CartProvider>
         <SchemaOrganisation />
         <CookieBanner />
       </body>

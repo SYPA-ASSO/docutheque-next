@@ -438,7 +438,7 @@ export default async function RessourcePage({ params }: { params: Promise<{ slug
                 )}
 
                 <div style={{ marginTop: 14 }}>
-                  <BoutonsAchat documentId={r.id} slug={r.slug || ''} accesGratuit={r.acces_gratuit} accesPayant={r.acces_payant} prixUnitaire={r.prix_unitaire} />
+                  <BoutonsAchat documentId={r.id} slug={r.slug || ''} nom={r.nom} accesGratuit={r.acces_gratuit} accesPayant={r.acces_payant} prixUnitaire={r.prix_unitaire} />
                 </div>
 
                 <ul style={{ listStyle: 'none', padding: 0, margin: '16px 0 0' }}>
