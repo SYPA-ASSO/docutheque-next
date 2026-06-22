@@ -1,14 +1,16 @@
 import { NextResponse } from 'next/server'
 import { supabaseAdmin } from '@/lib/supabase-admin'
-import { calculeMRR, repartitionAbonnes } from '@/lib/tarifs'
+import { calculeRevenusReels } from '@/lib/revenus-stripe'
 
 // app/api/admin/revenus-stats/route.ts
-// Statistiques de revenus calculables depuis la base :
-//   - MRR et ARR a partir des abonnements actifs (tarifs connus)
-//   - nombre d'abonnes et repartition par type et periode
-//   - ventes de documents a l'unite (statut paye) : CA, nombre, panier moyen
-// Le CA tous canaux confondus et le taux de churn ne sont pas reconstituables ici
-// (pas de table de transactions ni d'historique des resiliations) : agregation Stripe a prevoir.
+// Statistiques de revenus FIDELES A LA REALITE :
+//   - MRR / ARR : abonnements actifs Stripe, nets de leurs coupons (un abonnement
+//     remise a 100 % compte pour zero). La duree du coupon est respectee.
+//   - Encaissements cartes : charges Stripe abouties, deduction faite des remboursements.
+//   - Churn : abonnements resilies sur 30 jours (Stripe).
+//   - Ventes par virement : lues depuis la base (hors Stripe), ajoutees au total reel.
+// Stripe est la source de verite des montants ; la base ne sert qu'aux virements
+// (qui ne transitent pas par Stripe) et au volume d'activite documents.
 
 export async function GET(request: Request) {
   const adminPassword = request.headers.get('x-admin-password')
@@ -16,40 +18,53 @@ export async function GET(request: Request) {
     return NextResponse.json({ error: 'Non autorisé.' }, { status: 401 })
   }
 
+  const arrondi = (n: number) => Math.round(n * 100) / 100
   const ilYa30j = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString()
 
-  // 1. Abonnes actifs (type + periode pour le MRR et la repartition)
-  const { data: abos } = await supabaseAdmin
-    .from('users')
-    .select('abonnement_type, abonnement_periode')
-    .eq('abonnement_actif', true)
-  const abonnes = abos || []
-  const mrr = calculeMRR(abonnes)
-  const arr = Math.round(mrr * 12 * 100) / 100
+  // 1. Montants reels depuis Stripe.
+  const reels = await calculeRevenusReels()
 
-  // 2. Ventes de documents a l'unite (carte + virements valides), statut paye
-  const { data: ventes } = await supabaseAdmin
+  // 2. Ventes de documents reglees par VIREMENT (hors Stripe), statut paye.
+  const { data: virements } = await supabaseAdmin
     .from('achats_documents')
     .select('montant, created_at')
     .eq('statut', 'paye')
-  const lignes = ventes || []
-  const caDocuments = lignes.reduce((s, v) => s + (Number(v.montant) || 0), 0)
-  const nbVentes = lignes.length
-  const panierMoyen = nbVentes > 0 ? caDocuments / nbVentes : 0
-  const lignes30j = lignes.filter((v) => v.created_at && v.created_at >= ilYa30j)
-  const caDocuments30j = lignes30j.reduce((s, v) => s + (Number(v.montant) || 0), 0)
+    .eq('mode_paiement', 'virement')
+  const lignesVir = virements || []
+  const caVirements = lignesVir.reduce((s, v) => s + (Number(v.montant) || 0), 0)
 
-  const arrondi = (n: number) => Math.round(n * 100) / 100
+  // 3. Volume d'activite documents (toutes ventes payees, tous modes) : indicateur non monetaire.
+  const { data: ventesDocs } = await supabaseAdmin
+    .from('achats_documents')
+    .select('created_at')
+    .eq('statut', 'paye')
+  const lignesDocs = ventesDocs || []
+  const nbVentesDocs = lignesDocs.length
+  const nbVentesDocs30j = lignesDocs.filter((v) => v.created_at && v.created_at >= ilYa30j).length
+
+  // 4. Total encaisse reel = cartes Stripe (nettes de remboursements) + virements documents.
+  //    Aucun double comptage : Stripe couvre toutes les cartes, la base ne fournit que les virements.
+  const totalCaReel = arrondi(reels.encaisse_stripe_total + caVirements)
 
   return NextResponse.json({
-    nb_abonnes: abonnes.length,
-    repartition: repartitionAbonnes(abonnes),
-    mrr,
-    arr,
-    ca_documents: arrondi(caDocuments),
-    ca_documents_30j: arrondi(caDocuments30j),
-    nb_ventes: nbVentes,
-    nb_ventes_30j: lignes30j.length,
-    panier_moyen: arrondi(panierMoyen),
+    stripeOk: reels.stripeOk,
+    erreur: reels.erreur || null,
+    // Abonnements (nets de coupons)
+    mrr: reels.mrr,
+    arr: reels.arr,
+    nb_abonnes_actifs: reels.nb_abonnes_actifs,
+    repartition: reels.repartition,
+    churn_30j: reels.churn_30j,
+    // Encaissements
+    encaisse_stripe_total: reels.encaisse_stripe_total,
+    encaisse_stripe_30j: reels.encaisse_stripe_30j,
+    nb_paiements: reels.nb_paiements,
+    nb_paiements_30j: reels.nb_paiements_30j,
+    ca_virements_documents: arrondi(caVirements),
+    nb_virements_documents: lignesVir.length,
+    total_ca_reel: totalCaReel,
+    // Activite documents (volume)
+    nb_ventes_documents: nbVentesDocs,
+    nb_ventes_documents_30j: nbVentesDocs30j,
   })
 }

@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import { supabaseAdmin } from '@/lib/supabase-admin'
 import { calculeMRR } from '@/lib/tarifs'
+import { calculeRevenusReels } from '@/lib/revenus-stripe'
 
 export async function GET(request: Request) {
   const adminPassword = request.headers.get('x-admin-password')
@@ -42,12 +43,16 @@ export async function GET(request: Request) {
     .order('created_at', { ascending: false })
     .limit(5)
 
-  // MRR : revenu mensuel recurrent des abonnements actifs
+  // MRR : revenu mensuel recurrent reel, lu depuis Stripe (net des coupons).
+  // Un abonnement remise a 100 % compte pour zero. Repli sur le calcul nominal
+  // (tarifs en vigueur) uniquement si Stripe est momentanement injoignable,
+  // pour ne pas bloquer le tableau de bord.
   const { data: abos } = await supabaseAdmin
     .from('users')
     .select('abonnement_type, abonnement_periode')
     .eq('abonnement_actif', true)
-  const mrr = calculeMRR(abos || [])
+  const reels = await calculeRevenusReels()
+  const mrr = reels.stripeOk ? reels.mrr : calculeMRR(abos || [])
 
   return NextResponse.json({
     nb_clients: nb_clients || 0,

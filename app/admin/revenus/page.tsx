@@ -1,9 +1,9 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import type { CSSProperties } from 'react'
+import type { ReactNode } from 'react'
 import { useAdmin } from '@/app/admin/layout'
-import { TrendingUp, Crown, Wallet, ShoppingBag, Info } from 'lucide-react'
+import { TrendingUp, TrendingDown, Crown, Wallet, CreditCard, Banknote, Activity, Info, AlertTriangle } from 'lucide-react'
 
 const NB = '\u00a0'
 function eur(n: number) {
@@ -11,18 +11,33 @@ function eur(n: number) {
 }
 
 const NOTE =
-  "Le MRR et l'ARR sont calculés à partir des abonnements actifs et des tarifs en vigueur. Le chiffre d'affaires des abonnements encaissés, le total tous canaux confondus et le taux de churn ne sont pas reconstituables depuis la base de données : ils nécessitent une agrégation directe depuis Stripe, prévue comme étape suivante."
+  "Les montants proviennent directement de Stripe. Le MRR et l'ARR portent sur les abonnements actifs, nets de leurs remises et coupons : un abonnement remisé à 100 % compte donc pour zéro, et la durée du coupon est respectée (une remise permanente réduit durablement le MRR, une remise sur la première échéance seulement ne le réduit pas). Les encaissements correspondent aux paiements par carte réellement perçus, déduction faite des remboursements. Les ventes réglées par virement sont lues depuis la base et ajoutées au total. Les abonnements en période d'essai et les éventuels encaissements par virement hors documents ne sont pas comptés ici."
+
+type Repartition = {
+  particulier_mensuel: number
+  particulier_annuel: number
+  pro_mensuel: number
+  pro_annuel: number
+  autre: number
+}
 
 type Stats = {
-  nb_abonnes: number
-  repartition: { particulier_mensuel: number; particulier_annuel: number; pro_mensuel: number; pro_annuel: number }
+  stripeOk: boolean
+  erreur: string | null
   mrr: number
   arr: number
-  ca_documents: number
-  ca_documents_30j: number
-  nb_ventes: number
-  nb_ventes_30j: number
-  panier_moyen: number
+  nb_abonnes_actifs: number
+  repartition: Repartition
+  churn_30j: number
+  encaisse_stripe_total: number
+  encaisse_stripe_30j: number
+  nb_paiements: number
+  nb_paiements_30j: number
+  ca_virements_documents: number
+  nb_virements_documents: number
+  total_ca_reel: number
+  nb_ventes_documents: number
+  nb_ventes_documents_30j: number
 }
 
 export default function AdminRevenus() {
@@ -41,11 +56,14 @@ export default function AdminRevenus() {
   if (erreur) return <p style={{ color: '#dc2626', fontSize: 14 }}>Impossible de charger les statistiques de revenus.</p>
   if (!stats) return <p style={{ color: '#6b7280', fontSize: 14 }}>Chargement...</p>
 
+  const ok = stats.stripeOk
+  const val = (v: string) => (ok ? v : 'indisponible')
+
   const cards = [
-    { label: 'Revenus mensuels (MRR)', value: eur(stats.mrr), sub: 'abonnements en cours', icon: <TrendingUp size={20} color="#1a4fba" strokeWidth={1.5} />, bg: '#eff6ff' },
-    { label: 'Revenus annuels (ARR)', value: eur(stats.arr), sub: 'MRR projeté sur 12 mois', icon: <TrendingUp size={20} color="#15803d" strokeWidth={1.5} />, bg: '#f0fdf4' },
-    { label: 'Abonnés actifs', value: String(stats.nb_abonnes), sub: 'comptes avec abonnement', icon: <Crown size={20} color="#d97706" strokeWidth={1.5} />, bg: '#fff7ed' },
-    { label: 'Panier moyen (documents)', value: eur(stats.panier_moyen), sub: `${stats.nb_ventes} vente${stats.nb_ventes > 1 ? 's' : ''} au total`, icon: <Wallet size={20} color="#7c3aed" strokeWidth={1.5} />, bg: '#f5f3ff' },
+    { label: 'Revenus mensuels (MRR)', value: val(eur(stats.mrr)), sub: 'abonnements actifs, net des remises', icon: <TrendingUp size={20} color="#1a4fba" strokeWidth={1.5} />, bg: '#eff6ff' },
+    { label: 'Revenus annuels (ARR)', value: val(eur(stats.arr)), sub: 'MRR projeté sur 12 mois', icon: <TrendingUp size={20} color="#15803d" strokeWidth={1.5} />, bg: '#f0fdf4' },
+    { label: 'Abonnés actifs', value: val(String(stats.nb_abonnes_actifs)), sub: 'abonnements Stripe en cours', icon: <Crown size={20} color="#d97706" strokeWidth={1.5} />, bg: '#fff7ed' },
+    { label: 'Résiliations (30 j)', value: val(String(stats.churn_30j)), sub: 'abonnements résiliés sur 30 jours', icon: <TrendingDown size={20} color="#dc2626" strokeWidth={1.5} />, bg: '#fef2f2' },
   ]
 
   const repart = [
@@ -54,13 +72,23 @@ export default function AdminRevenus() {
     { l: 'Pro mensuel', v: stats.repartition.pro_mensuel },
     { l: 'Pro annuel', v: stats.repartition.pro_annuel },
   ]
+  if (stats.repartition.autre > 0) repart.push({ l: 'Autre', v: stats.repartition.autre })
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
       <div>
         <h1 style={{ color: '#0f2d6e', fontSize: '1.5rem', fontWeight: 700, margin: '0 0 4px' }}>Revenus</h1>
-        <p style={{ color: '#9ca3af', fontSize: 13, margin: 0 }}>Revenu récurrent et ventes de documents</p>
+        <p style={{ color: '#9ca3af', fontSize: 13, margin: 0 }}>Chiffres réels, lus directement depuis Stripe</p>
       </div>
+
+      {!ok && (
+        <div style={{ background: '#fffbeb', border: '1px solid #fde68a', borderRadius: 10, padding: '0.9rem 1.1rem', display: 'flex', gap: 10, alignItems: 'flex-start' }}>
+          <AlertTriangle size={16} color="#d97706" style={{ marginTop: 2, flexShrink: 0 }} />
+          <p style={{ color: '#92400e', fontSize: 12, lineHeight: 1.6, margin: 0 }}>
+            {"Connexion à Stripe momentanément indisponible : les montants des abonnements et des encaissements ne peuvent pas être affichés. Les indicateurs issus de la base (virements, volume de documents) restent visibles."}
+          </p>
+        </div>
+      )}
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 14 }}>
         {cards.map((c, i) => (
@@ -74,39 +102,35 @@ export default function AdminRevenus() {
       </div>
 
       <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: 12, padding: '1.5rem' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 14 }}>
+          <Wallet size={18} color="#0f2d6e" strokeWidth={1.5} />
+          <h2 style={{ color: '#0f2d6e', fontSize: 14, fontWeight: 700, margin: 0 }}>Encaissements réels</h2>
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(190px, 1fr))', gap: 12 }}>
+          <Bloc accent="#0f2d6e" valeur={val(eur(stats.total_ca_reel))} libelle="Total encaissé (réel)" detail="cartes Stripe + virements documents" />
+          <Bloc valeur={val(eur(stats.encaisse_stripe_total))} libelle="Encaissé par carte (Stripe)" detail={ok ? `dont ${eur(stats.encaisse_stripe_30j)} sur 30 jours` : 'net des remboursements'} icon={<CreditCard size={15} color="#1a4fba" strokeWidth={1.6} />} />
+          <Bloc valeur={eur(stats.ca_virements_documents)} libelle="Virements documents" detail={`${stats.nb_virements_documents} virement${stats.nb_virements_documents > 1 ? 's' : ''} validé${stats.nb_virements_documents > 1 ? 's' : ''}`} icon={<Banknote size={15} color="#15803d" strokeWidth={1.6} />} />
+          <Bloc valeur={val(String(stats.nb_paiements))} libelle="Paiements par carte" detail={ok ? `dont ${stats.nb_paiements_30j} sur 30 jours` : ''} />
+        </div>
+      </div>
+
+      <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: 12, padding: '1.5rem' }}>
         <h2 style={{ color: '#0f2d6e', fontSize: 14, fontWeight: 700, margin: '0 0 14px' }}>Répartition des abonnés actifs</h2>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: 12 }}>
           {repart.map((r, i) => (
-            <div key={i} style={bloc}>
-              <p style={valStyle}>{r.v}</p>
-              <p style={labStyle}>{r.l}</p>
-            </div>
+            <Bloc key={i} valeur={ok ? String(r.v) : '-'} libelle={r.l} />
           ))}
         </div>
       </div>
 
       <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: 12, padding: '1.5rem' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 14 }}>
-          <ShoppingBag size={18} color="#0f2d6e" strokeWidth={1.5} />
-          <h2 style={{ color: '#0f2d6e', fontSize: 14, fontWeight: 700, margin: 0 }}>{"Ventes de documents à l'unité"}</h2>
+          <Activity size={18} color="#0f2d6e" strokeWidth={1.5} />
+          <h2 style={{ color: '#0f2d6e', fontSize: 14, fontWeight: 700, margin: 0 }}>Activité documents</h2>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: 12 }}>
-          <div style={bloc}>
-            <p style={valStyle}>{eur(stats.ca_documents)}</p>
-            <p style={labStyle}>{"Chiffre d'affaires documents (total)"}</p>
-          </div>
-          <div style={bloc}>
-            <p style={valStyle}>{eur(stats.ca_documents_30j)}</p>
-            <p style={labStyle}>Sur les 30 derniers jours</p>
-          </div>
-          <div style={bloc}>
-            <p style={valStyle}>{stats.nb_ventes}</p>
-            <p style={labStyle}>Documents vendus (total)</p>
-          </div>
-          <div style={bloc}>
-            <p style={valStyle}>{stats.nb_ventes_30j}</p>
-            <p style={labStyle}>Vendus sur 30 jours</p>
-          </div>
+          <Bloc valeur={String(stats.nb_ventes_documents)} libelle="Documents vendus (total)" detail="toutes ventes payées" />
+          <Bloc valeur={String(stats.nb_ventes_documents_30j)} libelle="Vendus sur 30 jours" />
         </div>
       </div>
 
@@ -118,6 +142,16 @@ export default function AdminRevenus() {
   )
 }
 
-const bloc: CSSProperties = { background: '#f8fafc', borderRadius: 8, padding: '12px 14px' }
-const valStyle: CSSProperties = { color: '#0f2d6e', fontSize: '1.3rem', fontWeight: 800, margin: '0 0 2px' }
-const labStyle: CSSProperties = { color: '#6b7280', fontSize: 11, margin: 0 }
+function Bloc({ valeur, libelle, detail, icon, accent }: { valeur: string; libelle: string; detail?: string; icon?: ReactNode; accent?: string }) {
+  return (
+    <div style={{ background: '#f8fafc', borderRadius: 8, padding: '12px 14px' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 6, margin: '0 0 2px' }}>
+        {icon}
+        <p style={{ color: accent || '#0f2d6e', fontSize: '1.3rem', fontWeight: 800, margin: 0 }}>{valeur}</p>
+      </div>
+      <p style={{ color: '#6b7280', fontSize: 11, fontWeight: 600, margin: 0 }}>{libelle}</p>
+      {detail ? <p style={{ color: '#9ca3af', fontSize: 10.5, margin: '1px 0 0' }}>{detail}</p> : null}
+    </div>
+  )
+}
+
