@@ -15,6 +15,7 @@ type Stats = {
   questions_en_attente: number
   nb_questions_total: number
   nb_abonnes: number
+  mrr: number
   nb_inscriptions_30j: number
   migrations_en_attente: number
   dernieres_inscriptions: Array<{ id: string; prenom: string; nom: string; email: string; type: string; abonnement_actif: boolean; created_at: string }>
@@ -107,10 +108,10 @@ export default function AdminDashboard() {
         <div style={{ background: 'linear-gradient(135deg, #0f2d6e, #1a4fba)', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.25rem' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
             <TrendingUp size={16} color="rgba(255,255,255,0.7)" strokeWidth={1.5} />
-            <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '13px', fontWeight: '600', margin: 0 }}>Revenus Stripe</p>
+            <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '13px', fontWeight: '600', margin: 0 }}>Revenus mensuels (MRR)</p>
           </div>
-          <p style={{ color: 'white', fontSize: '1rem', fontWeight: '600', margin: '0 0 4px' }}>Disponible après NDD</p>
-          <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '11px', margin: 0 }}>Activé lors du déploiement cholez-pagotto.fr</p>
+          <p style={{ color: 'white', fontSize: '1.4rem', fontWeight: '700', margin: '0 0 4px' }}>{`${stats.mrr.toLocaleString('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}\u00a0€`}</p>
+          <a href="/admin/revenus" style={{ color: 'rgba(255,255,255,0.85)', fontSize: '12px', textDecoration: 'none' }}>Voir les revenus →</a>
         </div>
       </div>
 

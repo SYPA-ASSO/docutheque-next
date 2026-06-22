@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { supabaseAdmin } from '@/lib/supabase-admin'
+import { calculeMRR } from '@/lib/tarifs'
 
 export async function GET(request: Request) {
   const adminPassword = request.headers.get('x-admin-password')
@@ -41,6 +42,13 @@ export async function GET(request: Request) {
     .order('created_at', { ascending: false })
     .limit(5)
 
+  // MRR : revenu mensuel recurrent des abonnements actifs
+  const { data: abos } = await supabaseAdmin
+    .from('users')
+    .select('abonnement_type, abonnement_periode')
+    .eq('abonnement_actif', true)
+  const mrr = calculeMRR(abos || [])
+
   return NextResponse.json({
     nb_clients: nb_clients || 0,
     nb_documents: nb_documents || 0,
@@ -48,6 +56,7 @@ export async function GET(request: Request) {
     questions_en_attente: questions_en_attente || 0,
     nb_questions_total: nb_questions_total || 0,
     nb_abonnes: nb_abonnes || 0,
+    mrr,
     nb_inscriptions_30j: nb_inscriptions_30j || 0,
     migrations_en_attente: migrations_en_attente || 0,
     dernieres_inscriptions: dernieres_inscriptions || [],
