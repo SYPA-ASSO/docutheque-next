@@ -26,6 +26,17 @@ function arr(fd: FormData, key: string): string[] {
   return s.split(',').map((x) => x.trim()).filter(Boolean)
 }
 
+function jsonArr(fd: FormData, key: string): Record<string, string>[] {
+  const v = fd.get(key)
+  if (!v) return []
+  try {
+    const parsed = JSON.parse(String(v))
+    return Array.isArray(parsed) ? parsed : []
+  } catch {
+    return []
+  }
+}
+
 export async function POST(request: Request) {
   try {
     const adminPassword = request.headers.get('x-admin-password')
@@ -87,6 +98,11 @@ export async function POST(request: Request) {
       services_lies: arr(formData, 'services_lies'),
       inclus_dans: arr(formData, 'inclus_dans'),
       contient: arr(formData, 'contient'),
+      cadre_legal: (formData.get('cadre_legal') as string) || null,
+      conseil: (formData.get('conseil') as string) || null,
+      date_maj: (formData.get('date_maj') as string) || null,
+      definitions: jsonArr(formData, 'definitions'),
+      faq: jsonArr(formData, 'faq'),
       actif: true,
     }
 

@@ -35,6 +35,11 @@ type EditFormType = {
   services_lies: string
   inclus_dans: string
   contient: string
+  cadre_legal: string
+  conseil: string
+  definitions: Record<string, string>[]
+  faq: Record<string, string>[]
+  date_maj: string
   file: File | null
 }
 
@@ -45,6 +50,8 @@ const emptyForm = {
   prix: '', ordre: '0',
   type: 'document', slug: '', sous_titre: '', contenu: '', image_url: '',
   modeles_lies: '', articles_lies: '', services_lies: '', inclus_dans: '', contient: '',
+  cadre_legal: '', conseil: '', date_maj: '',
+  definitions: [] as Record<string, string>[], faq: [] as Record<string, string>[],
   file: null as File | null,
 }
 
@@ -53,6 +60,40 @@ function slugify(s: string): string {
 }
 function toArr(s: string): string[] {
   return (s || '').split(',').map((x) => x.trim()).filter(Boolean)
+}
+
+function EditeurListe({
+  items, onChange, champs, labelAjout, inputStyle,
+}: {
+  items: Record<string, string>[]
+  onChange: (next: Record<string, string>[]) => void
+  champs: { cle: string; label: string; multi?: boolean }[]
+  labelAjout: string
+  inputStyle: CSSProperties
+}) {
+  const maj = (i: number, cle: string, val: string) => onChange(items.map((it, j) => (j === i ? { ...it, [cle]: val } : it)))
+  const champStyle = { ...inputStyle, marginBottom: '6px' }
+  return (
+    <div>
+      {items.map((it, i) => (
+        <div key={i} style={{ border: '1px solid #e5e7eb', borderRadius: '8px', padding: '10px', marginBottom: '8px', background: '#f8fafc' }}>
+          {champs.map((c) =>
+            c.multi ? (
+              <textarea key={c.cle} value={it[c.cle] || ''} onChange={(e) => maj(i, c.cle, e.target.value)} placeholder={c.label} rows={2} style={{ ...champStyle, resize: 'vertical', fontFamily: 'inherit' }} />
+            ) : (
+              <input key={c.cle} type="text" value={it[c.cle] || ''} onChange={(e) => maj(i, c.cle, e.target.value)} placeholder={c.label} style={champStyle} />
+            ),
+          )}
+          <button type="button" onClick={() => onChange(items.filter((_, j) => j !== i))} style={{ background: 'none', border: 'none', color: '#dc2626', fontSize: '12px', fontWeight: 600, cursor: 'pointer', padding: 0 }}>
+            Supprimer
+          </button>
+        </div>
+      ))}
+      <button type="button" onClick={() => onChange([...items, Object.fromEntries(champs.map((c) => [c.cle, '']))])} style={{ background: '#eef2ff', border: '1px dashed #1a4fba', color: '#1a4fba', fontSize: '12px', fontWeight: 600, cursor: 'pointer', padding: '8px 12px', borderRadius: '6px', width: '100%' }}>
+        + {labelAjout}
+      </button>
+    </div>
+  )
 }
 
 function RessourceFields({ f, setF, inputStyle, labelStyle }: { f: EditFormType, setF: (v: EditFormType) => void, inputStyle: CSSProperties, labelStyle: CSSProperties }) {
@@ -111,6 +152,32 @@ function RessourceFields({ f, setF, inputStyle, labelStyle }: { f: EditFormType,
       <div>
         <label style={labelStyle}>Contient <span style={note}>(pack/guide : slugs des documents inclus, virgules)</span></label>
         <input type="text" value={f.contient} onChange={(e) => setF({ ...f, contient: e.target.value })} placeholder="slug-doc-1, slug-doc-2" style={inputStyle} />
+      </div>
+      <div style={{ borderTop: '1px dashed #e5e7eb', paddingTop: '14px' }}>
+        <p style={{ fontSize: '12px', fontWeight: 700, color: '#0f2d6e', margin: '0 0 2px', textTransform: 'uppercase', letterSpacing: '0.04em' }}>Fiche produit (contenu enrichi)</p>
+        <p style={{ fontSize: '11px', color: '#9ca3af', margin: 0 }}>Sections affichees seulement si remplies.</p>
+      </div>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 170px', gap: '12px' }}>
+        <div>
+          <label style={labelStyle}>Ce que dit la loi <span style={note}>(encadre juridique)</span></label>
+          <textarea value={f.cadre_legal} onChange={(e) => setF({ ...f, cadre_legal: e.target.value })} rows={3} placeholder="Reference et explication du cadre legal applicable" style={{ ...inputStyle, resize: 'vertical', fontFamily: 'inherit' }} />
+        </div>
+        <div>
+          <label style={labelStyle}>Mis a jour le</label>
+          <input type="date" value={f.date_maj} onChange={(e) => setF({ ...f, date_maj: e.target.value })} style={inputStyle} />
+        </div>
+      </div>
+      <div>
+        <label style={labelStyle}>Le conseil de notre juriste</label>
+        <textarea value={f.conseil} onChange={(e) => setF({ ...f, conseil: e.target.value })} rows={3} placeholder="Conseil pratique affiche dans l'encadre jaune" style={{ ...inputStyle, resize: 'vertical', fontFamily: 'inherit' }} />
+      </div>
+      <div>
+        <label style={labelStyle}>Definitions utiles <span style={note}>(colonne de droite)</span></label>
+        <EditeurListe items={f.definitions} onChange={(n) => setF({ ...f, definitions: n })} champs={[{ cle: 'terme', label: 'Terme' }, { cle: 'definition', label: 'Definition', multi: true }]} labelAjout="Ajouter une definition" inputStyle={inputStyle} />
+      </div>
+      <div>
+        <label style={labelStyle}>Questions frequentes redigees <span style={note}>(en plus des questions automatiques)</span></label>
+        <EditeurListe items={f.faq} onChange={(n) => setF({ ...f, faq: n })} champs={[{ cle: 'question', label: 'Question' }, { cle: 'reponse', label: 'Reponse', multi: true }]} labelAjout="Ajouter une question" inputStyle={inputStyle} />
       </div>
     </>
   )
@@ -203,6 +270,8 @@ export default function AdminDocuments() {
     fd.append('acces_gratuit', String(form.acces_gratuit)); fd.append('acces_optimal', String(form.acces_optimal)); fd.append('acces_payant', String(form.acces_payant))
     if (form.prix) fd.append('prix', form.prix)
     fd.append('ordre', form.ordre)
+    fd.append('cadre_legal', form.cadre_legal); fd.append('conseil', form.conseil); fd.append('date_maj', form.date_maj)
+    fd.append('definitions', JSON.stringify(form.definitions)); fd.append('faq', JSON.stringify(form.faq))
     const res = await fetch('/api/documents/upload', { method: 'POST', headers: { 'x-admin-password': password }, body: fd })
     if (res.ok) { setUploadStatut('success'); setShowForm(false); setForm({ ...emptyForm }); loadDocuments(password); setTimeout(() => setUploadStatut('idle'), 3000) }
     else { setUploadStatut('error'); setUploadErreur("Erreur lors de l'upload.") }
@@ -210,7 +279,7 @@ export default function AdminDocuments() {
 
   const ouvrirEdition = (doc: DocItem) => {
     setEditDoc(doc)
-    setEditForm({ nom: doc.nom, description: doc.description || '', categories: doc.categories || [], profils: doc.profils_autorises || [], acces_gratuit: doc.acces_gratuit, acces_optimal: doc.acces_optimal, acces_payant: doc.acces_payant, prix: doc.prix_unitaire ? String(doc.prix_unitaire) : '', ordre: String(doc.ordre), type: doc.type || 'document', slug: doc.slug || '', sous_titre: doc.sous_titre || '', contenu: doc.contenu || '', image_url: doc.image_url || '', modeles_lies: (doc.modeles_lies || []).join(', '), articles_lies: (doc.articles_lies || []).join(', '), services_lies: (doc.services_lies || []).join(', '), inclus_dans: (doc.inclus_dans || []).join(', '), contient: (doc.contient || []).join(', '), file: null })
+    setEditForm({ nom: doc.nom, description: doc.description || '', categories: doc.categories || [], profils: doc.profils_autorises || [], acces_gratuit: doc.acces_gratuit, acces_optimal: doc.acces_optimal, acces_payant: doc.acces_payant, prix: doc.prix_unitaire ? String(doc.prix_unitaire) : '', ordre: String(doc.ordre), type: doc.type || 'document', slug: doc.slug || '', sous_titre: doc.sous_titre || '', contenu: doc.contenu || '', image_url: doc.image_url || '', modeles_lies: (doc.modeles_lies || []).join(', '), articles_lies: (doc.articles_lies || []).join(', '), services_lies: (doc.services_lies || []).join(', '), inclus_dans: (doc.inclus_dans || []).join(', '), contient: (doc.contient || []).join(', '), cadre_legal: doc.cadre_legal || '', conseil: doc.conseil || '', date_maj: doc.date_maj || '', definitions: doc.definitions || [], faq: doc.faq || [], file: null })
     setEditStatut('idle'); setEditErreur('')
   }
 
@@ -236,7 +305,7 @@ export default function AdminDocuments() {
       const res = await fetch('/api/admin/documents-update', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'x-admin-password': password },
-        body: JSON.stringify({ id: editDoc.id, nom: editForm.nom, description: editForm.description, categories: editForm.categories, profils_autorises: editForm.profils, acces_gratuit: editForm.acces_gratuit, acces_optimal: editForm.acces_optimal, acces_payant: editForm.acces_payant, prix_unitaire: editForm.prix ? parseFloat(editForm.prix) : null, ordre: parseInt(editForm.ordre), blob_url: blobUrl, type: editForm.type, slug: editForm.slug.trim() ? slugify(editForm.slug) : slugify(editForm.nom), sous_titre: editForm.sous_titre || null, contenu: editForm.contenu || null, image_url: editForm.image_url || null, modeles_lies: toArr(editForm.modeles_lies), articles_lies: toArr(editForm.articles_lies), services_lies: toArr(editForm.services_lies), inclus_dans: toArr(editForm.inclus_dans), contient: toArr(editForm.contient) }),
+        body: JSON.stringify({ id: editDoc.id, nom: editForm.nom, description: editForm.description, categories: editForm.categories, profils_autorises: editForm.profils, acces_gratuit: editForm.acces_gratuit, acces_optimal: editForm.acces_optimal, acces_payant: editForm.acces_payant, prix_unitaire: editForm.prix ? parseFloat(editForm.prix) : null, ordre: parseInt(editForm.ordre), blob_url: blobUrl, type: editForm.type, slug: editForm.slug.trim() ? slugify(editForm.slug) : slugify(editForm.nom), sous_titre: editForm.sous_titre || null, contenu: editForm.contenu || null, image_url: editForm.image_url || null, modeles_lies: toArr(editForm.modeles_lies), articles_lies: toArr(editForm.articles_lies), services_lies: toArr(editForm.services_lies), inclus_dans: toArr(editForm.inclus_dans), contient: toArr(editForm.contient), cadre_legal: editForm.cadre_legal || null, conseil: editForm.conseil || null, date_maj: editForm.date_maj || null, definitions: editForm.definitions, faq: editForm.faq }),
       })
       if (res.ok) { setEditStatut('success'); setEditDoc(null); setEditForm(null); loadDocuments(password) }
       else { setEditStatut('error'); setEditErreur('Erreur lors de la mise à jour.') }
@@ -264,7 +333,7 @@ export default function AdminDocuments() {
     if (doc.acces_gratuit) parts.push('Gratuit')
     if (doc.acces_optimal) parts.push('Optimal')
     if (doc.acces_payant) parts.push(`${doc.prix_unitaire ?? '?'} €`)
-    return parts.join(' · ') || '—'
+    return parts.join(' · ') || '-'
   }
 
   const accesColor = (doc: DocItem) => {
