@@ -207,12 +207,12 @@ export async function calculeRevenusReels(): Promise<RevenusReels> {
       }
 
       if (netMensuel < 0) netMensuel = 0
-      mrrCents += netMensuel * 100
+      mrrCents += netMensuel // brutMensuel et netMensuel sont deja en centimes
 
       detail.push({
         email: client?.email ?? null,
-        brut_mensuel: arrondi(brutMensuel),
-        net_mensuel: arrondi(netMensuel),
+        brut_mensuel: arrondi(brutMensuel / 100),
+        net_mensuel: arrondi(netMensuel / 100),
         remise: remiseDetectee,
         methode,
       })
