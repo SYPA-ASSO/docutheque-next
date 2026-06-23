@@ -10,6 +10,17 @@ export const metadata = {
 
 const articles = [
   {
+    slug: 'loi-de-finances-2026-ce-qui-change-pour-les-tpe-et-les-independants',
+    titre: "Loi de finances 2026 : ce qui change pour les TPE et les indépendants",
+    resume: "Promulguée le 19 février 2026 au terme d'un parcours hors normes, la loi de finances 2026 écarte plusieurs mesures redoutées, dont le seuil unique de TVA et le gel du barème, et n'apporte que des ajustements ciblés.",
+    date: '24 février 2026',
+    auteur: 'François CHOLEZ',
+    categorie: 'Fiscalité',
+    tags: ['Loi de finances 2026', 'TPE & indépendants'],
+    tempsLecture: '13 min',
+    image: 'https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/loi-de-finances-2026-tpe.webp',
+  },
+  {
     slug: 'facturation-electronique-obligatoire-2026-ce-qui-change-pour-toutes-les-entreprises',
     titre: "Facturation électronique obligatoire en 2026 : ce qui change pour toutes les entreprises",
     resume: "Réception dès le 1er septembre 2026 pour toutes les entreprises, émission en 2026 puis 2027, fin du portail public gratuit et passage obligatoire par une plateforme agréée : le point complet et vérifié.",
@@ -30,6 +41,17 @@ const articles = [
     tags: ['Micro-entreprise', 'TPE & PME'],
     tempsLecture: '11 min',
     image: 'https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/facturation-electronique-guide-pratique.webp',
+  },
+  {
+    slug: 'franchise-en-base-de-tva-2026-seuils-applicables-et-abandon-du-seuil-unique',
+    titre: "Franchise en base de TVA : le seuil unique à 25 000 € abandonné, les seuils applicables en 2026",
+    resume: "Le seuil unique de TVA à 25 000 € a été définitivement abandonné par la loi du 3 novembre 2025. Quels seuils s'appliquent en 2026, que se passe-t-il en cas de dépassement et quelle mention porter sur vos factures.",
+    date: '20 novembre 2025',
+    auteur: 'François CHOLEZ',
+    categorie: 'Fiscalité',
+    tags: ['Franchise de TVA', 'Micro-entreprise'],
+    tempsLecture: '14 min',
+    image: 'https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/franchise-en-base-tva-2026.webp',
   },
   {
     slug: 'arnaque-au-registre-des-societes-europeennes-ne-laissez-pas-les-fraudeurs-saboter-votre-lancement',
