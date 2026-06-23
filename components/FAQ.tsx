@@ -30,7 +30,7 @@ export default function FAQ() {
     },
     {
       q: "Pouvez-vous m'orienter vers un avocat ?",
-      a: "Oui. Nous disposons d'un réseau d'avocats partenaires vers lesquels nous pouvons vous orienter si votre situation nécessite une représentation ou un acte juridique formel, sans obligation de votre part et en toute liberté de choix."
+      a: "Oui. Nous disposons d'un réseau d'avocats partenaires vers lesquels nous pouvons vous orienter si votre situation nécessite une représentation ou un acte juridique formel, sans obligation de votre part et en toute liberté de choix. L'avocat fixe librement ses honoraires, qui lui sont réglés directement, et le cabinet ne perçoit aucune commission."
     },
     {
       q: "Proposez-vous un accompagnement pour la création d'entreprise et les formalités juridiques ?",

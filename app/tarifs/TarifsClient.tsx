@@ -140,7 +140,7 @@ export default function TarifsClient() {
                   '1 question juriste/mois · non cumulable',
                   '14,90 € par question supplémentaire',
                   'Newsletter abonnés',
-                  'Mise en relation avec un avocat partenaire',
+                  'Mise en relation avec un avocat partenaire *',
                   'Support prioritaire par mail',
                 ].map((item, i) => (
                   <div key={i} style={{display: 'flex', gap: '8px', alignItems: 'flex-start'}}>
@@ -170,7 +170,7 @@ export default function TarifsClient() {
                   '2 questions juriste/mois · non cumulables',
                   '14,90 € par question supplémentaire',
                   'Alertes légales événementielles',
-                  'Mise en relation avec un avocat partenaire',
+                  'Mise en relation avec un avocat partenaire *',
                   'Support prioritaire par mail',
                 ].map((item, i) => (
                   <div key={i} style={{display: 'flex', gap: '8px', alignItems: 'flex-start'}}>
@@ -209,6 +209,11 @@ export default function TarifsClient() {
             </div>
 
           </div>
+
+          {/* NOTE MISE EN RELATION AVOCAT */}
+          <p style={{color: '#9ca3af', fontSize: '11px', lineHeight: '1.6', margin: '1.75rem auto 0', maxWidth: '780px', textAlign: 'center'}}>
+            * La mise en relation avec un avocat partenaire intervient à votre initiative. Le cabinet agit comme simple intermédiaire et demeure indépendant de l'avocat. Les honoraires de la consultation sont fixés librement par l'avocat et lui sont réglés directement. Le cabinet ne perçoit aucune commission sur ces honoraires.
+          </p>
 
           {/* RÉASSURANCE */}
           <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '8px', marginTop: '2rem'}}>

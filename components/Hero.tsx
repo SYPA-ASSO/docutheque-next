@@ -38,13 +38,16 @@ export default function Hero() {
               'Mises à jour régulières',
               'Un juriste dédié, votre interlocuteur unique',
               'Une réponse rédigée par un juriste, pas générée par une IA',
-              'Accompagnement possible vers un avocat partenaire',
+              'Accompagnement possible vers un avocat partenaire *',
             ].map((badge) => (
               <span key={badge} style={{color: 'rgba(255,255,255,0.75)', fontSize: '12px', display: 'flex', alignItems: 'center', gap: '4px'}}>
                 <span style={{color: '#4ade80', fontWeight: '700'}}>✓</span> {badge}
               </span>
             ))}
           </div>
+          <p style={{color: 'rgba(255,255,255,0.45)', fontSize: '10px', lineHeight: '1.5', margin: '10px 0 0', maxWidth: '600px'}}>
+            * Mise en relation à votre initiative. Le cabinet agit comme simple intermédiaire et demeure indépendant de l'avocat, qui fixe librement ses honoraires, réglés directement. Le cabinet ne perçoit aucune commission.
+          </p>
         </div>
 
         {/* COLONNE DROITE — STATS
