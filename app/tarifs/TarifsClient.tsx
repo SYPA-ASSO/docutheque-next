@@ -140,6 +140,7 @@ export default function TarifsClient() {
                   '1 question juriste/mois · non cumulable',
                   '14,90 € par question supplémentaire',
                   'Newsletter abonnés',
+                  'Mise en relation avec un avocat partenaire',
                   'Support prioritaire par mail',
                 ].map((item, i) => (
                   <div key={i} style={{display: 'flex', gap: '8px', alignItems: 'flex-start'}}>
@@ -169,6 +170,7 @@ export default function TarifsClient() {
                   '2 questions juriste/mois · non cumulables',
                   '14,90 € par question supplémentaire',
                   'Alertes légales événementielles',
+                  'Mise en relation avec un avocat partenaire',
                   'Support prioritaire par mail',
                 ].map((item, i) => (
                   <div key={i} style={{display: 'flex', gap: '8px', alignItems: 'flex-start'}}>
