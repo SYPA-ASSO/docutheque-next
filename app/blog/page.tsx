@@ -10,6 +10,17 @@ export const metadata = {
 
 const articles = [
   {
+    slug: 'directive-nis2-cybersecurite-2026-mon-entreprise-est-elle-concernee',
+    titre: "Directive NIS2 : votre entreprise est-elle concernée par les nouvelles obligations de cybersécurité ?",
+    resume: "Près de 15 000 entités concernées en France, deux catégories, des obligations strictes et de lourdes sanctions : le point sur NIS2 et l'état de sa transposition par la loi Résilience.",
+    date: '24 mars 2026',
+    auteur: 'François CHOLEZ',
+    categorie: 'Conformité',
+    tags: ['NIS2', 'Cybersécurité'],
+    tempsLecture: '14 min',
+    image: 'https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/directive-nis2-cybersecurite-2026.webp',
+  },
+  {
     slug: 'loi-de-finances-2026-ce-qui-change-pour-les-tpe-et-les-independants',
     titre: "Loi de finances 2026 : ce qui change pour les TPE et les indépendants",
     resume: "Promulguée le 19 février 2026 au terme d'un parcours hors normes, la loi de finances 2026 écarte plusieurs mesures redoutées, dont le seuil unique de TVA et le gel du barème, et n'apporte que des ajustements ciblés.",
