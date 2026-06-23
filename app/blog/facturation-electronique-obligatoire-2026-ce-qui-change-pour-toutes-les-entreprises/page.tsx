@@ -72,6 +72,30 @@ const schema = {
             "@type": "Answer",
             "text": "L'article 1737 du Code général des impôts prévoit une amende par facture non émise sous forme électronique, plafonnée à 15 000 € par année civile. Ce montant, fixé à 15 € à l'origine, a été relevé à 50 € par facture par la loi de finances pour 2026 selon les sources spécialisées. Des sanctions distinctes s'appliquent au e-reporting et au défaut de désignation d'une plateforme de réception."
           }
+        },
+        {
+          "@type": "Question",
+          "name": "Pourquoi l'État met-il en place la facturation électronique ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "L'objectif est double : lutter contre la fraude à la TVA, en donnant à l'administration une vision plus fine et plus rapide des transactions entre entreprises, et simplifier les obligations déclaratives, notamment en pré-remplissant à terme les déclarations de TVA. La réforme vise donc à la fois un meilleur contrôle et une réduction de la charge administrative."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "La France est-elle la seule à imposer la facture électronique en Europe ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Non. La démarche française s'inscrit dans le cadre européen ViDA (VAT in the Digital Age), adopté le 11 mars 2025. Depuis son entrée en vigueur, un État membre peut imposer la facturation électronique sur son territoire sans dérogation préalable de la Commission européenne, à condition de respecter la norme européenne EN 16931. Plusieurs pays, dont l'Italie, ont engagé des réformes comparables."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Qu'est-ce que la norme EN 16931 et le format Factur-X ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "La norme EN 16931 est la norme européenne qui définit le modèle de données d'une facture électronique et les formats admis. Le Factur-X est un format hybride associant un PDF lisible par l'humain et des données structurées lisibles par une machine ; les formats UBL et CII sont purement structurés. Tous trois sont conformes à la norme EN 16931 et acceptés par la réforme française."
+          }
         }
       ]
     },
@@ -124,7 +148,7 @@ export default function ArticleFacturationElectronique2026() {
                   <Calendar size={13} strokeWidth={1.5} /> 20 janvier 2026
                 </span>
                 <span style={{display: 'flex', alignItems: 'center', gap: '5px', color: '#6b7280', fontSize: '12px'}}>
-                  <Clock size={13} strokeWidth={1.5} /> 12 min de lecture
+                  <Clock size={13} strokeWidth={1.5} /> 14 min de lecture
                 </span>
               </div>
               <img
@@ -146,6 +170,7 @@ export default function ArticleFacturationElectronique2026() {
                 <li><a href="#mentions" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>V. Les nouvelles mentions obligatoires</a></li>
                 <li><a href="#sanctions" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>VI. Les sanctions encourues</a></li>
                 <li><a href="#cas" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>VII. Trois situations concrètes</a></li>
+                <li><a href="#europe" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>VIII. Une réforme française dans un cadre européen</a></li>
                 <li><a href="#conclusion" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>Conclusion</a></li>
                 <li><a href="#sources" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>Sources officielles</a></li>
                 <li><a href="#faq" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>Questions fréquentes</a></li>
@@ -158,6 +183,7 @@ export default function ArticleFacturationElectronique2026() {
               <section id="intro">
                 <p style={{marginBottom: '1rem'}}>La facturation électronique entre entreprises devient une obligation en France à compter du <strong>1er septembre 2026</strong>. Présentée comme une simple modernisation administrative, elle constitue en réalité l'un des changements de gestion les plus structurants de la décennie pour les professionnels. Plus de dix millions d'acteurs économiques sont concernés, des plus grands groupes jusqu'au micro-entrepreneur, sans exception dès lors qu'ils sont assujettis à la TVA.</p>
                 <p style={{marginBottom: '1rem'}}>La réforme a connu plusieurs reports depuis 2021, ce qui a entretenu un certain flou. Le calendrier est aujourd'hui stabilisé, l'hypothèse d'un nouveau glissement a été écartée, et un changement majeur est intervenu en cours de route : l'abandon de la solution publique gratuite. Cet article fait le point, de façon complète et vérifiée, sur ce que dit le droit, sur les échéances réelles et sur ce que chaque entreprise doit anticiper.</p>
+                <p style={{marginBottom: '1rem'}}>Pourquoi cette réforme ? L'objectif affiché par les pouvoirs publics est double. Il s'agit d'une part de <strong>lutter contre la fraude à la TVA</strong>, en donnant à l'administration une vision plus fine et plus rapide des transactions entre entreprises. Il s'agit d'autre part de <strong>simplifier la gestion des entreprises</strong>, en automatisant la saisie, en réduisant les erreurs et, à terme, en pré-remplissant les déclarations de TVA. Ce double objectif explique pourquoi la réforme dépasse la seule dématérialisation des documents : c'est toute la chaîne de facturation et de déclaration qui se réorganise.</p>
                 <div style={{background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '10px', padding: '1rem 1.25rem', margin: '1.25rem 0'}}>
                   <p style={{color: '#1e3a5f', fontSize: '13px', lineHeight: '1.7', margin: 0}}>
                     <strong>L'essentiel en une phrase :</strong> toutes les entreprises assujetties à la TVA doivent pouvoir <strong>recevoir</strong> une facture électronique dès le 1er septembre 2026, et toutes devront aussi en <strong>émettre</strong>, en 2026 pour les grandes structures et les ETI, en 2027 pour les autres, en passant par une plateforme agréée.
@@ -185,6 +211,7 @@ export default function ArticleFacturationElectronique2026() {
                 <p style={{marginBottom: '1rem'}}>La réforme ne repose pas sur un texte unique mais sur une succession de normes, ce qui explique en partie sa complexité. Le point de départ est l'<strong>ordonnance n° 2021-1190 du 15 septembre 2021</strong>, acte fondateur qui pose le principe de la généralisation de la facturation électronique entre assujettis à la TVA et qui crée notamment l'article 289 bis du Code général des impôts.</p>
                 <p style={{marginBottom: '1rem'}}>Le calendrier initial, prévu dès 2024, a été modifié par l'<strong>article 26 de la loi de finances rectificative pour 2022</strong> (loi n° 2022-1157 du 16 août 2022), puis gravé dans sa forme actuelle par l'<strong>article 91 de la loi de finances pour 2024</strong> (loi n° 2023-1322 du 29 décembre 2023). Les modalités techniques, formats, annuaire et règles relatives aux plateformes, ont été précisées par le <strong>décret n° 2022-1299 du 7 octobre 2022</strong> puis ajustées par le <strong>décret n° 2024-266 du 25 mars 2024</strong>.</p>
                 <p style={{marginBottom: '1rem'}}>L'ensemble est codifié au Code général des impôts, aux articles 289 et 289 bis pour la facture électronique et à l'article 290 pour la transmission des données. C'est cette codification qui rend les manquements directement sanctionnables par l'administration fiscale, sujet sur lequel nous revenons plus loin.</p>
+                <p style={{marginBottom: '1rem'}}>À cet empilement s'ajoute une évolution plus récente, d'ordre architectural : la recodification des règles de TVA au sein du <strong>Code des impositions sur les biens et services (CIBS)</strong>, opérée par l'<strong>ordonnance n° 2025-1247 du 17 décembre 2025</strong>. Plusieurs dispositions du Code général des impôts relatives à la TVA migrent ainsi vers ce nouveau code, avec une entrée en vigueur prévue au 1er septembre 2026, soit la date même du démarrage de la réforme. Pour les entreprises, le fond des obligations ne change pas, mais certaines références d'articles évoluent, ce à quoi il faudra être attentif sur les modèles de factures.</p>
               </section>
 
               <section id="calendrier">
@@ -287,6 +314,21 @@ export default function ArticleFacturationElectronique2026() {
                 </div>
               </section>
 
+              <section id="europe">
+                <h2 style={{color: '#0f2d6e', fontSize: '1.3rem', fontWeight: '700', margin: '2rem 0 16px', paddingTop: '1rem'}}>
+                  VIII. Une réforme française dans un cadre européen
+                </h2>
+                <p style={{marginBottom: '1rem'}}>La réforme française n'est pas un cas isolé : elle s'inscrit dans un mouvement européen de fond. Le 11 mars 2025, le Conseil de l'Union européenne a adopté le paquet législatif <strong>ViDA</strong> (pour <em>VAT in the Digital Age</em>, la TVA à l'ère du numérique), entré en vigueur le 14 avril 2025. Son ambition est de moderniser le système commun de TVA et de l'adapter à l'économie numérique.</p>
+                <p style={{marginBottom: '1rem'}}>Deux apports de ViDA éclairent directement le calendrier français. D'abord, depuis son entrée en vigueur, un État membre peut <strong>imposer la facturation électronique sur son territoire sans demander de dérogation préalable à la Commission européenne</strong>. C'est ce qui sécurise juridiquement la démarche engagée par la France, comme par l'Italie avant elle. En contrepartie, et c'est le second apport, les systèmes nationaux doivent être <strong>conformes à la norme sémantique européenne EN 16931</strong>, celle-là même à laquelle répondent les formats Factur-X, UBL et CII. C'est la raison pour laquelle ces formats, et non d'autres, ont été retenus en France.</p>
+                <div style={{background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '10px', padding: '1rem 1.25rem', margin: '1.25rem 0'}}>
+                  <p style={{color: '#1e3a5f', fontSize: '13px', lineHeight: '1.7', margin: 0}}>
+                    <strong>L'enjeu chiffré.</strong> La Commission européenne évalue l'écart de TVA, c'est-à-dire la différence entre les recettes théoriques et celles réellement perçues, à 93&nbsp;milliards d'euros pour la seule année 2020, dont près de la moitié imputable à la fraude sur les opérations intracommunautaires. À l'échelle de l'Union, le passage à la facture électronique est attendu pour réduire la fraude à la TVA de plusieurs milliards d'euros par an et alléger d'autant les coûts administratifs des entreprises.
+                  </p>
+                </div>
+                <p style={{marginBottom: '1rem'}}>ViDA prévoit par ailleurs, à compter du 1er juillet 2030, une obligation de facture électronique structurée et de transmission de données quasi en temps réel pour les <strong>opérations transfrontalières entre entreprises</strong> au sein de l'Union. La réforme française, centrée sur les opérations domestiques, et le volet européen, centré sur les flux transfrontaliers, sont donc appelés à se compléter dans les années qui viennent. Sur le plan technique, la France a retenu un modèle dit <strong>à cinq coins</strong>, associant l'émetteur, le destinataire, leurs plateformes respectives et le portail public dans son rôle de concentrateur de données.</p>
+                <p style={{marginBottom: '1rem'}}>Pour les conséquences pratiques selon votre statut, et notamment si vous êtes une petite structure, nous renvoyons à notre <a href="/blog/facturation-electronique-2026-micro-entreprise-tpe-pme-le-guide-pratique" style={{color: '#1a4fba', fontWeight: 600, textDecoration: 'none'}}>guide dédié aux micro-entreprises, TPE et PME</a>.</p>
+              </section>
+
               <section id="conclusion">
                 <h2 style={{color: '#0f2d6e', fontSize: '1.3rem', fontWeight: '700', margin: '2rem 0 16px', paddingTop: '1rem'}}>
                   Conclusion
@@ -309,6 +351,9 @@ export default function ArticleFacturationElectronique2026() {
                   <li>Décret n° 2022-1299 du 7 octobre 2022 et décret n° 2024-266 du 25 mars 2024 (modalités d'application)</li>
                   <li>Article 51 de la loi n° 2008-776 du 4 août 2008 de modernisation de l'économie (catégories d'entreprises)</li>
                   <li>Communiqué de presse du ministère de l'Économie du 15 octobre 2024 (évolution du portail public de facturation)</li>
+                  <li>Ordonnance n° 2025-1247 du 17 décembre 2025 (recodification de la TVA au sein du Code des impositions sur les biens et services)</li>
+                  <li>Paquet « VAT in the Digital Age » (ViDA), adopté par le Conseil de l'Union européenne le 11 mars 2025 (Commission européenne, fiscalité et union douanière)</li>
+                  <li>Norme européenne EN 16931 (modèle de données de la facture électronique) et directive 2014/55/UE du 16 avril 2014</li>
                   <li>Portail officiel : <a href="https://www.economie.gouv.fr/tout-savoir-sur-la-facturation-electronique-pour-les-entreprises" target="_blank" rel="noopener noreferrer" style={{color: '#1a4fba', fontWeight: 600, textDecoration: 'none'}}>economie.gouv.fr</a> et la liste des plateformes agréées sur <a href="https://www.impots.gouv.fr" target="_blank" rel="noopener noreferrer" style={{color: '#1a4fba', fontWeight: 600, textDecoration: 'none'}}>impots.gouv.fr</a></li>
                 </ul>
                 <p style={{marginBottom: '1rem', fontSize: '12px', color: '#9ca3af', fontStyle: 'italic'}}>Cet article relève d'une information juridique au sens de la loi n° 71-1130 du 31 décembre 1971. Le cabinet ne délivre pas de consultation juridique personnalisée. Les informations sont données à jour à la date de publication ; le calendrier et les montants relevant de la loi de finances peuvent évoluer.</p>
@@ -351,6 +396,27 @@ export default function ArticleFacturationElectronique2026() {
                       <span style={{color: '#1a4fba', fontSize: '18px', flexShrink: 0, lineHeight: 1}}>＋</span>
                     </summary>
                     <p style={{color: '#374151', fontSize: '13px', lineHeight: '1.75', marginTop: '12px', marginBottom: 0}}>L'article 1737 du Code général des impôts prévoit une amende par facture non émise sous forme électronique, plafonnée à 15&nbsp;000&nbsp;€ par année civile. Ce montant, fixé à 15&nbsp;€ à l'origine, a été relevé à 50&nbsp;€ par facture par la loi de finances pour 2026 selon les sources spécialisées. Des sanctions distinctes visent le e-reporting et le défaut de désignation d'une plateforme de réception.</p>
+                  </details>
+                  <details key={5} style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '10px', padding: '1rem 1.25rem'}}>
+                    <summary style={{fontWeight: '600', color: '#0f2d6e', fontSize: '14px', cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '12px'}}>
+                      <span>Pourquoi l'État met-il en place la facturation électronique ?</span>
+                      <span style={{color: '#1a4fba', fontSize: '18px', flexShrink: 0, lineHeight: 1}}>＋</span>
+                    </summary>
+                    <p style={{color: '#374151', fontSize: '13px', lineHeight: '1.75', marginTop: '12px', marginBottom: 0}}>L'objectif est double : lutter contre la fraude à la TVA, en donnant à l'administration une vision plus fine et plus rapide des transactions entre entreprises, et simplifier les obligations déclaratives, notamment en pré-remplissant à terme les déclarations de TVA. La réforme vise à la fois un meilleur contrôle et une réduction de la charge administrative.</p>
+                  </details>
+                  <details key={6} style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '10px', padding: '1rem 1.25rem'}}>
+                    <summary style={{fontWeight: '600', color: '#0f2d6e', fontSize: '14px', cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '12px'}}>
+                      <span>La France est-elle la seule à imposer la facture électronique en Europe ?</span>
+                      <span style={{color: '#1a4fba', fontSize: '18px', flexShrink: 0, lineHeight: 1}}>＋</span>
+                    </summary>
+                    <p style={{color: '#374151', fontSize: '13px', lineHeight: '1.75', marginTop: '12px', marginBottom: 0}}>Non. La démarche française s'inscrit dans le cadre européen ViDA (VAT in the Digital Age), adopté le 11 mars 2025. Depuis son entrée en vigueur, un État membre peut imposer la facturation électronique sur son territoire sans dérogation préalable de la Commission européenne, à condition de respecter la norme européenne EN 16931. Plusieurs pays, dont l'Italie, ont engagé des réformes comparables.</p>
+                  </details>
+                  <details key={7} style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '10px', padding: '1rem 1.25rem'}}>
+                    <summary style={{fontWeight: '600', color: '#0f2d6e', fontSize: '14px', cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '12px'}}>
+                      <span>Qu'est-ce que la norme EN 16931 et le format Factur-X ?</span>
+                      <span style={{color: '#1a4fba', fontSize: '18px', flexShrink: 0, lineHeight: 1}}>＋</span>
+                    </summary>
+                    <p style={{color: '#374151', fontSize: '13px', lineHeight: '1.75', marginTop: '12px', marginBottom: 0}}>La norme EN 16931 est la norme européenne qui définit le modèle de données d'une facture électronique et les formats admis. Le Factur-X est un format hybride associant un PDF lisible par l'humain et des données structurées lisibles par une machine ; les formats UBL et CII sont purement structurés. Tous trois sont conformes à la norme EN 16931 et acceptés par la réforme française.</p>
                   </details>
                 </div>
               </section>
