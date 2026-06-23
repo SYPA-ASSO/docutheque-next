@@ -10,6 +10,28 @@ export const metadata = {
 
 const articles = [
   {
+    slug: 'facturation-electronique-obligatoire-2026-ce-qui-change-pour-toutes-les-entreprises',
+    titre: "Facturation électronique obligatoire en 2026 : ce qui change pour toutes les entreprises",
+    resume: "Réception dès le 1er septembre 2026 pour toutes les entreprises, émission en 2026 puis 2027, fin du portail public gratuit et passage obligatoire par une plateforme agréée : le point complet et vérifié.",
+    date: '20 janvier 2026',
+    auteur: 'François CHOLEZ',
+    categorie: 'Fiscalité',
+    tags: ['Facturation électronique', 'Entreprises'],
+    tempsLecture: '12 min',
+    image: 'https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/facturation-electronique-2026.webp',
+  },
+  {
+    slug: 'facturation-electronique-2026-micro-entreprise-tpe-pme-le-guide-pratique',
+    titre: "Facturation électronique 2026 : le guide pratique pour les micro-entreprises, TPE et PME",
+    resume: "Quelles dates s'appliquent à mon statut, le piège de la franchise de TVA, comment choisir sa plateforme agréée et quelles mentions ajouter : le guide d'action concret.",
+    date: '27 janvier 2026',
+    auteur: 'François CHOLEZ',
+    categorie: 'Fiscalité',
+    tags: ['Micro-entreprise', 'TPE & PME'],
+    tempsLecture: '11 min',
+    image: 'https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/facturation-electronique-guide-pratique.webp',
+  },
+  {
     slug: 'arnaque-au-registre-des-societes-europeennes-ne-laissez-pas-les-fraudeurs-saboter-votre-lancement',
     titre: "Arnaque au « Registre des Sociétés Européennes » : ne laissez pas les fraudeurs saboter votre lancement",
     resume: "La création d'une entreprise vous place sous les radars de réseaux de fraude bien organisés. Découvrez comment l'arnaque au Registre des Sociétés Européennes fonctionne et comment vous en protéger.",
