@@ -4,7 +4,7 @@ import { Calendar, Clock, User, ChevronRight } from 'lucide-react'
 
 export const metadata = {
   title: `Facturation électronique 2026 : le guide pratique pour les micro-entreprises, TPE et PME · Blog Cabinet Cholez-Pagotto`,
-  description: `Quelles dates s'appliquent à mon statut, le piège de la franchise de TVA, comment choisir sa plateforme agréée et quelles mentions ajouter : le guide d'action concret pour se mettre en conformité sans stress.`,
+  description: `Quelles dates pour mon statut, le piège de la franchise de TVA, B2B contre B2C, comment choisir sa plateforme agréée, quelles mentions ajouter et comment conserver ses factures : le guide d'action complet et vérifié.`,
 }
 
 const schema = {
@@ -13,7 +13,7 @@ const schema = {
     {
       "@type": "Article",
       "headline": "Facturation électronique 2026 : le guide pratique pour les micro-entreprises, TPE et PME",
-      "description": "Quelles dates s'appliquent à mon statut, le piège de la franchise de TVA, comment choisir sa plateforme agréée et quelles mentions ajouter : le guide d'action concret pour se mettre en conformité sans stress.",
+      "description": "Quelles dates pour mon statut, le piège de la franchise de TVA, B2B contre B2C, comment choisir sa plateforme agréée, quelles mentions ajouter et comment conserver ses factures : le guide d'action complet et vérifié.",
       "image": "https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/facturation-electronique-guide-pratique.webp",
       "datePublished": "2026-01-27",
       "author": {
@@ -27,7 +27,7 @@ const schema = {
         "url": "https://cholez-pagotto.fr"
       },
       "url": "https://cholez-pagotto.fr/blog/facturation-electronique-2026-micro-entreprise-tpe-pme-le-guide-pratique",
-      "keywords": ["Facturation électronique micro-entreprise", "Facture électronique TPE", "PME", "Plateforme agréée", "Franchise de TVA", "Auto-entrepreneur", "Conformité 2026"],
+      "keywords": ["Facturation électronique micro-entreprise", "Facture électronique TPE", "PME", "Plateforme agréée", "Franchise de TVA", "e-reporting", "Auto-entrepreneur", "Conformité 2026"],
       "inLanguage": "fr-FR"
     },
     {
@@ -35,10 +35,10 @@ const schema = {
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Je suis auto-entrepreneur sans TVA, dois-je vraiment m'en occuper ?",
+          "name": "Je suis en franchise de TVA, suis-je vraiment concerné ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Oui. La franchise en base de TVA vous dispense de facturer la TVA, mais vous restez un assujetti au sens de la réglementation. Vous devez donc pouvoir recevoir des factures électroniques dès le 1er septembre 2026, et en émettre à compter du 1er septembre 2027."
+            "text": "Oui. La franchise en base de TVA vous dispense de facturer la TVA, mais vous restez un assujetti au sens de la réglementation. La réforme vise les assujettis, pas seulement les redevables. Vous êtes donc concerné, en réception dès le 1er septembre 2026 et en émission au 1er septembre 2027."
           }
         },
         {
@@ -46,7 +46,31 @@ const schema = {
           "name": "Quelle est la première chose à faire concrètement ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Choisir une plateforme agréée pour pouvoir recevoir vos factures, car la réception est obligatoire pour tous dès le 1er septembre 2026. Vous pouvez souscrire directement auprès d'une plateforme immatriculée ou vérifier que votre logiciel de facturation est connecté à l'une d'elles."
+            "text": "Choisir une plateforme agréée pour pouvoir recevoir vos factures, car la réception est obligatoire pour tous dès le 1er septembre 2026. Vous pouvez souscrire directement auprès d'une plateforme immatriculée par l'administration ou vérifier que votre logiciel de facturation est raccordé à l'une d'elles."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Suis-je concerné si je facture uniquement des particuliers ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "La facture électronique obligatoire ne vise que les opérations entre entreprises (B2B). Pour vos clients particuliers, vous pourrez continuer d'émettre une facture classique. En revanche, ces ventes relèvent du e-reporting, c'est-à-dire la transmission des données à l'administration, à compter du 1er septembre 2027 pour les micro-entreprises."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Dois-je changer de logiciel de facturation ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pas nécessairement. Si votre logiciel actuel est raccordé à une plateforme agréée, vous pouvez le conserver. Sinon, vous devrez soit en changer, soit souscrire directement à une plateforme agréée. Le point à vérifier est la connexion effective à une plateforme immatriculée."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Le portail public gratuit existe-t-il encore ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Non, pas comme plateforme d'échange. Le portail public de facturation ne conserve qu'un rôle d'annuaire central et de concentrateur de données. Chaque entreprise doit passer par une plateforme agréée, c'est-à-dire une solution privée immatriculée par l'administration."
           }
         },
         {
@@ -54,15 +78,15 @@ const schema = {
           "name": "Combien cela coûte-t-il pour une petite structure ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Le coût dépend de la plateforme et des fonctionnalités retenues. L'offre est large, depuis des formules d'entrée de gamme intégrées à des logiciels de gestion jusqu'à des solutions plus complètes avec archivage. Il est conseillé de comparer plusieurs plateformes agréées selon la compatibilité avec vos outils, le volume de factures et l'accompagnement proposé."
+            "text": "Le coût dépend de la plateforme et des fonctionnalités. Des plateformes agréées proposent des offres gratuites adaptées aux micro-entreprises, et les offres payantes débutent généralement autour de quelques euros par mois. Comparez selon votre volume de factures, la compatibilité avec vos outils et l'accompagnement proposé."
           }
         },
         {
           "@type": "Question",
-          "name": "Puis-je encore envoyer une facture papier ou un PDF à un particulier ?",
+          "name": "La mention TVA non applicable change-t-elle sur mes factures ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Oui. La facture électronique obligatoire concerne les opérations entre entreprises assujetties à la TVA. Pour vos clients particuliers ou des organismes non assujettis, vous pourrez continuer à émettre des factures classiques, mais ces opérations entrent dans le champ du e-reporting selon votre situation."
+            "text": "Oui. À la suite de la recodification des règles de TVA dans le Code des impositions sur les biens et services (ordonnance du 17 décembre 2025), la référence évolue au 1er septembre 2026. Jusqu'au 31 août 2026, vous indiquez TVA non applicable, art. 293 B du CGI. À compter du 1er septembre 2026, la référence devient l'article L.223-3 du CIBS. Les deux formulations sont acceptées pendant la transition."
           }
         },
         {
@@ -70,7 +94,23 @@ const schema = {
           "name": "Quelles nouvelles mentions dois-je ajouter à mes factures ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Quatre mentions s'ajoutent à compter du 1er septembre 2026 : le numéro SIREN du client, l'adresse de livraison si elle diffère de l'adresse de facturation, la catégorie de l'opération (livraison de biens, prestation de services ou les deux) et, le cas échéant, l'option pour le paiement de la TVA d'après les débits."
+            "text": "Quatre mentions s'ajoutent au 1er septembre 2026 : le numéro SIREN du client, l'adresse de livraison si elle diffère de l'adresse de facturation, la catégorie de l'opération (livraison de biens, prestation de services ou les deux) et, le cas échéant, l'option pour le paiement de la TVA d'après les débits."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Combien de temps dois-je conserver mes factures ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Dix ans, au titre de leur qualité de pièces comptables, que les factures soient électroniques ou non. Les plateformes agréées assurent un archivage sécurisé, mais il reste prudent d'exporter une copie de vos factures avant tout changement d'outil."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Que se passe-t-il si je ne désigne pas de plateforme ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sans plateforme désignée, vous n'êtes pas référencé dans l'annuaire et vos fournisseurs ne peuvent pas vous adresser leurs factures électroniques. Le défaut de désignation expose par ailleurs à une mise en demeure assortie d'un délai de régularisation, puis à une amende en cas de non-conformité."
           }
         }
       ]
@@ -124,7 +164,7 @@ export default function ArticleFacturationElectroniqueGuidePratique() {
                   <Calendar size={13} strokeWidth={1.5} /> 27 janvier 2026
                 </span>
                 <span style={{display: 'flex', alignItems: 'center', gap: '5px', color: '#6b7280', fontSize: '12px'}}>
-                  <Clock size={13} strokeWidth={1.5} /> 11 min de lecture
+                  <Clock size={13} strokeWidth={1.5} /> 16 min de lecture
                 </span>
               </div>
               <img
@@ -141,11 +181,15 @@ export default function ArticleFacturationElectroniqueGuidePratique() {
                 <li><a href="#intro" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>Introduction</a></li>
                 <li><a href="#concerne" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>I. Suis-je concerné, et à quelle date</a></li>
                 <li><a href="#franchise" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>II. Le piège de la franchise de TVA</a></li>
-                <li><a href="#recevoir" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>III. La priorité absolue : pouvoir recevoir</a></li>
-                <li><a href="#choisir" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>IV. Choisir sa plateforme agréée</a></li>
-                <li><a href="#mentions" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>V. Mettre ses factures à jour</a></li>
-                <li><a href="#feuille-route" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>VI. Votre feuille de route en 5 étapes</a></li>
-                <li><a href="#cas" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>VII. Trois cas concrets</a></li>
+                <li><a href="#clients" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>III. B2B, B2C, international : tout dépend de vos clients</a></li>
+                <li><a href="#recevoir" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>IV. La priorité absolue : pouvoir recevoir</a></li>
+                <li><a href="#choisir" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>V. Choisir sa plateforme agréée</a></li>
+                <li><a href="#fonctionnement" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>VI. Comment ça se passe concrètement</a></li>
+                <li><a href="#mentions" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>VII. Mettre ses factures à jour</a></li>
+                <li><a href="#conservation" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>VIII. Conserver ses factures dix ans</a></li>
+                <li><a href="#feuille-route" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>IX. Votre feuille de route</a></li>
+                <li><a href="#idees-recues" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>X. Les idées reçues à éviter</a></li>
+                <li><a href="#cas" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>XI. Trois cas concrets</a></li>
                 <li><a href="#conclusion" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>Conclusion</a></li>
                 <li><a href="#sources" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>Sources officielles</a></li>
                 <li><a href="#faq" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>Questions fréquentes</a></li>
@@ -156,8 +200,8 @@ export default function ArticleFacturationElectroniqueGuidePratique() {
             <div style={{color: '#374151', fontSize: '0.95rem', lineHeight: '1.9'}}>
 
               <section id="intro">
-                <p style={{marginBottom: '1rem'}}>Si vous êtes micro-entrepreneur, artisan, commerçant, profession libérale ou dirigeant d'une petite société, la facturation électronique vous concerne directement, et plus tôt que vous ne le pensez. Ce guide va droit au but : quelles dates s'appliquent à votre situation, quel piège éviter, comment choisir votre plateforme, et quelles actions mener dès maintenant pour être prêt sereinement.</p>
-                <p style={{marginBottom: '1rem'}}>Pour comprendre l'ensemble de la réforme, son cadre légal et sa logique d'ensemble, vous pouvez lire notre article général, <a href="/blog/facturation-electronique-obligatoire-2026-ce-qui-change-pour-toutes-les-entreprises" style={{color: '#1a4fba', fontWeight: 600, textDecoration: 'none'}}>Facturation électronique obligatoire en 2026, ce qui change pour toutes les entreprises</a>. Le présent guide est sa version pratique, centrée sur les petites structures.</p>
+                <p style={{marginBottom: '1rem'}}>Si vous êtes micro-entrepreneur, artisan, commerçant, profession libérale ou dirigeant d'une petite société, la facturation électronique vous concerne directement, et plus tôt que vous ne le pensez. Ce guide va droit au but : quelles dates s'appliquent à votre situation, quels pièges éviter, comment choisir votre plateforme, ce qui change sur vos factures, et quelles actions mener dès maintenant pour être prêt sereinement.</p>
+                <p style={{marginBottom: '1rem'}}>Pour comprendre l'ensemble de la réforme, son cadre légal et sa logique générale, vous pouvez lire notre article général, <a href="/blog/facturation-electronique-obligatoire-2026-ce-qui-change-pour-toutes-les-entreprises" style={{color: '#1a4fba', fontWeight: 600, textDecoration: 'none'}}>Facturation électronique obligatoire en 2026, ce qui change pour toutes les entreprises</a>. Le présent guide en est la version pratique, centrée sur les petites structures.</p>
                 <div style={{background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '10px', padding: '1rem 1.25rem', margin: '1.25rem 0'}}>
                   <p style={{color: '#1e3a5f', fontSize: '13px', lineHeight: '1.7', margin: 0}}>
                     <strong>À retenir d'emblée :</strong> même les plus petites structures doivent pouvoir <strong>recevoir</strong> une facture électronique dès le <strong>1er septembre 2026</strong>. L'obligation d'<strong>émettre</strong> arrive plus tard, au 1er septembre 2027, mais l'équipement, lui, se prépare avant.
@@ -194,36 +238,51 @@ export default function ArticleFacturationElectroniqueGuidePratique() {
                     </tbody>
                   </table>
                 </div>
-                <p style={{marginBottom: '1rem'}}>Autrement dit, pour toutes les petites structures, la même échéance s'applique : <strong>réception en 2026, émission en 2027</strong>. Les catégories d'entreprises se définissent par référence à l'article 51 de la loi de modernisation de l'économie du 4 août 2008, appréciées au niveau de chaque personne juridique.</p>
+                <p style={{marginBottom: '1rem'}}>Autrement dit, pour toutes les petites structures, la même échéance s'applique : <strong>réception en 2026, émission en 2027</strong>. Les catégories d'entreprises se définissent par référence à l'article 51 de la loi de modernisation de l'économie du 4 août 2008, appréciées au niveau de chaque personne juridique. Le calendrier 2026-2027 est désormais inscrit dans la loi, l'hypothèse d'un nouveau report ayant été écartée.</p>
               </section>
 
               <section id="franchise">
                 <h2 style={{color: '#0f2d6e', fontSize: '1.3rem', fontWeight: '700', margin: '2rem 0 16px', paddingTop: '1rem'}}>
                   II. Le piège de la franchise de TVA
                 </h2>
-                <p style={{marginBottom: '1rem'}}>C'est l'erreur la plus répandue chez les indépendants. Beaucoup de micro-entrepreneurs raisonnent ainsi : « je ne facture pas de TVA, donc cette réforme ne me concerne pas ». C'est faux, et la nuance est importante.</p>
-                <p style={{marginBottom: '1rem'}}>Être en <strong>franchise en base de TVA</strong> signifie que vous êtes dispensé de collecter et de reverser la TVA. Mais vous demeurez un <strong>assujetti</strong> au sens de la réglementation : vous réalisez des opérations qui entrent, par nature, dans le champ de la TVA. Or la réforme vise précisément tous les assujettis. Vous êtes donc concerné, en réception comme en émission, exactement comme une entreprise qui facture la TVA.</p>
+                <p style={{marginBottom: '1rem'}}>C'est l'erreur la plus répandue chez les indépendants, et la question qui revient le plus souvent sur les forums et les groupes professionnels. Beaucoup raisonnent ainsi : « je ne facture pas de TVA, donc cette réforme ne me concerne pas ». C'est faux, et la nuance est juridiquement importante.</p>
+                <p style={{marginBottom: '1rem'}}>Être en <strong>franchise en base de TVA</strong> signifie que vous êtes dispensé de collecter et de reverser la TVA. Mais vous demeurez un <strong>assujetti</strong> au sens de la réglementation : vous exercez une activité économique qui entre, par nature, dans le champ de la TVA. Or la réforme vise tous les assujettis, et non les seuls redevables. Vous êtes donc concerné, en réception comme en émission, exactement comme une entreprise qui facture la TVA.</p>
                 <div style={{background: '#fef2f2', border: '1px solid #fecaca', borderRadius: '10px', padding: '1rem 1.25rem', margin: '1rem 0'}}>
                   <p style={{color: '#dc2626', fontSize: '13px', lineHeight: '1.7', margin: 0}}>
                     <strong>Ne vous laissez pas surprendre.</strong> Assujetti et redevable sont deux notions distinctes. La franchise vous exonère du paiement de la TVA, pas des obligations de facturation électronique. Considérer le contraire vous exposerait à recevoir, dès 2026, des factures que vous ne pourriez pas traiter.
+                  </p>
+                </div>
+                <p style={{marginBottom: '1rem'}}>Un point très concret pour vous : la mention de franchise à porter sur vos factures évolue. À la suite de la recodification des règles de TVA dans le Code des impositions sur les biens et services (CIBS), opérée par l'ordonnance n° 2025-1247 du 17 décembre 2025, la référence change au 1er septembre 2026. Jusqu'au 31 août 2026, vous indiquez « TVA non applicable, art. 293 B du Code général des impôts ». À compter du 1er septembre 2026, la référence devient « TVA non applicable, article L.223-3 du Code des impositions sur les biens et des services (CIBS) ». Les deux formulations sont acceptées pendant la période de transition.</p>
+              </section>
+
+              <section id="clients">
+                <h2 style={{color: '#0f2d6e', fontSize: '1.3rem', fontWeight: '700', margin: '2rem 0 16px', paddingTop: '1rem'}}>
+                  III. B2B, B2C, international : tout dépend de vos clients
+                </h2>
+                <p style={{marginBottom: '1rem'}}>Votre situation pratique dépend de la nature de vos clients. Il faut distinguer deux obligations qui n'ont ni le même périmètre ni le même calendrier.</p>
+                <p style={{marginBottom: '1rem'}}>La <strong>facture électronique obligatoire</strong>, ou e-invoicing, ne vise que les opérations entre entreprises assujetties établies en France, c'est-à-dire le <strong>B2B domestique</strong>. Pour vos ventes à des <strong>particuliers</strong>, vous pourrez continuer d'émettre une facture classique, papier ou PDF. En revanche, ces ventes aux particuliers, ainsi que vos opérations avec l'<strong>étranger</strong>, relèvent du <strong>e-reporting</strong> : la transmission à l'administration des données de ces transactions, à compter du 1er septembre 2027 pour les micro-entreprises.</p>
+                <div style={{background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '10px', padding: '1rem 1.25rem', margin: '1rem 0'}}>
+                  <p style={{color: '#1e3a5f', fontSize: '13px', lineHeight: '1.7', margin: 0}}>
+                    <strong>En clair.</strong> Si vous ne facturez que des particuliers, vous n'êtes pas concerné par l'envoi de factures électroniques, mais vous devrez transmettre vos données de vente via le e-reporting. Si vous facturez des professionnels, vous êtes concerné par les deux. La plupart des plateformes gèrent automatiquement le e-reporting, à condition de le vérifier avant de souscrire.
                   </p>
                 </div>
               </section>
 
               <section id="recevoir">
                 <h2 style={{color: '#0f2d6e', fontSize: '1.3rem', fontWeight: '700', margin: '2rem 0 16px', paddingTop: '1rem'}}>
-                  III. La priorité absolue : pouvoir recevoir
+                  IV. La priorité absolue : pouvoir recevoir
                 </h2>
-                <p style={{marginBottom: '1rem'}}>Beaucoup se focalisent sur l'émission, prévue en 2027, et oublient l'essentiel : l'obligation de <strong>réception est universelle dès le 1er septembre 2026</strong>. Pourquoi est-ce la priorité ? Parce que vos fournisseurs grandes entreprises et ETI, eux, basculent en émission dès 2026. Vos factures d'énergie, de téléphonie, de logiciels ou de fournitures vous parviendront donc au format électronique, via une plateforme, dès l'automne 2026.</p>
-                <p style={{marginBottom: '1rem'}}>Concrètement, si vous n'avez pas désigné de plateforme de réception, vous risquez tout simplement de ne pas recevoir correctement ces factures. La première action à mener n'est donc pas d'attendre 2027, mais de vous équiper pour recevoir, dès 2026.</p>
+                <p style={{marginBottom: '1rem'}}>Beaucoup se focalisent sur l'émission, prévue en 2027, et oublient l'essentiel : l'obligation de <strong>réception est universelle dès le 1er septembre 2026</strong>. Pourquoi est-ce la priorité ? Parce que vos fournisseurs grandes entreprises et ETI basculent en émission dès 2026. Vos factures d'énergie, de téléphonie, de logiciels ou de fournitures vous parviendront donc au format électronique, via une plateforme, dès l'automne 2026.</p>
+                <p style={{marginBottom: '1rem'}}>Concrètement, si vous n'avez pas désigné de plateforme de réception, vous risquez tout simplement de ne pas recevoir correctement ces factures. La première action à mener n'est donc pas d'attendre 2027, mais de vous équiper pour recevoir, dès 2026. Ouvrir un compte dès maintenant pour la réception vous prépare en outre naturellement à l'émission de 2027, sans effort supplémentaire.</p>
               </section>
 
               <section id="choisir">
                 <h2 style={{color: '#0f2d6e', fontSize: '1.3rem', fontWeight: '700', margin: '2rem 0 16px', paddingTop: '1rem'}}>
-                  IV. Choisir sa plateforme agréée
+                  V. Choisir sa plateforme agréée
                 </h2>
-                <p style={{marginBottom: '1rem'}}>Rappelons le changement majeur de la réforme : il n'existe plus de solution publique gratuite. Le portail public de facturation a été recentré sur l'annuaire et la transmission des données, et chaque entreprise doit passer par une <strong>plateforme agréée</strong>, immatriculée par l'administration fiscale. La première liste officielle a été publiée le 16 janvier 2026.</p>
-                <p style={{marginBottom: '1rem'}}>Vous avez deux voies possibles :</p>
+                <p style={{marginBottom: '1rem'}}>Rappelons le changement majeur de la réforme : il n'existe plus de solution publique gratuite. Le portail public de facturation a été recentré sur l'annuaire et la transmission des données, et chaque entreprise doit passer par une <strong>plateforme agréée</strong>, immatriculée par l'administration fiscale. La première liste officielle a été publiée le 16 janvier 2026 et recensait une centaine d'opérateurs.</p>
+                <p style={{marginBottom: '1rem'}}>Un mot de vocabulaire utile, car deux notions circulent. La <strong>plateforme agréée</strong> (PA), anciennement appelée plateforme de dématérialisation partenaire (PDP), est immatriculée par l'administration et habilitée à transmettre directement vos factures et vos données. L'<strong>opérateur de dématérialisation</strong> (OD) peut servir d'intermédiaire technique, mais doit s'adosser à une plateforme agréée pour la transmission réglementaire. Autrement dit, une plateforme agréée doit toujours figurer dans la chaîne, que vous y souscriviez directement ou via votre logiciel.</p>
+                <p style={{marginBottom: '1rem'}}>Vous avez donc deux voies possibles :</p>
                 <ul style={{paddingLeft: '1.5rem', margin: '1rem 0', display: 'flex', flexDirection: 'column', gap: '10px'}}>
                   <li><strong>Souscrire directement</strong> auprès d'une plateforme agréée, qui gérera l'émission, la réception et la transmission des données</li>
                   <li><strong>Conserver votre logiciel</strong> de devis et de facturation actuel, à condition qu'il soit lui-même raccordé à une plateforme agréée. Beaucoup d'éditeurs s'y connectent</li>
@@ -233,17 +292,27 @@ export default function ArticleFacturationElectroniqueGuidePratique() {
                   <ul style={{paddingLeft: '1.25rem', margin: 0, display: 'flex', flexDirection: 'column', gap: '8px', color: '#1e3a5f', fontSize: '13px', lineHeight: '1.6'}}>
                     <li>La <strong>compatibilité</strong> avec vos outils existants (logiciel de facturation, comptabilité)</li>
                     <li>Les <strong>fonctionnalités</strong> couvertes : émission, réception, e-reporting et, idéalement, archivage</li>
-                    <li>Le <strong>coût</strong> rapporté à votre volume réel de factures</li>
-                    <li>La <strong>simplicité d'usage</strong> et la qualité de l'accompagnement, déterminantes quand on est seul ou en très petite équipe</li>
-                    <li>Le fait que la plateforme soit bien <strong>immatriculée</strong> par l'administration fiscale, et non un simple opérateur non habilité</li>
+                    <li>La <strong>gestion de la TVA</strong> si vous risquez de sortir de la franchise, par exemple en cas de dépassement de seuil</li>
+                    <li>Le <strong>coût</strong> rapporté à votre volume réel de factures, sachant que des offres gratuites existent pour les micro-entreprises</li>
+                    <li>La <strong>simplicité d'usage</strong> et la possibilité d'<strong>exporter vos données</strong>, déterminantes quand on est seul ou en très petite équipe</li>
+                    <li>Le fait que la plateforme soit bien <strong>immatriculée</strong> par l'administration, la seule liste officielle faisant foi</li>
                   </ul>
                 </div>
-                <p style={{marginBottom: '1rem'}}>Quant au coût, il dépend de la plateforme et des options. L'offre est large, des formules d'entrée de gamme intégrées à des logiciels de gestion jusqu'aux solutions plus complètes. Le bon réflexe est de comparer plusieurs plateformes agréées plutôt que de souscrire dans l'urgence à la première sollicitation reçue.</p>
+                <p style={{marginBottom: '1rem'}}>Le bon réflexe est de comparer plusieurs plateformes agréées plutôt que de souscrire dans l'urgence à la première sollicitation reçue.</p>
+              </section>
+
+              <section id="fonctionnement">
+                <h2 style={{color: '#0f2d6e', fontSize: '1.3rem', fontWeight: '700', margin: '2rem 0 16px', paddingTop: '1rem'}}>
+                  VI. Comment ça se passe concrètement
+                </h2>
+                <p style={{marginBottom: '1rem'}}>Bonne nouvelle : vous n'aurez pas à gérer la technique. Lorsque vous émettez une facture, à partir de 2027, vous la créez dans votre plateforme agréée ou votre logiciel raccordé. La plateforme la met au bon format structuré, identifie le destinataire dans l'<strong>annuaire</strong> grâce à son numéro SIREN, l'achemine vers la plateforme de votre client, et transmet en parallèle les données utiles à l'administration.</p>
+                <p style={{marginBottom: '1rem'}}>Pour la réception, le mécanisme fonctionne en sens inverse : la facture de votre fournisseur arrive dans votre plateforme, où vous la consultez et la téléchargez. C'est précisément pour cela que la désignation d'une plateforme est indispensable dès 2026 : en la désignant, vous êtes référencé dans l'annuaire, par votre SIREN, ce qui permet à vos fournisseurs de savoir où vous adresser leurs factures.</p>
+                <p style={{marginBottom: '1rem'}}>Les formats admis, le <strong>Factur-X</strong>, l'<strong>UBL</strong> et le <strong>CII</strong>, reposent tous sur la norme européenne EN 16931. Vous n'avez pas à les manipuler vous-même : votre plateforme s'en charge. De votre côté, l'essentiel est de saisir des informations fiables sur vos clients, à commencer par leur numéro SIREN.</p>
               </section>
 
               <section id="mentions">
                 <h2 style={{color: '#0f2d6e', fontSize: '1.3rem', fontWeight: '700', margin: '2rem 0 16px', paddingTop: '1rem'}}>
-                  V. Mettre ses factures à jour
+                  VII. Mettre ses factures à jour
                 </h2>
                 <p style={{marginBottom: '1rem'}}>Au-delà du canal de transmission, vos factures elles-mêmes doivent évoluer. À compter du 1er septembre 2026, quatre nouvelles mentions s'ajoutent à celles déjà obligatoires, conformément à l'article 242 nonies A de l'annexe II au Code général des impôts :</p>
                 <ul style={{paddingLeft: '1.5rem', margin: '1rem 0', display: 'flex', flexDirection: 'column', gap: '10px'}}>
@@ -252,20 +321,28 @@ export default function ArticleFacturationElectroniqueGuidePratique() {
                   <li>La <strong>catégorie de l'opération</strong> : livraison de biens, prestation de services, ou les deux</li>
                   <li>L'<strong>option pour le paiement de la TVA d'après les débits</strong>, le cas échéant</li>
                 </ul>
-                <p style={{marginBottom: '1rem'}}>C'est l'occasion de remettre à plat vos modèles. Des conditions générales de vente claires et des modèles de factures à jour, intégrant ces mentions et adaptés à votre activité, vous éviteront des corrections de dernière minute. Le cabinet propose des modèles prêts à l'emploi dans la <a href="/catalogue" style={{color: '#1a4fba', fontWeight: 600, textDecoration: 'none'}}>Docuthèque</a>.</p>
+                <p style={{marginBottom: '1rem'}}>Si vous êtes en franchise de TVA, pensez aussi à la nouvelle référence de la mention de franchise, qui passe de l'article 293 B du CGI à l'article L.223-3 du CIBS au 1er septembre 2026 (voir plus haut). C'est l'occasion de remettre à plat vos modèles. Des conditions générales de vente claires et des modèles de factures à jour, intégrant ces mentions et adaptés à votre activité, vous éviteront des corrections de dernière minute. Le cabinet propose des modèles prêts à l'emploi dans la <a href="/catalogue" style={{color: '#1a4fba', fontWeight: 600, textDecoration: 'none'}}>Docuthèque</a>.</p>
+              </section>
+
+              <section id="conservation">
+                <h2 style={{color: '#0f2d6e', fontSize: '1.3rem', fontWeight: '700', margin: '2rem 0 16px', paddingTop: '1rem'}}>
+                  VIII. Conserver ses factures dix ans
+                </h2>
+                <p style={{marginBottom: '1rem'}}>Que vos factures soient électroniques ou non, l'obligation de conservation ne change pas : <strong>dix ans</strong>, au titre de leur qualité de pièces comptables. Les plateformes agréées assurent un archivage sécurisé et horodaté, mais il reste prudent, avant de changer d'outil, d'<strong>exporter une copie</strong> de vos factures, ce que toutes les plateformes permettent. Vous conservez ainsi la maîtrise de votre historique, quel que soit le prestataire que vous utilisez.</p>
               </section>
 
               <section id="feuille-route">
                 <h2 style={{color: '#0f2d6e', fontSize: '1.3rem', fontWeight: '700', margin: '2rem 0 16px', paddingTop: '1rem'}}>
-                  VI. Votre feuille de route en 5 étapes
+                  IX. Votre feuille de route
                 </h2>
                 <p style={{marginBottom: '1rem'}}>Pour passer à l'action sans vous disperser, voici un déroulé simple, applicable à toute petite structure.</p>
                 <ul style={{paddingLeft: '1.5rem', margin: '1rem 0', display: 'flex', flexDirection: 'column', gap: '12px'}}>
-                  <li><strong>1. Vérifiez votre situation.</strong> Confirmez que vous êtes assujetti (c'est le cas même en franchise de TVA) et notez vos deux échéances : réception en 2026, émission en 2027.</li>
+                  <li><strong>1. Vérifiez votre situation.</strong> Confirmez que vous êtes assujetti, même en franchise, identifiez la nature de vos clients (professionnels, particuliers ou les deux) et notez vos deux échéances : réception en 2026, émission en 2027.</li>
                   <li><strong>2. Choisissez une plateforme agréée.</strong> Comparez quelques solutions immatriculées, ou vérifiez si votre logiciel actuel est raccordé à l'une d'elles.</li>
                   <li><strong>3. Activez la réception.</strong> Désignez votre plateforme afin d'être référencé dans l'annuaire et de pouvoir recevoir les factures de vos fournisseurs dès l'automne 2026.</li>
-                  <li><strong>4. Mettez vos modèles à jour.</strong> Intégrez les nouvelles mentions obligatoires à vos factures et à vos CGV.</li>
-                  <li><strong>5. Préparez l'émission.</strong> Testez l'émission au format électronique en amont, pour aborder l'échéance de 2027 sans précipitation.</li>
+                  <li><strong>4. Mettez vos modèles à jour.</strong> Intégrez les nouvelles mentions obligatoires, et la nouvelle référence de franchise si vous êtes concerné.</li>
+                  <li><strong>5. Anticipez le e-reporting.</strong> Si vous avez des clients particuliers ou à l'étranger, vérifiez que votre plateforme transmettra ces données pour 2027.</li>
+                  <li><strong>6. Préparez l'émission.</strong> Testez l'émission au format électronique en amont, pour aborder l'échéance de 2027 sans précipitation.</li>
                 </ul>
                 <div style={{background: '#0f2d6e', borderRadius: '12px', padding: '1.5rem', margin: '1.5rem 0'}}>
                   <p style={{color: 'white', fontSize: '15px', fontWeight: '700', margin: '0 0 8px'}}>Vous voulez être accompagné pas à pas ?</p>
@@ -279,14 +356,28 @@ export default function ArticleFacturationElectroniqueGuidePratique() {
                 </div>
               </section>
 
+              <section id="idees-recues">
+                <h2 style={{color: '#0f2d6e', fontSize: '1.3rem', fontWeight: '700', margin: '2rem 0 16px', paddingTop: '1rem'}}>
+                  X. Les idées reçues à éviter
+                </h2>
+                <p style={{marginBottom: '1rem'}}>Quelques confusions reviennent constamment. Les lever vous évite les mauvaises surprises.</p>
+                <ul style={{paddingLeft: '1.5rem', margin: '1rem 0', display: 'flex', flexDirection: 'column', gap: '10px'}}>
+                  <li><strong>« Un PDF par email, c'est déjà une facture électronique. »</strong> Non. Il faut un format structuré, transmis par une plateforme agréée, et non un simple fichier envoyé en pièce jointe.</li>
+                  <li><strong>« En franchise de TVA, je ne suis pas concerné. »</strong> Faux. Vous êtes assujetti, donc dans le champ de la réforme.</li>
+                  <li><strong>« C'est pour 2027, j'ai le temps. »</strong> La réception est obligatoire dès 2026, et vos fournisseurs basculent dès cette date.</li>
+                  <li><strong>« Je pourrai utiliser le portail public gratuit. »</strong> Il n'est plus une plateforme d'échange. Une plateforme agréée est nécessaire.</li>
+                  <li><strong>« Mon expert-comptable s'occupe de tout. »</strong> Il peut vous accompagner, mais l'obligation et le choix de la plateforme restent les vôtres.</li>
+                </ul>
+              </section>
+
               <section id="cas">
                 <h2 style={{color: '#0f2d6e', fontSize: '1.3rem', fontWeight: '700', margin: '2rem 0 16px', paddingTop: '1rem'}}>
-                  VII. Trois cas concrets
+                  XI. Trois cas concrets
                 </h2>
                 <ul style={{paddingLeft: '1.5rem', margin: '1rem 0', display: 'flex', flexDirection: 'column', gap: '12px'}}>
-                  <li><strong>La consultante en micro-entreprise.</strong> En franchise de TVA, elle pensait être hors champ. Elle réalise qu'elle doit, dès 2026, pouvoir recevoir les factures de ses outils en ligne, et choisit une plateforme intégrée à son logiciel de facturation pour ne rien changer à ses habitudes.</li>
-                  <li><strong>L'artisan en TPE.</strong> Il reçoit ses factures de fournisseurs de matériaux au format électronique dès 2026. Il active la réception à temps, met à jour ses devis et factures avec les nouvelles mentions, et se laisse l'année pour préparer sereinement l'émission de 2027.</li>
-                  <li><strong>La PME de services.</strong> Elle compare plusieurs plateformes agréées, vérifie la compatibilité avec son outil de gestion, forme son assistante administrative et teste l'émission dès le premier semestre 2027, bien avant l'échéance.</li>
+                  <li><strong>La consultante en micro-entreprise, clients professionnels.</strong> En franchise de TVA, elle pensait être hors champ. Elle réalise qu'elle doit, dès 2026, pouvoir recevoir les factures de ses outils en ligne, et choisit une plateforme intégrée à son logiciel de facturation pour ne rien changer à ses habitudes. Elle met aussi à jour la mention de franchise pour le 1er septembre 2026.</li>
+                  <li><strong>L'artisan en TPE, clients mixtes.</strong> Il facture des professionnels et des particuliers. Il active la réception à temps, prépare l'émission électronique pour ses clients professionnels en 2027, et vérifie que sa plateforme transmettra bien le e-reporting de ses ventes aux particuliers.</li>
+                  <li><strong>La coiffeuse en micro-entreprise, clients particuliers.</strong> Elle ne facture que des particuliers. Elle n'a pas de factures électroniques à émettre vers ses clients, mais devra transmettre les données de ses ventes via le e-reporting à compter de 2027, et doit pouvoir recevoir les factures électroniques de ses fournisseurs dès 2026.</li>
                 </ul>
               </section>
 
@@ -294,7 +385,7 @@ export default function ArticleFacturationElectroniqueGuidePratique() {
                 <h2 style={{color: '#0f2d6e', fontSize: '1.3rem', fontWeight: '700', margin: '2rem 0 16px', paddingTop: '1rem'}}>
                   Conclusion
                 </h2>
-                <p style={{marginBottom: '1rem'}}>Pour une micro-entreprise, une TPE ou une PME, la facturation électronique se résume à deux dates et une priorité : être prêt à <strong>recevoir le 1er septembre 2026</strong>, prêt à <strong>émettre le 1er septembre 2027</strong>, et ne pas attendre la dernière minute pour choisir sa plateforme. Le piège à éviter est de se croire dispensé sous prétexte de franchise de TVA.</p>
+                <p style={{marginBottom: '1rem'}}>Pour une micro-entreprise, une TPE ou une PME, la facturation électronique se résume à deux dates et une priorité : être prêt à <strong>recevoir le 1er septembre 2026</strong>, prêt à <strong>émettre le 1er septembre 2027</strong>, et ne pas attendre la dernière minute pour choisir sa plateforme. Le piège à éviter est de se croire dispensé sous prétexte de franchise de TVA, et le réflexe utile est d'identifier la nature de ses clients pour savoir si l'on relève de la facture électronique, du e-reporting, ou des deux.</p>
                 <p style={{marginBottom: '1rem'}}>Bien anticipée, cette transition n'est pas une contrainte de plus mais un gain réel : moins de saisie, un meilleur suivi des règlements, une comptabilité mieux alimentée. Le délai d'un an entre réception et émission est justement là pour vous permettre de vous approprier le dispositif. Autant en profiter dès maintenant.</p>
               </section>
 
@@ -309,8 +400,9 @@ export default function ArticleFacturationElectroniqueGuidePratique() {
                   <li>Loi n° 2023-1322 du 29 décembre 2023 de finances pour 2024, article 91 (calendrier 2026-2027)</li>
                   <li>Décret n° 2022-1299 du 7 octobre 2022 et décret n° 2024-266 du 25 mars 2024 (modalités d'application)</li>
                   <li>Article 51 de la loi n° 2008-776 du 4 août 2008 de modernisation de l'économie (catégories d'entreprises)</li>
+                  <li>Ordonnance n° 2025-1247 du 17 décembre 2025 (recodification de la TVA dans le CIBS) et mention de franchise, art. 293 B du CGI puis article L.223-3 du CIBS</li>
                   <li>Communiqué de presse du ministère de l'Économie du 15 octobre 2024 (évolution du portail public de facturation)</li>
-                  <li>Portail officiel : <a href="https://www.economie.gouv.fr/tout-savoir-sur-la-facturation-electronique-pour-les-entreprises" target="_blank" rel="noopener noreferrer" style={{color: '#1a4fba', fontWeight: 600, textDecoration: 'none'}}>economie.gouv.fr</a> et la liste des plateformes agréées sur <a href="https://www.impots.gouv.fr" target="_blank" rel="noopener noreferrer" style={{color: '#1a4fba', fontWeight: 600, textDecoration: 'none'}}>impots.gouv.fr</a></li>
+                  <li>Portails officiels : <a href="https://www.economie.gouv.fr/tout-savoir-sur-la-facturation-electronique-pour-les-entreprises" target="_blank" rel="noopener noreferrer" style={{color: '#1a4fba', fontWeight: 600, textDecoration: 'none'}}>economie.gouv.fr</a>, <a href="https://www.impots.gouv.fr" target="_blank" rel="noopener noreferrer" style={{color: '#1a4fba', fontWeight: 600, textDecoration: 'none'}}>impots.gouv.fr</a> et la liste des plateformes agréées</li>
                 </ul>
                 <p style={{marginBottom: '1rem', fontSize: '12px', color: '#9ca3af', fontStyle: 'italic'}}>Ce guide relève d'une information juridique au sens de la loi n° 71-1130 du 31 décembre 1971. Le cabinet ne délivre pas de consultation juridique personnalisée. Les informations sont données à jour à la date de publication ; le calendrier et les montants relevant de la loi de finances peuvent évoluer.</p>
               </section>
@@ -320,10 +412,10 @@ export default function ArticleFacturationElectroniqueGuidePratique() {
                 <div style={{display: 'flex', flexDirection: 'column', gap: '10px'}}>
                   <details key={0} style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '10px', padding: '1rem 1.25rem'}}>
                     <summary style={{fontWeight: '600', color: '#0f2d6e', fontSize: '14px', cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '12px'}}>
-                      <span>Je suis auto-entrepreneur sans TVA, dois-je vraiment m'en occuper ?</span>
+                      <span>Je suis en franchise de TVA, suis-je vraiment concerné ?</span>
                       <span style={{color: '#1a4fba', fontSize: '18px', flexShrink: 0, lineHeight: 1}}>＋</span>
                     </summary>
-                    <p style={{color: '#374151', fontSize: '13px', lineHeight: '1.75', marginTop: '12px', marginBottom: 0}}>Oui. La franchise en base vous dispense de facturer la TVA, mais vous restez un assujetti au sens de la réglementation. Vous devez pouvoir recevoir des factures électroniques dès le 1er septembre 2026, et en émettre à compter du 1er septembre 2027.</p>
+                    <p style={{color: '#374151', fontSize: '13px', lineHeight: '1.75', marginTop: '12px', marginBottom: 0}}>Oui. La franchise en base vous dispense de facturer la TVA, mais vous restez assujetti au sens de la réglementation. La réforme vise les assujettis, pas seulement les redevables. Vous êtes donc concerné, en réception dès le 1er septembre 2026 et en émission au 1er septembre 2027.</p>
                   </details>
                   <details key={1} style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '10px', padding: '1rem 1.25rem'}}>
                     <summary style={{fontWeight: '600', color: '#0f2d6e', fontSize: '14px', cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '12px'}}>
@@ -334,24 +426,59 @@ export default function ArticleFacturationElectroniqueGuidePratique() {
                   </details>
                   <details key={2} style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '10px', padding: '1rem 1.25rem'}}>
                     <summary style={{fontWeight: '600', color: '#0f2d6e', fontSize: '14px', cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '12px'}}>
-                      <span>Combien cela coûte-t-il pour une petite structure ?</span>
+                      <span>Suis-je concerné si je facture uniquement des particuliers ?</span>
                       <span style={{color: '#1a4fba', fontSize: '18px', flexShrink: 0, lineHeight: 1}}>＋</span>
                     </summary>
-                    <p style={{color: '#374151', fontSize: '13px', lineHeight: '1.75', marginTop: '12px', marginBottom: 0}}>Le coût dépend de la plateforme et des fonctionnalités. L'offre est large, depuis des formules d'entrée de gamme intégrées à des logiciels de gestion jusqu'à des solutions plus complètes avec archivage. Comparez plusieurs plateformes agréées selon la compatibilité avec vos outils, votre volume de factures et l'accompagnement proposé.</p>
+                    <p style={{color: '#374151', fontSize: '13px', lineHeight: '1.75', marginTop: '12px', marginBottom: 0}}>La facture électronique obligatoire ne vise que les opérations entre entreprises (B2B). Pour vos clients particuliers, vous pourrez continuer d'émettre une facture classique. En revanche, ces ventes relèvent du e-reporting, la transmission des données à l'administration, à compter du 1er septembre 2027 pour les micro-entreprises.</p>
                   </details>
                   <details key={3} style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '10px', padding: '1rem 1.25rem'}}>
                     <summary style={{fontWeight: '600', color: '#0f2d6e', fontSize: '14px', cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '12px'}}>
-                      <span>Puis-je encore envoyer un PDF à un particulier ?</span>
+                      <span>Dois-je changer de logiciel de facturation ?</span>
                       <span style={{color: '#1a4fba', fontSize: '18px', flexShrink: 0, lineHeight: 1}}>＋</span>
                     </summary>
-                    <p style={{color: '#374151', fontSize: '13px', lineHeight: '1.75', marginTop: '12px', marginBottom: 0}}>Oui. La facture électronique obligatoire concerne les opérations entre entreprises assujetties à la TVA. Pour vos clients particuliers ou des organismes non assujettis, vous pourrez continuer à émettre des factures classiques, mais ces opérations entrent dans le champ du e-reporting selon votre situation.</p>
+                    <p style={{color: '#374151', fontSize: '13px', lineHeight: '1.75', marginTop: '12px', marginBottom: 0}}>Pas nécessairement. Si votre logiciel actuel est raccordé à une plateforme agréée, vous pouvez le conserver. Sinon, vous devrez soit en changer, soit souscrire directement à une plateforme agréée. Le point à vérifier est la connexion effective à une plateforme immatriculée.</p>
                   </details>
                   <details key={4} style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '10px', padding: '1rem 1.25rem'}}>
+                    <summary style={{fontWeight: '600', color: '#0f2d6e', fontSize: '14px', cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '12px'}}>
+                      <span>Le portail public gratuit existe-t-il encore ?</span>
+                      <span style={{color: '#1a4fba', fontSize: '18px', flexShrink: 0, lineHeight: 1}}>＋</span>
+                    </summary>
+                    <p style={{color: '#374151', fontSize: '13px', lineHeight: '1.75', marginTop: '12px', marginBottom: 0}}>Non, pas comme plateforme d'échange. Le portail public de facturation ne conserve qu'un rôle d'annuaire central et de concentrateur de données. Chaque entreprise doit passer par une plateforme agréée, c'est-à-dire une solution privée immatriculée par l'administration.</p>
+                  </details>
+                  <details key={5} style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '10px', padding: '1rem 1.25rem'}}>
+                    <summary style={{fontWeight: '600', color: '#0f2d6e', fontSize: '14px', cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '12px'}}>
+                      <span>Combien cela coûte-t-il pour une petite structure ?</span>
+                      <span style={{color: '#1a4fba', fontSize: '18px', flexShrink: 0, lineHeight: 1}}>＋</span>
+                    </summary>
+                    <p style={{color: '#374151', fontSize: '13px', lineHeight: '1.75', marginTop: '12px', marginBottom: 0}}>Le coût dépend de la plateforme et des fonctionnalités. Des plateformes agréées proposent des offres gratuites adaptées aux micro-entreprises, et les offres payantes débutent généralement autour de quelques euros par mois. Comparez selon votre volume de factures, la compatibilité avec vos outils et l'accompagnement proposé.</p>
+                  </details>
+                  <details key={6} style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '10px', padding: '1rem 1.25rem'}}>
+                    <summary style={{fontWeight: '600', color: '#0f2d6e', fontSize: '14px', cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '12px'}}>
+                      <span>La mention TVA non applicable change-t-elle sur mes factures ?</span>
+                      <span style={{color: '#1a4fba', fontSize: '18px', flexShrink: 0, lineHeight: 1}}>＋</span>
+                    </summary>
+                    <p style={{color: '#374151', fontSize: '13px', lineHeight: '1.75', marginTop: '12px', marginBottom: 0}}>Oui. À la suite de la recodification des règles de TVA dans le Code des impositions sur les biens et services (ordonnance du 17 décembre 2025), la référence évolue au 1er septembre 2026. Jusqu'au 31 août 2026, vous indiquez « TVA non applicable, art. 293 B du CGI ». À compter du 1er septembre 2026, la référence devient l'article L.223-3 du CIBS. Les deux formulations sont acceptées pendant la transition.</p>
+                  </details>
+                  <details key={7} style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '10px', padding: '1rem 1.25rem'}}>
                     <summary style={{fontWeight: '600', color: '#0f2d6e', fontSize: '14px', cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '12px'}}>
                       <span>Quelles nouvelles mentions dois-je ajouter à mes factures ?</span>
                       <span style={{color: '#1a4fba', fontSize: '18px', flexShrink: 0, lineHeight: 1}}>＋</span>
                     </summary>
                     <p style={{color: '#374151', fontSize: '13px', lineHeight: '1.75', marginTop: '12px', marginBottom: 0}}>Quatre mentions s'ajoutent au 1er septembre 2026 : le numéro SIREN du client, l'adresse de livraison si elle diffère de l'adresse de facturation, la catégorie de l'opération (livraison de biens, prestation de services ou les deux) et, le cas échéant, l'option pour le paiement de la TVA d'après les débits.</p>
+                  </details>
+                  <details key={8} style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '10px', padding: '1rem 1.25rem'}}>
+                    <summary style={{fontWeight: '600', color: '#0f2d6e', fontSize: '14px', cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '12px'}}>
+                      <span>Combien de temps dois-je conserver mes factures ?</span>
+                      <span style={{color: '#1a4fba', fontSize: '18px', flexShrink: 0, lineHeight: 1}}>＋</span>
+                    </summary>
+                    <p style={{color: '#374151', fontSize: '13px', lineHeight: '1.75', marginTop: '12px', marginBottom: 0}}>Dix ans, au titre de leur qualité de pièces comptables, que les factures soient électroniques ou non. Les plateformes agréées assurent un archivage sécurisé, mais il reste prudent d'exporter une copie de vos factures avant tout changement d'outil.</p>
+                  </details>
+                  <details key={9} style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '10px', padding: '1rem 1.25rem'}}>
+                    <summary style={{fontWeight: '600', color: '#0f2d6e', fontSize: '14px', cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '12px'}}>
+                      <span>Que se passe-t-il si je ne désigne pas de plateforme ?</span>
+                      <span style={{color: '#1a4fba', fontSize: '18px', flexShrink: 0, lineHeight: 1}}>＋</span>
+                    </summary>
+                    <p style={{color: '#374151', fontSize: '13px', lineHeight: '1.75', marginTop: '12px', marginBottom: 0}}>Sans plateforme désignée, vous n'êtes pas référencé dans l'annuaire et vos fournisseurs ne peuvent pas vous adresser leurs factures électroniques. Le défaut de désignation expose par ailleurs à une mise en demeure assortie d'un délai de régularisation, puis à une amende en cas de non-conformité.</p>
                   </details>
                 </div>
               </section>
@@ -409,7 +536,7 @@ export default function ArticleFacturationElectroniqueGuidePratique() {
                 <span key="PME" style={{background: "#eff6ff", color: "#1a4fba", fontSize: "11px", padding: "3px 10px", borderRadius: "20px"}}>PME</span>
                 <span key="Franchise de TVA" style={{background: "#eff6ff", color: "#1a4fba", fontSize: "11px", padding: "3px 10px", borderRadius: "20px"}}>Franchise de TVA</span>
                 <span key="Plateforme agréée" style={{background: "#eff6ff", color: "#1a4fba", fontSize: "11px", padding: "3px 10px", borderRadius: "20px"}}>Plateforme agréée</span>
-                <span key="Conformité" style={{background: "#eff6ff", color: "#1a4fba", fontSize: "11px", padding: "3px 10px", borderRadius: "20px"}}>Conformité</span>
+                <span key="e-reporting" style={{background: "#eff6ff", color: "#1a4fba", fontSize: "11px", padding: "3px 10px", borderRadius: "20px"}}>e-reporting</span>
               </div>
             </div>
 
