@@ -150,7 +150,7 @@ const articles = [
     categorie: 'Droit immobilier',
     tags: ['Caution', 'Bail'],
     tempsLecture: '10 min',
-    image: '',
+    image: 'https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/caution-depot-de-garantie.webp',
   },
 ]
 

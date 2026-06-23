@@ -14,7 +14,7 @@ const schema = {
       "@type": "Article",
       "headline": "Caution et dépôt de garantie : deux notions souvent confondues, pourtant très différentes",
       "description": "Dans le droit de la location, caution et dépôt de garantie sont deux mécanismes juridiquement distincts. Comprendre la différence évite des erreurs fréquentes et parfois coûteuses.",
-      "image": "",
+      "image": "https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/caution-depot-de-garantie.webp",
       "datePublished": "2025-02-03",
       "author": {
         "@type": "Person",
@@ -118,6 +118,11 @@ export default function ArticleCaution() {
                   <Clock size={13} strokeWidth={1.5} /> 10 min de lecture
                 </span>
               </div>
+              <img
+                src="https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/caution-depot-de-garantie.webp"
+                alt="Caution et dépôt de garantie : deux notions souvent confondues, pourtant très différentes"
+                style={{width: '100%', borderRadius: '12px', objectFit: 'cover', maxHeight: '400px', marginBottom: '0'}}
+              />
               
             </div>
 
