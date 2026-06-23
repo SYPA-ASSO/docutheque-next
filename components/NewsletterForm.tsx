@@ -55,12 +55,12 @@ export default function NewsletterForm({ variant = 'hero' }: { variant?: 'hero' 
         <CheckCircle size={18} color={variant === 'hero' ? 'white' : '#16a34a'} style={{ flexShrink: 0 }} />
         <div>
           <p style={{ color: variant === 'hero' ? 'white' : '#15803d', fontSize: '13px', fontWeight: '700', margin: '0 0 2px' }}>
-            Inscription confirmée
+            Vérifiez votre boîte mail
           </p>
           <p style={{ color: variant === 'hero' ? 'rgba(255,255,255,0.8)' : '#374151', fontSize: '12px', margin: 0 }}>
             {variant === 'hero'
-              ? 'Vous êtes bien inscrit à la newsletter du cabinet.'
-              : 'Vous recevrez prochainement nos actualités et offres exclusives.'}
+              ? 'Un email de confirmation vient de vous être envoyé. Cliquez sur le lien de confirmation pour valider votre inscription.'
+              : 'Un email de confirmation vient de vous être envoyé. Cliquez sur le lien de confirmation pour valider votre inscription.'}
           </p>
         </div>
       </div>

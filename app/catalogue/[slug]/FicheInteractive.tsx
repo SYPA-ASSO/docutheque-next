@@ -188,7 +188,7 @@ export function NewsletterMini() {
   if (etat === 'ok') {
     return (
       <p style={{ fontSize: 13, color: '#15803d', fontWeight: 600, margin: 0 }}>
-        Merci. Vérifiez votre boîte mail pour confirmer votre inscription.
+        Merci. Un email de confirmation vous a été envoyé. Cliquez sur le lien qu'il contient pour valider votre inscription.
       </p>
     )
   }
