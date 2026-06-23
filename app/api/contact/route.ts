@@ -1,15 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { SUJETS_AUTORISES } from '@/lib/contact-sujets'
 
-// Sujets autorisés (whitelist)
-const SUJETS_AUTORISES = [
-  'Question générale',
-  'Demande de devis — Accompagnement créateurs',
-  'Mon abonnement Optimal',
-  'Problème technique',
-  'Exercice de mes droits (RGPD)',
-  'Partenariat / Presse',
-  'Autre',
-]
 
 function sanitize(str: string): string {
   return str
@@ -198,7 +189,7 @@ export async function POST(request: NextRequest) {
     <hr style="border:none;border-top:1px solid #e5e7eb;margin:20px 0;">
     <p style="color:#9ca3af;font-size:11px;line-height:1.6;">
       Les informations échangées dans le cadre de cette correspondance sont confidentielles et destinées exclusivement à leur destinataire.<br>
-      Cet email est automatique — pour toute nouvelle demande, utilisez le <a href="https://cholez-pagotto.fr/contact" style="color:#9ca3af;">formulaire de contact</a>.
+      Cet email est automatique. Pour toute nouvelle demande, utilisez le <a href="https://cholez-pagotto.fr/contact" style="color:#9ca3af;">formulaire de contact</a>.
     </p>
   </div>
 </body>
@@ -217,7 +208,7 @@ export async function POST(request: NextRequest) {
           email: 'contact@cholez-pagotto.fr',
         },
         to: [{ email: emailSafe, name: nomSafe }],
-        subject: 'Votre message a bien été reçu — Cabinet Cholez-Pagotto',
+        subject: 'Votre message a bien été reçu · Cabinet Cholez-Pagotto',
         htmlContent: confirmHtml,
       }),
     }).catch(err => console.error('[Contact] Erreur confirmation:', err))

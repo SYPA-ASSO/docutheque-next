@@ -157,23 +157,30 @@ export function IntroDeroulante({ texte }: { texte: string }) {
 }
 
 export function NewsletterMini() {
+  const [prenom, setPrenom] = useState('')
+  const [nom, setNom] = useState('')
   const [email, setEmail] = useState('')
   const [etat, setEtat] = useState<'idle' | 'loading' | 'ok' | 'err'>('idle')
+  const [erreur, setErreur] = useState('')
 
   async function envoyer() {
-    if (!email.includes('@')) {
-      setEtat('err')
-      return
-    }
+    if (!prenom.trim()) { setErreur('Veuillez saisir votre prénom.'); setEtat('err'); return }
+    if (!nom.trim()) { setErreur('Veuillez saisir votre nom.'); setEtat('err'); return }
+    if (!email.includes('@')) { setErreur('Adresse email invalide.'); setEtat('err'); return }
     setEtat('loading')
+    setErreur('')
     try {
       const res = await fetch('/api/newsletter/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email: email.trim(), prenom: prenom.trim(), nom: nom.trim() }),
       })
-      setEtat(res.ok ? 'ok' : 'err')
+      if (res.ok) { setEtat('ok'); return }
+      const data = await res.json().catch(() => ({}))
+      setErreur(data.error || 'Erreur. Veuillez réessayer.')
+      setEtat('err')
     } catch {
+      setErreur('Erreur réseau. Veuillez réessayer.')
       setEtat('err')
     }
   }
@@ -186,27 +193,53 @@ export function NewsletterMini() {
     )
   }
 
+  const champ: CSSProperties = {
+    width: '100%',
+    boxSizing: 'border-box',
+    border: '1px solid #cbd5e1',
+    borderRadius: 8,
+    padding: '9px 11px',
+    fontSize: 13,
+    marginBottom: 8,
+  }
+
   return (
     <div>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>
+        <input
+          type="text"
+          value={prenom}
+          onChange={(e) => { setPrenom(e.target.value); setEtat('idle') }}
+          placeholder="Prénom *"
+          style={champ}
+        />
+        <input
+          type="text"
+          value={nom}
+          onChange={(e) => { setNom(e.target.value); setEtat('idle') }}
+          placeholder="Nom *"
+          style={champ}
+        />
+      </div>
       <input
         type="email"
         value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder="Votre adresse e-mail"
-        style={{ width: '100%', boxSizing: 'border-box', border: '1px solid #cbd5e1', borderRadius: 8, padding: '9px 11px', fontSize: 13, marginBottom: 8 }}
+        onChange={(e) => { setEmail(e.target.value); setEtat('idle') }}
+        placeholder="Votre adresse e-mail *"
+        style={champ}
       />
       <button
         onClick={envoyer}
         disabled={etat === 'loading'}
-        style={{ width: '100%', background: '#0f2d6e', color: '#ffffff', border: 'none', borderRadius: 8, padding: '10px', fontSize: 13, fontWeight: 700, cursor: 'pointer' }}
+        style={{ width: '100%', background: '#0f2d6e', color: '#ffffff', border: 'none', borderRadius: 8, padding: '10px', fontSize: 13, fontWeight: 700, cursor: etat === 'loading' ? 'not-allowed' : 'pointer', opacity: etat === 'loading' ? 0.7 : 1 }}
       >
         {etat === 'loading' ? 'Envoi...' : "S'inscrire"}
       </button>
       {etat === 'err' ? (
-        <p style={{ fontSize: 11.5, color: '#b45309', margin: '8px 0 0' }}>Adresse invalide ou erreur. Veuillez réessayer.</p>
+        <p style={{ fontSize: 11.5, color: '#b45309', margin: '8px 0 0' }}>{erreur || 'Adresse invalide ou erreur. Veuillez réessayer.'}</p>
       ) : null}
       <p style={{ fontSize: 10.5, color: '#9ca3af', margin: '8px 0 0', textAlign: 'center' }}>
-        Désinscription en un clic. Vos données ne sont jamais cédées.
+        Tous les champs sont obligatoires · Désinscription en un clic · Vos données ne sont jamais cédées.
       </p>
     </div>
   )

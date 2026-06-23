@@ -22,3 +22,18 @@ export const SUJETS: string[] = [
   'Partenariat · Presse',
   'Autre demande',
 ]
+
+// Sujets valides cote serveur mais NON proposes dans la liste deroulante.
+// Atteignables uniquement via un lien dedie (ex : /contact?objet=referencement-avocat),
+// qui verrouille l'objet sur la page de contact.
+export const SUJETS_CACHES: string[] = [
+  'Référencement avocat',
+]
+
+// Whitelist serveur complete = sujets visibles + sujets caches.
+export const SUJETS_AUTORISES: string[] = [...SUJETS, ...SUJETS_CACHES]
+
+// Correspondance parametre d'URL ?objet=... -> objet verrouille sur la page contact.
+export const OBJETS_URL: Record<string, string> = {
+  'referencement-avocat': 'Référencement avocat',
+}

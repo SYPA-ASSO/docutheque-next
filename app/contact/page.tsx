@@ -1,10 +1,10 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { ChevronRight, Mail, Clock, MapPin, Send, CheckCircle, AlertCircle } from 'lucide-react'
-import { SUJETS } from '@/lib/contact-sujets'
+import { SUJETS, OBJETS_URL } from '@/lib/contact-sujets'
 
 type Status = 'idle' | 'loading' | 'success' | 'error'
 
@@ -20,6 +20,16 @@ export default function Contact() {
   })
   const [status, setStatus] = useState<Status>('idle')
   const [errorMsg, setErrorMsg] = useState('')
+  const [objetVerrouille, setObjetVerrouille] = useState<string | null>(null)
+
+  useEffect(() => {
+    const objet = new URLSearchParams(window.location.search).get('objet')
+    if (objet && OBJETS_URL[objet]) {
+      const label = OBJETS_URL[objet]
+      setObjetVerrouille(label)
+      setForm(prev => ({ ...prev, sujet: label }))
+    }
+  }, [])
 
   const set = (field: string, value: string | boolean) =>
     setForm(prev => ({ ...prev, [field]: value }))
@@ -185,14 +195,24 @@ export default function Contact() {
                   </div>
                   <div>
                     <label style={labelStyle}>Objet de votre demande *</label>
-                    <select
-                      value={form.sujet}
-                      onChange={e => set('sujet', e.target.value)}
-                      style={{ ...inputStyle, appearance: 'auto', cursor: 'pointer' }}
-                    >
-                      <option value="">Sélectionner une option</option>
-                      {SUJETS.map(s => <option key={s} value={s}>{s}</option>)}
-                    </select>
+                    {objetVerrouille ? (
+                      <input
+                        type="text"
+                        value={objetVerrouille}
+                        readOnly
+                        aria-readonly="true"
+                        style={{ ...inputStyle, background: '#f3f4f6', color: '#374151', cursor: 'default' }}
+                      />
+                    ) : (
+                      <select
+                        value={form.sujet}
+                        onChange={e => set('sujet', e.target.value)}
+                        style={{ ...inputStyle, appearance: 'auto', cursor: 'pointer' }}
+                      >
+                        <option value="">Sélectionner une option</option>
+                        {SUJETS.map(s => <option key={s} value={s}>{s}</option>)}
+                      </select>
+                    )}
                   </div>
                 </div>
 
