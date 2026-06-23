@@ -16,6 +16,7 @@ const schema = {
       "description": "Réception dès le 1er septembre 2026 pour toutes les entreprises, émission en 2026 puis 2027, fin du portail public gratuit et passage obligatoire par une plateforme agréée : le point complet et vérifié sur la réforme.",
       "image": "https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/facturation-electronique-2026.webp",
       "datePublished": "2026-01-20",
+      "dateModified": "2026-06-23",
       "author": {
         "@type": "Person",
         "name": "François CHOLEZ",
@@ -145,10 +146,10 @@ export default function ArticleFacturationElectronique2026() {
                   <User size={13} strokeWidth={1.5} /> François CHOLEZ
                 </span>
                 <span style={{display: 'flex', alignItems: 'center', gap: '5px', color: '#6b7280', fontSize: '12px'}}>
-                  <Calendar size={13} strokeWidth={1.5} /> 20 janvier 2026
+                  <Calendar size={13} strokeWidth={1.5} /> 20 janvier 2026  ·  Mis à jour le 23 juin 2026
                 </span>
                 <span style={{display: 'flex', alignItems: 'center', gap: '5px', color: '#6b7280', fontSize: '12px'}}>
-                  <Clock size={13} strokeWidth={1.5} /> 14 min de lecture
+                  <Clock size={13} strokeWidth={1.5} /> 15 min de lecture
                 </span>
               </div>
               <img
@@ -187,6 +188,11 @@ export default function ArticleFacturationElectronique2026() {
                 <div style={{background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '10px', padding: '1rem 1.25rem', margin: '1.25rem 0'}}>
                   <p style={{color: '#1e3a5f', fontSize: '13px', lineHeight: '1.7', margin: 0}}>
                     <strong>L'essentiel en une phrase :</strong> toutes les entreprises assujetties à la TVA doivent pouvoir <strong>recevoir</strong> une facture électronique dès le 1er septembre 2026, et toutes devront aussi en <strong>émettre</strong>, en 2026 pour les grandes structures et les ETI, en 2027 pour les autres, en passant par une plateforme agréée.
+                  </p>
+                </div>
+                <div style={{background: '#fffbeb', border: '1px solid #fde68a', borderRadius: '10px', padding: '1rem 1.25rem', margin: '1.25rem 0'}}>
+                  <p style={{color: '#92400e', fontSize: '13px', lineHeight: '1.7', margin: 0}}>
+                    <strong>Mise à jour de juin 2026.</strong> À l'approche de l'échéance, la réforme est entrée dans sa phase opérationnelle. Son calendrier a été confirmé au plus haut niveau, sans report : lors de la Journée de la facturation électronique du 6 mai 2026, la direction générale des finances publiques et l'Agence pour l'informatique financière de l'État ont écarté tout nouveau décalage. Une phase pilote nationale est par ailleurs opérationnelle depuis le 27 février 2026, de vraies factures y étant échangées en conditions réelles. Le nombre de plateformes immatriculées a dépassé 150 au printemps 2026, contre une centaine en janvier. Pour vous accompagner, l'administration a ouvert un numéro national d'assistance, le 0 806 807 807, et publié une page « Je passe à la facturation électronique » ainsi qu'une FAQ dédiée sur impots.gouv.fr.
                   </p>
                 </div>
               </section>
@@ -256,7 +262,7 @@ export default function ArticleFacturationElectronique2026() {
                   IV. La fin du portail gratuit et l'obligation de plateforme agréée
                 </h2>
                 <p style={{marginBottom: '1rem'}}>C'est le changement le plus lourd de conséquences, et le moins connu. Le projet initial prévoyait une solution publique gratuite, le portail public de facturation, par laquelle toute entreprise aurait pu émettre et recevoir gratuitement ses factures. Par <strong>communiqué du 15 octobre 2024</strong>, l'État a annoncé l'arrêt de ce développement. Le portail public ne joue plus le rôle de plateforme généraliste : il ne conserve que deux fonctions, l'annuaire central des destinataires et le concentrateur des données vers l'administration fiscale.</p>
-                <p style={{marginBottom: '1rem'}}>La conséquence est directe et concrète : <strong>aucune option gratuite de l'État n'existe</strong>. Chaque entreprise doit contractualiser avec une <strong>plateforme agréée</strong>, immatriculée par la direction générale des finances publiques. Cette terminologie a d'ailleurs évolué : on parlait auparavant de plateforme de dématérialisation partenaire, ou PDP, désormais remplacée par l'appellation officielle de plateforme agréée. La première liste officielle des plateformes immatriculées a été publiée le <strong>16 janvier 2026</strong> et recensait une centaine d'opérateurs.</p>
+                <p style={{marginBottom: '1rem'}}>La conséquence est directe et concrète : <strong>aucune option gratuite de l'État n'existe</strong>. Chaque entreprise doit contractualiser avec une <strong>plateforme agréée</strong>, immatriculée par la direction générale des finances publiques. Cette terminologie a d'ailleurs évolué : on parlait auparavant de plateforme de dématérialisation partenaire, ou PDP, désormais remplacée par l'appellation officielle de plateforme agréée. La première liste officielle des plateformes immatriculées a été publiée le <strong>16 janvier 2026</strong> et recensait une centaine d'opérateurs ; leur nombre n'a cessé d'augmenter depuis, dépassant 150 au printemps 2026. Seule la liste tenue à jour par l'administration sur impots.gouv.fr fait foi.</p>
                 <p style={{marginBottom: '1rem'}}>Concrètement, vous avez deux options : souscrire directement auprès d'une plateforme agréée, ou continuer d'utiliser votre logiciel de facturation habituel à condition qu'il soit lui-même connecté à une plateforme agréée. Le choix se fait selon la compatibilité avec vos outils, les fonctionnalités proposées (émission, réception, e-reporting, archivage), le niveau d'accompagnement et le coût.</p>
                 <div style={{background: '#fffbeb', border: '1px solid #fde68a', borderRadius: '10px', padding: '1rem 1.25rem', margin: '1rem 0'}}>
                   <p style={{color: '#92400e', fontSize: '13px', lineHeight: '1.7', margin: 0}}>
@@ -354,9 +360,10 @@ export default function ArticleFacturationElectronique2026() {
                   <li>Ordonnance n° 2025-1247 du 17 décembre 2025 (recodification de la TVA au sein du Code des impositions sur les biens et services)</li>
                   <li>Paquet « VAT in the Digital Age » (ViDA), adopté par le Conseil de l'Union européenne le 11 mars 2025 (Commission européenne, fiscalité et union douanière)</li>
                   <li>Norme européenne EN 16931 (modèle de données de la facture électronique) et directive 2014/55/UE du 16 avril 2014</li>
+                  <li>Direction générale des finances publiques : page « Je passe à la facturation électronique » et FAQ destinée aux PME et micro-entreprises sur impots.gouv.fr, et numéro national d'assistance 0 806 807 807</li>
                   <li>Portail officiel : <a href="https://www.economie.gouv.fr/tout-savoir-sur-la-facturation-electronique-pour-les-entreprises" target="_blank" rel="noopener noreferrer" style={{color: '#1a4fba', fontWeight: 600, textDecoration: 'none'}}>economie.gouv.fr</a> et la liste des plateformes agréées sur <a href="https://www.impots.gouv.fr" target="_blank" rel="noopener noreferrer" style={{color: '#1a4fba', fontWeight: 600, textDecoration: 'none'}}>impots.gouv.fr</a></li>
                 </ul>
-                <p style={{marginBottom: '1rem', fontSize: '12px', color: '#9ca3af', fontStyle: 'italic'}}>Cet article relève d'une information juridique au sens de la loi n° 71-1130 du 31 décembre 1971. Le cabinet ne délivre pas de consultation juridique personnalisée. Les informations sont données à jour à la date de publication ; le calendrier et les montants relevant de la loi de finances peuvent évoluer.</p>
+                <p style={{marginBottom: '1rem', fontSize: '12px', color: '#9ca3af', fontStyle: 'italic'}}>Cet article relève d'une information juridique au sens de la loi n° 71-1130 du 31 décembre 1971. Le cabinet ne délivre pas de consultation juridique personnalisée. Les informations sont données à jour à la date de mise à jour indiquée ; le calendrier et les montants relevant de la loi de finances peuvent évoluer.</p>
               </section>
 
               <section id="faq" style={{marginTop: '3rem'}}>
