@@ -145,7 +145,7 @@ const articles = [
     slug: 'caution-depot-de-garantie-difference-locataire-proprietaire',
     titre: "Caution et dépôt de garantie : deux notions souvent confondues, pourtant très différentes",
     resume: "Dans le droit de la location, caution et dépôt de garantie sont deux mécanismes juridiquement distincts. Comprendre la différence évite des erreurs fréquentes et parfois coûteuses.",
-    date: '2025',
+    date: '3 février 2025',
     auteur: 'François CHOLEZ',
     categorie: 'Droit immobilier',
     tags: ['Caution', 'Bail'],
@@ -153,6 +153,19 @@ const articles = [
     image: '',
   },
 ]
+
+const moisFr: Record<string, number> = { janvier: 1, février: 2, mars: 3, avril: 4, mai: 5, juin: 6, juillet: 7, août: 8, septembre: 9, octobre: 10, novembre: 11, décembre: 12 }
+
+function valeurDate(d: string): number {
+  const m = d.toLowerCase().match(/(\d{1,2})(?:er)?\s+([a-zà-ÿ]+)\s+(\d{4})/)
+  if (m) {
+    return parseInt(m[3], 10) * 10000 + (moisFr[m[2]] || 0) * 100 + parseInt(m[1], 10)
+  }
+  const an = d.match(/(\d{4})/)
+  return an ? parseInt(an[1], 10) * 10000 : 0
+}
+
+const articlesTries = [...articles].sort((a, b) => valeurDate(b.date) - valeurDate(a.date))
 
 const schema = {
   "@context": "https://schema.org",
@@ -193,7 +206,7 @@ export default function Blog() {
         <section style={{padding: '3rem 0'}}>
           <div style={{maxWidth: '1100px', margin: '0 auto', padding: '0 2rem'}}>
             <div style={{display: 'flex', flexDirection: 'column', gap: '24px'}}>
-              {articles.map((article) => (
+              {articlesTries.map((article) => (
                 <a
                   key={article.slug}
                   href={`/blog/${article.slug}`}
@@ -243,14 +256,6 @@ export default function Blog() {
               ))}
             </div>
 
-            {/* CTA NEWSLETTER */}
-            <div style={{textAlign: 'center', marginTop: '3rem', background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '12px', padding: '2rem'}}>
-              <p style={{color: '#1e3a5f', fontSize: '14px', fontWeight: '600', margin: '0 0 6px'}}>Le blog est mis à jour régulièrement.</p>
-              <p style={{color: '#6b7280', fontSize: '12px', margin: '0 0 16px'}}>Abonnez-vous à la newsletter pour être informé des nouvelles publications.</p>
-              <a href="/newsletter" style={{display: 'inline-block', background: '#0f2d6e', color: 'white', padding: '10px 24px', borderRadius: '8px', fontSize: '12px', fontWeight: '700', textDecoration: 'none'}}>
-                S'inscrire à la newsletter →
-              </a>
-            </div>
 
           </div>
         </section>
