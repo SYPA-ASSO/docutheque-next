@@ -10,6 +10,17 @@ export const metadata = {
 
 const articles = [
   {
+    slug: 'bouton-de-retractation-obligation-vente-en-ligne-19-juin-2026',
+    titre: "Bouton de rétractation : la nouvelle obligation des sites de vente en ligne depuis le 19 juin 2026",
+    resume: "Depuis le 19 juin 2026, tout professionnel vendant à distance via une interface en ligne doit proposer une fonction de rétractation dédiée. Qui est concerné, à quoi ça ressemble, quelles sanctions.",
+    date: '22 juin 2026',
+    auteur: 'François CHOLEZ',
+    categorie: 'Conformité',
+    tags: ['E-commerce', 'Droit de la consommation'],
+    tempsLecture: '14 min',
+    image: 'https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/bouton-retractation-2026.webp',
+  },
+  {
     slug: 'intelligence-artificielle-ai-act-et-rgpd-vos-obligations-en-2026',
     titre: "Intelligence artificielle : vos obligations à l'heure de l'AI Act et du RGPD",
     resume: "Deux textes encadrent désormais l'IA : l'AI Act et le RGPD. Calendrier échelonné, report du haut risque par le Digital Omnibus, doctrine de la CNIL : le point pour les entreprises.",
