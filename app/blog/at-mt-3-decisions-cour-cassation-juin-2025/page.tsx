@@ -5,6 +5,17 @@ import { Calendar, Clock, User, ChevronRight } from 'lucide-react'
 export const metadata = {
   title: "AT/MP : trois décisions récentes de la Cour de cassation à retenir · Blog Cabinet Cholez-Pagotto",
   description: "Découvrez l'essentiel de trois arrêts rendus le 26 juin 2025 par la Cour de cassation en matière d'accidents du travail et maladies professionnelles.",
+  openGraph: {
+    type: 'article',
+    url: 'https://cholez-pagotto.fr/blog/at-mt-3-decisions-cour-cassation-juin-2025',
+    siteName: 'Cabinet Cholez-Pagotto',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/AT-MT-cours-de-cassation-scaled.webp'],
+    locale: 'fr_FR',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/AT-MT-cours-de-cassation-scaled.webp'],
+  },
 }
 
 const schema = {

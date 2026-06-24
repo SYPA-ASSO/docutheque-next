@@ -5,6 +5,17 @@ import { Calendar, Clock, User, ChevronRight } from 'lucide-react'
 export const metadata = {
   title: `Franchise en base de TVA : le seuil unique à 25 000 € abandonné, les seuils applicables en 2026 · Blog Cabinet Cholez-Pagotto`,
   description: `Le seuil unique de TVA à 25\u00a0000\u00a0€ a été définitivement abandonné par la loi du 3 novembre 2025. Quels seuils s'appliquent en 2026, que se passe-t-il en cas de dépassement et quelle mention porter sur vos factures : le point complet et vérifié.`,
+  openGraph: {
+    type: 'article',
+    url: 'https://cholez-pagotto.fr/blog/franchise-en-base-de-tva-2026-seuils-applicables-et-abandon-du-seuil-unique',
+    siteName: 'Cabinet Cholez-Pagotto',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/franchise-en-base-tva-2026.webp'],
+    locale: 'fr_FR',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/franchise-en-base-tva-2026.webp'],
+  },
 }
 
 const schema = {

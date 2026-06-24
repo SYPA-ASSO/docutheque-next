@@ -5,6 +5,17 @@ import { Calendar, Clock, User, ChevronRight } from 'lucide-react'
 export const metadata = {
   title: `Apprentissage : évolution du plafond d'exonération de cotisations salariales · Blog Cabinet Cholez-Pagotto`,
   description: `Depuis le 1er mars 2025, le plafond d'exonération de cotisations salariales pour les contrats d'apprentissage a été abaissé. Le BOSS a également révisé sa position le 3 juillet 2025.`,
+  openGraph: {
+    type: 'article',
+    url: 'https://cholez-pagotto.fr/blog/apprentissage-evolution-plafond-exoneration-cotisations-salariales',
+    siteName: 'Cabinet Cholez-Pagotto',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/apprentissage-exoneration-employeur-scaled.webp'],
+    locale: 'fr_FR',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/apprentissage-exoneration-employeur-scaled.webp'],
+  },
 }
 
 const schema = {

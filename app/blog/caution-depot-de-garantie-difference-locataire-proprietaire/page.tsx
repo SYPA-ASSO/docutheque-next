@@ -5,6 +5,17 @@ import { Calendar, Clock, User, ChevronRight } from 'lucide-react'
 export const metadata = {
   title: `Caution et dépôt de garantie : deux notions souvent confondues, pourtant très différentes · Blog Cabinet Cholez-Pagotto`,
   description: `Dans le droit de la location, caution et dépôt de garantie sont deux mécanismes juridiquement distincts. Comprendre la différence évite des erreurs fréquentes et parfois coûteuses.`,
+  openGraph: {
+    type: 'article',
+    url: 'https://cholez-pagotto.fr/blog/caution-depot-de-garantie-difference-locataire-proprietaire',
+    siteName: 'Cabinet Cholez-Pagotto',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/caution-depot-de-garantie.webp'],
+    locale: 'fr_FR',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/caution-depot-de-garantie.webp'],
+  },
 }
 
 const schema = {

@@ -5,6 +5,17 @@ import { Calendar, Clock, User, ChevronRight } from 'lucide-react'
 export const metadata = {
   title: `Facturation électronique obligatoire en 2026 : ce qui change pour toutes les entreprises · Blog Cabinet Cholez-Pagotto`,
   description: `Réception dès le 1er septembre 2026 pour toutes les entreprises, émission en 2026 puis 2027, fin du portail public gratuit et passage obligatoire par une plateforme agréée : le point complet et vérifié sur la réforme.`,
+  openGraph: {
+    type: 'article',
+    url: 'https://cholez-pagotto.fr/blog/facturation-electronique-obligatoire-2026-ce-qui-change-pour-toutes-les-entreprises',
+    siteName: 'Cabinet Cholez-Pagotto',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/facturation-electronique-2026.webp'],
+    locale: 'fr_FR',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/facturation-electronique-2026.webp'],
+  },
 }
 
 const schema = {

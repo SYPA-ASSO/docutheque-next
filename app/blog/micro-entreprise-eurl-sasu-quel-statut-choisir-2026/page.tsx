@@ -5,6 +5,17 @@ import { Calendar, Clock, User, ChevronRight } from 'lucide-react'
 export const metadata = {
   title: `Micro-entreprise, EURL ou SASU : quel statut choisir en 2026 ? · Blog Cabinet Cholez-Pagotto`,
   description: `Régime social du dirigeant, fiscalité, dividendes, chômage, simplicité : le comparatif complet et vérifié des trois statuts pour entreprendre seul, pour faire le bon choix en 2026.`,
+  openGraph: {
+    type: 'article',
+    url: 'https://cholez-pagotto.fr/blog/micro-entreprise-eurl-sasu-quel-statut-choisir-2026',
+    siteName: 'Cabinet Cholez-Pagotto',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/micro-eurl-sasu-quel-statut-2026.webp'],
+    locale: 'fr_FR',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/micro-eurl-sasu-quel-statut-2026.webp'],
+  },
 }
 
 const schema = {

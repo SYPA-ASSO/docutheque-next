@@ -5,6 +5,17 @@ import { Calendar, Clock, User, ChevronRight } from 'lucide-react'
 export const metadata = {
   title: `Facturation électronique 2026 : le guide pratique pour les micro-entreprises, TPE et PME · Blog Cabinet Cholez-Pagotto`,
   description: `Quelles dates pour mon statut, le piège de la franchise de TVA, B2B contre B2C, comment choisir sa plateforme agréée, quelles mentions ajouter et comment conserver ses factures : le guide d'action complet et vérifié.`,
+  openGraph: {
+    type: 'article',
+    url: 'https://cholez-pagotto.fr/blog/facturation-electronique-2026-micro-entreprise-tpe-pme-le-guide-pratique',
+    siteName: 'Cabinet Cholez-Pagotto',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/facturation-electronique-guide-pratique.webp'],
+    locale: 'fr_FR',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/facturation-electronique-guide-pratique.webp'],
+  },
 }
 
 const schema = {

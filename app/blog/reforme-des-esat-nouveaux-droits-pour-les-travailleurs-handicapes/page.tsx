@@ -5,6 +5,17 @@ import { Calendar, Clock, User, ChevronRight } from 'lucide-react'
 export const metadata = {
   title: `Réforme des ESAT : nouveaux droits pour les travailleurs handicapés · Blog Cabinet Cholez-Pagotto`,
   description: `Trois textes réglementaires publiés au Journal Officiel du 25 août 2025 concrétisent la réforme des ESAT et étendent significativement les droits des travailleurs en situation de handicap.`,
+  openGraph: {
+    type: 'article',
+    url: 'https://cholez-pagotto.fr/blog/reforme-des-esat-nouveaux-droits-pour-les-travailleurs-handicapes',
+    siteName: 'Cabinet Cholez-Pagotto',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/travailleurs-handicapes-heureux.webp'],
+    locale: 'fr_FR',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/travailleurs-handicapes-heureux.webp'],
+  },
 }
 
 const schema = {

@@ -5,6 +5,17 @@ import { Calendar, Clock, User, ChevronRight } from 'lucide-react'
 export const metadata = {
   title: `Loi visant à renforcer la sécurité des professionnels de santé · Blog Cabinet Cholez-Pagotto`,
   description: `La loi n°2025-623 du 9 juillet 2025 renforce la protection des soignants face aux agressions. Peines aggravées, aide au dépôt de plainte, rapport annuel obligatoire : ce qu'il faut savoir.`,
+  openGraph: {
+    type: 'article',
+    url: 'https://cholez-pagotto.fr/blog/loi-no-2025-623-du-9-juillet-2025-visant-a-renforcer-la-securite-des-professionnels-de-sante',
+    siteName: 'Cabinet Cholez-Pagotto',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/loi-2025-623-9-juillet-2025-renforcant-securite-professionnels-sante.webp'],
+    locale: 'fr_FR',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/loi-2025-623-9-juillet-2025-renforcant-securite-professionnels-sante.webp'],
+  },
 }
 
 const schema = {

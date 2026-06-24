@@ -5,6 +5,17 @@ import { Calendar, Clock, User, ChevronRight } from 'lucide-react'
 export const metadata = {
   title: `Bouton de rétractation : la nouvelle obligation des sites de vente en ligne depuis le 19 juin 2026 · Blog Cabinet Cholez-Pagotto`,
   description: `Depuis le 19 juin 2026, tout professionnel vendant à distance via une interface en ligne doit proposer une fonction de rétractation dédiée. Qui est concerné, à quoi doit ressembler le bouton, quelles sanctions : le guide complet et vérifié.`,
+  openGraph: {
+    type: 'article',
+    url: 'https://cholez-pagotto.fr/blog/bouton-de-retractation-obligation-vente-en-ligne-19-juin-2026',
+    siteName: 'Cabinet Cholez-Pagotto',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/bouton-retractation-2026.webp'],
+    locale: 'fr_FR',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/bouton-retractation-2026.webp'],
+  },
 }
 
 const schema = {

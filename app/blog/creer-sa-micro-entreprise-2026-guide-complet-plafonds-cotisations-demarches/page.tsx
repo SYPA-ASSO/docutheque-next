@@ -5,6 +5,17 @@ import { Calendar, Clock, User, ChevronRight } from 'lucide-react'
 export const metadata = {
   title: `Créer sa micro-entreprise en 2026 : le guide complet (plafonds, cotisations, démarches) · Blog Cabinet Cholez-Pagotto`,
   description: `Plafonds revalorisés à 203\u00a0100\u00a0€ et 83\u00a0600\u00a0€, taux de cotisations 2026, création gratuite via le guichet unique, versement libératoire, franchise de TVA, baisse de l'ACRE au 1er juillet 2026 : le guide complet et vérifié.`,
+  openGraph: {
+    type: 'article',
+    url: 'https://cholez-pagotto.fr/blog/creer-sa-micro-entreprise-2026-guide-complet-plafonds-cotisations-demarches',
+    siteName: 'Cabinet Cholez-Pagotto',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/creer-micro-entreprise-2026.webp'],
+    locale: 'fr_FR',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/creer-micro-entreprise-2026.webp'],
+  },
 }
 
 const schema = {

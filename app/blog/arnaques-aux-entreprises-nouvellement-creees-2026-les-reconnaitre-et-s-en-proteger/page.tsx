@@ -5,6 +5,17 @@ import { Calendar, Clock, User, ChevronRight } from 'lucide-react'
 export const metadata = {
   title: `Arnaques aux entreprises nouvellement créées : les reconnaître et s'en protéger en 2026 · Blog Cabinet Cholez-Pagotto`,
   description: `Faux registres, faux Kbis, phishing aux organismes, faux fournisseurs : dès votre immatriculation, vos données deviennent publiques et les fraudeurs frappent. Comment reconnaître ces arnaques et réagir, avec les bons réflexes de signalement.`,
+  openGraph: {
+    type: 'article',
+    url: 'https://cholez-pagotto.fr/blog/arnaques-aux-entreprises-nouvellement-creees-2026-les-reconnaitre-et-s-en-proteger',
+    siteName: 'Cabinet Cholez-Pagotto',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/arnaques-nouvelles-entreprises-2026.webp'],
+    locale: 'fr_FR',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/arnaques-nouvelles-entreprises-2026.webp'],
+  },
 }
 
 const schema = {

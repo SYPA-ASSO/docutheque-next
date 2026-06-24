@@ -5,6 +5,17 @@ import { Calendar, Clock, User, ChevronRight } from 'lucide-react'
 export const metadata = {
   title: `Garantie légale de conformité : vos droits face à un produit défectueux en 2026 · Blog Cabinet Cholez-Pagotto`,
   description: `Gratuite, automatique, valable 2 ans : la garantie légale de conformité est votre meilleure arme face à un produit défectueux. Durée, présomption, réparation, remplacement, recours : le guide complet et vérifié.`,
+  openGraph: {
+    type: 'article',
+    url: 'https://cholez-pagotto.fr/blog/garantie-legale-de-conformite-vos-droits-produit-defectueux-2026',
+    siteName: 'Cabinet Cholez-Pagotto',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/garantie-legale-conformite-2026.webp'],
+    locale: 'fr_FR',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/garantie-legale-conformite-2026.webp'],
+  },
 }
 
 const schema = {

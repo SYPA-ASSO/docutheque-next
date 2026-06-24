@@ -5,6 +5,17 @@ import { Calendar, Clock, User, ChevronRight } from 'lucide-react'
 export const metadata = {
   title: "L'Intelligence Artificielle en droit : une fausse bonne idée ? · Blog Cabinet Cholez-Pagotto",
   description: "L'IA promet efficacité et gain de temps en droit. Mais hallucinations, biais algorithmiques et absence de jugement éthique en font un outil risqué. Analyse complète par un juriste.",
+  openGraph: {
+    type: 'article',
+    url: 'https://cholez-pagotto.fr/blog/lintelligence-artificielle-en-droit-une-fausse-bonne-idee',
+    siteName: 'Cabinet Cholez-Pagotto',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/IA-droit-1536x1280.webp'],
+    locale: 'fr_FR',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/IA-droit-1536x1280.webp'],
+  },
 }
 
 const schema = {

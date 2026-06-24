@@ -5,6 +5,17 @@ import { Calendar, Clock, User, ChevronRight } from 'lucide-react'
 export const metadata = {
   title: `Saisie sur salaire : décryptage complet de la nouvelle procédure et du cadre légal · Blog Cabinet Cholez-Pagotto`,
   description: `La saisie des rémunérations a été profondément modernisée en 2025. Nouveau rôle du commissaire de justice, barème actualisé et obligations de l'employeur : tout ce qu'il faut savoir.`,
+  openGraph: {
+    type: 'article',
+    url: 'https://cholez-pagotto.fr/blog/saisie-sur-salaire-decryptage-complet-de-la-nouvelle-procedure-et-du-cadre-legal',
+    siteName: 'Cabinet Cholez-Pagotto',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/saisie-sur-salaire.webp'],
+    locale: 'fr_FR',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/saisie-sur-salaire.webp'],
+  },
 }
 
 const schema = {

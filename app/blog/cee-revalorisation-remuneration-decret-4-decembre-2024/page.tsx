@@ -5,6 +5,17 @@ import { Calendar, Clock, User, ChevronRight } from 'lucide-react'
 export const metadata = {
   title: `Contrat d'engagement éducatif (CEE) : le seuil minimum de la rémunération du salarié a été revalorisé · Blog Cabinet Cholez-Pagotto`,
   description: `Le décret du 4 décembre 2024 augmente le seuil minimum de rémunération des salariés en CEE à 51,08 € bruts/jour à partir du 1er mai 2025. Tout ce qu'il faut savoir sur ce contrat spécifique.`,
+  openGraph: {
+    type: 'article',
+    url: 'https://cholez-pagotto.fr/blog/cee-revalorisation-remuneration-decret-4-decembre-2024',
+    siteName: 'Cabinet Cholez-Pagotto',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/CEE-revalorisation-scaled.webp'],
+    locale: 'fr_FR',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/CEE-revalorisation-scaled.webp'],
+  },
 }
 
 const schema = {

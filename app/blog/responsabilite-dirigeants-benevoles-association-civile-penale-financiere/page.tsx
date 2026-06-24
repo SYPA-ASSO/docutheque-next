@@ -5,6 +5,17 @@ import { Calendar, Clock, User, ChevronRight } from 'lucide-react'
 export const metadata = {
   title: `Responsabilité des dirigeants bénévoles d'association : civile, pénale et financière · Blog Cabinet Cholez-Pagotto`,
   description: `Le bénévolat ne met pas à l'abri. Responsabilité civile envers l'association et les tiers, responsabilité pénale, action pour insuffisance d'actif, et comment se protéger : le guide complet et vérifié pour les dirigeants d'association.`,
+  openGraph: {
+    type: 'article',
+    url: 'https://cholez-pagotto.fr/blog/responsabilite-dirigeants-benevoles-association-civile-penale-financiere',
+    siteName: 'Cabinet Cholez-Pagotto',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/responsabilite-dirigeants-benevoles-association.webp'],
+    locale: 'fr_FR',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/responsabilite-dirigeants-benevoles-association.webp'],
+  },
 }
 
 const schema = {

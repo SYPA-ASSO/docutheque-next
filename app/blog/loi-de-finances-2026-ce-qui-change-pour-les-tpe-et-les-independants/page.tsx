@@ -5,6 +5,17 @@ import { Calendar, Clock, User, ChevronRight } from 'lucide-react'
 export const metadata = {
   title: `Loi de finances 2026 : ce qui change pour les TPE et les indépendants · Blog Cabinet Cholez-Pagotto`,
   description: `Promulguée le 19 février 2026 au terme d'un parcours budgétaire hors normes, la loi de finances 2026 écarte plusieurs mesures redoutées et en confirme d'autres. Le point complet et vérifié pour les TPE, les micro-entrepreneurs et les indépendants.`,
+  openGraph: {
+    type: 'article',
+    url: 'https://cholez-pagotto.fr/blog/loi-de-finances-2026-ce-qui-change-pour-les-tpe-et-les-independants',
+    siteName: 'Cabinet Cholez-Pagotto',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/loi-de-finances-2026-tpe.webp'],
+    locale: 'fr_FR',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/loi-de-finances-2026-tpe.webp'],
+  },
 }
 
 const schema = {

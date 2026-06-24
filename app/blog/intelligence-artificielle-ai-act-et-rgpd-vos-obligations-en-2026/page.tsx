@@ -5,6 +5,17 @@ import { Calendar, Clock, User, ChevronRight } from 'lucide-react'
 export const metadata = {
   title: `Intelligence artificielle : vos obligations à l'heure de l'AI Act et du RGPD · Blog Cabinet Cholez-Pagotto`,
   description: `Deux textes encadrent désormais l'IA : le règlement européen (AI Act) et le RGPD. Calendrier échelonné, report des règles sur le haut risque par le Digital Omnibus, doctrine de la CNIL : le point complet et vérifié pour les entreprises.`,
+  openGraph: {
+    type: 'article',
+    url: 'https://cholez-pagotto.fr/blog/intelligence-artificielle-ai-act-et-rgpd-vos-obligations-en-2026',
+    siteName: 'Cabinet Cholez-Pagotto',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/intelligence-artificielle-ai-act-rgpd-2026.webp'],
+    locale: 'fr_FR',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/intelligence-artificielle-ai-act-rgpd-2026.webp'],
+  },
 }
 
 const schema = {

@@ -5,6 +5,17 @@ import { Calendar, Clock, User, ChevronRight } from 'lucide-react'
 export const metadata = {
   title: `Directive NIS2 : votre entreprise est-elle concernée par les nouvelles obligations de cybersécurité ? · Blog Cabinet Cholez-Pagotto`,
   description: `Près de 15\u00a0000 entités concernées en France, deux catégories, des obligations strictes et de lourdes sanctions : le point complet et vérifié sur la directive NIS2 et l'état de sa transposition par la loi Résilience.`,
+  openGraph: {
+    type: 'article',
+    url: 'https://cholez-pagotto.fr/blog/directive-nis2-cybersecurite-2026-mon-entreprise-est-elle-concernee',
+    siteName: 'Cabinet Cholez-Pagotto',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/directive-nis2-cybersecurite-2026.webp'],
+    locale: 'fr_FR',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/directive-nis2-cybersecurite-2026.webp'],
+  },
 }
 
 const schema = {

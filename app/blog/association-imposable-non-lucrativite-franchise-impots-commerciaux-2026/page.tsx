@@ -5,6 +5,17 @@ import { Calendar, Clock, User, ChevronRight } from 'lucide-react'
 export const metadata = {
   title: `Votre association est-elle imposable ? Non-lucrativité, franchise et obligations en 2026 · Blog Cabinet Cholez-Pagotto`,
   description: `Une association loi 1901 n'est pas automatiquement exonérée d'impôts. Règle des 4P, franchise des impôts commerciaux portée à 81\u00a0051\u00a0€ en 2026, six manifestations exonérées, rémunération des dirigeants : le guide complet et vérifié.`,
+  openGraph: {
+    type: 'article',
+    url: 'https://cholez-pagotto.fr/blog/association-imposable-non-lucrativite-franchise-impots-commerciaux-2026',
+    siteName: 'Cabinet Cholez-Pagotto',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/association-fiscalite-non-lucrativite-2026.webp'],
+    locale: 'fr_FR',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/association-fiscalite-non-lucrativite-2026.webp'],
+  },
 }
 
 const schema = {

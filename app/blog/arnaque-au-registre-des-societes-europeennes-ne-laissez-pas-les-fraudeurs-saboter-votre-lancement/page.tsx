@@ -5,6 +5,17 @@ import { Calendar, Clock, User, ChevronRight } from 'lucide-react'
 export const metadata = {
   title: `Arnaque au « Registre des Sociétés Européennes » : ne laissez pas les fraudeurs saboter votre lancement · Blog Cabinet Cholez-Pagotto`,
   description: `La création d'une entreprise vous expose aux fraudes. Découvrez comment l'arnaque au Registre des Sociétés Européennes fonctionne et comment vous protéger efficacement.`,
+  openGraph: {
+    type: 'article',
+    url: 'https://cholez-pagotto.fr/blog/arnaque-au-registre-des-societes-europeennes-ne-laissez-pas-les-fraudeurs-saboter-votre-lancement',
+    siteName: 'Cabinet Cholez-Pagotto',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/arnaque-registre-des-societes-europeennes.webp'],
+    locale: 'fr_FR',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/arnaque-registre-des-societes-europeennes.webp'],
+  },
 }
 
 const schema = {

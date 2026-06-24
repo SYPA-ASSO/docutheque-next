@@ -5,6 +5,17 @@ import { Calendar, Clock, User, ChevronRight } from 'lucide-react'
 export const metadata = {
   title: `Guichet unique INPI 2026 : formalités d'entreprise, mode d'emploi et pièges à éviter · Blog Cabinet Cholez-Pagotto`,
   description: `Depuis 2023, toutes les formalités d'entreprise passent par le guichet unique de l'INPI. Fonctionnement, procédure de secours, causes de rejet et nouveautés du décret du 30 avril 2026 : le guide complet et vérifié.`,
+  openGraph: {
+    type: 'article',
+    url: 'https://cholez-pagotto.fr/blog/guichet-unique-inpi-2026-formalites-d-entreprise-mode-d-emploi-et-pieges-a-eviter',
+    siteName: 'Cabinet Cholez-Pagotto',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/guichet-unique-inpi-2026.webp'],
+    locale: 'fr_FR',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/guichet-unique-inpi-2026.webp'],
+  },
 }
 
 const schema = {
