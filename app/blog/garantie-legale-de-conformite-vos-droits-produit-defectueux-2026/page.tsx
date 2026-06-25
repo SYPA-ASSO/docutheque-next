@@ -292,6 +292,11 @@ export default function ArticleGarantieLegaleConformite2026() {
                   </table>
                 </div>
                 <p style={{marginBottom: '1rem'}}>À retenir : la mention <strong>« vendu en l'état »</strong> ne libère jamais un vendeur de la garantie des vices cachés. Et entre particuliers, la garantie légale de conformité ne joue pas : seule la garantie des vices cachés est mobilisable.</p>
+                <div style={{background: 'white', border: '1px solid #e5e7eb', borderLeft: '3px solid #d4a017', borderRadius: '10px', padding: '1rem 1.25rem', margin: '1.25rem 0'}}>
+                  <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 6px'}}>Le modèle qui va avec</p>
+                  <p style={{color: '#6b7280', fontSize: '13px', lineHeight: '1.7', margin: '0 0 10px'}}>Entre particuliers ou pour un défaut grave et caché, notre <strong>modèle de lettre invoquant la garantie des vices cachés</strong> (articles 1641 et 1648 du code civil) vous permet de demander l'annulation de la vente ou une réduction du prix, dans le délai de deux ans à compter de la découverte du vice.</p>
+                  <a href="/catalogue/modele-lettre-garantie-vices-caches" style={{color: '#b8860b', fontSize: '13px', fontWeight: '700', textDecoration: 'none'}}>Voir le modèle vices cachés →</a>
+                </div>
               </section>
 
               <section id="refus">
@@ -309,6 +314,11 @@ export default function ArticleGarantieLegaleConformite2026() {
                   <p style={{color: '#6b7280', fontSize: '13px', lineHeight: '1.7', margin: '0 0 10px'}}>Notre <strong>modèle de lettre de mise en demeure au titre de la garantie légale de conformité</strong>, à compléter et à envoyer en recommandé, cite les bons articles et fixe un délai : vous gagnez du temps et vous sécurisez votre démarche.</p>
                   <a href="/catalogue/modele-lettre-mise-en-demeure-garantie-legale-conformite" style={{color: '#b8860b', fontSize: '13px', fontWeight: '700', textDecoration: 'none'}}>Voir le modèle de mise en demeure →</a>
                 </div>
+                <div style={{background: '#fffbeb', border: '1px solid #fde68a', borderRadius: '10px', padding: '1rem 1.25rem', margin: '1.25rem 0'}}>
+                  <p style={{color: '#92400e', fontSize: '13px', fontWeight: '700', margin: '0 0 6px'}}>Le pack qui va plus loin</p>
+                  <p style={{color: '#78350f', fontSize: '13px', lineHeight: '1.7', margin: '0 0 10px'}}>Notre <strong>pack Litige de consommation</strong> réunit l'essentiel pour faire valoir vos droits face à un vendeur : mise en demeure au titre de la garantie légale, lettre pour les vices cachés, courrier de saisine du médiateur et mémo des recours, à utiliser dans l'ordre.</p>
+                  <a href="/catalogue/pack-litige-consommation" style={{color: '#b8860b', fontSize: '13px', fontWeight: '700', textDecoration: 'none'}}>Voir le pack Litige de consommation →</a>
+                </div>
               </section>
 
               <section id="assurance">
@@ -317,6 +327,11 @@ export default function ArticleGarantieLegaleConformite2026() {
                 </h2>
                 <p style={{marginBottom: '1rem'}}>Un point trop souvent négligé : au-delà de la période de présomption, démontrer l'antériorité d'un défaut suppose parfois une <strong>expertise technique</strong>, qui a un coût. Or beaucoup de contrats d'assurance comportent une garantie de <strong>protection juridique</strong> qui peut prendre en charge ces frais, voire l'accompagnement de la procédure.</p>
                 <p style={{marginBottom: '1rem'}}>Le bon réflexe est donc de vérifier vos contrats (assurance habitation, carte bancaire, contrat dédié) avant d'engager des frais : vous y êtes peut-être déjà couvert. C'est l'un des intérêts d'un regard combinant le juridique et l'assurantiel.</p>
+                <div style={{background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '10px', padding: '1rem 1.25rem', margin: '1.25rem 0'}}>
+                  <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 6px'}}>Côté assurance</p>
+                  <p style={{color: '#1e3a5f', fontSize: '13px', lineHeight: '1.7', margin: '0 0 10px'}}>La garantie <strong>protection juridique</strong> (incluse dans un contrat dédié ou une assurance de la vie privée) prend en charge les litiges de consommation, les frais d'expertise et l'accompagnement de la procédure. En tant que courtier, le cabinet vérifie si vous êtes déjà couvert et vous propose, au besoin, une protection adaptée.</p>
+                  <a href="/conseil-assurances" style={{color: '#1a4fba', fontSize: '13px', fontWeight: '700', textDecoration: 'none'}}>Voir notre conseil en assurances →</a>
+                </div>
                 <div style={{background: '#0f2d6e', borderRadius: '12px', padding: '1.5rem', margin: '1.5rem 0'}}>
                   <p style={{color: 'white', fontSize: '15px', fontWeight: '700', margin: '0 0 8px'}}>Un litige avec un vendeur ?</p>
                   <p style={{color: 'rgba(255,255,255,0.85)', fontSize: '13px', lineHeight: '1.7', margin: '0 0 14px'}}>

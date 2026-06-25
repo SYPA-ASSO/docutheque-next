@@ -271,6 +271,11 @@ export default function ArticleDroitsLocataire2026() {
                   <p style={{color: '#6b7280', fontSize: '13px', lineHeight: '1.7', margin: '0 0 10px'}}>Notre <strong>modèle de lettre de congé du locataire</strong>, à envoyer en recommandé, mentionne le préavis applicable (et le motif de réduction à un mois en zone tendue) pour un congé incontestable.</p>
                   <a href="/catalogue/modele-lettre-conge-locataire-preavis" style={{color: '#b8860b', fontSize: '13px', fontWeight: '700', textDecoration: 'none'}}>Voir le modèle de congé →</a>
                 </div>
+                <div style={{background: '#fffbeb', border: '1px solid #fde68a', borderRadius: '10px', padding: '1rem 1.25rem', margin: '1.25rem 0'}}>
+                  <p style={{color: '#92400e', fontSize: '13px', fontWeight: '700', margin: '0 0 6px'}}>Le pack qui va plus loin</p>
+                  <p style={{color: '#78350f', fontSize: '13px', lineHeight: '1.7', margin: '0 0 10px'}}>Notre <strong>pack Locataire</strong> réunit vos documents utiles du début à la fin du bail : état des lieux, lettre de congé avec le bon préavis, demande de restitution du dépôt de garantie, et mise en demeure pour des réparations à la charge du bailleur.</p>
+                  <a href="/catalogue/pack-locataire" style={{color: '#b8860b', fontSize: '13px', fontWeight: '700', textDecoration: 'none'}}>Voir le pack Locataire →</a>
+                </div>
               </section>
 
               <section id="conge-bailleur">
@@ -279,6 +284,16 @@ export default function ArticleDroitsLocataire2026() {
                 </h2>
                 <p style={{marginBottom: '1rem'}}>La situation du bailleur est bien plus encadrée. Contrairement au locataire, il ne peut donner congé qu'à l'<strong>échéance du bail</strong>, en respectant un préavis de <strong>six mois</strong> pour un logement vide et de <strong>trois mois</strong> pour un meublé.</p>
                 <p style={{marginBottom: '1rem'}}>Surtout, ce congé doit être <strong>motivé</strong> et reposer sur l'un des motifs limitativement prévus par la loi : la <strong>reprise</strong> du logement pour y habiter (lui-même ou un proche), la <strong>vente</strong> du logement, ou un <strong>motif légitime et sérieux</strong> (par exemple des manquements répétés du locataire). Un congé qui ne respecte pas ces conditions peut être contesté.</p>
+                <div style={{background: 'white', border: '1px solid #e5e7eb', borderLeft: '3px solid #d4a017', borderRadius: '10px', padding: '1rem 1.25rem', margin: '1.25rem 0'}}>
+                  <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 6px'}}>Le modèle qui va avec</p>
+                  <p style={{color: '#6b7280', fontSize: '13px', lineHeight: '1.7', margin: '0 0 10px'}}>Notre <strong>modèle de congé du bailleur</strong> (reprise, vente ou motif légitime et sérieux) respecte la motivation et le préavis imposés, et intègre, pour le congé pour vendre, l'offre de vente qui ouvre au locataire son droit de préemption (article 15 de la loi de 1989).</p>
+                  <a href="/catalogue/modele-conge-bailleur-reprise-vente-motif" style={{color: '#b8860b', fontSize: '13px', fontWeight: '700', textDecoration: 'none'}}>Voir le modèle de congé bailleur →</a>
+                </div>
+                <div style={{background: '#fffbeb', border: '1px solid #fde68a', borderRadius: '10px', padding: '1rem 1.25rem', margin: '1.25rem 0'}}>
+                  <p style={{color: '#92400e', fontSize: '13px', fontWeight: '700', margin: '0 0 6px'}}>Le pack qui va plus loin</p>
+                  <p style={{color: '#78350f', fontSize: '13px', lineHeight: '1.7', margin: '0 0 10px'}}>Notre <strong>pack Propriétaire bailleur</strong> rassemble les documents clés de la location : bail conforme, état des lieux, congé du bailleur, relance et mise en demeure pour loyers impayés, et quittance de loyer.</p>
+                  <a href="/catalogue/pack-proprietaire-bailleur" style={{color: '#b8860b', fontSize: '13px', fontWeight: '700', textDecoration: 'none'}}>Voir le pack Propriétaire →</a>
+                </div>
               </section>
 
               <section id="impayes">
@@ -292,6 +307,16 @@ export default function ArticleDroitsLocataire2026() {
                   <li><strong>La phase judiciaire.</strong> À défaut de régularisation, le juge peut prononcer la résiliation du bail et l'expulsion, ou, selon la situation, accorder des <strong>délais de paiement</strong> (de quelques mois à plusieurs années) et un accompagnement social.</li>
                 </ul>
                 <p style={{marginBottom: '1rem'}}>Deux garde-fous importants pour le locataire : la <strong>trêve hivernale</strong>, qui suspend les expulsions du <strong>1er novembre au 31 mars</strong>, et la possibilité de solliciter très tôt l'ADIL ou le Fonds de solidarité pour le logement. Côté bailleur, l'assurance loyers impayés et la garantie Visale permettent d'anticiper ce risque.</p>
+                <div style={{background: 'white', border: '1px solid #e5e7eb', borderLeft: '3px solid #d4a017', borderRadius: '10px', padding: '1rem 1.25rem', margin: '1.25rem 0'}}>
+                  <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 6px'}}>Le modèle qui va avec</p>
+                  <p style={{color: '#6b7280', fontSize: '13px', lineHeight: '1.7', margin: '0 0 10px'}}>Avant le commandement de payer délivré par commissaire de justice, notre <strong>modèle de lettre de relance puis de mise en demeure pour loyers impayés</strong> formalise les premières étapes amiables et constitue une preuve utile pour la suite de la procédure.</p>
+                  <a href="/catalogue/modele-lettre-relance-mise-en-demeure-loyers-impayes" style={{color: '#b8860b', fontSize: '13px', fontWeight: '700', textDecoration: 'none'}}>Voir le modèle pour impayés →</a>
+                </div>
+                <div style={{background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '10px', padding: '1rem 1.25rem', margin: '1.25rem 0'}}>
+                  <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 6px'}}>Côté assurance</p>
+                  <p style={{color: '#1e3a5f', fontSize: '13px', lineHeight: '1.7', margin: '0 0 10px'}}>L'<strong>assurance loyers impayés (GLI)</strong> rembourse les loyers non perçus et prend souvent en charge les frais de procédure, parfois les dégradations. Elle ne se cumule pas avec une caution, sauf locataire étudiant ou apprenti. Pensez aussi à l'assurance <strong>propriétaire non occupant (PNO)</strong>, obligatoire en copropriété. En courtier, le cabinet vous aide à choisir la bonne combinaison.</p>
+                  <a href="/conseil-assurances" style={{color: '#1a4fba', fontSize: '13px', fontWeight: '700', textDecoration: 'none'}}>Voir notre conseil en assurances →</a>
+                </div>
               </section>
 
               <section id="recours">
@@ -312,6 +337,11 @@ export default function ArticleDroitsLocataire2026() {
                 </h2>
                 <p style={{marginBottom: '1rem'}}>Un point souvent négligé : un litige locatif peut engager des frais (expertise, procédure). Or de nombreux contrats comportent une garantie de <strong>protection juridique</strong> qui peut les prendre en charge, voire accompagner la démarche. Avant d'engager des frais, vérifiez vos contrats d'assurance habitation, votre carte bancaire ou un contrat dédié.</p>
                 <p style={{marginBottom: '1rem'}}>C'est tout l'intérêt d'un regard combinant le juridique et l'assurantiel : identifier vos droits, puis vérifier comment ils sont couverts. Côté bailleur, le bon réflexe est d'anticiper le risque d'impayés (garant, assurance loyers impayés, garantie Visale) plutôt que de le subir.</p>
+                <div style={{background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '10px', padding: '1rem 1.25rem', margin: '1.25rem 0'}}>
+                  <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 6px'}}>Côté assurance</p>
+                  <p style={{color: '#1e3a5f', fontSize: '13px', lineHeight: '1.7', margin: '0 0 10px'}}>Rappel utile : l'<strong>assurance habitation est obligatoire pour le locataire</strong> (article 7 de la loi de 1989), à justifier chaque année. Côté propriétaire, la PNO (obligatoire en copropriété) et, selon le profil du locataire, la GLI complètent la protection. En tant que courtier, le cabinet compare et vous oriente vers le contrat adapté à votre situation.</p>
+                  <a href="/conseil-assurances" style={{color: '#1a4fba', fontSize: '13px', fontWeight: '700', textDecoration: 'none'}}>Voir notre conseil en assurances →</a>
+                </div>
                 <div style={{background: '#0f2d6e', borderRadius: '12px', padding: '1.5rem', margin: '1.5rem 0'}}>
                   <p style={{color: 'white', fontSize: '15px', fontWeight: '700', margin: '0 0 8px'}}>Un litige avec votre propriétaire ou votre locataire ?</p>
                   <p style={{color: 'rgba(255,255,255,0.85)', fontSize: '13px', lineHeight: '1.7', margin: '0 0 14px'}}>
