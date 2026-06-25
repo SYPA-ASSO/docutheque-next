@@ -5,6 +5,17 @@ import { Calendar, Clock, User, ChevronRight } from 'lucide-react'
 export const metadata = {
   title: `Locataire : vos droits sur le dépôt de garantie, l'état des lieux, le congé et les impayés en 2026 · Blog Cabinet Cholez-Pagotto`,
   description: `Dépôt de garantie, état des lieux, préavis, loyers impayés : tout ce qu'un locataire doit savoir en 2026, avec les montants, les délais et la procédure à jour, vérifiés à la source.`,
+  openGraph: {
+    type: 'article',
+    url: 'https://cholez-pagotto.fr/blog/locataire-droits-depot-garantie-etat-des-lieux-conge-impayes-2026',
+    siteName: 'Cabinet Cholez-Pagotto',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/droits-locataire-2026.webp'],
+    locale: 'fr_FR',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/droits-locataire-2026.webp'],
+  },
 }
 
 const schema = {
@@ -200,6 +211,11 @@ export default function ArticleDroitsLocataire2026() {
                   <li>Un état des lieux établi <strong>unilatéralement</strong> par le bailleur ne peut servir de base à des retenues sur le dépôt de garantie.</li>
                   <li>Une <strong>grille de vétusté</strong>, annexée au bail, permet de distinguer l'usure normale (à la charge du bailleur) des dégradations imputables au locataire.</li>
                 </ul>
+                <div style={{background: 'white', border: '1px solid #e5e7eb', borderLeft: '3px solid #d4a017', borderRadius: '10px', padding: '1rem 1.25rem', margin: '1.25rem 0'}}>
+                  <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 6px'}}>Le modèle qui va avec</p>
+                  <p style={{color: '#6b7280', fontSize: '13px', lineHeight: '1.7', margin: '0 0 10px'}}>Notre <strong>modèle d'état des lieux d'entrée et de sortie</strong>, conforme à la loi de 1989 et prêt à compléter pièce par pièce, sécurise votre meilleure protection en cas de litige sur le dépôt de garantie.</p>
+                  <a href="/catalogue/modele-etat-des-lieux-entree-sortie-location" style={{color: '#b8860b', fontSize: '13px', fontWeight: '700', textDecoration: 'none'}}>Voir le modèle d'état des lieux →</a>
+                </div>
               </section>
 
               <section id="depot">
@@ -232,6 +248,11 @@ export default function ArticleDroitsLocataire2026() {
                   </table>
                 </div>
                 <p style={{marginBottom: '1rem'}}>Le bailleur ne peut retenir une somme que pour des loyers ou charges impayés, des dégradations constatées à l'état des lieux de sortie (hors usure normale), ou des réparations locatives. En copropriété, il peut conserver une provision de <strong>20&nbsp;%</strong> jusqu'à l'arrêté annuel des comptes. Pour aller plus loin sur ce point précis, voir notre article dédié à la différence entre caution et dépôt de garantie.</p>
+                <div style={{background: 'white', border: '1px solid #e5e7eb', borderLeft: '3px solid #d4a017', borderRadius: '10px', padding: '1rem 1.25rem', margin: '1.25rem 0'}}>
+                  <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 6px'}}>Le modèle qui va avec</p>
+                  <p style={{color: '#6b7280', fontSize: '13px', lineHeight: '1.7', margin: '0 0 10px'}}>Dépôt non restitué dans les délais ? Notre <strong>modèle de lettre de demande de restitution du dépôt de garantie</strong> réclame la somme due et la majoration de 10&nbsp;% par mois de retard, sur les bons fondements.</p>
+                  <a href="/catalogue/modele-lettre-restitution-depot-de-garantie" style={{color: '#b8860b', fontSize: '13px', fontWeight: '700', textDecoration: 'none'}}>Voir le modèle de demande de restitution →</a>
+                </div>
               </section>
 
               <section id="conge-locataire">
@@ -245,6 +266,11 @@ export default function ArticleDroitsLocataire2026() {
                   <li><strong>Un mois</strong> également pour un logement vide en <strong>zone tendue</strong>, ou dans certains cas : mutation professionnelle, perte d'emploi, premier emploi, état de santé justifiant un changement de domicile, bénéficiaire de certaines aides sociales, ou violences conjugales.</li>
                 </ul>
                 <p style={{marginBottom: '1rem'}}>Le congé se notifie par lettre recommandée avec accusé de réception, par acte de commissaire de justice, ou par remise en main propre contre récépissé. Attention : pendant le préavis, vous restez <strong>redevable du loyer et des charges</strong> jusqu'à son terme, sauf si le logement est reloué plus tôt en accord avec le bailleur. Vous ne pouvez pas non plus déduire le dépôt de garantie de vos derniers loyers.</p>
+                <div style={{background: 'white', border: '1px solid #e5e7eb', borderLeft: '3px solid #d4a017', borderRadius: '10px', padding: '1rem 1.25rem', margin: '1.25rem 0'}}>
+                  <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 6px'}}>Le modèle qui va avec</p>
+                  <p style={{color: '#6b7280', fontSize: '13px', lineHeight: '1.7', margin: '0 0 10px'}}>Notre <strong>modèle de lettre de congé du locataire</strong>, à envoyer en recommandé, mentionne le préavis applicable (et le motif de réduction à un mois en zone tendue) pour un congé incontestable.</p>
+                  <a href="/catalogue/modele-lettre-conge-locataire-preavis" style={{color: '#b8860b', fontSize: '13px', fontWeight: '700', textDecoration: 'none'}}>Voir le modèle de congé →</a>
+                </div>
               </section>
 
               <section id="conge-bailleur">
@@ -272,12 +298,10 @@ export default function ArticleDroitsLocataire2026() {
                 <h2 style={{color: '#0f2d6e', fontSize: '1.3rem', fontWeight: '700', margin: '2rem 0 16px', paddingTop: '1rem'}}>
                   VI. Vos recours en cas de litige
                 </h2>
-                <p style={{marginBottom: '1rem'}}>Avant d'envisager un procès, plusieurs voies, souvent gratuites, permettent de débloquer la situation.</p>
+                <p style={{marginBottom: '1rem'}}>Avant d'envisager un procès, le réflexe le plus efficace est de bien cerner vos droits et de formaliser votre demande au bon niveau. Le cabinet peut vous y aider directement (<a href="/information-sur-vos-droits" style={{color: '#1a4fba', fontWeight: 600, textDecoration: 'none'}}>réponse écrite de notre juriste</a> ou <a href="/accompagnement-particuliers" style={{color: '#1a4fba', fontWeight: 600, textDecoration: 'none'}}>accompagnement des particuliers</a>), pour éviter une procédure quand c'est possible et préparer votre dossier quand elle devient nécessaire.</p>
                 <ul style={{paddingLeft: '1.5rem', margin: '1rem 0', display: 'flex', flexDirection: 'column', gap: '8px'}}>
-                  <li><strong>La commission départementale de conciliation.</strong> Sa saisine est un préalable, gratuit, pour de nombreux litiges (loyer, charges, dépôt de garantie, état des lieux), et débouche souvent sur un accord.</li>
-                  <li><strong>L'ADIL</strong> (agence départementale d'information sur le logement) délivre une information juridique gratuite et neutre.</li>
-                  <li><strong>Le Fonds de solidarité pour le logement</strong> peut apporter une aide en cas de difficultés.</li>
-                  <li><strong>Le tribunal judiciaire</strong>, en dernier recours, tranche les litiges locatifs.</li>
+                  <li><strong>En complément</strong>, plusieurs voies extérieures, souvent gratuites, peuvent débloquer la situation : la commission départementale de conciliation (préalable utile pour les litiges de loyer, de charges, de dépôt de garantie ou d'état des lieux), l'information neutre délivrée par l'ADIL, et le Fonds de solidarité pour le logement en cas de difficultés.</li>
+                  <li><strong>Le tribunal judiciaire</strong> tranche en dernier recours les litiges locatifs.</li>
                 </ul>
                 <p style={{marginBottom: '1rem'}}>Dans tous les cas, conservez précieusement vos documents : bail, états des lieux signés, quittances, courriers et photographies. Ce sont vos preuves.</p>
               </section>

@@ -298,14 +298,17 @@ export default function ArticleGarantieLegaleConformite2026() {
                 <h2 style={{color: '#0f2d6e', fontSize: '1.3rem', fontWeight: '700', margin: '2rem 0 16px', paddingTop: '1rem'}}>
                   VI. Que faire si le vendeur refuse
                 </h2>
-                <p style={{marginBottom: '1rem'}}>Si le vendeur fait la sourde oreille, voici la marche à suivre, par étapes.</p>
+                <p style={{marginBottom: '1rem'}}>Si le vendeur fait la sourde oreille, ne renoncez pas : la plupart des refus cèdent devant une réclamation argumentée sur les bons fondements. Avant d'engager quoi que ce soit, le cabinet peut vous aider à <strong>identifier précisément vos droits</strong> et à <strong>formaliser votre demande</strong>, pour mettre toutes les chances de votre côté (<a href="/information-sur-vos-droits" style={{color: '#1a4fba', fontWeight: 600, textDecoration: 'none'}}>réponse écrite de notre juriste</a> ou <a href="/accompagnement-particuliers" style={{color: '#1a4fba', fontWeight: 600, textDecoration: 'none'}}>accompagnement des particuliers</a>). Voici la marche à suivre, par étapes.</p>
                 <ul style={{paddingLeft: '1.5rem', margin: '1rem 0', display: 'flex', flexDirection: 'column', gap: '10px'}}>
                   <li><strong>Adressez-vous au vendeur, pas au fabricant.</strong> La garantie légale de conformité est due par le vendeur. Conservez la facture, photographiez le défaut, notez sa date d'apparition.</li>
                   <li><strong>Envoyez une mise en demeure</strong> par lettre recommandée avec accusé de réception, en citant les articles <strong>L. 217-3 et suivants</strong> du Code de la consommation, et en fixant un délai raisonnable.</li>
-                  <li><strong>Saisissez le médiateur de la consommation</strong>, gratuitement : tout professionnel doit en désigner un depuis 2016.</li>
-                  <li><strong>Signalez la situation sur SignalConso</strong> (signal.conso.gouv.fr), le service public de signalement des litiges de consommation.</li>
-                  <li><strong>En dernier recours, saisissez le tribunal judiciaire.</strong> L'avocat n'est pas obligatoire pour les litiges inférieurs à 10&nbsp;000&nbsp;€.</li>
+                  <li><strong>Si la mise en demeure reste sans réponse</strong>, des voies extérieures existent en complément : la médiation de la consommation (chaque professionnel doit désigner un médiateur), le signalement sur la plateforme publique SignalConso, et, en dernier recours, le tribunal judiciaire (sans avocat obligatoire en dessous de 10&nbsp;000&nbsp;€).</li>
                 </ul>
+                <div style={{background: 'white', border: '1px solid #e5e7eb', borderLeft: '3px solid #d4a017', borderRadius: '10px', padding: '1rem 1.25rem', margin: '1.25rem 0'}}>
+                  <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 6px'}}>Le modèle qui va avec</p>
+                  <p style={{color: '#6b7280', fontSize: '13px', lineHeight: '1.7', margin: '0 0 10px'}}>Notre <strong>modèle de lettre de mise en demeure au titre de la garantie légale de conformité</strong>, à compléter et à envoyer en recommandé, cite les bons articles et fixe un délai : vous gagnez du temps et vous sécurisez votre démarche.</p>
+                  <a href="/catalogue/modele-lettre-mise-en-demeure-garantie-legale-conformite" style={{color: '#b8860b', fontSize: '13px', fontWeight: '700', textDecoration: 'none'}}>Voir le modèle de mise en demeure →</a>
+                </div>
               </section>
 
               <section id="assurance">
