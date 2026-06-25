@@ -193,7 +193,7 @@ export default function ArticleIA() {
 
               <section id="introduction">
                 <h2 style={{color: '#0f2d6e', fontSize: '1.3rem', fontWeight: '700', margin: '0 0 16px', paddingTop: '1rem'}}>
-                  Introduction : L'Intelligence Artificielle en droit – Une fausse bonne idée ?
+                  Introduction : L'Intelligence Artificielle en droit, une fausse bonne idée ?
                 </h2>
                 <p>Le secteur juridique connaît actuellement un engouement significatif pour les technologies de l'intelligence artificielle. Cet enthousiasme est largement alimenté par des promesses d'efficacité accrue, de réduction des coûts et de simplification des flux de travail. L'IA est de plus en plus présentée comme une force transformatrice, capable d'automatiser des tâches routinières et de simplifier des processus complexes, allant de la recherche juridique à la négociation de contrats.</p>
                 <p>Malgré ces promesses alléchantes, l'intégration généralisée et non critique de l'intelligence artificielle dans le domaine juridique est, fondamentalement, une fausse bonne idée. Les limitations intrinsèques de l'IA en matière de raisonnement, de gestion des nuances, de fiabilité des données et de considérations éthiques la rendent incapable de remplacer ou même de reproduire pleinement l'expertise juridique humaine. Son adoption non critique introduit des risques significatifs pour l'intégrité de la justice et la protection des droits fondamentaux.</p>
@@ -343,6 +343,15 @@ export default function ArticleIA() {
                   <p style={{color: 'rgba(255,255,255,0.85)', fontSize: '13px', lineHeight: '1.8', margin: '0 0 12px'}}>Si l'intelligence artificielle peut servir d'outil précieux pour automatiser certaines tâches répétitives, elle ne peut ni ne doit remplacer l'humain. Le cœur de la pratique juridique (jugement nuancé, considération éthique, empathie authentique, pensée stratégique) demeure un domaine exclusivement humain.</p>
                   <p style={{color: '#93c5fd', fontSize: '13px', lineHeight: '1.8', margin: 0, fontStyle: 'italic'}}>Privilégiez, au regard de votre situation, de son contexte et de vos perspectives d'action, de vous appuyer sur un professionnel du droit : juriste, avocat, notaire.</p>
                 </div>
+                <div style={{background: '#f1f5fb', border: '1px solid #c7d6ec', borderLeft: '4px solid #0f2d6e', borderRadius: '12px', padding: '1.1rem 1.25rem', margin: '1.5rem 0'}}>
+                  <span style={{display: 'inline-block', background: '#0f2d6e', color: 'white', fontSize: '10px', fontWeight: '700', letterSpacing: '0.05em', padding: '3px 9px', borderRadius: '20px', marginBottom: '8px'}}>100&nbsp;% HUMAIN</span>
+                  <p style={{color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: '0 0 4px'}}>Vos actes juridiques, rédigés et vérifiés par un humain</p>
+                  <p style={{color: '#374151', fontSize: '13px', lineHeight: '1.6', margin: '0 0 12px'}}>C'est notre parti pris : au cabinet, vos statuts, contrats, courriers et démarches sont produits et relus par notre juriste, jamais sous-traités à une IA. Le bon réflexe quand la nuance et la responsabilité comptent.</p>
+                  <div style={{display: 'flex', gap: '14px', flexWrap: 'wrap', alignItems: 'center'}}>
+                    <a href="/services" style={{display: 'inline-block', background: '#0f2d6e', color: 'white', fontSize: '12px', fontWeight: '700', padding: '8px 16px', borderRadius: '8px', textDecoration: 'none'}}>Découvrir nos services →</a>
+                    <span style={{color: '#6b7280', fontSize: '12px'}}>ou <a href="/information-sur-vos-droits" style={{color: '#1a4fba', fontWeight: 600, textDecoration: 'none'}}>poser une question</a></span>
+                  </div>
+                </div>
               </section>
 
               {/* FAQ */}
@@ -415,7 +424,7 @@ export default function ArticleIA() {
 
             <div style={{background: '#0f2d6e', borderRadius: '12px', padding: '1.25rem'}}>
               <p style={{color: 'white', fontSize: '13px', fontWeight: '700', margin: '0 0 8px'}}>Une question juridique ?</p>
-              <p style={{color: 'rgba(255,255,255,0.8)', fontSize: '12px', lineHeight: '1.6', margin: '0 0 10px'}}>Un juriste vous répond par écrit sous 24 à 48h. 47 € à l'unité, sans abonnement.</p>
+              <p style={{color: 'rgba(255,255,255,0.8)', fontSize: '12px', lineHeight: '1.6', margin: '0 0 10px'}}>Un juriste vous répond par écrit sous 24 à 48h. 47 € à l'unité, sans abonnement.</p>
               <p style={{color: 'rgba(255,255,255,0.6)', fontSize: '11px', lineHeight: '1.6', margin: '0 0 14px', fontStyle: 'italic'}}>Ce service constitue une information juridique au sens de la loi n°71-1130 du 31 décembre 1971 et ne constitue pas une consultation juridique personnalisée. La réponse apportée vous permettra de mieux comprendre vos droits, d'identifier les règles juridiques applicables à votre situation et de prendre vos décisions en toute connaissance de cause. Le cas échéant, vous serez orienté vers le professionnel du droit compétent.</p>
               <a href="/information-sur-vos-droits" style={{display: 'block', background: 'white', color: '#0f2d6e', padding: '10px', borderRadius: '8px', fontSize: '12px', fontWeight: '700', textDecoration: 'none', textAlign: 'center'}}>
                 Poser ma question →
