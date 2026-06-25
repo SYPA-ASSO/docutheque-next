@@ -332,7 +332,31 @@ export default function ArticleFacturationElectroniqueGuidePratique() {
                   <li>La <strong>catégorie de l'opération</strong> : livraison de biens, prestation de services, ou les deux</li>
                   <li>L'<strong>option pour le paiement de la TVA d'après les débits</strong>, le cas échéant</li>
                 </ul>
-                <p style={{marginBottom: '1rem'}}>Si vous êtes en franchise de TVA, pensez aussi à la nouvelle référence de la mention de franchise, qui passe de l'article 293 B du CGI à l'article L.223-3 du CIBS au 1er septembre 2026 (voir plus haut). C'est l'occasion de remettre à plat vos modèles. Des conditions générales de vente claires et des modèles de factures à jour, intégrant ces mentions et adaptés à votre activité, vous éviteront des corrections de dernière minute. Le cabinet propose des modèles prêts à l'emploi dans la <a href="/catalogue" style={{color: '#1a4fba', fontWeight: 600, textDecoration: 'none'}}>Docuthèque</a>.</p>
+                <p style={{marginBottom: '1rem'}}>Si vous êtes en franchise de TVA, pensez aussi à la nouvelle référence de la mention de franchise, qui passe de l'article 293 B du CGI à l'article L.223-3 du CIBS au 1er septembre 2026 (voir plus haut). C'est l'occasion de remettre à plat vos modèles. Des conditions générales de vente claires et des modèles de factures à jour, intégrant ces mentions et adaptés à votre activité, vous éviteront des corrections de dernière minute.</p>
+                <div style={{background: '#fffaf0', border: '1px solid #f0d488', borderLeft: '4px solid #d4a017', borderRadius: '12px', padding: '1.1rem 1.25rem', margin: '1.5rem 0'}}>
+                  <span style={{display: 'inline-block', background: '#d4a017', color: 'white', fontSize: '10px', fontWeight: '700', letterSpacing: '0.05em', padding: '3px 9px', borderRadius: '20px', marginBottom: '8px'}}>MODÈLE PRÊT À L'EMPLOI</span>
+                  <p style={{color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: '0 0 4px'}}>Facture conforme, nouvelles mentions 2026</p>
+                  <p style={{color: '#6b7280', fontSize: '13px', lineHeight: '1.6', margin: '0 0 12px'}}>Une facture à jour au 1er septembre 2026 : numéro SIREN du client, adresse de livraison, catégorie d'opération, option TVA sur les débits, et la nouvelle référence de franchise. Prête à dupliquer.</p>
+                  <div style={{display: 'flex', gap: '14px', flexWrap: 'wrap', alignItems: 'center'}}>
+                    <a href="/catalogue/modele-mentions-facture-electronique" style={{display: 'inline-block', background: '#0f2d6e', color: 'white', fontSize: '12px', fontWeight: '700', padding: '8px 16px', borderRadius: '8px', textDecoration: 'none'}}>Voir le modèle →</a>
+                    <span style={{color: '#6b7280', fontSize: '12px'}}>ou dans le <a href="/catalogue/pack-mise-en-conformite-facturation" style={{color: '#b8860b', fontWeight: 600, textDecoration: 'none'}}>pack Mise en conformité facturation</a></span>
+                  </div>
+                </div>
+                <div style={{background: '#fffaf0', border: '1px solid #f0d488', borderLeft: '4px solid #d4a017', borderRadius: '12px', padding: '1.1rem 1.25rem', margin: '1.5rem 0'}}>
+                  <span style={{display: 'inline-block', background: '#d4a017', color: 'white', fontSize: '10px', fontWeight: '700', letterSpacing: '0.05em', padding: '3px 9px', borderRadius: '20px', marginBottom: '8px'}}>MODÈLE PRÊT À L'EMPLOI</span>
+                  <p style={{color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: '0 0 4px'}}>CGV à jour pour la facturation électronique</p>
+                  <p style={{color: '#6b7280', fontSize: '13px', lineHeight: '1.6', margin: '0 0 12px'}}>Des conditions générales de vente claires, qui intègrent le nouveau cadre (mentions, délais, plateforme) et s'adaptent à votre activité.</p>
+                  <div style={{display: 'flex', gap: '14px', flexWrap: 'wrap', alignItems: 'center'}}>
+                    <a href="/catalogue/modele-cgv-conformes-facturation-electronique" style={{display: 'inline-block', background: '#0f2d6e', color: 'white', fontSize: '12px', fontWeight: '700', padding: '8px 16px', borderRadius: '8px', textDecoration: 'none'}}>Voir le modèle →</a>
+                    <span style={{color: '#6b7280', fontSize: '12px'}}>ou dans le <a href="/catalogue/pack-mise-en-conformite-facturation" style={{color: '#b8860b', fontWeight: 600, textDecoration: 'none'}}>pack Mise en conformité facturation</a></span>
+                  </div>
+                </div>
+                <div style={{background: 'linear-gradient(135deg, #fff8e6, #fbe7bd)', border: '1px solid #eaca72', borderRadius: '12px', padding: '1.25rem', margin: '1.5rem 0'}}>
+                  <span style={{display: 'inline-block', background: '#b8860b', color: 'white', fontSize: '10px', fontWeight: '700', letterSpacing: '0.05em', padding: '3px 9px', borderRadius: '20px', marginBottom: '8px'}}>PACK COMPLET · PRIX GROUPÉ</span>
+                  <p style={{color: '#0f2d6e', fontSize: '15px', fontWeight: '700', margin: '0 0 4px'}}>Pack Mise en conformité facturation</p>
+                  <p style={{color: '#78350f', fontSize: '13px', lineHeight: '1.6', margin: '0 0 12px'}}>Tout pour aborder la réforme sereinement, réuni et à prix groupé : facture aux nouvelles mentions, CGV à jour, mentions avec et sans TVA, option pour la TVA, et check-list de choix de plateforme.</p>
+                  <a href="/catalogue/pack-mise-en-conformite-facturation" style={{display: 'inline-block', background: '#b8860b', color: 'white', fontSize: '12px', fontWeight: '700', padding: '9px 18px', borderRadius: '8px', textDecoration: 'none'}}>Découvrir le pack →</a>
+                </div>
               </section>
 
               <section id="conservation">

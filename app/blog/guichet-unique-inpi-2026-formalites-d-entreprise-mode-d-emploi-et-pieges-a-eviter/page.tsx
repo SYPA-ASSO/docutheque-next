@@ -272,6 +272,15 @@ export default function ArticleGuichetUniqueINPI2026() {
                 </h2>
                 <p style={{marginBottom: '1rem'}}>Un piège revient souvent : croire que la formalité est faite parce qu'un dossier a été déposé. La vraie question est ailleurs. La formalité est-elle <strong>complète, validée, publiée et opposable</strong> ? Si la réponse est non, l'entreprise peut se retrouver dans une situation juridique différente de celle qu'affichent ses documents internes, avec des conséquences concrètes : un Kbis bloqué, une cession retardée, une banque qui attend des statuts à jour, un associé qui conteste la régularité d'une opération.</p>
                 <p style={{marginBottom: '1rem'}}>Avant de déposer, il faut contrôler son dossier comme un dossier de preuve : la nature exacte de la démarche, les actes sociaux, la cohérence documentaire, la mise à jour des bénéficiaires effectifs. C'est précisément là que l'accompagnement d'un professionnel des formalités prend tout son sens, en amont pour sécuriser les actes et le dépôt, ou en aval lorsqu'un dossier est bloqué, contesté ou urgent.</p>
+                <div style={{background: '#f1f5fb', border: '1px solid #c7d6ec', borderLeft: '4px solid #0f2d6e', borderRadius: '12px', padding: '1.1rem 1.25rem', margin: '1.5rem 0'}}>
+                  <span style={{display: 'inline-block', background: '#0f2d6e', color: 'white', fontSize: '10px', fontWeight: '700', letterSpacing: '0.05em', padding: '3px 9px', borderRadius: '20px', marginBottom: '8px'}}>LE CABINET S'EN CHARGE</span>
+                  <p style={{color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: '0 0 4px'}}>Vos formalités, préparées, déposées et suivies</p>
+                  <p style={{color: '#374151', fontSize: '13px', lineHeight: '1.6', margin: '0 0 12px'}}>Les formalités du guichet unique sont gratuites, mais leur préparation (actes, pièces, bénéficiaires effectifs) conditionne leur validation. Le cabinet prépare, dépose et suit vos formalités jusqu'à l'opposabilité, et débloque les dossiers refusés.</p>
+                  <div style={{display: 'flex', gap: '14px', flexWrap: 'wrap', alignItems: 'center'}}>
+                    <a href="/formalites-juridiques-externalisees" style={{display: 'inline-block', background: '#0f2d6e', color: 'white', fontSize: '12px', fontWeight: '700', padding: '8px 16px', borderRadius: '8px', textDecoration: 'none'}}>Confier mes formalités →</a>
+                    <span style={{color: '#6b7280', fontSize: '12px'}}>ou pour une création, <a href="/creation-entreprise" style={{color: '#1a4fba', fontWeight: 600, textDecoration: 'none'}}>créer mon entreprise</a></span>
+                  </div>
+                </div>
                 <div style={{background: '#0f2d6e', borderRadius: '12px', padding: '1.5rem', margin: '1.5rem 0'}}>
                   <p style={{color: 'white', fontSize: '15px', fontWeight: '700', margin: '0 0 8px'}}>Une formalité à sécuriser ou un dossier bloqué ?</p>
                   <p style={{color: 'rgba(255,255,255,0.85)', fontSize: '13px', lineHeight: '1.7', margin: '0 0 14px'}}>

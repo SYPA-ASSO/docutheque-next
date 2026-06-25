@@ -281,6 +281,15 @@ export default function ArticleFranchiseTVASeuils2026() {
                     <strong>Franchise et facturation électronique.</strong> Être en franchise ne vous exclut pas de la réforme de la facture électronique. Vous restez un assujetti à la TVA, donc concerné, en réception dès le 1er septembre 2026 et en émission au 1er septembre 2027. À voir aussi : notre article général sur <a href="/blog/facturation-electronique-obligatoire-2026-ce-qui-change-pour-toutes-les-entreprises" style={{color: '#1a4fba', fontWeight: 600, textDecoration: 'none'}}>ce qui change pour toutes les entreprises</a>.
                   </p>
                 </div>
+                <div style={{background: '#fffaf0', border: '1px solid #f0d488', borderLeft: '4px solid #d4a017', borderRadius: '12px', padding: '1.1rem 1.25rem', margin: '1.5rem 0'}}>
+                  <span style={{display: 'inline-block', background: '#d4a017', color: 'white', fontSize: '10px', fontWeight: '700', letterSpacing: '0.05em', padding: '3px 9px', borderRadius: '20px', marginBottom: '8px'}}>MODÈLE PRÊT À L'EMPLOI</span>
+                  <p style={{color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: '0 0 4px'}}>Mentions de facture, avec et sans TVA</p>
+                  <p style={{color: '#6b7280', fontSize: '13px', lineHeight: '1.6', margin: '0 0 12px'}}>Les bonnes mentions selon votre situation : « TVA non applicable, art. 293 B du CGI » en franchise (et la future référence CIBS au 1er septembre 2026), ou facture avec TVA si vous optez. Prêt à intégrer.</p>
+                  <div style={{display: 'flex', gap: '14px', flexWrap: 'wrap', alignItems: 'center'}}>
+                    <a href="/catalogue/modele-mentions-facture-avec-sans-tva" style={{display: 'inline-block', background: '#0f2d6e', color: 'white', fontSize: '12px', fontWeight: '700', padding: '8px 16px', borderRadius: '8px', textDecoration: 'none'}}>Voir le modèle →</a>
+                    <span style={{color: '#6b7280', fontSize: '12px'}}>ou dans le <a href="/catalogue/pack-mise-en-conformite-facturation" style={{color: '#b8860b', fontWeight: 600, textDecoration: 'none'}}>pack Mise en conformité facturation</a></span>
+                  </div>
+                </div>
               </section>
 
               <section id="arbitrer">
@@ -294,6 +303,15 @@ export default function ArticleFranchiseTVASeuils2026() {
                   <li><strong>Votre gestion.</strong> La franchise allège considérablement les obligations déclaratives. L'option pour la TVA implique des déclarations périodiques et un suivi plus rigoureux.</li>
                 </ul>
                 <p style={{marginBottom: '1rem'}}>Cet arbitrage mérite d'être posé chiffre en main, en fonction de votre situation réelle. C'est précisément le type de question sur lequel un éclairage personnalisé fait gagner du temps et évite les erreurs.</p>
+                <div style={{background: '#fffaf0', border: '1px solid #f0d488', borderLeft: '4px solid #d4a017', borderRadius: '12px', padding: '1.1rem 1.25rem', margin: '1.5rem 0'}}>
+                  <span style={{display: 'inline-block', background: '#d4a017', color: 'white', fontSize: '10px', fontWeight: '700', letterSpacing: '0.05em', padding: '3px 9px', borderRadius: '20px', marginBottom: '8px'}}>MODÈLE PRÊT À L'EMPLOI</span>
+                  <p style={{color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: '0 0 4px'}}>Option pour la TVA (renonciation à la franchise)</p>
+                  <p style={{color: '#6b7280', fontSize: '13px', lineHeight: '1.6', margin: '0 0 12px'}}>Vous avez intérêt à facturer la TVA pour déduire vos achats ? Notre modèle de déclaration d'option (art. 293 F du CGI), à adresser au service des impôts, précise la date d'effet et sécurise votre choix.</p>
+                  <div style={{display: 'flex', gap: '14px', flexWrap: 'wrap', alignItems: 'center'}}>
+                    <a href="/catalogue/modele-lettre-option-tva" style={{display: 'inline-block', background: '#0f2d6e', color: 'white', fontSize: '12px', fontWeight: '700', padding: '8px 16px', borderRadius: '8px', textDecoration: 'none'}}>Voir le modèle →</a>
+                    <span style={{color: '#6b7280', fontSize: '12px'}}>ou dans le <a href="/catalogue/pack-mise-en-conformite-facturation" style={{color: '#b8860b', fontWeight: 600, textDecoration: 'none'}}>pack Mise en conformité facturation</a></span>
+                  </div>
+                </div>
                 <div style={{background: '#0f2d6e', borderRadius: '12px', padding: '1.5rem', margin: '1.5rem 0'}}>
                   <p style={{color: 'white', fontSize: '15px', fontWeight: '700', margin: '0 0 8px'}}>Une question sur votre situation ?</p>
                   <p style={{color: 'rgba(255,255,255,0.85)', fontSize: '13px', lineHeight: '1.7', margin: '0 0 14px'}}>
