@@ -73,7 +73,7 @@ const schema = {
           "name": "Ces arnaques sont-elles poursuivies pénalement ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Oui. Ces pratiques peuvent être qualifiées de pratiques commerciales trompeuses (art. L.121-2 du Code de la consommation), passibles de 2 ans d'emprisonnement et 300 000 € d'amende. Plusieurs structures frauduleuses ont fait l'objet de poursuites en France et en Europe."
+            "text": "Oui. Ces pratiques peuvent être qualifiées de pratiques commerciales trompeuses (art. L.121-2 du Code de la consommation), passibles de 2 ans d'emprisonnement et 300 000 € d'amende. Plusieurs structures frauduleuses ont fait l'objet de poursuites en France et en Europe."
           }
         }
       ]
@@ -163,7 +163,7 @@ export default function ArticleArnaqueRSE() {
                 <p style={{marginBottom: '1rem'}}>Peu après la validation de vos formalités sur le <strong>Guichet Unique (INPI)</strong>, vous recevez un document à l'allure officielle. Drapeau étoilé, jargon administratif, mentions de « mise en conformité », de « Notification discrétionnaire » ou de « publication obligatoire »… Tout est fait pour simuler une démarche d'État.</p>
                 <ul style={{paddingLeft: '1.5rem', margin: '1rem 0', display: 'flex', flexDirection: 'column', gap: '10px'}}>
                   <li><strong>Le piège :</strong> les fraudeurs récupèrent vos données publiques (SIREN, adresse, nom commercial) pour pré-remplir le formulaire et gagner votre confiance.</li>
-                  <li><strong>La réalité :</strong> en signant, vous ne remplissez pas une obligation légale. Vous souscrivez à un <strong>service de publicité privée</strong> totalement inutile, facturé entre 600 € et 1 000 €.</li>
+                  <li><strong>La réalité :</strong> en signant, vous ne remplissez pas une obligation légale. Vous souscrivez à un <strong>service de publicité privée</strong> totalement inutile, facturé entre 600 € et 1 000 €.</li>
                 </ul>
                 <div style={{background: '#fef2f2', border: '1px solid #fecaca', borderRadius: '10px', padding: '1rem 1.25rem', margin: '1.5rem 0'}}>
                   <p style={{color: '#dc2626', fontSize: '13px', lineHeight: '1.7', margin: '0 0 6px', fontWeight: '700'}}>Signes d'alerte à identifier</p>
@@ -210,6 +210,15 @@ export default function ArticleArnaqueRSE() {
                 </div>
                 <p style={{marginBottom: '1rem', marginTop: '1rem'}}>Pourquoi prendre le risque d'une erreur coûteuse ? Le cabinet Cholez-Pagotto met son expertise à votre service pour simplifier et sécuriser votre vie d'entrepreneur.</p>
                 <p><a href="/contact" style={{color: '#1a4fba', fontWeight: '600', textDecoration: 'none'}}>Nous contacter pour valider vos démarches →</a></p>
+                <div style={{background: '#fffaf0', border: '1px solid #f0d488', borderLeft: '4px solid #d4a017', borderRadius: '12px', padding: '1.1rem 1.25rem', margin: '1.5rem 0'}}>
+                  <span style={{display: 'inline-block', background: '#d4a017', color: 'white', fontSize: '10px', fontWeight: '700', letterSpacing: '0.05em', padding: '3px 9px', borderRadius: '20px', marginBottom: '8px'}}>MODÈLE PRÊT À L'EMPLOI</span>
+                  <p style={{color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: '0 0 4px'}}>Contestation d'une facture ou sollicitation frauduleuse</p>
+                  <p style={{color: '#6b7280', fontSize: '13px', lineHeight: '1.6', margin: '0 0 12px'}}>Vous avez reçu un faux courrier de registre ? Notre modèle refuse fermement le paiement, rappelle l'absence d'obligation et réserve le signalement. À envoyer en recommandé.</p>
+                  <div style={{display: 'flex', gap: '14px', flexWrap: 'wrap', alignItems: 'center'}}>
+                    <a href="/catalogue/modele-lettre-contestation-facture-frauduleuse" style={{display: 'inline-block', background: '#0f2d6e', color: 'white', fontSize: '12px', fontWeight: '700', padding: '8px 16px', borderRadius: '8px', textDecoration: 'none'}}>Voir le modèle →</a>
+                    <span style={{color: '#6b7280', fontSize: '12px'}}>ou <a href="/accompagnement-professionnels" style={{color: '#b8860b', fontWeight: 600, textDecoration: 'none'}}>faites-vous accompagner</a></span>
+                  </div>
+                </div>
               </section>
               <section id="faq" style={{marginTop: '3rem'}}>
                 <h2 style={{color: '#0f2d6e', fontSize: '1.3rem', fontWeight: '700', margin: '0 0 1.5rem'}}>Questions fréquentes</h2>
@@ -240,7 +249,7 @@ export default function ArticleArnaqueRSE() {
                       <span>Ces arnaques sont-elles poursuivies pénalement ?</span>
                       <span style={{color: '#1a4fba', fontSize: '18px', flexShrink: 0, lineHeight: 1}}>＋</span>
                     </summary>
-                    <p style={{color: '#374151', fontSize: '13px', lineHeight: '1.75', marginTop: '12px', marginBottom: 0}}>Oui. Ces pratiques peuvent être qualifiées de pratiques commerciales trompeuses (art. L.121-2 du Code de la consommation), passibles de 2 ans d'emprisonnement et 300 000 € d'amende. Plusieurs structures frauduleuses ont fait l'objet de poursuites en France et en Europe.</p>
+                    <p style={{color: '#374151', fontSize: '13px', lineHeight: '1.75', marginTop: '12px', marginBottom: 0}}>Oui. Ces pratiques peuvent être qualifiées de pratiques commerciales trompeuses (art. L.121-2 du Code de la consommation), passibles de 2 ans d'emprisonnement et 300 000 € d'amende. Plusieurs structures frauduleuses ont fait l'objet de poursuites en France et en Europe.</p>
                   </details>
                 </div>
               </section>
@@ -268,7 +277,7 @@ export default function ArticleArnaqueRSE() {
 
             <div style={{background: '#0f2d6e', borderRadius: '12px', padding: '1.25rem'}}>
               <p style={{color: 'white', fontSize: '13px', fontWeight: '700', margin: '0 0 8px'}}>Une question juridique ?</p>
-              <p style={{color: 'rgba(255,255,255,0.8)', fontSize: '12px', lineHeight: '1.6', margin: '0 0 10px'}}>Un juriste vous répond par écrit sous 24 à 48h. 47 € à l'unité, sans abonnement.</p>
+              <p style={{color: 'rgba(255,255,255,0.8)', fontSize: '12px', lineHeight: '1.6', margin: '0 0 10px'}}>Un juriste vous répond par écrit sous 24 à 48h. 47 € à l'unité, sans abonnement.</p>
               <p style={{color: 'rgba(255,255,255,0.6)', fontSize: '11px', lineHeight: '1.6', margin: '0 0 14px', fontStyle: 'italic'}}>Ce service constitue une information juridique au sens de la loi n°71-1130 du 31 décembre 1971 et ne constitue pas une consultation juridique personnalisée. La réponse apportée vous permettra de mieux comprendre vos droits, d'identifier les règles juridiques applicables à votre situation et de prendre vos décisions en toute connaissance de cause. Le cas échéant, vous serez orienté vers le professionnel du droit compétent.</p>
               <a href="/information-sur-vos-droits" style={{display: 'block', background: 'white', color: '#0f2d6e', padding: '10px', borderRadius: '8px', fontSize: '12px', fontWeight: '700', textDecoration: 'none', textAlign: 'center'}}>
                 Poser ma question →

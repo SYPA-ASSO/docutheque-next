@@ -282,6 +282,24 @@ export default function ArticleArnaquesNouvellesEntreprises2026() {
                     <strong>Vous avez déjà payé ?</strong> Agissez vite. Contactez immédiatement votre banque pour faire opposition ou contester le prélèvement : pour un paiement par carte, le délai légal de contestation est de <strong>treize mois</strong> à compter du débit. Portez plainte pour pratique commerciale trompeuse, envoyez un courrier recommandé de demande de remboursement, et modifiez vos identifiants si vous les avez communiqués.
                   </p>
                 </div>
+                <div style={{background: '#fffaf0', border: '1px solid #f0d488', borderLeft: '4px solid #d4a017', borderRadius: '12px', padding: '1.1rem 1.25rem', margin: '1.5rem 0'}}>
+                  <span style={{display: 'inline-block', background: '#d4a017', color: 'white', fontSize: '10px', fontWeight: '700', letterSpacing: '0.05em', padding: '3px 9px', borderRadius: '20px', marginBottom: '8px'}}>MODÈLE PRÊT À L'EMPLOI</span>
+                  <p style={{color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: '0 0 4px'}}>Contestation d'une facture ou sollicitation frauduleuse</p>
+                  <p style={{color: '#6b7280', fontSize: '13px', lineHeight: '1.6', margin: '0 0 12px'}}>Un courrier ferme pour refuser une facture non due : absence de commande, mise en garde, demande de cessation et réserve de signalement. À envoyer en recommandé.</p>
+                  <div style={{display: 'flex', gap: '14px', flexWrap: 'wrap', alignItems: 'center'}}>
+                    <a href="/catalogue/modele-lettre-contestation-facture-frauduleuse" style={{display: 'inline-block', background: '#0f2d6e', color: 'white', fontSize: '12px', fontWeight: '700', padding: '8px 16px', borderRadius: '8px', textDecoration: 'none'}}>Voir le modèle →</a>
+                    <span style={{color: '#6b7280', fontSize: '12px'}}>ou <a href="/accompagnement-professionnels" style={{color: '#b8860b', fontWeight: 600, textDecoration: 'none'}}>faites-vous accompagner</a></span>
+                  </div>
+                </div>
+                <div style={{background: '#fffaf0', border: '1px solid #f0d488', borderLeft: '4px solid #d4a017', borderRadius: '12px', padding: '1.1rem 1.25rem', margin: '1.5rem 0'}}>
+                  <span style={{display: 'inline-block', background: '#d4a017', color: 'white', fontSize: '10px', fontWeight: '700', letterSpacing: '0.05em', padding: '3px 9px', borderRadius: '20px', marginBottom: '8px'}}>MODÈLE PRÊT À L'EMPLOI</span>
+                  <p style={{color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: '0 0 4px'}}>Demande de remboursement après paiement frauduleux</p>
+                  <p style={{color: '#6b7280', fontSize: '13px', lineHeight: '1.6', margin: '0 0 12px'}}>Vous avez payé par erreur ? Notre modèle réclame le remboursement, invoque la pratique commerciale trompeuse et accompagne votre démarche bancaire et votre plainte.</p>
+                  <div style={{display: 'flex', gap: '14px', flexWrap: 'wrap', alignItems: 'center'}}>
+                    <a href="/catalogue/modele-lettre-demande-remboursement-paiement-frauduleux" style={{display: 'inline-block', background: '#0f2d6e', color: 'white', fontSize: '12px', fontWeight: '700', padding: '8px 16px', borderRadius: '8px', textDecoration: 'none'}}>Voir le modèle →</a>
+                    <span style={{color: '#6b7280', fontSize: '12px'}}>ou <a href="/accompagnement-professionnels" style={{color: '#b8860b', fontWeight: 600, textDecoration: 'none'}}>faites-vous accompagner</a></span>
+                  </div>
+                </div>
               </section>
 
               <section id="proteger">

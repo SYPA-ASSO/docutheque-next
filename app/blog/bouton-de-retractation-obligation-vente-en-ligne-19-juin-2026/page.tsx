@@ -258,6 +258,48 @@ export default function ArticleBoutonRetractation2026() {
                 </h2>
                 <p style={{marginBottom: '1rem'}}>Mettre en place le dispositif technique ne suffit pas. L'ordonnance impose aussi une <strong>obligation d'information précontractuelle</strong> : vous devez informer vos clients de l'<strong>existence de la fonctionnalité et de son emplacement</strong>, avant qu'ils ne passent commande.</p>
                 <p style={{marginBottom: '1rem'}}>En pratique, cela implique une <strong>mise à jour de vos conditions générales de vente</strong>, pour y intégrer les nouvelles modalités d'exercice du droit de rétractation et orienter clairement le consommateur vers le bouton. C'est souvent l'occasion de vérifier, plus largement, la cohérence et la conformité de l'ensemble de vos mentions légales et de vos CGV.</p>
+                <div style={{background: '#fffaf0', border: '1px solid #f0d488', borderLeft: '4px solid #d4a017', borderRadius: '12px', padding: '1.1rem 1.25rem', margin: '1.5rem 0'}}>
+                  <span style={{display: 'inline-block', background: '#d4a017', color: 'white', fontSize: '10px', fontWeight: '700', letterSpacing: '0.05em', padding: '3px 9px', borderRadius: '20px', marginBottom: '8px'}}>MODÈLE PRÊT À L'EMPLOI</span>
+                  <p style={{color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: '0 0 4px'}}>Clause de rétractation pour vos CGV</p>
+                  <p style={{color: '#6b7280', fontSize: '13px', lineHeight: '1.6', margin: '0 0 12px'}}>La clause à jour au 19 juin 2026 : délai de 14 jours, modalités d'exercice via la fonctionnalité en ligne, exceptions de l'article L. 221-28. À intégrer à vos CGV.</p>
+                  <div style={{display: 'flex', gap: '14px', flexWrap: 'wrap', alignItems: 'center'}}>
+                    <a href="/catalogue/modele-clause-retractation-cgv-vente-en-ligne" style={{display: 'inline-block', background: '#0f2d6e', color: 'white', fontSize: '12px', fontWeight: '700', padding: '8px 16px', borderRadius: '8px', textDecoration: 'none'}}>Voir le modèle →</a>
+                    <span style={{color: '#6b7280', fontSize: '12px'}}>ou dans le <a href="/catalogue/pack-conformite-vente-en-ligne" style={{color: '#b8860b', fontWeight: 600, textDecoration: 'none'}}>pack Conformité vente en ligne</a></span>
+                  </div>
+                </div>
+                <div style={{background: '#fffaf0', border: '1px solid #f0d488', borderLeft: '4px solid #d4a017', borderRadius: '12px', padding: '1.1rem 1.25rem', margin: '1.5rem 0'}}>
+                  <span style={{display: 'inline-block', background: '#d4a017', color: 'white', fontSize: '10px', fontWeight: '700', letterSpacing: '0.05em', padding: '3px 9px', borderRadius: '20px', marginBottom: '8px'}}>MODÈLE PRÊT À L'EMPLOI</span>
+                  <p style={{color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: '0 0 4px'}}>Politique de rétractation et mentions précontractuelles</p>
+                  <p style={{color: '#6b7280', fontSize: '13px', lineHeight: '1.6', margin: '0 0 12px'}}>L'information due avant la commande : existence et emplacement du bouton, procédure en deux temps, accusé de réception. Pour remplir votre obligation précontractuelle.</p>
+                  <div style={{display: 'flex', gap: '14px', flexWrap: 'wrap', alignItems: 'center'}}>
+                    <a href="/catalogue/modele-politique-retractation-mentions-precontractuelles" style={{display: 'inline-block', background: '#0f2d6e', color: 'white', fontSize: '12px', fontWeight: '700', padding: '8px 16px', borderRadius: '8px', textDecoration: 'none'}}>Voir le modèle →</a>
+                    <span style={{color: '#6b7280', fontSize: '12px'}}>ou dans le <a href="/catalogue/pack-conformite-vente-en-ligne" style={{color: '#b8860b', fontWeight: 600, textDecoration: 'none'}}>pack Conformité vente en ligne</a></span>
+                  </div>
+                </div>
+                <div style={{background: '#fffaf0', border: '1px solid #f0d488', borderLeft: '4px solid #d4a017', borderRadius: '12px', padding: '1.1rem 1.25rem', margin: '1.5rem 0'}}>
+                  <span style={{display: 'inline-block', background: '#d4a017', color: 'white', fontSize: '10px', fontWeight: '700', letterSpacing: '0.05em', padding: '3px 9px', borderRadius: '20px', marginBottom: '8px'}}>MODÈLE PRÊT À L'EMPLOI</span>
+                  <p style={{color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: '0 0 4px'}}>Formulaire type de rétractation</p>
+                  <p style={{color: '#6b7280', fontSize: '13px', lineHeight: '1.6', margin: '0 0 12px'}}>Le formulaire de l'article R. 221-3 à mettre à disposition en complément du bouton : champs d'identification du contrat et du consommateur.</p>
+                  <div style={{display: 'flex', gap: '14px', flexWrap: 'wrap', alignItems: 'center'}}>
+                    <a href="/catalogue/modele-formulaire-type-retractation" style={{display: 'inline-block', background: '#0f2d6e', color: 'white', fontSize: '12px', fontWeight: '700', padding: '8px 16px', borderRadius: '8px', textDecoration: 'none'}}>Voir le modèle →</a>
+                    <span style={{color: '#6b7280', fontSize: '12px'}}>ou dans le <a href="/catalogue/pack-conformite-vente-en-ligne" style={{color: '#b8860b', fontWeight: 600, textDecoration: 'none'}}>pack Conformité vente en ligne</a></span>
+                  </div>
+                </div>
+                <div style={{background: '#fffaf0', border: '1px solid #f0d488', borderLeft: '4px solid #d4a017', borderRadius: '12px', padding: '1.1rem 1.25rem', margin: '1.5rem 0'}}>
+                  <span style={{display: 'inline-block', background: '#d4a017', color: 'white', fontSize: '10px', fontWeight: '700', letterSpacing: '0.05em', padding: '3px 9px', borderRadius: '20px', marginBottom: '8px'}}>MODÈLE PRÊT À L'EMPLOI</span>
+                  <p style={{color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: '0 0 4px'}}>CGV de vente en ligne complètes (B2C)</p>
+                  <p style={{color: '#6b7280', fontSize: '13px', lineHeight: '1.6', margin: '0 0 12px'}}>Des conditions générales à jour de bout en bout : identité, prix, livraison, paiement, garanties légales, rétractation, données personnelles, médiation.</p>
+                  <div style={{display: 'flex', gap: '14px', flexWrap: 'wrap', alignItems: 'center'}}>
+                    <a href="/catalogue/modele-cgv-vente-en-ligne-completes" style={{display: 'inline-block', background: '#0f2d6e', color: 'white', fontSize: '12px', fontWeight: '700', padding: '8px 16px', borderRadius: '8px', textDecoration: 'none'}}>Voir le modèle →</a>
+                    <span style={{color: '#6b7280', fontSize: '12px'}}>ou dans le <a href="/catalogue/pack-conformite-vente-en-ligne" style={{color: '#b8860b', fontWeight: 600, textDecoration: 'none'}}>pack Conformité vente en ligne</a></span>
+                  </div>
+                </div>
+                <div style={{background: 'linear-gradient(135deg, #fff8e6, #fbe7bd)', border: '1px solid #eaca72', borderRadius: '12px', padding: '1.25rem', margin: '1.5rem 0'}}>
+                  <span style={{display: 'inline-block', background: '#b8860b', color: 'white', fontSize: '10px', fontWeight: '700', letterSpacing: '0.05em', padding: '3px 9px', borderRadius: '20px', marginBottom: '8px'}}>PACK COMPLET · PRIX GROUPÉ</span>
+                  <p style={{color: '#0f2d6e', fontSize: '15px', fontWeight: '700', margin: '0 0 4px'}}>Pack Conformité vente en ligne</p>
+                  <p style={{color: '#78350f', fontSize: '13px', lineHeight: '1.6', margin: '0 0 12px'}}>Tout pour être en règle au 19 juin 2026, réuni et à prix groupé : CGV complètes, clause et politique de rétractation, formulaire type, et check-list d'implémentation du bouton.</p>
+                  <a href="/catalogue/pack-conformite-vente-en-ligne" style={{display: 'inline-block', background: '#b8860b', color: 'white', fontSize: '12px', fontWeight: '700', padding: '9px 18px', borderRadius: '8px', textDecoration: 'none'}}>Découvrir le pack Conformité vente en ligne →</a>
+                </div>
               </section>
 
               <section id="sanctions">
@@ -284,6 +326,12 @@ export default function ArticleBoutonRetractation2026() {
                   <li><strong>Coordonner avec vos prestataires de paiement et de logistique</strong> le traitement des remboursements (au plus tard 14 jours après la rétractation) et des retours.</li>
                   <li><strong>Mettre à jour vos CGV</strong> et l'information précontractuelle, et profiter de l'occasion pour auditer la conformité globale de votre site.</li>
                 </ul>
+                <div style={{background: '#eef5ff', border: '1px solid #bcd4f6', borderLeft: '4px solid #1a4fba', borderRadius: '12px', padding: '1.1rem 1.25rem', margin: '1.5rem 0'}}>
+                  <span style={{display: 'inline-block', background: '#1a4fba', color: 'white', fontSize: '10px', fontWeight: '700', letterSpacing: '0.05em', padding: '3px 9px', borderRadius: '20px', marginBottom: '8px'}}>ASSURANCE</span>
+                  <p style={{color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: '0 0 4px'}}>RC professionnelle et protection juridique e-commerce</p>
+                  <p style={{color: '#1e3a5f', fontSize: '13px', lineHeight: '1.6', margin: '0 0 12px'}}>Une activité de vente en ligne expose à des litiges clients et à des contrôles. Une responsabilité civile professionnelle adaptée à l'e-commerce et une protection juridique vous couvrent. En courtier, le cabinet vous oriente vers le contrat adapté.</p>
+                  <a href="/conseil-assurances" style={{display: 'inline-block', background: '#1a4fba', color: 'white', fontSize: '12px', fontWeight: '700', padding: '8px 16px', borderRadius: '8px', textDecoration: 'none'}}>Voir notre conseil en assurances →</a>
+                </div>
                 <div style={{background: '#0f2d6e', borderRadius: '12px', padding: '1.5rem', margin: '1.5rem 0'}}>
                   <p style={{color: 'white', fontSize: '15px', fontWeight: '700', margin: '0 0 8px'}}>Mettre votre site en conformité</p>
                   <p style={{color: 'rgba(255,255,255,0.85)', fontSize: '13px', lineHeight: '1.7', margin: '0 0 14px'}}>
