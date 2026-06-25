@@ -289,6 +289,34 @@ export default function ArticleStatutMicroEurlSasu2026() {
                   <li><strong>La SASU</strong> si vous visez une protection sociale proche du salariat, une sortie de dividendes sans cotisations, le maintien de vos droits au chômage, ou une future levée de fonds.</li>
                 </ul>
                 <p style={{marginBottom: '1rem'}}>À titre d'ordre de grandeur, l'EURL est souvent plus avantageuse en dessous d'un bénéfice de l'ordre de <strong>120&nbsp;000&nbsp;€</strong>, et la SASU au-dessus, grâce à l'absence de cotisations sur les dividendes. Mais ce repère n'est pas une règle absolue : il dépend de vos charges, de votre situation familiale et de votre stratégie. Une simulation personnalisée reste indispensable avant de trancher.</p>
+                <p style={{marginBottom: '1rem'}}>Votre choix est fait ? Voici les statuts à personnaliser, et un coup de main pour les formalités.</p>
+                <div style={{background: '#fffaf0', border: '1px solid #f0d488', borderLeft: '4px solid #d4a017', borderRadius: '12px', padding: '1.1rem 1.25rem', margin: '1.5rem 0'}}>
+                  <span style={{display: 'inline-block', background: '#d4a017', color: 'white', fontSize: '10px', fontWeight: '700', letterSpacing: '0.05em', padding: '3px 9px', borderRadius: '20px', marginBottom: '8px'}}>MODÈLE PRÊT À L'EMPLOI</span>
+                  <p style={{color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: '0 0 4px'}}>Statuts d'EURL</p>
+                  <p style={{color: '#6b7280', fontSize: '13px', lineHeight: '1.6', margin: '0 0 12px'}}>Vous penchez pour l'EURL ? Notre modèle de statuts, à personnaliser, couvre objet, capital, gérance, décisions de l'associé unique et exercice social.</p>
+                  <div style={{display: 'flex', gap: '14px', flexWrap: 'wrap', alignItems: 'center'}}>
+                    <a href="/catalogue/modele-statuts-eurl" style={{display: 'inline-block', background: '#0f2d6e', color: 'white', fontSize: '12px', fontWeight: '700', padding: '8px 16px', borderRadius: '8px', textDecoration: 'none'}}>Voir le modèle →</a>
+                    <span style={{color: '#6b7280', fontSize: '12px'}}>ou dans le <a href="/catalogue/pack-creation-societe" style={{color: '#b8860b', fontWeight: 600, textDecoration: 'none'}}>pack Création de société</a></span>
+                  </div>
+                </div>
+                <div style={{background: '#fffaf0', border: '1px solid #f0d488', borderLeft: '4px solid #d4a017', borderRadius: '12px', padding: '1.1rem 1.25rem', margin: '1.5rem 0'}}>
+                  <span style={{display: 'inline-block', background: '#d4a017', color: 'white', fontSize: '10px', fontWeight: '700', letterSpacing: '0.05em', padding: '3px 9px', borderRadius: '20px', marginBottom: '8px'}}>MODÈLE PRÊT À L'EMPLOI</span>
+                  <p style={{color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: '0 0 4px'}}>Statuts de SASU</p>
+                  <p style={{color: '#6b7280', fontSize: '13px', lineHeight: '1.6', margin: '0 0 12px'}}>Vous penchez pour la SASU ? Notre modèle de statuts, à personnaliser, couvre objet, capital, présidence, décisions de l'associé unique et clauses de cession.</p>
+                  <div style={{display: 'flex', gap: '14px', flexWrap: 'wrap', alignItems: 'center'}}>
+                    <a href="/catalogue/modele-statuts-sasu" style={{display: 'inline-block', background: '#0f2d6e', color: 'white', fontSize: '12px', fontWeight: '700', padding: '8px 16px', borderRadius: '8px', textDecoration: 'none'}}>Voir le modèle →</a>
+                    <span style={{color: '#6b7280', fontSize: '12px'}}>ou dans le <a href="/catalogue/pack-creation-societe" style={{color: '#b8860b', fontWeight: 600, textDecoration: 'none'}}>pack Création de société</a></span>
+                  </div>
+                </div>
+                <div style={{background: '#f1f5fb', border: '1px solid #c7d6ec', borderLeft: '4px solid #0f2d6e', borderRadius: '12px', padding: '1.1rem 1.25rem', margin: '1.5rem 0'}}>
+                  <span style={{display: 'inline-block', background: '#0f2d6e', color: 'white', fontSize: '10px', fontWeight: '700', letterSpacing: '0.05em', padding: '3px 9px', borderRadius: '20px', marginBottom: '8px'}}>LE CABINET S'EN CHARGE</span>
+                  <p style={{color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: '0 0 4px'}}>De la simulation à l'immatriculation</p>
+                  <p style={{color: '#374151', fontSize: '13px', lineHeight: '1.6', margin: '0 0 12px'}}>Hésitation sur le statut, rédaction des statuts, dépôt au guichet unique : le cabinet vous aide à arbitrer puis prend en charge les formalités, en lien avec votre expert-comptable pour les simulations chiffrées.</p>
+                  <div style={{display: 'flex', gap: '14px', flexWrap: 'wrap', alignItems: 'center'}}>
+                    <a href="/creation-entreprise" style={{display: 'inline-block', background: '#0f2d6e', color: 'white', fontSize: '12px', fontWeight: '700', padding: '8px 16px', borderRadius: '8px', textDecoration: 'none'}}>Créer ma société →</a>
+                    <span style={{color: '#6b7280', fontSize: '12px'}}>ou <a href="/formalites-juridiques-externalisees" style={{color: '#1a4fba', fontWeight: 600, textDecoration: 'none'}}>confier mes formalités</a></span>
+                  </div>
+                </div>
               </section>
 
               <section id="conclusion">

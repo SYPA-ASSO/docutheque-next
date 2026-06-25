@@ -254,6 +254,15 @@ export default function ArticleCreerMicroEntreprise2026() {
                     <strong>Attention aux arnaques.</strong> La création est gratuite et aucun organisme officiel ne vous réclamera un paiement après coup pour « finaliser » ou « publier » votre inscription. Dès votre immatriculation, vos données deviennent publiques, et de faux courriers d'immatriculation circulent. Ne payez jamais sur la base d'un courrier non sollicité.
                   </p>
                 </div>
+                <div style={{background: '#f1f5fb', border: '1px solid #c7d6ec', borderLeft: '4px solid #0f2d6e', borderRadius: '12px', padding: '1.1rem 1.25rem', margin: '1.5rem 0'}}>
+                  <span style={{display: 'inline-block', background: '#0f2d6e', color: 'white', fontSize: '10px', fontWeight: '700', letterSpacing: '0.05em', padding: '3px 9px', borderRadius: '20px', marginBottom: '8px'}}>LE CABINET S'EN CHARGE</span>
+                  <p style={{color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: '0 0 4px'}}>La création, on peut s'en occuper pour vous</p>
+                  <p style={{color: '#374151', fontSize: '13px', lineHeight: '1.6', margin: '0 0 12px'}}>La déclaration au guichet unique est gratuite, mais le bon code d'activité et un dossier complet conditionnent la suite. Le cabinet déclare votre activité, vous oriente sur le régime et les options, et suit la formalité jusqu'au SIREN.</p>
+                  <div style={{display: 'flex', gap: '14px', flexWrap: 'wrap', alignItems: 'center'}}>
+                    <a href="/creation-entreprise" style={{display: 'inline-block', background: '#0f2d6e', color: 'white', fontSize: '12px', fontWeight: '700', padding: '8px 16px', borderRadius: '8px', textDecoration: 'none'}}>Créer mon entreprise →</a>
+                    <span style={{color: '#6b7280', fontSize: '12px'}}>ou <a href="/formalites-juridiques-externalisees" style={{color: '#1a4fba', fontWeight: 600, textDecoration: 'none'}}>confier mes formalités</a></span>
+                  </div>
+                </div>
               </section>
 
               <section id="cotisations">
@@ -323,6 +332,55 @@ export default function ArticleCreerMicroEntreprise2026() {
                   <li><strong>Savoir quand changer de régime.</strong> Si vos charges réelles sont élevées, ou si vos cotisations dépassent durablement l'intérêt du régime, le passage en société (EURL, SASU) peut devenir pertinent.</li>
                   <li><strong>Rester vigilant après la création.</strong> Vos données devenant publiques, vous serez la cible de sollicitations frauduleuses : ne payez jamais un courrier non sollicité.</li>
                 </ul>
+                <p style={{marginBottom: '1rem'}}>Dès vos premières prestations, quelques documents vous protègent et donnent une image professionnelle. Les voici, prêts à l'emploi.</p>
+                <div style={{background: '#fffaf0', border: '1px solid #f0d488', borderLeft: '4px solid #d4a017', borderRadius: '12px', padding: '1.1rem 1.25rem', margin: '1.5rem 0'}}>
+                  <span style={{display: 'inline-block', background: '#d4a017', color: 'white', fontSize: '10px', fontWeight: '700', letterSpacing: '0.05em', padding: '3px 9px', borderRadius: '20px', marginBottom: '8px'}}>MODÈLE PRÊT À L'EMPLOI</span>
+                  <p style={{color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: '0 0 4px'}}>Conditions générales de vente (prestation de services)</p>
+                  <p style={{color: '#6b7280', fontSize: '13px', lineHeight: '1.6', margin: '0 0 12px'}}>Le cadre qui protège chaque mission : prix, délais, paiement, rétractation pour les particuliers, responsabilité, litiges. À joindre à vos devis.</p>
+                  <div style={{display: 'flex', gap: '14px', flexWrap: 'wrap', alignItems: 'center'}}>
+                    <a href="/catalogue/modele-cgv-prestation-de-services" style={{display: 'inline-block', background: '#0f2d6e', color: 'white', fontSize: '12px', fontWeight: '700', padding: '8px 16px', borderRadius: '8px', textDecoration: 'none'}}>Voir le modèle →</a>
+                    <span style={{color: '#6b7280', fontSize: '12px'}}>ou dans le <a href="/catalogue/pack-lancement-micro" style={{color: '#b8860b', fontWeight: 600, textDecoration: 'none'}}>pack Lancement micro-entreprise</a></span>
+                  </div>
+                </div>
+                <div style={{background: '#fffaf0', border: '1px solid #f0d488', borderLeft: '4px solid #d4a017', borderRadius: '12px', padding: '1.1rem 1.25rem', margin: '1.5rem 0'}}>
+                  <span style={{display: 'inline-block', background: '#d4a017', color: 'white', fontSize: '10px', fontWeight: '700', letterSpacing: '0.05em', padding: '3px 9px', borderRadius: '20px', marginBottom: '8px'}}>MODÈLE PRÊT À L'EMPLOI</span>
+                  <p style={{color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: '0 0 4px'}}>Facture conforme (micro-entreprise)</p>
+                  <p style={{color: '#6b7280', fontSize: '13px', lineHeight: '1.6', margin: '0 0 12px'}}>Toutes les mentions obligatoires et la mention « TVA non applicable, art. 293 B du CGI » tant que vous êtes en franchise. Numérotée, sans faute, prête à dupliquer.</p>
+                  <div style={{display: 'flex', gap: '14px', flexWrap: 'wrap', alignItems: 'center'}}>
+                    <a href="/catalogue/modele-facture-conforme-micro-entreprise" style={{display: 'inline-block', background: '#0f2d6e', color: 'white', fontSize: '12px', fontWeight: '700', padding: '8px 16px', borderRadius: '8px', textDecoration: 'none'}}>Voir le modèle →</a>
+                    <span style={{color: '#6b7280', fontSize: '12px'}}>ou dans le <a href="/catalogue/pack-lancement-micro" style={{color: '#b8860b', fontWeight: 600, textDecoration: 'none'}}>pack Lancement micro-entreprise</a></span>
+                  </div>
+                </div>
+                <div style={{background: '#fffaf0', border: '1px solid #f0d488', borderLeft: '4px solid #d4a017', borderRadius: '12px', padding: '1.1rem 1.25rem', margin: '1.5rem 0'}}>
+                  <span style={{display: 'inline-block', background: '#d4a017', color: 'white', fontSize: '10px', fontWeight: '700', letterSpacing: '0.05em', padding: '3px 9px', borderRadius: '20px', marginBottom: '8px'}}>MODÈLE PRÊT À L'EMPLOI</span>
+                  <p style={{color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: '0 0 4px'}}>Devis de prestation</p>
+                  <p style={{color: '#6b7280', fontSize: '13px', lineHeight: '1.6', margin: '0 0 12px'}}>Cadrez la mission avant de commencer : désignation, prix, durée de validité, conditions. Un devis daté et accepté vaut engagement des deux parties.</p>
+                  <div style={{display: 'flex', gap: '14px', flexWrap: 'wrap', alignItems: 'center'}}>
+                    <a href="/catalogue/modele-devis-prestation" style={{display: 'inline-block', background: '#0f2d6e', color: 'white', fontSize: '12px', fontWeight: '700', padding: '8px 16px', borderRadius: '8px', textDecoration: 'none'}}>Voir le modèle →</a>
+                    <span style={{color: '#6b7280', fontSize: '12px'}}>ou dans le <a href="/catalogue/pack-lancement-micro" style={{color: '#b8860b', fontWeight: 600, textDecoration: 'none'}}>pack Lancement micro-entreprise</a></span>
+                  </div>
+                </div>
+                <div style={{background: '#fffaf0', border: '1px solid #f0d488', borderLeft: '4px solid #d4a017', borderRadius: '12px', padding: '1.1rem 1.25rem', margin: '1.5rem 0'}}>
+                  <span style={{display: 'inline-block', background: '#d4a017', color: 'white', fontSize: '10px', fontWeight: '700', letterSpacing: '0.05em', padding: '3px 9px', borderRadius: '20px', marginBottom: '8px'}}>MODÈLE PRÊT À L'EMPLOI</span>
+                  <p style={{color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: '0 0 4px'}}>Mentions légales de site</p>
+                  <p style={{color: '#6b7280', fontSize: '13px', lineHeight: '1.6', margin: '0 0 12px'}}>Obligatoires dès que vous avez un site ou une page professionnelle : éditeur, hébergeur, contact, médiateur de la consommation. Conformes à la LCEN.</p>
+                  <div style={{display: 'flex', gap: '14px', flexWrap: 'wrap', alignItems: 'center'}}>
+                    <a href="/catalogue/modele-mentions-legales-site-professionnel" style={{display: 'inline-block', background: '#0f2d6e', color: 'white', fontSize: '12px', fontWeight: '700', padding: '8px 16px', borderRadius: '8px', textDecoration: 'none'}}>Voir le modèle →</a>
+                    <span style={{color: '#6b7280', fontSize: '12px'}}>ou dans le <a href="/catalogue/pack-lancement-micro" style={{color: '#b8860b', fontWeight: 600, textDecoration: 'none'}}>pack Lancement micro-entreprise</a></span>
+                  </div>
+                </div>
+                <div style={{background: 'linear-gradient(135deg, #fff8e6, #fbe7bd)', border: '1px solid #eaca72', borderRadius: '12px', padding: '1.25rem', margin: '1.5rem 0'}}>
+                  <span style={{display: 'inline-block', background: '#b8860b', color: 'white', fontSize: '10px', fontWeight: '700', letterSpacing: '0.05em', padding: '3px 9px', borderRadius: '20px', marginBottom: '8px'}}>PACK COMPLET · PRIX GROUPÉ</span>
+                  <p style={{color: '#0f2d6e', fontSize: '15px', fontWeight: '700', margin: '0 0 4px'}}>Pack Lancement micro-entreprise</p>
+                  <p style={{color: '#78350f', fontSize: '13px', lineHeight: '1.6', margin: '0 0 12px'}}>De quoi facturer en règle dès le premier jour, réuni et à prix groupé : conditions générales de vente, facture conforme, devis, et mentions légales de site.</p>
+                  <a href="/catalogue/pack-lancement-micro" style={{display: 'inline-block', background: '#b8860b', color: 'white', fontSize: '12px', fontWeight: '700', padding: '9px 18px', borderRadius: '8px', textDecoration: 'none'}}>Découvrir le pack Lancement →</a>
+                </div>
+                <div style={{background: '#eef5ff', border: '1px solid #bcd4f6', borderLeft: '4px solid #1a4fba', borderRadius: '12px', padding: '1.1rem 1.25rem', margin: '1.5rem 0'}}>
+                  <span style={{display: 'inline-block', background: '#1a4fba', color: 'white', fontSize: '10px', fontWeight: '700', letterSpacing: '0.05em', padding: '3px 9px', borderRadius: '20px', marginBottom: '8px'}}>ASSURANCE</span>
+                  <p style={{color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: '0 0 4px'}}>Responsabilité civile professionnelle</p>
+                  <p style={{color: '#1e3a5f', fontSize: '13px', lineHeight: '1.6', margin: '0 0 12px'}}>Vivement recommandée dès la première mission, et obligatoire pour de nombreuses activités (bâtiment, santé, conseil réglementé), elle couvre les dommages causés à vos clients et aux tiers. En courtier, le cabinet vous propose une couverture adaptée à votre métier.</p>
+                  <a href="/conseil-assurances" style={{display: 'inline-block', background: '#1a4fba', color: 'white', fontSize: '12px', fontWeight: '700', padding: '8px 16px', borderRadius: '8px', textDecoration: 'none'}}>Voir notre conseil en assurances →</a>
+                </div>
               </section>
 
               <section id="conclusion">

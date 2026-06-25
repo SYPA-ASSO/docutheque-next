@@ -244,6 +244,48 @@ export default function ArticlePasserMicroSociete2026() {
                   <li><strong>Immatriculer la société</strong> via le guichet unique de l'INPI, en joignant les statuts, l'attestation de dépôt de capital, la justification de l'annonce légale, une pièce d'identité et un justificatif de domicile du siège.</li>
                 </ul>
                 <p style={{marginBottom: '1rem'}}>À l'issue de ces formalités, la société existe officiellement et reçoit son extrait d'immatriculation (Kbis) ainsi que son nouveau numéro SIREN.</p>
+                <div style={{background: '#fffaf0', border: '1px solid #f0d488', borderLeft: '4px solid #d4a017', borderRadius: '12px', padding: '1.1rem 1.25rem', margin: '1.5rem 0'}}>
+                  <span style={{display: 'inline-block', background: '#d4a017', color: 'white', fontSize: '10px', fontWeight: '700', letterSpacing: '0.05em', padding: '3px 9px', borderRadius: '20px', marginBottom: '8px'}}>MODÈLE PRÊT À L'EMPLOI</span>
+                  <p style={{color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: '0 0 4px'}}>Statuts d'EURL</p>
+                  <p style={{color: '#6b7280', fontSize: '13px', lineHeight: '1.6', margin: '0 0 12px'}}>Le document fondateur côté EURL : objet, capital, gérance, décisions de l'associé unique, exercice social. Notre modèle, à personnaliser, sécurise votre constitution.</p>
+                  <div style={{display: 'flex', gap: '14px', flexWrap: 'wrap', alignItems: 'center'}}>
+                    <a href="/catalogue/modele-statuts-eurl" style={{display: 'inline-block', background: '#0f2d6e', color: 'white', fontSize: '12px', fontWeight: '700', padding: '8px 16px', borderRadius: '8px', textDecoration: 'none'}}>Voir le modèle →</a>
+                    <span style={{color: '#6b7280', fontSize: '12px'}}>ou dans le <a href="/catalogue/pack-creation-societe" style={{color: '#b8860b', fontWeight: 600, textDecoration: 'none'}}>pack Création de société</a></span>
+                  </div>
+                </div>
+                <div style={{background: '#fffaf0', border: '1px solid #f0d488', borderLeft: '4px solid #d4a017', borderRadius: '12px', padding: '1.1rem 1.25rem', margin: '1.5rem 0'}}>
+                  <span style={{display: 'inline-block', background: '#d4a017', color: 'white', fontSize: '10px', fontWeight: '700', letterSpacing: '0.05em', padding: '3px 9px', borderRadius: '20px', marginBottom: '8px'}}>MODÈLE PRÊT À L'EMPLOI</span>
+                  <p style={{color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: '0 0 4px'}}>Statuts de SASU</p>
+                  <p style={{color: '#6b7280', fontSize: '13px', lineHeight: '1.6', margin: '0 0 12px'}}>Le document fondateur côté SASU : objet, capital, présidence, décisions de l'associé unique, clauses de cession. Notre modèle, à personnaliser, sécurise votre constitution.</p>
+                  <div style={{display: 'flex', gap: '14px', flexWrap: 'wrap', alignItems: 'center'}}>
+                    <a href="/catalogue/modele-statuts-sasu" style={{display: 'inline-block', background: '#0f2d6e', color: 'white', fontSize: '12px', fontWeight: '700', padding: '8px 16px', borderRadius: '8px', textDecoration: 'none'}}>Voir le modèle →</a>
+                    <span style={{color: '#6b7280', fontSize: '12px'}}>ou dans le <a href="/catalogue/pack-creation-societe" style={{color: '#b8860b', fontWeight: 600, textDecoration: 'none'}}>pack Création de société</a></span>
+                  </div>
+                </div>
+                <div style={{background: '#fffaf0', border: '1px solid #f0d488', borderLeft: '4px solid #d4a017', borderRadius: '12px', padding: '1.1rem 1.25rem', margin: '1.5rem 0'}}>
+                  <span style={{display: 'inline-block', background: '#d4a017', color: 'white', fontSize: '10px', fontWeight: '700', letterSpacing: '0.05em', padding: '3px 9px', borderRadius: '20px', marginBottom: '8px'}}>MODÈLE PRÊT À L'EMPLOI</span>
+                  <p style={{color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: '0 0 4px'}}>Décision de l'associé unique</p>
+                  <p style={{color: '#6b7280', fontSize: '13px', lineHeight: '1.6', margin: '0 0 12px'}}>Pour acter les décisions de votre société unipersonnelle (nomination, approbation des comptes, transfert de siège) dans les formes requises.</p>
+                  <div style={{display: 'flex', gap: '14px', flexWrap: 'wrap', alignItems: 'center'}}>
+                    <a href="/catalogue/modele-decision-associe-unique" style={{display: 'inline-block', background: '#0f2d6e', color: 'white', fontSize: '12px', fontWeight: '700', padding: '8px 16px', borderRadius: '8px', textDecoration: 'none'}}>Voir le modèle →</a>
+                    <span style={{color: '#6b7280', fontSize: '12px'}}>ou dans le <a href="/catalogue/pack-creation-societe" style={{color: '#b8860b', fontWeight: 600, textDecoration: 'none'}}>pack Création de société</a></span>
+                  </div>
+                </div>
+                <div style={{background: '#fffaf0', border: '1px solid #f0d488', borderLeft: '4px solid #d4a017', borderRadius: '12px', padding: '1.1rem 1.25rem', margin: '1.5rem 0'}}>
+                  <span style={{display: 'inline-block', background: '#d4a017', color: 'white', fontSize: '10px', fontWeight: '700', letterSpacing: '0.05em', padding: '3px 9px', borderRadius: '20px', marginBottom: '8px'}}>MODÈLE PRÊT À L'EMPLOI</span>
+                  <p style={{color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: '0 0 4px'}}>État des actes accomplis</p>
+                  <p style={{color: '#6b7280', fontSize: '13px', lineHeight: '1.6', margin: '0 0 12px'}}>À annexer aux statuts : l'état des actes accomplis pour le compte de la société en formation fait reprendre par la société les engagements pris avant l'immatriculation.</p>
+                  <div style={{display: 'flex', gap: '14px', flexWrap: 'wrap', alignItems: 'center'}}>
+                    <a href="/catalogue/modele-etat-des-actes-accomplis" style={{display: 'inline-block', background: '#0f2d6e', color: 'white', fontSize: '12px', fontWeight: '700', padding: '8px 16px', borderRadius: '8px', textDecoration: 'none'}}>Voir le modèle →</a>
+                    <span style={{color: '#6b7280', fontSize: '12px'}}>ou dans le <a href="/catalogue/pack-creation-societe" style={{color: '#b8860b', fontWeight: 600, textDecoration: 'none'}}>pack Création de société</a></span>
+                  </div>
+                </div>
+                <div style={{background: 'linear-gradient(135deg, #fff8e6, #fbe7bd)', border: '1px solid #eaca72', borderRadius: '12px', padding: '1.25rem', margin: '1.5rem 0'}}>
+                  <span style={{display: 'inline-block', background: '#b8860b', color: 'white', fontSize: '10px', fontWeight: '700', letterSpacing: '0.05em', padding: '3px 9px', borderRadius: '20px', marginBottom: '8px'}}>PACK COMPLET · PRIX GROUPÉ</span>
+                  <p style={{color: '#0f2d6e', fontSize: '15px', fontWeight: '700', margin: '0 0 4px'}}>Pack Création de société (EURL ou SASU)</p>
+                  <p style={{color: '#78350f', fontSize: '13px', lineHeight: '1.6', margin: '0 0 12px'}}>Tout pour constituer votre société, réuni et à prix groupé : statuts (EURL ou SASU au choix), décision de l'associé unique, acte d'apport du fonds, état des actes, et check-list guichet unique.</p>
+                  <a href="/catalogue/pack-creation-societe" style={{display: 'inline-block', background: '#b8860b', color: 'white', fontSize: '12px', fontWeight: '700', padding: '9px 18px', borderRadius: '8px', textDecoration: 'none'}}>Découvrir le pack Création de société →</a>
+                </div>
               </section>
 
               <section id="transferer">
@@ -256,6 +298,15 @@ export default function ArticlePasserMicroSociete2026() {
                   <li><strong>La cession du fonds de commerce.</strong> La société achète le fonds à la micro après sa constitution. Cela suppose un acte de cession, son enregistrement, des droits d'enregistrement et des publicités, et peut générer une imposition de la plus-value éventuelle.</li>
                 </ul>
                 <p style={{marginBottom: '1rem'}}>Pour la plupart des micro-entrepreneurs, dont le fonds se résume à une clientèle et quelques équipements, l'<strong>apport en nature est la solution la plus simple et la plus courante</strong>. Une fois le transfert formalisé, vous pouvez facturer au nom de la société.</p>
+                <div style={{background: '#fffaf0', border: '1px solid #f0d488', borderLeft: '4px solid #d4a017', borderRadius: '12px', padding: '1.1rem 1.25rem', margin: '1.5rem 0'}}>
+                  <span style={{display: 'inline-block', background: '#d4a017', color: 'white', fontSize: '10px', fontWeight: '700', letterSpacing: '0.05em', padding: '3px 9px', borderRadius: '20px', marginBottom: '8px'}}>MODÈLE PRÊT À L'EMPLOI</span>
+                  <p style={{color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: '0 0 4px'}}>Acte d'apport de fonds de commerce</p>
+                  <p style={{color: '#6b7280', fontSize: '13px', lineHeight: '1.6', margin: '0 0 12px'}}>Pour transférer votre activité à la société en échange de parts ou d'actions : désignation du fonds, évaluation, rémunération de l'apport, et mention de la dispense éventuelle de commissaire aux apports.</p>
+                  <div style={{display: 'flex', gap: '14px', flexWrap: 'wrap', alignItems: 'center'}}>
+                    <a href="/catalogue/modele-acte-apport-fonds-de-commerce" style={{display: 'inline-block', background: '#0f2d6e', color: 'white', fontSize: '12px', fontWeight: '700', padding: '8px 16px', borderRadius: '8px', textDecoration: 'none'}}>Voir le modèle →</a>
+                    <span style={{color: '#6b7280', fontSize: '12px'}}>ou dans le <a href="/catalogue/pack-creation-societe" style={{color: '#b8860b', fontWeight: 600, textDecoration: 'none'}}>pack Création de société</a></span>
+                  </div>
+                </div>
               </section>
 
               <section id="fermer">
@@ -267,6 +318,15 @@ export default function ArticlePasserMicroSociete2026() {
                   <p style={{color: '#92400e', fontSize: '13px', lineHeight: '1.7', margin: 0}}>
                     <strong>Deux points à retenir.</strong> Vous devez effectuer une dernière déclaration de chiffre d'affaires, puis une <strong>déclaration fiscale de fin d'activité dans un délai de 60 jours</strong>. Et attention : la cessation volontaire d'une micro-entreprise <strong>n'ouvre aucun droit au chômage</strong>, l'allocation des travailleurs indépendants étant réservée aux liquidations judiciaires.
                   </p>
+                </div>
+                <div style={{background: '#f1f5fb', border: '1px solid #c7d6ec', borderLeft: '4px solid #0f2d6e', borderRadius: '12px', padding: '1.1rem 1.25rem', margin: '1.5rem 0'}}>
+                  <span style={{display: 'inline-block', background: '#0f2d6e', color: 'white', fontSize: '10px', fontWeight: '700', letterSpacing: '0.05em', padding: '3px 9px', borderRadius: '20px', marginBottom: '8px'}}>LE CABINET S'EN CHARGE</span>
+                  <p style={{color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: '0 0 4px'}}>Transition et fermeture : on coordonne tout</p>
+                  <p style={{color: '#374151', fontSize: '13px', lineHeight: '1.6', margin: '0 0 12px'}}>Création de la société, transfert du fonds, cessation de la micro au guichet unique : ces formalités gratuites mais sensibles doivent s'enchaîner dans le bon ordre. Le cabinet pilote l'opération et la coordonne avec votre expert-comptable.</p>
+                  <div style={{display: 'flex', gap: '14px', flexWrap: 'wrap', alignItems: 'center'}}>
+                    <a href="/accompagnement-professionnels" style={{display: 'inline-block', background: '#0f2d6e', color: 'white', fontSize: '12px', fontWeight: '700', padding: '8px 16px', borderRadius: '8px', textDecoration: 'none'}}>Être accompagné →</a>
+                    <span style={{color: '#6b7280', fontSize: '12px'}}>ou <a href="/formalites-juridiques-externalisees" style={{color: '#1a4fba', fontWeight: 600, textDecoration: 'none'}}>confier mes formalités</a></span>
+                  </div>
                 </div>
               </section>
 
@@ -281,6 +341,12 @@ export default function ArticlePasserMicroSociete2026() {
                   <li><strong>Le changement de régime.</strong> Votre régime social et fiscal change (travailleur non salarié ou assimilé salarié, impôt sur le revenu ou sur les sociétés) : d'où l'importance des simulations en amont.</li>
                   <li><strong>Les pièges.</strong> Ne basculez pas uniquement pour « faire pro ». Pensez à re-signer les contrats importants au nom de la société, à informer vos clients et fournisseurs, et à mettre à jour tous vos supports (devis, factures, conditions générales, mentions légales).</li>
                 </ul>
+                <div style={{background: '#eef5ff', border: '1px solid #bcd4f6', borderLeft: '4px solid #1a4fba', borderRadius: '12px', padding: '1.1rem 1.25rem', margin: '1.5rem 0'}}>
+                  <span style={{display: 'inline-block', background: '#1a4fba', color: 'white', fontSize: '10px', fontWeight: '700', letterSpacing: '0.05em', padding: '3px 9px', borderRadius: '20px', marginBottom: '8px'}}>ASSURANCE</span>
+                  <p style={{color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: '0 0 4px'}}>Adapter ses assurances au changement de statut</p>
+                  <p style={{color: '#1e3a5f', fontSize: '13px', lineHeight: '1.6', margin: '0 0 12px'}}>Le passage en société modifie votre protection sociale (travailleur non salarié ou assimilé salarié) et vos risques. C'est le moment de revoir votre responsabilité civile professionnelle, votre prévoyance et votre complémentaire santé. En courtier, le cabinet fait le point et ajuste vos contrats.</p>
+                  <a href="/conseil-assurances" style={{display: 'inline-block', background: '#1a4fba', color: 'white', fontSize: '12px', fontWeight: '700', padding: '8px 16px', borderRadius: '8px', textDecoration: 'none'}}>Voir notre conseil en assurances →</a>
+                </div>
               </section>
 
               <section id="accompagnement">
