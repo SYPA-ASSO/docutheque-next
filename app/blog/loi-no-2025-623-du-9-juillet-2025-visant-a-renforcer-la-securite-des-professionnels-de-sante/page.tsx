@@ -73,7 +73,7 @@ const schema = {
           "name": "Quelles sont les nouvelles peines encourues pour une agression envers un professionnel de santé ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Les peines sont significativement alourdies par la loi. Pour les violences physiques aggravées commises envers un professionnel de santé, elles peuvent atteindre 7 ans d'emprisonnement et 100 000 € d'amende. Le délit d'outrage (paroles, gestes ou menaces à caractère irrespectueux) est puni d'une amende pouvant aller jusqu'à 7 500 €. Les peines varient selon la nature et la gravité des faits."
+            "text": "Les peines sont significativement alourdies par la loi. Pour les violences physiques aggravées commises envers un professionnel de santé, elles peuvent atteindre 7 ans d'emprisonnement et 100 000 € d'amende. Le délit d'outrage (paroles, gestes ou menaces à caractère irrespectueux) est puni d'une amende pouvant aller jusqu'à 7 500 €. Les peines varient selon la nature et la gravité des faits."
           }
         }
       ]
@@ -215,8 +215,8 @@ export default function ArticleLoisante() {
                     </thead>
                     <tbody>
                       {[
-                        ["Peines aggravées", "Extension aux violences (physiques, verbales, menaces, vols) commises envers tout personnel de santé. Peines alourdies pouvant aller jusqu'à 7 ans d'emprisonnement et 100 000 € d'amende pour violences aggravées, davantage selon la gravité des faits et les circonstances."],
-                        ["Extension du délit d'outrage", "L'outrage (paroles, gestes ou menaces à caractère irrespectueux) désormais expressément puni lorsqu'il s'adresse à tout professionnel de santé ou personnel de structure médicale dans l'exercice de ses fonctions. Amende jusqu'à 7 500 €."],
+                        ["Peines aggravées", "Extension aux violences (physiques, verbales, menaces, vols) commises envers tout personnel de santé. Peines alourdies pouvant aller jusqu'à 7 ans d'emprisonnement et 100 000 € d'amende pour violences aggravées, davantage selon la gravité des faits et les circonstances."],
+                        ["Extension du délit d'outrage", "L'outrage (paroles, gestes ou menaces à caractère irrespectueux) désormais expressément puni lorsqu'il s'adresse à tout professionnel de santé ou personnel de structure médicale dans l'exercice de ses fonctions. Amende jusqu'à 7 500 €."],
                         ["Vols aggravés", "Le vol de matériel médical ou tout matériel au détriment d'un professionnel de santé est désormais une circonstance aggravante."],
                         ["Protection vie privée", "Les victimes peuvent utiliser l'adresse de leur ordre ou de leur lieu de travail lorsqu'elles déposent plainte, pour préserver leur vie privée."],
                         ["Territoires d'Outre-Mer", "Les dispositions s'appliquent également en Nouvelle-Calédonie, Polynésie, Wallis-et-Futuna."],
@@ -234,6 +234,12 @@ export default function ArticleLoisante() {
                   <a href="https://www.legifrance.gouv.fr/download/pdf?id=rUzV-KwVubczTVGwjiQsiuZ-PkK9A6thiDb3sgQcNsM=" target="_blank" rel="noopener noreferrer" style={{color: '#1a4fba', fontSize: '13px', fontWeight: '600', textDecoration: 'none'}}>Loi n°2025-623 du 9 juillet 2025 · Journal officiel du 10 juillet 2025 sur Légifrance →</a>
                 </div>
               </section>
+                <div style={{background: '#eef5ff', border: '1px solid #bcd4f6', borderLeft: '4px solid #1a4fba', borderRadius: '12px', padding: '1.1rem 1.25rem', margin: '1.5rem 0'}}>
+                  <span style={{display: 'inline-block', background: '#1a4fba', color: 'white', fontSize: '10px', fontWeight: '700', letterSpacing: '0.05em', padding: '3px 9px', borderRadius: '20px', marginBottom: '8px'}}>ASSURANCE</span>
+                  <p style={{color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: '0 0 4px'}}>RC professionnelle et protection juridique des soignants</p>
+                  <p style={{color: '#1e3a5f', fontSize: '13px', lineHeight: '1.6', margin: '0 0 12px'}}>Exercer en santé expose à des risques spécifiques. Une responsabilité civile professionnelle adaptée et une protection juridique vous couvrent en cas de litige ou d'agression. En courtier, le cabinet vous oriente.</p>
+                  <a href="/conseil-assurances" style={{display: 'inline-block', background: '#1a4fba', color: 'white', fontSize: '12px', fontWeight: '700', padding: '8px 16px', borderRadius: '8px', textDecoration: 'none'}}>Voir notre conseil en assurances →</a>
+                </div>
               <section id="faq" style={{marginTop: '3rem'}}>
                 <h2 style={{color: '#0f2d6e', fontSize: '1.3rem', fontWeight: '700', margin: '0 0 1.5rem'}}>Questions fréquentes</h2>
                 <div style={{display: 'flex', flexDirection: 'column', gap: '10px'}}>
@@ -263,7 +269,7 @@ export default function ArticleLoisante() {
                       <span>Quelles sont les nouvelles peines encourues pour une agression envers un professionnel de santé ?</span>
                       <span style={{color: '#1a4fba', fontSize: '18px', flexShrink: 0, lineHeight: 1}}>＋</span>
                     </summary>
-                    <p style={{color: '#374151', fontSize: '13px', lineHeight: '1.75', marginTop: '12px', marginBottom: 0}}>Les peines sont significativement alourdies par la loi. Pour les violences physiques aggravées commises envers un professionnel de santé, elles peuvent atteindre 7 ans d'emprisonnement et 100 000 € d'amende. Le délit d'outrage (paroles, gestes ou menaces à caractère irrespectueux) est puni d'une amende pouvant aller jusqu'à 7 500 €. Les peines varient selon la nature et la gravité des faits.</p>
+                    <p style={{color: '#374151', fontSize: '13px', lineHeight: '1.75', marginTop: '12px', marginBottom: 0}}>Les peines sont significativement alourdies par la loi. Pour les violences physiques aggravées commises envers un professionnel de santé, elles peuvent atteindre 7 ans d'emprisonnement et 100 000 € d'amende. Le délit d'outrage (paroles, gestes ou menaces à caractère irrespectueux) est puni d'une amende pouvant aller jusqu'à 7 500 €. Les peines varient selon la nature et la gravité des faits.</p>
                   </details>
                 </div>
               </section>
@@ -291,7 +297,7 @@ export default function ArticleLoisante() {
 
             <div style={{background: '#0f2d6e', borderRadius: '12px', padding: '1.25rem'}}>
               <p style={{color: 'white', fontSize: '13px', fontWeight: '700', margin: '0 0 8px'}}>Une question juridique ?</p>
-              <p style={{color: 'rgba(255,255,255,0.8)', fontSize: '12px', lineHeight: '1.6', margin: '0 0 10px'}}>Un juriste vous répond par écrit sous 24 à 48h. 47 € à l'unité, sans abonnement.</p>
+              <p style={{color: 'rgba(255,255,255,0.8)', fontSize: '12px', lineHeight: '1.6', margin: '0 0 10px'}}>Un juriste vous répond par écrit sous 24 à 48h. 47 € à l'unité, sans abonnement.</p>
               <p style={{color: 'rgba(255,255,255,0.6)', fontSize: '11px', lineHeight: '1.6', margin: '0 0 14px', fontStyle: 'italic'}}>Ce service constitue une information juridique au sens de la loi n°71-1130 du 31 décembre 1971 et ne constitue pas une consultation juridique personnalisée. La réponse apportée vous permettra de mieux comprendre vos droits, d'identifier les règles juridiques applicables à votre situation et de prendre vos décisions en toute connaissance de cause. Le cas échéant, vous serez orienté vers le professionnel du droit compétent.</p>
               <a href="/information-sur-vos-droits" style={{display: 'block', background: 'white', color: '#0f2d6e', padding: '10px', borderRadius: '8px', fontSize: '12px', fontWeight: '700', textDecoration: 'none', textAlign: 'center'}}>
                 Poser ma question →

@@ -49,7 +49,7 @@ const schema = {
           "name": "Quelle est la part insaisissable du salaire en 2025 ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "La part insaisissable correspond au montant du RSA pour une personne seule, soit 646,52 € en 2025. Cette somme doit impérativement rester au débiteur. Une majoration de 143,33 € par personne à charge s'y ajoute."
+            "text": "La part insaisissable correspond au montant du RSA pour une personne seule, soit 646,52 € en 2025. Cette somme doit impérativement rester au débiteur. Une majoration de 143,33 € par personne à charge s'y ajoute."
           }
         },
         {
@@ -197,7 +197,7 @@ export default function ArticleSaisieSalaire() {
                 <h2 style={{color: '#0f2d6e', fontSize: '1.3rem', fontWeight: '700', margin: '2rem 0 16px', paddingTop: '1rem'}}>
                   II. Le barème de saisie 2025 : un calcul précis et progressif
                 </h2>
-                <p style={{marginBottom: '1rem'}}>Le montant saisissable n'est jamais laissé au hasard. La loi protège une part minimale du salaire, correspondant au RSA pour une personne seule, soit <strong>646,52 € en 2025</strong>. Cette somme, dite part insaisissable, doit impérativement être laissée au débiteur.</p>
+                <p style={{marginBottom: '1rem'}}>Le montant saisissable n'est jamais laissé au hasard. La loi protège une part minimale du salaire, correspondant au RSA pour une personne seule, soit <strong>646,52 € en 2025</strong>. Cette somme, dite part insaisissable, doit impérativement être laissée au débiteur.</p>
                 <div style={{overflowX: 'auto', margin: '1.5rem 0'}}>
                   <table style={{width: '100%', borderCollapse: 'collapse', fontSize: '13px'}}>
                     <thead>
@@ -208,13 +208,13 @@ export default function ArticleSaisieSalaire() {
                     </thead>
                     <tbody>
                       {[
-                        ["Jusqu'à 370 €", "1/20ᵉ"],
-                        ["De 370,01 € à 721,67 €", "1/10ᵉ"],
-                        ["De 721,68 € à 1 074,17 €", "1/5ᵉ"],
-                        ["De 1 074,18 € à 1 424,17 €", "1/4"],
-                        ["De 1 424,18 € à 1 775 €", "1/3"],
-                        ["De 1 775,01 € à 2 133,33 €", "2/3"],
-                        ["Au-delà de 2 133,33 €", "100 %"],
+                        ["Jusqu'à 370 €", "1/20ᵉ"],
+                        ["De 370,01 € à 721,67 €", "1/10ᵉ"],
+                        ["De 721,68 € à 1 074,17 €", "1/5ᵉ"],
+                        ["De 1 074,18 € à 1 424,17 €", "1/4"],
+                        ["De 1 424,18 € à 1 775 €", "1/3"],
+                        ["De 1 775,01 € à 2 133,33 €", "2/3"],
+                        ["Au-delà de 2 133,33 €", "100 %"],
                       ].map(([t, f], i) => (
                         <tr key={i} style={{background: i % 2 === 0 ? 'white' : '#f8fafc', borderBottom: '1px solid #e5e7eb'}}>
                           <td style={{padding: '10px 12px', color: '#374151'}}>{t}</td>
@@ -226,7 +226,7 @@ export default function ArticleSaisieSalaire() {
                 </div>
                 <div style={{background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '10px', padding: '1rem 1.25rem', margin: '1rem 0'}}>
                   <p style={{color: '#1e3a5f', fontSize: '13px', lineHeight: '1.7', margin: 0}}>
-                    <strong>Majoration :</strong> une majoration de <strong>143,33 € par personne à charge</strong> s'ajoute à chaque tranche, ce qui réduit le montant saisissable. À noter dans les entreprises de plus de 10 salariés : la part soumise à CSG-CRDS est également assujettie à la taxe sur les salaires.
+                    <strong>Majoration :</strong> une majoration de <strong>143,33 € par personne à charge</strong> s'ajoute à chaque tranche, ce qui réduit le montant saisissable. À noter dans les entreprises de plus de 10 salariés : la part soumise à CSG-CRDS est également assujettie à la taxe sur les salaires.
                   </p>
                 </div>
               </section>
@@ -258,6 +258,30 @@ export default function ArticleSaisieSalaire() {
                   <li>Les <strong>dettes fiscales</strong> sont recouvrées par le biais d'un avis à tiers détenteur (ATD)</li>
                 </ul>
                 <p style={{marginBottom: '1rem'}}>Bien que la procédure soit simplifiée, le débiteur a toujours un droit de contestation. S'il estime que la saisie est irrégulière, il peut saisir le <strong>juge de l'exécution</strong>. Un avocat spécialisé peut analyser la situation et mettre en œuvre les recours appropriés.</p>
+                <div style={{background: '#fffaf0', border: '1px solid #f0d488', borderLeft: '4px solid #d4a017', borderRadius: '12px', padding: '1.1rem 1.25rem', margin: '1.5rem 0'}}>
+                  <span style={{display: 'inline-block', background: '#d4a017', color: 'white', fontSize: '10px', fontWeight: '700', letterSpacing: '0.05em', padding: '3px 9px', borderRadius: '20px', marginBottom: '8px'}}>MODÈLE PRÊT À L'EMPLOI</span>
+                  <p style={{color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: '0 0 4px'}}>Contestation d'une saisie sur rémunération</p>
+                  <p style={{color: '#6b7280', fontSize: '13px', lineHeight: '1.6', margin: '0 0 12px'}}>Saisie irrégulière, quotité mal calculée, dette contestable ? Notre modèle expose vos moyens et prépare votre saisine du juge de l'exécution.</p>
+                  <div style={{display: 'flex', gap: '14px', flexWrap: 'wrap', alignItems: 'center'}}>
+                    <a href="/catalogue/modele-lettre-contestation-saisie-remuneration" style={{display: 'inline-block', background: '#0f2d6e', color: 'white', fontSize: '12px', fontWeight: '700', padding: '8px 16px', borderRadius: '8px', textDecoration: 'none'}}>Voir le modèle →</a>
+                    <span style={{color: '#6b7280', fontSize: '12px'}}>ou <a href="/information-sur-vos-droits" style={{color: '#b8860b', fontWeight: 600, textDecoration: 'none'}}>faites le point sur vos droits</a></span>
+                  </div>
+                </div>
+                <div style={{background: '#fffaf0', border: '1px solid #f0d488', borderLeft: '4px solid #d4a017', borderRadius: '12px', padding: '1.1rem 1.25rem', margin: '1.5rem 0'}}>
+                  <span style={{display: 'inline-block', background: '#d4a017', color: 'white', fontSize: '10px', fontWeight: '700', letterSpacing: '0.05em', padding: '3px 9px', borderRadius: '20px', marginBottom: '8px'}}>MODÈLE PRÊT À L'EMPLOI</span>
+                  <p style={{color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: '0 0 4px'}}>Demande de délais de paiement</p>
+                  <p style={{color: '#6b7280', fontSize: '13px', lineHeight: '1.6', margin: '0 0 12px'}}>Pour éviter ou suspendre une saisie, notre modèle sollicite des délais auprès du créancier ou du juge, en motivant votre situation.</p>
+                  <div style={{display: 'flex', gap: '14px', flexWrap: 'wrap', alignItems: 'center'}}>
+                    <a href="/catalogue/modele-demande-delais-de-paiement" style={{display: 'inline-block', background: '#0f2d6e', color: 'white', fontSize: '12px', fontWeight: '700', padding: '8px 16px', borderRadius: '8px', textDecoration: 'none'}}>Voir le modèle →</a>
+                    <span style={{color: '#6b7280', fontSize: '12px'}}>ou <a href="/information-sur-vos-droits" style={{color: '#b8860b', fontWeight: 600, textDecoration: 'none'}}>faites le point sur vos droits</a></span>
+                  </div>
+                </div>
+                <div style={{background: '#eef5ff', border: '1px solid #bcd4f6', borderLeft: '4px solid #1a4fba', borderRadius: '12px', padding: '1.1rem 1.25rem', margin: '1.5rem 0'}}>
+                  <span style={{display: 'inline-block', background: '#1a4fba', color: 'white', fontSize: '10px', fontWeight: '700', letterSpacing: '0.05em', padding: '3px 9px', borderRadius: '20px', marginBottom: '8px'}}>ASSURANCE</span>
+                  <p style={{color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: '0 0 4px'}}>Protection juridique</p>
+                  <p style={{color: '#1e3a5f', fontSize: '13px', lineHeight: '1.6', margin: '0 0 12px'}}>De nombreux contrats incluent une protection juridique qui prend en charge les frais d'un litige et l'accompagnement de la procédure. En courtier, le cabinet vérifie si vous êtes déjà couvert.</p>
+                  <a href="/conseil-assurances" style={{display: 'inline-block', background: '#1a4fba', color: 'white', fontSize: '12px', fontWeight: '700', padding: '8px 16px', borderRadius: '8px', textDecoration: 'none'}}>Voir notre conseil en assurances →</a>
+                </div>
               </section>
 
               <section id="simulateur">
@@ -278,7 +302,7 @@ export default function ArticleSaisieSalaire() {
                       <span>Quelle est la part insaisissable du salaire en 2025 ?</span>
                       <span style={{color: '#1a4fba', fontSize: '18px', flexShrink: 0, lineHeight: 1}}>＋</span>
                     </summary>
-                    <p style={{color: '#374151', fontSize: '13px', lineHeight: '1.75', marginTop: '12px', marginBottom: 0}}>La part insaisissable correspond au montant du RSA pour une personne seule, soit 646,52 € en 2025. Cette somme doit impérativement rester au débiteur. Une majoration de 143,33 € par personne à charge s'y ajoute.</p>
+                    <p style={{color: '#374151', fontSize: '13px', lineHeight: '1.75', marginTop: '12px', marginBottom: 0}}>La part insaisissable correspond au montant du RSA pour une personne seule, soit 646,52 € en 2025. Cette somme doit impérativement rester au débiteur. Une majoration de 143,33 € par personne à charge s'y ajoute.</p>
                   </details>
                   <details key={1} style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '10px', padding: '1rem 1.25rem'}}>
                     <summary style={{fontWeight: '600', color: '#0f2d6e', fontSize: '14px', cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '12px'}}>
@@ -334,7 +358,7 @@ export default function ArticleSaisieSalaire() {
 
             <div style={{background: '#0f2d6e', borderRadius: '12px', padding: '1.25rem'}}>
               <p style={{color: 'white', fontSize: '13px', fontWeight: '700', margin: '0 0 8px'}}>Une question juridique ?</p>
-              <p style={{color: 'rgba(255,255,255,0.8)', fontSize: '12px', lineHeight: '1.6', margin: '0 0 10px'}}>Un juriste vous répond par écrit sous 24 à 48h. 47 € à l'unité, sans abonnement.</p>
+              <p style={{color: 'rgba(255,255,255,0.8)', fontSize: '12px', lineHeight: '1.6', margin: '0 0 10px'}}>Un juriste vous répond par écrit sous 24 à 48h. 47 € à l'unité, sans abonnement.</p>
               <p style={{color: 'rgba(255,255,255,0.6)', fontSize: '11px', lineHeight: '1.6', margin: '0 0 14px', fontStyle: 'italic'}}>Ce service constitue une information juridique au sens de la loi n°71-1130 du 31 décembre 1971 et ne constitue pas une consultation juridique personnalisée. La réponse apportée vous permettra de mieux comprendre vos droits, d'identifier les règles juridiques applicables à votre situation et de prendre vos décisions en toute connaissance de cause. Le cas échéant, vous serez orienté vers le professionnel du droit compétent.</p>
               <a href="/information-sur-vos-droits" style={{display: 'block', background: 'white', color: '#0f2d6e', padding: '10px', borderRadius: '8px', fontSize: '12px', fontWeight: '700', textDecoration: 'none', textAlign: 'center'}}>
                 Poser ma question →
