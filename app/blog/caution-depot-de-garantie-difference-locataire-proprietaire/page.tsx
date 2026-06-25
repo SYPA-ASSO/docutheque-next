@@ -233,6 +233,24 @@ export default function ArticleCaution() {
                     <li><strong>Caution solidaire :</strong> le bailleur peut demander directement le paiement à la caution, dès le premier impayé, sans avoir à poursuivre d'abord le locataire. C'est la forme la plus courante dans les baux actuels et la plus protectrice pour le bailleur.</li>
                   </ul>
                 </section>
+                <div style={{background: '#fffaf0', border: '1px solid #f0d488', borderLeft: '4px solid #d4a017', borderRadius: '12px', padding: '1.1rem 1.25rem', margin: '1.5rem 0'}}>
+                  <span style={{display: 'inline-block', background: '#d4a017', color: 'white', fontSize: '10px', fontWeight: '700', letterSpacing: '0.05em', padding: '3px 9px', borderRadius: '20px', marginBottom: '8px'}}>MODÈLE PRÊT À L'EMPLOI</span>
+                  <p style={{color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: '0 0 4px'}}>Acte de cautionnement (simple ou solidaire)</p>
+                  <p style={{color: '#6b7280', fontSize: '13px', lineHeight: '1.6', margin: '0 0 12px'}}>L'engagement du garant, à jour des mentions obligatoires : montant en lettres et en chiffres, durée, et reproduction de l'avant-dernier alinéa de l'article 22-1 de la loi de 1989. Conditions de sa validité.</p>
+                  <div style={{display: 'flex', gap: '14px', flexWrap: 'wrap', alignItems: 'center'}}>
+                    <a href="/catalogue/modele-acte-cautionnement-solidaire-location" style={{display: 'inline-block', background: '#0f2d6e', color: 'white', fontSize: '12px', fontWeight: '700', padding: '8px 16px', borderRadius: '8px', textDecoration: 'none'}}>Voir le modèle →</a>
+                    <span style={{color: '#6b7280', fontSize: '12px'}}>ou dans le <a href="/catalogue/pack-proprietaire-bailleur" style={{color: '#b8860b', fontWeight: 600, textDecoration: 'none'}}>pack Propriétaire</a></span>
+                  </div>
+                </div>
+                <div style={{background: '#fffaf0', border: '1px solid #f0d488', borderLeft: '4px solid #d4a017', borderRadius: '12px', padding: '1.1rem 1.25rem', margin: '1.5rem 0'}}>
+                  <span style={{display: 'inline-block', background: '#d4a017', color: 'white', fontSize: '10px', fontWeight: '700', letterSpacing: '0.05em', padding: '3px 9px', borderRadius: '20px', marginBottom: '8px'}}>MODÈLE PRÊT À L'EMPLOI</span>
+                  <p style={{color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: '0 0 4px'}}>Résiliation d'un engagement de caution</p>
+                  <p style={{color: '#6b7280', fontSize: '13px', lineHeight: '1.6', margin: '0 0 12px'}}>Caution à durée indéterminée ? Notre modèle notifie la résiliation au bailleur ; elle prend effet au terme du bail en cours.</p>
+                  <div style={{display: 'flex', gap: '14px', flexWrap: 'wrap', alignItems: 'center'}}>
+                    <a href="/catalogue/modele-lettre-resiliation-engagement-caution" style={{display: 'inline-block', background: '#0f2d6e', color: 'white', fontSize: '12px', fontWeight: '700', padding: '8px 16px', borderRadius: '8px', textDecoration: 'none'}}>Voir le modèle →</a>
+                    <span style={{color: '#6b7280', fontSize: '12px'}}>ou dans le <a href="/catalogue/pack-proprietaire-bailleur" style={{color: '#b8860b', fontWeight: 600, textDecoration: 'none'}}>pack Propriétaire</a></span>
+                  </div>
+                </div>
               </section>
 
               <section id="cumul">
@@ -245,6 +263,12 @@ export default function ArticleCaution() {
                   <li>La caution sécurise les paiements <strong>pendant toute la durée</strong> de la location</li>
                 </ul>
                 <p style={{marginBottom: '1rem'}}>Cependant, certains dispositifs spécifiques peuvent limiter ce cumul (ex. : garantie Visale). Il est toujours conseillé de vérifier la situation précise du bail.</p>
+                <div style={{background: '#eef5ff', border: '1px solid #bcd4f6', borderLeft: '4px solid #1a4fba', borderRadius: '12px', padding: '1.1rem 1.25rem', margin: '1.5rem 0'}}>
+                  <span style={{display: 'inline-block', background: '#1a4fba', color: 'white', fontSize: '10px', fontWeight: '700', letterSpacing: '0.05em', padding: '3px 9px', borderRadius: '20px', marginBottom: '8px'}}>ASSURANCE</span>
+                  <p style={{color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: '0 0 4px'}}>Visale et assurance loyers impayés (GLI)</p>
+                  <p style={{color: '#1e3a5f', fontSize: '13px', lineHeight: '1.6', margin: '0 0 12px'}}>Plutôt qu'un garant, le bailleur peut s'appuyer sur la garantie Visale (Action Logement, gratuite) ou sur une assurance loyers impayés. Attention au non-cumul avec une caution, sauf locataire étudiant ou apprenti. En courtier, le cabinet compare et vous oriente.</p>
+                  <a href="/conseil-assurances" style={{display: 'inline-block', background: '#1a4fba', color: 'white', fontSize: '12px', fontWeight: '700', padding: '8px 16px', borderRadius: '8px', textDecoration: 'none'}}>Voir notre conseil en assurances →</a>
+                </div>
               </section>
 
               <section id="confusion">
@@ -337,7 +361,7 @@ export default function ArticleCaution() {
 
             <div style={{background: '#0f2d6e', borderRadius: '12px', padding: '1.25rem'}}>
               <p style={{color: 'white', fontSize: '13px', fontWeight: '700', margin: '0 0 8px'}}>Une question juridique ?</p>
-              <p style={{color: 'rgba(255,255,255,0.8)', fontSize: '12px', lineHeight: '1.6', margin: '0 0 10px'}}>Un juriste vous répond par écrit sous 24 à 48h. 47 € à l'unité, sans abonnement.</p>
+              <p style={{color: 'rgba(255,255,255,0.8)', fontSize: '12px', lineHeight: '1.6', margin: '0 0 10px'}}>Un juriste vous répond par écrit sous 24 à 48h. 47 € à l'unité, sans abonnement.</p>
               <p style={{color: 'rgba(255,255,255,0.6)', fontSize: '11px', lineHeight: '1.6', margin: '0 0 14px', fontStyle: 'italic'}}>Ce service constitue une information juridique au sens de la loi n°71-1130 du 31 décembre 1971 et ne constitue pas une consultation juridique personnalisée. La réponse apportée vous permettra de mieux comprendre vos droits, d'identifier les règles juridiques applicables à votre situation et de prendre vos décisions en toute connaissance de cause. Le cas échéant, vous serez orienté vers le professionnel du droit compétent.</p>
               <a href="/information-sur-vos-droits" style={{display: 'block', background: 'white', color: '#0f2d6e', padding: '10px', borderRadius: '8px', fontSize: '12px', fontWeight: '700', textDecoration: 'none', textAlign: 'center'}}>
                 Poser ma question →
