@@ -261,6 +261,39 @@ export default function ArticleResponsabiliteDirigeantsBenevoles() {
                   <li><strong>Agir dans les délais</strong>, notamment pour les déclarations et, le cas échéant, en cas de cessation des paiements.</li>
                   <li><strong>Formaliser les délégations de pouvoir</strong> par écrit, en confiant à chacun des moyens à la hauteur de ses responsabilités.</li>
                 </ul>
+                <div style={{background: '#fffaf0', border: '1px solid #f0d488', borderLeft: '4px solid #d4a017', borderRadius: '12px', padding: '1.1rem 1.25rem', margin: '1.5rem 0'}}>
+                  <span style={{display: 'inline-block', background: '#d4a017', color: 'white', fontSize: '10px', fontWeight: '700', letterSpacing: '0.05em', padding: '3px 9px', borderRadius: '20px', marginBottom: '8px'}}>MODÈLE PRÊT À L'EMPLOI</span>
+                  <p style={{color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: '0 0 4px'}}>Procès-verbal de conseil d'administration</p>
+                  <p style={{color: '#6b7280', fontSize: '13px', lineHeight: '1.6', margin: '0 0 12px'}}>Documentez vos décisions : un PV de conseil (ou d'assemblée) daté et signé constitue la preuve d'une gestion diligente, votre meilleure protection.</p>
+                  <div style={{display: 'flex', gap: '14px', flexWrap: 'wrap', alignItems: 'center'}}>
+                    <a href="/catalogue/modele-proces-verbal-conseil-administration" style={{display: 'inline-block', background: '#0f2d6e', color: 'white', fontSize: '12px', fontWeight: '700', padding: '8px 16px', borderRadius: '8px', textDecoration: 'none'}}>Voir le modèle →</a>
+                    <span style={{color: '#6b7280', fontSize: '12px'}}>ou dans le <a href="/catalogue/pack-gouvernance-association" style={{color: '#b8860b', fontWeight: 600, textDecoration: 'none'}}>pack Gouvernance d'association</a></span>
+                  </div>
+                </div>
+                <div style={{background: '#fffaf0', border: '1px solid #f0d488', borderLeft: '4px solid #d4a017', borderRadius: '12px', padding: '1.1rem 1.25rem', margin: '1.5rem 0'}}>
+                  <span style={{display: 'inline-block', background: '#d4a017', color: 'white', fontSize: '10px', fontWeight: '700', letterSpacing: '0.05em', padding: '3px 9px', borderRadius: '20px', marginBottom: '8px'}}>MODÈLE PRÊT À L'EMPLOI</span>
+                  <p style={{color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: '0 0 4px'}}>Délégation de pouvoirs</p>
+                  <p style={{color: '#6b7280', fontSize: '13px', lineHeight: '1.6', margin: '0 0 12px'}}>Pour transférer valablement une partie de la responsabilité, notre modèle précise le périmètre, l'autorité et les moyens confiés au délégataire, conditions de sa validité.</p>
+                  <div style={{display: 'flex', gap: '14px', flexWrap: 'wrap', alignItems: 'center'}}>
+                    <a href="/catalogue/modele-delegation-de-pouvoirs-association" style={{display: 'inline-block', background: '#0f2d6e', color: 'white', fontSize: '12px', fontWeight: '700', padding: '8px 16px', borderRadius: '8px', textDecoration: 'none'}}>Voir le modèle →</a>
+                    <span style={{color: '#6b7280', fontSize: '12px'}}>ou dans le <a href="/catalogue/pack-gouvernance-association" style={{color: '#b8860b', fontWeight: 600, textDecoration: 'none'}}>pack Gouvernance d'association</a></span>
+                  </div>
+                </div>
+                <div style={{background: '#fffaf0', border: '1px solid #f0d488', borderLeft: '4px solid #d4a017', borderRadius: '12px', padding: '1.1rem 1.25rem', margin: '1.5rem 0'}}>
+                  <span style={{display: 'inline-block', background: '#d4a017', color: 'white', fontSize: '10px', fontWeight: '700', letterSpacing: '0.05em', padding: '3px 9px', borderRadius: '20px', marginBottom: '8px'}}>MODÈLE PRÊT À L'EMPLOI</span>
+                  <p style={{color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: '0 0 4px'}}>Quitus et décharge des dirigeants</p>
+                  <p style={{color: '#6b7280', fontSize: '13px', lineHeight: '1.6', margin: '0 0 12px'}}>À chaque exercice, faites approuver la gestion par l'assemblée : notre modèle de procès-verbal de quitus et de décharge sécurise les dirigeants sortants comme en place.</p>
+                  <div style={{display: 'flex', gap: '14px', flexWrap: 'wrap', alignItems: 'center'}}>
+                    <a href="/catalogue/modele-pv-quitus-decharge-dirigeants" style={{display: 'inline-block', background: '#0f2d6e', color: 'white', fontSize: '12px', fontWeight: '700', padding: '8px 16px', borderRadius: '8px', textDecoration: 'none'}}>Voir le modèle →</a>
+                    <span style={{color: '#6b7280', fontSize: '12px'}}>ou dans le <a href="/catalogue/pack-gouvernance-association" style={{color: '#b8860b', fontWeight: 600, textDecoration: 'none'}}>pack Gouvernance d'association</a></span>
+                  </div>
+                </div>
+                <div style={{background: 'linear-gradient(135deg, #fff8e6, #fbe7bd)', border: '1px solid #eaca72', borderRadius: '12px', padding: '1.25rem', margin: '1.5rem 0'}}>
+                  <span style={{display: 'inline-block', background: '#b8860b', color: 'white', fontSize: '10px', fontWeight: '700', letterSpacing: '0.05em', padding: '3px 9px', borderRadius: '20px', marginBottom: '8px'}}>PACK COMPLET · PRIX GROUPÉ</span>
+                  <p style={{color: '#0f2d6e', fontSize: '15px', fontWeight: '700', margin: '0 0 4px'}}>Pack Gouvernance d'association</p>
+                  <p style={{color: '#78350f', fontSize: '13px', lineHeight: '1.6', margin: '0 0 12px'}}>Les actes qui sécurisent vos dirigeants, réunis et à prix groupé : procès-verbal de conseil d'administration, procès-verbal d'assemblée générale ordinaire, quitus et décharge, et délégation de pouvoirs.</p>
+                  <a href="/catalogue/pack-gouvernance-association" style={{display: 'inline-block', background: '#b8860b', color: 'white', fontSize: '12px', fontWeight: '700', padding: '9px 18px', borderRadius: '8px', textDecoration: 'none'}}>Découvrir le pack Gouvernance →</a>
+                </div>
               </section>
 
               <section id="assurance">
@@ -269,6 +302,12 @@ export default function ArticleResponsabiliteDirigeantsBenevoles() {
                 </h2>
                 <p style={{marginBottom: '1rem'}}>Au-delà des bonnes pratiques, l'assurance constitue un filet de sécurité souvent méconnu. Une <strong>assurance responsabilité civile des dirigeants</strong> (ou des mandataires sociaux d'association) peut prendre en charge les <strong>frais de défense</strong> et les <strong>condamnations civiles personnelles</strong> du dirigeant, distinctement de l'assurance responsabilité civile de l'association elle-même.</p>
                 <p style={{marginBottom: '1rem'}}>Ce point est d'autant plus important que, dans certaines situations, le liquidateur peut agir <strong>directement contre l'assureur</strong> du dirigeant. Encore faut-il que le contrat soit réellement adapté à la nature de l'association, à ses activités et à ses risques. C'est précisément là qu'un regard de spécialiste, à la fois juridique et assurantiel, fait la différence : bien identifier l'exposition, puis bien couvrir.</p>
+                <div style={{background: '#eef5ff', border: '1px solid #bcd4f6', borderLeft: '4px solid #1a4fba', borderRadius: '12px', padding: '1.1rem 1.25rem', margin: '1.5rem 0'}}>
+                  <span style={{display: 'inline-block', background: '#1a4fba', color: 'white', fontSize: '10px', fontWeight: '700', letterSpacing: '0.05em', padding: '3px 9px', borderRadius: '20px', marginBottom: '8px'}}>ASSURANCE</span>
+                  <p style={{color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: '0 0 4px'}}>Responsabilité civile des dirigeants</p>
+                  <p style={{color: '#1e3a5f', fontSize: '13px', lineHeight: '1.6', margin: '0 0 12px'}}>Distincte de la RC de l'association, elle prend en charge les frais de défense et les condamnations civiles personnelles du dirigeant, y compris en cas d'action du liquidateur. En courtier, le cabinet vérifie votre couverture et l'adapte à vos activités et à vos risques.</p>
+                  <a href="/conseil-assurances" style={{display: 'inline-block', background: '#1a4fba', color: 'white', fontSize: '12px', fontWeight: '700', padding: '8px 16px', borderRadius: '8px', textDecoration: 'none'}}>Voir notre conseil en assurances →</a>
+                </div>
                 <div style={{background: '#0f2d6e', borderRadius: '12px', padding: '1.5rem', margin: '1.5rem 0'}}>
                   <p style={{color: 'white', fontSize: '15px', fontWeight: '700', margin: '0 0 8px'}}>Sécuriser vos dirigeants et votre association</p>
                   <p style={{color: 'rgba(255,255,255,0.85)', fontSize: '13px', lineHeight: '1.7', margin: '0 0 14px'}}>

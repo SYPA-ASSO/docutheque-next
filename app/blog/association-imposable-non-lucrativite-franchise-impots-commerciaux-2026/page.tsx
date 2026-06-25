@@ -280,6 +280,30 @@ export default function ArticleAssociationFiscalite2026() {
                 </h2>
                 <p style={{marginBottom: '1rem'}}>La frontière entre lucratif et non lucratif n'est pas toujours intuitive, et les conséquences d'une erreur peuvent être lourdes : redressement, perte de l'exonération, voire requalification de l'ensemble des activités. Pour un dirigeant bénévole, souvent seul face à ces questions, l'enjeu est de bâtir une gestion claire et documentée, et d'anticiper plutôt que de subir.</p>
                 <p style={{marginBottom: '1rem'}}>C'est précisément l'objet de l'accompagnement du cabinet auprès des associations et des acteurs de l'économie sociale et solidaire : clarifier votre situation au regard de la non-lucrativité, sécuriser vos statuts et votre gouvernance, et vous aider sur vos obligations déclaratives et vos demandes de subvention.</p>
+                <div style={{background: '#fffaf0', border: '1px solid #f0d488', borderLeft: '4px solid #d4a017', borderRadius: '12px', padding: '1.1rem 1.25rem', margin: '1.5rem 0'}}>
+                  <span style={{display: 'inline-block', background: '#d4a017', color: 'white', fontSize: '10px', fontWeight: '700', letterSpacing: '0.05em', padding: '3px 9px', borderRadius: '20px', marginBottom: '8px'}}>MODÈLE PRÊT À L'EMPLOI</span>
+                  <p style={{color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: '0 0 4px'}}>Demande de rescrit fiscal (non-lucrativité)</p>
+                  <p style={{color: '#6b7280', fontSize: '13px', lineHeight: '1.6', margin: '0 0 12px'}}>Sécurisez votre régime une bonne fois : notre modèle expose vos activités et votre gestion désintéressée et demande à l'administration de confirmer votre non-lucrativité. La réponse vous est opposable.</p>
+                  <div style={{display: 'flex', gap: '14px', flexWrap: 'wrap', alignItems: 'center'}}>
+                    <a href="/catalogue/modele-demande-rescrit-fiscal-non-lucrativite" style={{display: 'inline-block', background: '#0f2d6e', color: 'white', fontSize: '12px', fontWeight: '700', padding: '8px 16px', borderRadius: '8px', textDecoration: 'none'}}>Voir le modèle →</a>
+                    <span style={{color: '#6b7280', fontSize: '12px'}}>ou dans le <a href="/catalogue/pack-fiscalite-association" style={{color: '#b8860b', fontWeight: 600, textDecoration: 'none'}}>pack Fiscalité d'association</a></span>
+                  </div>
+                </div>
+                <div style={{background: '#fffaf0', border: '1px solid #f0d488', borderLeft: '4px solid #d4a017', borderRadius: '12px', padding: '1.1rem 1.25rem', margin: '1.5rem 0'}}>
+                  <span style={{display: 'inline-block', background: '#d4a017', color: 'white', fontSize: '10px', fontWeight: '700', letterSpacing: '0.05em', padding: '3px 9px', borderRadius: '20px', marginBottom: '8px'}}>MODÈLE PRÊT À L'EMPLOI</span>
+                  <p style={{color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: '0 0 4px'}}>Clauses de non-lucrativité et de désintéressement</p>
+                  <p style={{color: '#6b7280', fontSize: '13px', lineHeight: '1.6', margin: '0 0 12px'}}>À intégrer à vos statuts : nos clauses types verrouillent la gestion désintéressée, l'absence de distribution des bénéfices et la dévolution désintéressée des biens, socle de votre non-lucrativité.</p>
+                  <div style={{display: 'flex', gap: '14px', flexWrap: 'wrap', alignItems: 'center'}}>
+                    <a href="/catalogue/modele-clauses-statutaires-non-lucrativite-desinteressement" style={{display: 'inline-block', background: '#0f2d6e', color: 'white', fontSize: '12px', fontWeight: '700', padding: '8px 16px', borderRadius: '8px', textDecoration: 'none'}}>Voir le modèle →</a>
+                    <span style={{color: '#6b7280', fontSize: '12px'}}>ou dans le <a href="/catalogue/pack-fiscalite-association" style={{color: '#b8860b', fontWeight: 600, textDecoration: 'none'}}>pack Fiscalité d'association</a></span>
+                  </div>
+                </div>
+                <div style={{background: 'linear-gradient(135deg, #fff8e6, #fbe7bd)', border: '1px solid #eaca72', borderRadius: '12px', padding: '1.25rem', margin: '1.5rem 0'}}>
+                  <span style={{display: 'inline-block', background: '#b8860b', color: 'white', fontSize: '10px', fontWeight: '700', letterSpacing: '0.05em', padding: '3px 9px', borderRadius: '20px', marginBottom: '8px'}}>PACK COMPLET · PRIX GROUPÉ</span>
+                  <p style={{color: '#0f2d6e', fontSize: '15px', fontWeight: '700', margin: '0 0 4px'}}>Pack Fiscalité d'association</p>
+                  <p style={{color: '#78350f', fontSize: '13px', lineHeight: '1.6', margin: '0 0 12px'}}>Pour sécuriser votre non-lucrativité et vos activités accessoires, réuni et à prix groupé : demande de rescrit fiscal, clauses de non-lucrativité et de désintéressement, et check-list de sectorisation.</p>
+                  <a href="/catalogue/pack-fiscalite-association" style={{display: 'inline-block', background: '#b8860b', color: 'white', fontSize: '12px', fontWeight: '700', padding: '9px 18px', borderRadius: '8px', textDecoration: 'none'}}>Découvrir le pack Fiscalité d'association →</a>
+                </div>
                 <div style={{background: '#0f2d6e', borderRadius: '12px', padding: '1.5rem', margin: '1.5rem 0'}}>
                   <p style={{color: 'white', fontSize: '15px', fontWeight: '700', margin: '0 0 8px'}}>Sécuriser la gestion de votre association</p>
                   <p style={{color: 'rgba(255,255,255,0.85)', fontSize: '13px', lineHeight: '1.7', margin: '0 0 14px'}}>

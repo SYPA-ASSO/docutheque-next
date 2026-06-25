@@ -226,10 +226,23 @@ export default function ArticleCreerAssociation1901_2026() {
                   <li>Les <strong>règles de fonctionnement</strong> : conditions d'adhésion et de perte de la qualité de membre, organes de direction (bureau, conseil d'administration), modalités de convocation et de décision des assemblées générales, règles de modification des statuts, et conditions de dissolution avec dévolution des biens.</li>
                 </ul>
                 <p style={{marginBottom: '1rem'}}>Un <strong>règlement intérieur</strong>, facultatif, peut compléter les statuts pour les détails pratiques (horaires, fonctionnement interne), plus faciles à modifier. Pour partir sur des bases solides, mieux vaut s'appuyer sur des modèles éprouvés et les adapter à votre projet, plutôt que de recopier un modèle générique qui oublie souvent des mentions importantes.</p>
-                <div style={{background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '10px', padding: '1rem 1.25rem', margin: '1rem 0'}}>
-                  <p style={{color: '#1e3a5f', fontSize: '13px', lineHeight: '1.7', margin: 0}}>
-                    Le cabinet met à disposition des <strong>modèles de statuts</strong>, de <strong>procès-verbal d'assemblée constitutive</strong> et de <strong>règlement intérieur</strong>, à personnaliser, dans son <a href="/catalogue" style={{color: '#1a4fba', fontWeight: 600, textDecoration: 'none'}}>catalogue de documents</a>.
-                  </p>
+                <div style={{background: '#fffaf0', border: '1px solid #f0d488', borderLeft: '4px solid #d4a017', borderRadius: '12px', padding: '1.1rem 1.25rem', margin: '1.5rem 0'}}>
+                  <span style={{display: 'inline-block', background: '#d4a017', color: 'white', fontSize: '10px', fontWeight: '700', letterSpacing: '0.05em', padding: '3px 9px', borderRadius: '20px', marginBottom: '8px'}}>MODÈLE PRÊT À L'EMPLOI</span>
+                  <p style={{color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: '0 0 4px'}}>Statuts d'association loi 1901</p>
+                  <p style={{color: '#6b7280', fontSize: '13px', lineHeight: '1.6', margin: '0 0 12px'}}>La colonne vertébrale de votre association : dénomination, objet, siège, organes, assemblées, modification, dissolution. Notre modèle évite les mentions oubliées qui font rejeter un dossier.</p>
+                  <div style={{display: 'flex', gap: '14px', flexWrap: 'wrap', alignItems: 'center'}}>
+                    <a href="/catalogue/modele-statuts-association-loi-1901" style={{display: 'inline-block', background: '#0f2d6e', color: 'white', fontSize: '12px', fontWeight: '700', padding: '8px 16px', borderRadius: '8px', textDecoration: 'none'}}>Voir le modèle →</a>
+                    <span style={{color: '#6b7280', fontSize: '12px'}}>ou dans le <a href="/catalogue/pack-creation-association" style={{color: '#b8860b', fontWeight: 600, textDecoration: 'none'}}>pack Création d'association</a></span>
+                  </div>
+                </div>
+                <div style={{background: '#fffaf0', border: '1px solid #f0d488', borderLeft: '4px solid #d4a017', borderRadius: '12px', padding: '1.1rem 1.25rem', margin: '1.5rem 0'}}>
+                  <span style={{display: 'inline-block', background: '#d4a017', color: 'white', fontSize: '10px', fontWeight: '700', letterSpacing: '0.05em', padding: '3px 9px', borderRadius: '20px', marginBottom: '8px'}}>MODÈLE PRÊT À L'EMPLOI</span>
+                  <p style={{color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: '0 0 4px'}}>Règlement intérieur d'association</p>
+                  <p style={{color: '#6b7280', fontSize: '13px', lineHeight: '1.6', margin: '0 0 12px'}}>Pour compléter les statuts sur les détails pratiques (cotisations, fonctionnement interne), plus faciles à faire évoluer. Notre modèle s'adapte à votre projet.</p>
+                  <div style={{display: 'flex', gap: '14px', flexWrap: 'wrap', alignItems: 'center'}}>
+                    <a href="/catalogue/modele-reglement-interieur-association" style={{display: 'inline-block', background: '#0f2d6e', color: 'white', fontSize: '12px', fontWeight: '700', padding: '8px 16px', borderRadius: '8px', textDecoration: 'none'}}>Voir le modèle →</a>
+                    <span style={{color: '#6b7280', fontSize: '12px'}}>ou dans le <a href="/catalogue/pack-creation-association" style={{color: '#b8860b', fontWeight: 600, textDecoration: 'none'}}>pack Création d'association</a></span>
+                  </div>
                 </div>
               </section>
 
@@ -244,6 +257,30 @@ export default function ArticleCreerAssociation1901_2026() {
                   <li><strong>Le procès-verbal.</strong> Rédigez un procès-verbal de l'assemblée constitutive, indiquant la date, les participants et les décisions prises (adoption des statuts, élection des dirigeants). Il sera demandé lors de la déclaration.</li>
                 </ul>
                 <p style={{marginBottom: '1rem'}}>Pensez aussi à établir et à conserver la <strong>liste des adhérents</strong> présents. Selon les statuts, un premier conseil d'administration peut suivre pour désigner le bureau.</p>
+                <div style={{background: '#fffaf0', border: '1px solid #f0d488', borderLeft: '4px solid #d4a017', borderRadius: '12px', padding: '1.1rem 1.25rem', margin: '1.5rem 0'}}>
+                  <span style={{display: 'inline-block', background: '#d4a017', color: 'white', fontSize: '10px', fontWeight: '700', letterSpacing: '0.05em', padding: '3px 9px', borderRadius: '20px', marginBottom: '8px'}}>MODÈLE PRÊT À L'EMPLOI</span>
+                  <p style={{color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: '0 0 4px'}}>PV d'assemblée générale constitutive</p>
+                  <p style={{color: '#6b7280', fontSize: '13px', lineHeight: '1.6', margin: '0 0 12px'}}>Date, participants, adoption des statuts, élection des dirigeants : un procès-verbal constitutif complet, qui vous sera demandé lors de la déclaration.</p>
+                  <div style={{display: 'flex', gap: '14px', flexWrap: 'wrap', alignItems: 'center'}}>
+                    <a href="/catalogue/modele-proces-verbal-assemblee-constitutive" style={{display: 'inline-block', background: '#0f2d6e', color: 'white', fontSize: '12px', fontWeight: '700', padding: '8px 16px', borderRadius: '8px', textDecoration: 'none'}}>Voir le modèle →</a>
+                    <span style={{color: '#6b7280', fontSize: '12px'}}>ou dans le <a href="/catalogue/pack-creation-association" style={{color: '#b8860b', fontWeight: 600, textDecoration: 'none'}}>pack Création d'association</a></span>
+                  </div>
+                </div>
+                <div style={{background: '#fffaf0', border: '1px solid #f0d488', borderLeft: '4px solid #d4a017', borderRadius: '12px', padding: '1.1rem 1.25rem', margin: '1.5rem 0'}}>
+                  <span style={{display: 'inline-block', background: '#d4a017', color: 'white', fontSize: '10px', fontWeight: '700', letterSpacing: '0.05em', padding: '3px 9px', borderRadius: '20px', marginBottom: '8px'}}>MODÈLE PRÊT À L'EMPLOI</span>
+                  <p style={{color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: '0 0 4px'}}>Liste des dirigeants</p>
+                  <p style={{color: '#6b7280', fontSize: '13px', lineHeight: '1.6', margin: '0 0 12px'}}>Nom, prénom, date et lieu de naissance, domicile, nationalité, fonction : la liste exigée par le greffe, prête à compléter.</p>
+                  <div style={{display: 'flex', gap: '14px', flexWrap: 'wrap', alignItems: 'center'}}>
+                    <a href="/catalogue/modele-liste-des-dirigeants-association" style={{display: 'inline-block', background: '#0f2d6e', color: 'white', fontSize: '12px', fontWeight: '700', padding: '8px 16px', borderRadius: '8px', textDecoration: 'none'}}>Voir le modèle →</a>
+                    <span style={{color: '#6b7280', fontSize: '12px'}}>ou dans le <a href="/catalogue/pack-creation-association" style={{color: '#b8860b', fontWeight: 600, textDecoration: 'none'}}>pack Création d'association</a></span>
+                  </div>
+                </div>
+                <div style={{background: 'linear-gradient(135deg, #fff8e6, #fbe7bd)', border: '1px solid #eaca72', borderRadius: '12px', padding: '1.25rem', margin: '1.5rem 0'}}>
+                  <span style={{display: 'inline-block', background: '#b8860b', color: 'white', fontSize: '10px', fontWeight: '700', letterSpacing: '0.05em', padding: '3px 9px', borderRadius: '20px', marginBottom: '8px'}}>PACK COMPLET · PRIX GROUPÉ</span>
+                  <p style={{color: '#0f2d6e', fontSize: '15px', fontWeight: '700', margin: '0 0 4px'}}>Pack Création d'association loi 1901</p>
+                  <p style={{color: '#78350f', fontSize: '13px', lineHeight: '1.6', margin: '0 0 12px'}}>Tout pour créer votre association du premier coup, réuni et à prix groupé : statuts, procès-verbal d'assemblée constitutive, règlement intérieur, liste des dirigeants, et check-list de déclaration.</p>
+                  <a href="/catalogue/pack-creation-association" style={{display: 'inline-block', background: '#b8860b', color: 'white', fontSize: '12px', fontWeight: '700', padding: '9px 18px', borderRadius: '8px', textDecoration: 'none'}}>Découvrir le pack Création d'association →</a>
+                </div>
               </section>
 
               <section id="declaration">
@@ -262,6 +299,15 @@ export default function ArticleCreerAssociation1901_2026() {
                   <p style={{color: '#1e3a5f', fontSize: '13px', lineHeight: '1.7', margin: 0}}>
                     <strong>Le récépissé et le numéro RNA.</strong> Le greffe délivre un <strong>récépissé sous cinq jours</strong>, qui donne une date certaine à la déclaration et comporte le <strong>numéro RNA</strong> (un W suivi de neuf chiffres). En pratique, via le téléservice, le récépissé parvient souvent en quelques jours. Ce numéro, à conserver, est l'identifiant de l'association.
                   </p>
+                </div>
+                <div style={{background: '#f1f5fb', border: '1px solid #c7d6ec', borderLeft: '4px solid #0f2d6e', borderRadius: '12px', padding: '1.1rem 1.25rem', margin: '1.5rem 0'}}>
+                  <span style={{display: 'inline-block', background: '#0f2d6e', color: 'white', fontSize: '10px', fontWeight: '700', letterSpacing: '0.05em', padding: '3px 9px', borderRadius: '20px', marginBottom: '8px'}}>LE CABINET S'EN CHARGE</span>
+                  <p style={{color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: '0 0 4px'}}>Déclaration et publication : on s'occupe de tout</p>
+                  <p style={{color: '#374151', fontSize: '13px', lineHeight: '1.6', margin: '0 0 12px'}}>La déclaration au greffe et la publication au JOAFE sont gratuites, mais formelles et chronophages. Le cabinet constitue et dépose votre dossier, et le suit jusqu'au récépissé et à la parution, pour un lancement sans accroc.</p>
+                  <div style={{display: 'flex', gap: '14px', flexWrap: 'wrap', alignItems: 'center'}}>
+                    <a href="/formalites-juridiques-externalisees" style={{display: 'inline-block', background: '#0f2d6e', color: 'white', fontSize: '12px', fontWeight: '700', padding: '8px 16px', borderRadius: '8px', textDecoration: 'none'}}>Confier mes formalités →</a>
+                    <span style={{color: '#6b7280', fontSize: '12px'}}>ou l'<a href="/accompagnement-associations" style={{color: '#1a4fba', fontWeight: 600, textDecoration: 'none'}}>accompagnement des associations</a></span>
+                  </div>
                 </div>
               </section>
 
@@ -289,6 +335,12 @@ export default function ArticleCreerAssociation1901_2026() {
                   <li><strong>Demander un numéro SIRET</strong> auprès de l'INSEE si l'association emploie du personnel, sollicite des subventions ou exerce une activité économique. La demande se fait avec le récépissé et l'extrait de publication au JOAFE.</li>
                   <li><strong>Déclarer les modifications ultérieures.</strong> Tout changement important (nom, objet, siège, dirigeants, statuts) doit être déclaré dans un <strong>délai de trois mois</strong>, sous peine d'amende.</li>
                 </ul>
+                <div style={{background: '#eef5ff', border: '1px solid #bcd4f6', borderLeft: '4px solid #1a4fba', borderRadius: '12px', padding: '1.1rem 1.25rem', margin: '1.5rem 0'}}>
+                  <span style={{display: 'inline-block', background: '#1a4fba', color: 'white', fontSize: '10px', fontWeight: '700', letterSpacing: '0.05em', padding: '3px 9px', borderRadius: '20px', marginBottom: '8px'}}>ASSURANCE</span>
+                  <p style={{color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: '0 0 4px'}}>Responsabilité civile de l'association</p>
+                  <p style={{color: '#1e3a5f', fontSize: '13px', lineHeight: '1.6', margin: '0 0 12px'}}>Recommandée dès la première activité, et obligatoire dans certains cas (sport, accueil de public, locaux, événements), elle couvre les dommages causés aux tiers. Pensez aussi à protéger les dirigeants. En courtier, le cabinet vous propose une couverture adaptée à vos activités.</p>
+                  <a href="/conseil-assurances" style={{display: 'inline-block', background: '#1a4fba', color: 'white', fontSize: '12px', fontWeight: '700', padding: '8px 16px', borderRadius: '8px', textDecoration: 'none'}}>Voir notre conseil en assurances →</a>
+                </div>
               </section>
 
               <section id="pieges">
