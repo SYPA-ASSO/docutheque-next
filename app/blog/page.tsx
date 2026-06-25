@@ -10,6 +10,17 @@ export const metadata = {
 
 const articles = [
   {
+    slug: 'conge-supplementaire-de-naissance-2026-guide-complet-parents-employeurs',
+    titre: "Congé supplémentaire de naissance 2026 : le guide complet pour les parents et les employeurs",
+    resume: "À compter du 1er juillet 2026, chaque parent peut bénéficier d'un congé supplémentaire de naissance d'un ou deux mois indemnisés. Durée, bénéficiaires, indemnisation, délais, protections, démarches et obligations de l'employeur.",
+    date: '22 juin 2026',
+    auteur: 'François CHOLEZ',
+    categorie: 'Droit du travail',
+    tags: ['Congé de naissance', 'Parentalité', 'Droit du travail'],
+    tempsLecture: '17 min',
+    image: 'https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/conge-supplementaire-naissance-2026.webp',
+  },
+  {
     slug: 'bouton-de-retractation-obligation-vente-en-ligne-19-juin-2026',
     titre: "Bouton de rétractation : la nouvelle obligation des sites de vente en ligne depuis le 19 juin 2026",
     resume: "Depuis le 19 juin 2026, tout professionnel vendant à distance via une interface en ligne doit proposer une fonction de rétractation dédiée. Qui est concerné, à quoi ça ressemble, quelles sanctions.",
