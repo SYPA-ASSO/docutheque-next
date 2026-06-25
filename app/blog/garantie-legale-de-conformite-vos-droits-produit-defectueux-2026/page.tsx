@@ -292,10 +292,14 @@ export default function ArticleGarantieLegaleConformite2026() {
                   </table>
                 </div>
                 <p style={{marginBottom: '1rem'}}>À retenir : la mention <strong>« vendu en l'état »</strong> ne libère jamais un vendeur de la garantie des vices cachés. Et entre particuliers, la garantie légale de conformité ne joue pas : seule la garantie des vices cachés est mobilisable.</p>
-                <div style={{background: 'white', border: '1px solid #e5e7eb', borderLeft: '3px solid #d4a017', borderRadius: '10px', padding: '1rem 1.25rem', margin: '1.25rem 0'}}>
-                  <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 6px'}}>Le modèle qui va avec</p>
-                  <p style={{color: '#6b7280', fontSize: '13px', lineHeight: '1.7', margin: '0 0 10px'}}>Entre particuliers ou pour un défaut grave et caché, notre <strong>modèle de lettre invoquant la garantie des vices cachés</strong> (articles 1641 et 1648 du code civil) vous permet de demander l'annulation de la vente ou une réduction du prix, dans le délai de deux ans à compter de la découverte du vice.</p>
-                  <a href="/catalogue/modele-lettre-garantie-vices-caches" style={{color: '#b8860b', fontSize: '13px', fontWeight: '700', textDecoration: 'none'}}>Voir le modèle vices cachés →</a>
+                <div style={{background: '#fffaf0', border: '1px solid #f0d488', borderLeft: '4px solid #d4a017', borderRadius: '12px', padding: '1.1rem 1.25rem', margin: '1.5rem 0'}}>
+                  <span style={{display: 'inline-block', background: '#d4a017', color: 'white', fontSize: '10px', fontWeight: '700', letterSpacing: '0.05em', padding: '3px 9px', borderRadius: '20px', marginBottom: '8px'}}>MODÈLE PRÊT À L'EMPLOI</span>
+                  <p style={{color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: '0 0 4px'}}>Lettre invoquant la garantie des vices cachés</p>
+                  <p style={{color: '#6b7280', fontSize: '13px', lineHeight: '1.6', margin: '0 0 12px'}}>Entre particuliers ou pour un défaut grave et caché, demandez l'annulation de la vente ou une réduction du prix (articles 1641 et 1648 du code civil), dans les deux ans de la découverte du vice.</p>
+                  <div style={{display: 'flex', gap: '14px', flexWrap: 'wrap', alignItems: 'center'}}>
+                    <a href="/catalogue/modele-lettre-garantie-vices-caches" style={{display: 'inline-block', background: '#0f2d6e', color: 'white', fontSize: '12px', fontWeight: '700', padding: '8px 16px', borderRadius: '8px', textDecoration: 'none'}}>Voir le modèle →</a>
+                    <span style={{color: '#6b7280', fontSize: '12px'}}>ou dans le <a href="/catalogue/pack-litige-consommation" style={{color: '#b8860b', fontWeight: 600, textDecoration: 'none'}}>pack Litige de consommation</a></span>
+                  </div>
                 </div>
               </section>
 
@@ -309,15 +313,38 @@ export default function ArticleGarantieLegaleConformite2026() {
                   <li><strong>Envoyez une mise en demeure</strong> par lettre recommandée avec accusé de réception, en citant les articles <strong>L. 217-3 et suivants</strong> du Code de la consommation, et en fixant un délai raisonnable.</li>
                   <li><strong>Si la mise en demeure reste sans réponse</strong>, des voies extérieures existent en complément : la médiation de la consommation (chaque professionnel doit désigner un médiateur), le signalement sur la plateforme publique SignalConso, et, en dernier recours, le tribunal judiciaire (sans avocat obligatoire en dessous de 10&nbsp;000&nbsp;€).</li>
                 </ul>
-                <div style={{background: 'white', border: '1px solid #e5e7eb', borderLeft: '3px solid #d4a017', borderRadius: '10px', padding: '1rem 1.25rem', margin: '1.25rem 0'}}>
-                  <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 6px'}}>Le modèle qui va avec</p>
-                  <p style={{color: '#6b7280', fontSize: '13px', lineHeight: '1.7', margin: '0 0 10px'}}>Notre <strong>modèle de lettre de mise en demeure au titre de la garantie légale de conformité</strong>, à compléter et à envoyer en recommandé, cite les bons articles et fixe un délai : vous gagnez du temps et vous sécurisez votre démarche.</p>
-                  <a href="/catalogue/modele-lettre-mise-en-demeure-garantie-legale-conformite" style={{color: '#b8860b', fontSize: '13px', fontWeight: '700', textDecoration: 'none'}}>Voir le modèle de mise en demeure →</a>
+                <div style={{background: '#fffaf0', border: '1px solid #f0d488', borderLeft: '4px solid #d4a017', borderRadius: '12px', padding: '1.1rem 1.25rem', margin: '1.5rem 0'}}>
+                  <span style={{display: 'inline-block', background: '#d4a017', color: 'white', fontSize: '10px', fontWeight: '700', letterSpacing: '0.05em', padding: '3px 9px', borderRadius: '20px', marginBottom: '8px'}}>MODÈLE PRÊT À L'EMPLOI</span>
+                  <p style={{color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: '0 0 4px'}}>Demande de mise en œuvre de la garantie</p>
+                  <p style={{color: '#6b7280', fontSize: '13px', lineHeight: '1.6', margin: '0 0 12px'}}>Le premier courrier, posé et factuel : demandez la réparation ou le remplacement sans frais, sous trente jours, en citant les articles L. 217-3 et suivants du Code de la consommation.</p>
+                  <div style={{display: 'flex', gap: '14px', flexWrap: 'wrap', alignItems: 'center'}}>
+                    <a href="/catalogue/modele-lettre-demande-garantie-legale-conformite" style={{display: 'inline-block', background: '#0f2d6e', color: 'white', fontSize: '12px', fontWeight: '700', padding: '8px 16px', borderRadius: '8px', textDecoration: 'none'}}>Voir le modèle →</a>
+                    <span style={{color: '#6b7280', fontSize: '12px'}}>ou dans le <a href="/catalogue/pack-litige-consommation" style={{color: '#b8860b', fontWeight: 600, textDecoration: 'none'}}>pack Litige de consommation</a></span>
+                  </div>
                 </div>
-                <div style={{background: '#fffbeb', border: '1px solid #fde68a', borderRadius: '10px', padding: '1rem 1.25rem', margin: '1.25rem 0'}}>
-                  <p style={{color: '#92400e', fontSize: '13px', fontWeight: '700', margin: '0 0 6px'}}>Le pack qui va plus loin</p>
-                  <p style={{color: '#78350f', fontSize: '13px', lineHeight: '1.7', margin: '0 0 10px'}}>Notre <strong>pack Litige de consommation</strong> réunit l'essentiel pour faire valoir vos droits face à un vendeur : mise en demeure au titre de la garantie légale, lettre pour les vices cachés, courrier de saisine du médiateur et mémo des recours, à utiliser dans l'ordre.</p>
-                  <a href="/catalogue/pack-litige-consommation" style={{color: '#b8860b', fontSize: '13px', fontWeight: '700', textDecoration: 'none'}}>Voir le pack Litige de consommation →</a>
+                <div style={{background: '#fffaf0', border: '1px solid #f0d488', borderLeft: '4px solid #d4a017', borderRadius: '12px', padding: '1.1rem 1.25rem', margin: '1.5rem 0'}}>
+                  <span style={{display: 'inline-block', background: '#d4a017', color: 'white', fontSize: '10px', fontWeight: '700', letterSpacing: '0.05em', padding: '3px 9px', borderRadius: '20px', marginBottom: '8px'}}>MODÈLE PRÊT À L'EMPLOI</span>
+                  <p style={{color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: '0 0 4px'}}>Mise en demeure (garantie légale de conformité)</p>
+                  <p style={{color: '#6b7280', fontSize: '13px', lineHeight: '1.6', margin: '0 0 12px'}}>Sans réponse à votre demande, le courrier ferme : à envoyer en recommandé, il cite les bons articles, rappelle vos droits et fixe un délai. Vous gagnez du temps et sécurisez la suite.</p>
+                  <div style={{display: 'flex', gap: '14px', flexWrap: 'wrap', alignItems: 'center'}}>
+                    <a href="/catalogue/modele-lettre-mise-en-demeure-garantie-legale-conformite" style={{display: 'inline-block', background: '#0f2d6e', color: 'white', fontSize: '12px', fontWeight: '700', padding: '8px 16px', borderRadius: '8px', textDecoration: 'none'}}>Voir le modèle →</a>
+                    <span style={{color: '#6b7280', fontSize: '12px'}}>ou dans le <a href="/catalogue/pack-litige-consommation" style={{color: '#b8860b', fontWeight: 600, textDecoration: 'none'}}>pack Litige de consommation</a></span>
+                  </div>
+                </div>
+                <div style={{background: '#fffaf0', border: '1px solid #f0d488', borderLeft: '4px solid #d4a017', borderRadius: '12px', padding: '1.1rem 1.25rem', margin: '1.5rem 0'}}>
+                  <span style={{display: 'inline-block', background: '#d4a017', color: 'white', fontSize: '10px', fontWeight: '700', letterSpacing: '0.05em', padding: '3px 9px', borderRadius: '20px', marginBottom: '8px'}}>MODÈLE PRÊT À L'EMPLOI</span>
+                  <p style={{color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: '0 0 4px'}}>Saisine du médiateur de la consommation</p>
+                  <p style={{color: '#6b7280', fontSize: '13px', lineHeight: '1.6', margin: '0 0 12px'}}>Si le litige persiste, notre modèle de saisine expose votre demande au médiateur désigné par le professionnel, gratuitement, et constitue une étape utile avant le tribunal.</p>
+                  <div style={{display: 'flex', gap: '14px', flexWrap: 'wrap', alignItems: 'center'}}>
+                    <a href="/catalogue/modele-lettre-saisine-mediateur-consommation" style={{display: 'inline-block', background: '#0f2d6e', color: 'white', fontSize: '12px', fontWeight: '700', padding: '8px 16px', borderRadius: '8px', textDecoration: 'none'}}>Voir le modèle →</a>
+                    <span style={{color: '#6b7280', fontSize: '12px'}}>ou dans le <a href="/catalogue/pack-litige-consommation" style={{color: '#b8860b', fontWeight: 600, textDecoration: 'none'}}>pack Litige de consommation</a></span>
+                  </div>
+                </div>
+                <div style={{background: 'linear-gradient(135deg, #fff8e6, #fbe7bd)', border: '1px solid #eaca72', borderRadius: '12px', padding: '1.25rem', margin: '1.5rem 0'}}>
+                  <span style={{display: 'inline-block', background: '#b8860b', color: 'white', fontSize: '10px', fontWeight: '700', letterSpacing: '0.05em', padding: '3px 9px', borderRadius: '20px', marginBottom: '8px'}}>PACK COMPLET · PRIX GROUPÉ</span>
+                  <p style={{color: '#0f2d6e', fontSize: '15px', fontWeight: '700', margin: '0 0 4px'}}>Pack Litige de consommation</p>
+                  <p style={{color: '#78350f', fontSize: '13px', lineHeight: '1.6', margin: '0 0 12px'}}>Tout pour faire valoir vos droits face à un vendeur, dans l'ordre et à prix groupé : demande de mise en œuvre, mise en demeure, lettre vices cachés, saisine du médiateur, et mémo des recours.</p>
+                  <a href="/catalogue/pack-litige-consommation" style={{display: 'inline-block', background: '#b8860b', color: 'white', fontSize: '12px', fontWeight: '700', padding: '9px 18px', borderRadius: '8px', textDecoration: 'none'}}>Découvrir le pack Litige de consommation →</a>
                 </div>
               </section>
 
@@ -327,10 +354,11 @@ export default function ArticleGarantieLegaleConformite2026() {
                 </h2>
                 <p style={{marginBottom: '1rem'}}>Un point trop souvent négligé : au-delà de la période de présomption, démontrer l'antériorité d'un défaut suppose parfois une <strong>expertise technique</strong>, qui a un coût. Or beaucoup de contrats d'assurance comportent une garantie de <strong>protection juridique</strong> qui peut prendre en charge ces frais, voire l'accompagnement de la procédure.</p>
                 <p style={{marginBottom: '1rem'}}>Le bon réflexe est donc de vérifier vos contrats (assurance habitation, carte bancaire, contrat dédié) avant d'engager des frais : vous y êtes peut-être déjà couvert. C'est l'un des intérêts d'un regard combinant le juridique et l'assurantiel.</p>
-                <div style={{background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '10px', padding: '1rem 1.25rem', margin: '1.25rem 0'}}>
-                  <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 6px'}}>Côté assurance</p>
-                  <p style={{color: '#1e3a5f', fontSize: '13px', lineHeight: '1.7', margin: '0 0 10px'}}>La garantie <strong>protection juridique</strong> (incluse dans un contrat dédié ou une assurance de la vie privée) prend en charge les litiges de consommation, les frais d'expertise et l'accompagnement de la procédure. En tant que courtier, le cabinet vérifie si vous êtes déjà couvert et vous propose, au besoin, une protection adaptée.</p>
-                  <a href="/conseil-assurances" style={{color: '#1a4fba', fontSize: '13px', fontWeight: '700', textDecoration: 'none'}}>Voir notre conseil en assurances →</a>
+                <div style={{background: '#eef5ff', border: '1px solid #bcd4f6', borderLeft: '4px solid #1a4fba', borderRadius: '12px', padding: '1.1rem 1.25rem', margin: '1.5rem 0'}}>
+                  <span style={{display: 'inline-block', background: '#1a4fba', color: 'white', fontSize: '10px', fontWeight: '700', letterSpacing: '0.05em', padding: '3px 9px', borderRadius: '20px', marginBottom: '8px'}}>ASSURANCE</span>
+                  <p style={{color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: '0 0 4px'}}>Protection juridique</p>
+                  <p style={{color: '#1e3a5f', fontSize: '13px', lineHeight: '1.6', margin: '0 0 12px'}}>Incluse dans un contrat dédié ou une assurance de la vie privée, elle prend en charge les litiges de consommation, les frais d'expertise et l'accompagnement de la procédure. En tant que courtier, le cabinet vérifie si vous êtes déjà couvert et vous propose, au besoin, une protection adaptée.</p>
+                  <a href="/conseil-assurances" style={{display: 'inline-block', background: '#1a4fba', color: 'white', fontSize: '12px', fontWeight: '700', padding: '8px 16px', borderRadius: '8px', textDecoration: 'none'}}>Voir notre conseil en assurances →</a>
                 </div>
                 <div style={{background: '#0f2d6e', borderRadius: '12px', padding: '1.5rem', margin: '1.5rem 0'}}>
                   <p style={{color: 'white', fontSize: '15px', fontWeight: '700', margin: '0 0 8px'}}>Un litige avec un vendeur ?</p>
