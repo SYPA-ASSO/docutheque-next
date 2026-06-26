@@ -1,11 +1,12 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import type { CSSProperties } from 'react'
-import { ChevronDown, ScrollText, FileCheck2, Download, Lock, Package, Lightbulb, Scale, Search, Check, type LucideIcon } from 'lucide-react'
+import { ChevronDown, ScrollText, FileCheck2, Download, Lock, Package, Lightbulb, Scale, Search, Check, Star, type LucideIcon } from 'lucide-react'
 import { supabaseAdmin } from '@/lib/supabase-admin'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import type { DocItem } from '@/lib/types'
+import { AVIS_GOOGLE } from '@/lib/avis-google'
 import { BoutonsAchat, IntroDeroulante, NewsletterMini } from './FicheInteractive'
 
 export const revalidate = 300
@@ -16,12 +17,7 @@ const AVATAR = 'https://secure.gravatar.com/avatar/6c4917275b124957f449a0eb10786
 const BIO =
   "Accompagne particuliers, professionnels, collectivités et acteurs de l'ESS dans la compréhension de leurs droits et la sécurisation de leurs activités. Membre du CRFF. Production 100\u00a0% humaine, sans modèle généré automatiquement."
 
-// Témoignages : exemples à remplacer par de vrais avis clients (aucune étoile ni balisage Review,
-// car Google sanctionne le balisage d'avis qu'une entreprise se décerne a elle-meme).
-const TEMOIGNAGES: { nom: string; texte: string }[] = [
-  { nom: 'Sandrine L.', texte: "Lettre claire et immédiatement utilisable. Mon client a réglé sous huit jours." },
-  { nom: 'Marc T.', texte: "Le rappel du cadre légal m'a rassuré. On sent le travail d'un vrai juriste." },
-]
+// Avis Google : note reelle maintenue a la main dans lib/avis-google.ts (aucun avis fictif).
 
 const MOIS = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre']
 
@@ -175,7 +171,7 @@ export default async function RessourcePage({ params }: { params: Promise<{ slug
   const definitions = Array.isArray(r.definitions) ? r.definitions.filter((d) => d && d.terme && d.definition) : []
   const faqPerso = Array.isArray(r.faq) ? r.faq.filter((f) => f && f.question && f.reponse) : []
   const faqAll = [...faqPerso.map((f) => ({ q: f.question, a: f.reponse })), ...buildFaq(r, typeNom)]
-  const formatLine = r.type === 'guide' || r.type === 'livre' ? 'Format PDF' : 'Format Word (DOCX) et PDF'
+  const formatLine = r.type === 'guide' || r.type === 'livre' ? 'Format PDF' : 'Format Word (DOCX)'
   const bullets: { Icon: LucideIcon; label: string; lock?: boolean }[] = [
     { Icon: Check, label: 'Rédigé par notre juriste' },
     { Icon: Check, label: formatLine },
@@ -187,7 +183,7 @@ export default async function RessourcePage({ params }: { params: Promise<{ slug
   if (r.contenu) sommaire.push({ id: 'en-bref', label: 'En bref' })
   if (r.cadre_legal) sommaire.push({ id: 'cadre-legal', label: 'Ce que dit la loi' })
   if (r.conseil) sommaire.push({ id: 'conseil', label: 'Le conseil de notre juriste' })
-  if (TEMOIGNAGES.length) sommaire.push({ id: 'avis', label: 'Avis clients' })
+  if (AVIS_GOOGLE.note > 0) sommaire.push({ id: 'avis', label: 'Avis Google' })
   if (faqAll.length) sommaire.push({ id: 'faq', label: 'Questions fréquentes' })
 
   const offers: Record<string, string>[] = []
@@ -355,17 +351,25 @@ export default async function RessourcePage({ params }: { params: Promise<{ slug
                 </div>
               </div>
 
-              {TEMOIGNAGES.length > 0 ? (
+              {AVIS_GOOGLE.note > 0 ? (
                 <div id="avis" style={{ ...card, scrollMarginTop: 80 }}>
-                  <h2 style={{ ...secTitle, margin: '0 0 4px' }}>{"Ce qu'en pensent nos clients"}</h2>
-                  <div>
-                    {TEMOIGNAGES.map((t, i) => (
-                      <div key={i} style={reviStyle}>
-                        <div style={{ fontSize: 13, fontWeight: 700, color: '#374151' }}>{t.nom}</div>
-                        <div style={{ fontSize: 13, color: '#4b5563', marginTop: 2 }}>{t.texte}</div>
-                      </div>
-                    ))}
+                  <h2 style={{ ...secTitle, margin: '0 0 4px' }}>Avis Google</h2>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap', margin: '10px 0 6px' }}>
+                    <div style={{ display: 'flex', gap: 2 }}>
+                      {[0, 1, 2, 3, 4].map((i) => (
+                        <Star key={i} size={20} color="#f59e0b" fill={i < Math.round(AVIS_GOOGLE.note) ? '#f59e0b' : 'none'} strokeWidth={1.5} />
+                      ))}
+                    </div>
+                    <span style={{ fontSize: 15, fontWeight: 800, color: '#0f2d6e' }}>
+                      {AVIS_GOOGLE.note.toLocaleString('fr-FR')}<span style={{ fontSize: 12, fontWeight: 600, color: '#6b7280' }}> / 5 sur Google</span>
+                    </span>
                   </div>
+                  <p style={{ fontSize: 13, color: '#4b5563', margin: '0 0 12px', lineHeight: 1.6 }}>
+                    Ce document vous a été utile ? Votre avis sur Google nous aide à faire connaître le cabinet. Merci par avance.
+                  </p>
+                  <a href={AVIS_GOOGLE.lien} target="_blank" rel="noopener noreferrer" style={avisBtn}>
+                    Laisser un avis sur Google
+                  </a>
                 </div>
               ) : null}
 
@@ -438,7 +442,7 @@ export default async function RessourcePage({ params }: { params: Promise<{ slug
                 )}
 
                 <div style={{ marginTop: 14 }}>
-                  <BoutonsAchat documentId={r.id} slug={r.slug || ''} nom={r.nom} accesGratuit={r.acces_gratuit} accesPayant={r.acces_payant} prixUnitaire={r.prix_unitaire} />
+                  <BoutonsAchat documentId={r.id} slug={r.slug || ''} accesGratuit={r.acces_gratuit} accesPayant={r.acces_payant} prixUnitaire={r.prix_unitaire} />
                 </div>
 
                 <ul style={{ listStyle: 'none', padding: 0, margin: '16px 0 0' }}>
@@ -529,7 +533,7 @@ const bioCard: CSSProperties = { background: '#0f2d6e', borderRadius: 12, paddin
 const bioHd: CSSProperties = { fontSize: 11, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#c8a84b', fontWeight: 700, margin: '0 0 6px' }
 const bioP: CSSProperties = { color: 'rgba(255,255,255,0.82)', fontSize: 12.5, lineHeight: 1.6, margin: '8px 0 10px' }
 const bioLink: CSSProperties = { color: 'white', fontSize: 12.5, fontWeight: 700, textDecoration: 'none' }
-const reviStyle: CSSProperties = { padding: '12px 0', borderBottom: '1px solid #e5e7eb' }
+const avisBtn: CSSProperties = { display: 'inline-block', background: '#0f2d6e', color: 'white', textDecoration: 'none', padding: '10px 18px', borderRadius: 8, fontSize: 13, fontWeight: 700 }
 const chip: CSSProperties = { display: 'inline-block', background: 'white', border: '1px solid #e5e7eb', color: '#0f2d6e', textDecoration: 'none', padding: '8px 14px', borderRadius: 999, fontSize: 13, fontWeight: 600 }
 const artRow: CSSProperties = { display: 'block', fontSize: 13, fontWeight: 600, color: '#374151', textDecoration: 'none', padding: '10px 0', borderBottom: '1px solid #e5e7eb', lineHeight: 1.4 }
 const optBox: CSSProperties = { background: 'linear-gradient(135deg, #b8860b 0%, #c8a84b 100%)', borderRadius: 10, padding: 14, color: 'white', fontSize: 12.5, lineHeight: 1.5 }

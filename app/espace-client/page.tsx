@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import { supabase } from '@/lib/supabase'
 import type { DocItem, Categorie } from '@/lib/types'
 import { DIAGNOSTIC_FORFAITS } from '@/lib/diagnostic-forfaits'
+import { AVIS_GOOGLE } from '@/lib/avis-google'
 import Header from '@/components/Header'
 import FooterMinimal from '@/components/FooterMinimal'
 import { CategorySearch } from '@/components/CategorySearch'
@@ -34,6 +35,7 @@ type UserProfile = {
   stripe_customer_id: string | null
   resiliation_programmee: boolean | null
   resiliation_fin: string | null
+  avis_google_propose: boolean | null
 }
 
 type Question = {
@@ -91,6 +93,7 @@ export default function EspaceClient() {
   const [downloadEnCours, setDownloadEnCours] = useState<string | null>(null)
   const [factureEnCours, setFactureEnCours] = useState<string | null>(null)
   const [successMessage, setSuccessMessage] = useState('')
+  const [avisMasque, setAvisMasque] = useState(false)
 
   // Saisie de question
   const [questionSaisie, setQuestionSaisie] = useState<{ id: string; type: string } | null>(null)
@@ -196,6 +199,22 @@ export default function EspaceClient() {
   const handleDeconnexion = async () => {
     await supabase.auth.signOut()
     router.push('/')
+  }
+
+  // Invitation a laisser un avis Google : une seule fois par client (in-app ou email), via avis_google_propose.
+  const marquerAvisPropose = async () => {
+    setAvisMasque(true)
+    try {
+      const { data: { session } } = await supabase.auth.getSession()
+      if (!session) return
+      await fetch('/api/compte/avis-propose', { method: 'POST', headers: { 'Authorization': `Bearer ${session.access_token}` } })
+      if (profile) setProfile({ ...profile, avis_google_propose: true })
+    } catch { /* silencieux : l'invitation est simplement masquee */ }
+  }
+
+  const ouvrirAvisGoogle = () => {
+    window.open(AVIS_GOOGLE.lien, '_blank', 'noopener,noreferrer')
+    marquerAvisPropose()
   }
 
   const handlePaiement = async (priceKey: string) => {
@@ -554,6 +573,30 @@ export default function EspaceClient() {
                   <div style={{ background: '#f0fdf4', border: '1px solid #bbf7d0', borderRadius: '10px', padding: '12px 16px', display: 'flex', alignItems: 'center', gap: '10px' }}>
                     <CheckCircle size={18} color="#16a34a" strokeWidth={1.5} style={{ flexShrink: 0 }} />
                     <p style={{ color: '#15803d', fontSize: '13px', fontWeight: '600', margin: 0 }}>{successMessage}</p>
+                  </div>
+                )}
+
+                {profile && !profile.avis_google_propose && !avisMasque && (
+                  <div style={{ background: 'linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%)', border: '1px solid #fcd34d', borderRadius: '12px', padding: '1.25rem 1.5rem', display: 'flex', alignItems: 'center', gap: '14px', flexWrap: 'wrap' }}>
+                    <div style={{ display: 'flex', gap: '2px', flexShrink: 0 }}>
+                      {[0, 1, 2, 3, 4].map((i) => (
+                        <Star key={i} size={18} color="#f59e0b" fill="#f59e0b" strokeWidth={1.5} />
+                      ))}
+                    </div>
+                    <div style={{ flex: 1, minWidth: '200px' }}>
+                      <p style={{ color: '#92400e', fontSize: '13px', fontWeight: '700', margin: '0 0 2px' }}>Votre avis compte</p>
+                      <p style={{ color: '#a16207', fontSize: '12px', margin: 0, lineHeight: '1.5' }}>
+                        Si le cabinet vous est utile, un avis Google nous aide beaucoup. Cela prend une minute.
+                      </p>
+                    </div>
+                    <div style={{ display: 'flex', gap: '8px', flexShrink: 0 }}>
+                      <button onClick={ouvrirAvisGoogle} style={{ background: '#0f2d6e', color: 'white', border: 'none', padding: '9px 16px', borderRadius: '8px', fontSize: '12px', fontWeight: '700', cursor: 'pointer' }}>
+                        Laisser un avis
+                      </button>
+                      <button onClick={marquerAvisPropose} style={{ background: 'transparent', color: '#a16207', border: 'none', padding: '9px 10px', borderRadius: '8px', fontSize: '12px', fontWeight: '600', cursor: 'pointer' }}>
+                        Masquer
+                      </button>
+                    </div>
                   </div>
                 )}
 
