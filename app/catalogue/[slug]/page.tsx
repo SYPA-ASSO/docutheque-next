@@ -240,7 +240,7 @@ export default async function RessourcePage({ params }: { params: Promise<{ slug
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
       {faqAll.length > 0 ? <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} /> : null}
       {definitionsSchema ? <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(definitionsSchema) }} /> : null}
-      <style dangerouslySetInnerHTML={{ __html: '.faq-d summary::-webkit-details-marker{display:none}.faq-d summary{list-style:none}.faq-d[open] .faq-chev{transform:rotate(180deg)}' }} />
+      <style dangerouslySetInnerHTML={{ __html: '.faq-d summary::-webkit-details-marker{display:none}.faq-d summary{list-style:none}.faq-d[open] .faq-chev{transform:rotate(180deg)}.rel-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}@media (max-width:640px){.rel-grid{grid-template-columns:1fr}}' }} />
       <Header />
       <main style={{ background: '#f8fafc', minHeight: '100vh' }}>
         <div style={{ maxWidth: 1120, margin: '0 auto', padding: '2rem 1.5rem 3.5rem' }}>
@@ -380,7 +380,7 @@ export default async function RessourcePage({ params }: { params: Promise<{ slug
               {modelesLies.length > 0 ? (
                 <div style={card}>
                   <h2 style={secTitle}>Vous pourriez aussi avoir besoin de</h2>
-                  <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginTop: 12 }}>
+                  <div className="rel-grid" style={{ marginTop: 12 }}>
                     {modelesLies.map((d) => (
                       <RelCard key={d.slug} d={d} />
                     ))}
@@ -591,7 +591,7 @@ function RelCard({ d }: { d: DocItem }) {
   const prix = d.prix_unitaire != null ? `${String(d.prix_unitaire).replace('.', ',')}${NB}€` : null
   const acces = d.acces_gratuit ? 'Gratuit' : prix ? prix : 'Sur abonnement'
   return (
-    <Link href={`/catalogue/${d.slug}`} style={{ flex: '1 1 150px', minWidth: 150, border: '1px solid #e5e7eb', borderRadius: 10, padding: 12, textDecoration: 'none' }}>
+    <Link href={`/catalogue/${d.slug}`} style={{ display: 'block', border: '1px solid #e5e7eb', borderRadius: 10, padding: 12, textDecoration: 'none' }}>
       <div style={{ display: 'flex', alignItems: 'flex-start', gap: 8 }}>
         <span style={{ flexShrink: 0, display: 'inline-flex', width: 26, height: 26, borderRadius: 7, background: '#eef2ff', alignItems: 'center', justifyContent: 'center' }}>
           <FileText size={15} color="#1a4fba" strokeWidth={2} />
