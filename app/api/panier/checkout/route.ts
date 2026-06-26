@@ -7,6 +7,8 @@ export const runtime = 'nodejs'
 // app/api/panier/checkout/route.ts
 // Paiement par carte d'un panier de plusieurs documents (Stripe Checkout multi-lignes).
 // L'acces a chaque document est accorde par le webhook a la fin du paiement (produit = panier).
+// Un document est payable des qu'il est acces_payant avec un prix_unitaire > 0.
+// Un abonne Optimal n'a pas a payer les documents inclus dans son abonnement (acces_optimal) : ils sont exclus du paiement.
 // Regles : zero tiret long, NBSP avant euro, Notre juriste singulier.
 
 export async function POST(request: NextRequest) {
@@ -32,14 +34,25 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Panier vide.' }, { status: 400 })
     }
 
-    // 3. Documents : actifs, payants, prix actif
+    // 3. Acheteur + statut d'abonnement (necessaire pour exclure les documents inclus dans l'abonnement)
+    const { data: profil } = await supabaseAdmin
+      .from('users')
+      .select('email, abonnement_actif')
+      .eq('id', userId)
+      .single()
+    if (!profil?.email) {
+      return NextResponse.json({ error: 'Compte introuvable.' }, { status: 404 })
+    }
+    const estAbonne = !!profil.abonnement_actif
+
+    // 4. Documents : actifs, payants, avec prix
     const { data: documents } = await supabaseAdmin
       .from('documents')
-      .select('id, nom, prix_unitaire, prix_unitaire_actif, acces_payant, actif')
+      .select('id, nom, prix_unitaire, acces_payant, acces_optimal, actif')
       .in('id', ids)
       .eq('actif', true)
 
-    // 4. Documents deja acquis par l'utilisateur (a exclure)
+    // 5. Documents deja acquis a l'unite (a exclure)
     const { data: dejaPayes } = await supabaseAdmin
       .from('achats_documents')
       .select('document_id')
@@ -48,26 +61,20 @@ export async function POST(request: NextRequest) {
       .in('document_id', ids)
     const possedes = new Set((dejaPayes || []).map((d) => d.document_id))
 
-    // 5. Selection des lignes valides
+    // 6. Selection des lignes valides :
+    //    payantes, prix > 0, non deja acquises, et non incluses gratuitement dans l'abonnement de l'utilisateur
     const valides = (documents || []).filter((d) => {
       const prix = Number(d.prix_unitaire)
-      return d.acces_payant && d.prix_unitaire_actif && prix > 0 && !possedes.has(d.id)
+      if (!d.acces_payant || !(prix > 0)) return false
+      if (possedes.has(d.id)) return false
+      if (estAbonne && d.acces_optimal) return false
+      return true
     })
     if (valides.length === 0) {
       return NextResponse.json(
-        { error: "Aucun document du panier n'est disponible a l'achat (deja acquis ou indisponibles)." },
+        { error: "Aucun document du panier n'est disponible à l'achat (déjà acquis, inclus dans votre abonnement, ou indisponibles)." },
         { status: 400 },
       )
-    }
-
-    // 6. Acheteur
-    const { data: profil } = await supabaseAdmin
-      .from('users')
-      .select('email')
-      .eq('id', userId)
-      .single()
-    if (!profil?.email) {
-      return NextResponse.json({ error: 'Compte introuvable.' }, { status: 404 })
     }
 
     // 7. Origine

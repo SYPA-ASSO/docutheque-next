@@ -6,6 +6,8 @@ export const runtime = 'nodejs'
 
 // app/api/documents/acheter/route.ts
 // Achat d'un document a l'unite par un utilisateur connecte (jeton de session).
+// Un document est achetable des qu'il est acces_payant avec un prix_unitaire > 0.
+// Un abonne Optimal n'a pas a payer un document inclus dans son abonnement (acces_optimal) : il le telecharge gratuitement.
 // Deux modes : carte (Stripe Checkout, l'acces est accorde par le webhook a la fin du paiement)
 // et virement (commande enregistree en attente dans achats_documents + envoi du RIB par email).
 // L'acces effectif au telechargement est gere par la route documents/download, qui exige statut = paye.
@@ -34,10 +36,10 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Document non specifie.' }, { status: 400 })
     }
 
-    // 3. Document : doit exister, etre actif, payant et avoir un prix actif
+    // 3. Document : doit exister, etre actif, payant et avoir un prix
     const { data: document } = await supabaseAdmin
       .from('documents')
-      .select('id, nom, prix_unitaire, prix_unitaire_actif, acces_payant, actif')
+      .select('id, nom, prix_unitaire, acces_payant, acces_optimal, actif')
       .eq('id', documentId)
       .eq('actif', true)
       .single()
@@ -45,18 +47,26 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Document introuvable.' }, { status: 404 })
     }
     const prix = Number(document.prix_unitaire)
-    if (!document.acces_payant || !document.prix_unitaire_actif || !prix || prix <= 0) {
-      return NextResponse.json({ error: "Ce document n'est pas en vente a l'unite." }, { status: 400 })
+    if (!document.acces_payant || !prix || prix <= 0) {
+      return NextResponse.json({ error: "Ce document n'est pas en vente à l'unité." }, { status: 400 })
     }
 
-    // 4. Acheteur
+    // 4. Acheteur (avec statut d'abonnement)
     const { data: profil } = await supabaseAdmin
       .from('users')
-      .select('email, prenom, nom')
+      .select('email, prenom, nom, abonnement_actif')
       .eq('id', userId)
       .single()
     if (!profil?.email) {
       return NextResponse.json({ error: 'Compte introuvable.' }, { status: 404 })
+    }
+
+    // 4 bis. Un abonne Optimal n'a pas a payer un document inclus dans son abonnement
+    if (document.acces_optimal && profil.abonnement_actif) {
+      return NextResponse.json(
+        { error: 'Ce document est inclus dans votre abonnement Optimal. Vous pouvez le télécharger depuis votre espace client.' },
+        { status: 409 },
+      )
     }
 
     // 5. Deja achete ? (acces deja accorde)
@@ -68,7 +78,7 @@ export async function POST(request: NextRequest) {
       .eq('statut', 'paye')
       .limit(1)
     if (dejaPaye && dejaPaye.length > 0) {
-      return NextResponse.json({ error: 'Vous avez deja acces a ce document.' }, { status: 409 })
+      return NextResponse.json({ error: 'Vous avez déjà accès à ce document.' }, { status: 409 })
     }
 
     const origin =

@@ -280,7 +280,7 @@ export default function CataloguePage() {
                             <div style={{ marginTop: '12px', display: 'flex', alignItems: 'center', gap: '10px', padding: '10px 12px', background: '#eff6ff', borderRadius: 8 }}>
                               <Crown size={14} color="#1a4fba" style={{ flexShrink: 0 }} />
                               <p style={{ color: '#1e3a5f', fontSize: 12, margin: 0 }}>
-                                Les documents Optimal sont accessibles avec l'
+                                Les documents Optimal sont accessibles à prix unitaires ou gratuitement en illimité avec l'
                                 <a href="/tarifs" style={{ color: '#1a4fba', fontWeight: 700 }}>Abonnement Optimal</a>
                                 {' '}dès 17,90 €/mois.
                               </p>

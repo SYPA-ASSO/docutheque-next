@@ -461,8 +461,10 @@ export default function EspaceClient() {
     const statutAchat = documentsAchetes[doc.id]
     if (doc.acces_payant && statutAchat === 'paye') return { label: 'Acheté', color: '#15803d', bg: '#f0fdf4', accessible: true }
     if (doc.acces_payant && statutAchat === 'en_attente') return { label: 'Virement en attente', color: '#d97706', bg: '#fff7ed', accessible: false, enAttente: true }
-    if (doc.acces_optimal && !estAbonne) return { label: 'Optimal', color: '#9ca3af', bg: '#f3f4f6', accessible: false }
+    // Un document payant non encore acquis reste achetable a l'unite, meme s'il est aussi propose en Optimal (cas du non-abonne).
     if (doc.acces_payant) return { label: `${doc.prix_unitaire ?? '?'}\u00a0€`, color: '#d97706', bg: '#fff7ed', accessible: false, achetable: true }
+    // Document Optimal seul et non-abonne : acces verrouille, orientation vers l'abonnement.
+    if (doc.acces_optimal && !estAbonne) return { label: 'Optimal', color: '#9ca3af', bg: '#f3f4f6', accessible: false }
     return { label: '-', color: '#9ca3af', bg: '#f3f4f6', accessible: false }
   }
 

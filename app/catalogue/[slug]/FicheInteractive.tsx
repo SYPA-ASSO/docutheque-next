@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import type { CSSProperties } from 'react'
 import { supabase } from '@/lib/supabase'
 import { useCart } from '@/components/CartContext'
@@ -52,7 +52,87 @@ export function BoutonsAchat({
 }) {
   const { add, has } = useCart()
   const [loading, setLoading] = useState(false)
+  const [dl, setDl] = useState(false)
   const [msg, setMsg] = useState<string | null>(null)
+
+  // Contexte utilisateur charge au montage :
+  // - optimal : le document est-il propose dans l'abonnement Optimal (champ non transmis par la page)
+  // - abonne : l'utilisateur connecte a-t-il un abonnement actif
+  // - achete : l'utilisateur a-t-il deja achete ce document a l'unite
+  const [ctx, setCtx] = useState<{ checked: boolean; connecte: boolean; abonne: boolean; optimal: boolean; achete: boolean }>({
+    checked: false, connecte: false, abonne: false, optimal: false, achete: false,
+  })
+
+  useEffect(() => {
+    let actif = true
+    ;(async () => {
+      const { data: docRow } = await supabase
+        .from('documents')
+        .select('acces_optimal')
+        .eq('id', documentId)
+        .single()
+      const optimal = !!docRow?.acces_optimal
+
+      const { data: sess } = await supabase.auth.getSession()
+      const session = sess.session
+      if (!session) {
+        if (actif) setCtx({ checked: true, connecte: false, abonne: false, optimal, achete: false })
+        return
+      }
+      const [{ data: profil }, { data: achats }] = await Promise.all([
+        supabase.from('users').select('abonnement_actif').eq('id', session.user.id).single(),
+        supabase.from('achats_documents').select('id').eq('user_id', session.user.id).eq('document_id', documentId).eq('statut', 'paye').limit(1),
+      ])
+      if (actif) setCtx({
+        checked: true,
+        connecte: true,
+        abonne: !!profil?.abonnement_actif,
+        optimal,
+        achete: !!(achats && achats.length > 0),
+      })
+    })()
+    return () => { actif = false }
+  }, [documentId])
+
+  // L'utilisateur a-t-il deja acces a ce document ?
+  const peutTelecharger =
+    ctx.connecte && (accesGratuit || (ctx.optimal && ctx.abonne) || (accesPayant && ctx.achete))
+
+  async function telecharger() {
+    setMsg(null)
+    const { data } = await supabase.auth.getSession()
+    const session = data.session
+    if (!session) {
+      window.location.href = `/connexion?next=/catalogue/${slug}`
+      return
+    }
+    setDl(true)
+    try {
+      const res = await fetch(`/api/documents/download?id=${documentId}`, {
+        headers: { Authorization: `Bearer ${session.access_token}` },
+      })
+      if (res.ok) {
+        const ext = res.headers.get('x-file-ext') || 'docx'
+        const blob = await res.blob()
+        const url = URL.createObjectURL(blob)
+        const a = document.createElement('a')
+        a.href = url
+        a.download = `${nom}.${ext}`
+        document.body.appendChild(a)
+        a.click()
+        document.body.removeChild(a)
+        URL.revokeObjectURL(url)
+      } else if (res.status === 403) {
+        setMsg("Vous n'avez pas encore accès à ce document.")
+      } else {
+        setMsg('Le téléchargement a échoué. Veuillez réessayer.')
+      }
+    } catch {
+      setMsg('Une erreur est survenue. Veuillez réessayer.')
+    } finally {
+      setDl(false)
+    }
+  }
 
   async function acheter() {
     setMsg(null)
@@ -82,26 +162,38 @@ export function BoutonsAchat({
     }
   }
 
-  async function obtenirGratuit() {
-    const { data } = await supabase.auth.getSession()
-    if (!data.session) {
-      window.location.href = `/connexion?next=/catalogue/${slug}`
-      return
-    }
-    window.location.href = '/espace-client?onglet=documents'
-  }
-
-  if (accesGratuit) {
+  // Verification du contexte en cours : bouton neutre pour ne pas afficher une action erronee.
+  if (!ctx.checked) {
     return (
       <div>
-        <button onClick={obtenirGratuit} style={btnPrimary}>
-          Télécharger gratuitement
+        <button disabled style={{ ...btnPrimary, opacity: 0.6, cursor: 'default' }}>Chargement...</button>
+      </div>
+    )
+  }
+
+  // 1. Acces deja acquis (gratuit, abonne sur un document Optimal, ou achat effectue) : telechargement direct.
+  if (peutTelecharger) {
+    return (
+      <div>
+        <button onClick={telecharger} disabled={dl} style={{ ...btnPrimary, opacity: dl ? 0.7 : 1 }}>
+          {dl ? 'Téléchargement...' : 'Télécharger gratuitement'}
         </button>
         {msg ? <p style={msgStyle}>{msg}</p> : null}
       </div>
     )
   }
 
+  // 2. Document gratuit, visiteur non connecte : inviter a se connecter pour telecharger.
+  if (accesGratuit) {
+    return (
+      <div>
+        <button onClick={telecharger} style={btnPrimary}>Télécharger gratuitement</button>
+        {msg ? <p style={msgStyle}>{msg}</p> : null}
+      </div>
+    )
+  }
+
+  // 3. Document payant a l'unite (non abonne, ou document hors abonnement) : achat + panier.
   if (accesPayant && prixUnitaire != null) {
     const dansPanier = has(documentId)
     return (
@@ -116,17 +208,24 @@ export function BoutonsAchat({
             Ajouter au panier
           </button>
         )}
+        {ctx.optimal ? (
+          <p style={{ ...msgStyle, color: '#1e3a5f' }}>
+            Inclus gratuitement avec l&rsquo;
+            <a href="/tarifs" style={{ color: '#1a4fba', fontWeight: 700 }}>Abonnement Optimal</a>.
+          </p>
+        ) : null}
         {msg === 'ajout' ? (
           <p style={{ ...msgStyle, color: '#15803d' }}>
             Ajouté au panier. <a href="/panier" style={{ color: '#15803d', fontWeight: 700 }}>Voir le panier ›</a>
           </p>
-        ) : msg ? (
+        ) : msg && msg !== 'ajout' ? (
           <p style={msgStyle}>{msg}</p>
         ) : null}
       </div>
     )
   }
 
+  // 4. Document Optimal seul, visiteur non abonne : orienter vers l'abonnement.
   return (
     <a href="/tarifs" style={btnPrimary}>
       {"Voir l'abonnement Optimal"}
