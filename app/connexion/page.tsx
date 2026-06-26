@@ -151,11 +151,12 @@ export default function Connexion() {
   return (
     <>
       <Header />
+      <style dangerouslySetInnerHTML={{ __html: '@media(max-width:820px){.cx-wrap{flex-direction:column !important;align-items:stretch !important;gap:1.25rem !important}.cx-aside{flex:none !important;position:static !important;top:auto !important;order:2 !important;padding:1.75rem !important}.cx-form{flex:none !important;order:1 !important;padding:1.75rem !important}.cx-2col{grid-template-columns:1fr !important}}' }} />
       <main style={{ background: '#f8fafc', minHeight: '100vh', padding: '3rem 0' }}>
-        <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 2rem', display: 'flex', gap: '2rem', alignItems: 'flex-start' }}>
+        <div className="cx-wrap" style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 2rem', display: 'flex', gap: '2rem', alignItems: 'flex-start' }}>
 
           {/* COLONNE GAUCHE */}
-          <div style={{ flex: '0 0 380px', background: 'linear-gradient(135deg, #0f2d6e 0%, #1a4fba 100%)', borderRadius: '16px', padding: '2.5rem', position: 'sticky', top: '80px' }}>
+          <div className="cx-aside" style={{ flex: '0 0 380px', background: 'linear-gradient(135deg, #0f2d6e 0%, #1a4fba 100%)', borderRadius: '16px', padding: '2.5rem', position: 'sticky', top: '80px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '24px' }}>
               <div style={{ width: '32px', height: '32px', background: 'rgba(255,255,255,0.2)', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <Scale size={18} color="white" strokeWidth={1.5} />
@@ -199,7 +200,7 @@ export default function Connexion() {
           </div>
 
           {/* COLONNE DROITE */}
-          <div style={{ flex: 1, background: 'white', borderRadius: '16px', padding: '2.5rem', border: '1px solid #e5e7eb' }}>
+          <div className="cx-form" style={{ flex: 1, background: 'white', borderRadius: '16px', padding: '2.5rem', border: '1px solid #e5e7eb' }}>
 
             {/* ERREUR / SUCCÈS GLOBAUX */}
             {erreur && (
@@ -325,7 +326,7 @@ export default function Connexion() {
                   <input type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="votre@email.fr" required style={inputStyle} />
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+                <div className="cx-2col" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
                   <div>
                     <label style={labelStyle}>Mot de passe *</label>
                     <input type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="••••••••" required minLength={8} style={inputStyle} />
@@ -353,7 +354,7 @@ export default function Connexion() {
                   </div>
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+                <div className="cx-2col" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
                   <div>
                     <label style={labelStyle}>Prénom *</label>
                     <input type="text" value={prenom} onChange={e => setPrenom(e.target.value)} placeholder="Jean" required style={inputStyle} />
