@@ -86,6 +86,26 @@ export default function TarifsClient() {
             </p>
           </div>
 
+          {/* COMMENT FONCTIONNE L ACCES */}
+          <div style={{ maxWidth: '860px', margin: '0 auto 2.5rem', background: 'white', border: '1px solid #e5e7eb', borderRadius: '14px', padding: '1.75rem' }}>
+            <h2 style={{ fontSize: '1.1rem', fontWeight: '700', color: '#0f2d6e', margin: '0 0 4px', textAlign: 'center' }}>Comment fonctionne l'accès aux documents&nbsp;?</h2>
+            <p style={{ color: '#6b7280', fontSize: '13px', textAlign: 'center', margin: '0 0 18px' }}>Trois manières d'accéder à nos modèles, selon vos besoins.</p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              <div style={{ borderLeft: '3px solid #16a34a', background: '#f0fdf4', borderRadius: '8px', padding: '12px 14px' }}>
+                <p style={{ margin: '0 0 2px', fontWeight: '700', color: '#15803d', fontSize: '13px' }}>Accès gratuit</p>
+                <p style={{ margin: 0, color: '#374151', fontSize: '13px', lineHeight: '1.6' }}>La création de compte est gratuite. Elle donne accès au téléchargement de tous les documents proposés en accès libre. Les autres restent consultables et disponibles à l'achat à l'unité.</p>
+              </div>
+              <div style={{ borderLeft: '3px solid #d97706', background: '#fffbeb', borderRadius: '8px', padding: '12px 14px' }}>
+                <p style={{ margin: '0 0 2px', fontWeight: '700', color: '#b45309', fontSize: '13px' }}>Documents à l'unité</p>
+                <p style={{ margin: 0, color: '#374151', fontSize: '13px', lineHeight: '1.6' }}>Les documents payants s'achètent un par un, sans abonnement, au tarif indiqué sur chaque fiche. Une fois réglés, ils restent accessibles dans votre espace client.</p>
+              </div>
+              <div style={{ borderLeft: '3px solid #1a4fba', background: '#eff6ff', borderRadius: '8px', padding: '12px 14px' }}>
+                <p style={{ margin: '0 0 2px', fontWeight: '700', color: '#1a4fba', fontSize: '13px' }}>Abonnement Optimal</p>
+                <p style={{ margin: 0, color: '#374151', fontSize: '13px', lineHeight: '1.6' }}>L'abonnement Optimal donne accès à l'ensemble des documents, packs, guides et ouvrages, sans coût supplémentaire, ainsi qu'à une question à notre juriste chaque mois. Au choix&nbsp;: paiement mensuel sans engagement de durée, ou paiement annuel avec trois mois offerts.</p>
+              </div>
+            </div>
+          </div>
+
           {/* TOGGLE */}
           <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '12px', marginBottom: '2.5rem'}}>
             <span style={{fontSize: '13px', fontWeight: annuel ? '400' : '600', color: annuel ? '#6b7280' : '#0f2d6e'}}>Mensuel · sans engagement</span>
