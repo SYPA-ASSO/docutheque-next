@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import type { CSSProperties } from 'react'
+import { Crown, CheckCircle } from 'lucide-react'
 import { supabase } from '@/lib/supabase'
 import { useCart } from '@/components/CartContext'
 
@@ -34,6 +35,29 @@ const btnSecondary: CSSProperties = {
   cursor: 'pointer',
 }
 const msgStyle: CSSProperties = { margin: '10px 0 0', fontSize: 12.5, color: '#b45309', lineHeight: 1.5 }
+
+// Bandeau dore : document inclus gratuitement dans l'abonnement Optimal de l'utilisateur.
+const bandeauOptimal: CSSProperties = {
+  background: 'linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%)',
+  border: '1px solid #fcd34d',
+  borderRadius: 10,
+  padding: '11px 13px',
+  marginBottom: 10,
+  display: 'flex',
+  alignItems: 'center',
+  gap: 10,
+}
+// Bandeau vert : document deja achete a l'unite par l'utilisateur.
+const bandeauAchete: CSSProperties = {
+  background: '#f0fdf4',
+  border: '1px solid #bbf7d0',
+  borderRadius: 10,
+  padding: '11px 13px',
+  marginBottom: 10,
+  display: 'flex',
+  alignItems: 'center',
+  gap: 10,
+}
 
 export function BoutonsAchat({
   documentId,
@@ -171,12 +195,37 @@ export function BoutonsAchat({
     )
   }
 
-  // 1. Acces deja acquis (gratuit, abonne sur un document Optimal, ou achat effectue) : telechargement direct.
+  // 1. Acces deja acquis : telechargement direct, avec un bandeau adapte a la raison de la gratuite.
   if (peutTelecharger) {
+    const inclusOptimal = ctx.optimal && ctx.abonne && !accesGratuit
+    const dejaAchete = accesPayant && ctx.achete && !accesGratuit && !inclusOptimal
     return (
       <div>
+        {inclusOptimal ? (
+          <div style={bandeauOptimal}>
+            <Crown size={20} color="#b8860b" strokeWidth={2} style={{ flexShrink: 0 }} />
+            <div style={{ minWidth: 0 }}>
+              <p style={{ margin: 0, fontSize: 12.5, fontWeight: 800, color: '#92400e', letterSpacing: '0.02em', textTransform: 'uppercase' }}>
+                Gratuit pour vous
+              </p>
+              <p style={{ margin: '1px 0 0', fontSize: 12, color: '#a16207', lineHeight: 1.4 }}>
+                Inclus dans votre abonnement Optimal
+              </p>
+            </div>
+          </div>
+        ) : dejaAchete ? (
+          <div style={bandeauAchete}>
+            <CheckCircle size={18} color="#16a34a" strokeWidth={2} style={{ flexShrink: 0 }} />
+            <div style={{ minWidth: 0 }}>
+              <p style={{ margin: 0, fontSize: 12.5, fontWeight: 800, color: '#15803d' }}>Déjà acquis</p>
+              <p style={{ margin: '1px 0 0', fontSize: 12, color: '#166534', lineHeight: 1.4 }}>
+                Vous avez déjà acheté ce document
+              </p>
+            </div>
+          </div>
+        ) : null}
         <button onClick={telecharger} disabled={dl} style={{ ...btnPrimary, opacity: dl ? 0.7 : 1 }}>
-          {dl ? 'Téléchargement...' : 'Télécharger gratuitement'}
+          {dl ? 'Téléchargement...' : dejaAchete ? 'Télécharger' : 'Télécharger gratuitement'}
         </button>
         {msg ? <p style={msgStyle}>{msg}</p> : null}
       </div>
