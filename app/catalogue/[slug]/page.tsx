@@ -240,7 +240,7 @@ export default async function RessourcePage({ params }: { params: Promise<{ slug
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
       {faqAll.length > 0 ? <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} /> : null}
       {definitionsSchema ? <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(definitionsSchema) }} /> : null}
-      <style dangerouslySetInnerHTML={{ __html: '.faq-d summary::-webkit-details-marker{display:none}.faq-d summary{list-style:none}.faq-d[open] .faq-chev{transform:rotate(180deg)}.rel-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}@media (max-width:640px){.rel-grid{grid-template-columns:1fr}}' }} />
+      <style dangerouslySetInnerHTML={{ __html: '.faq-d summary::-webkit-details-marker{display:none}.faq-d summary{list-style:none}.faq-d[open] .faq-chev{transform:rotate(180deg)}.rel-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}@media (max-width:640px){.rel-grid{grid-template-columns:1fr}}.bloc-prix-mobile{display:none}@media (max-width:640px){.bloc-prix-mobile{display:block}.bloc-prix-desktop{display:none}}' }} />
       <Header />
       <main style={{ background: '#f8fafc', minHeight: '100vh' }}>
         <div style={{ maxWidth: 1120, margin: '0 auto', padding: '2rem 1.5rem 3.5rem' }}>
@@ -280,6 +280,20 @@ export default async function RessourcePage({ params }: { params: Promise<{ slug
                   </div>
                 ) : null}
                 {r.description ? <IntroDeroulante texte={r.description} /> : null}
+              </div>
+
+              {/* Prix et action en haut de page sur mobile (sinon relegues tout en bas) */}
+              <div className="bloc-prix-mobile" style={card}>
+                {r.acces_gratuit ? (
+                  <p style={{ fontSize: '1.4rem', fontWeight: 800, color: '#15803d', margin: '0 0 12px' }}>Accès libre, gratuit</p>
+                ) : prix ? (
+                  <p style={{ fontSize: '1.8rem', fontWeight: 800, color: '#0f2d6e', margin: '0 0 12px' }}>
+                    {prix} <span style={{ fontSize: 13, fontWeight: 500, color: '#6b7280' }}>{"à l'unité"}</span>
+                  </p>
+                ) : (
+                  <p style={{ fontSize: '1.1rem', fontWeight: 700, color: '#0f2d6e', margin: '0 0 12px' }}>Sur abonnement</p>
+                )}
+                <BoutonsAchat documentId={r.id} slug={r.slug || ''} nom={r.nom} accesGratuit={r.acces_gratuit} accesPayant={r.acces_payant} prixUnitaire={r.prix_unitaire} />
               </div>
 
               <div style={trustBand}>
@@ -453,6 +467,7 @@ export default async function RessourcePage({ params }: { params: Promise<{ slug
             <aside style={{ flex: '0 0 322px', display: 'flex', flexDirection: 'column', gap: 18 }}>
 
               <div style={card}>
+                <div className="bloc-prix-desktop">
                 {r.acces_gratuit ? (
                   <p style={{ fontSize: '1.5rem', fontWeight: 800, color: '#15803d', margin: 0 }}>Accès libre, gratuit</p>
                 ) : prix ? (
@@ -465,6 +480,7 @@ export default async function RessourcePage({ params }: { params: Promise<{ slug
 
                 <div style={{ marginTop: 14 }}>
                   <BoutonsAchat documentId={r.id} slug={r.slug || ''} nom={r.nom} accesGratuit={r.acces_gratuit} accesPayant={r.acces_payant} prixUnitaire={r.prix_unitaire} />
+                </div>
                 </div>
 
                 <ul style={{ listStyle: 'none', padding: 0, margin: '16px 0 0' }}>

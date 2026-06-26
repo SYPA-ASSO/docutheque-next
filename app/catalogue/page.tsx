@@ -7,7 +7,7 @@ import NewsletterForm from '@/components/NewsletterForm'
 import { supabase } from '@/lib/supabase'
 import type { DocItem, Categorie } from '@/lib/types'
 import {
-  FileText, Lock, Star, ArrowRight, ChevronRight,
+  FileText, Package, Star, ArrowRight, ChevronRight,
   CheckCircle, Scale, Info, Download, Crown, ChevronDown, BookOpen
 } from 'lucide-react'
 
@@ -261,12 +261,12 @@ export default function CataloguePage() {
                             {docs.map(doc => {
                               const acces = accesLabel(doc)
                               return (
-                                <a key={doc.id} href={doc.slug ? `/catalogue/${doc.slug}` : undefined} style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '10px 12px', background: doc.acces_gratuit ? '#f0fdf4' : '#f8fafc', borderRadius: 8, border: `1px solid ${doc.acces_gratuit ? '#bbf7d0' : '#e5e7eb'}`, textDecoration: 'none', color: 'inherit', cursor: doc.slug ? 'pointer' : 'default' }}>
-                                  {doc.acces_gratuit
-                                    ? <FileText size={14} color="#16a34a" style={{ flexShrink: 0 }} />
-                                    : <Lock size={14} color="#d1d5db" style={{ flexShrink: 0 }} />
+                                <a key={doc.id} href={doc.slug ? `/catalogue/${doc.slug}` : undefined} style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '10px 12px', background: doc.acces_gratuit ? '#f0fdf4' : '#ffffff', borderRadius: 8, border: `1px solid ${doc.acces_gratuit ? '#bbf7d0' : '#e5e7eb'}`, textDecoration: 'none', color: 'inherit', cursor: doc.slug ? 'pointer' : 'default' }}>
+                                  {doc.type === 'pack'
+                                    ? <Package size={15} color={acces.color} style={{ flexShrink: 0 }} />
+                                    : <FileText size={14} color={acces.color} style={{ flexShrink: 0 }} />
                                   }
-                                  <p style={{ color: doc.acces_gratuit ? '#374151' : '#9ca3af', fontSize: 12, fontWeight: 600, margin: 0, flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                                  <p style={{ color: '#374151', fontSize: 12, fontWeight: 600, margin: 0, flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                                     {doc.nom}
                                   </p>
                                   <span style={{ background: acces.bg, color: acces.color, fontSize: 9, fontWeight: 700, padding: '2px 6px', borderRadius: 4, flexShrink: 0 }}>
