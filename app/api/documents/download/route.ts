@@ -1,5 +1,11 @@
 import { NextResponse } from 'next/server'
 import { supabaseAdmin } from '@/lib/supabase-admin'
+import JSZip from 'jszip'
+
+// Nettoie un nom de fichier pour une entree de zip (retire les caracteres interdits).
+function nomFichierSafe(s: string): string {
+  return (s || 'document').replace(/[\/\\:*?"<>|]+/g, ' ').replace(/\s+/g, ' ').trim() || 'document'
+}
 
 export async function GET(request: Request) {
   try {
@@ -56,6 +62,62 @@ export async function GET(request: Request) {
           subject: `Téléchargement · ${document.nom}`,
           htmlContent: `<p>${profile?.prenom} ${profile?.nom} (${profile?.email}) a téléchargé <strong>${document.nom}</strong>.</p>`,
         }),
+      })
+    }
+
+    // Pack : on assemble un zip a la volee a partir des modeles contenus (champ "contient").
+    // Aucun fichier n'est stocke pour le pack : le zip reflete toujours les modeles a jour.
+    if (document.type === 'pack') {
+      const slugs: string[] = Array.isArray(document.contient) ? document.contient.filter(Boolean) : []
+      if (slugs.length === 0) return NextResponse.json({ error: 'Ce pack ne contient aucun document.' }, { status: 404 })
+
+      const { data: contenus } = await supabaseAdmin
+        .from('documents')
+        .select('nom, slug, blob_url')
+        .in('slug', slugs)
+        .eq('actif', true)
+
+      const fichiers = (await Promise.all((contenus || []).map(async (d) => {
+        if (!d.blob_url) return null
+        try {
+          const r = await fetch(d.blob_url)
+          if (!r.ok) return null
+          const buf = new Uint8Array(await r.arrayBuffer())
+          const ext = ((d.blob_url || '').split('?')[0].split('/').pop() || '').split('.').pop()?.toLowerCase() || 'docx'
+          return { nom: d.nom as string, ext, buf }
+        } catch {
+          return null
+        }
+      }))).filter((x): x is { nom: string; ext: string; buf: Uint8Array } => x !== null)
+
+      if (fichiers.length === 0) return NextResponse.json({ error: 'Aucun fichier disponible dans ce pack.' }, { status: 404 })
+
+      const zip = new JSZip()
+      const utilises = new Set<string>()
+      for (const fic of fichiers) {
+        let nomEntree = `${nomFichierSafe(fic.nom)}.${fic.ext}`
+        if (utilises.has(nomEntree)) {
+          const pt = nomEntree.lastIndexOf('.')
+          const base = nomEntree.slice(0, pt)
+          const e = nomEntree.slice(pt)
+          let i = 2
+          while (utilises.has(`${base} (${i})${e}`)) i++
+          nomEntree = `${base} (${i})${e}`
+        }
+        utilises.add(nomEntree)
+        zip.file(nomEntree, fic.buf)
+      }
+
+      const contenuZip = await zip.generateAsync({ type: 'uint8array' })
+      const nomZip = `${document.slug || 'pack'}.zip`
+      return new NextResponse(contenuZip, {
+        status: 200,
+        headers: {
+          'Content-Type': 'application/zip',
+          'Content-Disposition': `attachment; filename="${nomZip}"`,
+          'X-File-Ext': 'zip',
+          'Cache-Control': 'private, no-store',
+        },
       })
     }
 
