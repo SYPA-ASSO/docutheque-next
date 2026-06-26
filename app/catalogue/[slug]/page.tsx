@@ -1,12 +1,13 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import type { CSSProperties } from 'react'
-import { ChevronDown, ScrollText, FileCheck2, Download, Lock, Package, Lightbulb, Scale, Search, Check, Star, type LucideIcon } from 'lucide-react'
+import { ChevronDown, ScrollText, FileCheck2, Download, Lock, Package, Lightbulb, Scale, Search, Check, Star, FileText, ArrowRight, BookOpen, type LucideIcon } from 'lucide-react'
 import { supabaseAdmin } from '@/lib/supabase-admin'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import type { DocItem } from '@/lib/types'
 import { AVIS_GOOGLE } from '@/lib/avis-google'
+import { ARTICLES_BLOG } from '@/lib/articles-blog'
 import { BoutonsAchat, IntroDeroulante, NewsletterMini } from './FicheInteractive'
 
 export const revalidate = 300
@@ -18,6 +19,9 @@ const BIO =
   "Accompagne particuliers, professionnels, collectivités et acteurs de l'ESS dans la compréhension de leurs droits et la sécurisation de leurs activités. Membre du CRFF. Production 100\u00a0% humaine, sans modèle généré automatiquement."
 
 // Avis Google : note reelle maintenue a la main dans lib/avis-google.ts (aucun avis fictif).
+
+// Acces rapide aux metadonnees d'un article par slug (maillage "Nos articles en lien").
+const ARTICLES_MAP = new Map(ARTICLES_BLOG.map((a) => [a.slug, a] as const))
 
 const MOIS = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre']
 
@@ -389,7 +393,10 @@ export default async function RessourcePage({ params }: { params: Promise<{ slug
                   <h2 style={secTitle}>Services associés</h2>
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, marginTop: 12 }}>
                     {r.services_lies.map((s) => (
-                      <Link key={s} href={s} style={chip}>{cleanLabel(s)}</Link>
+                      <Link key={s} href={s} style={chip}>
+                        <ArrowRight size={14} color="#b8860b" strokeWidth={2.5} />
+                        {cleanLabel(s)}
+                      </Link>
                     ))}
                   </div>
                 </div>
@@ -398,12 +405,27 @@ export default async function RessourcePage({ params }: { params: Promise<{ slug
               {r.articles_lies && r.articles_lies.length > 0 ? (
                 <div style={card}>
                   <h2 style={secTitle}>Nos articles en lien</h2>
-                  <div style={{ marginTop: 4 }}>
-                    {r.articles_lies.map((a) => (
-                      <Link key={a} href={`/blog/${a}`} style={artRow}>
-                        {cleanLabel(a)}
-                      </Link>
-                    ))}
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 12, marginTop: 12 }}>
+                    {r.articles_lies.map((a) => {
+                      const art = ARTICLES_MAP.get(a)
+                      if (!art) return null
+                      return (
+                        <Link key={a} href={`/blog/${a}`} style={artCard}>
+                          {art.image ? (
+                            <img src={art.image} alt={art.titre} style={{ flex: '0 0 96px', width: 96, height: 72, objectFit: 'cover', borderRadius: 8 }} />
+                          ) : (
+                            <div style={{ flex: '0 0 96px', width: 96, height: 72, borderRadius: 8, background: 'linear-gradient(135deg, #0f2d6e, #1a4fba)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                              <FileText size={22} color="rgba(255,255,255,0.4)" strokeWidth={1.5} />
+                            </div>
+                          )}
+                          <div style={{ minWidth: 0 }}>
+                            <span style={artCat}>{art.categorie}</span>
+                            <div style={artTitre}>{art.titre}</div>
+                            <div style={artMeta}>{art.date}</div>
+                          </div>
+                        </Link>
+                      )
+                    })}
                   </div>
                 </div>
               ) : null}
@@ -488,12 +510,15 @@ export default async function RessourcePage({ params }: { params: Promise<{ slug
               ) : null}
 
               {definitions.length > 0 ? (
-                <div style={card}>
-                  <h3 style={sideH}>Définitions utiles</h3>
+                <div style={defsCard}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
+                    <BookOpen size={17} color="#b8860b" strokeWidth={2} />
+                    <h3 style={{ ...sideH, margin: 0 }}>Définitions utiles</h3>
+                  </div>
                   <dl style={{ margin: 0 }}>
                     {definitions.map((d, i) => (
-                      <div key={i}>
-                        <dt style={{ fontSize: 13, fontWeight: 700, color: '#0f2d6e', marginTop: i === 0 ? 0 : 10 }}>{d.terme}</dt>
+                      <div key={i} style={{ paddingTop: i === 0 ? 0 : 10, marginTop: i === 0 ? 0 : 10, borderTop: i === 0 ? 'none' : '1px solid #f0e0b0' }}>
+                        <dt style={{ fontSize: 13, fontWeight: 700, color: '#0f2d6e' }}>{d.terme}</dt>
                         <dd style={{ fontSize: 12.5, color: '#4b5563', margin: '3px 0 0', lineHeight: 1.55 }}>{d.definition}</dd>
                       </div>
                     ))}
@@ -534,8 +559,11 @@ const bioHd: CSSProperties = { fontSize: 11, textTransform: 'uppercase', letterS
 const bioP: CSSProperties = { color: 'rgba(255,255,255,0.82)', fontSize: 12.5, lineHeight: 1.6, margin: '8px 0 10px' }
 const bioLink: CSSProperties = { color: 'white', fontSize: 12.5, fontWeight: 700, textDecoration: 'none' }
 const avisBtn: CSSProperties = { display: 'inline-block', background: '#0f2d6e', color: 'white', textDecoration: 'none', padding: '10px 18px', borderRadius: 8, fontSize: 13, fontWeight: 700 }
-const chip: CSSProperties = { display: 'inline-block', background: 'white', border: '1px solid #e5e7eb', color: '#0f2d6e', textDecoration: 'none', padding: '8px 14px', borderRadius: 999, fontSize: 13, fontWeight: 600 }
-const artRow: CSSProperties = { display: 'block', fontSize: 13, fontWeight: 600, color: '#374151', textDecoration: 'none', padding: '10px 0', borderBottom: '1px solid #e5e7eb', lineHeight: 1.4 }
+const chip: CSSProperties = { display: 'inline-flex', alignItems: 'center', gap: 7, background: 'white', border: '1px solid #e5e7eb', color: '#0f2d6e', textDecoration: 'none', padding: '8px 14px', borderRadius: 999, fontSize: 13, fontWeight: 600 }
+const artCard: CSSProperties = { display: 'flex', gap: 12, alignItems: 'center', background: '#f8fafc', border: '1px solid #e5e7eb', borderRadius: 10, padding: 10, textDecoration: 'none' }
+const artCat: CSSProperties = { display: 'inline-block', background: '#eef2ff', color: '#1a4fba', fontSize: 10.5, fontWeight: 700, padding: '2px 8px', borderRadius: 20, marginBottom: 5 }
+const artTitre: CSSProperties = { fontSize: 13, fontWeight: 700, color: '#0f2d6e', lineHeight: 1.35 }
+const artMeta: CSSProperties = { fontSize: 11, color: '#9ca3af', marginTop: 4 }
 const optBox: CSSProperties = { background: 'linear-gradient(135deg, #b8860b 0%, #c8a84b 100%)', borderRadius: 10, padding: 14, color: 'white', fontSize: 12.5, lineHeight: 1.5 }
 const optLink: CSSProperties = { display: 'inline-block', marginTop: 8, color: 'white', fontWeight: 700, textDecoration: 'underline', fontSize: 12 }
 const qBox: CSSProperties = { background: '#0f2d6e', borderRadius: 10, padding: 14, color: 'white', marginTop: 14 }
@@ -544,6 +572,7 @@ const qLink: CSSProperties = { display: 'block', textAlign: 'center', background
 const noteStyle: CSSProperties = { fontSize: 11, color: '#9ca3af', margin: '9px 0 0', textAlign: 'center', lineHeight: 1.5 }
 const sideH: CSSProperties = { fontSize: 13, fontWeight: 800, color: '#0f2d6e', margin: '0 0 12px', textTransform: 'uppercase', letterSpacing: '0.04em' }
 const tocLink: CSSProperties = { fontSize: 13, color: '#475569', textDecoration: 'none', padding: '6px 0 6px 14px', borderLeft: '2px solid #e5e7eb' }
+const defsCard: CSSProperties = { background: 'linear-gradient(135deg, #fffdf5 0%, #fdf6e3 100%)', border: '1px solid #f0e0b0', borderLeft: '4px solid #b8860b', borderRadius: 12, padding: 18 }
 const nlBox: CSSProperties = { background: '#eef3fb', border: '1px solid #d4e0f3', borderRadius: 12, padding: 18 }
 
 function LienRessource({ d }: { d: DocItem }) {
@@ -563,8 +592,13 @@ function RelCard({ d }: { d: DocItem }) {
   const acces = d.acces_gratuit ? 'Gratuit' : prix ? prix : 'Sur abonnement'
   return (
     <Link href={`/catalogue/${d.slug}`} style={{ flex: '1 1 150px', minWidth: 150, border: '1px solid #e5e7eb', borderRadius: 10, padding: 12, textDecoration: 'none' }}>
-      <div style={{ fontSize: 13, fontWeight: 700, color: '#0f2d6e', lineHeight: 1.35 }}>{d.nom}</div>
-      <div style={{ fontSize: 11.5, color: d.acces_gratuit ? '#15803d' : '#d97706', fontWeight: 600, marginTop: 6 }}>{acces}</div>
+      <div style={{ display: 'flex', alignItems: 'flex-start', gap: 8 }}>
+        <span style={{ flexShrink: 0, display: 'inline-flex', width: 26, height: 26, borderRadius: 7, background: '#eef2ff', alignItems: 'center', justifyContent: 'center' }}>
+          <FileText size={15} color="#1a4fba" strokeWidth={2} />
+        </span>
+        <div style={{ fontSize: 13, fontWeight: 700, color: '#0f2d6e', lineHeight: 1.35 }}>{d.nom}</div>
+      </div>
+      <div style={{ fontSize: 11.5, color: d.acces_gratuit ? '#15803d' : '#d97706', fontWeight: 600, marginTop: 8 }}>{acces}</div>
     </Link>
   )
 }
