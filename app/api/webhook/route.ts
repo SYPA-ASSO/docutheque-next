@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server'
 import { stripe } from '@/lib/stripe'
 import { supabaseAdmin } from '@/lib/supabase-admin'
 import Stripe from 'stripe'
+import { AVIS_GOOGLE } from '@/lib/avis-google'
 
 const SITE_CONFIRM = 'https://cholez-pagotto.fr'
 
@@ -73,6 +74,77 @@ async function envoyerConfirmationCommande(email: string, prenom: string, type: 
     if (!res.ok) { const err = await res.json().catch(() => ({})); console.error('[Webhook] echec email de confirmation:', err) }
   } catch (e) {
     console.error('[Webhook] erreur reseau email de confirmation:', e)
+  }
+}
+
+function emailInvitationAvisHtml(prenom: string): string {
+  const salutation = prenom ? `Bonjour ${prenom},` : 'Bonjour,'
+  return `<!DOCTYPE html>
+<html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"></head>
+<body style="margin:0;padding:0;background:#f8fafc;font-family:Arial,Helvetica,sans-serif;color:#374151;">
+  <div style="max-width:560px;margin:0 auto;padding:24px;">
+    <div style="background:#0f2d6e;border-radius:12px 12px 0 0;padding:28px;">
+      <p style="margin:0;color:#c8a84b;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;">Cabinet Cholez-Pagotto</p>
+      <h1 style="margin:8px 0 0;color:#ffffff;font-size:19px;">Votre avis compte pour nous</h1>
+    </div>
+    <div style="background:#ffffff;border:1px solid #e5e7eb;border-top:none;border-radius:0 0 12px 12px;padding:28px;">
+      <p style="margin:0 0 14px;font-size:14px;line-height:1.7;">${salutation}</p>
+      <p style="margin:0 0 18px;font-size:14px;line-height:1.7;">Merci de votre confiance. Si votre document vous a été utile, un avis sur Google nous aiderait beaucoup à faire connaître le cabinet et à accompagner d'autres personnes. Cela ne prend qu'une minute.</p>
+      <div style="text-align:center;margin:24px 0;">
+        <a href="${AVIS_GOOGLE.lien}" style="display:inline-block;background:#b8860b;color:#ffffff;text-decoration:none;font-weight:700;font-size:14px;padding:13px 30px;border-radius:50px;">Laisser un avis sur Google</a>
+      </div>
+      <p style="margin:0;font-size:12px;line-height:1.6;color:#9ca3af;">Si vous manquez de temps, pas d'inquiétude : ce message ne vous sera pas renvoyé. Pour toute question, répondez simplement à cet email.</p>
+    </div>
+    <p style="text-align:center;color:#9ca3af;font-size:11px;margin:16px 0 0;">Cabinet Cholez-Pagotto &middot; 12 rue d'Olima &middot; 88000 &Eacute;pinal &middot; cholez-pagotto.fr</p>
+  </div>
+</body></html>`
+}
+
+async function envoyerInvitationAvis(email: string, prenom: string): Promise<void> {
+  const apiKey = process.env.BREVO_API_KEY
+  if (!apiKey) { console.error('[Webhook] BREVO_API_KEY manquante, invitation avis non envoyee'); return }
+  try {
+    const res = await fetch('https://api.brevo.com/v3/smtp/email', {
+      method: 'POST',
+      headers: { accept: 'application/json', 'api-key': apiKey, 'content-type': 'application/json' },
+      body: JSON.stringify({
+        sender: { name: 'Cabinet Cholez-Pagotto', email: 'contact@cholez-pagotto.fr' },
+        to: [{ email, name: prenom || email }],
+        subject: 'Votre avis compte pour le cabinet',
+        htmlContent: emailInvitationAvisHtml(prenom),
+      }),
+    })
+    if (!res.ok) { const err = await res.json().catch(() => ({})); console.error('[Webhook] echec invitation avis:', err) }
+  } catch (e) {
+    console.error('[Webhook] erreur reseau invitation avis:', e)
+  }
+}
+
+// Invitation a laisser un avis Google, une seule fois, apres un premier achat.
+// Ciblage : clients non abonnes (les abonnes voient l'invitation dans leur espace client).
+// La reclamation atomique sur avis_google_propose garantit un envoi unique et evite tout
+// doublon avec l'invitation in-app.
+async function proposerAvisGoogleApresAchat(userId: string | null): Promise<void> {
+  if (!userId || !AVIS_GOOGLE.lien) return
+  try {
+    const { data: u } = await supabaseAdmin
+      .from('users')
+      .select('email, prenom, abonnement_actif, avis_google_propose')
+      .eq('id', userId)
+      .maybeSingle()
+    if (!u || !u.email) return
+    if (u.abonnement_actif) return
+    if (u.avis_google_propose) return
+    const { data: claim } = await supabaseAdmin
+      .from('users')
+      .update({ avis_google_propose: true })
+      .eq('id', userId)
+      .eq('avis_google_propose', false)
+      .select('id')
+    if (!claim || claim.length === 0) return
+    await envoyerInvitationAvis(u.email, u.prenom || '')
+  } catch (e) {
+    console.error('[Webhook] erreur proposition avis Google:', e)
   }
 }
 
@@ -185,6 +257,7 @@ export async function POST(request: Request) {
               mode_paiement: 'carte',
               statut: 'paye',
             })
+          await proposerAvisGoogleApresAchat(userId)
         }
       }
 
@@ -219,6 +292,7 @@ export async function POST(request: Request) {
                 })
             }
           }
+          await proposerAvisGoogleApresAchat(userId)
         }
       }
 
