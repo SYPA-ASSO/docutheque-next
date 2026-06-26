@@ -12,7 +12,7 @@ import { CategorySearch } from '@/components/CategorySearch'
 import { DocumentSearch } from '@/components/DocumentSearch'
 import { PhoneInput } from '@/components/PhoneInput'
 import {
-  User, FileText, MessageSquare, Shield, LogOut,
+  User, FileText, Package, MessageSquare, Shield, LogOut,
   Crown, Clock, CheckCircle, AlertCircle, Lock,
   ChevronRight, Calendar, Star, Zap, TrendingUp,
   ShoppingBag, Receipt, Download, Filter, Send
@@ -483,7 +483,7 @@ export default function EspaceClient() {
     // Un document payant non encore acquis reste achetable a l'unite, meme s'il est aussi propose en Optimal (cas du non-abonne).
     if (doc.acces_payant) return { label: `${doc.prix_unitaire ?? '?'}\u00a0€`, color: '#d97706', bg: '#fff7ed', accessible: false, achetable: true }
     // Document Optimal seul et non-abonne : acces verrouille, orientation vers l'abonnement.
-    if (doc.acces_optimal && !estAbonne) return { label: 'Optimal', color: '#9ca3af', bg: '#f3f4f6', accessible: false }
+    if (doc.acces_optimal && !estAbonne) return { label: 'Optimal', color: '#1a4fba', bg: '#eff6ff', accessible: false }
     return { label: '-', color: '#9ca3af', bg: '#f3f4f6', accessible: false }
   }
 
@@ -658,10 +658,10 @@ export default function EspaceClient() {
                       {catalogue.slice(0, 6).map((doc, i) => {
                         const acces = accesDocLabel(doc)
                         return (
-                          <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '10px 12px', background: acces.accessible ? '#f0fdf4' : '#f8fafc', borderRadius: '8px', border: `1px solid ${acces.accessible ? '#bbf7d0' : '#e5e7eb'}` }}>
-                            {acces.accessible ? <FileText size={13} color="#16a34a" style={{ flexShrink: 0 }} /> : <Lock size={13} color="#d1d5db" style={{ flexShrink: 0 }} />}
+                          <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '10px 12px', background: acces.accessible ? '#f0fdf4' : '#ffffff', borderRadius: '8px', border: `1px solid ${acces.accessible ? '#bbf7d0' : '#e5e7eb'}` }}>
+                            {doc.type === 'pack' ? <Package size={14} color={acces.color} style={{ flexShrink: 0 }} /> : <FileText size={13} color={acces.color} style={{ flexShrink: 0 }} />}
                             <div style={{ flex: 1, minWidth: 0 }}>
-                              <p style={{ color: acces.accessible ? '#374151' : '#9ca3af', fontSize: '11px', fontWeight: '600', margin: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{doc.nom}</p>
+                              <p style={{ color: '#374151', fontSize: '11px', fontWeight: '600', margin: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{doc.nom}</p>
                             </div>
                             <span style={{ background: acces.bg, color: acces.color, fontSize: '9px', fontWeight: '700', padding: '1px 5px', borderRadius: '4px', flexShrink: 0 }}>{acces.label}</span>
                           </div>
@@ -914,12 +914,12 @@ export default function EspaceClient() {
                   {catalogueFiltre.map(doc => {
                     const acces = accesDocLabel(doc)
                     return (
-                      <div key={doc.id} style={{ background: 'white', border: `1px solid ${acces.accessible ? '#bbf7d0' : '#e5e7eb'}`, borderRadius: '10px', padding: '1rem', display: 'flex', alignItems: 'center', gap: '10px', opacity: acces.accessible ? 1 : 0.8 }}>
-                        <div style={{ width: '36px', height: '36px', background: acces.accessible ? '#f0fdf4' : '#f3f4f6', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                          {acces.accessible ? <FileText size={16} color="#16a34a" /> : <Lock size={16} color="#d1d5db" />}
+                      <div key={doc.id} style={{ background: 'white', border: `1px solid ${acces.accessible ? '#bbf7d0' : '#e5e7eb'}`, borderRadius: '10px', padding: '1rem', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                        <div style={{ width: '36px', height: '36px', background: acces.bg, borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                          {doc.type === 'pack' ? <Package size={16} color={acces.color} /> : <FileText size={16} color={acces.color} />}
                         </div>
                         <div style={{ flex: 1, minWidth: 0 }}>
-                          <p style={{ color: acces.accessible ? '#0f2d6e' : '#9ca3af', fontSize: '12px', fontWeight: '600', margin: '0 0 2px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{doc.nom}</p>
+                          <p style={{ color: '#0f2d6e', fontSize: '12px', fontWeight: '600', margin: '0 0 2px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{doc.nom}</p>
                           {doc.categories && doc.categories.length > 0 && (
                             <p style={{ color: '#d1d5db', fontSize: '10px', margin: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{doc.categories[0]}</p>
                           )}
