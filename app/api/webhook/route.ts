@@ -2,80 +2,69 @@ import { NextResponse } from 'next/server'
 import { stripe } from '@/lib/stripe'
 import { supabaseAdmin } from '@/lib/supabase-admin'
 import Stripe from 'stripe'
+import { AVIS_GOOGLE } from '@/lib/avis-google'
 
-const SITE_CONFIRM = 'https://cholez-pagotto.fr'
-
-function eur(centimes: number | null | undefined): string {
-  if (centimes == null) return ''
-  return (centimes / 100).toFixed(2).replace('.', ',') + '\u00a0\u20ac'
-}
-
-type TypeCommande = 'abonnement' | 'document' | 'panier' | 'question' | 'conseil'
-
-function contenuConfirmation(type: TypeCommande): { sujet: string; titre: string; corps: string; cta: string; lien: string } {
-  switch (type) {
-    case 'abonnement':
-      return { sujet: 'Votre abonnement Optimal est actif', titre: 'Bienvenue, votre abonnement est actif', corps: "Votre abonnement Optimal est désormais actif. Vous avez accès à la bibliothèque complète de documents, à vos questions au juriste et à l'ensemble des avantages de votre formule.", cta: 'Accéder à mon espace', lien: `${SITE_CONFIRM}/espace-client` }
-    case 'document':
-      return { sujet: 'Votre achat est confirmé', titre: 'Merci, votre achat est confirmé', corps: "Votre paiement a bien été reçu. Votre document est dès à présent disponible au téléchargement dans votre espace client, onglet Documents.", cta: 'Télécharger mon document', lien: `${SITE_CONFIRM}/espace-client?onglet=documents` }
-    case 'panier':
-      return { sujet: 'Votre commande est confirmée', titre: 'Merci, votre commande est confirmée', corps: "Votre paiement a bien été reçu. Vos documents sont dès à présent disponibles au téléchargement dans votre espace client, onglet Documents.", cta: 'Accéder à mes documents', lien: `${SITE_CONFIRM}/espace-client?onglet=documents` }
-    case 'question':
-      return { sujet: 'Votre question a bien été enregistrée', titre: 'Votre question est bien prise en compte', corps: "Votre paiement a bien été reçu et votre question est enregistrée. Notre juriste vous répondra dans les meilleurs délais, sous 24 à 48 heures ouvrées.", cta: 'Suivre ma demande', lien: `${SITE_CONFIRM}/espace-client` }
-    case 'conseil':
-      return { sujet: 'Votre demande de conseil en assurances est confirmée', titre: 'Votre demande est bien enregistrée', corps: "Votre paiement a bien été reçu. Votre demande de conseil en assurances est enregistrée, nous revenons vers vous dans les meilleurs délais.", cta: 'Accéder à mon espace', lien: `${SITE_CONFIRM}/espace-client` }
-  }
-}
-
-function emailConfirmationHtml(prenom: string, type: TypeCommande, montant: string): string {
-  const c = contenuConfirmation(type)
-  const ligneMontant = montant
-    ? `<table style="width:100%;border-top:1px solid #f1f3f7;border-bottom:1px solid #f1f3f7;margin:0 0 22px;"><tr><td style="padding:8px 0;color:#6b7280;font-size:13px;">Montant réglé</td><td style="padding:8px 0;text-align:right;font-weight:700;color:#0f2d6e;font-size:13px;">${montant}</td></tr></table>`
-    : ''
-  const salutation = prenom ? `Bonjour ${prenom},` : 'Bonjour,'
-  return `<!DOCTYPE html>
-<html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"></head>
-<body style="margin:0;padding:0;background:#f8fafc;font-family:Arial,Helvetica,sans-serif;color:#374151;">
-  <div style="max-width:560px;margin:0 auto;padding:24px;">
-    <div style="background:#0f2d6e;border-radius:12px 12px 0 0;padding:28px;">
-      <p style="margin:0;color:#c8a84b;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;">Cabinet Cholez-Pagotto</p>
-      <h1 style="margin:8px 0 0;color:#ffffff;font-size:19px;">${c.titre}</h1>
-    </div>
-    <div style="background:#ffffff;border:1px solid #e5e7eb;border-top:none;border-radius:0 0 12px 12px;padding:28px;">
-      <p style="margin:0 0 14px;font-size:14px;line-height:1.7;">${salutation}</p>
-      <p style="margin:0 0 18px;font-size:14px;line-height:1.7;">${c.corps}</p>
-      ${ligneMontant}
-      <div style="text-align:center;margin:24px 0;">
-        <a href="${c.lien}" style="display:inline-block;background:#0f2d6e;color:#ffffff;text-decoration:none;font-weight:700;font-size:14px;padding:13px 30px;border-radius:50px;">${c.cta}</a>
-      </div>
-      <p style="margin:0;font-size:12px;line-height:1.6;color:#9ca3af;">Ce message vous confirme votre commande. Pour toute question, répondez simplement à cet email ou utilisez le formulaire de contact du site.</p>
-    </div>
-    <p style="text-align:center;color:#9ca3af;font-size:11px;margin:16px 0 0;">Cabinet Cholez-Pagotto &middot; 12 rue d'Olima &middot; 88000 &Eacute;pinal &middot; cholez-pagotto.fr</p>
-  </div>
-</body></html>`
-}
-
-async function envoyerConfirmationCommande(email: string, prenom: string, type: TypeCommande, montant: string): Promise<void> {
-  const apiKey = process.env.BREVO_API_KEY
-  if (!apiKey) { console.error('[Webhook] BREVO_API_KEY manquante, email de confirmation non envoye'); return }
-  const c = contenuConfirmation(type)
+// Invitation unique a laisser un avis Google apres le premier achat a l'unite d'un non-abonne.
+// La colonne avis_google_propose garantit qu'un client n'est sollicite qu'une seule fois (email ou in-app).
+async function proposerAvisGoogleApresAchat(userId: string) {
   try {
-    const res = await fetch('https://api.brevo.com/v3/smtp/email', {
+    const { data: u } = await supabaseAdmin
+      .from('users')
+      .select('email, prenom, abonnement_actif, avis_google_propose')
+      .eq('id', userId)
+      .single()
+    if (!u?.email || u.abonnement_actif || u.avis_google_propose) return
+
+    // Reservation atomique de la sollicitation : evite tout double envoi.
+    const { data: claim } = await supabaseAdmin
+      .from('users')
+      .update({ avis_google_propose: true })
+      .eq('id', userId)
+      .eq('avis_google_propose', false)
+      .select('id')
+    if (!claim || claim.length === 0) return
+
+    const brevoKey = process.env.BREVO_API_KEY
+    if (!brevoKey) return
+    const prenomTxt = u.prenom ? ' ' + u.prenom : ''
+    const html = `
+<!DOCTYPE html>
+<html lang="fr">
+<head><meta charset="UTF-8"></head>
+<body style="font-family:Arial,sans-serif;color:#374151;font-size:14px;max-width:600px;margin:0 auto;">
+  <div style="background:linear-gradient(135deg,#0f2d6e 0%,#1a4fba 100%);padding:24px;border-radius:8px 8px 0 0;">
+    <h2 style="color:#ffffff;margin:0;font-size:16px;">Merci pour votre confiance</h2>
+  </div>
+  <div style="background:#f8fafc;padding:24px;border:1px solid #e5e7eb;border-top:none;border-radius:0 0 8px 8px;">
+    <p>Bonjour${prenomTxt},</p>
+    <p>Votre document est disponible dans votre espace client. Nous esp\u00e9rons qu'il vous sera utile.</p>
+    <p>Si le Cabinet Cholez-Pagotto vous a rendu service, un avis sur Google nous aiderait beaucoup \u00e0 le faire conna\u00eetre. Cela ne prend qu'une minute, et chaque avis compte.</p>
+    <p style="text-align:center;margin:24px 0;">
+      <a href="${AVIS_GOOGLE.lien}" style="display:inline-block;background:#0f2d6e;color:#ffffff;text-decoration:none;padding:12px 22px;border-radius:8px;font-weight:700;font-size:14px;">Laisser un avis sur Google</a>
+    </p>
+    <p style="font-size:12px;color:#6b7280;">Vous ne recevrez ce message qu'une seule fois. Merci d'avance pour votre soutien.</p>
+    <p style="margin-top:24px;">Cordialement,</p>
+    <p style="margin:8px 0 0;line-height:1.7;">
+      <strong>Cabinet CHOLEZ PAGOTTO</strong><br>
+      <a href="https://cholez-pagotto.fr/connexion" style="color:#1a4fba;text-decoration:none;">Votre espace client</a>
+    </p>
+  </div>
+</body>
+</html>`
+    await fetch('https://api.brevo.com/v3/smtp/email', {
       method: 'POST',
-      headers: { accept: 'application/json', 'api-key': apiKey, 'content-type': 'application/json' },
+      headers: { 'accept': 'application/json', 'api-key': brevoKey, 'content-type': 'application/json' },
       body: JSON.stringify({
-        sender: { name: 'Cabinet Cholez-Pagotto', email: 'contact@cholez-pagotto.fr' },
-        to: [{ email, name: prenom || email }],
-        subject: c.sujet,
-        htmlContent: emailConfirmationHtml(prenom, type, montant),
+        sender: { name: 'Cabinet CHOLEZ PAGOTTO', email: 'contact@cholez-pagotto.fr' },
+        to: [{ email: u.email, name: u.prenom || u.email }],
+        subject: 'Merci, et votre avis nous aiderait',
+        htmlContent: html,
       }),
-    })
-    if (!res.ok) { const err = await res.json().catch(() => ({})); console.error('[Webhook] echec email de confirmation:', err) }
-  } catch (e) {
-    console.error('[Webhook] erreur reseau email de confirmation:', e)
+    }).catch((err) => console.error('[Avis Google] Email echoue:', err))
+  } catch (err) {
+    console.error('[Avis Google] Erreur:', err)
   }
 }
-
 
 export async function POST(request: Request) {
   const body = await request.text()
@@ -185,6 +174,7 @@ export async function POST(request: Request) {
               mode_paiement: 'carte',
               statut: 'paye',
             })
+          await proposerAvisGoogleApresAchat(userId)
         }
       }
 
@@ -219,23 +209,10 @@ export async function POST(request: Request) {
                 })
             }
           }
+          await proposerAvisGoogleApresAchat(userId)
         }
       }
 
-      // Email de confirmation de commande (carte) aux couleurs du cabinet
-      {
-        let typeCommande: TypeCommande | null = null
-        if (priceKey?.includes('optimal')) typeCommande = 'abonnement'
-        else if (session.metadata?.produit === 'document') typeCommande = 'document'
-        else if (session.metadata?.produit === 'panier') typeCommande = 'panier'
-        else if (priceKey === 'question_unitaire' || priceKey === 'question_abonne') typeCommande = 'question'
-        else if (priceKey?.includes('conseil_assurances')) typeCommande = 'conseil'
-
-        if (typeCommande) {
-          const { data: u } = await supabaseAdmin.from('users').select('prenom').eq('email', customerEmail).maybeSingle()
-          await envoyerConfirmationCommande(customerEmail, u?.prenom || '', typeCommande, eur(session.amount_total))
-        }
-      }
       break
     }
 
