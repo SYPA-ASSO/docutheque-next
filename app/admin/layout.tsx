@@ -4,7 +4,7 @@ import { useState, useEffect, createContext, useContext } from 'react'
 import { useRouter, usePathname } from 'next/navigation'
 import {
   LayoutDashboard, FileText, Receipt, MessageSquare,
-  Users, TrendingUp, LogOut, Shield, ShieldCheck, Settings, AlertCircle, ShoppingBag, Scale
+  Users, TrendingUp, LogOut, Shield, ShieldCheck, Settings, AlertCircle, ShoppingBag, Scale, Megaphone
 } from 'lucide-react'
 
 type AdminContextType = {
@@ -105,6 +105,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     { href: '/admin/dossiers-rgpd', label: 'Diagnostics RGPD', icon: <ShieldCheck size={16} strokeWidth={1.5} /> },
     { href: '/admin/avocats', label: 'Avocats', icon: <Scale size={16} strokeWidth={1.5} /> },
     { href: '/admin/documents', label: 'Documents', icon: <FileText size={16} strokeWidth={1.5} /> },
+    { href: '/admin/banniere', label: 'Bandeau catalogue', icon: <Megaphone size={16} strokeWidth={1.5} /> },
     { href: '/admin/achats', label: 'Achats documents', icon: <ShoppingBag size={16} strokeWidth={1.5} /> },
     { href: '/admin/factures', label: 'Factures', icon: <Receipt size={16} strokeWidth={1.5} /> },
     { href: '/admin/revenus', label: 'Revenus', icon: <TrendingUp size={16} strokeWidth={1.5} /> },
