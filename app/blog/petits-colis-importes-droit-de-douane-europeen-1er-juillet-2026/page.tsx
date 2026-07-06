@@ -69,10 +69,10 @@ const schema = {
         },
         {
           "@type": "Question",
-          "name": "La taxe française de 2 € sur les petits colis existe-t-elle encore ?",
+          "name": "La taxe française de 2 € sur les petits colis est-elle suspendue ou abrogée ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Non. Le XIII de l'article 82 de la loi de finances pour 2026 prévoyait son abrogation à compter de l'entrée en vigueur du mécanisme européen. Cette entrée en vigueur ayant été constatée au 1er juillet 2026 par le décret n° 2026-589, la taxe française a cessé de s'appliquer à cette date, après quatre mois d'application (1er mars au 30 juin 2026)."
+            "text": "Elle a cessé de s'appliquer au 1er juillet 2026. La presse a parlé d'une taxe « suspendue », en écho à l'annonce gouvernementale du 30 juin 2026 ; juridiquement, le XIII de l'article 82 de la loi de finances pour 2026 prévoyait son abrogation à compter de l'entrée en vigueur du mécanisme européen. Cette entrée en vigueur ayant été constatée au 1er juillet 2026 par le décret n° 2026-589, la taxe française a donc pris fin à cette date, après quatre mois d'application (1er mars au 30 juin 2026)."
           }
         },
         {
@@ -210,6 +210,7 @@ export default function ArticlePetitsColis2026() {
                 </h2>
                 <p style={{marginBottom: '1rem'}}>Premier étage de la fusée : l'<strong>article 82 de la loi de finances pour 2026</strong> (loi n°&nbsp;2026-103 du 19 février 2026) a créé une <strong>taxe nationale de 2&nbsp;€ par article</strong> contenu dans les envois dits de faible valeur, c'est-à-dire d'une valeur intrinsèque <strong>inférieure ou égale à 150&nbsp;€</strong>, importés de pays tiers à l'Union européenne.</p>
                 <p style={{marginBottom: '1rem'}}>Cette taxe, applicable à compter du <strong>1er mars 2026</strong>, avait un caractère assumé de mesure d'attente : combler, au niveau national, l'absence de droits de douane sur ces envois (la fameuse franchise « de minimis ») en attendant la réponse européenne. Elle visait à rétablir une concurrence plus équitable entre les plateformes expédiant depuis l'étranger et les commerçants établis en France, soumis, eux, à l'ensemble des charges et obligations nationales.</p>
+                <p style={{marginBottom: '1rem'}}>Son bilan aura toutefois été très en deçà des attentes. Mesure nationale au sein d'un marché unique, la taxe a été <strong>massivement contournée</strong> : une large partie des flux a été déroutée par avion vers les pays voisins, Belgique et Pays-Bas notamment, avant d'être réacheminée par la route vers la France. Les professionnels du secteur évoquent jusqu'à 90&nbsp;% des volumes déroutés, et la presse a relayé un rendement de quelques millions d'euros seulement, très loin des recettes attendues. Ce constat a pesé dans la décision de ne pas cumuler la taxe nationale avec le droit européen, comme cela avait un temps été envisagé, mais de l'éteindre dès la bascule du 1er juillet.</p>
               </section>
 
               <section id="depuis">
@@ -294,10 +295,10 @@ export default function ArticlePetitsColis2026() {
                   </details>
                   <details key={1} style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '10px', padding: '1rem 1.25rem'}}>
                     <summary style={{fontWeight: '600', color: '#0f2d6e', fontSize: '14px', cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '12px'}}>
-                      <span>La taxe française de 2 € sur les petits colis existe-t-elle encore ?</span>
+                      <span>La taxe française de 2 € sur les petits colis est-elle suspendue ou abrogée ?</span>
                       <span style={{color: '#1a4fba', fontSize: '18px', flexShrink: 0, lineHeight: 1}}>＋</span>
                     </summary>
-                    <p style={{color: '#374151', fontSize: '13px', lineHeight: '1.75', marginTop: '12px', marginBottom: 0}}>Non. Le XIII de l'article 82 de la loi de finances pour 2026 prévoyait son abrogation à compter de l'entrée en vigueur du mécanisme européen. Cette entrée en vigueur ayant été constatée au 1er juillet 2026 par le décret n° 2026-589, la taxe française a cessé de s'appliquer à cette date, après quatre mois d'application (1er mars au 30 juin 2026).</p>
+                    <p style={{color: '#374151', fontSize: '13px', lineHeight: '1.75', marginTop: '12px', marginBottom: 0}}>Elle a cessé de s'appliquer au 1er juillet 2026. La presse a parlé d'une taxe « suspendue », en écho à l'annonce gouvernementale du 30 juin 2026 ; juridiquement, le XIII de l'article 82 de la loi de finances pour 2026 prévoyait son abrogation à compter de l'entrée en vigueur du mécanisme européen. Cette entrée en vigueur ayant été constatée au 1er juillet 2026 par le décret n° 2026-589, la taxe française a donc pris fin à cette date, après quatre mois d'application (1er mars au 30 juin 2026).</p>
                   </details>
                   <details key={2} style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '10px', padding: '1rem 1.25rem'}}>
                     <summary style={{fontWeight: '600', color: '#0f2d6e', fontSize: '14px', cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '12px'}}>
