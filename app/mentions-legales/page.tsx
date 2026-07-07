@@ -108,6 +108,8 @@ export default function MentionsLegales() {
                     <span style={{color: '#374151'}}>Vercel Inc., 340 Pine Street Suite 701, San Francisco CA 94104, États-Unis · <a href="https://vercel.com" target="_blank" rel="noopener noreferrer" style={{color: '#1a4fba', textDecoration: 'none'}}>vercel.com</a>. Fonctions applicatives exécutées dans l'Union européenne (région Paris, France) ; transferts encadrés par le Data Privacy Framework UE-États-Unis.</span>
                     <span style={{color: '#6b7280', fontWeight: '600'}}>Stockage des documents</span>
                     <span style={{color: '#374151'}}>Vercel Blob, opéré par Vercel Inc. (même prestataire que ci-dessus) ; stockage hébergé dans l'Union européenne (région Paris, France)</span>
+                    <span style={{color: '#6b7280', fontWeight: '600'}}>Base de données et authentification</span>
+                    <span style={{color: '#374151'}}>Supabase · données hébergées dans l'Union européenne (région Irlande) · <a href="https://supabase.com" target="_blank" rel="noopener noreferrer" style={{color: '#1a4fba', textDecoration: 'none'}}>supabase.com</a></span>
                     <span style={{color: '#6b7280', fontWeight: '600'}}>Nom de domaine (registrar)</span>
                     <span style={{color: '#374151'}}>Hostinger International Ltd., 61 Lordou Vironos Street, 6023 Larnaca, Chypre · <a href="https://www.hostinger.fr" target="_blank" rel="noopener noreferrer" style={{color: '#1a4fba', textDecoration: 'none'}}>hostinger.fr</a></span>
                   </div>
