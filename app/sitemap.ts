@@ -36,6 +36,7 @@ const pages: { path: string; priority: number; changeFrequency: Freq }[] = [
   { path: '/information-sur-vos-droits', priority: 0.6, changeFrequency: 'monthly' },
   { path: '/formations', priority: 0.6, changeFrequency: 'monthly' },
   { path: '/services', priority: 0.6, changeFrequency: 'monthly' },
+  { path: '/paie-externalisee', priority: 0.7, changeFrequency: 'monthly' },
   { path: '/juriste-formaliste-ou-avocat', priority: 0.6, changeFrequency: 'monthly' },
   { path: '/vie-des-entreprises', priority: 0.6, changeFrequency: 'monthly' },
   { path: '/audit-express', priority: 0.6, changeFrequency: 'monthly' },

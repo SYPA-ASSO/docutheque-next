@@ -652,7 +652,6 @@ export default function AccompagnementAssociationsPage() {
               { icon: <Info size={22} color="#1a4fba" strokeWidth={1.5} />, fond: '#eff6ff', tag: 'Information juridique', tagColor: '#1a4fba', titre: 'Information sur vos droits', txt: "Une question sur la vie de votre structure ? Notre juriste identifie les textes applicables et vous répond, références à l'appui, sous 24 à 48h.", href: '/information-sur-vos-droits' },
               { icon: <BookOpen size={22} color="#7c3aed" strokeWidth={1.5} />, fond: '#f5f3ff', tag: 'Accès libre', tagColor: '#7c3aed', titre: 'Bibliothèque de documents', txt: "Modèles DOCX pour associations : sélection en accès libre avec un compte gratuit, bibliothèque complète via l'abonnement Optimal. Statuts, PV d'assemblée, registres, RGPD, courriers.", href: '/catalogue' },
               { icon: <Shield size={22} color="#065f46" strokeWidth={1.5} />, fond: '#ecfdf5', tag: 'ORIAS 26003943', tagColor: '#065f46', titre: 'Conseil en assurances', txt: "Intermédiaire en assurances réglementé. Responsabilité civile, assurance des dirigeants et bénévoles, locaux, événements. Conseil objectif et motivé.", href: '/conseil-assurances' },
-              { icon: <FileText size={22} color="#b45309" strokeWidth={1.5} />, fond: '#fffbeb', tag: 'Site dédié', tagColor: '#b45309', titre: 'Paie et DSN', txt: "Pour les associations employeuses : externalisation de la paie, bulletins de salaire et Déclarations Sociales Nominatives (DSN).", href: 'https://www.paie-et-dsn.fr' },
               { icon: <Award size={22} color="#4338ca" strokeWidth={1.5} />, fond: '#eef2ff', tag: 'Sur-mesure', tagColor: '#4338ca', titre: 'Formations', txt: "Formations sur-mesure pour vos équipes et bénévoles : RGPD, obligations des dirigeants, gouvernance et vie associative. En présentiel ou à distance.", href: '/formations' },
             ].map((s, i) => (
               <a key={i} href={s.href} {...(s.href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})} style={{ display: 'flex', flexDirection: 'column', background: 'white', border: '1px solid #e5e7eb', borderRadius: 14, padding: '1.5rem', textDecoration: 'none' }}>
@@ -665,6 +664,27 @@ export default function AccompagnementAssociationsPage() {
                 <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', color: '#0f2d6e', fontWeight: 700, fontSize: 13 }}>En savoir plus <ArrowRight size={15} /></span>
               </a>
             ))}
+          </div>
+        </section>
+
+        {/* ENCART PAIE ET DSN */}
+        <section style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 1.5rem 3.5rem' }}>
+          <div style={{ background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: 14, padding: '1.5rem 1.75rem', display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '1.25rem', justifyContent: 'space-between' }}>
+            <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.9rem', flex: 1, minWidth: '280px' }}>
+              <div style={{ width: 46, height: 46, background: 'white', borderRadius: 10, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                <FileText size={22} color="#1a4fba" strokeWidth={1.5} />
+              </div>
+              <div>
+                <p style={{ color: '#1a4fba', fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', margin: '0 0 4px' }}>Associations employeuses</p>
+                <h3 style={{ fontSize: '1.15rem', fontWeight: 700, color: '#0f2d6e', margin: '0 0 0.35rem' }}>Paie et DSN externalisées</h3>
+                <p style={{ fontSize: 13, color: '#374151', lineHeight: 1.6, margin: 0 }}>
+                  Vous transmettez vos variables du mois, le cabinet établit les bulletins selon votre convention collective et transmet vos DSN. Un service opéré sur notre site dédié, avec la même exigence que le reste du cabinet.
+                </p>
+              </div>
+            </div>
+            <a href="/paie-externalisee" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: '#1a4fba', color: 'white', textDecoration: 'none', padding: '12px 22px', borderRadius: 8, fontWeight: 700, fontSize: '0.9rem', flexShrink: 0 }}>
+              Découvrir la paie externalisée <ArrowRight size={16} />
+            </a>
           </div>
         </section>
 

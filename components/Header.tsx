@@ -4,7 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import Image from 'next/image'
-import { ChevronDown, User, Building2, Heart, Scale, Briefcase, Shield, ShieldCheck, UserCheck, BookOpen, Layers, LayoutGrid, Menu, X, ShoppingCart, type LucideIcon } from 'lucide-react'
+import { ChevronDown, User, Building2, Heart, Scale, Briefcase, Shield, ShieldCheck, UserCheck, BookOpen, Layers, LayoutGrid, Calculator, Menu, X, ShoppingCart, type LucideIcon } from 'lucide-react'
 import { useCart } from '@/components/CartContext'
 
 type NavChild = { label: string; href: string; desc?: string; icon?: LucideIcon }
@@ -40,6 +40,7 @@ export default function Header() {
             { label: 'Information sur vos droits', href: '/information-sur-vos-droits', desc: 'Une réponse rédigée par notre juriste', icon: Scale },
             { label: "Création d'entreprise", href: '/creation-entreprise', desc: 'Statuts et formalités', icon: Briefcase },
             { label: 'Formalités externalisées', href: '/formalites-juridiques-externalisees', desc: 'Sous-traitance pour avocats et experts-comptables', icon: Layers },
+            { label: 'Paie externalisée', href: '/paie-externalisee', desc: 'Bulletins et DSN pris en charge par le cabinet', icon: Calculator },
             { label: 'Conseil en assurances', href: '/conseil-assurances', desc: 'Courtage, ORIAS', icon: Shield },
             { label: 'RGPD & conformité', href: '/rgpd-conformite', desc: 'Diagnostic et mise en conformité', icon: ShieldCheck },
             { label: 'DPO externalisé', href: '/dpo-externalise', desc: 'Conformité dans la durée', icon: UserCheck },
