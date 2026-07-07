@@ -105,9 +105,9 @@ export default function MentionsLegales() {
                 <div style={{display: 'flex', flexDirection: 'column', gap: '1rem'}}>
                   <div style={{display: 'grid', gridTemplateColumns: '220px 1fr', gap: '4px 16px', fontSize: '13px'}}>
                     <span style={{color: '#6b7280', fontWeight: '600'}}>Site et application · cholez-pagotto.fr</span>
-                    <span style={{color: '#374151'}}>Vercel Inc., 340 Pine Street Suite 701, San Francisco CA 94104, États-Unis · <a href="https://vercel.com" target="_blank" rel="noopener noreferrer" style={{color: '#1a4fba', textDecoration: 'none'}}>vercel.com</a>. Fonctions applicatives exécutées dans l'Union européenne (région Dublin, Irlande) ; transferts encadrés par le Data Privacy Framework UE-États-Unis.</span>
+                    <span style={{color: '#374151'}}>Vercel Inc., 340 Pine Street Suite 701, San Francisco CA 94104, États-Unis · <a href="https://vercel.com" target="_blank" rel="noopener noreferrer" style={{color: '#1a4fba', textDecoration: 'none'}}>vercel.com</a>. Fonctions applicatives exécutées dans l'Union européenne (région Paris, France) ; transferts encadrés par le Data Privacy Framework UE-États-Unis.</span>
                     <span style={{color: '#6b7280', fontWeight: '600'}}>Stockage des documents</span>
-                    <span style={{color: '#374151'}}>Vercel Blob, opéré par Vercel Inc. (même prestataire que ci-dessus)</span>
+                    <span style={{color: '#374151'}}>Vercel Blob, opéré par Vercel Inc. (même prestataire que ci-dessus) ; stockage hébergé dans l'Union européenne (région Paris, France)</span>
                     <span style={{color: '#6b7280', fontWeight: '600'}}>Nom de domaine (registrar)</span>
                     <span style={{color: '#374151'}}>Hostinger International Ltd., 61 Lordou Vironos Street, 6023 Larnaca, Chypre · <a href="https://www.hostinger.fr" target="_blank" rel="noopener noreferrer" style={{color: '#1a4fba', textDecoration: 'none'}}>hostinger.fr</a></span>
                   </div>
