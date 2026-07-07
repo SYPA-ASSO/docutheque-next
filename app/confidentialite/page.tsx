@@ -45,7 +45,7 @@ export default function Confidentialite() {
                   <p>Siège social : 12 rue d'Olima, 88000 Épinal</p>
                   <p>Représentant : François CHOLEZ</p>
                   <p style={{marginTop: '10px'}}>
-                    <strong>Délégué à la protection des données (DPO) :</strong> François CHOLEZ<br />
+                    <strong>Référent protection des données :</strong> François CHOLEZ<br />
                     Contact : via le formulaire disponible à l'adresse{' '}
                     <a href="/contact" style={{color: '#1a4fba', textDecoration: 'none'}}>cholez-pagotto.fr/contact</a>
                   </p>
@@ -110,7 +110,7 @@ export default function Confidentialite() {
                   <div style={{background: '#f8fafc', border: '1px solid #e5e7eb', borderRadius: '8px', padding: '1rem'}}>
                     <p style={{color: '#0f2d6e', fontWeight: '700', margin: '0 0 8px'}}>3.5 Navigation et données techniques</p>
                     <p><strong>Données :</strong> adresse IP, type de navigateur, pages visitées, durée de visite (données de journalisation)</p>
-                    <p><strong>Finalité :</strong> sécurité du site, amélioration de l'expérience utilisateur, statistiques de fréquentation</p>
+                    <p><strong>Finalité :</strong> sécurité du site, prévention des abus et journalisation technique (logs serveur). Aucune mesure d'audience par cookies ou traceurs n'est mise en œuvre</p>
                     <p><strong>Base légale :</strong> intérêt légitime (art. 6.1.f RGPD)</p>
                     <p><strong>Durée :</strong> 12 mois maximum</p>
                   </div>
@@ -125,10 +125,10 @@ export default function Confidentialite() {
                   <p>Vos données sont accessibles :</p>
                   <ul style={{paddingLeft: '1.5rem', marginTop: '10px', display: 'flex', flexDirection: 'column', gap: '8px'}}>
                     <li><strong>En interne :</strong> aux seules personnes habilitées du cabinet, dans le cadre de leurs fonctions</li>
-                    <li><strong>Aux sous-traitants techniques :</strong> hébergeur (Vercel), prestataire de paiement, Brevo SAS (plateforme d'emailing, 55 rue d'Amsterdam, 75008 Paris, données hébergées dans l'UE) pour la newsletter, tous liés par un contrat de sous-traitance conforme à l'article 28 du RGPD</li>
+                    <li><strong>Aux sous-traitants techniques :</strong> hébergeur (Vercel Inc.), base de données et authentification (Supabase), prestataire de paiement (Stripe), Brevo SAS (plateforme d'emailing, 55 rue d'Amsterdam, 75008 Paris, données hébergées dans l'UE) pour la newsletter, tous liés par un contrat de sous-traitance conforme à l'article 28 du RGPD</li>
                     <li><strong>Aux autorités compétentes :</strong> sur réquisition judiciaire ou légale</li>
                   </ul>
-                  <p style={{marginTop: '12px'}}>Vos données sont hébergées au sein de l'Union Européenne. En cas de transfert hors UE rendu nécessaire par un outil tiers, nous nous assurons de la mise en place de garanties appropriées (clauses contractuelles types approuvées par la Commission Européenne).</p>
+                  <p style={{marginTop: '12px'}}>Les fonctions applicatives du site sont exécutées dans l'Union européenne (région Dublin, Irlande). Certains de nos prestataires sont des sociétés établies aux États-Unis (Vercel Inc., Stripe, Supabase) : les transferts de données susceptibles d'en résulter sont encadrés par le cadre de protection des données UE-États-Unis (Data Privacy Framework), auquel ces prestataires adhèrent, et le cas échéant par les clauses contractuelles types approuvées par la Commission européenne. Brevo, notre plateforme d'emailing, est une société française dont les données sont hébergées dans l'Union européenne.</p>
                   <p style={{marginTop: '8px'}}><strong>Nous ne vendons jamais vos données personnelles à des tiers.</strong></p>
                 </div>
               )
@@ -173,7 +173,7 @@ export default function Confidentialite() {
               titre: '7. Cookies et traceurs',
               contenu: (
                 <p style={{color: '#374151', fontSize: '13px', lineHeight: '1.9'}}>
-                  Le site peut utiliser des cookies techniques strictement nécessaires au fonctionnement du site (session, authentification). Aucun cookie publicitaire ou de traçage tiers n'est déposé sans votre consentement préalable. Vous pouvez configurer votre navigateur pour refuser ou supprimer les cookies, ce qui peut affecter certaines fonctionnalités du site.
+                  Le site utilise uniquement des cookies techniques strictement nécessaires à son fonctionnement : session et authentification de l'espace client, sécurité, et cookies de prévention de la fraude déposés par notre prestataire de paiement Stripe lors d'un règlement. Aucun cookie publicitaire, de mesure d'audience ou de traçage n'est déposé. Ces cookies sont exemptés de consentement conformément à la délibération CNIL n°2020-091 du 17 septembre 2020 ; un bandeau d'information le rappelle lors de votre première visite. Vous pouvez configurer votre navigateur pour refuser ou supprimer les cookies, ce qui peut affecter certaines fonctionnalités du site.
                 </p>
               )
             },

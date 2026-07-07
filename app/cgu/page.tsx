@@ -115,7 +115,7 @@ export default function CGU() {
                   <li>Les caractéristiques essentielles des services proposés, telles que décrites à l'article 5 des présentes ;</li>
                   <li>Le prix des services, exprimé en euros (le Cabinet Cholez-Pagotto bénéficie de la franchise en base de TVA en application de l'article 293 B du Code général des impôts : aucune TVA n'est donc collectée ni facturée) ;</li>
                   <li>La durée minimale d'engagement et les modalités de résiliation ;</li>
-                  <li>Les conditions d'exercice du droit de rétractation et le formulaire type de rétractation prévu à l'annexe du Règlement délégué (UE) n°2022/689 de la Commission et à l'article R.221-1 du Code de la consommation, accessible sur demande auprès du Prestataire ;</li>
+                  <li>Les conditions d'exercice du droit de rétractation et le formulaire type de rétractation figurant en annexe à l'article R.221-1 du Code de la consommation, accessible en permanence sur la page <a href="/retractation" style={{color: '#1a4fba', textDecoration: 'none'}}>Formulaire de rétractation</a> du Site ;</li>
                   <li>Les coordonnées du Prestataire et du médiateur de la consommation désigné ;</li>
                   <li>Les modalités de traitement des réclamations.</li>
                 </ul>
@@ -224,7 +224,7 @@ export default function CGU() {
                 <h2 style={h2style}>Article 9 : Droit de rétractation</h2>
                 <div style={{display: 'flex', flexDirection: 'column', gap: '10px'}}>
                   <p style={pstyle}>Conformément aux articles L.221-18 et suivants du Code de la consommation, le Client Consommateur dispose d'un délai de <strong>14 jours calendaires</strong> à compter de la souscription d'un service payant pour exercer son droit de rétractation, sans avoir à motiver sa décision ni à supporter de pénalités.</p>
-                  <p style={pstyle}>La rétractation s'exerce via le <a href="/contact" style={{color: '#1a4fba', textDecoration: 'none'}}>formulaire de contact</a> ou par courrier recommandé avec accusé de réception à l'adresse du siège social du Prestataire, en utilisant si souhaité le formulaire type de rétractation prévu à l'article R.221-1 du Code de la consommation, disponible sur demande.</p>
+                  <p style={pstyle}>La rétractation s'exerce via le <a href="/contact" style={{color: '#1a4fba', textDecoration: 'none'}}>formulaire de contact</a> ou par courrier recommandé avec accusé de réception à l'adresse du siège social du Prestataire, en utilisant si souhaité le formulaire type de rétractation figurant en annexe à l'article R.221-1 du Code de la consommation, consultable et imprimable à tout moment sur la page <a href="/retractation" style={{color: '#1a4fba', textDecoration: 'none'}}>Formulaire de rétractation</a>.</p>
 
                   <div style={warnstyle}>
                     <strong>9.1 : Renonciation expresse au droit de rétractation pour les Contenus numériques</strong><br /><br />
@@ -241,7 +241,7 @@ export default function CGU() {
                 <h2 style={h2style}>Article 10 : Résiliation</h2>
                 <div style={{display: 'flex', flexDirection: 'column', gap: '10px'}}>
                   <p style={h3style}>10.1 Résiliation par le Client</p>
-                  <p style={pstyle}>Le Client peut résilier son Abonnement Optimal à tout moment en adressant une demande via le <a href="/contact" style={{color: '#1a4fba', textDecoration: 'none'}}>formulaire de contact</a>. Conformément à l'article L.215-3-1 du Code de la consommation, la résiliation est possible en ligne de manière simple, sans démarche complexe ni délai excessif.</p>
+                  <p style={pstyle}>Le Client peut résilier son Abonnement Optimal à tout moment en adressant une demande via le <a href="/contact" style={{color: '#1a4fba', textDecoration: 'none'}}>formulaire de contact</a>. Conformément à l'article L.215-1-1 du Code de la consommation et aux articles D.215-1 et D.215-2 du même code, la résiliation est possible en ligne de manière simple, directe et permanente, sans démarche complexe ni délai excessif.</p>
                   <p style={pstyle}>Pour l'abonnement annuel, la résiliation prend effet à l'<strong>échéance de la période annuelle en cours</strong>, sous réserve d'un préavis d'au moins <strong>30 jours</strong> avant cette date. Pour l'abonnement mensuel sans engagement, la résiliation prend effet à la fin du mois en cours sous réserve d'un préavis de 30 jours.</p>
                   <div style={hlstyle}>
                     Aucun remboursement au prorata de la période restante ne sera effectué pour l'abonnement annuel. L'accès à la bibliothèque de la Plateforme cesse à la date d'effet de la résiliation. Les fichiers Contenus numériques déjà téléchargés sur l'appareil du Client avant cette date restent disponibles localement.
@@ -342,7 +342,7 @@ export default function CGU() {
                   <strong>Centre de Médiation de la Consommation de Conciliateurs de Justice (CM2C)</strong><br />
                   <a href="https://www.cm2c.net" target="_blank" rel="noopener noreferrer" style={{color: '#1a4fba', textDecoration: 'none'}}>www.cm2c.net</a>
                 </div>
-                <p style={pstyle}>Le Client peut également recourir à la plateforme européenne de règlement en ligne des litiges (RLL) de la Commission européenne, accessible à l'adresse : <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener noreferrer" style={{color: '#1a4fba', textDecoration: 'none'}}>ec.europa.eu/consumers/odr</a></p>
+                <p style={pstyle}>La plateforme européenne de règlement en ligne des litiges (RLL) a été supprimée le 20 juillet 2025 en application du règlement (UE) 2024/3228 ; la voie de la médiation de la consommation décrite ci-dessus demeure pleinement ouverte.</p>
                 <p style={plastyle}>Le recours à la médiation est sans préjudice du droit du Client de saisir les juridictions compétentes à tout moment.</p>
               </section>
 

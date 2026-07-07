@@ -81,7 +81,7 @@ export default function Footer() {
               {[
                 { label: 'Blog juridique', href: '/blog' },
                 { label: 'Juriste ou avocat ?', href: '/juriste-formaliste-ou-avocat' },
-                { label: "Annuaire d'avocats", href: '/annuaire-avocats' },
+                { label: "Juriste ou avocat ?", href: '/juriste-formaliste-ou-avocat' },
                 { label: 'Avocats : nous rejoindre', href: '/referencement-avocats' },
                 { label: 'Newsletter', href: '/newsletter' },
                 { label: 'À propos', href: '/a-propos' },

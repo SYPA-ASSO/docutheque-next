@@ -105,7 +105,7 @@ export default function MentionsLegales() {
                 <div style={{display: 'flex', flexDirection: 'column', gap: '1rem'}}>
                   <div style={{display: 'grid', gridTemplateColumns: '220px 1fr', gap: '4px 16px', fontSize: '13px'}}>
                     <span style={{color: '#6b7280', fontWeight: '600'}}>Site et application · cholez-pagotto.fr</span>
-                    <span style={{color: '#374151'}}>Vercel Inc., 340 Pine Street Suite 701, San Francisco CA 94104, États-Unis · <a href="https://vercel.com" target="_blank" rel="noopener noreferrer" style={{color: '#1a4fba', textDecoration: 'none'}}>vercel.com</a></span>
+                    <span style={{color: '#374151'}}>Vercel Inc., 340 Pine Street Suite 701, San Francisco CA 94104, États-Unis · <a href="https://vercel.com" target="_blank" rel="noopener noreferrer" style={{color: '#1a4fba', textDecoration: 'none'}}>vercel.com</a>. Fonctions applicatives exécutées dans l'Union européenne (région Dublin, Irlande) ; transferts encadrés par le Data Privacy Framework UE-États-Unis.</span>
                     <span style={{color: '#6b7280', fontWeight: '600'}}>Stockage des documents</span>
                     <span style={{color: '#374151'}}>Vercel Blob, opéré par Vercel Inc. (même prestataire que ci-dessus)</span>
                     <span style={{color: '#6b7280', fontWeight: '600'}}>Nom de domaine (registrar)</span>
@@ -147,7 +147,7 @@ export default function MentionsLegales() {
               <section id="cookies" style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.75rem'}}>
                 <h2 style={{color: '#0f2d6e', fontSize: '1.1rem', fontWeight: '700', margin: '0 0 1rem', paddingBottom: '0.75rem', borderBottom: '1px solid #f3f4f6'}}>8. Cookies</h2>
                 <p style={{fontSize: '14px', color: '#374151', lineHeight: '1.8', margin: 0}}>
-                  Ce site utilise uniquement des cookies techniques strictement nécessaires à son fonctionnement. Aucun cookie publicitaire ou de traçage à des fins commerciales n'est déposé sans votre consentement préalable, conformément à la délibération CNIL n°2020-091 du 17 septembre 2020.
+                  Ce site utilise uniquement des cookies techniques strictement nécessaires à son fonctionnement : session et authentification de l'espace client, sécurité, et cookies de prévention de la fraude déposés par notre prestataire de paiement Stripe lors d'un règlement. Aucun cookie publicitaire, de mesure d'audience ou de traçage n'est déposé. Ces cookies sont exemptés de consentement conformément à la délibération CNIL n°2020-091 du 17 septembre 2020 ; un bandeau d'information le rappelle lors de votre première visite.
                 </p>
               </section>
 

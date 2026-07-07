@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import Image from 'next/image'
 import { ChevronDown, User, Building2, Heart, Scale, Briefcase, Shield, ShieldCheck, UserCheck, BookOpen, Layers, LayoutGrid, Menu, X, ShoppingCart, type LucideIcon } from 'lucide-react'
 import { useCart } from '@/components/CartContext'
@@ -11,6 +12,9 @@ type NavGroup = { label: string; children: NavChild[] }
 type NavItem = { label: string; href: string; groups?: NavGroup[] }
 
 export default function Header() {
+  const pathname = usePathname()
+  const pageSobre = ['/cgu', '/mentions-legales', '/confidentialite', '/retractation'].some((p) => (pathname || '').startsWith(p))
+
   const [menuOpen, setMenuOpen] = useState(false)
   const { count } = useCart()
   const [mobileGroupsOpen, setMobileGroupsOpen] = useState<Record<string, boolean>>({})
@@ -82,7 +86,8 @@ export default function Header() {
         }
       `}</style>
 
-      {/* BANDEAU CREATION OFFERTE */}
+      {/* BANDEAU CREATION OFFERTE (masque sur les pages juridiques) */}
+      {!pageSobre && (
       <div style={{ background: 'linear-gradient(135deg, #b8860b 0%, #d4a017 50%, #b8860b 100%)' }}>
         {/* Desktop : badge anime + phrase + bouton */}
         <div className="banner-desktop" style={{ maxWidth: '1200px', margin: '0 auto', padding: '10px 1.25rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '16px' }}>
@@ -103,6 +108,7 @@ export default function Header() {
           <span aria-hidden="true" style={{ fontSize: '15px' }}>→</span>
         </Link>
       </div>
+      )}
 
       <header style={{ background: 'white', borderBottom: '1px solid #e5e7eb', position: 'sticky', top: 0, zIndex: 50 }}>
         <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 1.25rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '64px' }}>

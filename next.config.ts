@@ -3,6 +3,24 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   async redirects() {
     return [
+      // Canonique : redirection de l'ancien sous-domaine www vers l'apex
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'www.cholez-pagotto.fr' }],
+        destination: 'https://cholez-pagotto.fr/:path*',
+        permanent: true,
+      },
+      // Annuaire d'avocats depublie temporairement (redirection non permanente)
+      {
+        source: '/annuaire-avocats',
+        destination: '/juriste-formaliste-ou-avocat',
+        permanent: false,
+      },
+      {
+        source: '/annuaire-avocats/:slug*',
+        destination: '/juriste-formaliste-ou-avocat',
+        permanent: false,
+      },
       // Pages de services
       {
         source: '/juriste-formaliste-vos-formalites',

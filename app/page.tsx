@@ -43,7 +43,7 @@ const schema = {
 const faqAccueil = [
   { q: "Que propose le Cabinet Cholez-Pagotto ?", r: "Le cabinet réunit l'information juridique, une bibliothèque de modèles de documents téléchargeables au format DOCX, l'accompagnement à la création d'entreprise et aux formalités, la conformité RGPD et le conseil en assurances. Il s'adresse aux particuliers, aux professionnels, aux associations et aux collectivités." },
   { q: "Le cabinet remplace-t-il un avocat ?", r: "Non. Notre juriste délivre une information juridique au sens de la loi n°71-1130 du 31 décembre 1971 et vous accompagne dans vos formalités. La consultation personnalisée, la rédaction d'actes pour autrui et la représentation en justice relèvent de l'avocat, vers lequel vous êtes orienté si votre situation l'exige." },
-  { q: "Comment obtenir une réponse à une question juridique ?", r: "Vous pouvez poser une question et recevoir une réponse écrite rédigée par notre juriste sous 24 à 48h ouvrées, au tarif de 47 € sans abonnement. Les abonnés Optimal disposent d'une question incluse par mois." },
+  { q: "Comment obtenir une réponse à une question juridique ?", r: "Vous pouvez poser une question et recevoir une réponse écrite rédigée par notre juriste sous 24 à 48h ouvrées, au tarif de 47 € sans abonnement. L'Abonnement Optimal Particulier inclut 1 question par mois, l'Abonnement Optimal Pro en inclut 2." },
   { q: "Faut-il payer pour accéder aux documents ?", r: "Une sélection de modèles est en accès libre, téléchargeable au format DOCX après création d'un compte gratuit. Les autres documents sont disponibles à l'unité à partir de 2,99 €, ou en illimité via l'abonnement Optimal à partir de 17,90 €/mois." },
   { q: "Où le cabinet est-il établi ?", r: "Le cabinet est établi à Épinal, en région Grand Est, et intervient en ligne pour des clients partout en France." },
   { q: "Le cabinet peut-il intervenir en assurance ?", r: "Oui. Le cabinet est intermédiaire en assurances immatriculé à l'ORIAS sous le numéro 26003943 et placé sous le contrôle de l'ACPR. Notre juriste vous informe sur les garanties utiles et vous oriente selon votre intérêt." }
@@ -66,7 +66,7 @@ export default function Home() {
               Comprendre. Décider. Agir.
             </p>
             <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '1rem', lineHeight: '1.8', margin: '0 auto 24px' }}>
-              Information juridique, documents téléchargeables et personnalisables, conseil en assurances. Pour les particuliers, les professionnels et les associations. Un juriste humain, zéro intelligence artificielle, réponse sous 24 à 48 heures ouvrées.
+              Information juridique, documents téléchargeables et personnalisables, conseil en assurances. Pour les particuliers, les professionnels et les associations. Un juriste humain qui traite lui-même vos demandes, sans intelligence artificielle, réponse sous 24 à 48 heures ouvrées.
             </p>
             <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
               <a href="/catalogue" style={{ display: 'inline-block', background: 'white', color: '#0f2d6e', padding: '13px 28px', borderRadius: '8px', fontSize: '14px', fontWeight: '700', textDecoration: 'none' }}>

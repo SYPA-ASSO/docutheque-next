@@ -74,7 +74,7 @@ export default function APropos() {
               Comprendre. Décider. Agir.
             </p>
             <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '1rem', lineHeight: '1.8', margin: '0 auto' }}>
-              Information juridique, formalités administratives et conseil en assurances. Un juriste, une équipe humaine, zéro intelligence artificielle.
+              Information juridique, formalités administratives et conseil en assurances. Un juriste indépendant, un traitement 100 % humain de vos demandes, sans intelligence artificielle.
             </p>
           </div>
         </section>
