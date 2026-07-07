@@ -45,6 +45,7 @@ export default function Footer() {
                 { label: 'RGPD & conformité', href: '/rgpd-conformite' },
                 { label: 'DPO externalisé', href: '/dpo-externalise' },
                 { label: 'Formations', href: '/formations' },
+                { label: 'Paie et DSN externalisées', href: 'https://paie-et-dsn.fr' },
                 { label: 'Tous nos services', href: '/services' },
                 { label: 'Catalogue de documents', href: '/catalogue' },
                 { label: 'Tarifs', href: '/tarifs' },
