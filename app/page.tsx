@@ -1,7 +1,7 @@
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import NewsletterForm from '@/components/NewsletterForm'
-import { ChevronDown } from 'lucide-react'
+import { ChevronDown, HelpCircle, FileText, Compass, BookOpen, ClipboardCheck, ShieldCheck } from 'lucide-react'
 
 export const metadata = {
   title: 'Cabinet Cholez-Pagotto · Comprendre. Décider. Agir.',
@@ -68,17 +68,52 @@ export default function Home() {
             <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '1rem', lineHeight: '1.8', margin: '0 auto 24px' }}>
               Information juridique, documents téléchargeables et personnalisables, conseil en assurances. Pour les particuliers, les professionnels et les associations. Un juriste humain qui traite lui-même vos demandes, sans intelligence artificielle, réponse sous 24 à 48 heures ouvrées.
             </p>
-            <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
-              <a href="/catalogue" style={{ display: 'inline-block', background: 'white', color: '#0f2d6e', padding: '13px 28px', borderRadius: '8px', fontSize: '14px', fontWeight: '700', textDecoration: 'none' }}>
-                Accéder aux documents →
-              </a>
-              <a href="/information-sur-vos-droits" style={{ display: 'inline-block', background: 'transparent', color: 'white', border: '1px solid rgba(255,255,255,0.6)', padding: '13px 28px', borderRadius: '8px', fontSize: '14px', fontWeight: '600', textDecoration: 'none' }}>
-                Poser une question à un juriste
-              </a>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '14px', textAlign: 'left', marginTop: '8px' }}>
+              {[
+                { icone: HelpCircle, titre: "J'ai une question juridique", texte: "Réponse écrite et pédagogique d'un juriste sous 24 à 48 h.", href: '/information-sur-vos-droits', action: 'Poser ma question' },
+                { icone: FileText, titre: "J'ai besoin d'un document", texte: "Modèles DOCX prêts à personnaliser, dès l'accès gratuit.", href: '/catalogue', action: 'Parcourir le catalogue' },
+                { icone: Compass, titre: "J'ai un projet ou un besoin de conformité", texte: 'Création, formalités, RGPD, assurances : des accompagnements dédiés.', href: '/services', action: 'Voir les accompagnements' },
+              ].map((porte, i) => (
+                <a key={i} href={porte.href} style={{ background: 'white', borderRadius: '12px', padding: '1.1rem 1.25rem', textDecoration: 'none', display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                  <porte.icone size={20} color="#1a4fba" strokeWidth={1.5} />
+                  <span style={{ color: '#0f2d6e', fontSize: '14.5px', fontWeight: 700, lineHeight: 1.35 }}>{porte.titre}</span>
+                  <span style={{ color: '#6b7280', fontSize: '12.5px', lineHeight: 1.55, flex: 1 }}>{porte.texte}</span>
+                  <span style={{ color: '#1a4fba', fontSize: '12.5px', fontWeight: 700 }}>{porte.action} &rarr;</span>
+                </a>
+              ))}
             </div>
-            <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '12px', margin: '16px auto 0', maxWidth: '560px', lineHeight: '1.7' }}>
-              47 € la question · Abonnement Optimal dès 17,90 €/mois · Forfait conseil assurances dès 90 €
+            <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '12px', margin: '18px auto 0', maxWidth: '560px', lineHeight: '1.7' }}>
+              47&nbsp;€ la question · Abonnement Optimal dès 17,90&nbsp;€/mois · Forfait conseil assurances dès 90&nbsp;€
             </p>
+          </div>
+        </section>
+
+        {/* TROIS MÉTIERS */}
+        <section style={{ background: 'white', padding: '3.5rem 0', borderBottom: '1px solid #e5e7eb' }}>
+          <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 2rem' }}>
+            <h2 style={{ color: '#0f2d6e', fontSize: '1.6rem', fontWeight: 700, textAlign: 'center', margin: '0 0 8px' }}>Un cabinet, trois métiers</h2>
+            <p style={{ color: '#6b7280', fontSize: '14px', textAlign: 'center', maxWidth: 640, margin: '0 auto 2rem', lineHeight: 1.7 }}>
+              Toute notre offre tient dans un même fil : comprendre votre situation, décider en connaissance de cause, agir avec les bons outils.
+            </p>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '16px' }}>
+              {[
+                { icone: BookOpen, kicker: 'COMPRENDRE', titre: 'Informer', texte: "Information juridique par notre juriste, bibliothèque de modèles commentés et blog d'actualité : des repères fiables pour comprendre vos droits.", liens: [{ label: 'Poser une question', href: '/information-sur-vos-droits' }, { label: 'Catalogue de documents', href: '/catalogue' }] },
+                { icone: ClipboardCheck, kicker: 'DÉCIDER ET AGIR', titre: 'Accomplir', texte: "Création d'entreprise, formalités externalisées, accompagnement des professionnels et des associations, conformité RGPD et DPO externalisé : vos démarches menées de bout en bout.", liens: [{ label: 'Nos accompagnements', href: '/services' }] },
+                { icone: ShieldCheck, kicker: 'PROTÉGER', titre: 'Assurer', texte: "Courtier en assurances (ORIAS n° 26003943, sous le contrôle de l'ACPR) : analyse de vos contrats et conseil individualisé, indépendant des compagnies.", liens: [{ label: 'Conseil en assurances', href: '/conseil-assurances' }] },
+              ].map((m, i) => (
+                <div key={i} style={{ background: '#f8fafc', border: '1px solid #e5e7eb', borderRadius: '14px', padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                  <m.icone size={22} color="#1a4fba" strokeWidth={1.5} />
+                  <p style={{ color: '#b8860b', fontSize: '10.5px', fontWeight: 700, letterSpacing: '0.1em', margin: 0 }}>{m.kicker}</p>
+                  <h3 style={{ color: '#0f2d6e', fontSize: '1.15rem', fontWeight: 700, margin: 0 }}>{m.titre}</h3>
+                  <p style={{ color: '#4b5563', fontSize: '13px', lineHeight: 1.7, margin: 0, flex: 1 }}>{m.texte}</p>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', marginTop: '6px' }}>
+                    {m.liens.map((l) => (
+                      <a key={l.href} href={l.href} style={{ color: '#1a4fba', fontSize: '12.5px', fontWeight: 700, textDecoration: 'none' }}>{l.label} &rarr;</a>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -246,6 +281,33 @@ export default function Home() {
                 </div>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* SITUATIONS CONCRÈTES */}
+        <section style={{ background: 'white', padding: '4rem 0', borderTop: '1px solid #e5e7eb' }}>
+          <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 2rem' }}>
+            <h2 style={{ color: '#0f2d6e', fontSize: '1.6rem', fontWeight: 700, textAlign: 'center', margin: '0 0 8px' }}>Des situations concrètes</h2>
+            <p style={{ color: '#6b7280', fontSize: '14px', textAlign: 'center', maxWidth: 680, margin: '0 auto 2rem', lineHeight: 1.7 }}>
+              Trois exemples types, volontairement simplifiés, pour situer ce que le cabinet apporte. Chaque situation réelle appelle une lecture qui lui est propre.
+            </p>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '16px' }}>
+              {[
+                { kicker: 'PARTICULIER', question: "Mon propriétaire ne me rend pas le dépôt de garantie, deux mois après mon départ. Quels sont mes droits ?", apport: "Une réponse écrite sous 24 à 48 h : les délais légaux, la majoration applicable, la marche à suivre. Et le modèle de mise en demeure du catalogue pour agir.", href: '/information-sur-vos-droits', action: 'Poser ma question' },
+                { kicker: 'ASSOCIATION', question: "Notre association embauche son premier salarié : par quoi devons-nous commencer ?", apport: "Les repères essentiels (déclarations, registre du personnel, affichages), les modèles associés, et le relais de notre service dédié pour les bulletins de paie et la DSN.", href: '/accompagnement-associations', action: "Voir l'accompagnement" },
+                { kicker: "CRÉATEUR D'ENTREPRISE", question: "Je passe de la micro-entreprise à la société : formalités, assurances, par où commencer ?", apport: "Un accompagnement de la création au guichet unique, des repères pour choisir la forme en connaissance de cause, et un point sur les assurances professionnelles obligatoires.", href: '/creation-entreprise', action: 'Découvrir la création' },
+              ].map((c, i) => (
+                <div key={i} style={{ background: '#f8fafc', border: '1px solid #e5e7eb', borderRadius: '14px', padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                  <p style={{ color: '#b8860b', fontSize: '10.5px', fontWeight: 700, letterSpacing: '0.1em', margin: 0 }}>{c.kicker}</p>
+                  <p style={{ color: '#0f2d6e', fontSize: '14px', fontWeight: 600, fontStyle: 'italic', lineHeight: 1.55, margin: 0 }}>« {c.question} »</p>
+                  <p style={{ color: '#4b5563', fontSize: '13px', lineHeight: 1.7, margin: 0, flex: 1 }}><strong style={{ color: '#0f2d6e' }}>Ce que le cabinet apporte :</strong> {c.apport}</p>
+                  <a href={c.href} style={{ color: '#1a4fba', fontSize: '12.5px', fontWeight: 700, textDecoration: 'none' }}>{c.action} &rarr;</a>
+                </div>
+              ))}
+            </div>
+            <p style={{ color: '#9ca3af', fontSize: '11px', textAlign: 'center', maxWidth: 760, margin: '1.5rem auto 0', lineHeight: 1.7 }}>
+              Exemples illustratifs. Le cabinet délivre une information juridique au sens de la loi n°&nbsp;71-1130 du 31 décembre 1971 ; il ne délivre pas de consultation juridique personnalisée et, si votre situation le nécessite, vous oriente vers le professionnel du droit compétent.
+            </p>
           </div>
         </section>
 

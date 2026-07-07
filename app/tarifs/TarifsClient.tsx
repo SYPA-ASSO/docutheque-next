@@ -235,6 +235,60 @@ export default function TarifsClient() {
             * L'orientation vers un avocat ou notaire partenaire intervient à votre initiative et sans engagement. Le cabinet demeure indépendant du professionnel désigné. Les honoraires de la consultation sont fixés librement par ce professionnel et lui sont réglés directement. Le cabinet ne perçoit aucune commission sur ces honoraires.
           </p>
 
+          {/* COMPARATEUR BIEN CHOISIR */}
+          <div style={{marginTop: '3rem'}}>
+            <h2 style={{color: '#0f2d6e', fontSize: '1.4rem', fontWeight: '700', textAlign: 'center', margin: '0 0 6px'}}>Bien choisir, en un coup d'œil</h2>
+            <p style={{color: '#6b7280', fontSize: '13px', textAlign: 'center', margin: '0 0 20px'}}>Les mêmes offres que ci-dessus, lues autrement : par besoin.</p>
+            <div style={{overflowX: 'auto', border: '1px solid #e5e7eb', borderRadius: '12px', background: 'white'}}>
+              <table style={{width: '100%', borderCollapse: 'collapse', fontSize: '12.5px', minWidth: 760}}>
+                <thead>
+                  <tr>
+                    {['', 'Accès gratuit', 'Optimal Particulier', 'Optimal Pro', "Question à l'unité"].map((h, i) => (
+                      <th key={i} style={{padding: '12px 14px', textAlign: i === 0 ? 'left' : 'center', background: i === 2 ? '#0f2d6e' : '#f8fafc', color: i === 2 ? 'white' : '#0f2d6e', fontSize: '12px', fontWeight: 700, borderBottom: '1px solid #e5e7eb', whiteSpace: 'nowrap'}}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    ['Usage type', 'Découvrir et télécharger les documents en accès libre', 'Particulier qui veut toute la bibliothèque et un fil direct avec le juriste', 'Professionnel, association ou collectivité', "Besoin ponctuel d'éclairage, sans abonnement"],
+                    ['Documents en accès libre (DOCX)', '✓', '✓', '✓', '-'],
+                    ['Bibliothèque complète, notices et fiches', "À l'unité, selon le document", '✓ incluse', '✓ incluse', '-'],
+                    ['Question à un juriste', '47 € la question', '1 incluse par mois (non cumulable)', '2 incluses par mois (non cumulables)', '47 € la question'],
+                    ['Question supplémentaire', '47 €', '14,90 €', '14,90 €', '47 €'],
+                    ['Alertes légales événementielles', '-', '-', '✓', '-'],
+                    ['Orientation avocat ou notaire partenaire *', '-', '✓', '✓', '-'],
+                    ['Support prioritaire par mail', '-', '✓', '✓', '-'],
+                    ['Engagement', 'Aucun', 'Sans engagement · ou 149 €/an', 'Sans engagement · ou 249 €/an', 'Aucun'],
+                    ['Tarif', '0 €', '17,90 €/mois', '27,90 €/mois', '47 €/question'],
+                  ].map((ligne, i) => (
+                    <tr key={i} style={{borderBottom: '1px solid #f3f4f6'}}>
+                      {ligne.map((cell, j) => (
+                        <td key={j} style={{padding: '10px 14px', textAlign: j === 0 ? 'left' : 'center', color: j === 0 ? '#0f2d6e' : '#374151', fontWeight: j === 0 ? 600 : 400, background: j === 2 ? '#eff6ff' : 'white', lineHeight: 1.5}}>{cell}</td>
+                      ))}
+                    </tr>
+                  ))}
+                  <tr>
+                    <td style={{padding: '12px 14px', background: 'white'}}></td>
+                    {[
+                      { label: "S'inscrire", href: '/connexion', plein: false },
+                      { label: "S'abonner", href: '/connexion', plein: true },
+                      { label: "S'abonner", href: '/connexion', plein: true },
+                      { label: 'Poser ma question', href: '/information-sur-vos-droits', plein: false },
+                    ].map((b, j) => (
+                      <td key={j} style={{padding: '12px 14px', textAlign: 'center', background: j === 1 ? '#eff6ff' : 'white'}}>
+                        <a href={b.href} style={{display: 'inline-block', padding: '8px 14px', borderRadius: '8px', fontSize: '11.5px', fontWeight: 700, textDecoration: 'none', background: b.plein ? '#0f2d6e' : 'white', color: b.plein ? 'white' : '#0f2d6e', border: '1px solid #0f2d6e', whiteSpace: 'nowrap'}}>{b.label}</a>
+                      </td>
+                    ))}
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div style={{background: '#fffaf0', border: '1px solid #f0d488', borderRadius: '10px', padding: '0.9rem 1.25rem', marginTop: '14px', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '10px'}}>
+              <p style={{color: '#6b5b1e', fontSize: '13px', lineHeight: 1.6, margin: 0, flex: '1 1 380px'}}><strong style={{color: '#0f2d6e'}}>Et si votre besoin dépasse le document ?</strong> Création d'entreprise, formalités externalisées, RGPD et DPO, conseil en assurances : le cabinet vous accompagne de bout en bout.</p>
+              <a href="/services" style={{display: 'inline-block', background: '#0f2d6e', color: 'white', padding: '9px 18px', borderRadius: '8px', fontSize: '12px', fontWeight: 700, textDecoration: 'none', whiteSpace: 'nowrap'}}>Découvrir les accompagnements &rarr;</a>
+            </div>
+          </div>
+
           {/* RÉASSURANCE */}
           <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '8px', marginTop: '2rem'}}>
             <span style={{fontSize: '16px'}}>🔒</span>

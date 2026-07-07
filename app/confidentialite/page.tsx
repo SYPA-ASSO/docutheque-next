@@ -37,6 +37,41 @@ export default function Confidentialite() {
 
           {[
             {
+              titre: 'L\'essentiel en un tableau',
+              contenu: (
+                <div style={{color: '#374151', fontSize: '13px', lineHeight: '1.8'}}>
+                  <p style={{margin: '0 0 12px'}}>Pour une lecture rapide, voici la synthèse des traitements décrits dans la présente politique. Le détail de chacun figure dans les rubriques ci-dessous.</p>
+                  <div style={{overflowX: 'auto', border: '1px solid #e5e7eb', borderRadius: '10px'}}>
+                    <table style={{width: '100%', borderCollapse: 'collapse', fontSize: '12px', minWidth: 640}}>
+                      <thead>
+                        <tr>
+                          {['Traitement', 'Finalité principale', 'Base légale', 'Durée de conservation'].map((h) => (
+                            <th key={h} style={{padding: '10px 12px', textAlign: 'left', background: '#0f2d6e', color: 'white', fontSize: '11.5px', fontWeight: 700, whiteSpace: 'nowrap'}}>{h}</th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {[
+                          ['Compte et espace client', 'Création et gestion du compte, accès aux services souscrits', 'Exécution du contrat (art. 6.1.b)', 'Vie du compte, puis 3 ans après la dernière activité'],
+                          ['Abonnement et paiement', "Gestion de l'abonnement, facturation, obligations comptables", 'Contrat (6.1.b) et obligation légale (6.1.c)', 'Relation + 5 ans ; facturation : 10 ans'],
+                          ['Information sur vos droits', 'Traitement de la question et fourniture de la réponse pédagogique', 'Exécution du contrat (art. 6.1.b)', 'Relation contractuelle + 3 ans'],
+                          ['Newsletter', 'Envoi de la lettre et des contenus associés', 'Consentement (art. 6.1.a)', "Jusqu'à la désinscription, max. 3 ans après le dernier contact"],
+                          ['Navigation (logs serveur)', 'Sécurité du site et journalisation technique', 'Intérêt légitime (art. 6.1.f)', '12 mois maximum'],
+                        ].map((ligne, i) => (
+                          <tr key={i} style={{borderBottom: '1px solid #f3f4f6', background: i % 2 ? '#f8fafc' : 'white'}}>
+                            {ligne.map((cell, j) => (
+                              <td key={j} style={{padding: '9px 12px', color: j === 0 ? '#0f2d6e' : '#374151', fontWeight: j === 0 ? 600 : 400, lineHeight: 1.5, verticalAlign: 'top'}}>{cell}</td>
+                            ))}
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                  <p style={{margin: '12px 0 0', fontSize: '12px', color: '#6b7280', lineHeight: 1.7}}>Localisation : fonctions applicatives et stockage des documents dans l'Union européenne (Paris), base de données dans l'Union européenne (Irlande) ; les prestataires établis aux États-Unis adhèrent au Data Privacy Framework UE-États-Unis. Cookies : uniquement techniques et strictement nécessaires, aucune mesure d'audience ni traçage.</p>
+                </div>
+              )
+            },
+            {
               titre: '1. Responsable de traitement',
               contenu: (
                 <div style={{color: '#374151', fontSize: '13px', lineHeight: '1.9'}}>
