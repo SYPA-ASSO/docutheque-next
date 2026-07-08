@@ -19,8 +19,8 @@ export type ArticleBlog = {
 export const ARTICLES_BLOG: ArticleBlog[] = [
   {
     slug: 'creation-site-internet-delai-retractation-cour-cassation-28-mai-2026',
-    titre: "Création de site internet : le délai de rétractation court dès la signature du contrat",
-    resume: "La Cour de cassation juge que la conception d'un site internet personnalisé est une prestation de services, non une vente : le délai de rétractation court dès la signature, pas à la livraison.",
+    titre: "Création de site internet : le délai de rétractation court dès la conclusion du contrat",
+    resume: "La Cour de cassation juge que la conception d'un site internet personnalisé est une prestation de services, non une vente : le délai de rétractation court dès la conclusion du contrat, pas à sa réception.",
     date: '29 mai 2026',
     auteur: 'François CHOLEZ',
     categorie: 'Consommation',
