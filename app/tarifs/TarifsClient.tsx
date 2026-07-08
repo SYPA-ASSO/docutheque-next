@@ -7,6 +7,7 @@ import { Building2, PenLine, Monitor, Shield, FileText, Lock, RefreshCw } from '
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import NewsletterForm from '@/components/NewsletterForm'
+import BanniereALaUne from '@/components/BanniereALaUne'
 
 export default function TarifsClient() {
   const [annuel, setAnnuel] = useState(false)
@@ -84,6 +85,11 @@ export default function TarifsClient() {
             <p style={{color: '#374151', fontSize: '0.95rem', lineHeight: '1.8'}}>
               Que vous ayez besoin d'un document ponctuel, d'un accès complet à notre bibliothèque juridique ou d'un accompagnement personnalisé pour créer votre entreprise, le cabinet propose une offre adaptée à chaque situation. Tous nos documents sont rédigés par un juriste, jamais générés par une IA, et mis à jour dès que la législation évolue.
             </p>
+          </div>
+
+          {/* A LA UNE (pilotable en back-office, /admin/banniere) */}
+          <div style={{ marginBottom: '2.5rem' }}>
+            <BanniereALaUne maxWidth={860} outerPadding="0" />
           </div>
 
           {/* COMMENT FONCTIONNE L ACCES */}
