@@ -247,7 +247,10 @@ export default function ArticleATMP() {
                 </div>
               </div>
               <p style={{color: '#6b7280', fontSize: '11px', lineHeight: '1.7', margin: '0 0 8px'}}>
-                Accompagne particuliers, professionnels, collectivités et acteurs de l'ESS dans la compréhension de leurs droits, la sécurisation des activités et le développement de projets. Membre du CRFF. Administrateur expert au collectif DAVO (Des Avocats Vous Orientent).
+                Accompagne particuliers, professionnels, collectivités et acteurs de l'ESS dans la compréhension de leurs droits, la sécurisation des activités et le développement de projets. 
+              </p>
+              <p style={{color: '#6b7280', fontSize: '11px', lineHeight: '1.7', margin: '0 0 8px'}}>
+                Membre du CRFF. Expert auprès de collectifs d'orientation juridiques francophones.
               </p>
               <p style={{color: '#9ca3af', fontSize: '11px', margin: 0}}>Cabinet Cholez-Pagotto</p>
             </div>
