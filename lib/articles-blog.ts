@@ -18,6 +18,18 @@ export type ArticleBlog = {
 
 export const ARTICLES_BLOG: ArticleBlog[] = [
   {
+    slug: 'creation-site-internet-delai-retractation-cour-cassation-28-mai-2026',
+    titre: "Création de site internet : le délai de rétractation court dès la signature du contrat",
+    resume: "La Cour de cassation juge que la conception d'un site internet personnalisé est une prestation de services, non une vente : le délai de rétractation court dès la signature, pas à la livraison.",
+    date: '29 mai 2026',
+    auteur: 'François CHOLEZ',
+    categorie: 'Consommation',
+    tags: ['Rétractation', 'Site internet', 'Consommation', 'Cour de cassation'],
+    tempsLecture: '11 min',
+    image: 'https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/creation-site-internet-retractation-2026.webp',
+  },
+
+  {
     slug: 'differends-commerciaux-agricoles-decret-30-juin-2026-procedure-crdca',
     titre: "Agriculture : un nouveau décret précise le règlement des différends commerciaux agricoles",
     resume: "Le décret n° 2026-578 du 30 juin 2026 organise la procédure devant le comité de règlement des différends commerciaux agricoles issu d'Égalim 2 : saisine dans le mois suivant l'échec de la médiation, instruction contradictoire, secret des affaires, astreintes.",
