@@ -53,9 +53,7 @@ export default function MentionsLegales() {
                 <h2 style={{color: '#0f2d6e', fontSize: '1.1rem', fontWeight: '700', margin: '0 0 1rem', paddingBottom: '0.75rem', borderBottom: '1px solid #f3f4f6'}}>1. Éditeur du site</h2>
                 <div style={{display: 'grid', gridTemplateColumns: '160px 1fr', gap: '8px 16px', fontSize: '14px', color: '#374151', lineHeight: '1.7'}}>
                   <span style={{color: '#6b7280', fontSize: '13px'}}>Éditeur</span>
-                  <span><strong>François CHOLEZ</strong> (entrepreneur individuel)</span>
-                  <span style={{color: '#6b7280', fontSize: '13px'}}>Nom commercial</span>
-                  <span>CBT CHOLEZ-PAGOTTO (Cabinet Cholez-Pagotto)</span>
+                  <span><strong>CBT CHOLEZ-PAGOTTO</strong></span>
                   <span style={{color: '#6b7280', fontSize: '13px'}}>Forme juridique</span>
                   <span>Entreprise individuelle (E.I.)</span>
                   <span style={{color: '#6b7280', fontSize: '13px'}}>SIRET</span>
@@ -65,11 +63,9 @@ export default function MentionsLegales() {
                   <span style={{color: '#6b7280', fontSize: '13px'}}>Directeur de la publication</span>
                   <span>François CHOLEZ</span>
                   <span style={{color: '#6b7280', fontSize: '13px'}}>Téléphone</span>
-                  <span><a href="tel:+33374474055" style={{color: '#1a4fba', textDecoration: 'none'}}>03 74 47 40 55</a></span>
-                  <span style={{color: '#6b7280', fontSize: '13px'}}>Email</span>
-                  <span><a href="mailto:contact@cholez-pagotto.fr" style={{color: '#1a4fba', textDecoration: 'none', fontWeight: '600'}}>contact@cholez-pagotto.fr</a></span>
+                  <span>(+33) <a href="tel:+33374474055" style={{color: '#1a4fba', textDecoration: 'none'}}>03 74 47 40 55</a></span>
                   <span style={{color: '#6b7280', fontSize: '13px'}}>Contact</span>
-                  <span><a href="/contact" style={{color: '#1a4fba', textDecoration: 'none', fontWeight: '600'}}>Formulaire de contact →</a></span>
+                  <span>via le <a href="/contact" style={{color: '#1a4fba', textDecoration: 'none', fontWeight: '600'}}>formulaire de contact →</a></span>
                 </div>
               </section>
 
