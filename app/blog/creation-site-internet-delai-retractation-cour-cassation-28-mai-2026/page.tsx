@@ -64,6 +64,14 @@ const schema = {
             "@type": "Answer",
             "text": "Si l'information sur le délai de rétractation est erronée ou absente, le délai de 14 jours est prolongé de douze mois à compter de l'expiration du délai initial, conformément à l'article L. 221-20 du Code de la consommation."
           }
+        },
+        {
+          "@type": "Question",
+          "name": "Un bien incorporel peut-il faire l'objet d'une vente ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Cela dépend du montage contractuel. La chambre commerciale de la Cour de cassation (6 mars 2024, n° 22-23.657) a admis qu'une copie de logiciel durablement mise à disposition contre paiement pouvait faire l'objet d'un transfert de propriété. La première chambre civile, dans l'arrêt du 28 mai 2026, retient une lecture plus stricte pour un site internet personnalisé, faute de transfert de propriété d'un bien meuble au sens de l'article 528 du Code civil."
+          }
         }
       ]
     },
@@ -134,9 +142,11 @@ export default function ArticleSiteInternetRetractation2026() {
                 <li><a href="#faits" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>I. Les faits : un site livré, une rétractation contestée</a></li>
                 <li><a href="#appel" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>II. La cour d'appel : un contrat "mixte" assimilé à une vente</a></li>
                 <li><a href="#cassation" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>III. La cassation : pas de transfert de propriété, pas de vente</a></li>
-                <li><a href="#consequence" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>IV. La conséquence pratique sur le point de départ du délai</a></li>
-                <li><a href="#professionnels" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>V. Un professionnel peut-il aussi se rétracter ?</a></li>
-                <li><a href="#clauses" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>VI. Ce que les prestataires doivent revoir dans leurs contrats</a></li>
+                <li><a href="#divergence" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>IV. Une lecture différente pour les biens incorporels</a></li>
+                <li><a href="#consequence" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>V. La conséquence pratique sur le point de départ du délai</a></li>
+                <li><a href="#professionnels" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>VI. Un professionnel peut-il aussi se rétracter ?</a></li>
+                <li><a href="#clauses" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>VII. Ce que les prestataires doivent revoir dans leurs contrats</a></li>
+                <li><a href="#contrats" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>VIII. Au-delà de ce contrat : sécuriser vos relations contractuelles</a></li>
                 <li><a href="#conclusion" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>Conclusion</a></li>
                 <li><a href="#sources" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>Sources officielles</a></li>
                 <li><a href="#faq" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>Questions fréquentes</a></li>
@@ -151,7 +161,7 @@ export default function ArticleSiteInternetRetractation2026() {
                 <p style={{marginBottom: '1rem'}}>La solution intéresse directement les agences web, les développeurs indépendants, les prestataires de référencement et d'UX, mais aussi tous leurs clients, particuliers comme professionnels, qui signent ce type de contrat le plus souvent hors établissement, à domicile, sur un salon ou lors d'un rendez-vous commercial.</p>
                 <div style={{background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '10px', padding: '1rem 1.25rem', margin: '1.25rem 0'}}>
                   <p style={{color: '#1e3a5f', fontSize: '13px', lineHeight: '1.7', margin: 0}}>
-                    <strong>L'essentiel en une phrase :</strong> un contrat portant sur la conception et la réalisation d'un site internet personnalisé <strong>n'emporte pas transfert de propriété d'un bien meuble</strong> au sens de l'article 528 du Code civil ; ce n'est donc pas une vente, mais une <strong>prestation de services</strong>, et le délai de rétractation court dès la <strong>conclusion du contrat</strong>, non à compter de la livraison du site.
+                    <strong>L'essentiel en une phrase :</strong>{' '}un contrat portant sur la conception et la réalisation d'un site internet personnalisé <strong>n'emporte pas transfert de propriété d'un bien meuble</strong> au sens de l'article 528 du Code civil ; ce n'est donc pas une vente, mais une <strong>prestation de services</strong>, et le délai de rétractation court dès la <strong>conclusion du contrat</strong>, non à compter de la livraison du site.
                   </p>
                 </div>
               </section>
@@ -181,27 +191,40 @@ export default function ArticleSiteInternetRetractation2026() {
                 <p style={{marginBottom: '1rem'}}>Or un site internet, aussi personnalisé et exploitable soit-il par le client, n'est pas un bien meuble corporel au sens de ce texte. La Cour ne se fonde ni sur la valeur économique du site, ni sur son utilité pour la cliente : elle vérifie uniquement si le contrat emporte, juridiquement, un transfert de propriété. En l'absence d'un tel transfert, l'opération relève d'une <strong>prestation intellectuelle et technique</strong>, quand bien même son résultat, le site, reste à la disposition du client pour être exploité.</p>
                 <div style={{background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '10px', padding: '1rem 1.25rem', margin: '1.25rem 0'}}>
                   <p style={{color: '#1e3a5f', fontSize: '13px', lineHeight: '1.7', margin: 0}}>
-                    <strong>Le point de droit central.</strong> La création d'un site internet personnalisé ne devient pas une vente du seul fait que le client peut ensuite exploiter ce site. C'est l'existence, ou l'absence, d'un transfert de propriété d'un bien meuble qui commande la qualification, pas l'utilité concrète du résultat pour le client.
+                    <strong>Le point de droit central.</strong>{' '}La création d'un site internet personnalisé ne devient pas une vente du seul fait que le client peut ensuite exploiter ce site. C'est l'existence, ou l'absence, d'un transfert de propriété d'un bien meuble qui commande la qualification, pas l'utilité concrète du résultat pour le client.
+                  </p>
+                </div>
+              </section>
+
+              <section id="divergence">
+                <h2 style={{color: '#0f2d6e', fontSize: '1.3rem', fontWeight: '700', margin: '2rem 0 16px', paddingTop: '1rem'}}>
+                  IV. Une lecture différente pour les biens incorporels
+                </h2>
+                <p style={{marginBottom: '1rem'}}>Cette solution de la première chambre civile mérite d'être mise en perspective avec une autre décision, rendue par une formation différente de la Cour de cassation. Dans un arrêt du <strong>6 mars 2024</strong> (Cass. com., n°&nbsp;22-23.657), la <strong>chambre commerciale</strong> a jugé, en s'appuyant sur la jurisprudence de la Cour de justice de l'Union européenne, que la mise à disposition durable d'une copie de logiciel contre paiement d'un prix pouvait emporter un véritable transfert de propriété sur cette copie, alors même qu'il s'agit d'un bien incorporel.</p>
+                <p style={{marginBottom: '1rem'}}>Les deux chambres ne sont pas à proprement parler en contradiction, puisqu'elles ne statuent pas sur le même type de bien : une copie de logiciel durablement mise à disposition n'est pas un site internet réalisé sur mesure. Mais la comparaison révèle une vraie tension de fond sur le sort des <strong>biens incorporels</strong> en droit français, qui ne bénéficient toujours pas d'un régime juridique unifié. Là où la chambre commerciale, plus perméable à l'influence du droit européen, admet qu'un bien meuble incorporel puisse faire l'objet d'un transfert de propriété assimilable à une vente, la première chambre civile retient une lecture plus classique de l'article 528 du Code civil, centrée sur la matérialité du bien.</p>
+                <div style={{background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '10px', padding: '1rem 1.25rem', margin: '1.25rem 0'}}>
+                  <p style={{color: '#1e3a5f', fontSize: '13px', lineHeight: '1.7', margin: 0}}>
+                    <strong>Ce que cela signifie en pratique.</strong>{' '}Il ne faut pas déduire de l'arrêt du 28 mai 2026 une règle générale selon laquelle aucun bien incorporel ne pourrait jamais faire l'objet d'une vente. La qualification reste affaire de cas d'espèce : un site internet personnalisé relève de la prestation de services, mais d'autres montages contractuels portant sur des biens immatériels durablement transférés pourraient recevoir une analyse différente.
                   </p>
                 </div>
               </section>
 
               <section id="consequence">
                 <h2 style={{color: '#0f2d6e', fontSize: '1.3rem', fontWeight: '700', margin: '2rem 0 16px', paddingTop: '1rem'}}>
-                  IV. La conséquence pratique sur le point de départ du délai
+                  V. La conséquence pratique sur le point de départ du délai
                 </h2>
                 <p style={{marginBottom: '1rem'}}>Le Code de la consommation distingue nettement les deux régimes. Pour une <strong>prestation de services</strong>, le délai de rétractation de quatorze jours court à compter du jour de la <strong>conclusion du contrat</strong> (article L.&nbsp;221-18). Pour une <strong>vente de biens</strong>, il court à compter du jour de la <strong>réception du bien</strong> par le consommateur.</p>
                 <p style={{marginBottom: '1rem'}}>En qualifiant le contrat de création de site internet personnalisé de prestation de services, la Cour de cassation fixe donc le point de départ du délai au jour de la signature, et non au jour de la mise en ligne, de la recette technique ou de la signature d'un procès-verbal de réception. Dans l'affaire jugée, la rétractation intervenue plusieurs semaines après la signature était donc tardive : la Cour a cassé l'arrêt d'appel et renvoyé l'affaire.</p>
                 <div style={{background: '#fef2f2', border: '1px solid #fecaca', borderRadius: '10px', padding: '1rem 1.25rem', margin: '1rem 0'}}>
                   <p style={{color: '#dc2626', fontSize: '13px', lineHeight: '1.7', margin: 0}}>
-                    <strong>L'erreur à ne pas commettre.</strong> Un client qui pense pouvoir attendre la livraison ou la mise en ligne du site pour se rétracter risque, à la lumière de cet arrêt, d'agir hors délai. Inversement, un prestataire dont les conditions générales renvoyaient la réception du site comme point de départ prenait un risque : une clause ou une mention erronée sur ce point expose à la prorogation de douze mois prévue par l'article L.&nbsp;221-20 du Code de la consommation.
+                    <strong>L'erreur à ne pas commettre.</strong>{' '}Un client qui pense pouvoir attendre la livraison ou la mise en ligne du site pour se rétracter risque, à la lumière de cet arrêt, d'agir hors délai. Inversement, un prestataire dont les conditions générales renvoyaient la réception du site comme point de départ prenait un risque : une clause ou une mention erronée sur ce point expose à la prorogation de douze mois prévue par l'article L.&nbsp;221-20 du Code de la consommation.
                   </p>
                 </div>
               </section>
 
               <section id="professionnels">
                 <h2 style={{color: '#0f2d6e', fontSize: '1.3rem', fontWeight: '700', margin: '2rem 0 16px', paddingTop: '1rem'}}>
-                  V. Un professionnel peut-il aussi se rétracter ?
+                  VI. Un professionnel peut-il aussi se rétracter ?
                 </h2>
                 <p style={{marginBottom: '1rem'}}>Le contentieux des sites internet oppose très souvent une agence web à un client lui-même professionnel : artisan, commerçant, profession libérale, indépendant. Le droit de rétractation n'est pourtant pas réservé aux seuls consommateurs. L'article L.&nbsp;221-3 du Code de la consommation l'étend aux contrats conclus hors établissement entre deux professionnels, à deux conditions cumulatives : l'objet du contrat doit être <strong>étranger à l'activité principale</strong> du professionnel sollicité, et celui-ci doit employer <strong>cinq salariés au plus</strong>.</p>
                 <p style={{marginBottom: '1rem'}}>Un artisan qui fait créer le site vitrine de son activité, sans que la gestion de sites internet relève de son cœur de métier, peut ainsi bénéficier de cette protection s'il remplit la condition d'effectif. Ce n'est donc pas parce que le site sert l'activité professionnelle du client qu'il entre nécessairement dans le champ de son activité principale.</p>
@@ -209,7 +232,7 @@ export default function ArticleSiteInternetRetractation2026() {
 
               <section id="clauses">
                 <h2 style={{color: '#0f2d6e', fontSize: '1.3rem', fontWeight: '700', margin: '2rem 0 16px', paddingTop: '1rem'}}>
-                  VI. Ce que les prestataires doivent revoir dans leurs contrats
+                  VII. Ce que les prestataires doivent revoir dans leurs contrats
                 </h2>
                 <p style={{marginBottom: '1rem'}}>Pour les agences web, développeurs et consultants qui vendent des offres de création de site, souvent couplées à du référencement, de la maintenance ou de l'hébergement, cet arrêt appelle une relecture des documents contractuels sur plusieurs points :</p>
                 <ul style={{paddingLeft: '1.5rem', margin: '1rem 0', display: 'flex', flexDirection: 'column', gap: '10px'}}>
@@ -218,7 +241,7 @@ export default function ArticleSiteInternetRetractation2026() {
                   <li><strong>La demande expresse d'exécution anticipée</strong>, si le prestataire souhaite commencer à travailler avant la fin du délai de quatorze jours, doit être recueillie sur papier ou support durable, avec reconnaissance par le client de la perte de son droit de rétractation en cas d'exécution complète.</li>
                   <li><strong>Aucune clause de renonciation générale</strong> ne peut valablement priver le client de son droit : une telle clause est nulle, les dispositions du Code de la consommation en la matière étant d'ordre public.</li>
                 </ul>
-                <p style={{marginBottom: '1rem'}}>Un point de vigilance complémentaire, à ne pas confondre avec cet arrêt mais qui touche le même terrain : depuis le <strong>19 juin 2026</strong>, les sites de vente en ligne doivent intégrer un bouton de rétractation directement accessible sur leur interface, en application de l'ordonnance n°&nbsp;2026-2 transposant la directive (UE) 2023/2673. Cette obligation vise les contrats conclus en ligne par les consommateurs ; elle est distincte de la question tranchée le 28 mai 2026, mais les deux réformes concourent au même mouvement de clarification du droit de rétractation dans le commerce numérique.</p>
+                <p style={{marginBottom: '1rem'}}>Un chantier de mise en conformité distinct, mais qui touche le même terrain, est également à anticiper par les sites de vente en ligne : à compter du <strong>19 juin 2026</strong>, un bouton de rétractation devra être directement accessible sur leur interface, en application de l'ordonnance n°&nbsp;2026-2 transposant la directive (UE) 2023/2673. Cette obligation, qui vise les contrats conclus en ligne par les consommateurs, ne concerne pas la question tranchée par l'arrêt du 28 mai 2026, mais participe du même mouvement de clarification du droit de rétractation dans le commerce numérique. Nous y consacrons une analyse dédiée.</p>
                 <div style={{background: '#0f2d6e', borderRadius: '12px', padding: '1.5rem', margin: '1.5rem 0'}}>
                   <p style={{color: 'white', fontSize: '15px', fontWeight: '700', margin: '0 0 8px'}}>Vos contrats de prestation sont-ils à jour ?</p>
                   <p style={{color: 'rgba(255,255,255,0.85)', fontSize: '13px', lineHeight: '1.7', margin: '0 0 14px'}}>
@@ -227,6 +250,32 @@ export default function ArticleSiteInternetRetractation2026() {
                   <div style={{display: 'flex', gap: '10px', flexWrap: 'wrap'}}>
                     <a href="/accompagnement-professionnels" style={{display: 'inline-block', background: 'white', color: '#0f2d6e', padding: '9px 18px', borderRadius: '8px', fontSize: '12px', fontWeight: '700', textDecoration: 'none'}}>Accompagnement des professionnels</a>
                     <a href="/blog/bouton-de-retractation-obligation-vente-en-ligne-19-juin-2026" style={{display: 'inline-block', background: 'transparent', color: 'white', border: '1px solid rgba(255,255,255,0.4)', padding: '9px 18px', borderRadius: '8px', fontSize: '12px', fontWeight: '700', textDecoration: 'none'}}>Le bouton de rétractation en ligne</a>
+                  </div>
+                </div>
+              </section>
+
+              <section id="contrats">
+                <h2 style={{color: '#0f2d6e', fontSize: '1.3rem', fontWeight: '700', margin: '2rem 0 16px', paddingTop: '1rem'}}>
+                  VIII. Au-delà de ce contrat : sécuriser vos relations contractuelles
+                </h2>
+                <p style={{marginBottom: '1rem'}}>L'affaire jugée le 28 mai 2026 porte sur un contrat de création de site internet, mais la logique qu'elle illustre déborde largement ce seul cadre. Elle rappelle une règle de fond valable pour <strong>tout contrat</strong>, quel que soit son objet : sa qualification juridique n'est jamais une simple étiquette commerciale, elle commande des conséquences concrètes, ici le point de départ d'un délai, ailleurs la garantie applicable, le régime de responsabilité ou les conditions de résiliation.</p>
+                <p style={{marginBottom: '1rem'}}>Plusieurs types de clauses méritent une attention particulière dans n'importe quel contrat de prestation, numérique ou non :</p>
+                <ul style={{paddingLeft: '1.5rem', margin: '1rem 0', display: 'flex', flexDirection: 'column', gap: '10px'}}>
+                  <li><strong>Les clauses de qualification</strong>, qui décrivent l'objet du contrat : plus elles sont approximatives, plus elles ouvrent la porte à une requalification judiciaire, dans un sens ou dans l'autre.</li>
+                  <li><strong>Les clauses de délai et de point de départ</strong>, qu'il s'agisse d'un délai de rétractation, de garantie, de préavis ou de prescription : une date de départ mal fixée peut priver une clause de tout effet.</li>
+                  <li><strong>Les clauses limitatives ou exonératoires de responsabilité</strong>, qui doivent rester compatibles avec l'obligation essentielle du contrat, sous peine d'être réputées non écrites.</li>
+                  <li><strong>Les clauses de renonciation à un droit d'ordre public</strong>, comme on l'a vu pour la rétractation : une clause qui prive le cocontractant d'un droit qu'il tient de la loi encourt la nullité, quelle que soit sa formulation.</li>
+                  <li><strong>Les clauses d'interdépendance contractuelle</strong>, lorsque plusieurs conventions liées entre elles (prestation principale, financement, licence, maintenance) doivent être articulées pour éviter qu'une contestation sur l'une ne fragilise l'ensemble.</li>
+                </ul>
+                <p style={{marginBottom: '1rem'}}>C'est précisément sur ce terrain que le cabinet intervient, au-delà du seul secteur du numérique : relecture de conditions générales de vente ou d'utilisation, sécurisation de contrats de prestation, rédaction de clauses adaptées à une activité donnée, accompagnement à la création d'entreprise, conformité RGPD des traitements liés à l'exécution d'un contrat, ou encore orientation vers un avocat ou notaire partenaire lorsque la situation l'exige.</p>
+                <div style={{background: '#fffaf0', border: '1px solid #f0d488', borderRadius: '12px', padding: '1.5rem', margin: '1.5rem 0'}}>
+                  <p style={{color: '#0f2d6e', fontSize: '15px', fontWeight: '700', margin: '0 0 8px'}}>Un cabinet, plusieurs métiers, un même souci de rigueur contractuelle</p>
+                  <p style={{color: '#5c5238', fontSize: '13px', lineHeight: '1.7', margin: '0 0 14px'}}>
+                    Que votre besoin porte sur un contrat de prestation, une création d'entreprise, une mise en conformité RGPD ou un accompagnement associatif, le cabinet propose une gamme de services complémentaires, tous fondés sur la même exigence documentaire.
+                  </p>
+                  <div style={{display: 'flex', gap: '10px', flexWrap: 'wrap'}}>
+                    <a href="/services" style={{display: 'inline-block', background: '#0f2d6e', color: 'white', padding: '9px 18px', borderRadius: '8px', fontSize: '12px', fontWeight: '700', textDecoration: 'none'}}>Tous nos services</a>
+                    <a href="/catalogue" style={{display: 'inline-block', background: 'white', color: '#0f2d6e', border: '1px solid #0f2d6e', padding: '9px 18px', borderRadius: '8px', fontSize: '12px', fontWeight: '700', textDecoration: 'none'}}>Catalogue de modèles</a>
                   </div>
                 </div>
               </section>
@@ -247,7 +296,8 @@ export default function ArticleSiteInternetRetractation2026() {
                   <li>Cour de cassation, 1ère chambre civile, arrêt n°&nbsp;356 F-B du 28 mai 2026, pourvoi n°&nbsp;25-14.507, publié au Bulletin</li>
                   <li>Code civil, article 528 (définition des biens meubles)</li>
                   <li>Code de la consommation, articles L.&nbsp;221-3 (extension aux professionnels), L.&nbsp;221-9 (information précontractuelle et formulaire type), L.&nbsp;221-18 (point de départ du délai pour les services), L.&nbsp;221-20 (prorogation en cas d'information erronée)</li>
-                  <li>Ordonnance n°&nbsp;2026-2 et décret n°&nbsp;2026-3 du 5 janvier 2026 (bouton de rétractation en ligne, applicable depuis le 19 juin 2026)</li>
+                  <li>Cour de cassation, chambre commerciale, 6 mars 2024, n°&nbsp;22-23.657 (transfert de propriété d'un bien incorporel)</li>
+                  <li>Ordonnance n°&nbsp;2026-2 et décret n°&nbsp;2026-3 du 5 janvier 2026 (bouton de rétractation en ligne, applicable à compter du 19 juin 2026)</li>
                 </ul>
                 <p style={{marginBottom: '1rem', fontSize: '12px', color: '#9ca3af', fontStyle: 'italic'}}>Cet article relève d'une information juridique au sens de la loi n°&nbsp;71-1130 du 31 décembre 1971. Le cabinet ne délivre pas de consultation juridique personnalisée. Pour l'analyse d'un contrat déterminé, il convient de tenir compte de l'ensemble de ses stipulations et des circonstances de sa conclusion.</p>
               </section>
@@ -282,6 +332,13 @@ export default function ArticleSiteInternetRetractation2026() {
                       <span style={{color: '#1a4fba', fontSize: '18px', flexShrink: 0, lineHeight: 1}}>+</span>
                     </summary>
                     <p style={{color: '#374151', fontSize: '13px', lineHeight: '1.75', marginTop: '12px', marginBottom: 0}}>Si l'information sur le délai de rétractation est erronée ou absente, le délai de 14 jours est prolongé de douze mois à compter de l'expiration du délai initial, conformément à l'article L.&nbsp;221-20 du Code de la consommation.</p>
+                  </details>
+                  <details style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '10px', padding: '1rem 1.25rem'}}>
+                    <summary style={{fontWeight: '600', color: '#0f2d6e', fontSize: '14px', cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '12px'}}>
+                      <span>Un bien incorporel peut-il faire l'objet d'une vente ?</span>
+                      <span style={{color: '#1a4fba', fontSize: '18px', flexShrink: 0, lineHeight: 1}}>+</span>
+                    </summary>
+                    <p style={{color: '#374151', fontSize: '13px', lineHeight: '1.75', marginTop: '12px', marginBottom: 0}}>Cela dépend du montage contractuel. La chambre commerciale de la Cour de cassation (6 mars 2024, n°&nbsp;22-23.657) a admis qu'une copie de logiciel durablement mise à disposition contre paiement pouvait faire l'objet d'un transfert de propriété. La première chambre civile, dans l'arrêt du 28 mai 2026, retient une lecture plus stricte pour un site internet personnalisé, faute de transfert de propriété d'un bien meuble au sens de l'article 528 du Code civil.</p>
                   </details>
                 </div>
               </section>
@@ -350,6 +407,26 @@ export default function ArticleSiteInternetRetractation2026() {
           </aside>
 
         </div>
+
+        {/* CES ARTICLES PEUVENT AUSSI VOUS INTERESSER */}
+        <section style={{maxWidth: '1100px', margin: '0 auto', padding: '0 2rem 3.5rem'}}>
+          <h2 style={{color: '#0f2d6e', fontSize: '1.3rem', fontWeight: '700', margin: '0 0 1.25rem'}}>Ces articles peuvent aussi vous intéresser</h2>
+          <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '14px'}}>
+            {[
+              { cat: 'FORMALITÉS', titre: "Guichet unique INPI 2026 : formalités d'entreprise, mode d'emploi et pièges à éviter", href: '/blog/guichet-unique-inpi-2026-formalites-d-entreprise-mode-d-emploi-et-pieges-a-eviter', date: '30 avril 2026' },
+              { cat: 'ENTREPRISES', titre: "Arnaques aux entreprises nouvellement créées : les reconnaître et s'en protéger en 2026", href: '/blog/arnaques-aux-entreprises-nouvellement-creees-2026-les-reconnaitre-et-s-en-proteger', date: '10 juin 2026' },
+              { cat: 'FISCALITÉ', titre: 'Facturation électronique obligatoire en 2026 : ce qui change pour toutes les entreprises', href: '/blog/facturation-electronique-obligatoire-2026-ce-qui-change-pour-toutes-les-entreprises', date: '20 janvier 2026' },
+              { cat: 'TPE & INDÉPENDANTS', titre: 'Loi de finances 2026 : ce qui change pour les TPE et les indépendants', href: '/blog/loi-de-finances-2026-ce-qui-change-pour-les-tpe-et-les-independants', date: '19 février 2026' },
+            ].map((a) => (
+              <a key={a.href} href={a.href} style={{display: 'flex', flexDirection: 'column', gap: '8px', background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.1rem 1.25rem', textDecoration: 'none'}}>
+                <span style={{alignSelf: 'flex-start', background: '#eff6ff', color: '#1a4fba', fontSize: '10px', fontWeight: '700', padding: '2px 9px', borderRadius: '20px'}}>{a.cat}</span>
+                <span style={{color: '#0f2d6e', fontSize: '13.5px', fontWeight: '700', lineHeight: '1.4'}}>{a.titre}</span>
+                <span style={{color: '#9ca3af', fontSize: '11px'}}>{a.date}</span>
+              </a>
+            ))}
+          </div>
+        </section>
+
       </main>
       <Footer />
     </>
