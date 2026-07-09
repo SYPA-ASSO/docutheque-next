@@ -40,6 +40,7 @@ type EditFormType = {
   definitions: Record<string, string>[]
   faq: Record<string, string>[]
   date_maj: string
+  masque_catalogue: boolean
   file: File | null
 }
 
@@ -52,6 +53,7 @@ const emptyForm = {
   modeles_lies: '', articles_lies: '', services_lies: '', inclus_dans: '', contient: '',
   cadre_legal: '', conseil: '', date_maj: '',
   definitions: [] as Record<string, string>[], faq: [] as Record<string, string>[],
+  masque_catalogue: false,
   file: null as File | null,
 }
 
@@ -267,7 +269,7 @@ export default function AdminDocuments() {
     fd.append('type', form.type); fd.append('slug', form.slug); fd.append('sous_titre', form.sous_titre); fd.append('contenu', form.contenu); fd.append('image_url', form.image_url)
     fd.append('modeles_lies', form.modeles_lies); fd.append('articles_lies', form.articles_lies); fd.append('services_lies', form.services_lies); fd.append('inclus_dans', form.inclus_dans); fd.append('contient', form.contient)
     fd.append('categories', JSON.stringify(form.categories)); fd.append('profils', JSON.stringify(form.profils))
-    fd.append('acces_gratuit', String(form.acces_gratuit)); fd.append('acces_optimal', String(form.acces_optimal)); fd.append('acces_payant', String(form.acces_payant))
+    fd.append('acces_gratuit', String(form.acces_gratuit)); fd.append('acces_optimal', String(form.acces_optimal)); fd.append('acces_payant', String(form.acces_payant)); fd.append('masque_catalogue', String(form.masque_catalogue))
     if (form.prix) fd.append('prix', form.prix)
     fd.append('ordre', form.ordre)
     fd.append('cadre_legal', form.cadre_legal); fd.append('conseil', form.conseil); fd.append('date_maj', form.date_maj)
@@ -279,7 +281,7 @@ export default function AdminDocuments() {
 
   const ouvrirEdition = (doc: DocItem) => {
     setEditDoc(doc)
-    setEditForm({ nom: doc.nom, description: doc.description || '', categories: doc.categories || [], profils: doc.profils_autorises || [], acces_gratuit: doc.acces_gratuit, acces_optimal: doc.acces_optimal, acces_payant: doc.acces_payant, prix: doc.prix_unitaire ? String(doc.prix_unitaire) : '', ordre: String(doc.ordre), type: doc.type || 'document', slug: doc.slug || '', sous_titre: doc.sous_titre || '', contenu: doc.contenu || '', image_url: doc.image_url || '', modeles_lies: (doc.modeles_lies || []).join(', '), articles_lies: (doc.articles_lies || []).join(', '), services_lies: (doc.services_lies || []).join(', '), inclus_dans: (doc.inclus_dans || []).join(', '), contient: (doc.contient || []).join(', '), cadre_legal: doc.cadre_legal || '', conseil: doc.conseil || '', date_maj: doc.date_maj || '', definitions: doc.definitions || [], faq: doc.faq || [], file: null })
+    setEditForm({ nom: doc.nom, description: doc.description || '', categories: doc.categories || [], profils: doc.profils_autorises || [], acces_gratuit: doc.acces_gratuit, acces_optimal: doc.acces_optimal, acces_payant: doc.acces_payant, prix: doc.prix_unitaire ? String(doc.prix_unitaire) : '', ordre: String(doc.ordre), type: doc.type || 'document', slug: doc.slug || '', sous_titre: doc.sous_titre || '', contenu: doc.contenu || '', image_url: doc.image_url || '', modeles_lies: (doc.modeles_lies || []).join(', '), articles_lies: (doc.articles_lies || []).join(', '), services_lies: (doc.services_lies || []).join(', '), inclus_dans: (doc.inclus_dans || []).join(', '), contient: (doc.contient || []).join(', '), cadre_legal: doc.cadre_legal || '', conseil: doc.conseil || '', date_maj: doc.date_maj || '', definitions: doc.definitions || [], faq: doc.faq || [], masque_catalogue: !!doc.masque_catalogue, file: null })
     setEditStatut('idle'); setEditErreur('')
   }
 
@@ -294,7 +296,7 @@ export default function AdminDocuments() {
         const fd = new FormData()
         fd.append('file', editForm.file); fd.append('nom', editForm.nom); fd.append('description', editForm.description)
         fd.append('categories', JSON.stringify(editForm.categories)); fd.append('profils', JSON.stringify(editForm.profils))
-        fd.append('acces_gratuit', String(editForm.acces_gratuit)); fd.append('acces_optimal', String(editForm.acces_optimal)); fd.append('acces_payant', String(editForm.acces_payant))
+        fd.append('acces_gratuit', String(editForm.acces_gratuit)); fd.append('acces_optimal', String(editForm.acces_optimal)); fd.append('acces_payant', String(editForm.acces_payant)); fd.append('masque_catalogue', String(editForm.masque_catalogue))
         if (editForm.prix) fd.append('prix', editForm.prix)
         fd.append('ordre', editForm.ordre); fd.append('replace_id', editDoc.id)
         const res = await fetch('/api/documents/upload', { method: 'POST', headers: { 'x-admin-password': password }, body: fd })
@@ -305,7 +307,7 @@ export default function AdminDocuments() {
       const res = await fetch('/api/admin/documents-update', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'x-admin-password': password },
-        body: JSON.stringify({ id: editDoc.id, nom: editForm.nom, description: editForm.description, categories: editForm.categories, profils_autorises: editForm.profils, acces_gratuit: editForm.acces_gratuit, acces_optimal: editForm.acces_optimal, acces_payant: editForm.acces_payant, prix_unitaire: editForm.prix ? parseFloat(editForm.prix) : null, ordre: parseInt(editForm.ordre), blob_url: blobUrl, type: editForm.type, slug: editForm.slug.trim() ? slugify(editForm.slug) : slugify(editForm.nom), sous_titre: editForm.sous_titre || null, contenu: editForm.contenu || null, image_url: editForm.image_url || null, modeles_lies: toArr(editForm.modeles_lies), articles_lies: toArr(editForm.articles_lies), services_lies: toArr(editForm.services_lies), inclus_dans: toArr(editForm.inclus_dans), contient: toArr(editForm.contient), cadre_legal: editForm.cadre_legal || null, conseil: editForm.conseil || null, date_maj: editForm.date_maj || null, definitions: editForm.definitions, faq: editForm.faq }),
+        body: JSON.stringify({ id: editDoc.id, nom: editForm.nom, description: editForm.description, categories: editForm.categories, profils_autorises: editForm.profils, acces_gratuit: editForm.acces_gratuit, acces_optimal: editForm.acces_optimal, acces_payant: editForm.acces_payant, masque_catalogue: editForm.masque_catalogue, prix_unitaire: editForm.prix ? parseFloat(editForm.prix) : null, ordre: parseInt(editForm.ordre), blob_url: blobUrl, type: editForm.type, slug: editForm.slug.trim() ? slugify(editForm.slug) : slugify(editForm.nom), sous_titre: editForm.sous_titre || null, contenu: editForm.contenu || null, image_url: editForm.image_url || null, modeles_lies: toArr(editForm.modeles_lies), articles_lies: toArr(editForm.articles_lies), services_lies: toArr(editForm.services_lies), inclus_dans: toArr(editForm.inclus_dans), contient: toArr(editForm.contient), cadre_legal: editForm.cadre_legal || null, conseil: editForm.conseil || null, date_maj: editForm.date_maj || null, definitions: editForm.definitions, faq: editForm.faq }),
       })
       if (res.ok) { setEditStatut('success'); setEditDoc(null); setEditForm(null); loadDocuments(password) }
       else { setEditStatut('error'); setEditErreur('Erreur lors de la mise à jour.') }
@@ -368,6 +370,13 @@ export default function AdminDocuments() {
           )}
         </div>
       ))}
+      <label style={{ display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer', padding: '10px 14px', border: `1px solid ${f.masque_catalogue ? '#7c3aed' : '#e5e7eb'}`, borderRadius: '8px', background: f.masque_catalogue ? '#f5f3ff' : 'white' }}>
+        <input type="checkbox" checked={f.masque_catalogue} onChange={ev => setF({ ...f, masque_catalogue: ev.target.checked })} style={{ width: '16px', height: '16px', accentColor: '#7c3aed' }} />
+        <div>
+          <p style={{ color: '#7c3aed', fontSize: '13px', fontWeight: '700', margin: 0 }}>Masquer du catalogue public</p>
+          <p style={{ color: '#6b7280', fontSize: '11px', margin: 0 }}>Le fichier reste actif et telechargeable via un pack, mais n'apparait ni dans la grille ni dans la recherche ni sur sa propre page</p>
+        </div>
+      </label>
     </div>
   )
 
@@ -586,6 +595,7 @@ export default function AdminDocuments() {
                       <p style={{ color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: 0 }}>{doc.nom}</p>
                       <span style={{ background: colors.bg, color: colors.color, fontSize: '10px', fontWeight: '700', padding: '1px 7px', borderRadius: '4px' }}>{accesLabel(doc)}</span>
                       {!doc.actif && <span style={{ background: '#f3f4f6', color: '#9ca3af', fontSize: '10px', fontWeight: '600', padding: '1px 7px', borderRadius: '4px' }}>Désactivé</span>}
+                      {doc.masque_catalogue && <span style={{ background: '#f5f3ff', color: '#7c3aed', fontSize: '10px', fontWeight: '600', padding: '1px 7px', borderRadius: '4px' }}>Masqué (pack uniquement)</span>}
                     </div>
                     {doc.description && <p style={{ color: '#6b7280', fontSize: '12px', margin: '0 0 6px', lineHeight: '1.5' }}>{doc.description}</p>}
                     <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>

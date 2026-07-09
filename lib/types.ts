@@ -15,6 +15,7 @@ export type DocItem = {
   prix_unitaire: number | null
   actif: boolean
   ordre: number
+  masque_catalogue?: boolean
   // Page dédiée et maillage (catalogue/[slug])
   type?: RessourceType
   slug?: string | null

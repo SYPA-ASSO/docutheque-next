@@ -106,8 +106,9 @@ export default function CataloguePage() {
     const loadData = async () => {
       const { data: docs } = await supabase
         .from('documents')
-        .select('id, nom, slug, description, blob_url, categories, profils_autorises, acces_gratuit, acces_optimal, acces_payant, prix_unitaire, actif, ordre, type')
+        .select('id, nom, slug, description, blob_url, categories, profils_autorises, acces_gratuit, acces_optimal, acces_payant, prix_unitaire, actif, ordre, type, masque_catalogue')
         .eq('actif', true)
+        .eq('masque_catalogue', false)
         .order('ordre', { ascending: true })
 
       const { data: cats } = await supabase

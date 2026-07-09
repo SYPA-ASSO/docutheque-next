@@ -91,6 +91,7 @@ export async function POST(request: Request) {
       acces_gratuit: formData.get('acces_gratuit') === 'true',
       acces_optimal: formData.get('acces_optimal') === 'true',
       acces_payant: formData.get('acces_payant') === 'true',
+      masque_catalogue: formData.get('masque_catalogue') === 'true',
       prix_unitaire: formData.get('prix') ? parseFloat(formData.get('prix') as string) : null,
       ordre: formData.get('ordre') ? parseInt(formData.get('ordre') as string) : 0,
       modeles_lies: arr(formData, 'modeles_lies'),

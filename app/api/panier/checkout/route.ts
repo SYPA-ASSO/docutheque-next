@@ -48,7 +48,7 @@ export async function POST(request: NextRequest) {
     // 4. Documents : actifs, payants, avec prix
     const { data: documents } = await supabaseAdmin
       .from('documents')
-      .select('id, nom, prix_unitaire, acces_payant, acces_optimal, actif')
+      .select('id, nom, prix_unitaire, acces_payant, acces_optimal, actif, masque_catalogue')
       .in('id', ids)
       .eq('actif', true)
 
@@ -66,6 +66,7 @@ export async function POST(request: NextRequest) {
     const valides = (documents || []).filter((d) => {
       const prix = Number(d.prix_unitaire)
       if (!d.acces_payant || !(prix > 0)) return false
+      if (d.masque_catalogue) return false
       if (possedes.has(d.id)) return false
       if (estAbonne && d.acces_optimal) return false
       return true

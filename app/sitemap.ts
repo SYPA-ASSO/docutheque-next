@@ -90,6 +90,7 @@ async function getRessources(): Promise<MetadataRoute.Sitemap> {
       .from('documents')
       .select('slug')
       .eq('actif', true)
+      .eq('masque_catalogue', false)
       .not('slug', 'is', null)
     if (!data) return []
     const now = new Date()

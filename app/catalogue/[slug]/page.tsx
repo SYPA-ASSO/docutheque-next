@@ -35,6 +35,7 @@ const TYPE_NOM: Record<string, string> = { document: 'document', pack: 'pack', g
 
 async function getRessource(slug: string): Promise<DocItem | null> {
   const { data } = await supabaseAdmin.from('documents').select('*').eq('slug', slug).eq('actif', true).single()
+  if (data && (data as { masque_catalogue?: boolean }).masque_catalogue) return null
   return (data as DocItem) || null
 }
 

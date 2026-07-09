@@ -39,11 +39,11 @@ export async function POST(request: NextRequest) {
     // 3. Document : doit exister, etre actif, payant et avoir un prix
     const { data: document } = await supabaseAdmin
       .from('documents')
-      .select('id, nom, prix_unitaire, acces_payant, acces_optimal, actif')
+      .select('id, nom, prix_unitaire, acces_payant, acces_optimal, actif, masque_catalogue')
       .eq('id', documentId)
       .eq('actif', true)
       .single()
-    if (!document) {
+    if (!document || document.masque_catalogue) {
       return NextResponse.json({ error: 'Document introuvable.' }, { status: 404 })
     }
     const prix = Number(document.prix_unitaire)
