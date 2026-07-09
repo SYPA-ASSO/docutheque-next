@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import CookieBanner from '@/components/CookieBanner'
+import GoogleAnalytics from '@/components/GoogleAnalytics'
 import SchemaOrganisation from '@/components/SchemaOrganisation'
 import { CartProvider } from '@/components/CartContext'
 import './globals.css'
@@ -53,6 +54,7 @@ export default function RootLayout({
         </CartProvider>
         <SchemaOrganisation />
         <CookieBanner />
+        <GoogleAnalytics />
       </body>
     </html>
   )

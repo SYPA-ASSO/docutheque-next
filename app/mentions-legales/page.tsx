@@ -145,7 +145,7 @@ export default function MentionsLegales() {
               <section id="cookies" style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.75rem'}}>
                 <h2 style={{color: '#0f2d6e', fontSize: '1.1rem', fontWeight: '700', margin: '0 0 1rem', paddingBottom: '0.75rem', borderBottom: '1px solid #f3f4f6'}}>8. Cookies</h2>
                 <p style={{fontSize: '14px', color: '#374151', lineHeight: '1.8', margin: 0}}>
-                  Ce site utilise uniquement des cookies techniques strictement nécessaires à son fonctionnement : session et authentification de l'espace client, sécurité, et cookies de prévention de la fraude déposés par notre prestataire de paiement Stripe lors d'un règlement. Aucun cookie publicitaire, de mesure d'audience ou de traçage n'est déposé. Ces cookies sont exemptés de consentement conformément à la délibération CNIL n°2020-091 du 17 septembre 2020 ; un bandeau d'information le rappelle lors de votre première visite.
+                  Ce site utilise deux catégories de cookies. (1) <strong>Cookies techniques nécessaires</strong> : session, authentification, sécurité et cookies antifraude Stripe lors d'un paiement. Ces cookies sont exemptés de consentement conformément à la délibération CNIL n°2020-091 du 17 septembre 2020. (2) <strong>Cookie de mesure d'audience Google Analytics</strong> (identifiant GA4 : G-FKNY1K4BZY, Google LLC) : déposé uniquement si vous avez accepté lors de votre première visite. Conservé 13 mois. Aucune publicité ciblée. Vous pouvez modifier votre choix via le bouton Cookies en bas à gauche du site.
                 </p>
               </section>
 
