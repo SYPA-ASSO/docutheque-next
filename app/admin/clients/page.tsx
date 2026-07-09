@@ -30,6 +30,14 @@ export default function AdminClients() {
   const [selectedClient, setSelectedClient] = useState<Client | null>(null)
   const [inclusesMois, setInclusesMois] = useState<Set<string>>(new Set())
 
+  // Preselectionne l'onglet "Migration en attente" si on arrive via le lien du tableau de bord
+  // (ex. /admin/clients?filtre=migration), sans utiliser useSearchParams pour eviter la contrainte
+  // de Suspense sur une page purement client, comme ailleurs dans ce depot.
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    if (params.get('filtre') === 'migration') setFiltre('migration')
+  }, [])
+
   useEffect(() => {
     if (!password) return
     fetch('/api/admin/clients-list', { headers: { 'x-admin-password': password } })

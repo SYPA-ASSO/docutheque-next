@@ -69,7 +69,7 @@ export default function AdminDashboard() {
           <UserPlus size={18} color="#1a4fba" style={{ flexShrink: 0 }} />
           <p style={{ color: '#1e3a5f', fontSize: '13px', margin: 0 }}>
             <strong>{stats.migrations_en_attente}</strong> demande{stats.migrations_en_attente > 1 ? 's' : ''} de migration Particulier → Pro en attente.{' '}
-            <a href="/admin/clients" style={{ color: '#1a4fba', fontWeight: '700' }}>Voir les clients →</a>
+            <a href="/admin/clients?filtre=migration" style={{ color: '#1a4fba', fontWeight: '700' }}>Voir les clients →</a>
           </p>
         </div>
       )}
