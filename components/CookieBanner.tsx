@@ -53,7 +53,7 @@ export default function CookieBanner() {
     setVisible(false)
   }
 
-  // Bouton flottant pour rouvrir les preferences (toujours accessible)
+  // Bouton flottant pour rouvrir les préférences (toujours accessible)
   if (!visible && choix !== null) return (
     <button
       type="button"
@@ -101,7 +101,7 @@ export default function CookieBanner() {
         </div>
         <div style={{ flex: 1 }}>
           <p style={{ color: '#0f2d6e', fontSize: '14px', fontWeight: 700, margin: '0 0 2px' }}>
-            Cookies et confidentialite
+            Cookies et confidentialité
           </p>
           <p style={{ color: '#6b7280', fontSize: '11.5px', margin: 0, lineHeight: 1.4 }}>
             Cabinet Cholez-Pagotto
@@ -131,7 +131,7 @@ export default function CookieBanner() {
             Cookies techniques : toujours actifs
           </p>
           <p style={{ color: '#6b7280', fontSize: '11px', lineHeight: 1.5, margin: 0 }}>
-            Session, authentification et securite du paiement. Indispensables au fonctionnement du site, exemptes de consentement (CNIL 2020-091).
+            Session, authentification et sécurité du paiement. Indispensables au fonctionnement du site, exemptés de consentement (CNIL 2020-091).
           </p>
         </div>
       </div>
@@ -148,7 +148,7 @@ export default function CookieBanner() {
             Mesure d'audience : votre choix
           </p>
           <p style={{ color: '#6b7280', fontSize: '11px', lineHeight: 1.5, margin: 0 }}>
-            Google Analytics nous aide a comprendre comment le site est utilise pour l'ameliorer. Aucune publicite, aucun suivi entre sites. Conservation 13 mois.
+            Google Analytics nous aide à comprendre comment le site est utilisé pour l'améliorer. Aucune publicité, aucun suivi entre sites. Conservation 13 mois.
           </p>
         </div>
       </div>
@@ -183,9 +183,9 @@ export default function CookieBanner() {
 
       {/* Pied */}
       <p style={{ color: '#9ca3af', fontSize: '10.5px', margin: 0, lineHeight: 1.6, textAlign: 'center' }}>
-        Votre choix est enregistre 13 mois.{' '}
+        Votre choix est enregistré 13 mois.{' '}
         <a href="/confidentialite" style={{ color: '#b8860b', fontWeight: 600 }}>
-          Politique de confidentialite
+          Politique de confidentialité
         </a>
       </p>
     </div>
