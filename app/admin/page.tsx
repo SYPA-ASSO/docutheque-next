@@ -30,7 +30,7 @@ export default function AdminDashboard() {
   useEffect(() => {
     if (!password) return
     setLoading(true)
-    fetch('/api/admin/stats', { headers: { 'x-admin-password': password } })
+    fetch('/api/admin/stats', { headers: { 'x-admin-password': password }, cache: 'no-store' })
       .then(r => r.json())
       .then(d => { setStats(d); setLoading(false) })
       .catch(() => setLoading(false))

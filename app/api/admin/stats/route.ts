@@ -3,6 +3,12 @@ import { supabaseAdmin } from '@/lib/supabase-admin'
 import { calculeMRR } from '@/lib/tarifs'
 import { calculeRevenusReels } from '@/lib/revenus-stripe'
 
+// Donnees du tableau de bord admin : toujours recalculees, jamais mises en cache
+// (ni par Next.js, ni par le CDN Vercel), pour eviter un compteur affichant
+// une valeur perimee apres une action recente (ex. migration Particulier -> Pro).
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
+
 export async function GET(request: Request) {
   const adminPassword = request.headers.get('x-admin-password')
   if (adminPassword !== process.env.ADMIN_PASSWORD) {
@@ -66,5 +72,5 @@ export async function GET(request: Request) {
     migrations_en_attente: migrations_en_attente || 0,
     dernieres_inscriptions: dernieres_inscriptions || [],
     dernieres_questions: dernieres_questions || [],
-  })
+  }, { headers: { 'Cache-Control': 'no-store, max-age=0' } })
 }
