@@ -2,6 +2,7 @@ import type { MetadataRoute } from 'next'
 import { readdirSync, existsSync } from 'fs'
 import { join } from 'path'
 import { supabaseAdmin } from '@/lib/supabase-admin'
+import { slugify } from '@/lib/slug'
 
 const baseUrl = 'https://cholez-pagotto.fr'
 
@@ -107,6 +108,27 @@ async function getRessources(): Promise<MetadataRoute.Sitemap> {
   }
 }
 
+async function getCategories(): Promise<MetadataRoute.Sitemap> {
+  try {
+    const { data } = await supabaseAdmin.from('categories').select('nom')
+    if (!data) return []
+    const now = new Date()
+    const vus = new Set<string>()
+    const urls: MetadataRoute.Sitemap = []
+    for (const c of data) {
+      const nom = c.nom ? String(c.nom).trim() : ''
+      if (!nom) continue
+      const s = slugify(nom)
+      if (!s || vus.has(s)) continue
+      vus.add(s)
+      urls.push({ url: `${baseUrl}/catalogue/categorie/${s}`, lastModified: now, changeFrequency: 'weekly' as Freq, priority: 0.6 })
+    }
+    return urls
+  } catch {
+    return []
+  }
+}
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const lastModified = new Date()
   const statiques: MetadataRoute.Sitemap = pages.map((p) => ({
@@ -117,5 +139,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }))
   const articles = getArticlesBlog()
   const ressources = await getRessources()
-  return [...statiques, ...articles, ...ressources]
+  const categories = await getCategories()
+  return [...statiques, ...articles, ...ressources, ...categories]
 }

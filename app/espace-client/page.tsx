@@ -3,6 +3,7 @@
 import { useEffect, useState, useCallback } from 'react'
 import { useRouter } from 'next/navigation'
 import { supabase } from '@/lib/supabase'
+import { formatPrix } from '@/lib/format'
 import type { DocItem, Categorie } from '@/lib/types'
 import { DIAGNOSTIC_FORFAITS } from '@/lib/diagnostic-forfaits'
 import { AVIS_GOOGLE } from '@/lib/avis-google'
@@ -481,7 +482,7 @@ export default function EspaceClient() {
     if (doc.acces_payant && statutAchat === 'paye') return { label: 'Acheté', color: '#15803d', bg: '#f0fdf4', accessible: true }
     if (doc.acces_payant && statutAchat === 'en_attente') return { label: 'Virement en attente', color: '#d97706', bg: '#fff7ed', accessible: false, enAttente: true }
     // Un document payant non encore acquis reste achetable a l'unite, meme s'il est aussi propose en Optimal (cas du non-abonne).
-    if (doc.acces_payant) return { label: `${doc.prix_unitaire ?? '?'}\u00a0€`, color: '#d97706', bg: '#fff7ed', accessible: false, achetable: true }
+    if (doc.acces_payant) return { label: formatPrix(doc.prix_unitaire) || '?\u00a0€', color: '#d97706', bg: '#fff7ed', accessible: false, achetable: true }
     // Document Optimal seul et non-abonne : acces verrouille, orientation vers l'abonnement.
     if (doc.acces_optimal && !estAbonne) return { label: 'Optimal', color: '#1a4fba', bg: '#eff6ff', accessible: false }
     return { label: '-', color: '#9ca3af', bg: '#f3f4f6', accessible: false }
@@ -1336,7 +1337,7 @@ export default function EspaceClient() {
               <>
                 <p style={{ color: '#0f2d6e', fontSize: '15px', fontWeight: '700', margin: '0 0 4px' }}>Acheter ce document</p>
                 <p style={{ color: '#374151', fontSize: '13px', margin: '0 0 4px', lineHeight: '1.5' }}>{achatDoc.nom}</p>
-                <p style={{ color: '#d97706', fontSize: '1.3rem', fontWeight: '700', margin: '0 0 16px' }}>{achatDoc.prix_unitaire ?? '?'}&nbsp;€</p>
+                <p style={{ color: '#d97706', fontSize: '1.3rem', fontWeight: '700', margin: '0 0 16px' }}>{formatPrix(achatDoc.prix_unitaire) || '?\u00a0€'}</p>
                 <p style={{ color: '#6b7280', fontSize: '12px', margin: '0 0 16px', lineHeight: '1.6' }}>
                   Achat définitif : une fois réglé, le document reste téléchargeable depuis votre espace client. Choisissez votre mode de paiement.
                 </p>

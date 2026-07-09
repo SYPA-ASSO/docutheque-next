@@ -6,6 +6,7 @@ import { supabaseAdmin } from '@/lib/supabase-admin'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import type { DocItem } from '@/lib/types'
+import { slugify } from '@/lib/slug'
 import { AVIS_GOOGLE } from '@/lib/avis-google'
 import { ARTICLES_BLOG } from '@/lib/articles-blog'
 import { BoutonsAchat, IntroDeroulante, NewsletterMini } from './FicheInteractive'
@@ -276,7 +277,7 @@ export default async function RessourcePage({ params }: { params: Promise<{ slug
                 {tags.length > 0 ? (
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: 7, margin: '0 0 14px' }}>
                     {tags.map((t) => (
-                      <span key={t} style={tagStyle}>{t}</span>
+                      <Link key={t} href={`/catalogue/categorie/${slugify(t)}`} style={{ ...tagStyle, textDecoration: 'none' }}>{t}</Link>
                     ))}
                   </div>
                 ) : null}

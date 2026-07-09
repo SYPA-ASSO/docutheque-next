@@ -1,10 +1,13 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import NewsletterForm from '@/components/NewsletterForm'
 import BanniereALaUne from '@/components/BanniereALaUne'
+import { DocumentSearch } from '@/components/DocumentSearch'
+import { slugify } from '@/lib/slug'
 import { supabase } from '@/lib/supabase'
 import type { DocItem, Categorie } from '@/lib/types'
 import { formatPrix } from '@/lib/format'
@@ -101,6 +104,7 @@ export default function CataloguePage() {
   const [categorieActive, setCategorieActive] = useState<string | null>(null)
   const [loading, setLoading] = useState(true)
   const [periode, setPeriode] = useState<'monthly' | 'yearly'>('monthly')
+  const router = useRouter()
 
   useEffect(() => {
     const loadData = async () => {
@@ -216,6 +220,27 @@ export default function CataloguePage() {
               <a href="/information-sur-vos-droits" style={{ color: '#1a4fba' }}>Information sur vos droits</a> peut vous apporter un éclairage complémentaire.
             </p>
           </div>
+
+          {/* RECHERCHE + CATEGORIES */}
+          <div style={{ maxWidth: 560, marginBottom: '1.5rem' }}>
+            <DocumentSearch
+              documents={documents}
+              onSelect={(doc) => { if (doc.slug) router.push(`/catalogue/${doc.slug}`) }}
+              onSubmit={(query) => router.push(`/catalogue/recherche?q=${encodeURIComponent(query)}`)}
+              placeholder="Rechercher un document par nom, catégorie ou mot-clé..."
+            />
+          </div>
+
+          {categories.length > 0 && (
+            <div style={{ marginBottom: '2rem' }}>
+              <p style={{ fontSize: 12, fontWeight: 700, color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: 10 }}>Parcourir par catégorie</p>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+                {categories.map((cat) => (
+                  <a key={cat.id} href={`/catalogue/categorie/${slugify(cat.nom)}`} style={{ display: 'inline-block', padding: '7px 14px', borderRadius: 20, fontSize: 13, fontWeight: 600, background: '#eff6ff', color: '#1a4fba', textDecoration: 'none', border: '1px solid #dbeafe' }}>{cat.nom}</a>
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* CATALOGUE PAR CATÉGORIES */}
           <section style={{ marginBottom: '3.5rem' }}>

@@ -7,6 +7,7 @@ import { Upload, FileText, Eye, EyeOff, Plus, X, ExternalLink, Trash2 } from 'lu
 import { CategorySearch } from '@/components/CategorySearch'
 import { DocumentSearch } from '@/components/DocumentSearch'
 import type { DocItem, Categorie } from '@/lib/types'
+import { formatPrix } from '@/lib/format'
 
 const PROFILS = [
   { value: 'particulier', label: 'Particulier' },
@@ -334,7 +335,7 @@ export default function AdminDocuments() {
     const parts: string[] = []
     if (doc.acces_gratuit) parts.push('Gratuit')
     if (doc.acces_optimal) parts.push('Optimal')
-    if (doc.acces_payant) parts.push(`${doc.prix_unitaire ?? '?'} €`)
+    if (doc.acces_payant) parts.push(formatPrix(doc.prix_unitaire) || "À l'unité")
     return parts.join(' · ') || '-'
   }
 

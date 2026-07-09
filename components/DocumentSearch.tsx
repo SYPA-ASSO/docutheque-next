@@ -1,12 +1,14 @@
-﻿'use client'
+'use client'
 
 import { useState, useRef, useEffect } from 'react'
 import { FileText } from 'lucide-react'
 import type { DocItem } from '@/lib/types'
+import { formatPrix } from '@/lib/format'
 
 type Props = {
   documents: DocItem[]
   onSelect?: (doc: DocItem) => void
+  onSubmit?: (query: string) => void
   placeholder?: string
   maxHeight?: number
   onChange?: (filtered: DocItem[]) => void
@@ -15,6 +17,7 @@ type Props = {
 export function DocumentSearch({
   documents,
   onSelect,
+  onSubmit,
   onChange,
   placeholder = 'Rechercher un document...',
   maxHeight = 320,
@@ -51,7 +54,7 @@ export function DocumentSearch({
     const parts: string[] = []
     if (doc.acces_gratuit) parts.push('Gratuit')
     if (doc.acces_optimal) parts.push('Optimal')
-    if (doc.acces_payant) parts.push(`${doc.prix_unitaire ?? '?'} €`)
+    if (doc.acces_payant) parts.push(formatPrix(doc.prix_unitaire) || "À l'unité")
     return parts.join(' · ') || '-'
   }
 
@@ -87,6 +90,13 @@ export function DocumentSearch({
     )
   }
 
+  const soumettre = () => {
+    if (onSubmit && query.trim()) {
+      onSubmit(query.trim())
+      setOuvert(false)
+    }
+  }
+
   return (
     <div ref={ref} style={{ position: 'relative' }}>
       <div style={{ position: 'relative' }}>
@@ -96,6 +106,7 @@ export function DocumentSearch({
           value={query}
           onChange={e => { setQuery(e.target.value); setOuvert(true) }}
           onFocus={() => setOuvert(true)}
+          onKeyDown={e => { if (e.key === 'Enter') soumettre() }}
           placeholder={placeholder}
           style={{
             width: '100%', padding: '9px 12px 9px 32px',
@@ -110,14 +121,14 @@ export function DocumentSearch({
           </button>
         )}
       </div>
-      {ouvert && filtered.length > 0 && (
+      {ouvert && query.trim().length > 0 && filtered.length > 0 && (
         <div style={{
           position: 'absolute', top: 'calc(100% + 4px)', left: 0, right: 0,
           background: 'white', border: '1px solid #e5e7eb', borderRadius: '8px',
           boxShadow: '0 4px 12px rgba(0,0,0,0.1)', zIndex: 50,
           maxHeight: `${maxHeight}px`, overflowY: 'auto' as const,
         }}>
-          {filtered.map(doc => (
+          {filtered.slice(0, 8).map(doc => (
             <button key={doc.id} type="button"
               onClick={() => { onSelect?.(doc); setQuery(''); setOuvert(false) }}
               style={{ width: '100%', textAlign: 'left', padding: '10px 14px', background: 'white', border: 'none', cursor: 'pointer', borderBottom: '1px solid #f3f4f6', display: 'flex', alignItems: 'center', gap: '10px' }}
@@ -137,6 +148,24 @@ export function DocumentSearch({
               <span style={{ color: accesColor(doc), fontSize: '10px', fontWeight: '700', flexShrink: 0 }}>{accesLabel(doc)}</span>
             </button>
           ))}
+          {onSubmit && (
+            <button type="button" onClick={soumettre}
+              style={{ width: '100%', textAlign: 'center', padding: '10px 14px', background: '#f8fafc', border: 'none', borderTop: filtered.length > 0 ? 'none' : undefined, cursor: 'pointer', color: '#1a4fba', fontSize: '12.5px', fontWeight: 700 }}>
+              Voir tous les résultats{filtered.length > 8 ? ` (${filtered.length})` : ''}
+            </button>
+          )}
+        </div>
+      )}
+      {ouvert && query.trim().length > 0 && filtered.length === 0 && (
+        <div style={{
+          position: 'absolute', top: 'calc(100% + 4px)', left: 0, right: 0,
+          background: 'white', border: '1px solid #e5e7eb', borderRadius: '8px',
+          boxShadow: '0 4px 12px rgba(0,0,0,0.1)', zIndex: 50, padding: '14px 16px',
+        }}>
+          <p style={{ color: '#374151', fontSize: '13px', fontWeight: 600, margin: '0 0 4px' }}>Aucun document ne correspond à votre recherche.</p>
+          <p style={{ color: '#6b7280', fontSize: '12px', margin: 0, lineHeight: 1.5 }}>
+            Ce document n'est pas encore en ligne&nbsp;? <a href="/contact" style={{ color: '#1a4fba', fontWeight: 700 }}>Sollicitez-le auprès du cabinet</a>, nous vous le transmettons rapidement.
+          </p>
         </div>
       )}
     </div>
