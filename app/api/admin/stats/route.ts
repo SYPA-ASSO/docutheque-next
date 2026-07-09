@@ -32,7 +32,7 @@ export async function GET(request: Request) {
     supabaseAdmin.from('questions').select('*', { count: 'exact', head: true }),
     supabaseAdmin.from('users').select('*', { count: 'exact', head: true }).eq('abonnement_actif', true),
     supabaseAdmin.from('users').select('*', { count: 'exact', head: true }).gte('created_at', new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString()),
-    supabaseAdmin.from('users').select('*', { count: 'exact', head: true }).eq('type', 'particulier').not('siret', 'is', null),
+    supabaseAdmin.from('users').select('*', { count: 'exact', head: true }).eq('type', 'particulier').not('siret', 'is', null).neq('siret', ''),
   ])
 
   // Dernières inscriptions

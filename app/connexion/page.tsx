@@ -346,7 +346,15 @@ export default function Connexion() {
                       { value: 'association', label: 'Association', icon: <Shield size={14} strokeWidth={1.5} /> },
                       { value: 'collectivite', label: 'Collectivité', icon: <Scale size={14} strokeWidth={1.5} /> },
                     ].map((s) => (
-                      <button key={s.value} type="button" onClick={() => setStatut(s.value as typeof statut)}
+                      <button key={s.value} type="button" onClick={() => {
+                        // Reinitialise les champs propres a un statut professionnel/association/collectivite
+                        // pour eviter qu'une valeur saisie puis abandonnee (ex. SIRET tape puis retour a
+                        // "Particulier") ne soit envoyee malgre tout a l'inscription.
+                        setStatut(s.value as typeof statut)
+                        if (s.value === 'particulier') {
+                          setNomStructure(''); setSiret(''); setRna(''); setQualite('')
+                        }
+                      }}
                         style={{ padding: '10px', borderRadius: '8px', border: `2px solid ${statut === s.value ? '#1a4fba' : '#e5e7eb'}`, background: statut === s.value ? '#eff6ff' : 'white', color: statut === s.value ? '#1a4fba' : '#374151', fontSize: '12px', fontWeight: statut === s.value ? '700' : '500', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', transition: 'all 0.15s' }}>
                         {s.icon} {s.label}
                       </button>
