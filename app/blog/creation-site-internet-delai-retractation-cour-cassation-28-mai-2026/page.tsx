@@ -72,6 +72,14 @@ const schema = {
             "@type": "Answer",
             "text": "Cela dépend du montage contractuel. Dans un cas précis, celui d'une copie de logiciel téléchargée et rendue utilisable de façon permanente contre paiement, la chambre commerciale de la Cour de cassation (6 mars 2024, n° 22-23.657) a jugé, sur le fondement de l'article L. 122-6, 3° du Code de la propriété intellectuelle, que cette mise à disposition impliquait un transfert de propriété. La première chambre civile, dans l'arrêt du 28 mai 2026, retient une lecture différente pour un site internet personnalisé, faute de transfert de propriété d'un bien meuble au sens de l'article 528 du Code civil et du Code de la consommation."
           }
+        },
+        {
+          "@type": "Question",
+          "name": "Quelle est la source juridique sur la condition des cinq salariés ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "La condition d'effectif est posée à l'article L. 221-3 du Code de la consommation (deux conditions cumulatives). La Cour de cassation rappelle que le juge du fond doit apprécier exclusivement si l'objet du contrat entre dans le champ de l'activité principale, sans substituer d'autres critères tels que les compétences du professionnel ou l'utilité du contrat (Cass. 1re civ., 31 août 2022, n° 21-11.455, Bull. ; Cass. 1re civ., 27 nov. 2019, n° 18-22.525 ; Cass. 1re civ., 12 sept. 2018, n° 17-17.319)."
+          }
         }
       ]
     },
@@ -297,6 +305,9 @@ export default function ArticleSiteInternetRetractation2026() {
                   <li>Code civil, article 528 (définition des biens meubles)</li>
                   <li>Code de la consommation, articles L.&nbsp;221-3 (extension aux professionnels), L.&nbsp;221-5 et L.&nbsp;221-9 (information précontractuelle et bordereau), L.&nbsp;221-18 (point de départ du délai), L.&nbsp;221-20 (prorogation en cas d'absence d'information), L.&nbsp;242-1 (sanctions : nullité)</li>
                   <li>Code de la propriété intellectuelle, article L.&nbsp;122-6, 3°</li>
+                  <li>Cour de cassation, 1re chambre civile, 12 septembre 2018, n°&nbsp;17-17.319 (conditions de L.&nbsp;221-3 : appréciation souveraine des juges du fond)</li>
+                  <li>Cour de cassation, 1re chambre civile, 27 novembre 2019, n°&nbsp;18-22.525 (double condition cumulative : activité principale et effectif)</li>
+                  <li>Cour de cassation, 1re chambre civile, 31 août 2022, n°&nbsp;21-11.455, publié au Bulletin (critère exclusif de l'objet du contrat pour l'appréciation de l'activité principale)</li>
                   <li>Cour de cassation, chambre commerciale, 6 mars 2024, n°&nbsp;22-23.657 (transfert de propriété d'une copie de logiciel mise à disposition de façon permanente)</li>
                   <li>Ordonnance n°&nbsp;2026-2 et décret n°&nbsp;2026-3 du 5 janvier 2026 (bouton de rétractation en ligne, applicable à compter du 19 juin 2026)</li>
                 </ul>
@@ -340,6 +351,13 @@ export default function ArticleSiteInternetRetractation2026() {
                       <span style={{color: '#1a4fba', fontSize: '18px', flexShrink: 0, lineHeight: 1}}>+</span>
                     </summary>
                     <p style={{color: '#374151', fontSize: '13px', lineHeight: '1.75', marginTop: '12px', marginBottom: 0}}>Cela dépend du montage contractuel. Dans un cas précis, celui d'une copie de logiciel téléchargée et rendue utilisable de façon permanente contre paiement, la chambre commerciale de la Cour de cassation (6 mars 2024, n°&nbsp;22-23.657) a jugé, sur le fondement de l'article L.&nbsp;122-6, 3° du Code de la propriété intellectuelle, que cette mise à disposition impliquait un transfert de propriété. La première chambre civile, dans l'arrêt du 28 mai 2026, retient une lecture différente pour un site internet personnalisé, faute de transfert de propriété d'un bien meuble au sens de l'article 528 du Code civil et du Code de la consommation.</p>
+                  </details>
+                  <details style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '10px', padding: '1rem 1.25rem'}}>
+                    <summary style={{fontWeight: '600', color: '#0f2d6e', fontSize: '14px', cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '12px'}}>
+                      <span>Quelle est la source juridique sur la condition des cinq salariés ?</span>
+                      <span style={{color: '#1a4fba', fontSize: '18px', flexShrink: 0, lineHeight: 1}}>+</span>
+                    </summary>
+                    <p style={{color: '#374151', fontSize: '13px', lineHeight: '1.75', marginTop: '12px', marginBottom: 0}}>La condition d'effectif est posée à l'article L. 221-3 du Code de la consommation, qui exige deux conditions cumulatives : l'objet du contrat doit être étranger à l'activité principale du professionnel sollicité, et celui-ci doit employer au plus cinq salariés. La Cour de cassation rappelle que le juge du fond doit apprécier exclusivement le premier critère sans y substituer d'autres éléments tels que les compétences du professionnel ou l'utilité du contrat pour son activité (Cass. 1re civ., 31 août 2022, n° 21-11.455, publié au Bulletin). Cette jurisprudence s'inscrit dans une ligne constante (Cass. 1re civ., 27 nov. 2019, n° 18-22.525 ; Cass. 1re civ., 12 sept. 2018, n° 17-17.319).</p>
                   </details>
                 </div>
               </section>
