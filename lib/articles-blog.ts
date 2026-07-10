@@ -25,8 +25,20 @@ export const ARTICLES_BLOG: ArticleBlog[] = [
     auteur: 'François CHOLEZ',
     categorie: 'Droit pénal',
     tags: ['Chantage', 'Droit pénal', 'Droit du travail', 'Sextorsion'],
-    tempsLecture: '14 min',
+    tempsLecture: '18 min',
     image: 'https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/chantage-droit-penal-2026.webp',
+  },
+
+  {
+    slug: 'assistante-maternelle-accusee-a-tort-calomnie-recours',
+    titre: "Assistante maternelle accusée à tort : quels recours face à la calomnie ?",
+    resume: "Signalement infondé, suspension d'agrément, dénonciation calomnieuse : le point sur les mécanismes juridiques et les démarches à la disposition d'une assistante maternelle injustement accusée.",
+    date: '16 janvier 2025',
+    auteur: 'François CHOLEZ',
+    categorie: 'Assistantes maternelles',
+    tags: ['Assistante maternelle', 'Agrément', 'CCPD', 'Dénonciation calomnieuse'],
+    tempsLecture: '17 min',
+    image: 'https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/assistante-maternelle-calomnie-2026.webp',
   },
 
   {
@@ -253,7 +265,7 @@ export const ARTICLES_BLOG: ArticleBlog[] = [
   {
     slug: 'association-imposable-non-lucrativite-franchise-impots-commerciaux-2026',
     titre: "Votre association est-elle imposable ? Non-lucrativité, franchise et obligations en 2026",
-    resume: "Une association loi 1901 n'est pas automatiquement exonérée d'impôts. Règle des 4P, franchise portée à 81 051 € en 2026, six manifestations exonérées, rémunération des dirigeants.",
+    resume: "Une association loi 1901 n'est pas automatiquement exonérée d'impôts. Règle des 4P, franchise portée à 81 051 € en 2026, six manifestations exonérées, rémunération des dirigeants.",
     date: '20 avril 2026',
     auteur: 'François CHOLEZ',
     categorie: 'Vie associative',
@@ -264,7 +276,7 @@ export const ARTICLES_BLOG: ArticleBlog[] = [
   {
     slug: 'directive-nis2-cybersecurite-2026-mon-entreprise-est-elle-concernee',
     titre: "Directive NIS2 : votre entreprise est-elle concernée par les nouvelles obligations de cybersécurité ?",
-    resume: "Près de 15 000 entités concernées en France, deux catégories, des obligations strictes et de lourdes sanctions : le point sur NIS2 et l'état de sa transposition par la loi Résilience.",
+    resume: "Près de 15 000 entités concernées en France, deux catégories, des obligations strictes et de lourdes sanctions : le point sur NIS2 et l'état de sa transposition par la loi Résilience.",
     date: '24 mars 2026',
     auteur: 'François CHOLEZ',
     categorie: 'Conformité',
@@ -319,7 +331,7 @@ export const ARTICLES_BLOG: ArticleBlog[] = [
   {
     slug: 'creer-sa-micro-entreprise-2026-guide-complet-plafonds-cotisations-demarches',
     titre: "Créer sa micro-entreprise en 2026 : le guide complet (plafonds, cotisations, démarches)",
-    resume: "Plafonds revalorisés à 203 100 € et 83 600 €, taux de cotisations 2026, création gratuite via le guichet unique, versement libératoire, franchise de TVA, baisse de l'ACRE au 1er juillet 2026.",
+    resume: "Plafonds revalorisés à 203 100 € et 83 600 €, taux de cotisations 2026, création gratuite via le guichet unique, versement libératoire, franchise de TVA, baisse de l'ACRE au 1er juillet 2026.",
     date: '5 janvier 2026',
     auteur: 'François CHOLEZ',
     categorie: 'Formalités',
@@ -329,8 +341,8 @@ export const ARTICLES_BLOG: ArticleBlog[] = [
   },
   {
     slug: 'franchise-en-base-de-tva-2026-seuils-applicables-et-abandon-du-seuil-unique',
-    titre: "Franchise en base de TVA : le seuil unique à 25 000 € abandonné, les seuils applicables en 2026",
-    resume: "Le seuil unique de TVA à 25 000 € a été définitivement abandonné par la loi du 3 novembre 2025. Quels seuils s'appliquent en 2026, que se passe-t-il en cas de dépassement et quelle mention porter sur vos factures.",
+    titre: "Franchise en base de TVA : le seuil unique à 25 000 € abandonné, les seuils applicables en 2026",
+    resume: "Le seuil unique de TVA à 25 000 € a été définitivement abandonné par la loi du 3 novembre 2025. Quels seuils s'appliquent en 2026, que se passe-t-il en cas de dépassement et quelle mention porter sur vos factures.",
     date: '20 novembre 2025',
     auteur: 'François CHOLEZ',
     categorie: 'Fiscalité',
@@ -440,7 +452,7 @@ export const ARTICLES_BLOG: ArticleBlog[] = [
   {
     slug: 'cee-revalorisation-remuneration-decret-4-decembre-2024',
     titre: "Contrat d'engagement éducatif (CEE) : le seuil minimum de la rémunération a été revalorisé",
-    resume: "Le décret du 4 décembre 2024 augmente le seuil minimum de rémunération du CEE à 51,08 € bruts/jour à partir du 1er mai 2025.",
+    resume: "Le décret du 4 décembre 2024 augmente le seuil minimum de rémunération du CEE à 51,08 € bruts/jour à partir du 1er mai 2025.",
     date: '30 janvier 2025',
     auteur: 'François CHOLEZ',
     categorie: 'Droit du travail',
