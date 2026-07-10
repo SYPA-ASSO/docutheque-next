@@ -15,7 +15,7 @@ const schema = {
       "headline": "Le chantage en droit français : le comprendre, le reconnaître, réagir",
       "description": "Le chantage au sens du Code pénal suppose une menace précise pour obtenir un engagement, une renonciation ou une somme. Définition, distinction avec l'extorsion, chantage au travail, sextorsion, et démarches à suivre.",
       "image": "https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/chantage-droit-penal-2026.webp",
-      "datePublished": "2026-07-10",
+      "datePublished": "2025-01-15",
       "author": {
         "@type": "Person",
         "name": "François CHOLEZ",
@@ -113,10 +113,10 @@ export default function ArticleChantage2026() {
                   <User size={13} strokeWidth={1.5} /> François CHOLEZ
                 </span>
                 <span style={{display: 'flex', alignItems: 'center', gap: '5px', color: '#6b7280', fontSize: '12px'}}>
-                  <Calendar size={13} strokeWidth={1.5} /> 10 juillet 2026
+                  <Calendar size={13} strokeWidth={1.5} /> 15 janvier 2025
                 </span>
                 <span style={{display: 'flex', alignItems: 'center', gap: '5px', color: '#6b7280', fontSize: '12px'}}>
-                  <Clock size={13} strokeWidth={1.5} /> 14 min de lecture
+                  <Clock size={13} strokeWidth={1.5} /> 16 min de lecture
                 </span>
               </div>
               <img
@@ -225,8 +225,21 @@ export default function ArticleChantage2026() {
                 <h2 style={{color: '#0f2d6e', fontSize: '1.3rem', fontWeight: '700', margin: '2rem 0 16px', paddingTop: '1rem'}}>
                   VI. Le cas des professions sous contrôle administratif
                 </h2>
-                <p style={{marginBottom: '1rem'}}>Dans certains métiers soumis à agrément ou à contrôle administratif, au premier rang desquels les <strong>assistantes maternelles</strong>, la menace de « signalement » à l'autorité de contrôle est une figure récurrente de pression. L'agrément des assistants maternels est délivré par le président du conseil départemental, dans les conditions des articles L.&nbsp;421-1 et suivants du Code de l'action sociale et des familles, et le service de protection maternelle et infantile (PMI) y joue un rôle central, notamment au titre de l'article R.&nbsp;421-1 du même code, qui organise l'information et l'accompagnement des professionnels par ce service.</p>
-                <p style={{marginBottom: '1rem'}}>Face à une menace de ce type, la posture la plus efficace n'est généralement pas l'évitement, mais l'<strong>anticipation transparente</strong> : écrire soi-même à l'autorité de contrôle pour exposer factuellement la situation, rapporter les menaces reçues, et proposer un rendez-vous avec les documents utiles (contrats, calculs de sommes dues, attestations). Cette démarche, loin d'aggraver la situation, est généralement perçue favorablement par l'administration, dont les textes valorisent précisément la capacité du professionnel à coopérer avec elle.</p>
+                <p style={{marginBottom: '1rem'}}>Dans certains métiers soumis à agrément, à carte professionnelle ou à un ordre disciplinaire, la menace de « signalement » ou de « plainte » à l'autorité de contrôle est une figure récurrente de pression. Trois exemples courants illustrent des logiques voisines, avec chacune leurs particularités.</p>
+
+                <h3 style={{color: '#0f2d6e', fontSize: '1.05rem', fontWeight: '700', margin: '1.5rem 0 10px'}}>Les assistantes maternelles, face à la PMI</h3>
+                <p style={{marginBottom: '1rem'}}>L'agrément des assistants maternels est délivré par le président du conseil départemental, dans les conditions des articles L.&nbsp;421-1 et suivants du Code de l'action sociale et des familles, et le service de protection maternelle et infantile (PMI) y joue un rôle central, notamment au titre de l'article R.&nbsp;421-1 du même code, qui organise l'information et l'accompagnement des professionnels par ce service. Un parent employeur mécontent menace parfois de « faire un signalement à la PMI » pour obtenir un renoncement à des sommes dues ou à des congés.</p>
+                <p style={{marginBottom: '1rem'}}>Face à une menace de ce type, la posture la plus efficace n'est généralement pas l'évitement, mais l'<strong>anticipation transparente</strong> : écrire soi-même à l'autorité de contrôle pour exposer factuellement la situation, rapporter les menaces reçues, et proposer un rendez-vous avec les documents utiles (contrats, calculs de sommes dues, attestations).</p>
+
+                <h3 style={{color: '#0f2d6e', fontSize: '1.05rem', fontWeight: '700', margin: '1.5rem 0 10px'}}>Les chauffeurs de taxi, face à la préfecture</h3>
+                <p style={{marginBottom: '1rem'}}>L'exercice de la profession de conducteur de taxi est subordonné à la délivrance d'une carte professionnelle par l'autorité administrative, conformément à l'article L.&nbsp;3121-10 du Code des transports. Cette carte peut faire l'objet d'un retrait temporaire ou définitif par le préfet, après avis de la commission locale des transports publics particuliers de personnes réunie en formation disciplinaire, notamment sur le fondement de l'article L.&nbsp;3124-11 du même code.</p>
+                <p style={{marginBottom: '1rem'}}>Ce mécanisme expose les chauffeurs à une pression spécifique : un client, un plateforme partenaire ou un confrère en conflit peut menacer de saisir la préfecture d'une dénonciation, réelle ou exagérée, pour obtenir un avantage ou faire cesser un différend. Comme pour les assistantes maternelles, la meilleure réponse consiste à documenter les faits et, si nécessaire, à informer soi-même l'autorité compétente plutôt que d'attendre une convocation en formation disciplinaire.</p>
+
+                <h3 style={{color: '#0f2d6e', fontSize: '1.05rem', fontWeight: '700', margin: '1.5rem 0 10px'}}>Les infirmiers libéraux, face à l'Ordre</h3>
+                <p style={{marginBottom: '1rem'}}>Les infirmiers relèvent de l'Ordre National des Infirmiers, créé par la loi n°&nbsp;2006-1668 du 21 décembre 2006, dont les chambres disciplinaires peuvent prononcer des sanctions allant de l'avertissement à l'interdiction d'exercer, sur le fondement de l'article L.&nbsp;4124-6 du Code de la santé publique, rendu applicable aux infirmiers par l'article L.&nbsp;4312-5, IV, du même code. Toute plainte transite d'abord par une conciliation obligatoire devant le conseil départemental ou interdépartemental de l'Ordre, conformément à l'article R.&nbsp;4126-1 du Code de la santé publique.</p>
+                <p style={{marginBottom: '1rem'}}>La menace d'une « plainte à l'Ordre », parfois brandie par un patient, un confrère ou un employeur, dans le seul but d'obtenir un avantage étranger à une véritable faute déontologique, peut, selon les cas, constituer elle-même un chantage. L'existence d'une conciliation préalable obligatoire offre ici un espace de dialogue avant toute sanction, que l'infirmier visé a tout intérêt à documenter avec la même rigueur que les autres professionnels sous contrôle.</p>
+
+                <p style={{marginBottom: '1rem'}}>Dans les trois cas, le principe reste identique : l'<strong>anticipation transparente</strong> auprès de l'autorité de contrôle, loin d'aggraver la situation, est généralement perçue favorablement, ces professions valorisant précisément la capacité du professionnel à coopérer avec elles.</p>
               </section>
 
               <section id="reagir">
@@ -285,6 +298,8 @@ export default function ArticleChantage2026() {
                   <li>Code civil, article 9 (droit au respect de la vie privée)</li>
                   <li>Code de l'action sociale et des familles, articles L.&nbsp;421-1 et suivants (agrément des assistants maternels)</li>
                   <li>Code de l'action sociale et des familles, article R.&nbsp;421-1 (rôle d'information de la PMI)</li>
+                  <li>Code des transports, articles L.&nbsp;3121-10 et L.&nbsp;3124-11 (carte professionnelle de conducteur de taxi et retrait disciplinaire)</li>
+                  <li>Code de la santé publique, articles L.&nbsp;4124-6, L.&nbsp;4312-5 et R.&nbsp;4126-1 (procédure disciplinaire devant l'Ordre National des Infirmiers)</li>
                   <li>Cour de cassation, chambre criminelle, 13 janvier 2016, n°&nbsp;14-85.905, publié au Bulletin (la menace de révéler l'orientation sexuelle d'une personne peut constituer un chantage, appréciée au regard de sa situation concrète)</li>
                   <li>Loi n°&nbsp;2024-449 du 21 mai 2024 relative à la sécurisation et à la régulation de l'espace numérique (loi SREN), article 17, modifiant l'article 312-10 du Code pénal (circonstance aggravante du chantage exercé en ligne au moyen d'images ou de vidéos à caractère sexuel)</li>
                 </ul>

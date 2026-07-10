@@ -21,7 +21,7 @@ export const ARTICLES_BLOG: ArticleBlog[] = [
     slug: 'chantage-en-droit-francais-comprendre-reconnaitre-reagir',
     titre: "Le chantage en droit français : le comprendre, le reconnaître, réagir",
     resume: "Le chantage au sens du Code pénal suppose une menace précise pour obtenir un engagement, une renonciation ou une somme. Définition, distinction avec l'extorsion, chantage au travail, sextorsion, et démarches à suivre.",
-    date: '10 juillet 2026',
+    date: '15 janvier 2025',
     auteur: 'François CHOLEZ',
     categorie: 'Droit pénal',
     tags: ['Chantage', 'Droit pénal', 'Droit du travail', 'Sextorsion'],
