@@ -18,6 +18,18 @@ export type ArticleBlog = {
 
 export const ARTICLES_BLOG: ArticleBlog[] = [
   {
+    slug: 'fin-contrat-salarie-particulier-employeur-licenciement-retrait-enfant',
+    titre: "Fin de contrat d'un salarié du particulier employeur : licenciement ou retrait d'enfant ?",
+    resume: "Employé de maison, garde d'enfants, assistante maternelle : la rupture du contrat par un particulier employeur obéit à des règles très différentes selon le statut du salarié. Procédure, préavis, indemnités, cas de l'emploi 24h/24.",
+    date: '30 décembre 2025',
+    auteur: 'François CHOLEZ',
+    categorie: 'Droit du travail',
+    tags: ['Particulier employeur', 'Licenciement', 'Assistante maternelle', "Retrait d'enfant"],
+    tempsLecture: '19 min',
+    image: 'https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/fin-contrat-particulier-employeur-2026.webp',
+  },
+
+  {
     slug: 'chantage-en-droit-francais-comprendre-reconnaitre-reagir',
     titre: "Le chantage en droit français : le comprendre, le reconnaître, réagir",
     resume: "Le chantage au sens du Code pénal suppose une menace précise pour obtenir un engagement, une renonciation ou une somme. Définition, distinction avec l'extorsion, chantage au travail, sextorsion, et démarches à suivre.",
