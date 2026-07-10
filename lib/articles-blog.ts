@@ -18,6 +18,18 @@ export type ArticleBlog = {
 
 export const ARTICLES_BLOG: ArticleBlog[] = [
   {
+    slug: 'chantage-en-droit-francais-comprendre-reconnaitre-reagir',
+    titre: "Le chantage en droit français : le comprendre, le reconnaître, réagir",
+    resume: "Le chantage au sens du Code pénal suppose une menace précise pour obtenir un engagement, une renonciation ou une somme. Définition, distinction avec l'extorsion, chantage au travail, sextorsion, et démarches à suivre.",
+    date: '10 juillet 2026',
+    auteur: 'François CHOLEZ',
+    categorie: 'Droit pénal',
+    tags: ['Chantage', 'Droit pénal', 'Droit du travail', 'Sextorsion'],
+    tempsLecture: '14 min',
+    image: 'https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/chantage-droit-penal-2026.webp',
+  },
+
+  {
     slug: 'creation-site-internet-delai-retractation-cour-cassation-28-mai-2026',
     titre: "Création de site internet : le délai de rétractation court dès la conclusion du contrat",
     resume: "La Cour de cassation juge que la conception d'un site internet personnalisé est une prestation de services, non une vente : le délai de rétractation court dès la conclusion du contrat, pas à sa réception.",
