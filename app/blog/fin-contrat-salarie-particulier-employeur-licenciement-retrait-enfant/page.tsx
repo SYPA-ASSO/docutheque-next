@@ -3,7 +3,7 @@ import Footer from '@/components/Footer'
 import { Calendar, Clock, User, ChevronRight } from 'lucide-react'
 
 export const metadata = {
-  title: `Fin de contrat d'un salarié du particulier employeur : licenciement ou retrait d'enfant ? · Blog Cabinet Cholez-Pagotto`,
+  title: `Fin de contrat d'un salarié à domicile ou d'une assistante maternelle : licenciement, retrait d'enfant, les bonnes règles · Blog Cabinet Cholez-Pagotto`,
   description: `Employé de maison, garde d'enfants, assistante maternelle : la rupture du contrat par un particulier employeur obéit à des règles très différentes selon le statut du salarié. Procédure, préavis, indemnités, cas de l'emploi 24h/24.`,
 }
 
@@ -12,7 +12,7 @@ const schema = {
   "@graph": [
     {
       "@type": "Article",
-      "headline": "Fin de contrat d'un salarié du particulier employeur : licenciement ou retrait d'enfant ?",
+      "headline": "Fin de contrat d'un salarié à domicile ou d'une assistante maternelle : licenciement, retrait d'enfant, les bonnes règles",
       "description": "Employé de maison, garde d'enfants, assistante maternelle : la rupture du contrat par un particulier employeur obéit à des règles très différentes selon le statut du salarié. Procédure, préavis, indemnités, cas de l'emploi 24h/24.",
       "image": "https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/fin-contrat-particulier-employeur-2026.webp",
       "datePublished": "2025-12-30",
@@ -27,7 +27,7 @@ const schema = {
         "url": "https://cholez-pagotto.fr"
       },
       "url": "https://cholez-pagotto.fr/blog/fin-contrat-salarie-particulier-employeur-licenciement-retrait-enfant",
-      "keywords": ["Particulier employeur", "Licenciement", "Assistante maternelle", "Retrait d'enfant", "Convention collective", "Droit du travail"],
+      "keywords": ["Particulier employeur", "Licenciement", "Assistante maternelle", "Retrait d'enfant", "Salarié à domicile", "Convention collective", "Droit du travail"],
       "inLanguage": "fr-FR"
     },
     {
@@ -107,7 +107,7 @@ export default function ArticleFinContratParticulierEmployeur2026() {
                 <span style={{background: '#eff6ff', color: '#1a4fba', fontSize: '11px', fontWeight: '600', padding: '2px 10px', borderRadius: '20px'}}>DROIT DU TRAVAIL</span>
                 <span style={{background: '#eff6ff', color: '#1a4fba', fontSize: '11px', fontWeight: '600', padding: '2px 10px', borderRadius: '20px'}}>PARTICULIER EMPLOYEUR</span>
               </div>
-              <h1 style={{color: '#0f2d6e', fontSize: '1.9rem', fontWeight: '700', lineHeight: '1.3', margin: '0 0 16px'}}>Fin de contrat d'un salarié du particulier employeur : licenciement ou retrait d'enfant ?</h1>
+              <h1 style={{color: '#0f2d6e', fontSize: '1.7rem', fontWeight: '700', lineHeight: '1.3', margin: '0 0 16px'}}>Fin de contrat d'un salarié à domicile ou d'une assistante maternelle : licenciement, retrait d'enfant, les bonnes règles</h1>
               <div style={{display: 'flex', gap: '20px', flexWrap: 'wrap', alignItems: 'center', marginBottom: '20px'}}>
                 <span style={{display: 'flex', alignItems: 'center', gap: '5px', color: '#6b7280', fontSize: '12px'}}>
                   <User size={13} strokeWidth={1.5} /> François CHOLEZ
@@ -116,12 +116,12 @@ export default function ArticleFinContratParticulierEmployeur2026() {
                   <Calendar size={13} strokeWidth={1.5} /> 30 décembre 2025
                 </span>
                 <span style={{display: 'flex', alignItems: 'center', gap: '5px', color: '#6b7280', fontSize: '12px'}}>
-                  <Clock size={13} strokeWidth={1.5} /> 19 min de lecture
+                  <Clock size={13} strokeWidth={1.5} /> 21 min de lecture
                 </span>
               </div>
               <img
                 src="https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/fin-contrat-particulier-employeur-2026.webp"
-                alt="Fin de contrat d'un salarié du particulier employeur : licenciement ou retrait d'enfant ?"
+                alt="Fin de contrat d'un salarié à domicile ou d'une assistante maternelle : licenciement, retrait d'enfant, les bonnes règles"
                 style={{width: '100%', borderRadius: '12px', objectFit: 'cover', maxHeight: '400px', marginBottom: '0'}}
               />
             </div>
@@ -137,6 +137,7 @@ export default function ArticleFinContratParticulierEmployeur2026() {
                 <li><a href="#indemnites-domicile" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>IV. Préavis, indemnités et documents de fin de contrat</a></li>
                 <li><a href="#cas-particuliers" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>V. Cas particuliers : inaptitude, décès, CDD, rupture conventionnelle</a></li>
                 <li><a href="#retrait-enfant" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>VI. Assistante maternelle : le retrait d'enfant</a></li>
+                <li><a href="#pas-rupture-conventionnelle" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5", paddingLeft: "12px"}}>→ Absence de rupture conventionnelle</a></li>
                 <li><a href="#indemnites-assmat" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>VII. Préavis et indemnités du retrait d'enfant</a></li>
                 <li><a href="#24h24" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>VIII. Emplois 24h/24 : présence responsable et présence de nuit</a></li>
                 <li><a href="#risques" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>IX. Risques contentieux et bonnes pratiques</a></li>
@@ -221,6 +222,18 @@ export default function ArticleFinContratParticulierEmployeur2026() {
                 <p style={{marginBottom: '1rem'}}>Le CASF organise, pour les assistantes maternelles employées par des particuliers, un régime de rupture entièrement distinct du licenciement de droit commun. Le parent employeur qui décide de ne plus confier l'enfant, dès lors qu'il l'employait depuis au moins 3 mois, doit notifier sa décision par <strong>lettre recommandée avec demande d'avis de réception</strong> (article L.&nbsp;423-24 du CASF). La date de présentation de cette lettre fixe le point de départ du préavis éventuellement dû.</p>
                 <p style={{marginBottom: '1rem'}}>Point essentiel confirmé de façon constante par la Cour de cassation : le retrait d'enfant <strong>n'a pas à être motivé</strong>. Le parent peut, en principe, retirer son enfant pour tout motif (changement de mode de garde, déménagement, difficultés financières, préférence pour une garde par un parent), à condition de respecter le préavis et les indemnités, et à condition que le motif ne soit pas lui-même illicite.</p>
                 <p style={{marginBottom: '1rem'}}>Même si le retrait d'enfant ne s'analyse pas en licenciement, il peut être jugé abusif ou fondé sur un motif illicite. Un retrait pendant la grossesse sans justification d'un motif étranger à la maternité est nul, la protection de la maternité (article L.&nbsp;1225-4 du Code du travail) s'imposant au droit de retrait ; un retrait reposant sur un motif discriminatoire relève du régime général de la non-discrimination. À l'inverse, la faute grave de l'assistante maternelle (violences, négligences graves) justifie la suppression immédiate de la garde, sans préavis ni indemnités, à charge pour l'employeur d'en rapporter la preuve.</p>
+
+                <h3 id="pas-rupture-conventionnelle" style={{color: '#0f2d6e', fontSize: '1.05rem', fontWeight: '700', margin: '1.5rem 0 10px'}}>Absence de rupture conventionnelle pour les assistantes maternelles</h3>
+                <p style={{marginBottom: '1rem'}}>Un point mérite d'être souligné tant la confusion est fréquente : la <strong>rupture conventionnelle</strong>, telle qu'organisée par les articles L.&nbsp;1237-11 et suivants du Code du travail, n'existe pas pour une assistante maternelle employée par un particulier. L'article L.&nbsp;423-2 du CASF énumère limitativement les dispositions du Code du travail applicables aux assistants maternels employés par des personnes de droit privé (discriminations, harcèlement, égalité professionnelle, protection de la maternité), et les règles relatives à la rupture du contrat de travail, y compris la rupture conventionnelle, n'y figurent pas. La Cour de cassation l'a rappelé explicitement : les règles du Code du travail relatives à la rupture du contrat ne sont pas de celles que l'article L.&nbsp;423-2 du CASF rend applicables aux assistants maternels employés par des particuliers (Cour de cassation, chambre sociale, 31 mai 2012, n°&nbsp;10-24.497, publié au Bulletin).</p>
+                <p style={{marginBottom: '1rem'}}>Concrètement, aucun formulaire de rupture conventionnelle (TéléRC ou Cerfa) ne peut être valablement utilisé pour mettre fin au CDI d'une assistante maternelle. Une convention qualifiée de « rupture conventionnelle » signée entre un parent employeur et une assistante maternelle sera, en pratique, requalifiée selon son contenu réel en retrait d'enfant ou en démission, avec les conséquences propres à chacun de ces mécanismes en matière de préavis, d'indemnités et de droits à l'assurance chômage.</p>
+                <p style={{marginBottom: '1rem'}}>Les modes de rupture ouverts pour une assistante maternelle employée par un particulier restent ainsi limités à ceux prévus par le CASF et la convention collective :</p>
+                <ul style={{paddingLeft: '1.5rem', margin: '1rem 0', display: 'flex', flexDirection: 'column', gap: '10px'}}>
+                  <li>à l'initiative du parent employeur : le <strong>retrait d'enfant</strong>, notifié par lettre recommandée, avec préavis et indemnité de rupture sauf faute grave, ou la rupture consécutive à la suspension ou au retrait de l'agrément ;</li>
+                  <li>à l'initiative de l'assistante maternelle : la <strong>démission</strong>, c'est-à-dire la décision de ne plus garder l'enfant, avec respect d'un préavis identique dans ses paliers à celui du retrait d'enfant ;</li>
+                  <li>de façon automatique ou pour cause extérieure : l'arrivée du terme d'un CDD, ou le décès de l'enfant confié ;</li>
+                  <li>par voie judiciaire, à l'initiative de l'assistante maternelle : la prise d'acte ou la résiliation judiciaire devant le conseil de prud'hommes en cas de manquement grave de l'employeur (non-paiement du salaire, absence répétée de travail fourni), le juge appréciant alors les torts respectifs des parties.</li>
+                </ul>
+                <p style={{marginBottom: '1rem'}}>Pour une assistante maternelle du particulier employeur, la fin de contrat doit donc impérativement s'analyser au regard des seuls mécanismes prévus par le Code de l'action sociale et des familles et par la convention collective de la branche, sous le contrôle du juge prud'homal en cas d'abus ou de motif illicite, à l'exclusion de toute rupture conventionnelle au sens du Code du travail.</p>
               </section>
 
               <section id="indemnites-assmat">
@@ -299,6 +312,10 @@ export default function ArticleFinContratParticulierEmployeur2026() {
                   <li>Code de l'action sociale et des familles, article L.&nbsp;423-24 (notification du retrait d'enfant par lettre recommandée)</li>
                   <li>Code de l'action sociale et des familles, articles L.&nbsp;423-25 à L.&nbsp;423-27 (préavis et indemnité compensatrice)</li>
                   <li>Code de l'action sociale et des familles, article L.&nbsp;423-10 (indemnité légale de licenciement, applicable aux seuls assistants maternels employés par une personne morale de droit privé)</li>
+                  <li>Code de l'action sociale et des familles, article L.&nbsp;423-2 (liste limitative des dispositions du Code du travail applicables aux assistants maternels employés par des personnes de droit privé)</li>
+                  <li>Code du travail, articles L.&nbsp;1237-11 et suivants (rupture conventionnelle homologuée, régime inapplicable aux assistantes maternelles)</li>
+                  <li>Cour de cassation, chambre sociale, 31 mai 2012, n°&nbsp;10-24.497, publié au Bulletin (les règles de rupture du contrat de travail, dont la rupture conventionnelle, ne figurent pas parmi les dispositions du Code du travail applicables aux assistants maternels employés par des particuliers)</li>
+                  <li>Convention collective nationale des particuliers employeurs et de l'emploi à domicile du 15 mars 2021, article 121-1 (indemnité de rupture des assistants maternels, 1/80e des salaires bruts, dès 9 mois d'ancienneté)</li>
                 </ul>
                 <p style={{marginBottom: '1rem', fontSize: '12px', color: '#9ca3af', fontStyle: 'italic'}}>Cet article relève d'une information juridique au sens de la loi n°&nbsp;71-1130 du 31 décembre 1971. Le cabinet ne délivre pas de consultation juridique personnalisée. Pour l'analyse d'une situation individuelle, un professionnel du droit compétent reste le bon interlocuteur.</p>
               </section>

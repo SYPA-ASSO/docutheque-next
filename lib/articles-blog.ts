@@ -19,7 +19,7 @@ export type ArticleBlog = {
 export const ARTICLES_BLOG: ArticleBlog[] = [
   {
     slug: 'fin-contrat-salarie-particulier-employeur-licenciement-retrait-enfant',
-    titre: "Fin de contrat d'un salarié du particulier employeur : licenciement ou retrait d'enfant ?",
+    titre: "Fin de contrat d'un salarié à domicile ou d'une assistante maternelle : licenciement, retrait d'enfant, les bonnes règles",
     resume: "Employé de maison, garde d'enfants, assistante maternelle : la rupture du contrat par un particulier employeur obéit à des règles très différentes selon le statut du salarié. Procédure, préavis, indemnités, cas de l'emploi 24h/24.",
     date: '30 décembre 2025',
     auteur: 'François CHOLEZ',
