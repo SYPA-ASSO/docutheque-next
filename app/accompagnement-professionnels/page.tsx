@@ -102,14 +102,14 @@ const services = [
     items: [
       {
         titre: "Information sur vos droits",
-        badge: "47 €",
+        badge: "47 €",
         badgeColor: "#0f2d6e",
         href: "/information-sur-vos-droits",
         description: "Vous posez votre question juridique. Notre juriste identifie les textes et règles applicables à votre situation et vous apporte une réponse documentée sous 24 à 48h ouvrées.",
         points: [
           "Droit du travail, contrats, sociétés",
           "Droit fiscal, administratif, social",
-          "Réponse 100 % humaine, aucune IA",
+          "Réponse 100 % humaine, aucune IA",
           "Références aux textes applicables",
         ],
         couleur: "#7c3aed",
@@ -136,7 +136,7 @@ const services = [
     items: [
       {
         titre: "Conseil en assurances",
-        badge: "90 € particulier · 150 € pro",
+        badge: "90 € particulier · 150 € pro",
         badgeColor: "#065f46",
         href: "/conseil-assurances",
         description: "Audit de vos contrats existants, comparaison des offres du marché, rapport de conseil écrit et motivé. RC Pro, multirisques professionnelle, prévoyance collective, assurance des dirigeants. ORIAS n°26003943.",
@@ -403,6 +403,12 @@ export default function AccompagnementProfessionnelsPage() {
                 Juriste formaliste, membre du CRFF. Intermédiaire en assurances immatriculé à l'ORIAS sous le numéro 26003943,
                 sous contrôle de l'ACPR, adhérent ENDYA. Accompagnement des professionnels et dirigeants
                 dans leurs formalités juridiques, leur conformité réglementaire et leur stratégie assurantielle.
+              </p>
+              <p style={{ fontSize: 13, color: '#6b7280', margin: '0.4rem 0 0', lineHeight: 1.6 }}>
+                Membre de la plateforme{' '}
+                <a href="https://www.coachsdemanager.fr" target="_blank" rel="noopener noreferrer" style={{ color: '#1a4fba', fontWeight: 600, textDecoration: 'none' }}>
+                  Coachs de managers
+                </a>
               </p>
             </div>
           </section>
