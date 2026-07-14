@@ -18,6 +18,18 @@ export type ArticleBlog = {
 
 export const ARTICLES_BLOG: ArticleBlog[] = [
   {
+    slug: 'duerp-guide-pratique-employeur-cse-salaries',
+    titre: "DUERP : le guide pratique employeur, CSE et salariés",
+    resume: "Format, méthode, sanctions pénales et désormais administratives depuis la loi du 25 juin 2026, rôle du CSE, droits du salarié et valeur juridique en cas d'accident : tout sur le Document Unique d'Évaluation des Risques Professionnels.",
+    date: '8 juillet 2026',
+    auteur: 'François CHOLEZ',
+    categorie: 'Droit du travail',
+    tags: ['DUERP', 'CSE', 'Faute inexcusable', 'Amende administrative'],
+    tempsLecture: '16 min',
+    image: 'https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/duerp-guide-pratique-2026.webp',
+  },
+
+  {
     slug: 'fin-contrat-salarie-particulier-employeur-licenciement-retrait-enfant',
     titre: "Fin de contrat d'un salarié à domicile ou d'une assistante maternelle : licenciement, retrait d'enfant, les bonnes règles",
     resume: "Employé de maison, garde d'enfants, assistante maternelle : la rupture du contrat par un particulier employeur obéit à des règles très différentes selon le statut du salarié. Procédure, préavis, indemnités, cas de l'emploi 24h/24.",
