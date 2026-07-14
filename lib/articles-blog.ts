@@ -18,6 +18,18 @@ export type ArticleBlog = {
 
 export const ARTICLES_BLOG: ArticleBlog[] = [
   {
+    slug: 'acre-aide-createurs-repreneurs-entreprise-2026',
+    titre: "Acre 2026 : conditions d'éligibilité, montant de l'exonération et délai de demande à l'Urssaf",
+    resume: "Depuis le 1er janvier 2026, l'Acre n'est plus automatique et son exonération est plafonnée à 25 %. Conditions d'éligibilité, montant, délai de 60 jours pour déposer sa demande auprès de l'Urssaf : le guide à jour.",
+    date: '7 juillet 2026',
+    auteur: 'François CHOLEZ',
+    categorie: 'Formalités',
+    tags: ['Acre', "Création d'entreprise", 'Urssaf', 'Micro-entreprise'],
+    tempsLecture: '13 min',
+    image: 'https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/acre-2026-createurs-entreprise.webp',
+  },
+
+  {
     slug: 'vente-voiture-occasion-particulier-ou-professionnel-formalites-ants',
     titre: "Vendre son véhicule d'occasion à un particulier ou un professionnel : la procédure complète",
     resume: "Certificat de situation administrative, contrôle technique, déclaration de cession sur l'ANTS, carte grise barrée, résiliation de l'assurance : le guide complet pour vendre son véhicule d'occasion à un particulier ou à un professionnel.",
