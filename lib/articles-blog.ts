@@ -18,6 +18,18 @@ export type ArticleBlog = {
 
 export const ARTICLES_BLOG: ArticleBlog[] = [
   {
+    slug: 'responsabilite-financiere-president-association-cour-des-comptes',
+    titre: "Responsabilité financière du président d'association devant la Cour des comptes : ce que change la réforme de 2023",
+    resume: "Une présidente d'association condamnée à 4 000 € d'amende par la Cour des comptes : le seuil des 1 500 € de subventions publiques qui déclenche le contrôle, et le nouveau régime de responsabilité financière des gestionnaires publics en vigueur depuis 2023.",
+    date: '7 juillet 2026',
+    auteur: 'François CHOLEZ',
+    categorie: 'Vie associative',
+    tags: ['Association', 'Cour des comptes', 'Responsabilité financière', 'Subvention publique'],
+    tempsLecture: '12 min',
+    image: 'https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/responsabilite-financiere-president-association-cour-comptes-2026.webp',
+  },
+
+  {
     slug: 'acre-aide-createurs-repreneurs-entreprise-2026',
     titre: "Acre 2026 : conditions d'éligibilité, montant de l'exonération et délai de demande à l'Urssaf",
     resume: "Depuis le 1er janvier 2026, l'Acre n'est plus automatique et son exonération est plafonnée à 25 %. Conditions d'éligibilité, montant, délai de 60 jours pour déposer sa demande auprès de l'Urssaf : le guide à jour.",
