@@ -18,6 +18,18 @@ export type ArticleBlog = {
 
 export const ARTICLES_BLOG: ArticleBlog[] = [
   {
+    slug: 'assurance-habitation-auto-incendie-foret-debroussaillement-franchise',
+    titre: "Incendie de forêt ou de végétation : ce que couvre votre assurance habitation et auto",
+    resume: "Maison, dépendances, véhicule : en cas d'incendie de forêt ou de végétation, l'assurance ne couvre pas tout ni automatiquement. Garantie incendie, franchise débroussaillement de 5 000 €, assurance auto, délai de déclaration.",
+    date: '13 juillet 2026',
+    auteur: 'François CHOLEZ',
+    categorie: 'Assurances',
+    tags: ['Assurance habitation', "Incendie de forêt", 'Débroussaillement', 'Franchise'],
+    tempsLecture: '12 min',
+    image: 'https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/assurance-incendie-foret-vegetation-2026.webp',
+  },
+
+  {
     slug: 'sanctions-cnil-2026-videosurveillance-cookies-obligation-cooperer',
     titre: "Sanctions CNIL 2026 : vidéosurveillance, cookies et obligation de coopérer, ce que révèlent les 23 dernières décisions",
     resume: "La CNIL a prononcé 23 sanctions en procédure simplifiée depuis janvier 2026 : vidéosurveillance excessive des salariés, bandeaux cookies non conformes, droits d'accès et d'effacement ignorés. Ce que ça change concrètement pour votre organisme.",
