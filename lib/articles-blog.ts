@@ -18,6 +18,18 @@ export type ArticleBlog = {
 
 export const ARTICLES_BLOG: ArticleBlog[] = [
   {
+    slug: 'qualiopi-iso-21001-organismes-formation-association-cooperative',
+    titre: "Qualiopi et ISO 21001 : comprendre les deux démarches qualité de la formation",
+    resume: "Qualiopi, obligatoire pour accéder aux fonds publics et mutualisés, et ISO 21001, norme internationale de management de la qualité éducative : le guide complet pour les organismes de formation, associations, coopératives et le grand public.",
+    date: '13 juillet 2026',
+    auteur: 'François CHOLEZ',
+    categorie: 'Formation',
+    tags: ['Qualiopi', 'ISO 21001', "Organisme de formation", 'ESS'],
+    tempsLecture: '19 min',
+    image: 'https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/qualiopi-iso-21001-organismes-formation-2026.webp',
+  },
+
+  {
     slug: 'loi-fraudes-sociales-fiscales-2026-mesures-rh-paie',
     titre: "Loi de lutte contre les fraudes sociales et fiscales : toutes les mesures RH et paie à connaître",
     resume: "IJSS, contre-visite médicale, CPF, C2P, flagrance sociale, DUERP : la loi du 25 juin 2026 relative à la lutte contre les fraudes sociales et fiscales bouleverse les obligations des employeurs. Décryptage complet, article par article.",
