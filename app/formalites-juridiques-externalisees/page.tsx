@@ -167,8 +167,8 @@ export default function FormalitesExternalisees() {
         {/* REORIENTATION PARTICULIERS / FUTURS ENTREPRENEURS */}
         <div style={{ background: '#fffbeb', borderBottom: '1px solid #fde68a', padding: '1.5rem' }}>
           <div style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
-            <p style={{ color: '#b45309', fontSize: '11px', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.06em', margin: '0 0 8px' }}>
-              Vous n'êtes pas encore accompagné par un avocat ou un expert-comptable ?
+            <p style={{ color: '#b45309', fontSize: '14px', fontWeight: '700', lineHeight: '1.5', margin: '0 0 10px' }}>
+              Vous êtes un particulier en réflexion de création d'entreprise ? Futur entrepreneur ayant besoin de sécuriser les démarches de création ?
             </p>
             <p style={{ color: '#374151', fontSize: '13px', lineHeight: '1.7', margin: '0 0 16px' }}>
               Cette page s'adresse aux avocats, experts-comptables et professionnels qui délèguent l'exécution de leurs formalités. Si vous êtes un particulier ou un futur entrepreneur qui souhaite créer son entreprise, direction la bonne page :
