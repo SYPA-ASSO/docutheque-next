@@ -18,6 +18,18 @@ export type ArticleBlog = {
 
 export const ARTICLES_BLOG: ArticleBlog[] = [
   {
+    slug: 'loi-fraudes-sociales-fiscales-2026-mesures-rh-paie',
+    titre: "Loi de lutte contre les fraudes sociales et fiscales : toutes les mesures RH et paie à connaître",
+    resume: "IJSS, contre-visite médicale, CPF, C2P, flagrance sociale, DUERP : la loi du 25 juin 2026 relative à la lutte contre les fraudes sociales et fiscales bouleverse les obligations des employeurs. Décryptage complet, article par article.",
+    date: '13 juillet 2026',
+    auteur: 'François CHOLEZ',
+    categorie: 'Droit social',
+    tags: ['Fraudes sociales', 'IJSS', 'Flagrance sociale', 'DUERP'],
+    tempsLecture: '17 min',
+    image: 'https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/loi-fraudes-sociales-fiscales-2026-rh-paie.webp',
+  },
+
+  {
     slug: 'assurance-habitation-auto-incendie-foret-debroussaillement-franchise',
     titre: "Incendie de forêt ou de végétation : ce que couvre votre assurance habitation et auto",
     resume: "Maison, dépendances, véhicule : en cas d'incendie de forêt ou de végétation, l'assurance ne couvre pas tout ni automatiquement. Garantie incendie, franchise débroussaillement de 5 000 €, assurance auto, délai de déclaration.",
