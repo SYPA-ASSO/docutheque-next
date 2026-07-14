@@ -64,6 +64,14 @@ const schema = {
             "@type": "Answer",
             "text": "Dès que la vente est réalisée, le vendeur peut envoyer une lettre recommandée avec accusé de réception à son assureur, accompagnée d'une copie du certificat de cession. Le contrat est suspendu le jour de la vente à minuit et la résiliation prend effet dans les 10 jours calendaires à compter de la réception de la lettre."
           }
+        },
+        {
+          "@type": "Question",
+          "name": "Sous quel délai l'acheteur doit-il faire établir sa carte grise ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "L'acheteur dispose d'un mois à compter de la date de la cession pour faire établir le certificat d'immatriculation à son nom (article R.322-5 du Code de la route). Il doit réunir le certificat de cession, le code de cession, la carte grise barrée, le contrôle technique de moins de 6 mois si applicable, une pièce d'identité, un justificatif de domicile, une attestation d'assurance et son permis de conduire."
+          }
         }
       ]
     },
@@ -116,7 +124,7 @@ export default function ArticleVenteVehiculeOccasion2026() {
                   <Calendar size={13} strokeWidth={1.5} /> 9 juillet 2026
                 </span>
                 <span style={{display: 'flex', alignItems: 'center', gap: '5px', color: '#6b7280', fontSize: '12px'}}>
-                  <Clock size={13} strokeWidth={1.5} /> 14 min de lecture
+                  <Clock size={13} strokeWidth={1.5} /> 16 min de lecture
                 </span>
               </div>
               <img
@@ -136,7 +144,8 @@ export default function ArticleVenteVehiculeOccasion2026() {
                 <li><a href="#documents" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>III. Vendre à un particulier : les documents à remettre</a></li>
                 <li><a href="#complementaires" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>IV. Les documents complémentaires utiles</a></li>
                 <li><a href="#apres-vente" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>V. Après la vente : la déclaration de cession</a></li>
-                <li><a href="#assurance" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>VI. Le sort du contrat d'assurance</a></li>
+                <li><a href="#acheteur" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>VI. Côté acheteur : le délai pour immatriculer le véhicule</a></li>
+                <li><a href="#assurance" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>VII. Le sort du contrat d'assurance</a></li>
                 <li><a href="#conclusion" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>Conclusion</a></li>
                 <li><a href="#sources" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>Sources officielles</a></li>
                 <li><a href="#faq" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>Questions fréquentes</a></li>
@@ -231,9 +240,27 @@ export default function ArticleVenteVehiculeOccasion2026() {
                 </div>
               </section>
 
+              <section id="acheteur">
+                <h2 style={{color: '#0f2d6e', fontSize: '1.3rem', fontWeight: '700', margin: '2rem 0 16px', paddingTop: '1rem'}}>
+                  VI. Côté acheteur : le délai pour immatriculer le véhicule
+                </h2>
+                <p style={{marginBottom: '1rem'}}>La déclaration de cession effectuée par le vendeur ne dispense pas l'acheteur de sa propre démarche. Le nouveau propriétaire d'un véhicule déjà immatriculé doit, s'il veut le maintenir en circulation, faire établir un certificat d'immatriculation à son nom dans un délai d'<strong>un mois à compter de la date de la cession</strong> (article R.&nbsp;322-5 du Code de la route). Passé ce délai, l'acheteur qui ne peut présenter le nouveau certificat lors d'un contrôle routier s'expose à une contravention de 4e classe, soit 135 euros d'amende, éventuellement assortie d'une immobilisation du véhicule.</p>
+                <p style={{marginBottom: '1rem'}}>Pour constituer son dossier, l'acheteur doit réunir :</p>
+                <ul style={{paddingLeft: '1.5rem', margin: '1rem 0', display: 'flex', flexDirection: 'column', gap: '10px'}}>
+                  <li>le certificat de cession (Cerfa n°&nbsp;15776*02), exemplaire « nouveau propriétaire », signé par le vendeur et l'acheteur ;</li>
+                  <li>le code de cession transmis par le vendeur, sauf si la démarche a été réalisée conjointement via l'application Simplimmat au moment de la vente ;</li>
+                  <li>la carte grise barrée par l'ancien propriétaire, portant la mention « Vendu le », la date, l'heure et sa signature ;</li>
+                  <li>le procès-verbal de contrôle technique de moins de 6 mois, lorsque le véhicule y est soumis ;</li>
+                  <li>une pièce d'identité en cours de validité et un justificatif de domicile de moins de 6 mois ;</li>
+                  <li>une attestation d'assurance auto au nom du nouveau propriétaire ;</li>
+                  <li>le permis de conduire correspondant à la catégorie du véhicule.</li>
+                </ul>
+                <p style={{marginBottom: '1rem'}}>La démarche s'effectue en ligne sur le site de l'ANTS, via l'application Simplimmat pour les véhicules éligibles, ou auprès d'un professionnel de l'automobile habilité. À l'issue de la démarche, l'acheteur reçoit un <strong>certificat provisoire d'immatriculation (CPI)</strong> ou un accusé d'enregistrement, qui lui permet de circuler en France pendant 1 mois en attendant la réception du certificat d'immatriculation définitif, expédié sous pli sécurisé.</p>
+              </section>
+
               <section id="assurance">
                 <h2 style={{color: '#0f2d6e', fontSize: '1.3rem', fontWeight: '700', margin: '2rem 0 16px', paddingTop: '1rem'}}>
-                  VI. Le sort du contrat d'assurance
+                  VII. Le sort du contrat d'assurance
                 </h2>
                 <p style={{marginBottom: '1rem'}}>Après la vente, le certificat de cession conservé par le vendeur permet d'engager la résiliation du contrat d'assurance auto. Il convient d'envoyer une lettre recommandée avec accusé de réception à l'assureur, mentionnant les coordonnées du souscripteur, le numéro du contrat, la date de la vente, la marque du véhicule et son numéro d'immatriculation, accompagnée d'une copie du certificat de cession.</p>
                 <p style={{marginBottom: '1rem'}}>Le contrat est suspendu le jour de la vente à minuit, et la résiliation prend effet dans les 10 jours calendaires à compter de la réception de la lettre par l'assureur (article L.&nbsp;121-11 du Code des assurances).</p>
@@ -262,6 +289,7 @@ export default function ArticleVenteVehiculeOccasion2026() {
                   <li>Code de la route, article R.&nbsp;322-3 (carte grise barrée, coupon détachable, circulation pendant 1 mois)</li>
                   <li>Code de la route, article R.&nbsp;322-4, et Code de procédure pénale, article R.&nbsp;49 (contravention de 4e classe pour absence de déclaration de cession dans les 15 jours)</li>
                   <li>Code de la route, article L.&nbsp;322-1 (déclaration de cession exclusivement en ligne depuis le plan préfectures nouvelle génération)</li>
+                  <li>Code de la route, article R.&nbsp;322-5 (délai d'un mois pour l'acheteur pour faire établir le certificat d'immatriculation à son nom)</li>
                   <li>Code des assurances, article L.&nbsp;121-11 (suspension et résiliation du contrat d'assurance après cession du véhicule)</li>
                 </ul>
                 <p style={{marginBottom: '1rem', fontSize: '12px', color: '#9ca3af', fontStyle: 'italic'}}>Cet article relève d'une information juridique au sens de la loi n°&nbsp;71-1130 du 31 décembre 1971. Le cabinet ne délivre pas de consultation juridique personnalisée. Pour l'analyse d'une situation individuelle, un professionnel du droit compétent reste le bon interlocuteur.</p>
@@ -297,6 +325,13 @@ export default function ArticleVenteVehiculeOccasion2026() {
                       <span style={{color: '#1a4fba', fontSize: '18px', flexShrink: 0, lineHeight: 1}}>+</span>
                     </summary>
                     <p style={{color: '#374151', fontSize: '13px', lineHeight: '1.75', marginTop: '12px', marginBottom: 0}}>Dès que la vente est réalisée, le vendeur peut envoyer une lettre recommandée avec accusé de réception à son assureur, accompagnée d'une copie du certificat de cession. Le contrat est suspendu le jour de la vente à minuit et la résiliation prend effet dans les 10 jours calendaires à compter de la réception de la lettre.</p>
+                  </details>
+                  <details style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '10px', padding: '1rem 1.25rem'}}>
+                    <summary style={{fontWeight: '600', color: '#0f2d6e', fontSize: '14px', cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '12px'}}>
+                      <span>Sous quel délai l'acheteur doit-il faire établir sa carte grise ?</span>
+                      <span style={{color: '#1a4fba', fontSize: '18px', flexShrink: 0, lineHeight: 1}}>+</span>
+                    </summary>
+                    <p style={{color: '#374151', fontSize: '13px', lineHeight: '1.75', marginTop: '12px', marginBottom: 0}}>L'acheteur dispose d'un mois à compter de la date de la cession pour faire établir le certificat d'immatriculation à son nom (article R.322-5 du Code de la route). Il doit réunir le certificat de cession, le code de cession, la carte grise barrée, le contrôle technique de moins de 6 mois si applicable, une pièce d'identité, un justificatif de domicile, une attestation d'assurance et son permis de conduire.</p>
                   </details>
                 </div>
               </section>
