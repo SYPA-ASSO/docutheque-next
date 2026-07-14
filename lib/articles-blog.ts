@@ -18,6 +18,18 @@ export type ArticleBlog = {
 
 export const ARTICLES_BLOG: ArticleBlog[] = [
   {
+    slug: 'vente-voiture-occasion-particulier-ou-professionnel-formalites-ants',
+    titre: "Vendre son véhicule d'occasion à un particulier ou un professionnel : la procédure complète",
+    resume: "Certificat de situation administrative, contrôle technique, déclaration de cession sur l'ANTS, carte grise barrée, résiliation de l'assurance : le guide complet pour vendre son véhicule d'occasion à un particulier ou à un professionnel.",
+    date: '9 juillet 2026',
+    auteur: 'François CHOLEZ',
+    categorie: 'Consommation',
+    tags: ['Vente véhicule', 'ANTS', 'Déclaration de cession', 'Contrôle technique'],
+    tempsLecture: '14 min',
+    image: 'https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/vente-vehicule-occasion-2026.webp',
+  },
+
+  {
     slug: 'duerp-guide-pratique-employeur-cse-salaries',
     titre: "DUERP : le guide pratique employeur, CSE et salariés",
     resume: "Format, méthode, sanctions pénales et désormais administratives depuis la loi du 25 juin 2026, rôle du CSE, droits du salarié et valeur juridique en cas d'accident : tout sur le Document Unique d'Évaluation des Risques Professionnels.",
