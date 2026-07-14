@@ -164,6 +164,23 @@ export default function FormalitesExternalisees() {
           </div>
         </div>
 
+        {/* REORIENTATION PARTICULIERS / FUTURS ENTREPRENEURS */}
+        <div style={{ background: '#fffbeb', borderBottom: '1px solid #fde68a', padding: '1.5rem' }}>
+          <div style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+            <p style={{ color: '#b45309', fontSize: '11px', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.06em', margin: '0 0 8px' }}>
+              Vous n'êtes pas encore accompagné par un avocat ou un expert-comptable ?
+            </p>
+            <p style={{ color: '#374151', fontSize: '13px', lineHeight: '1.7', margin: '0 0 16px' }}>
+              Cette page s'adresse aux avocats, experts-comptables et professionnels qui délèguent l'exécution de leurs formalités. Si vous êtes un particulier ou un futur entrepreneur qui souhaite créer son entreprise, direction la bonne page :
+            </p>
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
+              <a href="/creation-entreprise" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: '#b45309', color: 'white', padding: '12px 26px', borderRadius: '8px', fontSize: '13px', fontWeight: '700', textDecoration: 'none' }}>
+                Créer mon entreprise <ArrowRight size={15} />
+              </a>
+            </div>
+          </div>
+        </div>
+
         {/* HERO */}
         <section style={{ background: 'linear-gradient(135deg, #0f2d6e 0%, #1a4fba 100%)', padding: '4rem 0' }}>
           <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 2rem' }}>
