@@ -5,6 +5,17 @@ import { Calendar, Clock, User, ChevronRight } from 'lucide-react'
 export const metadata = {
   title: `Loi de lutte contre les fraudes sociales et fiscales : toutes les mesures RH et paie à connaître · Blog Cabinet Cholez-Pagotto`,
   description: `IJSS, contre-visite médicale, CPF, C2P, flagrance sociale, DUERP : la loi du 25 juin 2026 relative à la lutte contre les fraudes sociales et fiscales bouleverse les obligations des employeurs. Décryptage complet, article par article.`,
+  openGraph: {
+    type: 'article',
+    url: 'https://cholez-pagotto.fr/blog/loi-fraudes-sociales-fiscales-2026-mesures-rh-paie',
+    siteName: 'Cabinet Cholez-Pagotto',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/loi-fraudes-sociales-fiscales-2026-rh-paie.webp'],
+    locale: 'fr_FR',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/loi-fraudes-sociales-fiscales-2026-rh-paie.webp'],
+  },
 }
 
 const schema = {

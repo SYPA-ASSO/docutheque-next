@@ -5,6 +5,17 @@ import { Calendar, Clock, User, ChevronRight } from 'lucide-react'
 export const metadata = {
   title: `Responsabilité financière du président d'association devant la Cour des comptes : ce que change la réforme de 2023 · Blog Cabinet Cholez-Pagotto`,
   description: `Une présidente d'association condamnée à 4 000 € d'amende par la Cour des comptes : le seuil des 1 500 € de subventions publiques qui déclenche le contrôle, et le nouveau régime de responsabilité financière des gestionnaires publics en vigueur depuis 2023.`,
+  openGraph: {
+    type: 'article',
+    url: 'https://cholez-pagotto.fr/blog/responsabilite-financiere-president-association-cour-des-comptes',
+    siteName: 'Cabinet Cholez-Pagotto',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/responsabilite-financiere-president-association-cour-comptes-2026.webp'],
+    locale: 'fr_FR',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/responsabilite-financiere-president-association-cour-comptes-2026.webp'],
+  },
 }
 
 const schema = {

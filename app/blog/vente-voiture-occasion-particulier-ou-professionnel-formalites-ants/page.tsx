@@ -5,6 +5,17 @@ import { Calendar, Clock, User, ChevronRight } from 'lucide-react'
 export const metadata = {
   title: `Vendre son véhicule d'occasion à un particulier ou un professionnel : la procédure complète · Blog Cabinet Cholez-Pagotto`,
   description: `Certificat de situation administrative, contrôle technique, déclaration de cession sur l'ANTS, carte grise barrée, résiliation de l'assurance : le guide complet pour vendre son véhicule d'occasion à un particulier ou à un professionnel.`,
+  openGraph: {
+    type: 'article',
+    url: 'https://cholez-pagotto.fr/blog/vente-voiture-occasion-particulier-ou-professionnel-formalites-ants',
+    siteName: 'Cabinet Cholez-Pagotto',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/vente-vehicule-occasion-2026.webp'],
+    locale: 'fr_FR',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/vente-vehicule-occasion-2026.webp'],
+  },
 }
 
 const schema = {

@@ -5,6 +5,17 @@ import { Calendar, Clock, User, ChevronRight } from 'lucide-react'
 export const metadata = {
   title: `Sanctions CNIL 2026 : vidéosurveillance, cookies et obligation de coopérer, ce que révèlent les 23 dernières décisions · Blog Cabinet Cholez-Pagotto`,
   description: `La CNIL a prononcé 23 sanctions en procédure simplifiée depuis janvier 2026 : vidéosurveillance excessive des salariés, bandeaux cookies non conformes, droits d'accès et d'effacement ignorés. Ce que ça change concrètement pour votre organisme.`,
+  openGraph: {
+    type: 'article',
+    url: 'https://cholez-pagotto.fr/blog/sanctions-cnil-2026-videosurveillance-cookies-obligation-cooperer',
+    siteName: 'Cabinet Cholez-Pagotto',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/sanctions-cnil-2026-videosurveillance-cookies.webp'],
+    locale: 'fr_FR',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/sanctions-cnil-2026-videosurveillance-cookies.webp'],
+  },
 }
 
 const schema = {

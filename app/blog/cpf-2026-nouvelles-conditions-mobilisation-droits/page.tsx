@@ -5,6 +5,17 @@ import { Calendar, Clock, User, ChevronRight } from 'lucide-react'
 export const metadata = {
   title: `CPF 2026 : nouvelles conditions de mobilisation des droits (présence à l'examen, certification déjà obtenue) · Blog Cabinet Cholez-Pagotto`,
   description: `Depuis le 27 juin 2026, mobiliser son CPF suppose de se présenter à l'examen et de ne pas déjà détenir la certification visée. Ce que risque le titulaire, et non l'organisme de formation, en cas d'absence non justifiée.`,
+  openGraph: {
+    type: 'article',
+    url: 'https://cholez-pagotto.fr/blog/cpf-2026-nouvelles-conditions-mobilisation-droits',
+    siteName: 'Cabinet Cholez-Pagotto',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/cpf-2026-nouvelles-conditions-mobilisation.webp'],
+    locale: 'fr_FR',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/cpf-2026-nouvelles-conditions-mobilisation.webp'],
+  },
 }
 
 const schema = {

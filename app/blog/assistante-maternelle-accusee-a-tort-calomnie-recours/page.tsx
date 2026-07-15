@@ -5,6 +5,17 @@ import { Calendar, Clock, User, ChevronRight } from 'lucide-react'
 export const metadata = {
   title: `Assistante maternelle accusée à tort : quels recours face à la calomnie ? · Blog Cabinet Cholez-Pagotto`,
   description: `Signalement infondé, suspension d'agrément, dénonciation calomnieuse : le point sur les mécanismes juridiques et les démarches à la disposition d'une assistante maternelle injustement accusée.`,
+  openGraph: {
+    type: 'article',
+    url: 'https://cholez-pagotto.fr/blog/assistante-maternelle-accusee-a-tort-calomnie-recours',
+    siteName: 'Cabinet Cholez-Pagotto',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/assistante-maternelle-calomnie-2026.webp'],
+    locale: 'fr_FR',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/assistante-maternelle-calomnie-2026.webp'],
+  },
 }
 
 const schema = {

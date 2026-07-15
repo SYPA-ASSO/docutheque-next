@@ -5,6 +5,17 @@ import { Calendar, Clock, User, ChevronRight } from 'lucide-react'
 export const metadata = {
   title: `DUERP : le guide pratique employeur, CSE et salariés · Blog Cabinet Cholez-Pagotto`,
   description: `Format, méthode, sanctions pénales et désormais administratives depuis la loi du 25 juin 2026, rôle du CSE, droits du salarié et valeur juridique en cas d'accident : tout sur le Document Unique d'Évaluation des Risques Professionnels.`,
+  openGraph: {
+    type: 'article',
+    url: 'https://cholez-pagotto.fr/blog/duerp-guide-pratique-employeur-cse-salaries',
+    siteName: 'Cabinet Cholez-Pagotto',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/duerp-guide-pratique-2026.webp'],
+    locale: 'fr_FR',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/duerp-guide-pratique-2026.webp'],
+  },
 }
 
 const schema = {

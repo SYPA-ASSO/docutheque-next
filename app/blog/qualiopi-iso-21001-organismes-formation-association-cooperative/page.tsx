@@ -5,6 +5,17 @@ import { Calendar, Clock, User, ChevronRight } from 'lucide-react'
 export const metadata = {
   title: `Qualiopi et ISO 21001 : comprendre les deux démarches qualité de la formation · Blog Cabinet Cholez-Pagotto`,
   description: `Qualiopi, obligatoire pour accéder aux fonds publics et mutualisés, et ISO 21001, norme internationale de management de la qualité éducative : le guide complet pour les organismes de formation, associations, coopératives et le grand public.`,
+  openGraph: {
+    type: 'article',
+    url: 'https://cholez-pagotto.fr/blog/qualiopi-iso-21001-organismes-formation-association-cooperative',
+    siteName: 'Cabinet Cholez-Pagotto',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/qualiopi-iso-21001-organismes-formation-2026.webp'],
+    locale: 'fr_FR',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/qualiopi-iso-21001-organismes-formation-2026.webp'],
+  },
 }
 
 const schema = {

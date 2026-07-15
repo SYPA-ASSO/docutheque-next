@@ -5,6 +5,17 @@ import { Calendar, Clock, User, ChevronRight } from 'lucide-react'
 export const metadata = {
   title: `Incendie de forêt ou de végétation : ce que couvre votre assurance habitation et auto · Blog Cabinet Cholez-Pagotto`,
   description: `Maison, dépendances, véhicule : en cas d'incendie de forêt ou de végétation, l'assurance ne couvre pas tout ni automatiquement. Garantie incendie, franchise débroussaillement de 5 000 €, assurance auto, délai de déclaration.`,
+  openGraph: {
+    type: 'article',
+    url: 'https://cholez-pagotto.fr/blog/assurance-habitation-auto-incendie-foret-debroussaillement-franchise',
+    siteName: 'Cabinet Cholez-Pagotto',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/assurance-incendie-foret-vegetation-2026.webp'],
+    locale: 'fr_FR',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/assurance-incendie-foret-vegetation-2026.webp'],
+  },
 }
 
 const schema = {

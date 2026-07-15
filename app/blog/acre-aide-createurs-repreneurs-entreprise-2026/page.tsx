@@ -5,6 +5,17 @@ import { Calendar, Clock, User, ChevronRight } from 'lucide-react'
 export const metadata = {
   title: `Acre 2026 : conditions d'éligibilité, montant de l'exonération et délai de demande à l'Urssaf · Blog Cabinet Cholez-Pagotto`,
   description: `Acre 2026 : qui peut en bénéficier, quel montant d'exonération de cotisations sociales, et sous quel délai déposer sa demande auprès de l'Urssaf depuis la réforme du 1er janvier 2026. Le guide à jour.`,
+  openGraph: {
+    type: 'article',
+    url: 'https://cholez-pagotto.fr/blog/acre-aide-createurs-repreneurs-entreprise-2026',
+    siteName: 'Cabinet Cholez-Pagotto',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/acre-2026-createurs-entreprise.webp'],
+    locale: 'fr_FR',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/acre-2026-createurs-entreprise.webp'],
+  },
 }
 
 const schema = {

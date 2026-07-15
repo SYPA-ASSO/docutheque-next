@@ -5,6 +5,17 @@ import { Calendar, Clock, User, ChevronRight } from 'lucide-react'
 export const metadata = {
   title: `Création de site internet : le délai de rétractation court dès la conclusion du contrat (Cass. 28 mai 2026) · Blog Cabinet Cholez-Pagotto`,
   description: `La Cour de cassation juge que la conception d'un site internet personnalisé est une prestation de services, non une vente : le délai de rétractation de 14 jours court dès la conclusion du contrat, pas à sa réception. Analyse de l'arrêt du 28 mai 2026.`,
+  openGraph: {
+    type: 'article',
+    url: 'https://cholez-pagotto.fr/blog/creation-site-internet-delai-retractation-cour-cassation-28-mai-2026',
+    siteName: 'Cabinet Cholez-Pagotto',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/creation-site-internet-retractation-2026.webp'],
+    locale: 'fr_FR',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/creation-site-internet-retractation-2026.webp'],
+  },
 }
 
 const schema = {

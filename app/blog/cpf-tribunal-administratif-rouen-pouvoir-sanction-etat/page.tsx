@@ -5,6 +5,17 @@ import { Calendar, Clock, User, ChevronRight } from 'lucide-react'
 export const metadata = {
   title: `CPF : le tribunal administratif de Rouen limite le pouvoir de sanction de l'État · Blog Cabinet Cholez-Pagotto`,
   description: `Deux jugements du 12 mars 2026 annulent des sanctions de plus de 860 000 € : l'administration ne peut pas sanctionner l'inéligibilité CPF via le contrôle de la réalité des actions, et la Caisse des dépôts n'est pas le cocontractant de l'organisme de formation.`,
+  openGraph: {
+    type: 'article',
+    url: 'https://cholez-pagotto.fr/blog/cpf-tribunal-administratif-rouen-pouvoir-sanction-etat',
+    siteName: 'Cabinet Cholez-Pagotto',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/cpf-tribunal-administratif-rouen-2026.webp'],
+    locale: 'fr_FR',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/cpf-tribunal-administratif-rouen-2026.webp'],
+  },
 }
 
 const schema = {

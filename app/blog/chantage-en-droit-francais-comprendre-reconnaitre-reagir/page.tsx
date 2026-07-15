@@ -5,6 +5,17 @@ import { Calendar, Clock, User, ChevronRight } from 'lucide-react'
 export const metadata = {
   title: `Le chantage en droit français : le comprendre, le reconnaître, réagir · Blog Cabinet Cholez-Pagotto`,
   description: `Le chantage au sens du Code pénal (article 312-10) suppose une menace précise pour obtenir un engagement, une renonciation ou une somme. Définition, distinction avec l'extorsion, chantage au travail, sextorsion, et démarches à suivre pour réagir.`,
+  openGraph: {
+    type: 'article',
+    url: 'https://cholez-pagotto.fr/blog/chantage-en-droit-francais-comprendre-reconnaitre-reagir',
+    siteName: 'Cabinet Cholez-Pagotto',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/chantage-droit-penal-2026.webp'],
+    locale: 'fr_FR',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/chantage-droit-penal-2026.webp'],
+  },
 }
 
 const schema = {

@@ -5,6 +5,17 @@ import { Calendar, Clock, User, ChevronRight } from 'lucide-react'
 export const metadata = {
   title: `Loi anti-fraudes CPF : ce que les organismes de formation doivent sécuriser dès maintenant · Blog Cabinet Cholez-Pagotto`,
   description: `Absence à l'examen, transmission des listes de stagiaires, publication des taux de réussite : la loi du 25 juin 2026 impose aux organismes de formation de revoir leurs CGV, leur traçabilité et leur gestion du risque d'impayé.`,
+  openGraph: {
+    type: 'article',
+    url: 'https://cholez-pagotto.fr/blog/loi-anti-fraudes-cpf-organismes-formation-securiser',
+    siteName: 'Cabinet Cholez-Pagotto',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/loi-anti-fraudes-organismes-formation-securisation.webp'],
+    locale: 'fr_FR',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/loi-anti-fraudes-organismes-formation-securisation.webp'],
+  },
 }
 
 const schema = {
