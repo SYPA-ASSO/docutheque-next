@@ -446,7 +446,7 @@ export default function ArticleIA() {
               <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px'}}>Tags</p>
               <div style={{display: 'flex', gap: '6px', flexWrap: 'wrap'}}>
                 {['Droit', 'Intelligence Artificielle', 'IA juridique', 'Biais algorithmique', 'AI Act'].map(tag => (
-                  <span key={tag} style={{background: '#eff6ff', color: '#1a4fba', fontSize: '11px', padding: '3px 10px', borderRadius: '20px'}}>{tag}</span>
+                  <a key={tag} href={`/blog?tag=${encodeURIComponent(tag)}`} style={{background: '#eff6ff', color: '#1a4fba', fontSize: '11px', padding: '3px 10px', borderRadius: '20px', textDecoration: 'none', cursor: 'pointer'}}>{tag}</a>
                 ))}
               </div>
             </div>
