@@ -33,8 +33,9 @@ const schema = {
   }
 }
 
-export default function Blog({ searchParams }: { searchParams?: { tag?: string } }) {
-  const tagFiltre = searchParams?.tag ? decodeURIComponent(searchParams.tag) : null
+export default async function Blog({ searchParams }: { searchParams: Promise<{ tag?: string }> }) {
+  const params = await searchParams
+  const tagFiltre = params?.tag ? decodeURIComponent(params.tag) : null
 
   const articlesFiltres = tagFiltre
     ? articles.filter((a) => a.tags.some((t) => t.toLowerCase() === tagFiltre.toLowerCase()))
