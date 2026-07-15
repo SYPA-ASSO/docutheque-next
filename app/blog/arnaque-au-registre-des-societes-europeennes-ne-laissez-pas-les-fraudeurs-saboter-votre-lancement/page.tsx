@@ -38,7 +38,7 @@ const schema = {
         "url": "https://cholez-pagotto.fr"
       },
       "url": "https://cholez-pagotto.fr/blog/arnaque-au-registre-des-societes-europeennes-ne-laissez-pas-les-fraudeurs-saboter-votre-lancement",
-      "keywords": ["Arnaque", "Registre européen", "Entrepreneurs", "Guichet unique", "INPI", "BRIS"],
+      "keywords": ["Arnaques", "Registre européen", "Entrepreneurs", "Guichet unique", "INPI", "BRIS"],
       "inLanguage": "fr-FR"
     },
     {
@@ -73,7 +73,7 @@ const schema = {
           "name": "Ces arnaques sont-elles poursuivies pénalement ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Oui. Ces pratiques peuvent être qualifiées de pratiques commerciales trompeuses (art. L.121-2 du Code de la consommation), passibles de 2 ans d'emprisonnement et 300 000 € d'amende. Plusieurs structures frauduleuses ont fait l'objet de poursuites en France et en Europe."
+            "text": "Oui. Ces pratiques peuvent être qualifiées de pratiques commerciales trompeuses (art. L.121-2 du Code de la consommation), passibles de 2 ans d'emprisonnement et 300 000 € d'amende. Plusieurs structures frauduleuses ont fait l'objet de poursuites en France et en Europe."
           }
         }
       ]
@@ -163,7 +163,7 @@ export default function ArticleArnaqueRSE() {
                 <p style={{marginBottom: '1rem'}}>Peu après la validation de vos formalités sur le <strong>Guichet Unique (INPI)</strong>, vous recevez un document à l'allure officielle. Drapeau étoilé, jargon administratif, mentions de « mise en conformité », de « Notification discrétionnaire » ou de « publication obligatoire »… Tout est fait pour simuler une démarche d'État.</p>
                 <ul style={{paddingLeft: '1.5rem', margin: '1rem 0', display: 'flex', flexDirection: 'column', gap: '10px'}}>
                   <li><strong>Le piège :</strong> les fraudeurs récupèrent vos données publiques (SIREN, adresse, nom commercial) pour pré-remplir le formulaire et gagner votre confiance.</li>
-                  <li><strong>La réalité :</strong> en signant, vous ne remplissez pas une obligation légale. Vous souscrivez à un <strong>service de publicité privée</strong> totalement inutile, facturé entre 600 € et 1 000 €.</li>
+                  <li><strong>La réalité :</strong> en signant, vous ne remplissez pas une obligation légale. Vous souscrivez à un <strong>service de publicité privée</strong> totalement inutile, facturé entre 600 € et 1 000 €.</li>
                 </ul>
                 <div style={{background: '#fef2f2', border: '1px solid #fecaca', borderRadius: '10px', padding: '1rem 1.25rem', margin: '1.5rem 0'}}>
                   <p style={{color: '#dc2626', fontSize: '13px', lineHeight: '1.7', margin: '0 0 6px', fontWeight: '700'}}>Signes d'alerte à identifier</p>
@@ -249,7 +249,7 @@ export default function ArticleArnaqueRSE() {
                       <span>Ces arnaques sont-elles poursuivies pénalement ?</span>
                       <span style={{color: '#1a4fba', fontSize: '18px', flexShrink: 0, lineHeight: 1}}>＋</span>
                     </summary>
-                    <p style={{color: '#374151', fontSize: '13px', lineHeight: '1.75', marginTop: '12px', marginBottom: 0}}>Oui. Ces pratiques peuvent être qualifiées de pratiques commerciales trompeuses (art. L.121-2 du Code de la consommation), passibles de 2 ans d'emprisonnement et 300 000 € d'amende. Plusieurs structures frauduleuses ont fait l'objet de poursuites en France et en Europe.</p>
+                    <p style={{color: '#374151', fontSize: '13px', lineHeight: '1.75', marginTop: '12px', marginBottom: 0}}>Oui. Ces pratiques peuvent être qualifiées de pratiques commerciales trompeuses (art. L.121-2 du Code de la consommation), passibles de 2 ans d'emprisonnement et 300 000 € d'amende. Plusieurs structures frauduleuses ont fait l'objet de poursuites en France et en Europe.</p>
                   </details>
                 </div>
               </section>
@@ -280,7 +280,7 @@ export default function ArticleArnaqueRSE() {
 
             <div style={{background: '#0f2d6e', borderRadius: '12px', padding: '1.25rem'}}>
               <p style={{color: 'white', fontSize: '13px', fontWeight: '700', margin: '0 0 8px'}}>Une question juridique ?</p>
-              <p style={{color: 'rgba(255,255,255,0.8)', fontSize: '12px', lineHeight: '1.6', margin: '0 0 10px'}}>Un juriste vous répond par écrit sous 24 à 48h. 47 € à l'unité, sans abonnement.</p>
+              <p style={{color: 'rgba(255,255,255,0.8)', fontSize: '12px', lineHeight: '1.6', margin: '0 0 10px'}}>Un juriste vous répond par écrit sous 24 à 48h. 47 € à l'unité, sans abonnement.</p>
               <p style={{color: 'rgba(255,255,255,0.6)', fontSize: '11px', lineHeight: '1.6', margin: '0 0 14px', fontStyle: 'italic'}}>Ce service constitue une information juridique au sens de la loi n°71-1130 du 31 décembre 1971 et ne constitue pas une consultation juridique personnalisée. La réponse apportée vous permettra de mieux comprendre vos droits, d'identifier les règles juridiques applicables à votre situation et de prendre vos décisions en toute connaissance de cause. Le cas échéant, vous serez orienté vers le professionnel du droit compétent.</p>
               <a href="/information-sur-vos-droits" style={{display: 'block', background: 'white', color: '#0f2d6e', padding: '10px', borderRadius: '8px', fontSize: '12px', fontWeight: '700', textDecoration: 'none', textAlign: 'center'}}>
                 Poser ma question →
@@ -298,7 +298,7 @@ export default function ArticleArnaqueRSE() {
             <div style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.25rem'}}>
               <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px'}}>Tags</p>
               <div style={{display: 'flex', gap: '6px', flexWrap: 'wrap'}}>
-                <a href="/blog?tag=Arnaque" style={{background: "#eff6ff", color: "#1a4fba", fontSize: "11px", padding: "3px 10px", borderRadius: "20px", textDecoration: 'none', cursor: 'pointer'}}>Arnaque</a>
+                <a href="/blog?tag=Arnaques" style={{background: "#eff6ff", color: "#1a4fba", fontSize: "11px", padding: "3px 10px", borderRadius: "20px", textDecoration: 'none', cursor: 'pointer'}}>Arnaques</a>
                 <a href="/blog?tag=Registre%20europ%C3%A9en" style={{background: "#eff6ff", color: "#1a4fba", fontSize: "11px", padding: "3px 10px", borderRadius: "20px", textDecoration: 'none', cursor: 'pointer'}}>Registre européen</a>
                 <a href="/blog?tag=Entrepreneurs" style={{background: "#eff6ff", color: "#1a4fba", fontSize: "11px", padding: "3px 10px", borderRadius: "20px", textDecoration: 'none', cursor: 'pointer'}}>Entrepreneurs</a>
                 <a href="/blog?tag=Guichet%20unique" style={{background: "#eff6ff", color: "#1a4fba", fontSize: "11px", padding: "3px 10px", borderRadius: "20px", textDecoration: 'none', cursor: 'pointer'}}>Guichet unique</a>

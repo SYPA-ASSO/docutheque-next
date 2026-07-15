@@ -62,7 +62,7 @@ const schema = {
         },
         {
           "@type": "Question",
-          "name": "Le seuil unique de TVA à 25 000 € figure-t-il dans la loi de finances 2026 ?",
+          "name": "Le seuil unique de TVA à 25 000 € figure-t-il dans la loi de finances 2026 ?",
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Non. La tentative d'instaurer un nouveau seuil unique de franchise en base de TVA a été écartée. Les seuils antérieurs, qui distinguent les ventes des prestations de services, restent applicables en 2026. Ce point avait déjà été tranché par une loi spécifique du 3 novembre 2025."
@@ -73,7 +73,7 @@ const schema = {
           "name": "Ma TPE est-elle concernée par la surtaxe sur les grandes entreprises ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Non. La surtaxe exceptionnelle sur l'impôt sur les sociétés vise les grandes entreprises, dont le chiffre d'affaires est très élevé. Elle ne concerne pas les TPE ni les micro-entreprises. De même, la CVAE, maintenue pour 2026, ne s'applique qu'aux entreprises dont le chiffre d'affaires dépasse 500 000 €."
+            "text": "Non. La surtaxe exceptionnelle sur l'impôt sur les sociétés vise les grandes entreprises, dont le chiffre d'affaires est très élevé. Elle ne concerne pas les TPE ni les micro-entreprises. De même, la CVAE, maintenue pour 2026, ne s'applique qu'aux entreprises dont le chiffre d'affaires dépasse 500 000 €."
           }
         },
         {
@@ -81,7 +81,7 @@ const schema = {
           "name": "Qu'est-ce que la nouvelle taxe sur les petits colis ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "La loi de finances 2026 crée une taxe nationale sur les colis de faible valeur, inférieurs à 150 €, faisant l'objet d'une déclaration simplifiée en douane et provenant de pays non européens. Elle concerne notamment les professionnels qui importent ou revendent de petits colis depuis l'étranger."
+            "text": "La loi de finances 2026 crée une taxe nationale sur les colis de faible valeur, inférieurs à 150 €, faisant l'objet d'une déclaration simplifiée en douane et provenant de pays non européens. Elle concerne notamment les professionnels qui importent ou revendent de petits colis depuis l'étranger."
           }
         },
         {
@@ -339,7 +339,7 @@ export default function ArticleLoiFinances2026TPE() {
                   </details>
                   <details key={2} style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '10px', padding: '1rem 1.25rem'}}>
                     <summary style={{fontWeight: '600', color: '#0f2d6e', fontSize: '14px', cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '12px'}}>
-                      <span>Le seuil unique de TVA à 25 000 € figure-t-il dans la loi de finances 2026 ?</span>
+                      <span>Le seuil unique de TVA à 25 000 € figure-t-il dans la loi de finances 2026 ?</span>
                       <span style={{color: '#1a4fba', fontSize: '18px', flexShrink: 0, lineHeight: 1}}>＋</span>
                     </summary>
                     <p style={{color: '#374151', fontSize: '13px', lineHeight: '1.75', marginTop: '12px', marginBottom: 0}}>Non. La tentative d'un nouveau seuil unique de franchise en base de TVA a été écartée. Les seuils antérieurs, qui distinguent les ventes des prestations de services, restent applicables en 2026, un point déjà tranché par une loi spécifique du 3 novembre 2025.</p>
@@ -438,6 +438,8 @@ export default function ArticleLoiFinances2026TPE() {
               <div style={{display: 'flex', gap: '6px', flexWrap: 'wrap'}}>
                 <a href="/blog?tag=Loi%20de%20finances%202026" style={{background: "#eff6ff", color: "#1a4fba", fontSize: "11px", padding: "3px 10px", borderRadius: "20px", textDecoration: 'none', cursor: 'pointer'}}>Loi de finances 2026</a>
                 <a href="/blog?tag=TPE" style={{background: "#eff6ff", color: "#1a4fba", fontSize: "11px", padding: "3px 10px", borderRadius: "20px", textDecoration: 'none', cursor: 'pointer'}}>TPE</a>
+                <a href="/blog?tag=TPE%20%26%20PME" style={{background: "#eff6ff", color: "#1a4fba", fontSize: "11px", padding: "3px 10px", borderRadius: "20px", textDecoration: 'none', cursor: 'pointer'}}>TPE &amp; PME</a>
+                <a href="/blog?tag=TPE%20%26%20ind%C3%A9pendants" style={{background: "#eff6ff", color: "#1a4fba", fontSize: "11px", padding: "3px 10px", borderRadius: "20px", textDecoration: 'none', cursor: 'pointer'}}>TPE &amp; indépendants</a>
                 <a href="/blog?tag=Ind%C3%A9pendants" style={{background: "#eff6ff", color: "#1a4fba", fontSize: "11px", padding: "3px 10px", borderRadius: "20px", textDecoration: 'none', cursor: 'pointer'}}>Indépendants</a>
                 <a href="/blog?tag=Fiscalit%C3%A9" style={{background: "#eff6ff", color: "#1a4fba", fontSize: "11px", padding: "3px 10px", borderRadius: "20px", textDecoration: 'none', cursor: 'pointer'}}>Fiscalité</a>
                 <a href="/blog?tag=Imp%C3%B4t%20sur%20le%20revenu" style={{background: "#eff6ff", color: "#1a4fba", fontSize: "11px", padding: "3px 10px", borderRadius: "20px", textDecoration: 'none', cursor: 'pointer'}}>Impôt sur le revenu</a>

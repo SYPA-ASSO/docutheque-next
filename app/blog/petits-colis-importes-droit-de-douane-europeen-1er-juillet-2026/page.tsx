@@ -382,6 +382,8 @@ export default function ArticlePetitsColis2026() {
                 <a href="/blog?tag=Douane" style={{background: "#eff6ff", color: "#1a4fba", fontSize: "11px", padding: "3px 10px", borderRadius: "20px", textDecoration: 'none', cursor: 'pointer'}}>Douane</a>
                 <a href="/blog?tag=Fiscalit%C3%A9" style={{background: "#eff6ff", color: "#1a4fba", fontSize: "11px", padding: "3px 10px", borderRadius: "20px", textDecoration: 'none', cursor: 'pointer'}}>Fiscalité</a>
                 <a href="/blog?tag=TPE" style={{background: "#eff6ff", color: "#1a4fba", fontSize: "11px", padding: "3px 10px", borderRadius: "20px", textDecoration: 'none', cursor: 'pointer'}}>TPE</a>
+                <a href="/blog?tag=TPE%20%26%20PME" style={{background: "#eff6ff", color: "#1a4fba", fontSize: "11px", padding: "3px 10px", borderRadius: "20px", textDecoration: 'none', cursor: 'pointer'}}>TPE &amp; PME</a>
+                <a href="/blog?tag=TPE%20%26%20ind%C3%A9pendants" style={{background: "#eff6ff", color: "#1a4fba", fontSize: "11px", padding: "3px 10px", borderRadius: "20px", textDecoration: 'none', cursor: 'pointer'}}>TPE &amp; indépendants</a>
               </div>
             </div>
 
