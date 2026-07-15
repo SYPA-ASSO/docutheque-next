@@ -18,6 +18,42 @@ export type ArticleBlog = {
 
 export const ARTICLES_BLOG: ArticleBlog[] = [
   {
+    slug: 'cpf-tribunal-administratif-rouen-pouvoir-sanction-etat',
+    titre: "CPF : le tribunal administratif de Rouen limite le pouvoir de sanction de l'État",
+    resume: "Deux jugements du 12 mars 2026 annulent des sanctions de plus de 860 000 € : l'administration ne peut pas sanctionner l'inéligibilité CPF via le contrôle de la réalité des actions, et la Caisse des dépôts n'est pas le cocontractant de l'organisme de formation.",
+    date: '16 mars 2026',
+    auteur: 'François CHOLEZ',
+    categorie: 'Formation',
+    tags: ['CPF', 'Tribunal administratif', 'Organisme de formation', 'Caisse des dépôts'],
+    tempsLecture: '11 min',
+    image: 'https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/cpf-tribunal-administratif-rouen-2026.webp',
+  },
+
+  {
+    slug: 'loi-anti-fraudes-cpf-organismes-formation-securiser',
+    titre: "Loi anti-fraudes CPF : ce que les organismes de formation doivent sécuriser dès maintenant",
+    resume: "Absence à l'examen, transmission des listes de stagiaires, publication des taux de réussite : la loi du 25 juin 2026 impose aux organismes de formation de revoir leurs CGV, leur traçabilité et leur gestion du risque d'impayé.",
+    date: '15 juillet 2026',
+    auteur: 'François CHOLEZ',
+    categorie: 'Formation',
+    tags: ['Organisme de formation', 'CPF', 'Qualiopi', 'Fraudes sociales'],
+    tempsLecture: '14 min',
+    image: 'https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/loi-anti-fraudes-organismes-formation-securisation.webp',
+  },
+
+  {
+    slug: 'cpf-2026-nouvelles-conditions-mobilisation-droits',
+    titre: "CPF 2026 : nouvelles conditions de mobilisation des droits",
+    resume: "Depuis le 27 juin 2026, mobiliser son CPF suppose de se présenter à l'examen et de ne pas déjà détenir la certification visée. Ce que risque le titulaire, et non l'organisme de formation, en cas d'absence non justifiée.",
+    date: '15 juillet 2026',
+    auteur: 'François CHOLEZ',
+    categorie: 'Formation',
+    tags: ['CPF', 'Organisme de formation', 'Caisse des dépôts', 'Fraudes sociales'],
+    tempsLecture: '12 min',
+    image: 'https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/cpf-2026-nouvelles-conditions-mobilisation.webp',
+  },
+
+  {
     slug: 'qualiopi-iso-21001-organismes-formation-association-cooperative',
     titre: "Qualiopi et ISO 21001 : comprendre les deux démarches qualité de la formation",
     resume: "Qualiopi, obligatoire pour accéder aux fonds publics et mutualisés, et ISO 21001, norme internationale de management de la qualité éducative : le guide complet pour les organismes de formation, associations, coopératives et le grand public.",
