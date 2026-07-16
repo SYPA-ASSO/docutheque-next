@@ -18,6 +18,18 @@ export type ArticleBlog = {
 
 export const ARTICLES_BLOG: ArticleBlog[] = [
   {
+    slug: 'expertise-cse-risque-grave-surcharge-travail-suicide-cour-cassation',
+    titre: "Expertise CSE pour risque grave : ce que confirme la Cour de cassation après un suicide lié à la surcharge de travail",
+    resume: "Chez Microsoft France, un CSE a voté une expertise pour risque grave après un suicide lié à la surcharge de travail. La Cour de cassation censure le tribunal qui l'avait annulée en écartant l'absence d'alerte individuelle et les mesures correctives tardives de l'employeur.",
+    date: '16 juillet 2026',
+    auteur: 'François CHOLEZ',
+    categorie: 'Droit du travail',
+    tags: ['CSE', 'Risque grave', 'Risques psychosociaux', 'DUERP'],
+    tempsLecture: '16 min',
+    image: 'https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/expertise-cse-risque-grave-2026.webp',
+  },
+
+  {
     slug: 'arret-maladie-teleconsultation-2026-plafond-verrous-fraude',
     titre: "Arrêt maladie en téléconsultation 2026 : le plafond de 3 jours et les nouveaux verrous anti-fraude",
     resume: "Le plafond de 3 jours pour un arrêt prescrit en téléconsultation existe depuis 2024. Ce qui change au 27 juin 2026 : un seul renouvellement possible, échange oral obligatoire, contre-visite patronale étendue.",
