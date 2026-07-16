@@ -18,6 +18,18 @@ export type ArticleBlog = {
 
 export const ARTICLES_BLOG: ArticleBlog[] = [
   {
+    slug: 'arret-maladie-teleconsultation-2026-plafond-verrous-fraude',
+    titre: "Arrêt maladie en téléconsultation 2026 : le plafond de 3 jours et les nouveaux verrous anti-fraude",
+    resume: "Le plafond de 3 jours pour un arrêt prescrit en téléconsultation existe depuis 2024. Ce qui change au 27 juin 2026 : un seul renouvellement possible, échange oral obligatoire, contre-visite patronale étendue.",
+    date: '15 juillet 2026',
+    auteur: 'François CHOLEZ',
+    categorie: 'Droit du travail',
+    tags: ['Arrêt maladie', 'Téléconsultation', 'Contre-visite patronale', 'Fraudes sociales'],
+    tempsLecture: '13 min',
+    image: 'https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/arret-maladie-teleconsultation-2026.webp',
+  },
+
+  {
     slug: 'cpf-tribunal-administratif-rouen-pouvoir-sanction-etat',
     titre: "CPF : le tribunal administratif de Rouen limite le pouvoir de sanction de l'État",
     resume: "Deux jugements du 12 mars 2026 annulent des sanctions de plus de 860 000 € : l'administration ne peut pas sanctionner l'inéligibilité CPF via le contrôle de la réalité des actions, et la Caisse des dépôts n'est pas le cocontractant de l'organisme de formation.",
