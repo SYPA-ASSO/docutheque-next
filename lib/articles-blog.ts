@@ -18,6 +18,30 @@ export type ArticleBlog = {
 
 export const ARTICLES_BLOG: ArticleBlog[] = [
   {
+    slug: 'tarifs-creche-2026-calcul-automatise-dites-le-nous-une-fois',
+    titre: "Tarifs de crèche 2026 : l'État automatise le calcul, ce que ça change pour les gestionnaires et les familles",
+    resume: "Depuis le 10 juillet 2026, les 12 422 crèches en PSU peuvent récupérer automatiquement les revenus des familles auprès de la CNAF et de la MSA. Fondement juridique du « Dites-le-nous une fois », calcul du tarif, points de vigilance RGPD.",
+    date: '17 juillet 2026',
+    auteur: 'François CHOLEZ',
+    categorie: 'Vie associative',
+    tags: ['Crèche', 'Petite enfance', 'RGPD', 'Simplification administrative'],
+    tempsLecture: '13 min',
+    image: 'https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/tarifs-creche-calcul-automatise-2026.webp',
+  },
+
+  {
+    slug: 'rgpd-prudhommes-indemnisation-salarie-cour-cassation-2026',
+    titre: "RGPD et prud'hommes : pourquoi la seule violation ne suffit plus à obtenir réparation (Cass. soc., 24 juin 2026)",
+    resume: "La Cour de cassation juge que la seule violation du RGPD par l'employeur n'ouvre plus automatiquement droit à réparation pour le salarié. Ce que ça change, et pourquoi l'audit RGPD des données RH reste indispensable.",
+    date: '16 juillet 2026',
+    auteur: 'François CHOLEZ',
+    categorie: 'RGPD & conformité',
+    tags: ['RGPD', "Prud'hommes", 'Cour de cassation', 'Données RH'],
+    tempsLecture: '12 min',
+    image: 'https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/rgpd-prudhommes-indemnisation-2026.webp',
+  },
+
+  {
     slug: 'expertise-cse-risque-grave-surcharge-travail-suicide-cour-cassation',
     titre: "Expertise CSE pour risque grave : ce que confirme la Cour de cassation après un suicide lié à la surcharge de travail",
     resume: "Chez Microsoft France, un CSE a voté une expertise pour risque grave après un suicide lié à la surcharge de travail. La Cour de cassation censure le tribunal qui l'avait annulée en écartant l'absence d'alerte individuelle et les mesures correctives tardives de l'employeur.",
