@@ -80,7 +80,7 @@ export default function ArticleVacancesSecuriserLogement() {
               <div style={{display: 'flex', gap: '20px', flexWrap: 'wrap', alignItems: 'center', marginBottom: '20px'}}>
                 <span style={{display: 'flex', alignItems: 'center', gap: '5px', color: '#6b7280', fontSize: '12px'}}><User size={13} strokeWidth={1.5} /> François CHOLEZ</span>
                 <span style={{display: 'flex', alignItems: 'center', gap: '5px', color: '#6b7280', fontSize: '12px'}}><Calendar size={13} strokeWidth={1.5} /> 20 juillet 2026</span>
-                <span style={{display: 'flex', alignItems: 'center', gap: '5px', color: '#6b7280', fontSize: '12px'}}><Clock size={13} strokeWidth={1.5} /> 26 min de lecture</span>
+                <span style={{display: 'flex', alignItems: 'center', gap: '5px', color: '#6b7280', fontSize: '12px'}}><Clock size={13} strokeWidth={1.5} /> 7 min de lecture</span>
               </div>
               <img src="https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/vacances-securiser-logement-assurance-garde-enfants-animaux-2026.webp" alt="Vacances : sécuriser son logement, son assurance habitation, la garde des enfants et des animaux" style={{width: '100%', borderRadius: '12px', objectFit: 'cover', maxHeight: '400px'}} />
             </div>

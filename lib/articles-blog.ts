@@ -20,12 +20,12 @@ export const ARTICLES_BLOG: ArticleBlog[] = [
   {
     slug: 'vacances-securiser-logement-assurance-garde-enfants-animaux',
     titre: "Vacances : sécuriser son logement, son assurance habitation, la garde des enfants et des animaux",
-    resume: "Clause d'inhabitation, déclaration d'absence à l'assureur, garde d'enfants par une assistante maternelle ou une nounou, pension ou voyage avec son animal, sécurisation des locaux professionnels : le guide complet avant de partir en vacances, pour les particuliers comme pour les professionnels.",
+    resume: "Clause d'inhabitation, déclaration d'absence à l'assureur, garde d'enfants, garde ou départ avec son animal, sécurisation des locaux professionnels, garantie villégiature, location entre particuliers, home sitting, objets de valeur et cybersécurité : le guide complet avant de partir en vacances, pour les particuliers comme pour les professionnels.",
     date: '20 juillet 2026',
     auteur: 'François CHOLEZ',
     categorie: 'Assurances',
-    tags: ['Assurance habitation', 'Vacances', 'Absence prolongée', "Garde d'animaux", 'Particulier employeur', 'Local professionnel'],
-    tempsLecture: '17 min',
+    tags: ['Assurance habitation', 'Vacances', 'Absence prolongée', "Garde d'animaux", 'Particulier employeur', 'Local professionnel', 'Garantie villégiature', 'Location saisonnière', 'Home sitting', 'Cybersécurité'],
+    tempsLecture: '7 min',
     image: 'https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/vacances-securiser-logement-assurance-garde-enfants-animaux-2026.webp',
   },
 
