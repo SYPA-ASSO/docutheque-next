@@ -4,7 +4,7 @@ import { Calendar, Clock, User, ChevronRight } from 'lucide-react'
 
 export const metadata = {
   title: `Vacances : sécuriser son logement, son assurance, la garde des enfants et des animaux · Blog Cabinet Cholez-Pagotto`,
-  description: `Avant de partir en vacances : clause d'inhabitation de l'assurance habitation, déclaration d'absence, garde d'enfants par une assistante maternelle ou une nounou, garde ou départ avec son animal, et sécurisation des locaux professionnels. Le guide complet et vérifié, pour les particuliers comme pour les professionnels.`,
+  description: `Avant de partir en vacances : clause d'inhabitation de l'assurance habitation, déclaration d'absence, garde d'enfants, garde ou départ avec son animal, sécurisation des locaux professionnels, location saisonnière et garantie villégiature, échange de logement, home sitting, objets de valeur et cybersécurité. Le guide complet et vérifié.`,
   openGraph: {
     type: 'article',
     url: 'https://cholez-pagotto.fr/blog/vacances-securiser-logement-assurance-garde-enfants-animaux',
@@ -24,13 +24,13 @@ const schema = {
     {
       "@type": "Article",
       "headline": "Vacances : sécuriser son logement, son assurance habitation, la garde des enfants et des animaux",
-      "description": "Clause d'inhabitation, déclaration d'absence à l'assureur, garde d'enfants par une assistante maternelle ou une nounou, pension ou voyage avec son animal, sécurisation des locaux professionnels : le guide complet avant de partir en vacances.",
+      "description": "Clause d'inhabitation, déclaration d'absence à l'assureur, garde d'enfants, garde ou départ avec son animal, sécurisation des locaux professionnels, garantie villégiature, location entre particuliers, home sitting, objets de valeur et cybersécurité : le guide complet avant de partir en vacances.",
       "image": "https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/vacances-securiser-logement-assurance-garde-enfants-animaux-2026.webp",
       "datePublished": "2026-07-20",
       "author": { "@type": "Person", "name": "François CHOLEZ", "worksFor": { "@type": "Organization", "name": "Cabinet Cholez-Pagotto" } },
       "publisher": { "@type": "Organization", "name": "Cabinet Cholez-Pagotto", "url": "https://cholez-pagotto.fr" },
       "url": "https://cholez-pagotto.fr/blog/vacances-securiser-logement-assurance-garde-enfants-animaux",
-      "keywords": ["Assurance habitation", "Clause d'inhabitation", "Vacances", "Garde d'animaux", "Abandon d'animal", "Particulier employeur", "Local professionnel"],
+      "keywords": ["Assurance habitation", "Clause d'inhabitation", "Vacances", "Garde d'animaux", "Abandon d'animal", "Particulier employeur", "Local professionnel", "Garantie villégiature", "Location saisonnière", "Home sitting", "Cybersécurité"],
       "inLanguage": "fr-FR"
     },
     {
@@ -40,7 +40,9 @@ const schema = {
         { "@type": "Question", "name": "Dois-je prévenir mon assureur avant de partir plusieurs semaines ?", "acceptedAnswer": { "@type": "Answer", "text": "Ce n'est pas une obligation légale générale, mais c'est recommandé dès lors que votre absence risque de dépasser le délai fixé par la clause d'inhabitation de votre contrat. Seule la lecture de vos conditions générales permet de le savoir avec certitude." } },
         { "@type": "Question", "name": "Que risque-t-on en cas d'abandon d'un animal avant de partir en vacances ?", "acceptedAnswer": { "@type": "Answer", "text": "L'abandon d'un animal domestique est puni des mêmes peines que les actes de cruauté, soit jusqu'à trois ans d'emprisonnement et 45 000 € d'amende en application de l'article 521-1 du Code pénal, et jusqu'à cinq ans et 75 000 € si l'abandon entraîne la mort de l'animal." } },
         { "@type": "Question", "name": "Ma nounou ou mon assistante maternelle peut-elle m'accompagner en vacances ?", "acceptedAnswer": { "@type": "Answer", "text": "Oui, à condition que cela soit organisé dans le cadre de son contrat de travail de particulier employeur, avec un accord explicite sur les conditions de déplacement, d'hébergement et de rémunération pendant cette période." } },
-        { "@type": "Question", "name": "Mon assurance professionnelle me couvre-t-elle si mon local est fermé pour congés ?", "acceptedAnswer": { "@type": "Answer", "text": "Cela dépend de votre contrat multirisque professionnelle : la garantie vol y est souvent conditionnée à la durée d'inoccupation des locaux. La garantie perte d'exploitation, elle, ne se déclenche en principe pas pour une fermeture volontaire. Seule la lecture de vos conditions générales permet de connaître les exigences propres à votre contrat." } }
+        { "@type": "Question", "name": "Mon assurance professionnelle me couvre-t-elle si mon local est fermé pour congés ?", "acceptedAnswer": { "@type": "Answer", "text": "Cela dépend de votre contrat multirisque professionnelle : la garantie vol y est souvent conditionnée à la durée d'inoccupation des locaux. La garantie perte d'exploitation, elle, ne se déclenche en principe pas pour une fermeture volontaire. Seule la lecture de vos conditions générales permet de connaître les exigences propres à votre contrat." } },
+        { "@type": "Question", "name": "Que couvre la garantie villégiature quand je loue un logement de vacances ?", "acceptedAnswer": { "@type": "Answer", "text": "La garantie villégiature couvre votre responsabilité civile de locataire temporaire (incendie, dégât des eaux, explosion) en application de la présomption posée par l'article 1732 du Code civil, complétée par l'article 1733 pour l'incendie et l'article 1735 pour les personnes de votre foyer. Ses plafonds, franchises et étendue territoriale varient selon les contrats." } },
+        { "@type": "Question", "name": "Puis-je faire garder ma maison par une connaissance sans contrat écrit ?", "acceptedAnswer": { "@type": "Answer", "text": "Le home sitting ne bénéficie d'aucun régime juridique spécifique. En l'absence d'écrit, c'est le droit commun de la responsabilité civile (article 1240 du Code civil) qui s'applique en cas de dommage causé par la personne gardienne, et l'article 1243 si elle a également la garde de vos animaux. Un écrit précisant les missions, les dates et les consignes reste la meilleure protection pour les deux parties." } }
       ]
     },
     { "@type": "BreadcrumbList", "itemListElement": [
@@ -78,7 +80,7 @@ export default function ArticleVacancesSecuriserLogement() {
               <div style={{display: 'flex', gap: '20px', flexWrap: 'wrap', alignItems: 'center', marginBottom: '20px'}}>
                 <span style={{display: 'flex', alignItems: 'center', gap: '5px', color: '#6b7280', fontSize: '12px'}}><User size={13} strokeWidth={1.5} /> François CHOLEZ</span>
                 <span style={{display: 'flex', alignItems: 'center', gap: '5px', color: '#6b7280', fontSize: '12px'}}><Calendar size={13} strokeWidth={1.5} /> 20 juillet 2026</span>
-                <span style={{display: 'flex', alignItems: 'center', gap: '5px', color: '#6b7280', fontSize: '12px'}}><Clock size={13} strokeWidth={1.5} /> 17 min de lecture</span>
+                <span style={{display: 'flex', alignItems: 'center', gap: '5px', color: '#6b7280', fontSize: '12px'}}><Clock size={13} strokeWidth={1.5} /> 26 min de lecture</span>
               </div>
               <img src="https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/vacances-securiser-logement-assurance-garde-enfants-animaux-2026.webp" alt="Vacances : sécuriser son logement, son assurance habitation, la garde des enfants et des animaux" style={{width: '100%', borderRadius: '12px', objectFit: 'cover', maxHeight: '400px'}} />
             </div>
@@ -94,6 +96,15 @@ export default function ArticleVacancesSecuriserLogement() {
                 <li><a href="#animaux" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none"}}>V. Partir avec son animal ou le faire garder</a></li>
                 <li><a href="#sinistre" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none"}}>VI. Un sinistre survient pendant l'absence : que faire ?</a></li>
                 <li><a href="#professionnels" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none"}}>VII. Professionnels : sécuriser ses locaux pendant la fermeture estivale</a></li>
+                <li><a href="#villegiature" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none"}}>VIII. Louer un logement de vacances : la garantie villégiature</a></li>
+                <li><a href="#plateforme" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none"}}>IX. Louer via une plateforme (Airbnb, Abritel, Booking...)</a></li>
+                <li><a href="#echange" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none"}}>X. Échanger son logement (HomeExchange...)</a></li>
+                <li><a href="#homesitting" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none"}}>XI. Home sitting</a></li>
+                <li><a href="#pret" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none"}}>XII. Prêter gratuitement son logement</a></li>
+                <li><a href="#residence-secondaire" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none"}}>XIII. Résidence secondaire</a></li>
+                <li><a href="#objets-valeur" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none"}}>XIV. Objets de valeur</a></li>
+                <li><a href="#cybersecurite" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none"}}>XV. Cybersécurité pendant les vacances</a></li>
+                <li><a href="#checklist" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none"}}>XVI. Check-list avant le départ</a></li>
                 <li><a href="#conclusion" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none"}}>Conclusion</a></li>
                 <li><a href="#sources" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none"}}>Sources officielles</a></li>
                 <li><a href="#faq" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none"}}>Questions fréquentes</a></li>
@@ -154,7 +165,7 @@ export default function ArticleVacancesSecuriserLogement() {
 
               <section id="sinistre">
                 <h2 style={{color: '#0f2d6e', fontSize: '1.3rem', fontWeight: '700', margin: '2rem 0 16px'}}>VI. Un sinistre survient pendant l&apos;absence : que faire ?</h2>
-                <p style={{marginBottom: '1rem'}}>La déclaration de sinistre doit intervenir dans le délai fixé au contrat, qui ne peut être inférieur à cinq jours ouvrés en application de l&apos;article&nbsp;L.&nbsp;113-2 du Code des assurances, sauf circonstances particulières justifiant un délai supérieur. En pratique, désigner avant le départ une personne de confiance disposant d&apos;un double des clés permet de faire constater les dégâts rapidement et de limiter leur aggravation, ce qui reste l&apos;une des obligations de l&apos;assuré en cas de sinistre.</p>
+                <p style={{marginBottom: '1rem'}}>La déclaration de sinistre doit intervenir dans le délai fixé au contrat, qui ne peut être inférieur à cinq jours ouvrés en application de l&apos;article&nbsp;L.&nbsp;113-2 du Code des assurances. Ce délai minimal légal est ramené à deux jours ouvrés en cas de vol&nbsp;: un cambriolage découvert au retour de vacances doit donc être signalé sans attendre. Ces délais peuvent être allongés d&apos;un commun accord entre l&apos;assuré et l&apos;assureur, mais jamais raccourcis par le contrat. En pratique, désigner avant le départ une personne de confiance disposant d&apos;un double des clés permet de faire constater les dégâts rapidement et de limiter leur aggravation, ce qui reste l&apos;une des obligations de l&apos;assuré en cas de sinistre.</p>
                 <p style={{marginBottom: '1rem'}}>Conserver les photos de l&apos;état du logement avant le départ, ainsi que les justificatifs d&apos;achat des biens de valeur, facilite ensuite l&apos;évaluation du préjudice par l&apos;assureur ou l&apos;expert mandaté.</p>
               </section>
 
@@ -168,6 +179,67 @@ export default function ArticleVacancesSecuriserLogement() {
                   </p>
                 </div>
                 <p style={{marginBottom: '1rem'}}>Avant de fermer : prévenir son assureur si le contrat le demande, vérifier le fonctionnement de l&apos;alarme et de la télésurveillance si le local en est équipé, couper les circuits non essentiels, sécuriser ou mettre en lieu sûr les stocks de valeur, et organiser un passage régulier d&apos;un salarié, d&apos;un voisin professionnel ou d&apos;un prestataire de gardiennage pour repérer rapidement toute anomalie. Anticiper également la gestion des contrats en cours pendant la fermeture (livraisons, prélèvements, échéances contractuelles) évite les mauvaises surprises au retour.</p>
+              </section>
+
+              <section id="villegiature">
+                <h2 style={{color: '#0f2d6e', fontSize: '1.3rem', fontWeight: '700', margin: '2rem 0 16px'}}>VIII. Louer un logement de vacances : la garantie villégiature</h2>
+                <p style={{marginBottom: '1rem'}}>Lorsqu&apos;un particulier loue une maison, un appartement ou un gîte pour ses vacances, il devient locataire temporaire du logement, avec les mêmes responsabilités qu&apos;un locataire classique le temps du séjour. En cas d&apos;incendie, de dégât des eaux ou d&apos;explosion, il est présumé responsable des dégradations survenues pendant son occupation, en application de l&apos;article&nbsp;1732 du Code civil, sauf à prouver qu&apos;elles ont eu lieu sans sa faute. L&apos;article&nbsp;1733 applique cette même présomption au cas particulier de l&apos;incendie, et l&apos;article&nbsp;1735 étend cette responsabilité aux dommages causés par les personnes de son foyer, invités compris.</p>
+                <p style={{marginBottom: '1rem'}}>C&apos;est précisément ce risque que couvre la garantie villégiature, une option ou une extension fréquente des contrats d&apos;assurance multirisque habitation. Elle prend en charge la responsabilité civile locative du vacancier pour ces sinistres classiques d&apos;un séjour. Le propriétaire bailleur est en droit d&apos;exiger une attestation d&apos;assurance villégiature avant la remise des clés. Avant de partir, il convient de vérifier trois points dans son contrat&nbsp;: le plafond d&apos;indemnisation, les exclusions éventuelles, et l&apos;étendue territoriale de la garantie (France uniquement, Europe, ou monde entier selon les contrats).</p>
+              </section>
+
+              <section id="plateforme">
+                <h2 style={{color: '#0f2d6e', fontSize: '1.3rem', fontWeight: '700', margin: '2rem 0 16px'}}>IX. Louer via une plateforme (Airbnb, Abritel, Booking...)</h2>
+                <p style={{marginBottom: '1rem'}}>Les garanties proposées directement par les plateformes de réservation ne remplacent pas nécessairement votre propre assurance habitation, ni la garantie villégiature qu&apos;elle peut inclure. Ces protections, souvent présentées comme incluses gratuitement, comportent leurs propres franchises, plafonds et exclusions, qui ne couvrent pas systématiquement tous les cas de figure d&apos;un contrat d&apos;assurance classique.</p>
+                <p style={{marginBottom: '1rem'}}>Avant de réserver, il est donc utile de vérifier à la fois les conditions de la garantie proposée par la plateforme et celles de sa propre garantie villégiature, pour savoir laquelle s&apos;appliquera en priorité et ce que chacune couvre réellement.</p>
+              </section>
+
+              <section id="echange">
+                <h2 style={{color: '#0f2d6e', fontSize: '1.3rem', fontWeight: '700', margin: '2rem 0 16px'}}>X. Échanger son logement (HomeExchange...)</h2>
+                <p style={{marginBottom: '1rem'}}>L&apos;échange de logements entre particuliers, via une plateforme dédiée, n&apos;exonère aucun des deux occupants de sa responsabilité en cas de dommage causé au logement qu&apos;il occupe temporairement. Chacun reste responsable du bien qu&apos;il occupe le temps de l&apos;échange, sur le même fondement que pour une location de vacances classique.</p>
+                <p style={{marginBottom: '1rem'}}>Il convient donc de vérifier, de part et d&apos;autre, que sa propre garantie villégiature (ou équivalent) couvre bien ce type d&apos;occupation réciproque, et de prendre connaissance des garanties éventuellement proposées par la plateforme d&apos;échange elle-même.</p>
+              </section>
+
+              <section id="homesitting">
+                <h2 style={{color: '#0f2d6e', fontSize: '1.3rem', fontWeight: '700', margin: '2rem 0 16px'}}>XI. Home sitting</h2>
+                <p style={{marginBottom: '1rem'}}>Le home sitting, qui consiste à faire garder son logement (et souvent ses animaux) par une personne qui y réside pendant l&apos;absence des occupants, ne bénéficie d&apos;aucun régime juridique spécifique. En l&apos;absence de règles dédiées, c&apos;est le droit commun de la responsabilité civile qui s&apos;applique&nbsp;: la personne qui cause un dommage en répond sur le fondement de l&apos;article&nbsp;1240 du Code civil, et si elle a la garde d&apos;un animal pendant cette période, sur le fondement de l&apos;article&nbsp;1243, qui rend le gardien de l&apos;animal responsable des dommages qu&apos;il cause.</p>
+                <p style={{marginBottom: '1rem'}}>Faute de cadre légal dédié, la meilleure protection reste de formaliser la mission par écrit&nbsp;: dates précises d&apos;occupation, missions confiées (arrosage, courrier, entretien), coordonnées utiles en cas d&apos;urgence, et modalités précises de garde des animaux le cas échéant.</p>
+              </section>
+
+              <section id="pret">
+                <h2 style={{color: '#0f2d6e', fontSize: '1.3rem', fontWeight: '700', margin: '2rem 0 16px'}}>XII. Prêter gratuitement son logement</h2>
+                <p style={{marginBottom: '1rem'}}>Prêter gratuitement son logement à un proche pendant son absence est juridiquement distinct d&apos;une location&nbsp;: il s&apos;agit d&apos;un prêt à usage, sans contrepartie financière. Cette distinction n&apos;empêche pas les mêmes questions de se poser côté assurance&nbsp;: encore faut-il vérifier que son contrat d&apos;assurance habitation couvre bien cette occupation temporaire par un tiers non rémunéré, certains contrats limitant leurs garanties à une occupation par l&apos;assuré lui-même ou sa famille proche.</p>
+              </section>
+
+              <section id="residence-secondaire">
+                <h2 style={{color: '#0f2d6e', fontSize: '1.3rem', fontWeight: '700', margin: '2rem 0 16px'}}>XIII. Résidence secondaire</h2>
+                <p style={{marginBottom: '1rem'}}>Une résidence secondaire, par nature inoccupée une grande partie de l&apos;année, fait souvent l&apos;objet de clauses particulières dans les contrats d&apos;assurance habitation, distinctes de celles applicables à une résidence principale&nbsp;: durée d&apos;inoccupation tolérée, obligation de visites régulières par le propriétaire ou un tiers désigné, parfois franchises plus élevées en cas de sinistre. Ces clauses rejoignent la logique de la clause d&apos;inhabitation vue plus haut, mais s&apos;appliquent ici de façon quasi permanente plutôt que ponctuelle&nbsp;: mieux vaut donc les connaître avant même la période estivale.</p>
+              </section>
+
+              <section id="objets-valeur">
+                <h2 style={{color: '#0f2d6e', fontSize: '1.3rem', fontWeight: '700', margin: '2rem 0 16px'}}>XIV. Objets de valeur</h2>
+                <p style={{marginBottom: '1rem'}}>Les contrats d&apos;assurance habitation plafonnent presque toujours l&apos;indemnisation des objets de valeur (bijoux, matériel high-tech, œuvres d&apos;art), parfois par catégorie d&apos;objet, parfois de façon globale. Avant de partir, il est utile de vérifier ces plafonds au regard de ce que l&apos;on possède réellement, de respecter les conditions de conservation éventuellement exigées par le contrat (coffre-fort, par exemple), et de conserver les factures et photographies de ces biens, qui faciliteront toute déclaration de sinistre.</p>
+              </section>
+
+              <section id="cybersecurite">
+                <h2 style={{color: '#0f2d6e', fontSize: '1.3rem', fontWeight: '700', margin: '2rem 0 16px'}}>XV. Cybersécurité pendant les vacances</h2>
+                <p style={{marginBottom: '1rem'}}>La sécurité ne se limite pas au logement physique. Annoncer publiquement, sur les réseaux sociaux, ses dates de départ et la durée de son absence renseigne aussi bien les cambrioleurs que les usurpateurs d&apos;identité. Activer l&apos;authentification à double facteur sur ses comptes sensibles (banque, messagerie) avant de partir limite les conséquences d&apos;un mot de passe compromis.</p>
+                <p style={{marginBottom: '1rem'}}>La période estivale est également propice aux tentatives de hameçonnage (faux SMS de livraison de colis, faux messages des impôts ou de l&apos;Assurance Maladie, fausses amendes à régler en urgence), qui misent sur la moindre vigilance des vacanciers. L&apos;Agence nationale de la sécurité des systèmes d&apos;information (ANSSI) et le dispositif gouvernemental Cybermalveillance.gouv.fr publient régulièrement des recommandations et permettent de signaler ces tentatives.</p>
+              </section>
+
+              <section id="checklist">
+                <h2 style={{color: '#0f2d6e', fontSize: '1.3rem', fontWeight: '700', margin: '2rem 0 16px'}}>XVI. Check-list avant le départ</h2>
+                <p style={{marginBottom: '1rem'}}>Pour synthétiser l&apos;ensemble de ces points de vigilance, voici les vérifications essentielles à effectuer avant de fermer la porte&nbsp;:</p>
+                <ul style={{paddingLeft: '1.5rem', margin: '1rem 0', display: 'flex', flexDirection: 'column', gap: '10px'}}>
+                  <li>Couper l&apos;eau si possible, et relever les compteurs</li>
+                  <li>Vérifier le délai et les conditions de la clause d&apos;inhabitation de son contrat</li>
+                  <li>Tester l&apos;alarme et la télésurveillance si le logement ou le local en est équipé</li>
+                  <li>Confier un double des clés à une personne de confiance</li>
+                  <li>Sauvegarder les documents et données importants</li>
+                  <li>Vérifier les garanties d&apos;assurance applicables (villégiature, objets de valeur, RC animaux)</li>
+                  <li>Prévoir et formaliser par écrit la garde des enfants ou des animaux</li>
+                  <li>Contrôler les plafonds de garantie applicables aux objets de valeur et conserver leurs justificatifs</li>
+                  <li>Éviter d&apos;annoncer ses dates d&apos;absence sur les réseaux sociaux et activer l&apos;authentification à double facteur</li>
+                </ul>
               </section>
 
               <section id="accompagnement">
@@ -193,6 +265,10 @@ export default function ArticleVacancesSecuriserLogement() {
                   <li>Code des assurances, article L.&nbsp;112-4 (formalisme des clauses de nullité, déchéance et exclusion de garantie)</li>
                   <li>Code des assurances, article L.&nbsp;113-2 (délai minimal de déclaration de sinistre)</li>
                   <li>Code pénal, article 521-1 (sévices graves, actes de cruauté et abandon d&apos;animal)</li>
+                  <li>Code civil, articles 1732, 1733 et 1735 (responsabilité locative, incendie, personnes de la maison du locataire)</li>
+                  <li>Code civil, article 1240 (responsabilité civile délictuelle de droit commun)</li>
+                  <li>Code civil, article 1243 (responsabilité du fait des animaux)</li>
+                  <li>Agence nationale de la sécurité des systèmes d&apos;information (ANSSI) et Cybermalveillance.gouv.fr, recommandations de vigilance saisonnière</li>
                 </ul>
                 <p style={{marginBottom: '1rem', fontSize: '12px', color: '#9ca3af', fontStyle: 'italic'}}>Cet article relève d&apos;une information juridique au sens de la loi n°&nbsp;71-1130 du 31 décembre 1971. Le cabinet ne délivre pas de consultation juridique personnalisée. Pour l&apos;analyse d&apos;une situation individuelle, un professionnel du droit compétent reste le bon interlocuteur.</p>
               </section>
@@ -219,6 +295,14 @@ export default function ArticleVacancesSecuriserLogement() {
                   <details style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '10px', padding: '1rem 1.25rem'}}>
                     <summary style={{fontWeight: '600', color: '#0f2d6e', fontSize: '14px', cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '12px'}}><span>Mon assurance professionnelle me couvre-t-elle si mon local est fermé pour congés ?</span><span style={{color: '#1a4fba', fontSize: '18px', flexShrink: 0}}>+</span></summary>
                     <p style={{color: '#374151', fontSize: '13px', lineHeight: '1.75', marginTop: '12px'}}>Cela dépend de votre contrat multirisque professionnelle : la garantie vol y est souvent conditionnée à la durée d&apos;inoccupation des locaux. La garantie perte d&apos;exploitation, elle, ne se déclenche en principe pas pour une fermeture volontaire. Seule la lecture de vos conditions générales permet de connaître les exigences propres à votre contrat.</p>
+                  </details>
+                  <details style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '10px', padding: '1rem 1.25rem'}}>
+                    <summary style={{fontWeight: '600', color: '#0f2d6e', fontSize: '14px', cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '12px'}}><span>Que couvre la garantie villégiature quand je loue un logement de vacances ?</span><span style={{color: '#1a4fba', fontSize: '18px', flexShrink: 0}}>+</span></summary>
+                    <p style={{color: '#374151', fontSize: '13px', lineHeight: '1.75', marginTop: '12px'}}>Elle couvre votre responsabilité civile de locataire temporaire (incendie, dégât des eaux, explosion), en application de la présomption posée par l&apos;article 1732 du Code civil, complétée par l&apos;article 1733 pour l&apos;incendie et l&apos;article 1735 pour les personnes de votre foyer. Ses plafonds, franchises et étendue territoriale varient selon les contrats.</p>
+                  </details>
+                  <details style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '10px', padding: '1rem 1.25rem'}}>
+                    <summary style={{fontWeight: '600', color: '#0f2d6e', fontSize: '14px', cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '12px'}}><span>Puis-je faire garder ma maison par une connaissance sans contrat écrit ?</span><span style={{color: '#1a4fba', fontSize: '18px', flexShrink: 0}}>+</span></summary>
+                    <p style={{color: '#374151', fontSize: '13px', lineHeight: '1.75', marginTop: '12px'}}>Le home sitting ne bénéficie d&apos;aucun régime juridique spécifique. En l&apos;absence d&apos;écrit, c&apos;est le droit commun de la responsabilité civile (article 1240 du Code civil) qui s&apos;applique en cas de dommage, et l&apos;article 1243 si la personne a également la garde de vos animaux. Un écrit précisant les missions, les dates et les consignes reste la meilleure protection pour les deux parties.</p>
                   </details>
                 </div>
               </section>
@@ -260,6 +344,10 @@ export default function ArticleVacancesSecuriserLogement() {
                 <a href="/blog?tag=Garde%20d'animaux" style={{background: "#eff6ff", color: "#1a4fba", fontSize: "11px", padding: "3px 10px", borderRadius: "20px", textDecoration: 'none'}}>Garde d&apos;animaux</a>
                 <a href="/blog?tag=Particulier%20employeur" style={{background: "#eff6ff", color: "#1a4fba", fontSize: "11px", padding: "3px 10px", borderRadius: "20px", textDecoration: 'none'}}>Particulier employeur</a>
                 <a href="/blog?tag=Local%20professionnel" style={{background: "#eff6ff", color: "#1a4fba", fontSize: "11px", padding: "3px 10px", borderRadius: "20px", textDecoration: 'none'}}>Local professionnel</a>
+                <a href="/blog?tag=Garantie%20villégiature" style={{background: "#eff6ff", color: "#1a4fba", fontSize: "11px", padding: "3px 10px", borderRadius: "20px", textDecoration: 'none'}}>Garantie villégiature</a>
+                <a href="/blog?tag=Location%20saisonnière" style={{background: "#eff6ff", color: "#1a4fba", fontSize: "11px", padding: "3px 10px", borderRadius: "20px", textDecoration: 'none'}}>Location saisonnière</a>
+                <a href="/blog?tag=Home%20sitting" style={{background: "#eff6ff", color: "#1a4fba", fontSize: "11px", padding: "3px 10px", borderRadius: "20px", textDecoration: 'none'}}>Home sitting</a>
+                <a href="/blog?tag=Cybersécurité" style={{background: "#eff6ff", color: "#1a4fba", fontSize: "11px", padding: "3px 10px", borderRadius: "20px", textDecoration: 'none'}}>Cybersécurité</a>
               </div>
             </div>
             <a href="/blog" style={{display: 'flex', alignItems: 'center', gap: '6px', color: '#6b7280', fontSize: '12px', textDecoration: 'none'}}>← Retour au blog</a>
