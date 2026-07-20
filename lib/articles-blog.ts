@@ -18,6 +18,18 @@ export type ArticleBlog = {
 
 export const ARTICLES_BLOG: ArticleBlog[] = [
   {
+    slug: 'vacances-securiser-logement-assurance-garde-enfants-animaux',
+    titre: "Vacances : sécuriser son logement, son assurance habitation, la garde des enfants et des animaux",
+    resume: "Clause d'inhabitation, déclaration d'absence à l'assureur, garde d'enfants par une assistante maternelle ou une nounou, pension ou voyage avec son animal, sécurisation des locaux professionnels : le guide complet avant de partir en vacances, pour les particuliers comme pour les professionnels.",
+    date: '20 juillet 2026',
+    auteur: 'François CHOLEZ',
+    categorie: 'Assurances',
+    tags: ['Assurance habitation', 'Vacances', 'Absence prolongée', "Garde d'animaux", 'Particulier employeur', 'Local professionnel'],
+    tempsLecture: '17 min',
+    image: 'https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/vacances-securiser-logement-assurance-garde-enfants-animaux-2026.webp',
+  },
+
+  {
     slug: 'tarifs-creche-2026-calcul-automatise-dites-le-nous-une-fois',
     titre: "Tarifs de crèche 2026 : l'État automatise le calcul, ce que ça change pour les gestionnaires et les familles",
     resume: "Depuis le 10 juillet 2026, les 12 422 crèches en PSU peuvent récupérer automatiquement les revenus des familles auprès de la CNAF et de la MSA. Fondement juridique du « Dites-le-nous une fois », calcul du tarif, points de vigilance RGPD.",
