@@ -7,7 +7,7 @@
 // d'autres organismes).
 
 import Header from '@/components/Header'
-import FooterMinimal from '@/components/FooterMinimal'
+import Footer from '@/components/Footer'
 import {
   ChevronRight, ArrowRight, ShieldCheck,
   Building2, UserCheck, Layers, ScrollText, CheckCircle, Clock, FileCheck2
@@ -281,15 +281,12 @@ export default function AccompagnementOrganismesFormation() {
               <a href="/contact?objet=accompagnement-of" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'white', color: '#0f2d6e', padding: '13px 26px', borderRadius: '8px', fontSize: '14px', fontWeight: 700, textDecoration: 'none' }}>
                 Demander un accompagnement <ArrowRight size={16} />
               </a>
-              <a href="/services" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'transparent', color: 'white', border: '1px solid rgba(255,255,255,0.6)', padding: '13px 26px', borderRadius: '8px', fontSize: '14px', fontWeight: 600, textDecoration: 'none' }}>
-                Voir tous les services
-              </a>
             </div>
           </section>
 
         </div>
       </main>
-      <FooterMinimal />
+      <Footer />
     </>
   )
 }

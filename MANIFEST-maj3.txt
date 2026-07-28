@@ -1,0 +1,15 @@
+Mentorat consultant Qualiopi - corrections et argumentaire mentorat vs formation
+==================================================================================
+
+Fichiers modifies (remplacent l'existant a l'identique) :
+- app/mentorat-consultant-qualite/page.tsx
+    -> Footer corrige : Footer (le vrai) au lieu de FooterMinimal
+    -> Bouton "Voir tous les services" retire du CTA final
+    -> "non pas cote apprenant mais cote evaluateur" -> "non pas cote organisme audite mais cote evaluateur"
+    -> "toute erreur d'apprentissage est corrigee" -> "tout ecart methodologique est corrige"
+    -> "Votre investissement" -> "Accompagnement sur-mesure"
+    -> Nouvelle section "Pourquoi un accompagnement et du mentorat plutot qu'une offre de formation ?"
+       (4 cartes : sur-mesure, pratique, filet de securite 1ere mission, boite a outils)
+- app/accompagnement-organismes-formation/page.tsx
+    -> Meme correction de footer (Footer au lieu de FooterMinimal)
+    -> Bouton "Voir tous les services" retire du CTA final

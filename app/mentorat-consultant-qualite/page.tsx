@@ -7,11 +7,11 @@
 // n'est titulaire ni d'un numero de formateur ni de la certification Qualiopi).
 
 import Header from '@/components/Header'
-import FooterMinimal from '@/components/FooterMinimal'
+import Footer from '@/components/Footer'
 import {
   ChevronRight, ArrowRight, Compass, FolderOpen, Users, RefreshCw,
   ShieldCheck, Calendar, Sparkles, ScrollText, FileCheck2, Scale,
-  CheckCircle, XCircle
+  CheckCircle, XCircle, Target
 } from 'lucide-react'
 
 // Date de la prochaine session de demarrage, places restantes et prix affiche,
@@ -45,7 +45,7 @@ const VOLETS = [
     couleur: '#0f2d6e',
     titre: 'Décryptage et posture',
     sousTitre: 'Le transfert de méthodologie',
-    texte: "Des sessions de travail conjointes pour décortiquer les 32 indicateurs du Référentiel National Qualité, non pas côté apprenant mais côté évaluateur : il s'agit d'apprendre à apprécier la conformité d'un processus, pas à le suivre. Vous travaillez la lecture croisée des exigences légales et des attentes concrètes des auditeurs, la vérification des prérequis administratifs indispensables en amont (contrôle du numéro de déclaration d'activité NDA, conformité du Bilan Pédagogique et Financier BPF), la posture du consultant qui mène un audit diagnostic chez son futur client, et l'identification des non-conformités. L'analyse couvre aussi les pièges juridiques et administratifs les plus fréquents rencontrés par les centres de formation.",
+    texte: "Des sessions de travail conjointes pour décortiquer les 32 indicateurs du Référentiel National Qualité, non pas côté organisme audité mais côté évaluateur : il s'agit d'apprendre à apprécier la conformité d'un processus, pas à le suivre. Vous travaillez la lecture croisée des exigences légales et des attentes concrètes des auditeurs, la vérification des prérequis administratifs indispensables en amont (contrôle du numéro de déclaration d'activité NDA, conformité du Bilan Pédagogique et Financier BPF), la posture du consultant qui mène un audit diagnostic chez son futur client, et l'identification des non-conformités. L'analyse couvre aussi les pièges juridiques et administratifs les plus fréquents rencontrés par les centres de formation.",
     livrable: "Votre manuel opératoire du consultant : une feuille de route d'intervention prête à l'emploi.",
   },
   {
@@ -188,7 +188,7 @@ export default function MentoratConsultantQualite() {
           {/* PRIX EN EVIDENCE */}
           <section style={{ background: 'white', border: '2px solid #d4a017', borderRadius: '14px', padding: '1.75rem', marginBottom: '2rem', display: 'flex', gap: '20px', alignItems: 'center', flexWrap: 'wrap', justifyContent: 'space-between' }}>
             <div>
-              <p style={{ margin: '0 0 6px', fontSize: '11px', fontWeight: 700, color: '#b8860b', textTransform: 'uppercase', letterSpacing: '0.06em' }}>Votre investissement</p>
+              <p style={{ margin: '0 0 6px', fontSize: '11px', fontWeight: 700, color: '#b8860b', textTransform: 'uppercase', letterSpacing: '0.06em' }}>Accompagnement sur-mesure</p>
               <p style={{ margin: 0, fontSize: '2rem', fontWeight: 700, color: '#0f2d6e', lineHeight: 1 }}>
                 {PRIX_NET}&nbsp;€ <span style={{ fontSize: '0.95rem', fontWeight: 600, color: '#6b7280' }}>net</span>
               </p>
@@ -296,6 +296,49 @@ export default function MentoratConsultantQualite() {
             </div>
           </section>
 
+          {/* MENTORAT VS FORMATION */}
+          <section style={{ marginBottom: '3.5rem' }}>
+            <h2 style={{ color: '#0f2d6e', fontSize: '1.5rem', fontWeight: 700, margin: '0 0 8px' }}>Pourquoi un accompagnement et du mentorat plutôt qu&apos;une offre de formation ?</h2>
+            <p style={{ color: '#6b7280', fontSize: '14px', lineHeight: 1.7, margin: '0 0 2rem', maxWidth: '760px' }}>
+              Une formation classique répond à la question : qu&apos;est-ce qu&apos;on apprend ? Le mentorat répond à une question différente : qu&apos;est-ce qu&apos;on réussit à accomplir concrètement dès le lendemain ?
+            </p>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '16px' }}>
+
+              <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: 14, padding: '1.5rem' }}>
+                <div style={{ marginBottom: '10px' }}><Target size={20} color="#0f2d6e" strokeWidth={1.5} /></div>
+                <h3 style={{ color: '#0f2d6e', fontSize: '14px', fontWeight: 700, margin: '0 0 8px' }}>Du sur-mesure total, face à un programme standardisé</h3>
+                <p style={{ color: '#374151', fontSize: '13px', lineHeight: 1.75, margin: 0 }}>
+                  Contrairement à un parcours de formation collectif et figé, identique pour tous, le contenu, le rythme et les priorités de votre accompagnement sont entièrement ajustés à votre profil de départ, à votre parcours professionnel et à votre expérience du secteur.
+                </p>
+              </div>
+
+              <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: 14, padding: '1.5rem' }}>
+                <div style={{ marginBottom: '10px' }}><FileCheck2 size={20} color="#1a4fba" strokeWidth={1.5} /></div>
+                <h3 style={{ color: '#0f2d6e', fontSize: '14px', fontWeight: 700, margin: '0 0 8px' }}>De la pratique, plutôt que de la théorie</h3>
+                <p style={{ color: '#374151', fontSize: '13px', lineHeight: 1.75, margin: 0 }}>
+                  L&apos;apprentissage repose sur des cas concrets et sur le montage encadré d&apos;un dossier, et non sur des cours théoriques isolés. Chaque étape est suivie individuellement pour rectifier immédiatement tout écart méthodologique.
+                </p>
+              </div>
+
+              <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: 14, padding: '1.5rem' }}>
+                <div style={{ marginBottom: '10px' }}><ShieldCheck size={20} color="#7c3aed" strokeWidth={1.5} /></div>
+                <h3 style={{ color: '#0f2d6e', fontSize: '14px', fontWeight: 700, margin: '0 0 8px' }}>Un filet de sécurité sur votre première mission</h3>
+                <p style={{ color: '#374151', fontSize: '13px', lineHeight: 1.75, margin: 0 }}>
+                  Une formation s&apos;arrête généralement le jour de l&apos;attestation, laissant seul face à sa première vraie mission. Vous bénéficiez au contraire d&apos;une supervision en back-office lors de votre premier contrat : vous restez l&apos;unique interlocuteur de votre client, tout en profitant d&apos;un contrôle d&apos;expertise sur les moments clés (diagnostic, preuves, audit blanc et gestion post-audit).
+                </p>
+              </div>
+
+              <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: 14, padding: '1.5rem' }}>
+                <div style={{ marginBottom: '10px' }}><FolderOpen size={20} color="#065f46" strokeWidth={1.5} /></div>
+                <h3 style={{ color: '#0f2d6e', fontSize: '14px', fontWeight: 700, margin: '0 0 8px' }}>Une boîte à outils immédiatement exploitable</h3>
+                <p style={{ color: '#374151', fontSize: '13px', lineHeight: 1.75, margin: 0 }}>
+                  Une formation transmet des connaissances destinées à enrichir la personne. Le mentorat intègre en plus la mise à disposition d&apos;une architecture documentaire complète sous licence, prête à être clonée et adaptée pour l&apos;ensemble de vos futurs clients.
+                </p>
+              </div>
+
+            </div>
+          </section>
+
           {/* PROGRAMME COMPLET */}
           <section style={{ marginBottom: '3.5rem' }}>
             <h2 style={{ color: '#0f2d6e', fontSize: '1.5rem', fontWeight: 700, margin: '0 0 8px' }}>L&apos;accompagnement et le mentorat</h2>
@@ -346,7 +389,7 @@ export default function MentoratConsultantQualite() {
             <div>
               <h2 style={{ color: '#0f2d6e', fontSize: '1.2rem', fontWeight: 700, margin: '0 0 10px' }}>Le cœur de l&apos;accompagnement : un dossier Qualiopi</h2>
               <p style={{ color: '#374151', fontSize: '13.5px', lineHeight: 1.8, margin: 0 }}>
-                Le montage d&apos;un dossier Qualiopi, pour un centre de formation en cours de création ou existant mais n&apos;ayant pas encore Qualiopi, ou un formateur indépendant montant son propre OF (Organisme de Formation), un CFA (Centre de Formation des Apprentis) nouvellement créé ou ayant perdu sa certification, un indépendant qui se lance dans les Bilans de compétences, un professionnel de l&apos;accompagnement souhaitant devenir Architecte Accompagnateur de Parcours (AAP) pour les VAE (Validation des acquis de l&apos;expérience)... Autant de situations, autant d&apos;approches. Le montage d&apos;un dossier Qualiopi fictif constitue la plus grande part du temps consacré à votre accompagnement. Ce n&apos;est pas un exercice théorique : chaque étape (diagnostic initial, constitution des preuves, préparation de l&apos;audit blanc) est suivie individuellement, et toute erreur d&apos;apprentissage est corrigée avec vous avant de poursuivre, plutôt que de vous laisser avancer seul sur une base fragile.
+                Le montage d&apos;un dossier Qualiopi, pour un centre de formation en cours de création ou existant mais n&apos;ayant pas encore Qualiopi, ou un formateur indépendant montant son propre OF (Organisme de Formation), un CFA (Centre de Formation des Apprentis) nouvellement créé ou ayant perdu sa certification, un indépendant qui se lance dans les Bilans de compétences, un professionnel de l&apos;accompagnement souhaitant devenir Architecte Accompagnateur de Parcours (AAP) pour les VAE (Validation des acquis de l&apos;expérience)... Autant de situations, autant d&apos;approches. Le montage d&apos;un dossier Qualiopi fictif constitue la plus grande part du temps consacré à votre accompagnement. Ce n&apos;est pas un exercice théorique : chaque étape (diagnostic initial, constitution des preuves, préparation de l&apos;audit blanc) est suivie individuellement, et tout écart méthodologique est corrigé avec vous avant de poursuivre, plutôt que de vous laisser avancer seul sur une base fragile.
               </p>
             </div>
           </section>
@@ -429,15 +472,12 @@ export default function MentoratConsultantQualite() {
               <a href="/contact" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'white', color: '#0f2d6e', padding: '13px 26px', borderRadius: '8px', fontSize: '14px', fontWeight: 700, textDecoration: 'none' }}>
                 Échanger sur mon projet <ArrowRight size={16} />
               </a>
-              <a href="/services" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'transparent', color: 'white', border: '1px solid rgba(255,255,255,0.6)', padding: '13px 26px', borderRadius: '8px', fontSize: '14px', fontWeight: 600, textDecoration: 'none' }}>
-                Voir tous les services
-              </a>
             </div>
           </section>
 
         </div>
       </main>
-      <FooterMinimal />
+      <Footer />
     </>
   )
 }
