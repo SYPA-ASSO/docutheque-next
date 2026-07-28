@@ -1,0 +1,31 @@
+Mentorat consultant Qualiopi + nouvelle offre Organismes de formation
+========================================================================
+
+Fichiers modifies (remplacent l'existant a l'identique) :
+- components/Header.tsx
+    -> Lien "Mentorat consultant qualite" renomme en "Mentorat consultant Qualiopi"
+    -> Nouvelle entree de menu "Organisme de formation / Formateurs" (groupe Par profil)
+- app/mentorat-consultant-qualite/page.tsx
+    -> Renommage complet en "Mentorat consultant Qualiopi"
+    -> Nouveau sous-titre hero (BPF, NDA, cibles finales)
+    -> Phrase du cadre de l'intervention raccourcie
+    -> Nouveau texte d'intro des profils + 3 nouveaux profils + phrase de conclusion
+    -> Nouvelle section "Pourquoi cet accompagnement ? Qu'apporte-t-il ?"
+    -> Section renommee "L'accompagnement et le mentorat" (ex "Le programme complet")
+    -> Section "methodologie d'acquisition" (4 etapes) supprimee
+    -> Volet 1 : ajout verification NDA / BPF en amont
+    -> Volet 3 : ajout posture Jour J + gestion de l'apres-audit
+    -> Exercice pratique : nouveau texte, dossier qualifie de "fictif"
+    -> Nouvelle section BPF / NDA / audits (deja livree precedemment)
+    -> Nouvelle question FAQ sur la gestion des non-conformites post-audit
+- app/espace-mentorat-qualite/page.tsx
+    -> Memes ajustements de coherence (renommage, profils, volets 1 et 3)
+- lib/contact-sujets.ts
+    -> Ajout des sujets "Mentorat consultant Qualiopi" et "Accompagnement OF / Formateurs"
+    -> Ajout du mapping ?objet=accompagnement-of
+
+Nouveau fichier :
+- app/accompagnement-organismes-formation/page.tsx
+    -> Page publique de l'offre d'accompagnement Qualiopi pour organismes de formation,
+       formateurs independants et CFA (diagnostic, dossier, NDA, BPF, audits).
+       Contenu original, inspire du positionnement general du marche (aucun texte copie).

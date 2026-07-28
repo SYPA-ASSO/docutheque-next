@@ -21,7 +21,7 @@ const PLACES_RESTANTES = 3
 const PRIX_NET = '1 990,00'
 
 export const metadata = {
-  title: 'Mentorat consultant qualité · Devenir consultant Qualiopi · Cabinet Cholez-Pagotto',
+  title: 'Mentorat consultant Qualiopi · Cabinet Cholez-Pagotto',
   description: `Un accompagnement individuel et à la carte pour devenir consultant en démarche qualité : transfert de méthodologie, boîte à outils sous licence, montage encadré d'un dossier Qualiopi fictif. Prochaine session : ${PROCHAINE_SESSION}.`,
   alternates: { canonical: 'https://cholez-pagotto.fr/mentorat-consultant-qualite' },
 }
@@ -34,6 +34,9 @@ const PROFILS_TYPES = [
   'Consultant indépendant',
   'Cabinet de gestion administrative',
   "Formateur métier de l'animation",
+  'Secrétaire administrative',
+  "Agent d'accueil",
+  'Traductrice',
 ]
 
 const VOLETS = [
@@ -42,7 +45,7 @@ const VOLETS = [
     couleur: '#0f2d6e',
     titre: 'Décryptage et posture',
     sousTitre: 'Le transfert de méthodologie',
-    texte: "Des sessions de travail conjointes pour décortiquer les 32 indicateurs du Référentiel National Qualité, non pas côté apprenant mais côté évaluateur : il s'agit d'apprendre à apprécier la conformité d'un processus, pas à le suivre. Vous travaillez la lecture croisée des exigences légales et des attentes concrètes des auditeurs, la posture du consultant qui mène un audit diagnostic chez son futur client, et l'identification des non-conformités. L'analyse couvre aussi les pièges juridiques et administratifs les plus fréquents rencontrés par les centres de formation.",
+    texte: "Des sessions de travail conjointes pour décortiquer les 32 indicateurs du Référentiel National Qualité, non pas côté apprenant mais côté évaluateur : il s'agit d'apprendre à apprécier la conformité d'un processus, pas à le suivre. Vous travaillez la lecture croisée des exigences légales et des attentes concrètes des auditeurs, la vérification des prérequis administratifs indispensables en amont (contrôle du numéro de déclaration d'activité NDA, conformité du Bilan Pédagogique et Financier BPF), la posture du consultant qui mène un audit diagnostic chez son futur client, et l'identification des non-conformités. L'analyse couvre aussi les pièges juridiques et administratifs les plus fréquents rencontrés par les centres de formation.",
     livrable: "Votre manuel opératoire du consultant : une feuille de route d'intervention prête à l'emploi.",
   },
   {
@@ -58,7 +61,7 @@ const VOLETS = [
     couleur: '#7c3aed',
     titre: 'Le co-pilotage de votre première mission',
     sousTitre: 'La supervision en back-office',
-    texte: "Vous signez avec votre premier centre de formation ; nous n'intervenons jamais face à votre client final, vous restez son unique interlocuteur. Des points de supervision sont prévus à chaque étape clé : après votre diagnostic, lors de la rédaction des preuves, avant l'audit blanc. Vous apprenez par la pratique, sur un dossier réel, sécurisé par un contrôle d'expertise en arrière-plan.",
+    texte: "Vous signez avec votre premier centre de formation ; nous n'intervenons jamais face à votre client final, vous restez son unique interlocuteur. Des points de supervision sont prévus à chaque étape clé : après votre diagnostic, lors de la rédaction des preuves, avant l'audit blanc, mais aussi sur la posture à adopter le jour de l'audit officiel (rôle du consultant pendant l'évaluation) et sur la gestion de l'après-visite (analyse du rapport de l'auditeur certificateur, rédaction du plan d'actions correctives et levée des non-conformités mineures ou majeures dans les délais impartis). Vous apprenez par la pratique, sur un dossier réel, sécurisé par un contrôle d'expertise en arrière-plan.",
     livrable: null,
   },
   {
@@ -70,13 +73,6 @@ const VOLETS = [
     livrable: null,
     option: true,
   },
-]
-
-const ETAPES_METHODE = [
-  { num: '1', titre: 'Transmission', texte: "La notion ou l'indicateur est expliqué en session de travail, côté évaluateur : ce qui est attendu, pourquoi, et comment l'apprécier." },
-  { num: '2', titre: 'Application immédiate', texte: "Vous l'appliquez aussitôt sur le dossier réel que vous constituez pour votre premier client, pas sur un cas d'école." },
-  { num: '3', titre: 'Correction accompagnée', texte: "Chaque écart ou erreur est repris avec vous avant de poursuivre, plutôt que de vous laisser avancer seul sur une base fragile." },
-  { num: '4', titre: 'Réitération', texte: "La boucle transmission puis pratique puis correction se répète à chaque étape du dossier, jusqu'à l'acquisition complète du geste professionnel." },
 ]
 
 const HORS_PERIMETRE = [
@@ -100,6 +96,10 @@ const HORS_PERIMETRE = [
     q: 'Cela me qualifie-t-il comme auditeur certificateur officiel ?',
     a: "Non. Le transfert de méthodologie vous apprend à mener un audit diagnostic pour préparer un client. Cela ne vous qualifie en aucun cas pour agir en tant qu'auditeur officiel mandaté par un organisme certificateur : vous conservez une stricte posture de consultant-préparateur.",
   },
+  {
+    q: "L'accompagnement couvre-t-il la gestion des non-conformités après l'audit officiel ?",
+    a: "Oui, via le volet de supervision en back-office (volet 3). Vous apprenez à analyser le rapport d'audit de votre client et à structurer le plan de correction pour lever les éventuelles non-conformités, mais vous restez seul maître de la relation avec votre client lors de cette phase finale.",
+  },
 ]
 
 const schemaData = {
@@ -108,7 +108,7 @@ const schemaData = {
     {
       '@type': 'Service',
       '@id': 'https://cholez-pagotto.fr/mentorat-consultant-qualite#service',
-      name: 'Mentorat consultant qualité - Cabinet Cholez-Pagotto',
+      name: 'Mentorat consultant Qualiopi - Cabinet Cholez-Pagotto',
       description: "Accompagnement individuel et à la carte pour devenir consultant en démarche qualité : transfert de méthodologie sur le Référentiel National Qualité, boîte à outils documentaire sous licence, co-pilotage du montage d'un dossier Qualiopi réel.",
       provider: {
         '@type': 'LegalService',
@@ -134,7 +134,7 @@ const schemaData = {
       '@id': 'https://cholez-pagotto.fr/mentorat-consultant-qualite#breadcrumb',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://cholez-pagotto.fr' },
-        { '@type': 'ListItem', position: 2, name: 'Mentorat consultant qualité', item: 'https://cholez-pagotto.fr/mentorat-consultant-qualite' },
+        { '@type': 'ListItem', position: 2, name: 'Mentorat consultant Qualiopi', item: 'https://cholez-pagotto.fr/mentorat-consultant-qualite' },
       ],
     },
   ],
@@ -152,7 +152,7 @@ export default function MentoratConsultantQualite() {
           <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 2rem', display: 'flex', alignItems: 'center', gap: '6px', fontSize: '12px', color: '#6b7280' }}>
             <a href="/" style={{ color: '#6b7280', textDecoration: 'none' }}>Accueil</a>
             <ChevronRight size={12} />
-            <span style={{ color: '#0f2d6e', fontWeight: 500 }}>Mentorat consultant qualité</span>
+            <span style={{ color: '#0f2d6e', fontWeight: 500 }}>Mentorat consultant Qualiopi</span>
           </div>
         </div>
 
@@ -163,10 +163,10 @@ export default function MentoratConsultantQualite() {
               ACCOMPAGNEMENT INDIVIDUEL · À LA CARTE
             </span>
             <h1 style={{ color: 'white', fontSize: '2rem', fontWeight: 700, margin: '0 0 16px', lineHeight: 1.3, maxWidth: '760px' }}>
-              Mentorat consultant qualité
+              Mentorat consultant Qualiopi
             </h1>
             <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '1rem', lineHeight: 1.8, margin: '0 0 28px', maxWidth: '720px' }}>
-              Devenez consultant en démarche qualité : un transfert de savoir-faire métier, un mentoring d&apos;affaires et une boîte à outils sous licence, construits selon votre profil, votre parcours et votre expérience du secteur. Aucun programme standardisé : le contenu et le rythme s&apos;ajustent à vous.
+              Devenez consultant en démarche qualité, spécialisé Qualiopi, BPF (Bilans Pédagogiques et Financiers), NDA, auprès de vos futurs clients (organismes de formation, formateurs indépendants, CFA...) : un transfert de savoir-faire métier, un mentoring d&apos;affaires et une boîte à outils sous licence, construits selon votre profil, votre parcours et votre expérience du secteur. Aucun programme standardisé : le contenu et le rythme s&apos;ajustent à vous.
             </p>
             <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', marginBottom: '24px' }}>
               <a href="/contact" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'white', color: '#0f2d6e', padding: '13px 26px', borderRadius: '8px', fontSize: '14px', fontWeight: 700, textDecoration: 'none' }}>
@@ -220,7 +220,7 @@ export default function MentoratConsultantQualite() {
             <div>
               <h2 style={{ color: '#0f2d6e', fontSize: '1rem', fontWeight: 700, margin: '0 0 8px' }}>Le cadre de l&apos;intervention</h2>
               <p style={{ color: '#374151', fontSize: '13px', lineHeight: 1.8, margin: 0 }}>
-                Cet accompagnement relève du transfert de savoir-faire métier, du mentoring d&apos;affaires et de la licence d&apos;outils, au service du développement organisationnel de votre activité de conseil. Il ne constitue pas une action de formation professionnelle : le cabinet n&apos;est titulaire ni d&apos;un numéro de formateur, ni de la certification Qualiopi. Vous restez seul responsable, vis-à-vis de vos propres clients, de l&apos;obtention de leur certification.
+                Cet accompagnement relève du transfert de savoir-faire métier, du mentoring d&apos;affaires et de la licence d&apos;outils, au service du développement organisationnel de votre activité de conseil. Il ne constitue pas une action de formation professionnelle. Vous restez seul responsable, vis-à-vis de vos propres clients, de l&apos;obtention de leur certification.
               </p>
             </div>
           </section>
@@ -231,8 +231,8 @@ export default function MentoratConsultantQualite() {
               <Sparkles size={18} color="#c8a84b" strokeWidth={1.5} />
               <h2 style={{ color: '#0f2d6e', fontSize: '1.5rem', fontWeight: 700, margin: 0 }}>Un parcours construit avec vous</h2>
             </div>
-            <p style={{ color: '#6b7280', fontSize: '14px', lineHeight: 1.7, margin: '0 0 1.5rem', maxWidth: '720px' }}>
-              Il n&apos;existe pas de programme standardisé : le contenu, le rythme et les priorités de chaque volet sont ajustés à votre profil de départ, votre parcours professionnel et votre expérience du secteur. Les profils suivants illustrent la diversité des points de départ déjà accompagnés.
+            <p style={{ color: '#6b7280', fontSize: '14px', lineHeight: 1.7, margin: '0 0 1.5rem', maxWidth: '760px' }}>
+              Il n&apos;existe pas de programme standardisé : le contenu, le rythme et les priorités de chaque volet sont ajustés à votre profil de départ, votre parcours professionnel et votre expérience éventuelle du secteur de la formation. Lors du premier échange à l&apos;occasion de l&apos;étude de votre dossier, avant démarrage de l&apos;accompagnement, un parcours est conçu sur la base de votre pratique actuelle, de vos expériences, de vos connaissances du domaine de la formation, que le cabinet analyse. Le démarrage à proprement parler peut donc débuter de suite ou attendre des ajustements de notre part pour que cet accompagnement soit adapté, sur mesure. Il n&apos;y a pas de minima de compétences à avoir, le mentorat servira aussi à lever les incompréhensions éventuelles. Les profils suivants illustrent par l&apos;exemple la diversité des points de départ déjà accompagnés.
             </p>
             <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
               {PROFILS_TYPES.map((p) => (
@@ -241,11 +241,64 @@ export default function MentoratConsultantQualite() {
                 </span>
               ))}
             </div>
+            <p style={{ color: '#0f2d6e', fontSize: '14px', fontWeight: 700, lineHeight: 1.7, margin: '1.25rem 0 0' }}>
+              Et, vous, serez-vous l&apos;un des prochains profils en reconversion ou d&apos;entrepreneurs agrandissant leurs offres ?
+            </p>
+          </section>
+
+          {/* POURQUOI CET ACCOMPAGNEMENT */}
+          <section style={{ marginBottom: '3.5rem' }}>
+            <h2 style={{ color: '#0f2d6e', fontSize: '1.5rem', fontWeight: 700, margin: '0 0 8px' }}>Pourquoi cet accompagnement ? Qu&apos;apporte-t-il ?</h2>
+            <p style={{ color: '#6b7280', fontSize: '14px', lineHeight: 1.7, margin: '0 0 2rem', maxWidth: '760px' }}>
+              Cet accompagnement vous fait acquérir des compétences spécifiques, centrées sur l&apos;ingénierie de la conformité, l&apos;audit et la structuration documentaire.
+            </p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+
+              <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: 14, padding: '1.5rem' }}>
+                <h3 style={{ color: '#0f2d6e', fontSize: '1rem', fontWeight: 700, margin: '0 0 12px' }}>1. Une maîtrise de Qualiopi et des audits, côté évaluateur</h3>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                  <p style={{ margin: 0, fontSize: '13px', color: '#374151', lineHeight: 1.8 }}>
+                    <strong>Vision inversée du Référentiel National Qualité (RNQ).</strong> Vous ne vous contentez pas de restituer la théorie : vous savez décortiquer les 32 indicateurs du RNQ en adoptant la posture exacte d&apos;un auditeur certificateur. Vous savez ce qui est attendu, pourquoi, et comment évaluer la conformité d&apos;un processus.
+                  </p>
+                  <p style={{ margin: 0, fontSize: '13px', color: '#374151', lineHeight: 1.8 }}>
+                    <strong>Réalisation d&apos;audits diagnostics.</strong> Vous êtes en mesure de réaliser un état des lieux initial rigoureux d&apos;une structure (indépendant, OF ou CFA) pour identifier précisément les écarts, les risques et les non-conformités par rapport au référentiel.
+                  </p>
+                  <p style={{ margin: 0, fontSize: '13px', color: '#374151', lineHeight: 1.8 }}>
+                    <strong>Préparation aux audits, y compris l&apos;audit blanc.</strong> Vous structurez la démarche de préparation pour mettre en conditions réelles d&apos;évaluation, sécurisant ainsi la présentation des preuves le jour J.
+                  </p>
+                </div>
+              </div>
+
+              <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: 14, padding: '1.5rem' }}>
+                <h3 style={{ color: '#0f2d6e', fontSize: '1rem', fontWeight: 700, margin: '0 0 12px' }}>2. Une ingénierie documentaire et conformité</h3>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                  <p style={{ margin: 0, fontSize: '13px', color: '#374151', lineHeight: 1.8 }}>
+                    <strong>Une architecture documentaire prête à l&apos;emploi.</strong> Vous déployez une boîte à outils rigoureuse et paramétrée pour la structure accompagnée (indépendant, OF, CFA) : règlements intérieurs et conventions de formation, grilles d&apos;évaluation et formulaires de recueil des besoins, registres obligatoires (notamment de sous-traitance), documents de conformité liés au RGPD adaptés à l&apos;activité de formation.
+                  </p>
+                  <p style={{ margin: 0, fontSize: '13px', color: '#374151', lineHeight: 1.8 }}>
+                    <strong>Construction de dossiers.</strong> Vous savez monter pas à pas un dossier Qualiopi, en évitant les erreurs méthodologiques et en corrigeant les fragilités documentaires au fur et à mesure de l&apos;avancement.
+                  </p>
+                </div>
+              </div>
+
+              <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: 14, padding: '1.5rem' }}>
+                <h3 style={{ color: '#0f2d6e', fontSize: '1rem', fontWeight: 700, margin: '0 0 12px' }}>3. Une approche de la sécurisation juridique et administrative</h3>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                  <p style={{ margin: 0, fontSize: '13px', color: '#374151', lineHeight: 1.8 }}>
+                    <strong>Maîtrise des pièges réglementaires.</strong> Grâce au transfert de méthodologie, vous identifiez et prévenez les pièges juridiques et administratifs les plus fréquents auxquels sont confrontés les centres de formation et les formateurs indépendants.
+                  </p>
+                  <p style={{ margin: 0, fontSize: '13px', color: '#374151', lineHeight: 1.8 }}>
+                    <strong>Veille et actualisation.</strong> Vous vous appuyez sur des outils et des méthodes mis à jour en continu face aux évolutions légales, à la jurisprudence et aux exigences de France Compétences, pour garantir la pérennité de la conformité de vos clients.
+                  </p>
+                </div>
+              </div>
+
+            </div>
           </section>
 
           {/* PROGRAMME COMPLET */}
           <section style={{ marginBottom: '3.5rem' }}>
-            <h2 style={{ color: '#0f2d6e', fontSize: '1.5rem', fontWeight: 700, margin: '0 0 8px' }}>Le programme complet</h2>
+            <h2 style={{ color: '#0f2d6e', fontSize: '1.5rem', fontWeight: 700, margin: '0 0 8px' }}>L&apos;accompagnement et le mentorat</h2>
             <p style={{ color: '#6b7280', fontSize: '14px', lineHeight: 1.7, margin: '0 0 2rem', maxWidth: '720px' }}>
               Quatre volets structurent l&apos;accompagnement, dans un ordre et à un rythme adaptés à votre situation.
             </p>
@@ -284,25 +337,6 @@ export default function MentoratConsultantQualite() {
                   </div>
                 )
               })}
-            </div>
-          </section>
-
-          {/* METHODOLOGIE D'ACQUISITION */}
-          <section style={{ marginBottom: '3.5rem' }}>
-            <h2 style={{ color: '#0f2d6e', fontSize: '1.5rem', fontWeight: 700, margin: '0 0 8px' }}>La méthodologie d&apos;acquisition</h2>
-            <p style={{ color: '#6b7280', fontSize: '14px', lineHeight: 1.7, margin: '0 0 2rem', maxWidth: '720px' }}>
-              Vous ne recevez pas un cours théorique isolé : chaque notion transmise est immédiatement mise à l&apos;épreuve sur le dossier réel que vous constituez, avec correction avant de poursuivre.
-            </p>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '16px' }}>
-              {ETAPES_METHODE.map((e) => (
-                <div key={e.num} style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: 12, padding: '1.25rem' }}>
-                  <div style={{ width: 30, height: 30, borderRadius: '50%', background: '#0f2d6e', color: 'white', fontSize: 13, fontWeight: 700, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '10px' }}>
-                    {e.num}
-                  </div>
-                  <h3 style={{ color: '#0f2d6e', fontSize: 14, fontWeight: 700, margin: '0 0 6px' }}>{e.titre}</h3>
-                  <p style={{ color: '#6b7280', fontSize: 12.5, lineHeight: 1.7, margin: 0 }}>{e.texte}</p>
-                </div>
-              ))}
             </div>
           </section>
 

@@ -92,6 +92,9 @@ const PROFILS_TYPES = [
   'Consultant indépendant',
   'Cabinet de gestion administrative',
   "Formateur métier de l'animation",
+  'Secrétaire administrative',
+  "Agent d'accueil",
+  'Traductrice',
 ]
 
 // Rappel condense de ce que l'accompagnement ne couvre pas (detail complet sur la page publique).
@@ -112,6 +115,7 @@ const VOLETS = [
     points: [
       'Sessions de travail conjointes pour décortiquer les 32 indicateurs du Référentiel National Qualité, côté évaluateur et non côté apprenant.',
       'Lecture croisée des exigences légales et des attentes concrètes des auditeurs.',
+      'Vérification des prérequis administratifs en amont : numéro de déclaration d\u2019activité (NDA), conformité du Bilan Pédagogique et Financier (BPF).',
       'Posture du consultant : mener un audit diagnostic chez votre futur client, identifier les non-conformités.',
       'Analyse des pièges juridiques et administratifs fréquents.',
     ],
@@ -140,6 +144,7 @@ const VOLETS = [
     points: [
       'Vous signez avec votre premier centre de formation ; nous n\u2019intervenons jamais face à votre client final.',
       'Points de supervision à chaque étape clé : après votre diagnostic, lors de la constitution des preuves, avant l\u2019audit blanc.',
+      'Posture à adopter le jour de l\u2019audit officiel, et gestion de l\u2019après-visite : analyse du rapport de l\u2019auditeur certificateur, plan d\u2019actions correctives et levée des non-conformités.',
       'Assistance de type maîtrise d\u2019ouvrage en arrière-plan : vous apprenez par la pratique, sécurisé par un contrôle d\u2019expertise discret.',
     ],
     livrable: null,
@@ -278,7 +283,7 @@ export default function EspaceMentoratQualite() {
                 Bienvenue{profil?.prenom ? `, ${profil.prenom}` : ''}
               </h1>
               <p style={{ margin: 0, fontSize: '13px', color: '#6b7280' }}>
-                Votre mentorat consultant qualité
+                Votre mentorat consultant Qualiopi
                 {profil?.nom_structure ? <> · {profil.nom_structure}</> : null}
               </p>
             </div>
@@ -501,7 +506,7 @@ export default function EspaceMentoratQualite() {
                   <div key={d.id} style={carte}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '10px' }}>
                       <div>
-                        <h2 style={{ margin: '0 0 4px', fontSize: '15px', color: '#0f2d6e', fontWeight: 700 }}>Mentorat consultant qualité</h2>
+                        <h2 style={{ margin: '0 0 4px', fontSize: '15px', color: '#0f2d6e', fontWeight: 700 }}>Mentorat consultant Qualiopi</h2>
                         <p style={{ margin: 0, fontSize: '12px', color: '#6b7280' }}>
                           Souscrit le {formatDate(d.created_at)}
                           {d.montant != null ? <> · {formatMontant(d.montant)}</> : null}

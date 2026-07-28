@@ -13,6 +13,8 @@ export const SUJETS: string[] = [
   'Devis : Accompagnement associations · ESS',
   'Devis : Formation sur mesure',
   'Devis : Mission RGPD · DPO externalisé',
+  'Mentorat consultant Qualiopi',
+  'Accompagnement OF / Formateurs',
   // Compte et abonnement
   'Mon abonnement Optimal',
   'Résiliation abonnement',
@@ -36,4 +38,5 @@ export const SUJETS_AUTORISES: string[] = [...SUJETS, ...SUJETS_CACHES]
 // Correspondance parametre d'URL ?objet=... -> objet verrouille sur la page contact.
 export const OBJETS_URL: Record<string, string> = {
   'referencement-avocat': 'Référencement avocat',
+  'accompagnement-of': 'Accompagnement OF / Formateurs',
 }

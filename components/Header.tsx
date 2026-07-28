@@ -4,7 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import Image from 'next/image'
-import { ChevronDown, User, Building2, Heart, Scale, Briefcase, Shield, ShieldCheck, UserCheck, BookOpen, Layers, LayoutGrid, Calculator, Menu, X, ShoppingCart, GraduationCap, type LucideIcon } from 'lucide-react'
+import { ChevronDown, User, Building2, Heart, Scale, Briefcase, Shield, ShieldCheck, UserCheck, BookOpen, Layers, LayoutGrid, Calculator, Menu, X, ShoppingCart, GraduationCap, Presentation, type LucideIcon } from 'lucide-react'
 import { useCart } from '@/components/CartContext'
 
 type NavChild = { label: string; href: string; desc?: string; icon?: LucideIcon }
@@ -32,6 +32,7 @@ export default function Header() {
             { label: 'Particuliers', href: '/accompagnement-particuliers', desc: 'Information juridique, bibliothèque de documents, assurances, formations', icon: User },
             { label: 'Professionnels', href: '/accompagnement-professionnels', desc: 'Création et vie des entreprises, formalités, information juridique, bibliothèque de documents, assurances, RGPD et DPO, paie et DSN, formations', icon: Building2 },
             { label: 'Associations · ESS', href: '/accompagnement-associations', desc: 'Création et vie associative, gouvernance, accompagnement de projet, information juridique, bibliothèque de documents, assurances, RGPD et DPO, paie et DSN, formations', icon: Heart },
+            { label: 'Organisme de formation / Formateurs', href: '/accompagnement-organismes-formation', desc: 'Certification Qualiopi, BPF, NDA, préparation aux audits', icon: Presentation },
           ],
         },
         {
@@ -45,7 +46,7 @@ export default function Header() {
             { label: 'RGPD & conformité', href: '/rgpd-conformite', desc: 'Diagnostic et mise en conformité', icon: ShieldCheck },
             { label: 'DPO externalisé', href: '/dpo-externalise', desc: 'Conformité dans la durée', icon: UserCheck },
             { label: 'Formations', href: '/formations', desc: 'Sur-mesure, présentiel ou distanciel', icon: BookOpen },
-            { label: 'Mentorat consultant qualité', href: '/mentorat-consultant-qualite', desc: 'Devenir consultant en démarche qualité, accompagnement individuel', icon: GraduationCap },
+            { label: 'Mentorat consultant Qualiopi', href: '/mentorat-consultant-qualite', desc: 'Devenir consultant en démarche qualité, accompagnement individuel', icon: GraduationCap },
             { label: 'Tous nos services', href: '/services', desc: "Vue d'ensemble de l'accompagnement", icon: LayoutGrid },
           ],
         },
