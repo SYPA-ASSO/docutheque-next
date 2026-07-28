@@ -1,0 +1,9 @@
+Footer : ajout des liens Mentorat Consultant Qualiopi et OF / Formateurs
+===========================================================================
+
+Fichier modifie (remplace l'existant a l'identique) :
+- components/Footer.tsx
+    -> Rubrique "Services" : ajout du lien "Certification Qualiopi" -> /accompagnement-organismes-formation
+    -> Rubrique "Accompagnement" : ajout des liens
+         "OF / Formateurs" -> /accompagnement-organismes-formation
+         "Mentorat Consultant Qualiopi" -> /mentorat-consultant-qualite
