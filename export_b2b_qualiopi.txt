@@ -1,0 +1,3377 @@
+﻿===== FICHIER : lib\types.ts =====
+// lib/types.ts â€” Types partagÃ©s du projet
+
+export type RessourceType = 'document' | 'pack' | 'guide' | 'livre'
+
+export type DocItem = {
+  id: string
+  nom: string
+  description: string
+  blob_url: string | null
+  categories: string[]
+  profils_autorises: string[]
+  acces_gratuit: boolean
+  acces_optimal: boolean
+  acces_payant: boolean
+  prix_unitaire: number | null
+  actif: boolean
+  ordre: number
+  masque_catalogue?: boolean
+  // Page dÃ©diÃ©e et maillage (catalogue/[slug])
+  type?: RessourceType
+  slug?: string | null
+  sous_titre?: string | null
+  contenu?: string | null
+  image_url?: string | null
+  modeles_lies?: string[]
+  articles_lies?: string[]
+  services_lies?: string[]
+  inclus_dans?: string[]
+  contient?: string[]
+  // Fiche produit (page dediee) : champs additionnels
+  cadre_legal?: string | null
+  conseil?: string | null
+  definitions?: { terme: string; definition: string }[] | null
+  faq?: { question: string; reponse: string }[] | null
+  date_maj?: string | null
+}
+
+export type Categorie = {
+  id: string
+  nom: string
+  ordre: number
+  mots_cles?: string[]
+}
+
+
+===== FICHIER : lib\supabase.ts =====
+import { createClient } from '@supabase/supabase-js'
+
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+
+export const supabase = createClient(supabaseUrl, supabaseAnonKey)
+
+===== FICHIER : lib\supabase-admin.ts =====
+import { createClient } from '@supabase/supabase-js'
+
+export const supabaseAdmin = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.SUPABASE_SERVICE_ROLE_KEY!
+)
+
+===== FICHIER : lib\stripe.ts =====
+import Stripe from 'stripe'
+
+export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
+  apiVersion: '2026-04-22.dahlia',
+})
+
+// Identifiants de prix Stripe.
+// Chaque cle peut etre surchargee par une variable d'environnement : on met les identifiants
+// LIVE sur l'environnement Production de Vercel. A defaut de variable, on retombe sur
+// l'identifiant de TEST en dur, pour que le developpement local et les deploiements Preview
+// fonctionnent en mode test sans configuration supplementaire.
+export const PRICE_IDS = {
+  optimal_particulier_monthly:    process.env.STRIPE_PRICE_OPTIMAL_PARTICULIER_MONTHLY || 'price_1Tb1Z4Bmvu2pHBgzcD2iuldz',
+  optimal_particulier_yearly:     process.env.STRIPE_PRICE_OPTIMAL_PARTICULIER_YEARLY  || 'price_1Tb1enBmvu2pHBgzcd9eTgtq',
+  optimal_pro_monthly:            process.env.STRIPE_PRICE_OPTIMAL_PRO_MONTHLY         || 'price_1Tb1kJBmvu2pHBgzdqt7kCcr',
+  optimal_pro_yearly:             process.env.STRIPE_PRICE_OPTIMAL_PRO_YEARLY          || 'price_1Tb1ruBmvu2pHBgzJs8l7ngI',
+  question_unitaire:              process.env.STRIPE_PRICE_QUESTION_UNITAIRE           || 'price_1Tb1unBmvu2pHBgzWRQD1Bf0',
+  question_abonne:                process.env.STRIPE_PRICE_QUESTION_ABONNE             || 'price_1Tb1wCBmvu2pHBgzaY7auzsK',
+  conseil_assurances_particulier: process.env.STRIPE_PRICE_CONSEIL_PARTICULIER        || 'price_1Tb1xyBmvu2pHBgzOnHchsZ3',
+  conseil_assurances_pro:         process.env.STRIPE_PRICE_CONSEIL_PRO                 || 'price_1Tb20ABmvu2pHBgzjSyOfDb5',
+}
+
+===== FICHIER : lib\diagnostic-account.ts =====
+// lib/diagnostic-account.ts
+// Rattache une commande de diagnostic RGPD a un espace client.
+// A la commande : on retrouve le compte par users.email (source de verite), sinon on le cree
+// (sans mot de passe) et on prepare un lien de definition de mot de passe (recuperation Supabase)
+// a envoyer par email. On enregistre ensuite la commande dans la table dossiers_rgpd.
+// Tout passe par le client service-role (supabaseAdmin), qui contourne la RLS.
+// Regles : zero tiret long dans le contenu visible, NBSP avant euro, Notre juriste singulier.
+
+import { supabaseAdmin } from '@/lib/supabase-admin'
+
+export type CompteDiagnostic = {
+  userId: string | null
+  created: boolean
+  accessLink: string | null
+}
+
+// Separe un nom complet en prenom + nom (premier mot = prenom, reste = nom).
+export function splitFullName(fullName: string): { prenom: string; nom: string } {
+  const propre = (fullName || '').trim().replace(/\s+/g, ' ')
+  if (!propre) return { prenom: 'Client', nom: '' }
+  const parts = propre.split(' ')
+  if (parts.length === 1) return { prenom: parts[0], nom: '' }
+  return { prenom: parts[0], nom: parts.slice(1).join(' ') }
+}
+
+// Recherche l'identifiant Supabase Auth d'un utilisateur par email (parcours pagine, defensif).
+// Utilise seulement dans le cas limite ou un compte Auth existe sans ligne users correspondante.
+async function findAuthUserIdByEmail(email: string): Promise<string | null> {
+  const cible = email.toLowerCase()
+  for (let page = 1; page <= 5; page++) {
+    const { data, error } = await supabaseAdmin.auth.admin.listUsers({ page, perPage: 200 })
+    if (error || !data || !data.users || data.users.length === 0) return null
+    const trouve = data.users.find(u => (u.email || '').toLowerCase() === cible)
+    if (trouve) return trouve.id
+    if (data.users.length < 200) return null
+  }
+  return null
+}
+
+// Retrouve un compte par email, sinon le cree. Retourne l'identifiant, l'etat de creation
+// et, si le compte vient d'etre cree, un lien de definition de mot de passe a envoyer par email.
+export async function findOrCreateDiagnosticUser(params: {
+  email: string
+  fullName: string
+  telephone?: string | null
+  structure?: string | null
+  origin: string
+}): Promise<CompteDiagnostic> {
+  const email = (params.email || '').trim().toLowerCase()
+  if (!email) return { userId: null, created: false, accessLink: null }
+
+  // 1. Compte deja existant ? (la table users est alimentee a chaque inscription)
+  const { data: existant } = await supabaseAdmin
+    .from('users')
+    .select('id')
+    .eq('email', email)
+    .maybeSingle()
+  if (existant && existant.id) {
+    return { userId: existant.id, created: false, accessLink: null }
+  }
+
+  // 2. Creation du compte Auth (sans mot de passe : defini ensuite via le lien de recuperation)
+  let userId: string | null = null
+  let created = false
+  const { data: authData, error: authError } = await supabaseAdmin.auth.admin.createUser({
+    email,
+    email_confirm: true,
+  })
+  if (authError) {
+    // Cas limite : compte Auth existant sans ligne users. On recupere son id et on le
+    // traite comme un compte existant (aucun lien de mot de passe envoye).
+    if ((authError.message || '').toLowerCase().includes('registered')) {
+      userId = await findAuthUserIdByEmail(email)
+      if (!userId) throw new Error('Compte Auth existant introuvable : ' + authError.message)
+      created = false
+    } else {
+      throw authError
+    }
+  } else {
+    userId = authData.user.id
+    created = true
+  }
+
+  // 3. Profil dans la table users (upsert pour couvrir le cas limite ci-dessus)
+  const { prenom, nom } = splitFullName(params.fullName)
+  const { error: profilError } = await supabaseAdmin
+    .from('users')
+    .upsert(
+      {
+        id: userId,
+        email,
+        prenom,
+        nom,
+        type: 'professionnel',
+        telephone: params.telephone || null,
+        nom_structure: params.structure || null,
+        newsletter: false,
+        abonnement_actif: false,
+        role: 'user',
+      },
+      { onConflict: 'id' }
+    )
+  if (profilError) throw profilError
+
+  // 4. Lien de definition de mot de passe (recuperation) vers la page /nouveau-mot-de-passe
+  let accessLink: string | null = null
+  if (created) {
+    try {
+      const { data: linkData } = await supabaseAdmin.auth.admin.generateLink({
+        type: 'recovery',
+        email,
+        options: { redirectTo: `${params.origin}/nouveau-mot-de-passe` },
+      })
+      accessLink = (linkData && linkData.properties && linkData.properties.action_link) || null
+    } catch (e) {
+      console.error('[diagnostic-account] generateLink recovery a echoue :', e)
+    }
+  }
+
+  return { userId, created, accessLink }
+}
+
+// Verifie si une commande carte a deja ete enregistree (idempotence cote serveur).
+export async function dossierExistsForSession(stripeSessionId: string): Promise<boolean> {
+  const { data } = await supabaseAdmin
+    .from('dossiers_rgpd')
+    .select('id')
+    .eq('stripe_session_id', stripeSessionId)
+    .maybeSingle()
+  return Boolean(data && data.id)
+}
+
+// Cree la ligne de commande dans dossiers_rgpd.
+export async function createDossierRgpd(params: {
+  userId: string
+  forfaitId: 'essentiel' | 'standard'
+  montantEuros: number
+  mode: 'carte' | 'virement'
+  reference?: string | null
+  stripeSessionId?: string | null
+  statut: 'en_attente' | 'en_cours' | 'livre'
+}): Promise<void> {
+  const { error } = await supabaseAdmin.from('dossiers_rgpd').insert({
+    user_id: params.userId,
+    forfait: params.forfaitId,
+    montant: params.montantEuros,
+    mode_paiement: params.mode,
+    reference: params.reference || null,
+    stripe_session_id: params.stripeSessionId || null,
+    statut: params.statut,
+  })
+  if (error) throw error
+}
+
+// Bloc HTML d'acces a l'espace client, insere dans l'email acheteur.
+// accessLink non nul : compte cree, invitation a definir le mot de passe.
+// accessLink nul : compte deja existant (ou rattachement non realise), lien vers la connexion.
+export function espaceClientEmailBlock(accessLink: string | null, origin: string): string {
+  if (accessLink) {
+    return `
+    <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:14px 16px;margin:18px 0;">
+      <p style="margin:0 0 8px;font-size:13px;color:#1e3a5f;font-weight:700;">Votre espace client a ete cree</p>
+      <p style="margin:0 0 12px;font-size:13px;color:#374151;line-height:1.6;">
+        Definissez votre mot de passe pour suivre l'avancement de votre commande et telecharger votre rapport des qu'il sera disponible.
+      </p>
+      <a href="${accessLink}" style="display:inline-block;background:#0f2d6e;color:#ffffff;text-decoration:none;font-size:13px;font-weight:700;padding:10px 20px;border-radius:7px;">
+        Definir mon mot de passe
+      </a>
+      <p style="margin:10px 0 0;font-size:11px;color:#6b7280;line-height:1.6;">
+        Lien valable un temps limite. S'il a expire, utilisez la fonction mot de passe oublie depuis la page de connexion.
+      </p>
+    </div>`
+  }
+  return `
+    <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:14px 16px;margin:18px 0;">
+      <p style="margin:0;font-size:13px;color:#374151;line-height:1.6;">
+        Retrouvez le suivi de votre commande dans votre
+        <a href="${origin}/connexion" style="color:#1a4fba;text-decoration:none;font-weight:600;">espace client</a>.
+      </p>
+    </div>`
+}
+
+===== FICHIER : lib\tarifs.ts =====
+// lib/tarifs.ts
+// Tarifs des abonnements et calcul du revenu mensuel recurrent (MRR).
+// Equivalent mensuel en euros par type et periode (annuel ramene au mois).
+
+export const MRR_PAR_ABONNEMENT: Record<string, number> = {
+  'optimal_particulier|monthly': 17.9,
+  'optimal_particulier|yearly': 149 / 12,
+  'optimal_pro|monthly': 27.9,
+  'optimal_pro|yearly': 249 / 12,
+}
+
+type AbonnementMinimal = { abonnement_type?: string | null; abonnement_periode?: string | null }
+
+export function calculeMRR(abonnes: AbonnementMinimal[]): number {
+  let mrr = 0
+  for (const a of abonnes) {
+    const type = a.abonnement_type === 'optimal_pro' ? 'optimal_pro' : 'optimal_particulier'
+    const periode = a.abonnement_periode === 'yearly' ? 'yearly' : 'monthly'
+    mrr += MRR_PAR_ABONNEMENT[`${type}|${periode}`] || 0
+  }
+  return Math.round(mrr * 100) / 100
+}
+
+export function repartitionAbonnes(abonnes: AbonnementMinimal[]) {
+  const r = { particulier_mensuel: 0, particulier_annuel: 0, pro_mensuel: 0, pro_annuel: 0 }
+  for (const a of abonnes) {
+    const pro = a.abonnement_type === 'optimal_pro'
+    const annuel = a.abonnement_periode === 'yearly'
+    if (pro && annuel) r.pro_annuel++
+    else if (pro) r.pro_mensuel++
+    else if (annuel) r.particulier_annuel++
+    else r.particulier_mensuel++
+  }
+  return r
+}
+
+
+===== FICHIER : app\connexion\page.tsx =====
+'use client'
+
+import { useState } from 'react'
+import { useRouter } from 'next/navigation'
+import { Scale, UserCheck, Shield, Clock, Lock, Building2, Users, PenLine, KeyRound, AlertCircle, CheckCircle } from 'lucide-react'
+import Header from '@/components/Header'
+import GoogleAvis from '@/components/GoogleAvis'
+import FooterMinimal from '@/components/FooterMinimal'
+import { supabase } from '@/lib/supabase'
+import { PhoneInput, PAYS_PREFIXES } from '@/components/PhoneInput'
+
+export default function Connexion() {
+  const router = useRouter()
+  const [mode, setMode] = useState<'choix' | 'connexion' | 'inscription'>('choix')
+  const [statut, setStatut] = useState<'particulier' | 'professionnel' | 'association' | 'collectivite'>('particulier')
+  const [loading, setLoading] = useState(false)
+  const [erreur, setErreur] = useState('')
+  const [succes, setSucces] = useState('')
+
+  // Champs connexion
+  const [loginEmail, setLoginEmail] = useState('')
+  const [loginPassword, setLoginPassword] = useState('')
+
+  // Champs inscription
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [passwordConfirm, setPasswordConfirm] = useState('')
+  const [prenom, setPrenom] = useState('')
+  const [nom, setNom] = useState('')
+  const [telephone, setTelephone] = useState('')
+  const [rue, setRue] = useState('')
+  const [codePostal, setCodePostal] = useState('')
+  const [ville, setVille] = useState('')
+  const [nomStructure, setNomStructure] = useState('')
+  const [siret, setSiret] = useState('')
+  const [rna, setRna] = useState('')
+  const [qualite, setQualite] = useState('')
+  const [cguAccepte, setCguAccepte] = useState(false)
+  const [newsletter, setNewsletter] = useState(false)
+  const [telephonePrefixe, setTelephonePrefixe] = useState('+33')
+
+  const handleConnexion = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setErreur('')
+    setLoading(true)
+
+    try {
+      const { error } = await supabase.auth.signInWithPassword({
+        email: loginEmail,
+        password: loginPassword,
+      })
+
+      if (error) {
+        if (error.message.includes('Invalid login credentials')) {
+          setErreur('Email ou mot de passe incorrect.')
+        } else if (error.message.includes('not confirmed')) {
+          setErreur("Votre compte n'est pas encore activÃ©. Cliquez sur le lien d'activation reÃ§u par email lors de votre inscription.")
+        } else {
+          setErreur(error.message)
+        }
+        return
+      }
+
+      router.push('/espace-client')
+    } catch {
+      setErreur('Une erreur est survenue. Veuillez rÃ©essayer.')
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const handleInscription = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setErreur('')
+
+    if (!prenom || !nom || !email || !password) {
+      setErreur('Veuillez remplir tous les champs obligatoires.')
+      return
+    }
+    if (password !== passwordConfirm) {
+      setErreur('Les mots de passe ne correspondent pas.')
+      return
+    }
+    if (password.length < 8) {
+      setErreur('Le mot de passe doit contenir au moins 8 caractÃ¨res.')
+      return
+    }
+    if (!cguAccepte) {
+      setErreur('Vous devez accepter les CGU pour crÃ©er un compte.')
+      return
+    }
+
+    setLoading(true)
+
+    try {
+      const res = await fetch('/api/inscription', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email, password, prenom, nom,
+          type: statut,
+          telephone: telephone ? `${telephonePrefixe} ${telephone}` : '',
+          rue,
+          code_postal: codePostal, ville,
+          nom_structure: nomStructure,
+          siret, rna, newsletter,
+        }),
+      })
+
+      const data = await res.json()
+
+      if (!res.ok) {
+        if (data.error?.includes('already registered') || data.error?.includes('already been registered')) {
+          setErreur('Un compte existe dÃ©jÃ  avec cette adresse email.')
+        } else {
+          setErreur(data.error || 'Erreur lors de la crÃ©ation du compte.')
+        }
+        return
+      }
+
+      // Compte crÃ©Ã© non confirmÃ© : pas de connexion automatique.
+      // On renvoie vers le formulaire de connexion avec un message d'activation, email prÃ©-rempli.
+      setLoginEmail(email)
+      setSucces("Compte crÃ©Ã©. Un email d'activation vient d'Ãªtre envoyÃ© Ã  " + email + ". Cliquez sur le lien qu'il contient pour activer votre compte, puis connectez-vous.")
+      setMode('connexion')
+    } catch {
+      setErreur('Une erreur est survenue. Veuillez rÃ©essayer.')
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const inputStyle = {
+    width: '100%',
+    padding: '10px 12px',
+    border: '1px solid #d1d5db',
+    borderRadius: '8px',
+    fontSize: '13px',
+    boxSizing: 'border-box' as const,
+    outline: 'none',
+  }
+
+  const labelStyle = {
+    display: 'block',
+    fontSize: '12px',
+    fontWeight: '600' as const,
+    color: '#374151',
+    marginBottom: '6px',
+  }
+
+  return (
+    <>
+      <Header />
+      <style dangerouslySetInnerHTML={{ __html: '@media(max-width:820px){.cx-wrap{flex-direction:column !important;align-items:stretch !important;gap:1.25rem !important}.cx-aside{flex:none !important;position:static !important;top:auto !important;order:2 !important;padding:1.75rem !important}.cx-form{flex:none !important;order:1 !important;padding:1.75rem !important}.cx-2col{grid-template-columns:1fr !important}}' }} />
+      <main style={{ background: '#f8fafc', minHeight: '100vh', padding: '3rem 0' }}>
+        <div className="cx-wrap" style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 2rem', display: 'flex', gap: '2rem', alignItems: 'flex-start' }}>
+
+          {/* COLONNE GAUCHE */}
+          <div className="cx-aside" style={{ flex: '0 0 380px', background: 'linear-gradient(135deg, #0f2d6e 0%, #1a4fba 100%)', borderRadius: '16px', padding: '2.5rem', position: 'sticky', top: '80px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '24px' }}>
+              <div style={{ width: '32px', height: '32px', background: 'rgba(255,255,255,0.2)', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <Scale size={18} color="white" strokeWidth={1.5} />
+              </div>
+              <span style={{ color: 'white', fontWeight: '700', fontSize: '15px' }}>Cabinet Cholez-Pagotto</span>
+            </div>
+            <h2 style={{ color: 'white', fontSize: '1.3rem', fontWeight: '700', lineHeight: '1.4', marginBottom: '8px' }}>
+              Vos documents juridiques et vos droits expliquÃ©s, sans jargon.
+            </h2>
+            <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '13px', lineHeight: '1.7', marginBottom: '28px' }}>
+              AccÃ©dez Ã  votre espace client pour tÃ©lÃ©charger vos documents, poser vos questions et gÃ©rer votre abonnement.
+            </p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '28px' }}>
+              {[
+                { label: 'AccÃ¨s gratuit', desc: 'Tous les documents disponibles en accÃ¨s libre, format DOCX.', color: '#4ade80' },
+                { label: 'Abonnement Optimal', desc: 'BibliothÃ¨que complÃ¨te de documents juridiques, 1 question juriste incluse par mois, non cumulable. Ã€ partir de 17,90 â‚¬/mois ou 149 â‚¬/an.', color: '#93c5fd' },
+                { label: 'Information sur vos droits', desc: 'Une question, une rÃ©ponse rÃ©digÃ©e par un juriste sous 24 Ã  48h. 47 â‚¬ Ã  l\'unitÃ©, sans abonnement. Ce service constitue une information juridique au sens de la loi nÂ°71-1130 du 31 dÃ©cembre 1971 et ne constitue pas une consultation juridique personnalisÃ©e.', color: '#fcd34d' },
+              ].map((offre, i) => (
+                <div key={i} style={{ background: 'rgba(255,255,255,0.1)', borderRadius: '10px', padding: '12px 14px' }}>
+                  <p style={{ color: offre.color, fontSize: '12px', fontWeight: '700', margin: '0 0 3px' }}>{offre.label}</p>
+                  <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: '11px', margin: 0, lineHeight: '1.5' }}>{offre.desc}</p>
+                </div>
+              ))}
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+              {[
+                { icon: <UserCheck size={16} color="#93c5fd" strokeWidth={1.5} />, text: '100% humain, zÃ©ro intelligence artificielle' },
+                { icon: <Shield size={16} color="#93c5fd" strokeWidth={1.5} />, text: 'Paiement sÃ©curisÃ© Â· CB et virement' },
+                { icon: <Clock size={16} color="#93c5fd" strokeWidth={1.5} />, text: 'RÃ©ponse juriste sous 24 Ã  48h' },
+                { icon: <Lock size={16} color="#93c5fd" strokeWidth={1.5} />, text: 'DonnÃ©es personnelles protÃ©gÃ©es (RGPD)' },
+              ].map((item, i) => (
+                <div key={i} style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+                  {item.icon}
+                  <span style={{ color: 'rgba(255,255,255,0.8)', fontSize: '12px' }}>{item.text}</span>
+                </div>
+              ))}
+            </div>
+            <div style={{ marginTop: '16px' }}>
+              <GoogleAvis variant="compact" />
+            </div>
+          </div>
+
+          {/* COLONNE DROITE */}
+          <div className="cx-form" style={{ flex: 1, background: 'white', borderRadius: '16px', padding: '2.5rem', border: '1px solid #e5e7eb' }}>
+
+            {/* ERREUR / SUCCÃˆS GLOBAUX */}
+            {erreur && (
+              <div style={{ background: '#fef2f2', border: '1px solid #fecaca', borderRadius: '8px', padding: '12px 14px', marginBottom: '16px', display: 'flex', gap: '8px', alignItems: 'flex-start' }}>
+                <AlertCircle size={16} color="#dc2626" style={{ flexShrink: 0, marginTop: '1px' }} />
+                <p style={{ color: '#dc2626', fontSize: '13px', margin: 0 }}>{erreur}</p>
+              </div>
+            )}
+            {succes && (
+              <div style={{ background: '#f0fdf4', border: '1px solid #bbf7d0', borderRadius: '8px', padding: '12px 14px', marginBottom: '16px', display: 'flex', gap: '8px', alignItems: 'flex-start' }}>
+                <CheckCircle size={16} color="#16a34a" style={{ flexShrink: 0, marginTop: '1px' }} />
+                <p style={{ color: '#15803d', fontSize: '13px', margin: 0 }}>{succes}</p>
+              </div>
+            )}
+
+            {/* Ã‰CRAN DE CHOIX */}
+            {mode === 'choix' && (
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+                <div>
+                  <h2 style={{ fontSize: '1.4rem', fontWeight: '700', color: '#0f2d6e', margin: '0 0 6px' }}>Bienvenue sur votre espace client</h2>
+                  <p style={{ color: '#6b7280', fontSize: '13px', margin: 0 }}>Pour commencer, dites-nous oÃ¹ vous en Ãªtes :</p>
+                </div>
+                <button
+                  onClick={() => { setMode('inscription'); setErreur(''); setSucces('') }}
+                  style={{ width: '100%', background: 'white', border: '2px solid #e5e7eb', borderRadius: '14px', padding: '1.75rem', cursor: 'pointer', textAlign: 'left', transition: 'all 0.2s', display: 'flex', gap: '1.25rem', alignItems: 'flex-start' }}
+                  onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.borderColor = '#1a4fba'; (e.currentTarget as HTMLButtonElement).style.background = '#eff6ff' }}
+                  onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.borderColor = '#e5e7eb'; (e.currentTarget as HTMLButtonElement).style.background = 'white' }}
+                >
+                  <div style={{ width: '48px', height: '48px', background: '#eff6ff', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                    <PenLine size={24} color="#1a4fba" strokeWidth={1.5} />
+                  </div>
+                  <div>
+                    <p style={{ color: '#0f2d6e', fontSize: '15px', fontWeight: '700', margin: '0 0 4px' }}>C'est ma premiÃ¨re visite</p>
+                    <p style={{ color: '#6b7280', fontSize: '13px', margin: '0 0 8px', lineHeight: '1.5' }}>Je n'ai pas encore de compte et je souhaite en crÃ©er un.</p>
+                    <span style={{ color: '#1a4fba', fontSize: '12px', fontWeight: '600' }}>CrÃ©er mon compte â†’</span>
+                  </div>
+                </button>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                  <div style={{ flex: 1, height: '1px', background: '#e5e7eb' }} />
+                  <span style={{ color: '#9ca3af', fontSize: '13px', fontWeight: '600', letterSpacing: '0.05em' }}>OU</span>
+                  <div style={{ flex: 1, height: '1px', background: '#e5e7eb' }} />
+                </div>
+                <button
+                  onClick={() => { setMode('connexion'); setErreur(''); setSucces('') }}
+                  style={{ width: '100%', background: 'white', border: '2px solid #e5e7eb', borderRadius: '14px', padding: '1.75rem', cursor: 'pointer', textAlign: 'left', transition: 'all 0.2s', display: 'flex', gap: '1.25rem', alignItems: 'flex-start' }}
+                  onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.borderColor = '#1a4fba'; (e.currentTarget as HTMLButtonElement).style.background = '#eff6ff' }}
+                  onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.borderColor = '#e5e7eb'; (e.currentTarget as HTMLButtonElement).style.background = 'white' }}
+                >
+                  <div style={{ width: '48px', height: '48px', background: '#f0fdf4', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                    <KeyRound size={24} color="#16a34a" strokeWidth={1.5} />
+                  </div>
+                  <div>
+                    <p style={{ color: '#0f2d6e', fontSize: '15px', fontWeight: '700', margin: '0 0 4px' }}>J'ai dÃ©jÃ  un compte</p>
+                    <p style={{ color: '#6b7280', fontSize: '13px', margin: '0 0 8px', lineHeight: '1.5' }}>Je suis dÃ©jÃ  inscrit et je souhaite accÃ©der Ã  mon espace client.</p>
+                    <span style={{ color: '#16a34a', fontSize: '12px', fontWeight: '600' }}>Me connecter â†’</span>
+                  </div>
+                </button>
+                <p style={{ color: '#9ca3af', fontSize: '11px', textAlign: 'center', margin: 0, lineHeight: '1.6' }}>
+                  Vos donnÃ©es sont protÃ©gÃ©es conformÃ©ment au RGPD Â· <a href="/confidentialite" style={{ color: '#9ca3af' }}>Politique de confidentialitÃ©</a>
+                </p>
+              </div>
+            )}
+
+            {/* FORMULAIRE CONNEXION */}
+            {mode === 'connexion' && (
+              <form onSubmit={handleConnexion} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                <button type="button" onClick={() => { setMode('choix'); setErreur('') }} style={{ background: 'none', border: 'none', color: '#6b7280', fontSize: '12px', cursor: 'pointer', padding: 0, display: 'flex', alignItems: 'center', gap: '4px', alignSelf: 'flex-start' }}>
+                  â† Retour
+                </button>
+                <div>
+                  <h2 style={{ fontSize: '1.3rem', fontWeight: '700', color: '#0f2d6e', margin: '0 0 4px' }}>AccÃ©dez Ã  votre espace client</h2>
+                  <p style={{ color: '#6b7280', fontSize: '13px', margin: 0 }}>Renseignez vos identifiants pour accÃ©der Ã  vos documents et Ã  votre suivi.</p>
+                </div>
+                <div>
+                  <label style={labelStyle}>Adresse email *</label>
+                  <input type="email" value={loginEmail} onChange={e => setLoginEmail(e.target.value)} placeholder="votre@email.fr" required style={inputStyle} />
+                </div>
+                <div>
+                  <label style={labelStyle}>Mot de passe *</label>
+                  <input type="password" value={loginPassword} onChange={e => setLoginPassword(e.target.value)} placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢" required style={inputStyle} />
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                  <a href="/mot-de-passe-oublie" style={{ color: '#1a4fba', fontSize: '12px', textDecoration: 'none' }}>Mot de passe oubliÃ© ?</a>
+                </div>
+                <button
+                  type="submit"
+                  disabled={loading}
+                  style={{ width: '100%', padding: '12px', borderRadius: '8px', border: 'none', background: loading ? '#6b7280' : '#1a4fba', color: 'white', fontSize: '14px', fontWeight: '700', cursor: loading ? 'not-allowed' : 'pointer' }}
+                >
+                  {loading ? 'Connexion en cours...' : 'Se connecter'}
+                </button>
+                <div style={{ background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '10px', padding: '14px 16px' }}>
+                  <p style={{ color: '#1e3a5f', fontSize: '12px', fontWeight: '600', marginBottom: '8px' }}>Depuis votre espace client, vous pouvez :</p>
+                  {['TÃ©lÃ©charger vos documents en format DOCX', 'Poser une question Ã  votre juriste', 'GÃ©rer votre abonnement Optimal', 'Consulter vos rÃ©ponses et historique'].map((item, i) => (
+                    <div key={i} style={{ display: 'flex', gap: '8px', alignItems: 'flex-start', marginBottom: '4px' }}>
+                      <span style={{ color: '#1a4fba', fontSize: '12px', flexShrink: 0 }}>âœ“</span>
+                      <span style={{ color: '#374151', fontSize: '12px' }}>{item}</span>
+                    </div>
+                  ))}
+                </div>
+                <p style={{ color: '#6b7280', fontSize: '12px', textAlign: 'center', margin: 0 }}>
+                  Pas encore de compte ?{' '}
+                  <button type="button" onClick={() => { setMode('inscription'); setErreur('') }} style={{ color: '#1a4fba', fontWeight: '600', background: 'none', border: 'none', cursor: 'pointer', fontSize: '12px', padding: 0 }}>
+                    Inscription rapide
+                  </button>
+                </p>
+              </form>
+            )}
+
+            {/* FORMULAIRE INSCRIPTION */}
+            {mode === 'inscription' && (
+              <form onSubmit={handleInscription} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                <button type="button" onClick={() => { setMode('choix'); setErreur('') }} style={{ background: 'none', border: 'none', color: '#6b7280', fontSize: '12px', cursor: 'pointer', padding: 0, display: 'flex', alignItems: 'center', gap: '4px', alignSelf: 'flex-start' }}>
+                  â† Retour
+                </button>
+                <div>
+                  <h2 style={{ fontSize: '1.3rem', fontWeight: '700', color: '#0f2d6e', margin: '0 0 4px' }}>CrÃ©er mon compte</h2>
+                  <p style={{ color: '#6b7280', fontSize: '13px', margin: 0 }}>AccÃ¨s immÃ©diat Ã  votre espace client.</p>
+                </div>
+
+                <div>
+                  <label style={labelStyle}>Adresse email *</label>
+                  <input type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="votre@email.fr" required style={inputStyle} />
+                </div>
+
+                <div className="cx-2col" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+                  <div>
+                    <label style={labelStyle}>Mot de passe *</label>
+                    <input type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢" required minLength={8} style={inputStyle} />
+                  </div>
+                  <div>
+                    <label style={labelStyle}>Confirmer le mot de passe *</label>
+                    <input type="password" value={passwordConfirm} onChange={e => setPasswordConfirm(e.target.value)} placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢" required style={inputStyle} />
+                  </div>
+                </div>
+
+                <div>
+                  <label style={labelStyle}>Vous Ãªtes *</label>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '8px' }}>
+                    {[
+                      { value: 'particulier', label: 'Particulier', icon: <Users size={14} strokeWidth={1.5} /> },
+                      { value: 'professionnel', label: 'Professionnel', icon: <Building2 size={14} strokeWidth={1.5} /> },
+                      { value: 'association', label: 'Association', icon: <Shield size={14} strokeWidth={1.5} /> },
+                      { value: 'collectivite', label: 'CollectivitÃ©', icon: <Scale size={14} strokeWidth={1.5} /> },
+                    ].map((s) => (
+                      <button key={s.value} type="button" onClick={() => {
+                        // Reinitialise les champs propres a un statut professionnel/association/collectivite
+                        // pour eviter qu'une valeur saisie puis abandonnee (ex. SIRET tape puis retour a
+                        // "Particulier") ne soit envoyee malgre tout a l'inscription.
+                        setStatut(s.value as typeof statut)
+                        if (s.value === 'particulier') {
+                          setNomStructure(''); setSiret(''); setRna(''); setQualite('')
+                        }
+                      }}
+                        style={{ padding: '10px', borderRadius: '8px', border: `2px solid ${statut === s.value ? '#1a4fba' : '#e5e7eb'}`, background: statut === s.value ? '#eff6ff' : 'white', color: statut === s.value ? '#1a4fba' : '#374151', fontSize: '12px', fontWeight: statut === s.value ? '700' : '500', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', transition: 'all 0.15s' }}>
+                        {s.icon} {s.label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="cx-2col" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+                  <div>
+                    <label style={labelStyle}>PrÃ©nom *</label>
+                    <input type="text" value={prenom} onChange={e => setPrenom(e.target.value)} placeholder="Jean" required style={inputStyle} />
+                  </div>
+                  <div>
+                    <label style={labelStyle}>Nom *</label>
+                    <input type="text" value={nom} onChange={e => setNom(e.target.value)} placeholder="Dupont" required style={inputStyle} />
+                  </div>
+                </div>
+
+                <div style={{ background: '#f8fafc', border: '1px solid #e5e7eb', borderRadius: '10px', padding: '16px' }}>
+                  <p style={{ color: '#6b7280', fontSize: '12px', fontWeight: '600', margin: '0 0 12px' }}>
+                    Informations complÃ©mentaires <span style={{ fontWeight: '400', fontStyle: 'italic' }}>(optionnelles pour l'accÃ¨s gratuit, requises pour l'Abonnement Optimal et la question payante)</span>
+                  </p>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                    <div>
+                      <label style={labelStyle}>Rue</label>
+                      <input type="text" value={rue} onChange={e => setRue(e.target.value)} placeholder="12 rue de la RÃ©publique" style={inputStyle} />
+                    </div>
+                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: '12px' }}>
+                      <div>
+                        <label style={labelStyle}>Code postal</label>
+                        <input type="text" value={codePostal} onChange={e => setCodePostal(e.target.value)} placeholder="75001" style={inputStyle} />
+                      </div>
+                      <div>
+                        <label style={labelStyle}>Ville</label>
+                        <input type="text" value={ville} onChange={e => setVille(e.target.value)} placeholder="Paris" style={inputStyle} />
+                      </div>
+                    </div>
+                    <div>
+                      <label style={labelStyle}>TÃ©lÃ©phone</label>
+                      <PhoneInput
+                        prefixe={telephonePrefixe}
+                        onPrefixeChange={setTelephonePrefixe}
+                        numero={telephone}
+                        onNumeroChange={setTelephone}
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {statut === 'professionnel' && (
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', background: '#f8fafc', borderRadius: '10px', padding: '16px', border: '1px solid #e5e7eb' }}>
+                    <p style={{ color: '#1a4fba', fontSize: '12px', fontWeight: '700', margin: 0 }}>Informations professionnelles</p>
+                    <div>
+                      <label style={labelStyle}>Nom commercial *</label>
+                      <input type="text" value={nomStructure} onChange={e => setNomStructure(e.target.value)} placeholder="Nom de votre entreprise" style={inputStyle} />
+                    </div>
+                    <div>
+                      <label style={labelStyle}>NumÃ©ro SIRET *</label>
+                      <input type="text" value={siret} onChange={e => setSiret(e.target.value)} placeholder="000 000 000 00000" style={inputStyle} />
+                    </div>
+                  </div>
+                )}
+
+                {statut === 'association' && (
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', background: '#f8fafc', borderRadius: '10px', padding: '16px', border: '1px solid #e5e7eb' }}>
+                    <p style={{ color: '#1a4fba', fontSize: '12px', fontWeight: '700', margin: 0 }}>Informations association</p>
+                    <div>
+                      <label style={labelStyle}>Nom de l'association *</label>
+                      <input type="text" value={nomStructure} onChange={e => setNomStructure(e.target.value)} placeholder="Nom de votre association" style={inputStyle} />
+                    </div>
+                    <div>
+                      <label style={labelStyle}>NumÃ©ro RNA *</label>
+                      <input type="text" value={rna} onChange={e => setRna(e.target.value)} placeholder="W000000000" style={inputStyle} />
+                    </div>
+                    <div>
+                      <label style={labelStyle}>NumÃ©ro SIRET (si applicable)</label>
+                      <input type="text" value={siret} onChange={e => setSiret(e.target.value)} placeholder="000 000 000 00000" style={inputStyle} />
+                    </div>
+                  </div>
+                )}
+
+                {statut === 'collectivite' && (
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', background: '#f8fafc', borderRadius: '10px', padding: '16px', border: '1px solid #e5e7eb' }}>
+                    <p style={{ color: '#1a4fba', fontSize: '12px', fontWeight: '700', margin: 0 }}>Informations collectivitÃ©</p>
+                    <div>
+                      <label style={labelStyle}>Nom de la collectivitÃ© *</label>
+                      <input type="text" value={nomStructure} onChange={e => setNomStructure(e.target.value)} placeholder="Commune de..." style={inputStyle} />
+                    </div>
+                    <div>
+                      <label style={labelStyle}>NumÃ©ro SIRET *</label>
+                      <input type="text" value={siret} onChange={e => setSiret(e.target.value)} placeholder="000 000 000 00000" style={inputStyle} />
+                    </div>
+                    <div>
+                      <label style={labelStyle}>QualitÃ© du signataire *</label>
+                      <input type="text" value={qualite} onChange={e => setQualite(e.target.value)} placeholder="ex. Maire, DGS, Ã‰lu dÃ©lÃ©guÃ©..." style={inputStyle} />
+                    </div>
+                  </div>
+                )}
+
+                <div style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
+                  <input type="checkbox" id="cgu" checked={cguAccepte} onChange={e => setCguAccepte(e.target.checked)} style={{ marginTop: '2px', flexShrink: 0 }} />
+                  <label htmlFor="cgu" style={{ color: '#6b7280', fontSize: '12px', lineHeight: '1.6' }}>
+                    J'accepte les <a href="/cgu" style={{ color: '#1a4fba' }}>Conditions GÃ©nÃ©rales d'Utilisation</a> et la <a href="/confidentialite" style={{ color: '#1a4fba' }}>Politique de confidentialitÃ©</a> *
+                  </label>
+                </div>
+
+                <div style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
+                  <input type="checkbox" id="newsletter" checked={newsletter} onChange={e => setNewsletter(e.target.checked)} style={{ marginTop: '2px', flexShrink: 0 }} />
+                  <label htmlFor="newsletter" style={{ color: '#6b7280', fontSize: '12px', lineHeight: '1.6' }}>
+                    Je souhaite recevoir la newsletter du cabinet (informations juridiques, offres sur nos services)
+                  </label>
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={loading}
+                  style={{ width: '100%', padding: '13px', borderRadius: '8px', border: 'none', background: loading ? '#6b7280' : '#1a4fba', color: 'white', fontSize: '14px', fontWeight: '700', cursor: loading ? 'not-allowed' : 'pointer' }}
+                >
+                  {loading ? 'CrÃ©ation en cours...' : 'CrÃ©er mon compte'}
+                </button>
+
+                <div style={{ background: '#f0fdf4', border: '1px solid #bbf7d0', borderRadius: '8px', padding: '12px 14px' }}>
+                  <p style={{ color: '#15803d', fontSize: '12px', lineHeight: '1.6', margin: '0 0 6px', fontWeight: '600' }}>AprÃ¨s crÃ©ation de votre compte :</p>
+                  {[
+                    'AccÃ¨s gratuit immÃ©diat aux documents en accÃ¨s libre',
+                    'Souscription Ã  l\'abonnement Optimal si vous le souhaitez',
+                    'Question unitaire Ã  47 â‚¬ Â· ou incluse dans l\'Abonnement Optimal.',
+                  ].map((item, i) => (
+                    <div key={i} style={{ display: 'flex', gap: '8px', alignItems: 'flex-start', marginBottom: '4px' }}>
+                      <span style={{ color: '#16a34a', fontSize: '12px', flexShrink: 0 }}>âœ“</span>
+                      <span style={{ color: '#374151', fontSize: '12px' }}>{item}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <p style={{ color: '#6b7280', fontSize: '12px', textAlign: 'center', margin: 0 }}>
+                  DÃ©jÃ  un compte ?{' '}
+                  <button type="button" onClick={() => { setMode('connexion'); setErreur('') }} style={{ color: '#1a4fba', fontWeight: '600', background: 'none', border: 'none', cursor: 'pointer', fontSize: '12px', padding: 0 }}>
+                    Me connecter
+                  </button>
+                </p>
+                <p style={{ color: '#9ca3af', fontSize: '10px', textAlign: 'center', margin: 0, lineHeight: '1.6' }}>
+                  * Champs obligatoires Â· Vos donnÃ©es sont protÃ©gÃ©es conformÃ©ment au RGPD Â· <a href="/confidentialite" style={{ color: '#9ca3af' }}>Politique de confidentialitÃ©</a>
+                </p>
+              </form>
+            )}
+
+          </div>
+        </div>
+      </main>
+      <FooterMinimal />
+    </>
+  )
+}
+
+===== FICHIER : app\espace-avocat\page.tsx =====
+'use client'
+
+import { useEffect, useState, Suspense } from 'react'
+import { useSearchParams } from 'next/navigation'
+import { Save, CheckCircle2, AlertCircle } from 'lucide-react'
+import { REGIONS, DOMAINES, type Avocat } from '@/lib/avocats'
+
+function Editeur() {
+  const params = useSearchParams()
+  const token = params.get('token') || ''
+  const [a, setA] = useState<Avocat | null>(null)
+  const [chargement, setChargement] = useState(true)
+  const [sauvegarde, setSauvegarde] = useState(false)
+  const [ok, setOk] = useState(false)
+  const [erreur, setErreur] = useState('')
+
+  useEffect(() => {
+    if (!token) { setErreur('Lien d\'accÃ¨s manquant.'); setChargement(false); return }
+    fetch(`/api/avocat/profil?token=${encodeURIComponent(token)}`)
+      .then((r) => r.json())
+      .then((d) => { if (d.avocat) setA(d.avocat); else setErreur(d.error || 'Profil introuvable.') })
+      .catch(() => setErreur('Erreur de chargement.'))
+      .finally(() => setChargement(false))
+  }, [token])
+
+  const set = (k: keyof Avocat, v: unknown) => setA((p) => (p ? { ...p, [k]: v } as Avocat : p))
+  const toggleDomaine = (d: string) => {
+    if (!a) return
+    const cur = a.domaines || []
+    set('domaines', cur.includes(d) ? cur.filter((x) => x !== d) : [...cur, d])
+  }
+
+  async function enregistrer() {
+    if (!a) return
+    setSauvegarde(true); setOk(false); setErreur('')
+    try {
+      const res = await fetch('/api/avocat/profil', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ token, ...a }),
+      })
+      const d = await res.json()
+      if (!res.ok) setErreur(d.error || 'Erreur lors de l\'enregistrement.')
+      else { setOk(true); setTimeout(() => setOk(false), 3000) }
+    } catch {
+      setErreur('Erreur rÃ©seau.')
+    }
+    setSauvegarde(false)
+  }
+
+  const champ: React.CSSProperties = { width: '100%', padding: '10px 12px', borderRadius: '8px', border: '1px solid #d7dce5', fontSize: '13px', color: '#1f2937', boxSizing: 'border-box', fontFamily: 'inherit', background: 'white' }
+  const label: React.CSSProperties = { fontSize: '11px', fontWeight: 700, color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '6px' }
+  const bloc: React.CSSProperties = { background: 'white', border: '1px solid #eaedf3', borderRadius: '14px', padding: '1.5rem', marginBottom: '1.25rem' }
+
+  if (chargement) return <p style={{ textAlign: 'center', color: '#6b7280', padding: '4rem' }}>Chargement...</p>
+  if (erreur && !a) return (
+    <div style={{ maxWidth: '500px', margin: '4rem auto', textAlign: 'center', color: '#6b7280' }}>
+      <AlertCircle size={28} style={{ color: '#dc2626', marginBottom: '8px' }} />
+      <p>{erreur}</p>
+    </div>
+  )
+  if (!a) return null
+
+  return (
+    <div style={{ maxWidth: '780px', margin: '0 auto', padding: '2rem 1.5rem 4rem' }}>
+      <p style={{ color: '#c8a84b', fontSize: '11px', letterSpacing: '2px', fontWeight: 700, textTransform: 'uppercase', margin: '0 0 6px' }}>Espace avocat partenaire</p>
+      <h1 style={{ margin: '0 0 6px', color: '#0f2d6e', fontSize: '1.6rem' }}>Mon profil</h1>
+      <p style={{ margin: '0 0 8px', fontSize: '13px', color: '#6b7280' }}>
+        Statut : {a.actif ? <strong style={{ color: '#15803d' }}>publiÃ© dans l&apos;annuaire</strong> : <strong style={{ color: '#b8860b' }}>en attente de validation</strong>}
+        {a.frais_acte != null && <> Â· Frais de mise en relation : {a.frais_acte}&nbsp;â‚¬ par demande aboutie</>}
+      </p>
+
+      <div style={bloc}>
+        <h2 style={{ fontSize: '14px', color: '#0f2d6e', margin: '0 0 14px' }}>IdentitÃ©</h2>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '12px' }}>
+          <div><label style={label}>CivilitÃ©</label><input style={champ} value={a.civilite || ''} onChange={(e) => set('civilite', e.target.value)} /></div>
+          <div><label style={label}>PrÃ©nom</label><input style={champ} value={a.prenom || ''} onChange={(e) => set('prenom', e.target.value)} /></div>
+          <div><label style={label}>Nom</label><input style={champ} value={a.nom || ''} onChange={(e) => set('nom', e.target.value)} /></div>
+          <div><label style={label}>Barreau</label><input style={champ} value={a.barreau || ''} onChange={(e) => set('barreau', e.target.value)} /></div>
+          <div><label style={label}>Structure / cabinet</label><input style={champ} value={a.structure || ''} onChange={(e) => set('structure', e.target.value)} /></div>
+        </div>
+      </div>
+
+      <div style={bloc}>
+        <h2 style={{ fontSize: '14px', color: '#0f2d6e', margin: '0 0 14px' }}>Localisation</h2>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '12px' }}>
+          <div><label style={label}>Ville</label><input style={champ} value={a.ville || ''} onChange={(e) => set('ville', e.target.value)} /></div>
+          <div><label style={label}>Code postal</label><input style={champ} value={a.code_postal || ''} onChange={(e) => set('code_postal', e.target.value)} /></div>
+          <div><label style={label}>DÃ©partement</label><input style={champ} value={a.departement || ''} onChange={(e) => set('departement', e.target.value)} /></div>
+          <div>
+            <label style={label}>RÃ©gion</label>
+            <select style={champ} value={a.region || ''} onChange={(e) => set('region', e.target.value)}>
+              <option value="">Ã€ sÃ©lectionner</option>
+              {REGIONS.map((r) => <option key={r} value={r}>{r}</option>)}
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div style={bloc}>
+        <h2 style={{ fontSize: '14px', color: '#0f2d6e', margin: '0 0 6px' }}>Domaines de compÃ©tence</h2>
+        <p style={{ fontSize: '12px', color: '#9aa2b1', margin: '0 0 12px' }}>SÃ©lectionnez tous les domaines que vous traitez.</p>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+          {DOMAINES.map((d) => {
+            const actif = (a.domaines || []).includes(d)
+            return (
+              <button key={d} onClick={() => toggleDomaine(d)} style={{ fontSize: '12px', fontWeight: 600, padding: '7px 12px', borderRadius: '50px', cursor: 'pointer', border: actif ? '1.5px solid #0f2d6e' : '1px solid #d7dce5', background: actif ? '#eef1fa' : 'white', color: actif ? '#0f2d6e' : '#6b7280' }}>
+                {d}
+              </button>
+            )
+          })}
+        </div>
+      </div>
+
+      <div style={bloc}>
+        <h2 style={{ fontSize: '14px', color: '#0f2d6e', margin: '0 0 14px' }}>Honoraires et disponibilitÃ©s</h2>
+        <p style={{ fontSize: '12px', color: '#9aa2b1', margin: '0 0 12px' }}>Vous fixez librement votre tarif. Il est affichÃ© Ã  titre indicatif sur votre fiche.</p>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '12px' }}>
+          <div><label style={label}>Tarif indicatif (â‚¬)</label><input type="number" step="0.01" style={champ} value={a.tarif_montant ?? ''} onChange={(e) => set('tarif_montant', e.target.value)} /></div>
+          <div><label style={label}>UnitÃ©</label><input style={champ} placeholder="la consultation de 30 min" value={a.tarif_unite || ''} onChange={(e) => set('tarif_unite', e.target.value)} /></div>
+          <div><label style={label}>DÃ©lai de rÃ©ponse</label><input style={champ} placeholder="sous 48 h" value={a.delai_reponse || ''} onChange={(e) => set('delai_reponse', e.target.value)} /></div>
+        </div>
+        <div style={{ marginTop: '12px' }}>
+          <label style={label}>DisponibilitÃ©s</label>
+          <input style={champ} placeholder="Lun-Ven 9h-18h, visio ou tÃ©lÃ©phone" value={a.disponibilites || ''} onChange={(e) => set('disponibilites', e.target.value)} />
+        </div>
+      </div>
+
+      <div style={bloc}>
+        <h2 style={{ fontSize: '14px', color: '#0f2d6e', margin: '0 0 14px' }}>PrÃ©sentation et contact</h2>
+        <label style={label}>Biographie</label>
+        <textarea style={{ ...champ, minHeight: '90px', resize: 'vertical', marginBottom: '12px' }} value={a.bio || ''} onChange={(e) => set('bio', e.target.value)} />
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '12px' }}>
+          <div><label style={label}>TÃ©lÃ©phone</label><input style={champ} value={a.telephone || ''} onChange={(e) => set('telephone', e.target.value)} /></div>
+          <div><label style={label}>Email</label><input type="email" style={champ} value={a.email || ''} onChange={(e) => set('email', e.target.value)} /></div>
+          <div><label style={label}>Site web</label><input style={champ} value={a.site_web || ''} onChange={(e) => set('site_web', e.target.value)} /></div>
+        </div>
+      </div>
+
+      {erreur && <p style={{ color: '#dc2626', fontSize: '13px' }}>{erreur}</p>}
+
+      <div style={{ position: 'sticky', bottom: '1rem', display: 'flex', justifyContent: 'flex-end', gap: '10px', alignItems: 'center' }}>
+        {ok && <span style={{ color: '#15803d', fontSize: '13px', display: 'inline-flex', alignItems: 'center', gap: '5px' }}><CheckCircle2 size={16} /> EnregistrÃ©</span>}
+        <button onClick={enregistrer} disabled={sauvegarde} style={{ background: '#0f2d6e', color: 'white', fontWeight: 700, fontSize: '14px', padding: '12px 28px', borderRadius: '50px', border: 'none', cursor: sauvegarde ? 'wait' : 'pointer', display: 'inline-flex', alignItems: 'center', gap: '8px', boxShadow: '0 6px 18px rgba(15,45,110,0.25)' }}>
+          <Save size={16} /> {sauvegarde ? 'Enregistrement...' : 'Enregistrer'}
+        </button>
+      </div>
+    </div>
+  )
+}
+
+export default function Page() {
+  return (
+    <main style={{ background: '#f7f8fb', minHeight: '100vh' }}>
+      <Suspense fallback={<p style={{ textAlign: 'center', padding: '4rem', color: '#6b7280' }}>Chargement...</p>}>
+        <Editeur />
+      </Suspense>
+    </main>
+  )
+}
+
+
+===== FICHIER : app\espace-client\page.tsx =====
+'use client'
+
+import { useEffect, useState, useCallback } from 'react'
+import { useRouter } from 'next/navigation'
+import { supabase } from '@/lib/supabase'
+import { formatPrix } from '@/lib/format'
+import type { DocItem, Categorie } from '@/lib/types'
+import { DIAGNOSTIC_FORFAITS } from '@/lib/diagnostic-forfaits'
+import { AVIS_GOOGLE } from '@/lib/avis-google'
+import Header from '@/components/Header'
+import FooterMinimal from '@/components/FooterMinimal'
+import { CategorySearch } from '@/components/CategorySearch'
+import { DocumentSearch } from '@/components/DocumentSearch'
+import { PhoneInput } from '@/components/PhoneInput'
+import {
+  User, FileText, Package, MessageSquare, Shield, LogOut,
+  Crown, Clock, CheckCircle, AlertCircle, Lock,
+  ChevronRight, Calendar, Star, Zap, TrendingUp,
+  ShoppingBag, Receipt, Download, Filter, Send
+} from 'lucide-react'
+
+type UserProfile = {
+  id: string
+  email: string
+  prenom: string
+  nom: string
+  type: string
+  telephone: string | null
+  rue: string | null
+  code_postal: string | null
+  ville: string | null
+  abonnement_actif: boolean
+  abonnement_type: string | null
+  abonnement_periode: string | null
+  date_expiration: string | null
+  stripe_customer_id: string | null
+  resiliation_programmee: boolean | null
+  resiliation_fin: string | null
+  avis_google_propose: boolean | null
+}
+
+type Question = {
+  id: string
+  question: string | null
+  reponse: string | null
+  statut: string
+  type: string
+  created_at: string
+  repondu_at: string | null
+  stripe_payment_id: string | null
+}
+
+type Facture = {
+  id: string
+  facture_url: string
+  montant: number | null
+  type: string | null
+  created_at: string
+}
+
+type DossierAssurance = {
+  id: string
+  statut: string
+  type: string
+  created_at: string
+  stripe_payment_id: string | null
+}
+
+type DossierRgpd = {
+  id: string
+  forfait: string
+  montant: number | null
+  mode_paiement: string
+  reference: string | null
+  statut: string
+  livrable_url: string | null
+  created_at: string
+}
+
+export default function EspaceClient() {
+  const router = useRouter()
+  const [onglet, setOnglet] = useState<'tableau-bord' | 'questions' | 'documents' | 'commandes' | 'factures' | 'abonnement' | 'profil'>('tableau-bord')
+  const [profile, setProfile] = useState<UserProfile | null>(null)
+  const [questions, setQuestions] = useState<Question[]>([])
+  const [factures, setFactures] = useState<Facture[]>([])
+  const [dossiers, setDossiers] = useState<DossierAssurance[]>([])
+  const [dossiersRgpd, setDossiersRgpd] = useState<DossierRgpd[]>([])
+  const [catalogue, setCatalogue] = useState<DocItem[]>([])
+  const [catalogueFiltre, setCatalogueFiltre] = useState<DocItem[]>([])
+  const [categoriesFiltres, setCategoriesFiltres] = useState<string[]>([])
+  const [categoriesCatalogue, setCategoriesCatalogue] = useState<Categorie[]>([])
+  const [loading, setLoading] = useState(true)
+  const [periodeChoisie, setPeriodeChoisie] = useState<'monthly' | 'yearly'>('yearly')
+  const [downloadEnCours, setDownloadEnCours] = useState<string | null>(null)
+  const [factureEnCours, setFactureEnCours] = useState<string | null>(null)
+  const [successMessage, setSuccessMessage] = useState('')
+  const [avisMasque, setAvisMasque] = useState(false)
+
+  // Saisie de question
+  const [questionSaisie, setQuestionSaisie] = useState<{ id: string; type: string } | null>(null)
+  const [questionTexte, setQuestionTexte] = useState('')
+  const [questionErreur, setQuestionErreur] = useState('')
+  const [questionLoading, setQuestionLoading] = useState(false)
+
+  // Question incluse (gratuite) et resiliation en ligne
+  const [questionInclLoading, setQuestionInclLoading] = useState(false)
+  const [resiliationEtape, setResiliationEtape] = useState<0 | 1 | 2>(0)
+  const [resiliationLoading, setResiliationLoading] = useState(false)
+  const [resiliationErreur, setResiliationErreur] = useState('')
+
+  // Achat de document a l'unite
+  const [documentsAchetes, setDocumentsAchetes] = useState<Record<string, string>>({})
+  const [achatDoc, setAchatDoc] = useState<DocItem | null>(null)
+  const [achatLoading, setAchatLoading] = useState(false)
+  const [achatErreur, setAchatErreur] = useState('')
+  const [achatReference, setAchatReference] = useState('')
+
+  useEffect(() => { checkAuth() }, [])
+
+  // Lecture des paramÃ¨tres URL aprÃ¨s chargement
+  useEffect(() => {
+    if (!loading) {
+      const params = new URLSearchParams(window.location.search)
+      const ongletParam = params.get('onglet')
+      const validOnglets = ['tableau-bord', 'questions', 'documents', 'commandes', 'factures', 'abonnement', 'profil']
+      if (ongletParam && validOnglets.includes(ongletParam)) {
+        setOnglet(ongletParam as typeof onglet)
+      }
+      if (params.get('success') === 'abonnement') {
+        setSuccessMessage('Votre abonnement est maintenant actif. Bienvenue dans Optimal !')
+      }
+      if (params.get('achat') === 'succes') {
+        setSuccessMessage('Paiement reÃ§u. Votre document est disponible dans l\'onglet Documents.')
+      }
+      // Nettoyer l'URL
+      window.history.replaceState({}, '', '/espace-client')
+    }
+  }, [loading])
+
+  const checkAuth = async () => {
+    let session = (await supabase.auth.getSession()).data.session
+    if (!session) {
+      const { data: refreshed } = await supabase.auth.refreshSession()
+      session = refreshed.session
+    }
+    if (!session) { router.push('/connexion'); return }
+    await Promise.all([
+      loadProfile(session.user.id),
+      loadQuestions(session.user.id),
+      loadFactures(session.user.id),
+      loadDossiers(session.user.id),
+      loadDossiersRgpd(session.user.id),
+      loadAchats(session.user.id),
+      loadCatalogue(),
+    ])
+    setLoading(false)
+  }
+
+  const loadProfile = async (userId: string) => {
+    const { data } = await supabase.from('users').select('*').eq('id', userId).single()
+    if (data) setProfile(data)
+  }
+
+  const loadQuestions = async (userId: string) => {
+    const { data } = await supabase.from('questions').select('*').eq('user_id', userId).order('created_at', { ascending: false })
+    if (data) setQuestions(data)
+  }
+
+  const loadFactures = async (userId: string) => {
+    const { data } = await supabase.from('factures').select('*').eq('user_id', userId).order('created_at', { ascending: false })
+    if (data) setFactures(data)
+  }
+
+  const loadDossiers = async (userId: string) => {
+    const { data } = await supabase.from('dossiers_assurances').select('*').eq('user_id', userId).order('created_at', { ascending: false })
+    if (data) setDossiers(data)
+  }
+
+  const loadDossiersRgpd = async (userId: string) => {
+    const { data } = await supabase.from('dossiers_rgpd').select('*').eq('user_id', userId).order('created_at', { ascending: false })
+    if (data) setDossiersRgpd(data)
+  }
+
+  const loadAchats = async (userId: string) => {
+    const { data } = await supabase.from('achats_documents').select('document_id, statut').eq('user_id', userId)
+    if (data) {
+      const map: Record<string, string> = {}
+      for (const a of data) { if (a.document_id) map[a.document_id] = a.statut }
+      setDocumentsAchetes(map)
+    }
+  }
+
+  const loadCatalogue = async () => {
+    const { data: docs } = await supabase.from('documents').select('*').eq('actif', true).order('ordre', { ascending: true })
+    const { data: cats } = await supabase.from('categories').select('id, nom, ordre, mots_cles').order('ordre', { ascending: true })
+    if (docs) { setCatalogue(docs); setCatalogueFiltre(docs) }
+    if (cats) setCategoriesCatalogue(cats)
+  }
+
+  const handleDeconnexion = async () => {
+    await supabase.auth.signOut()
+    router.push('/')
+  }
+
+  // Invitation a laisser un avis Google : une seule fois par client (in-app ou email), via avis_google_propose.
+  const marquerAvisPropose = async () => {
+    setAvisMasque(true)
+    try {
+      const { data: { session } } = await supabase.auth.getSession()
+      if (!session) return
+      await fetch('/api/compte/avis-propose', { method: 'POST', headers: { 'Authorization': `Bearer ${session.access_token}` } })
+      if (profile) setProfile({ ...profile, avis_google_propose: true })
+    } catch { /* silencieux : l'invitation est simplement masquee */ }
+  }
+
+  const ouvrirAvisGoogle = () => {
+    window.open(AVIS_GOOGLE.lien, '_blank', 'noopener,noreferrer')
+    marquerAvisPropose()
+  }
+
+  const handlePaiement = async (priceKey: string) => {
+    if (!profile) return
+    const res = await fetch('/api/checkout', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        priceKey,
+        userEmail: profile.email,
+        userId: profile.id,
+      }),
+    })
+    const data = await res.json()
+    if (data.url) window.location.href = data.url
+  }
+
+  // Poser une question : gratuite si la question incluse du mois est disponible, sinon payante
+  const poserQuestion = async () => {
+    if (questionIncluseDisponible) {
+      if (!profile) return
+      setQuestionInclLoading(true)
+      try {
+        const { data: { session } } = await supabase.auth.getSession()
+        if (!session) { router.push('/connexion'); return }
+        const res = await fetch('/api/questions/incluse', {
+          method: 'POST',
+          headers: { 'Authorization': `Bearer ${session.access_token}` },
+        })
+        const data = await res.json()
+        if (res.ok && data.success) {
+          await loadQuestions(profile.id)
+          setOnglet('questions')
+          if (data.questionId) {
+            setQuestionSaisie({ id: data.questionId, type: 'incluse' })
+            setQuestionTexte('')
+            setQuestionErreur('')
+          }
+        } else {
+          alert(data.error || 'Votre question incluse de ce mois a deja ete utilisee.')
+          await loadQuestions(profile.id)
+        }
+      } catch {
+        alert('Une erreur est survenue. Veuillez reessayer.')
+      } finally {
+        setQuestionInclLoading(false)
+      }
+      return
+    }
+    handlePaiement(estAbonne ? 'question_abonne' : 'question_unitaire')
+  }
+
+  // Resiliation en ligne de l'abonnement (article L215-1-1 du Code de la consommation)
+  const handleResiliation = async () => {
+    setResiliationLoading(true)
+    setResiliationErreur('')
+    try {
+      const { data: { session } } = await supabase.auth.getSession()
+      if (!session) { router.push('/connexion'); return }
+      const res = await fetch('/api/compte/resilier', {
+        method: 'POST',
+        headers: { 'Authorization': `Bearer ${session.access_token}` },
+      })
+      const data = await res.json()
+      if (res.ok && data.success) {
+        setResiliationEtape(2)
+        if (profile) await loadProfile(profile.id)
+      } else {
+        setResiliationErreur(data.error || 'La resiliation a echoue. Veuillez reessayer ou nous contacter.')
+      }
+    } catch {
+      setResiliationErreur('Une erreur est survenue. Veuillez reessayer.')
+    } finally {
+      setResiliationLoading(false)
+    }
+  }
+
+  // Achat d'un document a l'unite : carte (redirection Stripe) ou virement (reference + RIB par email)
+  const acheterDocument = async (mode: 'carte' | 'virement') => {
+    if (!achatDoc) return
+    setAchatLoading(true)
+    setAchatErreur('')
+    try {
+      const { data: { session } } = await supabase.auth.getSession()
+      if (!session) { router.push('/connexion'); return }
+      const res = await fetch('/api/documents/acheter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${session.access_token}` },
+        body: JSON.stringify({ documentId: achatDoc.id, mode }),
+      })
+      const data = await res.json()
+      if (mode === 'carte') {
+        if (res.ok && data.url) { window.location.href = data.url; return }
+        setAchatErreur(data.error || "Le paiement n'a pas pu dÃ©marrer. Veuillez rÃ©essayer.")
+      } else {
+        if (res.ok && data.success) {
+          setAchatReference(data.reference || '')
+          if (profile) await loadAchats(profile.id)
+        } else {
+          setAchatErreur(data.error || "La commande n'a pas pu Ãªtre enregistrÃ©e. Veuillez rÃ©essayer.")
+        }
+      }
+    } catch {
+      setAchatErreur('Une erreur est survenue. Veuillez rÃ©essayer.')
+    } finally {
+      setAchatLoading(false)
+    }
+  }
+
+  const handleDownload = async (documentId: string, nomDoc: string) => {
+    setDownloadEnCours(documentId)
+    try {
+      const { data: { session } } = await supabase.auth.getSession()
+      if (!session) return
+      const res = await fetch(`/api/documents/download?id=${documentId}`, {
+        headers: { 'Authorization': `Bearer ${session.access_token}` },
+      })
+      if (res.ok) {
+        const ext = res.headers.get('x-file-ext') || 'docx'
+        const blob = await res.blob()
+        const url = URL.createObjectURL(blob)
+        const a = document.createElement('a')
+        a.href = url
+        a.download = `${nomDoc}.${ext}`
+        document.body.appendChild(a)
+        a.click()
+        document.body.removeChild(a)
+        URL.revokeObjectURL(url)
+      } else if (res.status === 403) {
+        alert("Vous n'avez pas accÃ¨s Ã  ce document. VÃ©rifiez votre abonnement.")
+      } else {
+        alert('Erreur lors du tÃ©lÃ©chargement.')
+      }
+    } catch { alert('Erreur lors du tÃ©lÃ©chargement.') }
+    finally { setDownloadEnCours(null) }
+  }
+
+  const handleDownloadFacture = async (factureId: string) => {
+    setFactureEnCours(factureId)
+    try {
+      const { data: { session } } = await supabase.auth.getSession()
+      if (!session) return
+      const res = await fetch(`/api/compte/factures/download?id=${factureId}`, {
+        headers: { 'Authorization': `Bearer ${session.access_token}` },
+      })
+      if (!res.ok) { alert('Facture indisponible.'); return }
+      const blob = await res.blob()
+      const url = URL.createObjectURL(blob)
+      const a = document.createElement('a')
+      a.href = url
+      a.download = `facture-${factureId.slice(0, 8)}.pdf`
+      document.body.appendChild(a)
+      a.click()
+      document.body.removeChild(a)
+      URL.revokeObjectURL(url)
+    } catch { alert('Erreur lors du tÃ©lÃ©chargement.') }
+    finally { setFactureEnCours(null) }
+  }
+
+  const handleSubmitQuestion = async (questionId: string) => {
+    if (questionTexte.trim().length < 10) {
+      setQuestionErreur('Veuillez dÃ©velopper votre question (10 caractÃ¨res minimum).')
+      return
+    }
+    setQuestionLoading(true)
+    setQuestionErreur('')
+    try {
+      const res = await fetch('/api/questions/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ questionId, userId: profile?.id, texte: questionTexte }),
+      })
+      const data = await res.json()
+      if (res.ok && data.success) {
+        setQuestionSaisie(null)
+        setQuestionTexte('')
+        if (profile) await loadQuestions(profile.id)
+      } else {
+        setQuestionErreur(data.error || 'Erreur lors de la soumission.')
+      }
+    } catch {
+      setQuestionErreur('Erreur rÃ©seau. Veuillez rÃ©essayer.')
+    } finally {
+      setQuestionLoading(false)
+    }
+  }
+
+  // Filtre catalogue par catÃ©gories sÃ©lectionnÃ©es
+  useEffect(() => {
+    if (categoriesFiltres.length === 0) {
+      setCatalogueFiltre(catalogue)
+    } else {
+      setCatalogueFiltre(catalogue.filter(doc =>
+        categoriesFiltres.some(cat => doc.categories?.includes(cat))
+      ))
+    }
+  }, [categoriesFiltres, catalogue])
+
+  if (loading) {
+    return (
+      <>
+        <Header />
+        <main style={{ background: '#f8fafc', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <p style={{ color: '#6b7280', fontSize: '14px' }}>Chargement de votre espace client...</p>
+        </main>
+        <FooterMinimal />
+      </>
+    )
+  }
+
+  const estAbonne = profile?.abonnement_actif
+  const estPro = profile?.abonnement_type === 'optimal_pro'
+  const typeProfil = profile?.type || 'particulier'
+
+  // Question incluse Optimal : 1 par mois calendaire, non cumulable.
+  // On regarde si une question de type 'incluse' a deja ete creee ce mois-ci.
+  const maintenant = new Date()
+  const questionIncluseUtilisee = questions.some(q => {
+    if (q.type !== 'incluse') return false
+    const d = new Date(q.created_at)
+    return d.getFullYear() === maintenant.getFullYear() && d.getMonth() === maintenant.getMonth()
+  })
+  const questionIncluseDisponible = !!estAbonne && !questionIncluseUtilisee
+  const prochaineQuestionIncluse = new Date(maintenant.getFullYear(), maintenant.getMonth() + 1, 1)
+    .toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })
+  const labelPoserQuestion = questionIncluseDisponible
+    ? 'Poser ma question incluse'
+    : estAbonne ? 'Poser ma question Â· 14,90\u00a0â‚¬' : 'Poser ma question Â· 47\u00a0â‚¬'
+
+  const abonnementLabel = () => {
+    if (!estAbonne) return null
+    const type = estPro ? 'Optimal Pro' : 'Optimal Particulier'
+    const periode = profile?.abonnement_periode === 'yearly' ? 'annuel' : 'mensuel'
+    return `${type} Â· ${periode}`
+  }
+
+  const dateExpiration = profile?.date_expiration
+    ? new Date(profile.date_expiration).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })
+    : null
+
+  const resiliationProgrammee = !!profile?.resiliation_programmee
+  const resiliationFinTexte = profile?.resiliation_fin
+    ? new Date(profile.resiliation_fin).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })
+    : dateExpiration
+
+  const prixOptimal = typeProfil === 'particulier'
+    ? { monthly: { key: 'optimal_particulier_monthly', prix: '17,90 â‚¬' }, yearly: { key: 'optimal_particulier_yearly', prix: '149 â‚¬', parMois: '12,42 â‚¬' } }
+    : { monthly: { key: 'optimal_pro_monthly', prix: '27,90 â‚¬' }, yearly: { key: 'optimal_pro_yearly', prix: '249 â‚¬', parMois: '20,75 â‚¬' } }
+
+  const navItems = [
+    { id: 'tableau-bord', label: 'Tableau de bord', icon: <User size={16} strokeWidth={1.5} /> },
+    { id: 'questions', label: 'Mes questions', icon: <MessageSquare size={16} strokeWidth={1.5} />, badge: questions.filter(q => q.statut === 'repondu').length || null },
+    { id: 'documents', label: 'Documents', icon: <FileText size={16} strokeWidth={1.5} />, locked: !estAbonne },
+    { id: 'commandes', label: 'Mes commandes', icon: <ShoppingBag size={16} strokeWidth={1.5} /> },
+    { id: 'factures', label: 'Factures', icon: <Receipt size={16} strokeWidth={1.5} />, badge: factures.length || null },
+    { id: 'abonnement', label: 'Abonnement', icon: <Crown size={16} strokeWidth={1.5} />, highlight: !estAbonne },
+    { id: 'profil', label: 'Mon profil', icon: <Shield size={16} strokeWidth={1.5} /> },
+  ]
+
+  const accesDocLabel = (doc: DocItem): { label: string; color: string; bg: string; accessible: boolean; achetable?: boolean; enAttente?: boolean } => {
+    if (doc.acces_gratuit) return { label: 'Gratuit', color: '#15803d', bg: '#f0fdf4', accessible: true }
+    if (doc.acces_optimal && estAbonne) return { label: 'Optimal', color: '#1a4fba', bg: '#eff6ff', accessible: true }
+    const statutAchat = documentsAchetes[doc.id]
+    if (doc.acces_payant && statutAchat === 'paye') return { label: 'AchetÃ©', color: '#15803d', bg: '#f0fdf4', accessible: true }
+    if (doc.acces_payant && statutAchat === 'en_attente') return { label: 'Virement en attente', color: '#d97706', bg: '#fff7ed', accessible: false, enAttente: true }
+    // Un document payant non encore acquis reste achetable a l'unite, meme s'il est aussi propose en Optimal (cas du non-abonne).
+    if (doc.acces_payant) return { label: formatPrix(doc.prix_unitaire) || '?\u00a0â‚¬', color: '#d97706', bg: '#fff7ed', accessible: false, achetable: true }
+    // Document Optimal seul et non-abonne : acces verrouille, orientation vers l'abonnement.
+    if (doc.acces_optimal && !estAbonne) return { label: 'Optimal', color: '#1a4fba', bg: '#eff6ff', accessible: false }
+    return { label: '-', color: '#9ca3af', bg: '#f3f4f6', accessible: false }
+  }
+
+  const inputStyle = {
+    width: '100%',
+    padding: '10px 12px',
+    border: '1px solid #d1d5db',
+    borderRadius: '8px',
+    fontSize: '13px',
+    boxSizing: 'border-box' as const,
+    outline: 'none',
+    fontFamily: 'inherit',
+    lineHeight: '1.6',
+  }
+
+  return (
+    <>
+      <Header />
+      <main style={{ background: '#f8fafc', minHeight: '100vh', padding: '2rem 0' }}>
+        <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 2rem', display: 'flex', gap: '2rem', alignItems: 'flex-start' }}>
+
+          {/* SIDEBAR */}
+          <div style={{ flex: '0 0 240px', background: 'white', borderRadius: '12px', border: '1px solid #e5e7eb', padding: '1.5rem', position: 'sticky', top: '80px' }}>
+            <div style={{ marginBottom: '1.25rem', paddingBottom: '1.25rem', borderBottom: '1px solid #f3f4f6' }}>
+              <div style={{ width: '48px', height: '48px', background: estAbonne ? 'linear-gradient(135deg, #0f2d6e, #1a4fba)' : '#f3f4f6', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '10px' }}>
+                {estAbonne ? <Crown size={20} color="white" strokeWidth={1.5} /> : <User size={22} color="#9ca3af" strokeWidth={1.5} />}
+              </div>
+              <p style={{ color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: '0 0 2px' }}>{profile?.prenom} {profile?.nom}</p>
+              <p style={{ color: '#9ca3af', fontSize: '11px', margin: '0 0 8px' }}>{profile?.email}</p>
+              {estAbonne
+                ? <span style={{ background: 'linear-gradient(135deg, #0f2d6e, #1a4fba)', color: 'white', fontSize: '10px', fontWeight: '700', padding: '3px 10px', borderRadius: '20px' }}>âœ¦ {abonnementLabel()}</span>
+                : <span style={{ background: '#f3f4f6', color: '#6b7280', fontSize: '10px', fontWeight: '600', padding: '3px 10px', borderRadius: '20px' }}>AccÃ¨s gratuit</span>
+              }
+            </div>
+
+            {!estAbonne && (
+              <div style={{ background: '#f8fafc', borderRadius: '8px', padding: '10px 12px', marginBottom: '1rem' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
+                  <p style={{ color: '#6b7280', fontSize: '10px', fontWeight: '600', margin: 0 }}>AccÃ¨s Optimal</p>
+                  <p style={{ color: '#1a4fba', fontSize: '10px', fontWeight: '700', margin: 0 }}>Non actif</p>
+                </div>
+                <div style={{ height: '4px', background: '#e5e7eb', borderRadius: '4px' }}>
+                  <div style={{ height: '4px', background: 'linear-gradient(90deg, #1a4fba, #93c5fd)', borderRadius: '4px', width: '0%' }} />
+                </div>
+                <p style={{ color: '#9ca3af', fontSize: '10px', margin: '6px 0 0', lineHeight: '1.4' }}>Passez Ã  l'Optimal pour tout dÃ©bloquer</p>
+              </div>
+            )}
+
+            <nav style={{ display: 'flex', flexDirection: 'column', gap: '4px', marginBottom: '1.25rem' }}>
+              {navItems.map((item) => (
+                <button key={item.id} onClick={() => setOnglet(item.id as typeof onglet)}
+                  style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '10px 12px', borderRadius: '8px', border: 'none', background: onglet === item.id ? '#eff6ff' : 'transparent', color: onglet === item.id ? '#1a4fba' : (item as any).highlight ? '#d97706' : '#6b7280', fontSize: '13px', fontWeight: onglet === item.id ? '700' : '500', cursor: 'pointer', textAlign: 'left', width: '100%', transition: 'all 0.15s' }}>
+                  {(item as any).locked ? <Lock size={14} strokeWidth={1.5} /> : item.icon}
+                  <span style={{ flex: 1 }}>{item.label}</span>
+                  {(item as any).locked && <Lock size={11} color="#d1d5db" style={{ flexShrink: 0 }} />}
+                  {(item as any).highlight && !(item as any).locked && <Star size={11} color="#d97706" style={{ flexShrink: 0 }} />}
+                  {item.badge ? <span style={{ background: '#16a34a', color: 'white', fontSize: '9px', fontWeight: '700', padding: '1px 6px', borderRadius: '10px' }}>{item.badge}</span> : null}
+                </button>
+              ))}
+            </nav>
+
+            {!estAbonne && (
+              <div style={{ background: 'linear-gradient(135deg, #0f2d6e 0%, #1a4fba 100%)', borderRadius: '10px', padding: '14px', marginBottom: '1rem' }}>
+                <p style={{ color: 'white', fontSize: '12px', fontWeight: '700', margin: '0 0 4px' }}>âœ¦ Passer Ã  l'Optimal</p>
+                <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: '11px', margin: '0 0 10px', lineHeight: '1.5' }}>Moins de 0,60 â‚¬/jour pour accÃ©der Ã  tout.</p>
+                <button onClick={() => setOnglet('abonnement')} style={{ width: '100%', background: 'white', color: '#0f2d6e', border: 'none', padding: '8px', borderRadius: '6px', fontSize: '11px', fontWeight: '700', cursor: 'pointer' }}>
+                  Voir les offres â†’
+                </button>
+              </div>
+            )}
+
+            <button onClick={handleDeconnexion} style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '10px 12px', borderRadius: '8px', border: 'none', background: 'transparent', color: '#9ca3af', fontSize: '12px', cursor: 'pointer', width: '100%' }}>
+              <LogOut size={14} strokeWidth={1.5} /> Se dÃ©connecter
+            </button>
+          </div>
+
+          {/* CONTENU PRINCIPAL */}
+          <div style={{ flex: 1 }}>
+
+            {/* â”€â”€ TABLEAU DE BORD â”€â”€ */}
+            {onglet === 'tableau-bord' && (
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                <h1 style={{ color: '#0f2d6e', fontSize: '1.4rem', fontWeight: '700', margin: 0 }}>Bonjour, {profile?.prenom} ðŸ‘‹</h1>
+
+                {/* Message de succÃ¨s abonnement */}
+                {successMessage && (
+                  <div style={{ background: '#f0fdf4', border: '1px solid #bbf7d0', borderRadius: '10px', padding: '12px 16px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                    <CheckCircle size={18} color="#16a34a" strokeWidth={1.5} style={{ flexShrink: 0 }} />
+                    <p style={{ color: '#15803d', fontSize: '13px', fontWeight: '600', margin: 0 }}>{successMessage}</p>
+                  </div>
+                )}
+
+                {profile && !profile.avis_google_propose && !avisMasque && (
+                  <div style={{ background: 'linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%)', border: '1px solid #fcd34d', borderRadius: '12px', padding: '1.25rem 1.5rem', display: 'flex', alignItems: 'center', gap: '14px', flexWrap: 'wrap' }}>
+                    <div style={{ display: 'flex', gap: '2px', flexShrink: 0 }}>
+                      {[0, 1, 2, 3, 4].map((i) => (
+                        <Star key={i} size={18} color="#f59e0b" fill="#f59e0b" strokeWidth={1.5} />
+                      ))}
+                    </div>
+                    <div style={{ flex: 1, minWidth: '200px' }}>
+                      <p style={{ color: '#92400e', fontSize: '13px', fontWeight: '700', margin: '0 0 2px' }}>Votre avis compte</p>
+                      <p style={{ color: '#a16207', fontSize: '12px', margin: 0, lineHeight: '1.5' }}>
+                        Si le cabinet vous est utile, un avis Google nous aide beaucoup. Cela prend une minute.
+                      </p>
+                    </div>
+                    <div style={{ display: 'flex', gap: '8px', flexShrink: 0 }}>
+                      <button onClick={ouvrirAvisGoogle} style={{ background: '#0f2d6e', color: 'white', border: 'none', padding: '9px 16px', borderRadius: '8px', fontSize: '12px', fontWeight: '700', cursor: 'pointer' }}>
+                        Laisser un avis
+                      </button>
+                      <button onClick={marquerAvisPropose} style={{ background: 'transparent', color: '#a16207', border: 'none', padding: '9px 10px', borderRadius: '8px', fontSize: '12px', fontWeight: '600', cursor: 'pointer' }}>
+                        Masquer
+                      </button>
+                    </div>
+                  </div>
+                )}
+
+                {!estAbonne && (
+                  <div style={{ background: 'linear-gradient(135deg, #0f2d6e 0%, #1a4fba 100%)', borderRadius: '14px', padding: '1.75rem', position: 'relative', overflow: 'hidden' }}>
+                    <div style={{ position: 'absolute', top: '-20px', right: '-20px', width: '120px', height: '120px', background: 'rgba(255,255,255,0.05)', borderRadius: '50%' }} />
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '1rem', flexWrap: 'wrap', position: 'relative' }}>
+                      <div>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+                          <Crown size={16} color="#fcd34d" strokeWidth={1.5} />
+                          <span style={{ color: '#fcd34d', fontSize: '11px', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Abonnement Optimal</span>
+                        </div>
+                        <p style={{ color: 'white', fontSize: '1.1rem', fontWeight: '700', margin: '0 0 6px' }}>BibliothÃ¨que complÃ¨te + 1 question juriste / mois</p>
+                        <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: '13px', margin: 0 }}>Ã€ partir de <strong style={{ color: 'white' }}>12,42 â‚¬/mois</strong> en annuel</p>
+                      </div>
+                      <button onClick={() => setOnglet('abonnement')} style={{ background: 'white', color: '#0f2d6e', border: 'none', padding: '11px 22px', borderRadius: '8px', fontSize: '13px', fontWeight: '700', cursor: 'pointer', flexShrink: 0 }}>
+                        Voir les offres
+                      </button>
+                    </div>
+                  </div>
+                )}
+
+                {estAbonne && dateExpiration && (
+                  <div style={{ background: '#f0fdf4', border: '1px solid #bbf7d0', borderRadius: '12px', padding: '1.25rem', display: 'flex', alignItems: 'center', gap: '12px' }}>
+                    <CheckCircle size={20} color="#16a34a" strokeWidth={1.5} />
+                    <div>
+                      <p style={{ color: '#15803d', fontSize: '13px', fontWeight: '700', margin: '0 0 2px' }}>{abonnementLabel()} Â· Actif</p>
+                      <p style={{ color: '#6b7280', fontSize: '12px', margin: 0 }}>Prochain renouvellement : {dateExpiration}</p>
+                    </div>
+                  </div>
+                )}
+
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px' }}>
+                  {[
+                    { label: 'Questions posÃ©es', value: questions.length, icon: <MessageSquare size={20} color="#1a4fba" strokeWidth={1.5} />, action: () => setOnglet('questions') },
+                    { label: 'En attente de rÃ©ponse', value: questions.filter(q => q.statut !== 'repondu').length, icon: <Clock size={20} color="#d97706" strokeWidth={1.5} />, action: () => setOnglet('questions') },
+                    { label: 'Factures disponibles', value: factures.length, icon: <Receipt size={20} color="#16a34a" strokeWidth={1.5} />, action: () => setOnglet('factures') },
+                  ].map((card, i) => (
+                    <button key={i} onClick={card.action} style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.25rem', textAlign: 'left', cursor: 'pointer', transition: 'all 0.15s' }}
+                      onMouseEnter={e => (e.currentTarget.style.borderColor = '#bfdbfe')}
+                      onMouseLeave={e => (e.currentTarget.style.borderColor = '#e5e7eb')}>
+                      <div style={{ marginBottom: '10px' }}>{card.icon}</div>
+                      <p style={{ color: '#0f2d6e', fontSize: '1.5rem', fontWeight: '700', margin: '0 0 4px' }}>{card.value}</p>
+                      <p style={{ color: '#6b7280', fontSize: '12px', margin: 0 }}>{card.label}</p>
+                    </button>
+                  ))}
+                </div>
+
+                {/* AperÃ§u documents */}
+                {!estAbonne && catalogue.length > 0 && (
+                  <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.5rem' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+                      <p style={{ color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: 0 }}>BibliothÃ¨que de documents</p>
+                      <span style={{ background: '#fff7ed', color: '#d97706', fontSize: '10px', fontWeight: '700', padding: '2px 8px', borderRadius: '20px' }}>
+                        {catalogue.filter(d => !d.acces_gratuit).length} documents Optimal
+                      </span>
+                    </div>
+                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', marginBottom: '1rem' }}>
+                      {catalogue.slice(0, 6).map((doc, i) => {
+                        const acces = accesDocLabel(doc)
+                        return (
+                          <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '10px 12px', background: acces.accessible ? '#f0fdf4' : '#ffffff', borderRadius: '8px', border: `1px solid ${acces.accessible ? '#bbf7d0' : '#e5e7eb'}` }}>
+                            {doc.type === 'pack' ? <Package size={14} color={acces.color} style={{ flexShrink: 0 }} /> : <FileText size={13} color={acces.color} style={{ flexShrink: 0 }} />}
+                            <div style={{ flex: 1, minWidth: 0 }}>
+                              <p style={{ color: '#374151', fontSize: '11px', fontWeight: '600', margin: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{doc.nom}</p>
+                            </div>
+                            <span style={{ background: acces.bg, color: acces.color, fontSize: '9px', fontWeight: '700', padding: '1px 5px', borderRadius: '4px', flexShrink: 0 }}>{acces.label}</span>
+                          </div>
+                        )
+                      })}
+                    </div>
+                    <button onClick={() => setOnglet('abonnement')} style={{ width: '100%', background: '#0f2d6e', color: 'white', border: 'none', padding: '11px', borderRadius: '8px', fontSize: '13px', fontWeight: '700', cursor: 'pointer' }}>
+                      DÃ©bloquer toute la bibliothÃ¨que â†’
+                    </button>
+                  </div>
+                )}
+
+                {/* Poser une question */}
+                <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.5rem' }}>
+                  <p style={{ color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: '0 0 8px' }}>Poser une question juridique</p>
+                  <p style={{ color: '#6b7280', fontSize: '13px', margin: '0 0 12px', lineHeight: '1.6' }}>
+                    {estAbonne ? "Votre abonnement inclut 1 question par mois. Questions supplÃ©mentaires Ã  14,90 â‚¬." : "RÃ©ponse rÃ©digÃ©e par un juriste sous 24 Ã  48h ouvrÃ©es. 47 â‚¬ Ã  l'unitÃ©, sans abonnement."}
+                  </p>
+                  {estAbonne && (
+                    <div style={{ background: questionIncluseDisponible ? '#f0fdf4' : '#f8fafc', border: `1px solid ${questionIncluseDisponible ? '#bbf7d0' : '#e5e7eb'}`, borderRadius: '8px', padding: '10px 12px', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                      {questionIncluseDisponible
+                        ? <CheckCircle size={14} color="#16a34a" style={{ flexShrink: 0 }} />
+                        : <Clock size={14} color="#6b7280" style={{ flexShrink: 0 }} />}
+                      <p style={{ color: questionIncluseDisponible ? '#15803d' : '#6b7280', fontSize: '12px', margin: 0 }}>
+                        {questionIncluseDisponible
+                          ? 'Question incluse de ce mois : disponible.'
+                          : `Question incluse de ce mois : utilisÃ©e. Prochaine disponible le ${prochaineQuestionIncluse}.`}
+                      </p>
+                    </div>
+                  )}
+                  {!estAbonne && (
+                    <div style={{ background: '#eff6ff', borderRadius: '8px', padding: '10px 12px', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                      <TrendingUp size={14} color="#1a4fba" style={{ flexShrink: 0 }} />
+                      <p style={{ color: '#1e3a5f', fontSize: '12px', margin: 0 }}>Avec l'Optimal, votre premiÃ¨re question est <strong>incluse</strong>. Ã‰conomisez 47 â‚¬.</p>
+                    </div>
+                  )}
+                  <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+                    <button
+                      onClick={poserQuestion}
+                      disabled={questionInclLoading}
+                      style={{ background: '#0f2d6e', color: 'white', border: 'none', padding: '11px 24px', borderRadius: '8px', fontSize: '13px', fontWeight: '700', cursor: questionInclLoading ? 'not-allowed' : 'pointer' }}
+                    >
+                      {questionInclLoading ? 'Ouverture...' : labelPoserQuestion}
+                    </button>
+                    {!estAbonne && (
+                      <button onClick={() => setOnglet('abonnement')} style={{ background: 'white', color: '#1a4fba', border: '1px solid #bfdbfe', padding: '11px 20px', borderRadius: '8px', fontSize: '13px', fontWeight: '600', cursor: 'pointer' }}>
+                        Incluse dans l'Optimal â†’
+                      </button>
+                    )}
+                  </div>
+                  <p style={{ color: '#9ca3af', fontSize: '11px', margin: '10px 0 0', lineHeight: '1.6', fontStyle: 'italic' }}>
+                    AprÃ¨s paiement, vous serez invitÃ© Ã  rÃ©diger votre question dans votre espace client. Notre juriste vous rÃ©pondra par Ã©crit sous 24 Ã  48h ouvrÃ©es.
+                  </p>
+                </div>
+              </div>
+            )}
+
+            {/* â”€â”€ QUESTIONS â”€â”€ */}
+            {onglet === 'questions' && (
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <h1 style={{ color: '#0f2d6e', fontSize: '1.4rem', fontWeight: '700', margin: 0 }}>Mes questions</h1>
+                  <button
+                    onClick={poserQuestion}
+                    disabled={questionInclLoading}
+                    style={{ background: '#0f2d6e', color: 'white', border: 'none', padding: '10px 20px', borderRadius: '8px', fontSize: '13px', fontWeight: '700', cursor: questionInclLoading ? 'not-allowed' : 'pointer' }}
+                  >
+                    {questionIncluseDisponible ? '+ Question incluse' : `+ Nouvelle question ${estAbonne ? 'Â· 14,90\u00a0â‚¬' : 'Â· 47\u00a0â‚¬'}`}
+                  </button>
+                </div>
+
+                {!estAbonne && (
+                  <div style={{ background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '10px', padding: '12px 16px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                    <Zap size={16} color="#1a4fba" style={{ flexShrink: 0 }} />
+                    <p style={{ color: '#1e3a5f', fontSize: '12px', margin: 0 }}>
+                      Avec l'Abonnement Optimal, 1 question incluse par mois. Questions supplÃ©mentaires Ã  14,90 â‚¬ au lieu de 47 â‚¬.{' '}
+                      <button onClick={() => setOnglet('abonnement')} style={{ color: '#1a4fba', fontWeight: '700', background: 'none', border: 'none', cursor: 'pointer', fontSize: '12px', padding: 0, textDecoration: 'underline' }}>Voir les offres â†’</button>
+                    </p>
+                  </div>
+                )}
+
+                {estAbonne && (
+                  <div style={{ background: questionIncluseDisponible ? '#f0fdf4' : '#f8fafc', border: `1px solid ${questionIncluseDisponible ? '#bbf7d0' : '#e5e7eb'}`, borderRadius: '10px', padding: '12px 16px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                    {questionIncluseDisponible ? <CheckCircle size={16} color="#16a34a" style={{ flexShrink: 0 }} /> : <Clock size={16} color="#6b7280" style={{ flexShrink: 0 }} />}
+                    <p style={{ color: questionIncluseDisponible ? '#15803d' : '#6b7280', fontSize: '12px', margin: 0 }}>
+                      {questionIncluseDisponible
+                        ? 'Votre question incluse de ce mois est disponible. Questions supplÃ©mentaires Ã  14,90\u00a0â‚¬.'
+                        : `Votre question incluse de ce mois a Ã©tÃ© utilisÃ©e. Prochaine disponible le ${prochaineQuestionIncluse}. Questions supplÃ©mentaires Ã  14,90\u00a0â‚¬.`}
+                    </p>
+                  </div>
+                )}
+
+                {/* Questions avec paiement effectuÃ© mais texte non saisi */}
+                {questions.some(q => !q.question) && (
+                  <div style={{ background: '#fff7ed', border: '1px solid #fed7aa', borderRadius: '10px', padding: '12px 16px', display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
+                    <AlertCircle size={16} color="#d97706" style={{ flexShrink: 0, marginTop: '1px' }} />
+                    <p style={{ color: '#92400e', fontSize: '12px', margin: 0, lineHeight: '1.6' }}>
+                      Vous avez une ou plusieurs questions en attente de rÃ©daction. Cliquez sur "RÃ©diger ma question" pour les complÃ©ter.
+                    </p>
+                  </div>
+                )}
+
+                {questions.length === 0 ? (
+                  <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '3rem', textAlign: 'center' }}>
+                    <MessageSquare size={32} color="#d1d5db" strokeWidth={1} style={{ marginBottom: '12px' }} />
+                    <p style={{ color: '#6b7280', fontSize: '14px', margin: '0 0 6px' }}>Vous n'avez pas encore posÃ© de question.</p>
+                    <p style={{ color: '#9ca3af', fontSize: '12px', margin: '0 0 16px', lineHeight: '1.6' }}>
+                      AprÃ¨s paiement, vous pourrez rÃ©diger votre question ici. Notre juriste vous rÃ©pondra sous 24 Ã  48h ouvrÃ©es.
+                    </p>
+                    <button onClick={poserQuestion} disabled={questionInclLoading} style={{ background: '#0f2d6e', color: 'white', border: 'none', padding: '11px 24px', borderRadius: '8px', fontSize: '13px', fontWeight: '700', cursor: questionInclLoading ? 'not-allowed' : 'pointer' }}>
+                      {questionIncluseDisponible ? 'Poser ma question incluse' : 'Poser ma premiÃ¨re question'}
+                    </button>
+                  </div>
+                ) : (
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                    {questions.map(q => (
+                      <div key={q.id} style={{ background: 'white', border: `1px solid ${!q.question ? '#fed7aa' : '#e5e7eb'}`, borderRadius: '12px', padding: '1.5rem' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
+                          <span style={{ fontSize: '10px', fontWeight: '700', padding: '2px 8px', borderRadius: '20px', background: q.statut === 'repondu' ? '#f0fdf4' : q.statut === 'en_cours' ? '#fff7ed' : '#f3f4f6', color: q.statut === 'repondu' ? '#15803d' : q.statut === 'en_cours' ? '#d97706' : '#6b7280' }}>
+                            {q.statut === 'repondu' ? 'âœ“ RÃ©pondu' : q.statut === 'en_cours' ? 'â‹¯ En cours' : 'â—‹ En attente'}
+                          </span>
+                          <span style={{ color: '#9ca3af', fontSize: '11px' }}>{new Date(q.created_at).toLocaleDateString('fr-FR')}</span>
+                          <span style={{ color: '#9ca3af', fontSize: '11px' }}>
+                            Â· {q.type === 'unitaire' ? '47 â‚¬' : q.type === 'abonne' ? '14,90 â‚¬' : 'Incluse'}
+                          </span>
+                        </div>
+
+                        {/* Texte de la question ou formulaire de saisie */}
+                        {q.question ? (
+                          <p style={{ color: '#374151', fontSize: '13px', margin: '0 0 12px', lineHeight: '1.6' }}>{q.question}</p>
+                        ) : (
+                          <div style={{ marginBottom: '12px' }}>
+                            {questionSaisie?.id !== q.id ? (
+                              <div style={{ background: '#fff7ed', borderRadius: '8px', padding: '12px 14px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '12px' }}>
+                                <p style={{ color: '#92400e', fontSize: '13px', margin: 0, fontStyle: 'italic' }}>
+                                  {q.type === 'incluse' ? 'Question incluse de ce mois. RÃ©digez-la pour que notre juriste puisse vous rÃ©pondre.' : 'Paiement reÃ§u. RÃ©digez votre question pour que notre juriste puisse vous rÃ©pondre.'}
+                                </p>
+                                <button
+                                  onClick={() => { setQuestionSaisie({ id: q.id, type: q.type }); setQuestionTexte(''); setQuestionErreur('') }}
+                                  style={{ background: '#0f2d6e', color: 'white', border: 'none', padding: '9px 18px', borderRadius: '7px', fontSize: '12px', fontWeight: '700', cursor: 'pointer', flexShrink: 0 }}
+                                >
+                                  RÃ©diger ma question â†’
+                                </button>
+                              </div>
+                            ) : (
+                              <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                                <div>
+                                  <label style={{ display: 'block', fontSize: '12px', fontWeight: '600', color: '#374151', marginBottom: '6px' }}>
+                                    Votre question
+                                    <span style={{ color: '#9ca3af', fontWeight: '400', marginLeft: '8px' }}>{questionTexte.length}/2000</span>
+                                  </label>
+                                  <textarea
+                                    value={questionTexte}
+                                    onChange={e => setQuestionTexte(e.target.value)}
+                                    maxLength={2000}
+                                    rows={6}
+                                    placeholder="DÃ©crivez votre situation et posez votre question avec le plus de prÃ©cisions possible. Notre juriste vous rÃ©pondra sous 24 Ã  48h ouvrÃ©es."
+                                    style={{ ...inputStyle, resize: 'vertical' }}
+                                  />
+                                </div>
+                                {questionErreur && (
+                                  <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+                                    <AlertCircle size={14} color="#dc2626" style={{ flexShrink: 0 }} />
+                                    <p style={{ color: '#dc2626', fontSize: '12px', margin: 0 }}>{questionErreur}</p>
+                                  </div>
+                                )}
+                                <div style={{ display: 'flex', gap: '10px' }}>
+                                  <button
+                                    onClick={() => handleSubmitQuestion(q.id)}
+                                    disabled={questionLoading}
+                                    style={{ background: questionLoading ? '#6b7280' : '#0f2d6e', color: 'white', border: 'none', padding: '10px 22px', borderRadius: '8px', fontSize: '13px', fontWeight: '700', cursor: questionLoading ? 'not-allowed' : 'pointer', display: 'flex', alignItems: 'center', gap: '7px' }}
+                                  >
+                                    <Send size={13} strokeWidth={2} />
+                                    {questionLoading ? 'Envoi en cours...' : 'Envoyer ma question'}
+                                  </button>
+                                  <button
+                                    onClick={() => { setQuestionSaisie(null); setQuestionTexte(''); setQuestionErreur('') }}
+                                    style={{ background: 'transparent', color: '#6b7280', border: '1px solid #e5e7eb', padding: '10px 16px', borderRadius: '8px', fontSize: '13px', cursor: 'pointer' }}
+                                  >
+                                    Annuler
+                                  </button>
+                                </div>
+                                <p style={{ color: '#9ca3af', fontSize: '11px', margin: 0, lineHeight: '1.6' }}>
+                                  Ce service constitue une information juridique au sens de la loi nÂ°71-1130 du 31 dÃ©cembre 1971. La rÃ©ponse vous sera transmise par Ã©crit dans votre espace client.
+                                </p>
+                              </div>
+                            )}
+                          </div>
+                        )}
+
+                        {q.reponse && (
+                          <div style={{ background: '#f0fdf4', border: '1px solid #bbf7d0', borderRadius: '8px', padding: '1rem' }}>
+                            <p style={{ color: '#15803d', fontSize: '12px', fontWeight: '700', margin: '0 0 8px', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                              <CheckCircle size={13} /> RÃ©ponse du juriste
+                              {q.repondu_at && <span style={{ color: '#9ca3af', fontWeight: '400' }}>Â· {new Date(q.repondu_at).toLocaleDateString('fr-FR')}</span>}
+                            </p>
+                            <p style={{ color: '#374151', fontSize: '13px', margin: 0, lineHeight: '1.7', whiteSpace: 'pre-line' }}>{q.reponse}</p>
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* â”€â”€ DOCUMENTS â”€â”€ */}
+            {onglet === 'documents' && (
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                <h1 style={{ color: '#0f2d6e', fontSize: '1.4rem', fontWeight: '700', margin: 0 }}>Documents</h1>
+
+                {!estAbonne && (
+                  <div style={{ background: 'linear-gradient(135deg, #0f2d6e 0%, #1a4fba 100%)', borderRadius: '12px', padding: '1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
+                    <div>
+                      <p style={{ color: '#fcd34d', fontSize: '11px', fontWeight: '700', margin: '0 0 6px', textTransform: 'uppercase', letterSpacing: '0.08em' }}>âœ¦ {catalogue.filter(d => !d.acces_gratuit).length} documents verrouillÃ©s</p>
+                      <p style={{ color: 'white', fontSize: '14px', fontWeight: '700', margin: '0 0 4px' }}>DÃ©bloquez toute la bibliothÃ¨que</p>
+                      <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: '12px', margin: 0 }}>Abonnement Optimal Â· Ã  partir de 12,42 â‚¬/mois</p>
+                    </div>
+                    <button onClick={() => setOnglet('abonnement')} style={{ background: 'white', color: '#0f2d6e', border: 'none', padding: '11px 22px', borderRadius: '8px', fontSize: '13px', fontWeight: '700', cursor: 'pointer', flexShrink: 0 }}>
+                      DÃ©bloquer â†’
+                    </button>
+                  </div>
+                )}
+
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                  <DocumentSearch documents={catalogue} onChange={(filtered: DocItem[]) => setCatalogueFiltre(filtered)} placeholder="Rechercher un document..." />
+                  <div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+                      <Filter size={13} color="#6b7280" />
+                      <p style={{ color: '#6b7280', fontSize: '12px', fontWeight: '600', margin: 0 }}>Filtrer par catÃ©gorie</p>
+                      {categoriesFiltres.length > 0 && (
+                        <button onClick={() => setCategoriesFiltres([])} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#9ca3af', fontSize: '11px', textDecoration: 'underline' }}>
+                          Effacer
+                        </button>
+                      )}
+                    </div>
+                    <CategorySearch
+                      categories={categoriesCatalogue}
+                      selected={categoriesFiltres}
+                      onToggle={(nom: string) => setCategoriesFiltres(prev => prev.includes(nom) ? prev.filter(c => c !== nom) : [...prev, nom])}
+                      placeholder="Filtrer par catÃ©gorie..."
+                    />
+                  </div>
+                  {catalogueFiltre.length !== catalogue.length && (
+                    <p style={{ color: '#6b7280', fontSize: '12px', margin: 0 }}>{catalogueFiltre.length} document{catalogueFiltre.length > 1 ? 's' : ''} affichÃ©{catalogueFiltre.length > 1 ? 's' : ''}</p>
+                  )}
+                </div>
+
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
+                  {catalogueFiltre.map(doc => {
+                    const acces = accesDocLabel(doc)
+                    return (
+                      <div key={doc.id} style={{ background: 'white', border: `1px solid ${acces.accessible ? '#bbf7d0' : '#e5e7eb'}`, borderRadius: '10px', padding: '1rem', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                        <div style={{ width: '36px', height: '36px', background: acces.bg, borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                          {doc.type === 'pack' ? <Package size={16} color={acces.color} /> : <FileText size={16} color={acces.color} />}
+                        </div>
+                        <div style={{ flex: 1, minWidth: 0 }}>
+                          <p style={{ color: '#0f2d6e', fontSize: '12px', fontWeight: '600', margin: '0 0 2px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{doc.nom}</p>
+                          {doc.categories && doc.categories.length > 0 && (
+                            <p style={{ color: '#d1d5db', fontSize: '10px', margin: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{doc.categories[0]}</p>
+                          )}
+                        </div>
+                        {acces.accessible ? (
+                          <button onClick={() => handleDownload(doc.id, doc.nom)} disabled={downloadEnCours === doc.id}
+                            style={{ background: '#0f2d6e', color: 'white', border: 'none', padding: '6px 10px', borderRadius: '6px', fontSize: '11px', fontWeight: '700', cursor: downloadEnCours === doc.id ? 'not-allowed' : 'pointer', flexShrink: 0, display: 'flex', alignItems: 'center', gap: '4px' }}>
+                            {downloadEnCours === doc.id ? '...' : <><Download size={11} /> DOCX</>}
+                          </button>
+                        ) : acces.achetable ? (
+                          <button onClick={() => { setAchatDoc(doc); setAchatErreur(''); setAchatReference('') }}
+                            style={{ background: '#d97706', color: 'white', border: 'none', padding: '6px 10px', borderRadius: '6px', fontSize: '11px', fontWeight: '700', cursor: 'pointer', flexShrink: 0, whiteSpace: 'nowrap' }}>
+                            Acheter Â· {acces.label}
+                          </button>
+                        ) : (
+                          <span style={{ background: acces.bg, color: acces.color, fontSize: '9px', fontWeight: '700', padding: '2px 7px', borderRadius: '4px', flexShrink: 0, whiteSpace: 'nowrap' }}>{acces.label}</span>
+                        )}
+                      </div>
+                    )
+                  })}
+                </div>
+
+                {catalogue.length === 0 && (
+                  <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '3rem', textAlign: 'center' }}>
+                    <FileText size={32} color="#d1d5db" strokeWidth={1} style={{ marginBottom: '12px' }} />
+                    <p style={{ color: '#6b7280', fontSize: '14px', margin: 0 }}>La bibliothÃ¨que sera disponible prochainement.</p>
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* â”€â”€ COMMANDES â”€â”€ */}
+            {onglet === 'commandes' && (
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                <h1 style={{ color: '#0f2d6e', fontSize: '1.4rem', fontWeight: '700', margin: 0 }}>Mes commandes</h1>
+
+                {estAbonne && (
+                  <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.5rem' }}>
+                    <p style={{ color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 12px' }}>Abonnement en cours</p>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '12px', background: '#f0fdf4', borderRadius: '8px', border: '1px solid #bbf7d0' }}>
+                      <Crown size={18} color="#15803d" strokeWidth={1.5} />
+                      <div style={{ flex: 1 }}>
+                        <p style={{ color: '#15803d', fontSize: '13px', fontWeight: '700', margin: '0 0 2px' }}>{abonnementLabel()}</p>
+                        <p style={{ color: '#6b7280', fontSize: '12px', margin: 0 }}>Renouvellement le {dateExpiration}</p>
+                      </div>
+                      <span style={{ background: '#f0fdf4', color: '#15803d', fontSize: '10px', fontWeight: '700', padding: '2px 8px', borderRadius: '20px', border: '1px solid #bbf7d0' }}>Actif</span>
+                    </div>
+                  </div>
+                )}
+
+                {questions.length > 0 && (
+                  <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.5rem' }}>
+                    <p style={{ color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 12px' }}>Questions juridiques</p>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                      {questions.map(q => (
+                        <div key={q.id} style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '12px', background: '#f8fafc', borderRadius: '8px' }}>
+                          <MessageSquare size={16} color="#6b7280" strokeWidth={1.5} style={{ flexShrink: 0 }} />
+                          <div style={{ flex: 1, minWidth: 0 }}>
+                            <p style={{ color: '#374151', fontSize: '12px', fontWeight: '600', margin: '0 0 2px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                              {q.question || 'Question en attente de rÃ©daction'}
+                            </p>
+                            <p style={{ color: '#9ca3af', fontSize: '11px', margin: 0 }}>
+                              {new Date(q.created_at).toLocaleDateString('fr-FR')} Â·{' '}
+                              {q.type === 'unitaire' ? '47 â‚¬' : q.type === 'abonne' ? '14,90 â‚¬' : 'Incluse'}
+                            </p>
+                          </div>
+                          <span style={{ fontSize: '10px', fontWeight: '700', padding: '2px 8px', borderRadius: '20px', flexShrink: 0, background: q.statut === 'repondu' ? '#f0fdf4' : '#f3f4f6', color: q.statut === 'repondu' ? '#15803d' : '#6b7280' }}>
+                            {q.statut === 'repondu' ? 'RÃ©pondu' : 'En attente'}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Diagnostics RGPD */}
+                {dossiersRgpd.length > 0 && (
+                  <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.5rem' }}>
+                    <p style={{ color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 12px' }}>Diagnostics RGPD</p>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                      {dossiersRgpd.map(d => {
+                        const conf = DIAGNOSTIC_FORFAITS[d.forfait as 'essentiel' | 'standard'] || DIAGNOSTIC_FORFAITS.essentiel
+                        return (
+                          <div key={d.id} style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '12px', background: '#f8fafc', borderRadius: '8px' }}>
+                            <Shield size={16} color="#7c3aed" strokeWidth={1.5} style={{ flexShrink: 0 }} />
+                            <div style={{ flex: 1, minWidth: 0 }}>
+                              <p style={{ color: '#374151', fontSize: '12px', fontWeight: '600', margin: '0 0 2px' }}>{conf.label}</p>
+                              <p style={{ color: '#9ca3af', fontSize: '11px', margin: 0 }}>
+                                {new Date(d.created_at).toLocaleDateString('fr-FR')} Â· {d.montant ? `${d.montant}\u00a0â‚¬` : conf.prix} Â· {d.mode_paiement === 'virement' ? 'Virement' : 'Carte'}
+                                {d.mode_paiement === 'virement' && d.reference ? ` Â· ${d.reference}` : ''}
+                              </p>
+                            </div>
+                            {d.livrable_url ? (
+                              <a href={d.livrable_url} target="_blank" rel="noopener noreferrer"
+                                style={{ background: '#0f2d6e', color: 'white', padding: '7px 12px', borderRadius: '6px', fontSize: '11px', fontWeight: '700', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '5px', flexShrink: 0 }}>
+                                <Download size={12} /> Rapport
+                              </a>
+                            ) : (
+                              <span style={{ fontSize: '10px', fontWeight: '700', padding: '2px 8px', borderRadius: '20px', flexShrink: 0, background: d.statut === 'livre' ? '#f0fdf4' : d.statut === 'en_cours' ? '#fff7ed' : '#f3f4f6', color: d.statut === 'livre' ? '#15803d' : d.statut === 'en_cours' ? '#d97706' : '#6b7280' }}>
+                                {d.statut === 'livre' ? 'LivrÃ©' : d.statut === 'en_cours' ? 'En cours' : 'En attente'}
+                              </span>
+                            )}
+                          </div>
+                        )
+                      })}
+                    </div>
+                    <p style={{ color: '#9ca3af', fontSize: '11px', margin: '12px 0 0', lineHeight: '1.6' }}>
+                      Le rapport de conformitÃ© est dÃ©posÃ© ici dÃ¨s qu'il est prÃªt, et vous est Ã©galement envoyÃ© par email. Le dÃ©lai court Ã  compter de la rÃ©ception de vos rÃ©ponses au questionnaire de cadrage.
+                    </p>
+                  </div>
+                )}
+
+                {dossiers.length > 0 && (
+                  <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.5rem' }}>
+                    <p style={{ color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 12px' }}>Forfaits conseil assurances</p>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                      {dossiers.map(d => (
+                        <div key={d.id} style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '12px', background: '#f8fafc', borderRadius: '8px' }}>
+                          <Shield size={16} color="#6b7280" strokeWidth={1.5} style={{ flexShrink: 0 }} />
+                          <div style={{ flex: 1 }}>
+                            <p style={{ color: '#374151', fontSize: '12px', fontWeight: '600', margin: '0 0 2px' }}>
+                              Forfait conseil assurances Â· {d.type === 'pro' ? 'Pro / Association' : 'Particulier'}
+                            </p>
+                            <p style={{ color: '#9ca3af', fontSize: '11px', margin: 0 }}>
+                              {new Date(d.created_at).toLocaleDateString('fr-FR')} Â· {d.type === 'pro' ? '150\u00a0â‚¬' : '90\u00a0â‚¬'}
+                            </p>
+                          </div>
+                          <span style={{ fontSize: '10px', fontWeight: '700', padding: '2px 8px', borderRadius: '20px', flexShrink: 0, background: d.statut === 'livre' ? '#f0fdf4' : d.statut === 'en_cours' ? '#fff7ed' : '#f3f4f6', color: d.statut === 'livre' ? '#15803d' : d.statut === 'en_cours' ? '#d97706' : '#6b7280' }}>
+                            {d.statut === 'livre' ? 'LivrÃ©' : d.statut === 'en_cours' ? 'En cours' : 'En attente'}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {questions.length === 0 && dossiers.length === 0 && dossiersRgpd.length === 0 && !estAbonne && (
+                  <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '3rem', textAlign: 'center' }}>
+                    <ShoppingBag size={32} color="#d1d5db" strokeWidth={1} style={{ marginBottom: '12px' }} />
+                    <p style={{ color: '#6b7280', fontSize: '14px', margin: '0 0 16px' }}>Aucune commande pour l'instant.</p>
+                    <button onClick={() => handlePaiement('question_unitaire')} style={{ background: '#0f2d6e', color: 'white', border: 'none', padding: '11px 24px', borderRadius: '8px', fontSize: '13px', fontWeight: '700', cursor: 'pointer' }}>
+                      Poser ma premiÃ¨re question
+                    </button>
+                  </div>
+                )}
+
+                <p style={{ color: '#9ca3af', fontSize: '12px', margin: 0, textAlign: 'center' }}>
+                  Pour toute question sur une commande : <a href="mailto:contact@cholez-pagotto.fr" style={{ color: '#1a4fba' }}>contact@cholez-pagotto.fr</a>
+                </p>
+              </div>
+            )}
+
+            {/* â”€â”€ FACTURES â”€â”€ */}
+            {onglet === 'factures' && (
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                <h1 style={{ color: '#0f2d6e', fontSize: '1.4rem', fontWeight: '700', margin: 0 }}>Factures</h1>
+
+                <div style={{ background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '10px', padding: '12px 16px', display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
+                  <AlertCircle size={16} color="#1a4fba" style={{ flexShrink: 0, marginTop: '1px' }} />
+                  <div>
+                    <p style={{ color: '#1e3a5f', fontSize: '12px', fontWeight: '700', margin: '0 0 2px' }}>Facturation</p>
+                    <p style={{ color: '#374151', fontSize: '12px', margin: 0, lineHeight: '1.6' }}>
+                      Les factures sont Ã©mises par le Cabinet Cholez-Pagotto et dÃ©posÃ©es ici aprÃ¨s traitement. Le reÃ§u de paiement Stripe vous est envoyÃ© automatiquement par email Ã  chaque transaction.
+                    </p>
+                  </div>
+                </div>
+
+                {factures.length === 0 ? (
+                  <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '3rem', textAlign: 'center' }}>
+                    <Receipt size={32} color="#d1d5db" strokeWidth={1} style={{ marginBottom: '12px' }} />
+                    <p style={{ color: '#6b7280', fontSize: '14px', margin: 0 }}>Aucune facture disponible pour l'instant.</p>
+                  </div>
+                ) : (
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                    {factures.map(f => (
+                      <div key={f.id} style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.25rem', display: 'flex', alignItems: 'center', gap: '12px' }}>
+                        <div style={{ width: '40px', height: '40px', background: '#eff6ff', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                          <Receipt size={18} color="#1a4fba" strokeWidth={1.5} />
+                        </div>
+                        <div style={{ flex: 1 }}>
+                          <p style={{ color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 2px' }}>
+                            Facture {f.type ? `Â· ${f.type}` : ''} {f.montant ? `Â· ${f.montant} â‚¬` : ''}
+                          </p>
+                          <p style={{ color: '#9ca3af', fontSize: '11px', margin: 0 }}>
+                            Ã‰mise le {new Date(f.created_at).toLocaleDateString('fr-FR')}
+                          </p>
+                        </div>
+                        <button onClick={() => handleDownloadFacture(f.id)} disabled={factureEnCours === f.id}
+                          style={{ background: '#0f2d6e', color: 'white', border: 'none', padding: '8px 14px', borderRadius: '6px', fontSize: '12px', fontWeight: '700', cursor: factureEnCours === f.id ? 'not-allowed' : 'pointer', display: 'flex', alignItems: 'center', gap: '6px', flexShrink: 0 }}>
+                          {factureEnCours === f.id ? '...' : <><Download size={13} /> PDF</>}
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* â”€â”€ ABONNEMENT â”€â”€ */}
+            {onglet === 'abonnement' && (
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                <h1 style={{ color: '#0f2d6e', fontSize: '1.4rem', fontWeight: '700', margin: 0 }}>Abonnement</h1>
+
+                {estAbonne ? (
+                  <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.5rem' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '1rem' }}>
+                      <div style={{ width: '40px', height: '40px', background: 'linear-gradient(135deg, #0f2d6e, #1a4fba)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <Crown size={20} color="white" strokeWidth={1.5} />
+                      </div>
+                      <div>
+                        <p style={{ color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: '0 0 2px' }}>{abonnementLabel()}</p>
+                        <p style={{ color: '#6b7280', fontSize: '12px', margin: 0 }}>Renouvellement le {dateExpiration}</p>
+                      </div>
+                      {resiliationProgrammee
+                        ? <span style={{ marginLeft: 'auto', background: '#fff7ed', color: '#d97706', fontSize: '11px', fontWeight: '700', padding: '3px 10px', borderRadius: '20px' }}>RÃ©siliation programmÃ©e</span>
+                        : <span style={{ marginLeft: 'auto', background: '#f0fdf4', color: '#15803d', fontSize: '11px', fontWeight: '700', padding: '3px 10px', borderRadius: '20px' }}>Actif</span>}
+                    </div>
+                    <div style={{ borderTop: '1px solid #f3f4f6', paddingTop: '1.25rem' }}>
+                      {resiliationProgrammee ? (
+                        <div style={{ background: '#fff7ed', border: '1px solid #fed7aa', borderRadius: '8px', padding: '14px 16px', display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
+                          <Clock size={16} color="#d97706" style={{ flexShrink: 0, marginTop: '1px' }} />
+                          <div>
+                            <p style={{ color: '#92400e', fontSize: '13px', fontWeight: '700', margin: '0 0 4px' }}>RÃ©siliation programmÃ©e</p>
+                            <p style={{ color: '#374151', fontSize: '12px', margin: 0, lineHeight: '1.6' }}>
+                              Votre abonnement prendra fin le {resiliationFinTexte || 'la fin de la pÃ©riode en cours'}, sans renouvellement. Vous conservez l'accÃ¨s jusque-lÃ . Pour revenir sur cette dÃ©cision, Ã©crivez-nous Ã  <a href="mailto:contact@cholez-pagotto.fr" style={{ color: '#1a4fba' }}>contact@cholez-pagotto.fr</a>.
+                            </p>
+                          </div>
+                        </div>
+                      ) : (
+                      <>
+                      {resiliationEtape === 0 && (
+                        <>
+                          <div style={{ background: '#f8fafc', border: '1px solid #e5e7eb', borderRadius: '8px', padding: '12px 14px', marginBottom: '14px' }}>
+                            <p style={{ color: '#6b7280', fontSize: '12px', margin: 0, lineHeight: '1.6' }}>
+                              ConformÃ©ment Ã  l'article L215-1-1 du Code de la consommation, vous pouvez rÃ©silier votre abonnement directement en ligne, ci-dessous, sans avoir Ã  nous contacter.
+                            </p>
+                          </div>
+                          <button
+                            onClick={() => { setResiliationErreur(''); setResiliationEtape(1) }}
+                            style={{ background: 'white', color: '#b91c1c', border: '1px solid #fecaca', padding: '10px 20px', borderRadius: '8px', fontSize: '13px', fontWeight: '700', cursor: 'pointer' }}
+                          >
+                            RÃ©silier mon contrat
+                          </button>
+                          <p style={{ color: '#9ca3af', fontSize: '11px', margin: '12px 0 0', lineHeight: '1.6' }}>
+                            Pour un changement de moyen de paiement, Ã©crivez-nous Ã  <a href="mailto:contact@cholez-pagotto.fr" style={{ color: '#1a4fba' }}>contact@cholez-pagotto.fr</a>
+                          </p>
+                        </>
+                      )}
+
+                      {resiliationEtape === 1 && (
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+                          <div style={{ background: '#fff7ed', border: '1px solid #fed7aa', borderRadius: '8px', padding: '14px 16px' }}>
+                            <p style={{ color: '#92400e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px' }}>Confirmer la rÃ©siliation</p>
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                              <div style={{ display: 'flex', justifyContent: 'space-between', gap: '12px' }}>
+                                <span style={{ color: '#9ca3af', fontSize: '12px' }}>Contrat concernÃ©</span>
+                                <span style={{ color: '#374151', fontSize: '12px', fontWeight: '600', textAlign: 'right' }}>{abonnementLabel()}</span>
+                              </div>
+                              <div style={{ display: 'flex', justifyContent: 'space-between', gap: '12px' }}>
+                                <span style={{ color: '#9ca3af', fontSize: '12px' }}>Effet</span>
+                                <span style={{ color: '#374151', fontSize: '12px', fontWeight: '600', textAlign: 'right', lineHeight: '1.6' }}>
+                                  {dateExpiration ? `Actif jusqu'au ${dateExpiration}, puis non renouvelÃ©` : "Actif jusqu'Ã  la fin de la pÃ©riode en cours, puis non renouvelÃ©"}
+                                </span>
+                              </div>
+                            </div>
+                            <p style={{ color: '#92400e', fontSize: '12px', margin: '10px 0 0', lineHeight: '1.6' }}>
+                              Vous conservez l'accÃ¨s Ã  vos avantages jusqu'Ã  cette date. Aucun nouveau prÃ©lÃ¨vement ne sera effectuÃ© ensuite. La pÃ©riode en cours n'est pas remboursÃ©e.
+                            </p>
+                          </div>
+                          {resiliationErreur && (
+                            <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+                              <AlertCircle size={14} color="#dc2626" style={{ flexShrink: 0 }} />
+                              <p style={{ color: '#dc2626', fontSize: '12px', margin: 0 }}>{resiliationErreur}</p>
+                            </div>
+                          )}
+                          <div style={{ display: 'flex', gap: '10px' }}>
+                            <button
+                              onClick={handleResiliation}
+                              disabled={resiliationLoading}
+                              style={{ background: resiliationLoading ? '#9ca3af' : '#b91c1c', color: 'white', border: 'none', padding: '10px 22px', borderRadius: '8px', fontSize: '13px', fontWeight: '700', cursor: resiliationLoading ? 'not-allowed' : 'pointer' }}
+                            >
+                              {resiliationLoading ? 'RÃ©siliation en cours...' : 'Confirmer la rÃ©siliation'}
+                            </button>
+                            <button
+                              onClick={() => { setResiliationEtape(0); setResiliationErreur('') }}
+                              disabled={resiliationLoading}
+                              style={{ background: 'transparent', color: '#6b7280', border: '1px solid #e5e7eb', padding: '10px 18px', borderRadius: '8px', fontSize: '13px', cursor: resiliationLoading ? 'not-allowed' : 'pointer' }}
+                            >
+                              Annuler
+                            </button>
+                          </div>
+                        </div>
+                      )}
+
+                      {resiliationEtape === 2 && (
+                        <div style={{ background: '#f0fdf4', border: '1px solid #bbf7d0', borderRadius: '8px', padding: '14px 16px', display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
+                          <CheckCircle size={16} color="#16a34a" style={{ flexShrink: 0, marginTop: '1px' }} />
+                          <div>
+                            <p style={{ color: '#15803d', fontSize: '13px', fontWeight: '700', margin: '0 0 4px' }}>RÃ©siliation enregistrÃ©e</p>
+                            <p style={{ color: '#374151', fontSize: '12px', margin: 0, lineHeight: '1.6' }}>
+                              {dateExpiration
+                                ? `Votre abonnement prendra fin le ${dateExpiration}, sans renouvellement. Vous conservez l'accÃ¨s jusque-lÃ . Un email de confirmation vient de vous Ãªtre envoyÃ©.`
+                                : "Votre abonnement ne sera pas renouvelÃ©. Un email de confirmation vient de vous Ãªtre envoyÃ©."}
+                            </p>
+                          </div>
+                        </div>
+                      )}
+                      </>
+                      )}
+                    </div>
+                  </div>
+                ) : (
+                  <>
+                    <div style={{ display: 'flex', justifyContent: 'center' }}>
+                      <div style={{ background: '#f3f4f6', borderRadius: '10px', padding: '4px', display: 'inline-flex', gap: '4px' }}>
+                        {(['monthly', 'yearly'] as const).map(p => (
+                          <button key={p} onClick={() => setPeriodeChoisie(p)}
+                            style={{ padding: '8px 20px', borderRadius: '8px', border: 'none', background: periodeChoisie === p ? 'white' : 'transparent', color: periodeChoisie === p ? '#0f2d6e' : '#6b7280', fontSize: '13px', fontWeight: periodeChoisie === p ? '700' : '500', cursor: 'pointer', boxShadow: periodeChoisie === p ? '0 1px 3px rgba(0,0,0,0.1)' : 'none', transition: 'all 0.15s' }}>
+                            {p === 'monthly' ? 'Mensuel' : 'Annuel'}
+                            {p === 'yearly' && <span style={{ marginLeft: '6px', background: '#0f2d6e', color: 'white', fontSize: '9px', fontWeight: '700', padding: '1px 6px', borderRadius: '10px' }}>2 mois offerts</span>}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', overflow: 'hidden' }}>
+                      <div style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr 1fr 1fr', borderBottom: '1px solid #e5e7eb' }}>
+                        <div style={{ padding: '1.25rem', borderRight: '1px solid #e5e7eb' }} />
+                        <div style={{ padding: '1.25rem', borderRight: '1px solid #e5e7eb' }}>
+                          <p style={{ color: '#9ca3af', fontSize: '12px', fontWeight: '700', margin: '0 0 4px' }}>AccÃ¨s gratuit</p>
+                          <p style={{ color: '#0f2d6e', fontSize: '1.1rem', fontWeight: '700', margin: 0 }}>0 â‚¬</p>
+                        </div>
+                        <div style={{ padding: '1.25rem', borderRight: '1px solid #e5e7eb', background: '#f8fafc' }}>
+                          <p style={{ color: '#1a4fba', fontSize: '12px', fontWeight: '700', margin: '0 0 4px' }}>Optimal Particulier</p>
+                          <p style={{ color: '#0f2d6e', fontSize: '1.1rem', fontWeight: '700', margin: '0 0 2px' }}>
+                            {periodeChoisie === 'yearly' ? '12,42 â‚¬' : '17,90 â‚¬'}<span style={{ fontSize: '10px', fontWeight: '400', color: '#6b7280' }}>/mois</span>
+                          </p>
+                          {periodeChoisie === 'yearly' && <p style={{ color: '#9ca3af', fontSize: '10px', margin: 0 }}>149 â‚¬ / an</p>}
+                        </div>
+                        <div style={{ padding: '1.25rem', background: '#0f2d6e' }}>
+                          <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '12px', fontWeight: '700', margin: '0 0 4px' }}>Optimal Pro</p>
+                          <p style={{ color: 'white', fontSize: '1.1rem', fontWeight: '700', margin: '0 0 2px' }}>
+                            {periodeChoisie === 'yearly' ? '20,75 â‚¬' : '27,90 â‚¬'}<span style={{ fontSize: '10px', fontWeight: '400', color: 'rgba(255,255,255,0.6)' }}>/mois</span>
+                          </p>
+                          {periodeChoisie === 'yearly' && <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '10px', margin: 0 }}>249 â‚¬ / an</p>}
+                        </div>
+                      </div>
+
+                      {[
+                        { label: 'Documents en accÃ¨s libre', gratuit: 'âœ“', part: 'âœ“', pro: 'âœ“' },
+                        { label: 'BibliothÃ¨que complÃ¨te (DOCX)', gratuit: 'âœ—', part: 'âœ“', pro: 'âœ“' },
+                        { label: 'Question juriste incluse / mois', gratuit: 'âœ—', part: '1 incluse', pro: '1 incluse' },
+                        { label: 'Questions supplÃ©mentaires', gratuit: '47 â‚¬', part: '14,90 â‚¬', pro: '14,90 â‚¬' },
+                        { label: "DÃ©lai de rÃ©ponse", gratuit: '24-48h', part: '24-48h', pro: '24-48h' },
+                        { label: 'Professionnels / associations', gratuit: 'âœ—', part: 'âœ—', pro: 'âœ“' },
+                      ].map((row, i) => (
+                        <div key={i} style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr 1fr 1fr', borderBottom: i < 5 ? '1px solid #f3f4f6' : 'none' }}>
+                          <div style={{ padding: '12px 1.25rem', borderRight: '1px solid #e5e7eb' }}>
+                            <p style={{ color: '#374151', fontSize: '12px', margin: 0 }}>{row.label}</p>
+                          </div>
+                          <div style={{ padding: '12px 1.25rem', borderRight: '1px solid #e5e7eb', textAlign: 'center' }}>
+                            <p style={{ color: row.gratuit === 'âœ—' ? '#d1d5db' : '#374151', fontSize: '12px', fontWeight: '600', margin: 0 }}>{row.gratuit}</p>
+                          </div>
+                          <div style={{ padding: '12px 1.25rem', borderRight: '1px solid #e5e7eb', background: '#f8fafc', textAlign: 'center' }}>
+                            <p style={{ color: row.part === 'âœ—' ? '#d1d5db' : '#0f2d6e', fontSize: '12px', fontWeight: '600', margin: 0 }}>{row.part}</p>
+                          </div>
+                          <div style={{ padding: '12px 1.25rem', background: '#fafafa', textAlign: 'center' }}>
+                            <p style={{ color: row.pro === 'âœ—' ? '#d1d5db' : '#374151', fontSize: '12px', fontWeight: '600', margin: 0 }}>{row.pro}</p>
+                          </div>
+                        </div>
+                      ))}
+
+                      <div style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr 1fr 1fr', padding: '1.25rem', gap: '12px', borderTop: '1px solid #e5e7eb' }}>
+                        <div />
+                        <div style={{ textAlign: 'center', color: '#9ca3af', fontSize: '11px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>AccÃ¨s actuel</div>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                          <button onClick={() => handlePaiement(periodeChoisie === 'yearly' ? 'optimal_particulier_yearly' : 'optimal_particulier_monthly')}
+                            style={{ background: '#1a4fba', color: 'white', border: 'none', padding: '11px 8px', borderRadius: '8px', fontSize: '12px', fontWeight: '700', cursor: 'pointer' }}>
+                            Souscrire Particulier
+                          </button>
+                          <p style={{ color: '#9ca3af', fontSize: '10px', margin: 0, textAlign: 'center' }}>Particulier Â· Usage personnel</p>
+                        </div>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                          <button onClick={() => handlePaiement(periodeChoisie === 'yearly' ? 'optimal_pro_yearly' : 'optimal_pro_monthly')}
+                            style={{ background: '#0f2d6e', color: 'white', border: 'none', padding: '11px 8px', borderRadius: '8px', fontSize: '12px', fontWeight: '700', cursor: 'pointer' }}>
+                            Souscrire Pro / Asso
+                          </button>
+                          <p style={{ color: '#9ca3af', fontSize: '10px', margin: 0, textAlign: 'center' }}>Professionnel Â· Micro-entrepreneur Â· Association Â· CollectivitÃ©</p>
+                        </div>
+                      </div>
+                    </div>
+                    <p style={{ color: '#9ca3af', fontSize: '11px', textAlign: 'center', margin: 0 }}>Sans engagement pour les formules mensuelles Â· Paiement sÃ©curisÃ© par carte bancaire</p>
+                  </>
+                )}
+              </div>
+            )}
+
+            {/* â”€â”€ PROFIL â”€â”€ */}
+            {onglet === 'profil' && profile && (
+              <ProfilOnglet profile={profile} />
+            )}
+
+          </div>
+        </div>
+      </main>
+
+      {/* Modale d'achat de document a l'unite */}
+      {achatDoc && (
+        <div onClick={() => { if (!achatLoading) setAchatDoc(null) }}
+          style={{ position: 'fixed', inset: 0, background: 'rgba(15,23,42,0.45)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 50, padding: '1rem' }}>
+          <div onClick={e => e.stopPropagation()}
+            style={{ background: 'white', borderRadius: '14px', padding: '1.5rem', width: '100%', maxWidth: '420px', boxShadow: '0 20px 40px rgba(0,0,0,0.2)' }}>
+            {!achatReference ? (
+              <>
+                <p style={{ color: '#0f2d6e', fontSize: '15px', fontWeight: '700', margin: '0 0 4px' }}>Acheter ce document</p>
+                <p style={{ color: '#374151', fontSize: '13px', margin: '0 0 4px', lineHeight: '1.5' }}>{achatDoc.nom}</p>
+                <p style={{ color: '#d97706', fontSize: '1.3rem', fontWeight: '700', margin: '0 0 16px' }}>{formatPrix(achatDoc.prix_unitaire) || '?\u00a0â‚¬'}</p>
+                <p style={{ color: '#6b7280', fontSize: '12px', margin: '0 0 16px', lineHeight: '1.6' }}>
+                  Achat dÃ©finitif : une fois rÃ©glÃ©, le document reste tÃ©lÃ©chargeable depuis votre espace client. Choisissez votre mode de paiement.
+                </p>
+                {achatErreur && (
+                  <div style={{ display: 'flex', gap: '8px', alignItems: 'center', marginBottom: '12px' }}>
+                    <AlertCircle size={14} color="#dc2626" style={{ flexShrink: 0 }} />
+                    <p style={{ color: '#dc2626', fontSize: '12px', margin: 0 }}>{achatErreur}</p>
+                  </div>
+                )}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                  <button onClick={() => acheterDocument('carte')} disabled={achatLoading}
+                    style={{ background: achatLoading ? '#9ca3af' : '#0f2d6e', color: 'white', border: 'none', padding: '12px', borderRadius: '8px', fontSize: '13px', fontWeight: '700', cursor: achatLoading ? 'not-allowed' : 'pointer' }}>
+                    {achatLoading ? 'Redirection...' : 'Payer par carte bancaire'}
+                  </button>
+                  <button onClick={() => acheterDocument('virement')} disabled={achatLoading}
+                    style={{ background: 'white', color: '#0f2d6e', border: '1px solid #cbd5e1', padding: '12px', borderRadius: '8px', fontSize: '13px', fontWeight: '700', cursor: achatLoading ? 'not-allowed' : 'pointer' }}>
+                    Payer par virement
+                  </button>
+                  <button onClick={() => setAchatDoc(null)} disabled={achatLoading}
+                    style={{ background: 'transparent', color: '#6b7280', border: 'none', padding: '8px', borderRadius: '8px', fontSize: '12px', cursor: achatLoading ? 'not-allowed' : 'pointer' }}>
+                    Annuler
+                  </button>
+                </div>
+                <p style={{ color: '#9ca3af', fontSize: '11px', margin: '12px 0 0', lineHeight: '1.6' }}>
+                  Le paiement par carte est immÃ©diat. Le virement ouvre l'accÃ¨s dÃ¨s rÃ©ception, aprÃ¨s vÃ©rification.
+                </p>
+              </>
+            ) : (
+              <>
+                <div style={{ display: 'flex', gap: '10px', alignItems: 'flex-start', marginBottom: '12px' }}>
+                  <CheckCircle size={20} color="#16a34a" style={{ flexShrink: 0, marginTop: '1px' }} />
+                  <div>
+                    <p style={{ color: '#15803d', fontSize: '14px', fontWeight: '700', margin: '0 0 4px' }}>Commande enregistrÃ©e</p>
+                    <p style={{ color: '#374151', fontSize: '12px', margin: 0, lineHeight: '1.6' }}>
+                      Un email contenant le RIB et la rÃ©fÃ©rence vient de vous Ãªtre envoyÃ©. Votre document sera tÃ©lÃ©chargeable dÃ¨s rÃ©ception et vÃ©rification de votre virement.
+                    </p>
+                  </div>
+                </div>
+                <div style={{ background: '#f8fafc', border: '1px solid #e5e7eb', borderRadius: '8px', padding: '10px 14px', marginBottom: '16px' }}>
+                  <p style={{ color: '#6b7280', fontSize: '11px', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em', margin: '0 0 2px' }}>RÃ©fÃ©rence de votre virement</p>
+                  <p style={{ color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: 0, letterSpacing: '0.03em' }}>{achatReference}</p>
+                </div>
+                <button onClick={() => { setAchatDoc(null); setAchatReference('') }}
+                  style={{ width: '100%', background: '#0f2d6e', color: 'white', border: 'none', padding: '11px', borderRadius: '8px', fontSize: '13px', fontWeight: '700', cursor: 'pointer' }}>
+                  Fermer
+                </button>
+              </>
+            )}
+          </div>
+        </div>
+      )}
+
+      <FooterMinimal />
+    </>
+  )
+}
+
+// â”€â”€ COMPOSANT PROFIL â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+function ProfilOnglet({ profile }: { profile: UserProfile }) {
+  const [showMigration, setShowMigration] = useState(false)
+  const [telephonePro, setTelephonePro] = useState('')
+  const [telephoneProPrefixe, setTelephoneProPrefixe] = useState('+33')
+  const [migrationData, setMigrationData] = useState({ nom_structure: '', siret: '', rue_pro: '', cp_pro: '', ville_pro: '', email_pro: '' })
+  const [migrationStatut, setMigrationStatut] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+  const [migrationErreur, setMigrationErreur] = useState('')
+  const [editMode, setEditMode] = useState(false)
+  const [editData, setEditData] = useState({ rue: profile.rue || '', code_postal: profile.code_postal || '', ville: profile.ville || '' })
+  const [editTelPrefixe, setEditTelPrefixe] = useState('+33')
+  const [editTelNumero, setEditTelNumero] = useState(profile.telephone ? profile.telephone.replace(/^\+\d+\s/, '') : '')
+  const [editStatut, setEditStatut] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+
+  const handleSaveCoordonnees = async () => {
+    setEditStatut('loading')
+    try {
+      const res = await fetch('/api/profil-update', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ userId: profile.id, rue: editData.rue, code_postal: editData.code_postal, ville: editData.ville, telephone: editTelNumero ? `${editTelPrefixe} ${editTelNumero}` : '' }),
+      })
+      if (res.ok) { setEditStatut('success'); setEditMode(false); setTimeout(() => setEditStatut('idle'), 3000) }
+      else setEditStatut('error')
+    } catch { setEditStatut('error') }
+  }
+
+  const handleMigration = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setMigrationErreur('')
+    if (!migrationData.nom_structure || !migrationData.siret) { setMigrationErreur('Le nom commercial et le SIRET sont obligatoires.'); return }
+    setMigrationStatut('loading')
+    try {
+      const res = await fetch('/api/migration-demande', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ userId: profile.id, email: profile.email, prenom: profile.prenom, nom: profile.nom, ...migrationData, telephone_pro: telephonePro ? `${telephoneProPrefixe} ${telephonePro}` : '' }),
+      })
+      if (res.ok) setMigrationStatut('success')
+      else { setMigrationStatut('error'); setMigrationErreur('Une erreur est survenue. Veuillez rÃ©essayer.') }
+    } catch { setMigrationStatut('error'); setMigrationErreur('Une erreur est survenue.') }
+  }
+
+  const inputStyle = { width: '100%', padding: '10px 12px', border: '1px solid #d1d5db', borderRadius: '8px', fontSize: '13px', boxSizing: 'border-box' as const, outline: 'none' }
+  const labelStyle = { display: 'block', fontSize: '12px', fontWeight: '600' as const, color: '#374151', marginBottom: '6px' }
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+      <h1 style={{ color: '#0f2d6e', fontSize: '1.4rem', fontWeight: '700', margin: 0 }}>Mon profil</h1>
+
+      <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.5rem' }}>
+        <p style={{ color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 1rem' }}>Informations du compte</p>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '1rem' }}>
+          {[
+            { label: 'PrÃ©nom', value: profile.prenom },
+            { label: 'Nom', value: profile.nom },
+            { label: 'Email', value: profile.email },
+            { label: 'Type de compte', value: profile.type ? profile.type.charAt(0).toUpperCase() + profile.type.slice(1) : '-' },
+          ].map((field, i) => (
+            <div key={i}>
+              <p style={{ color: '#9ca3af', fontSize: '11px', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em', margin: '0 0 4px' }}>{field.label}</p>
+              <p style={{ color: '#374151', fontSize: '14px', margin: 0 }}>{field.value || '-'}</p>
+            </div>
+          ))}
+        </div>
+        <p style={{ color: '#9ca3af', fontSize: '12px', margin: '1rem 0 0', paddingTop: '1rem', borderTop: '1px solid #f3f4f6' }}>
+          Pour modifier votre nom ou email, contactez-nous Ã  <a href="mailto:contact@cholez-pagotto.fr" style={{ color: '#1a4fba' }}>contact@cholez-pagotto.fr</a>
+        </p>
+      </div>
+
+      <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.5rem' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+          <p style={{ color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: 0 }}>CoordonnÃ©es</p>
+          {!editMode && <button onClick={() => setEditMode(true)} style={{ background: '#eff6ff', color: '#1a4fba', border: '1px solid #bfdbfe', padding: '7px 14px', borderRadius: '7px', fontSize: '12px', fontWeight: '600', cursor: 'pointer' }}>Modifier</button>}
+        </div>
+        {editStatut === 'success' && (
+          <div style={{ background: '#f0fdf4', border: '1px solid #bbf7d0', borderRadius: '8px', padding: '10px 14px', marginBottom: '12px', display: 'flex', gap: '8px', alignItems: 'center' }}>
+            <CheckCircle size={14} color="#16a34a" />
+            <p style={{ color: '#15803d', fontSize: '12px', margin: 0 }}>CoordonnÃ©es mises Ã  jour.</p>
+          </div>
+        )}
+        {!editMode ? (
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+            {[{ label: 'Adresse', value: profile.rue }, { label: 'Code postal', value: profile.code_postal }, { label: 'Ville', value: profile.ville }, { label: 'TÃ©lÃ©phone', value: profile.telephone }].map((f, i) => (
+              <div key={i}>
+                <p style={{ color: '#9ca3af', fontSize: '11px', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em', margin: '0 0 4px' }}>{f.label}</p>
+                <p style={{ color: '#374151', fontSize: '14px', margin: 0 }}>{f.value || '-'}</p>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+            <div>
+              <label style={labelStyle}>Rue</label>
+              <input type="text" value={editData.rue} onChange={e => setEditData({ ...editData, rue: e.target.value })} placeholder="12 rue de la RÃ©publique" style={inputStyle} />
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: '12px' }}>
+              <div>
+                <label style={labelStyle}>Code postal</label>
+                <input type="text" value={editData.code_postal} onChange={e => setEditData({ ...editData, code_postal: e.target.value })} placeholder="75001" style={inputStyle} />
+              </div>
+              <div>
+                <label style={labelStyle}>Ville</label>
+                <input type="text" value={editData.ville} onChange={e => setEditData({ ...editData, ville: e.target.value })} placeholder="Paris" style={inputStyle} />
+              </div>
+            </div>
+            <div>
+              <label style={labelStyle}>TÃ©lÃ©phone</label>
+              <PhoneInput prefixe={editTelPrefixe} onPrefixeChange={setEditTelPrefixe} numero={editTelNumero} onNumeroChange={setEditTelNumero} />
+            </div>
+            <div style={{ display: 'flex', gap: '10px' }}>
+              <button onClick={handleSaveCoordonnees} disabled={editStatut === 'loading'} style={{ background: editStatut === 'loading' ? '#6b7280' : '#0f2d6e', color: 'white', border: 'none', padding: '10px 22px', borderRadius: '8px', fontSize: '13px', fontWeight: '700', cursor: editStatut === 'loading' ? 'not-allowed' : 'pointer' }}>
+                {editStatut === 'loading' ? 'Enregistrement...' : 'Enregistrer'}
+              </button>
+              <button onClick={() => { setEditMode(false); setEditStatut('idle') }} style={{ background: 'transparent', color: '#6b7280', border: '1px solid #e5e7eb', padding: '10px 18px', borderRadius: '8px', fontSize: '13px', cursor: 'pointer' }}>
+                Annuler
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {profile.type === 'particulier' && (
+        <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.5rem' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '1rem' }}>
+            <div>
+              <p style={{ color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 4px' }}>Faire Ã©voluer mon compte</p>
+              <p style={{ color: '#6b7280', fontSize: '12px', margin: 0, lineHeight: '1.6' }}>Vous avez crÃ©Ã© votre entreprise ou votre association ? Migrez vers un compte Professionnel.</p>
+            </div>
+            {!showMigration && migrationStatut !== 'success' && (
+              <button onClick={() => setShowMigration(true)} style={{ background: '#eff6ff', color: '#1a4fba', border: '1px solid #bfdbfe', padding: '9px 16px', borderRadius: '8px', fontSize: '12px', fontWeight: '700', cursor: 'pointer', flexShrink: 0 }}>
+                Faire une demande
+              </button>
+            )}
+          </div>
+          {migrationStatut === 'success' && (
+            <div style={{ background: '#f0fdf4', border: '1px solid #bbf7d0', borderRadius: '8px', padding: '1rem', marginTop: '1rem', display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
+              <CheckCircle size={16} color="#16a34a" style={{ flexShrink: 0, marginTop: '1px' }} />
+              <div>
+                <p style={{ color: '#15803d', fontSize: '13px', fontWeight: '700', margin: '0 0 4px' }}>Demande envoyÃ©e</p>
+                <p style={{ color: '#374151', fontSize: '12px', margin: 0, lineHeight: '1.6' }}>Votre demande a bien Ã©tÃ© transmise. Validation sous 24h, confirmation par email.</p>
+              </div>
+            </div>
+          )}
+          {showMigration && migrationStatut !== 'success' && (
+            <form onSubmit={handleMigration} style={{ marginTop: '1.25rem', display: 'flex', flexDirection: 'column', gap: '14px' }}>
+              {migrationErreur && (
+                <div style={{ background: '#fef2f2', border: '1px solid #fecaca', borderRadius: '8px', padding: '10px 12px', display: 'flex', gap: '8px', alignItems: 'center' }}>
+                  <AlertCircle size={14} color="#dc2626" />
+                  <p style={{ color: '#dc2626', fontSize: '12px', margin: 0 }}>{migrationErreur}</p>
+                </div>
+              )}
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+                <div>
+                  <label style={labelStyle}>Nom commercial / Structure *</label>
+                  <input type="text" value={migrationData.nom_structure} onChange={e => setMigrationData({ ...migrationData, nom_structure: e.target.value })} placeholder="Nom de votre entreprise" style={inputStyle} required />
+                </div>
+                <div>
+                  <label style={labelStyle}>NumÃ©ro SIRET *</label>
+                  <input type="text" value={migrationData.siret} onChange={e => setMigrationData({ ...migrationData, siret: e.target.value })} placeholder="000 000 000 00000" style={inputStyle} required />
+                </div>
+              </div>
+              <div>
+                <label style={labelStyle}>Adresse professionnelle</label>
+                <input type="text" value={migrationData.rue_pro} onChange={e => setMigrationData({ ...migrationData, rue_pro: e.target.value })} placeholder="Rue" style={{ ...inputStyle, marginBottom: '8px' }} />
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: '8px' }}>
+                  <input type="text" value={migrationData.cp_pro} onChange={e => setMigrationData({ ...migrationData, cp_pro: e.target.value })} placeholder="Code postal" style={inputStyle} />
+                  <input type="text" value={migrationData.ville_pro} onChange={e => setMigrationData({ ...migrationData, ville_pro: e.target.value })} placeholder="Ville" style={inputStyle} />
+                </div>
+              </div>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+                <div>
+                  <label style={labelStyle}>Email professionnel</label>
+                  <input type="email" value={migrationData.email_pro} onChange={e => setMigrationData({ ...migrationData, email_pro: e.target.value })} placeholder="contact@structure.fr" style={inputStyle} />
+                </div>
+                <div>
+                  <label style={labelStyle}>TÃ©lÃ©phone professionnel</label>
+                  <PhoneInput prefixe={telephoneProPrefixe} onPrefixeChange={setTelephoneProPrefixe} numero={telephonePro} onNumeroChange={setTelephonePro} />
+                </div>
+              </div>
+              <div style={{ display: 'flex', gap: '10px' }}>
+                <button type="submit" disabled={migrationStatut === 'loading'} style={{ background: migrationStatut === 'loading' ? '#6b7280' : '#0f2d6e', color: 'white', border: 'none', padding: '11px 24px', borderRadius: '8px', fontSize: '13px', fontWeight: '700', cursor: migrationStatut === 'loading' ? 'not-allowed' : 'pointer' }}>
+                  {migrationStatut === 'loading' ? 'Envoi en cours...' : 'Envoyer ma demande'}
+                </button>
+                <button type="button" onClick={() => { setShowMigration(false); setMigrationErreur('') }} style={{ background: 'transparent', color: '#6b7280', border: '1px solid #e5e7eb', padding: '11px 20px', borderRadius: '8px', fontSize: '13px', cursor: 'pointer' }}>
+                  Annuler
+                </button>
+              </div>
+            </form>
+          )}
+        </div>
+      )}
+    </div>
+  )
+}
+
+===== FICHIER : app\api\webhook\route.ts =====
+import { NextResponse } from 'next/server'
+import { stripe } from '@/lib/stripe'
+import { supabaseAdmin } from '@/lib/supabase-admin'
+import Stripe from 'stripe'
+import { AVIS_GOOGLE } from '@/lib/avis-google'
+
+const SITE_CONFIRM = 'https://cholez-pagotto.fr'
+
+function eur(centimes: number | null | undefined): string {
+  if (centimes == null) return ''
+  return (centimes / 100).toFixed(2).replace('.', ',') + '\u00a0\u20ac'
+}
+
+type TypeCommande = 'abonnement' | 'document' | 'panier' | 'question' | 'conseil'
+
+function contenuConfirmation(type: TypeCommande): { sujet: string; titre: string; corps: string; cta: string; lien: string } {
+  switch (type) {
+    case 'abonnement':
+      return { sujet: 'Votre abonnement Optimal est actif', titre: 'Bienvenue, votre abonnement est actif', corps: "Votre abonnement Optimal est dÃ©sormais actif. Vous avez accÃ¨s Ã  la bibliothÃ¨que complÃ¨te de documents, Ã  vos questions au juriste et Ã  l'ensemble des avantages de votre formule.", cta: 'AccÃ©der Ã  mon espace', lien: `${SITE_CONFIRM}/espace-client` }
+    case 'document':
+      return { sujet: 'Votre achat est confirmÃ©', titre: 'Merci, votre achat est confirmÃ©', corps: "Votre paiement a bien Ã©tÃ© reÃ§u. Votre document est dÃ¨s Ã  prÃ©sent disponible au tÃ©lÃ©chargement dans votre espace client, onglet Documents.", cta: 'TÃ©lÃ©charger mon document', lien: `${SITE_CONFIRM}/espace-client?onglet=documents` }
+    case 'panier':
+      return { sujet: 'Votre commande est confirmÃ©e', titre: 'Merci, votre commande est confirmÃ©e', corps: "Votre paiement a bien Ã©tÃ© reÃ§u. Vos documents sont dÃ¨s Ã  prÃ©sent disponibles au tÃ©lÃ©chargement dans votre espace client, onglet Documents.", cta: 'AccÃ©der Ã  mes documents', lien: `${SITE_CONFIRM}/espace-client?onglet=documents` }
+    case 'question':
+      return { sujet: 'Votre question a bien Ã©tÃ© enregistrÃ©e', titre: 'Votre question est bien prise en compte', corps: "Votre paiement a bien Ã©tÃ© reÃ§u et votre question est enregistrÃ©e. Notre juriste vous rÃ©pondra dans les meilleurs dÃ©lais, sous 24 Ã  48 heures ouvrÃ©es.", cta: 'Suivre ma demande', lien: `${SITE_CONFIRM}/espace-client` }
+    case 'conseil':
+      return { sujet: 'Votre demande de conseil en assurances est confirmÃ©e', titre: 'Votre demande est bien enregistrÃ©e', corps: "Votre paiement a bien Ã©tÃ© reÃ§u. Votre demande de conseil en assurances est enregistrÃ©e, nous revenons vers vous dans les meilleurs dÃ©lais.", cta: 'AccÃ©der Ã  mon espace', lien: `${SITE_CONFIRM}/espace-client` }
+  }
+}
+
+function emailConfirmationHtml(prenom: string, type: TypeCommande, montant: string): string {
+  const c = contenuConfirmation(type)
+  const ligneMontant = montant
+    ? `<table style="width:100%;border-top:1px solid #f1f3f7;border-bottom:1px solid #f1f3f7;margin:0 0 22px;"><tr><td style="padding:8px 0;color:#6b7280;font-size:13px;">Montant rÃ©glÃ©</td><td style="padding:8px 0;text-align:right;font-weight:700;color:#0f2d6e;font-size:13px;">${montant}</td></tr></table>`
+    : ''
+  const salutation = prenom ? `Bonjour ${prenom},` : 'Bonjour,'
+  return `<!DOCTYPE html>
+<html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"></head>
+<body style="margin:0;padding:0;background:#f8fafc;font-family:Arial,Helvetica,sans-serif;color:#374151;">
+  <div style="max-width:560px;margin:0 auto;padding:24px;">
+    <div style="background:#0f2d6e;border-radius:12px 12px 0 0;padding:28px;">
+      <p style="margin:0;color:#c8a84b;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;">Cabinet Cholez-Pagotto</p>
+      <h1 style="margin:8px 0 0;color:#ffffff;font-size:19px;">${c.titre}</h1>
+    </div>
+    <div style="background:#ffffff;border:1px solid #e5e7eb;border-top:none;border-radius:0 0 12px 12px;padding:28px;">
+      <p style="margin:0 0 14px;font-size:14px;line-height:1.7;">${salutation}</p>
+      <p style="margin:0 0 18px;font-size:14px;line-height:1.7;">${c.corps}</p>
+      ${ligneMontant}
+      <div style="text-align:center;margin:24px 0;">
+        <a href="${c.lien}" style="display:inline-block;background:#0f2d6e;color:#ffffff;text-decoration:none;font-weight:700;font-size:14px;padding:13px 30px;border-radius:50px;">${c.cta}</a>
+      </div>
+      <p style="margin:0;font-size:12px;line-height:1.6;color:#9ca3af;">Ce message vous confirme votre commande. Pour toute question, rÃ©pondez simplement Ã  cet email ou utilisez le formulaire de contact du site.</p>
+    </div>
+    <p style="text-align:center;color:#9ca3af;font-size:11px;margin:16px 0 0;">Cabinet Cholez-Pagotto &middot; 12 rue d'Olima &middot; 88000 &Eacute;pinal &middot; cholez-pagotto.fr</p>
+  </div>
+</body></html>`
+}
+
+async function envoyerConfirmationCommande(email: string, prenom: string, type: TypeCommande, montant: string): Promise<void> {
+  const apiKey = process.env.BREVO_API_KEY
+  if (!apiKey) { console.error('[Webhook] BREVO_API_KEY manquante, email de confirmation non envoye'); return }
+  const c = contenuConfirmation(type)
+  try {
+    const res = await fetch('https://api.brevo.com/v3/smtp/email', {
+      method: 'POST',
+      headers: { accept: 'application/json', 'api-key': apiKey, 'content-type': 'application/json' },
+      body: JSON.stringify({
+        sender: { name: 'Cabinet Cholez-Pagotto', email: 'contact@cholez-pagotto.fr' },
+        to: [{ email, name: prenom || email }],
+        subject: c.sujet,
+        htmlContent: emailConfirmationHtml(prenom, type, montant),
+      }),
+    })
+    if (!res.ok) { const err = await res.json().catch(() => ({})); console.error('[Webhook] echec email de confirmation:', err) }
+  } catch (e) {
+    console.error('[Webhook] erreur reseau email de confirmation:', e)
+  }
+}
+
+function emailInvitationAvisHtml(prenom: string): string {
+  const salutation = prenom ? `Bonjour ${prenom},` : 'Bonjour,'
+  return `<!DOCTYPE html>
+<html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"></head>
+<body style="margin:0;padding:0;background:#f8fafc;font-family:Arial,Helvetica,sans-serif;color:#374151;">
+  <div style="max-width:560px;margin:0 auto;padding:24px;">
+    <div style="background:#0f2d6e;border-radius:12px 12px 0 0;padding:28px;">
+      <p style="margin:0;color:#c8a84b;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;">Cabinet Cholez-Pagotto</p>
+      <h1 style="margin:8px 0 0;color:#ffffff;font-size:19px;">Votre avis compte pour nous</h1>
+    </div>
+    <div style="background:#ffffff;border:1px solid #e5e7eb;border-top:none;border-radius:0 0 12px 12px;padding:28px;">
+      <p style="margin:0 0 14px;font-size:14px;line-height:1.7;">${salutation}</p>
+      <p style="margin:0 0 18px;font-size:14px;line-height:1.7;">Merci de votre confiance. Si votre document vous a Ã©tÃ© utile, un avis sur Google nous aiderait beaucoup Ã  faire connaÃ®tre le cabinet et Ã  accompagner d'autres personnes. Cela ne prend qu'une minute.</p>
+      <div style="text-align:center;margin:24px 0;">
+        <a href="${AVIS_GOOGLE.lien}" style="display:inline-block;background:#b8860b;color:#ffffff;text-decoration:none;font-weight:700;font-size:14px;padding:13px 30px;border-radius:50px;">Laisser un avis sur Google</a>
+      </div>
+      <p style="margin:0;font-size:12px;line-height:1.6;color:#9ca3af;">Si vous manquez de temps, pas d'inquiÃ©tude : ce message ne vous sera pas renvoyÃ©. Pour toute question, rÃ©pondez simplement Ã  cet email.</p>
+    </div>
+    <p style="text-align:center;color:#9ca3af;font-size:11px;margin:16px 0 0;">Cabinet Cholez-Pagotto &middot; 12 rue d'Olima &middot; 88000 &Eacute;pinal &middot; cholez-pagotto.fr</p>
+  </div>
+</body></html>`
+}
+
+async function envoyerInvitationAvis(email: string, prenom: string): Promise<void> {
+  const apiKey = process.env.BREVO_API_KEY
+  if (!apiKey) { console.error('[Webhook] BREVO_API_KEY manquante, invitation avis non envoyee'); return }
+  try {
+    const res = await fetch('https://api.brevo.com/v3/smtp/email', {
+      method: 'POST',
+      headers: { accept: 'application/json', 'api-key': apiKey, 'content-type': 'application/json' },
+      body: JSON.stringify({
+        sender: { name: 'Cabinet Cholez-Pagotto', email: 'contact@cholez-pagotto.fr' },
+        to: [{ email, name: prenom || email }],
+        subject: 'Votre avis compte pour le cabinet',
+        htmlContent: emailInvitationAvisHtml(prenom),
+      }),
+    })
+    if (!res.ok) { const err = await res.json().catch(() => ({})); console.error('[Webhook] echec invitation avis:', err) }
+  } catch (e) {
+    console.error('[Webhook] erreur reseau invitation avis:', e)
+  }
+}
+
+// Invitation a laisser un avis Google, une seule fois, apres un premier achat.
+// Ciblage : clients non abonnes (les abonnes voient l'invitation dans leur espace client).
+// La reclamation atomique sur avis_google_propose garantit un envoi unique et evite tout
+// doublon avec l'invitation in-app.
+async function proposerAvisGoogleApresAchat(userId: string | null): Promise<void> {
+  if (!userId || !AVIS_GOOGLE.lien) return
+  try {
+    const { data: u } = await supabaseAdmin
+      .from('users')
+      .select('email, prenom, abonnement_actif, avis_google_propose')
+      .eq('id', userId)
+      .maybeSingle()
+    if (!u || !u.email) return
+    if (u.abonnement_actif) return
+    if (u.avis_google_propose) return
+    const { data: claim } = await supabaseAdmin
+      .from('users')
+      .update({ avis_google_propose: true })
+      .eq('id', userId)
+      .eq('avis_google_propose', false)
+      .select('id')
+    if (!claim || claim.length === 0) return
+    await envoyerInvitationAvis(u.email, u.prenom || '')
+  } catch (e) {
+    console.error('[Webhook] erreur proposition avis Google:', e)
+  }
+}
+
+
+export async function POST(request: Request) {
+  const body = await request.text()
+  const signature = request.headers.get('stripe-signature')!
+
+  let event: Stripe.Event
+
+  try {
+    event = stripe.webhooks.constructEvent(
+      body,
+      signature,
+      process.env.STRIPE_WEBHOOK_SECRET!
+    )
+  } catch (error) {
+    console.error('Webhook signature error:', error)
+    return NextResponse.json({ error: 'Invalid signature' }, { status: 400 })
+  }
+
+  switch (event.type) {
+
+    case 'checkout.session.completed': {
+      const session = event.data.object as Stripe.Checkout.Session
+      const priceKey = session.metadata?.priceKey
+      const customerEmail = session.customer_email
+      const metaUserId = session.metadata?.userId || null
+
+      if (!customerEmail) break
+
+      // RÃ©soudre userId : metadata en prioritÃ©, sinon lookup par email
+      const resolveUserId = async (): Promise<string | null> => {
+        if (metaUserId) return metaUserId
+        const { data } = await supabaseAdmin
+          .from('users')
+          .select('id')
+          .eq('email', customerEmail)
+          .single()
+        return data?.id || null
+      }
+
+      // Abonnement Optimal
+      if (priceKey?.includes('optimal')) {
+        const isYearly = priceKey.includes('yearly')
+        const dateExpiration = new Date()
+        dateExpiration.setMonth(dateExpiration.getMonth() + (isYearly ? 12 : 1))
+
+        const updateData = {
+          abonnement_actif: true,
+          abonnement_type: priceKey.includes('pro') ? 'optimal_pro' : 'optimal_particulier',
+          abonnement_periode: isYearly ? 'yearly' : 'monthly',
+          stripe_customer_id: session.customer as string,
+          date_expiration: dateExpiration.toISOString(),
+        }
+
+        const userId = await resolveUserId()
+        if (userId) {
+          await supabaseAdmin.from('users').update(updateData).eq('id', userId)
+        } else {
+          await supabaseAdmin.from('users').update(updateData).eq('email', customerEmail)
+        }
+      }
+
+      // Question unitaire ou abonne
+      if (priceKey === 'question_unitaire' || priceKey === 'question_abonne') {
+        const userId = await resolveUserId()
+        await supabaseAdmin
+          .from('questions')
+          .insert({
+            user_id: userId,
+            question: null,
+            statut: 'en_attente',
+            type: priceKey === 'question_unitaire' ? 'unitaire' : 'abonne',
+            stripe_payment_id: session.payment_intent as string,
+          })
+      }
+
+      // Forfait conseil assurances
+      if (priceKey?.includes('conseil_assurances')) {
+        const userId = await resolveUserId()
+        await supabaseAdmin
+          .from('dossiers_assurances')
+          .insert({
+            user_id: userId,
+            statut: 'en_attente',
+            type: priceKey.includes('pro') ? 'pro' : 'particulier',
+            stripe_payment_id: session.payment_intent as string,
+          })
+      }
+
+      // Achat de document a l'unite (carte) : acces accorde via achats_documents
+      if (session.metadata?.produit === 'document' && session.metadata?.documentId) {
+        const userId = await resolveUserId()
+        const paymentId = session.payment_intent as string
+        // Idempotence : ne pas inserer deux fois pour la meme transaction Stripe
+        const { data: existant } = await supabaseAdmin
+          .from('achats_documents')
+          .select('id')
+          .eq('stripe_payment_id', paymentId)
+          .limit(1)
+        if (userId && (!existant || existant.length === 0)) {
+          await supabaseAdmin
+            .from('achats_documents')
+            .insert({
+              user_id: userId,
+              document_id: session.metadata.documentId,
+              stripe_payment_id: paymentId,
+              montant: session.amount_total != null ? session.amount_total / 100 : null,
+              mode_paiement: 'carte',
+              statut: 'paye',
+            })
+          await proposerAvisGoogleApresAchat(userId)
+        }
+      }
+
+      // Achat groupe (panier) : acces accorde pour chaque document de la commande
+      if (session.metadata?.produit === 'panier' && session.metadata?.documentIds) {
+        const userId = await resolveUserId()
+        const paymentId = session.payment_intent as string
+        const ids = session.metadata.documentIds.split(',').map((s) => s.trim()).filter(Boolean)
+        if (userId && ids.length > 0) {
+          const { data: docs } = await supabaseAdmin
+            .from('documents')
+            .select('id, prix_unitaire')
+            .in('id', ids)
+          const prixMap = new Map((docs || []).map((d) => [d.id, d.prix_unitaire]))
+          for (const docId of ids) {
+            const { data: existant } = await supabaseAdmin
+              .from('achats_documents')
+              .select('id')
+              .eq('stripe_payment_id', paymentId)
+              .eq('document_id', docId)
+              .limit(1)
+            if (!existant || existant.length === 0) {
+              await supabaseAdmin
+                .from('achats_documents')
+                .insert({
+                  user_id: userId,
+                  document_id: docId,
+                  stripe_payment_id: paymentId,
+                  montant: prixMap.get(docId) ?? null,
+                  mode_paiement: 'carte',
+                  statut: 'paye',
+                })
+            }
+          }
+          await proposerAvisGoogleApresAchat(userId)
+        }
+      }
+
+      // Email de confirmation de commande (carte) aux couleurs du cabinet
+      {
+        let typeCommande: TypeCommande | null = null
+        if (priceKey?.includes('optimal')) typeCommande = 'abonnement'
+        else if (session.metadata?.produit === 'document') typeCommande = 'document'
+        else if (session.metadata?.produit === 'panier') typeCommande = 'panier'
+        else if (priceKey === 'question_unitaire' || priceKey === 'question_abonne') typeCommande = 'question'
+        else if (priceKey?.includes('conseil_assurances')) typeCommande = 'conseil'
+
+        if (typeCommande) {
+          const { data: u } = await supabaseAdmin.from('users').select('prenom').eq('email', customerEmail).maybeSingle()
+          await envoyerConfirmationCommande(customerEmail, u?.prenom || '', typeCommande, eur(session.amount_total))
+        }
+      }
+      break
+    }
+
+    case 'customer.subscription.updated': {
+      const subscription = event.data.object as Stripe.Subscription
+      const customerId = subscription.customer as string
+
+      // Resiliation programmee : Stripe positionne cancel_at_period_end (et cancel_at)
+      // quand une fin de periode est demandee, et les remet a false/null en cas de reactivation.
+      if (subscription.cancel_at_period_end) {
+        const finUnix = subscription.cancel_at
+        await supabaseAdmin
+          .from('users')
+          .update({
+            resiliation_programmee: true,
+            resiliation_fin: finUnix ? new Date(finUnix * 1000).toISOString() : null,
+          })
+          .eq('stripe_customer_id', customerId)
+      } else {
+        await supabaseAdmin
+          .from('users')
+          .update({
+            resiliation_programmee: false,
+            resiliation_fin: null,
+          })
+          .eq('stripe_customer_id', customerId)
+      }
+
+      break
+    }
+
+    case 'customer.subscription.deleted': {
+      const subscription = event.data.object as Stripe.Subscription
+      const customerId = subscription.customer as string
+
+      await supabaseAdmin
+        .from('users')
+        .update({
+          abonnement_actif: false,
+          abonnement_type: null,
+          date_expiration: null,
+          resiliation_programmee: false,
+          resiliation_fin: null,
+        })
+        .eq('stripe_customer_id', customerId)
+
+      break
+    }
+
+    case 'invoice.payment_failed': {
+      const invoice = event.data.object as Stripe.Invoice
+      const customerId = invoice.customer as string
+
+      await supabaseAdmin
+        .from('users')
+        .update({ abonnement_actif: false })
+        .eq('stripe_customer_id', customerId)
+
+      break
+    }
+  }
+
+  return NextResponse.json({ received: true })
+}
+
+
+===== FICHIER : app\api\inscription\route.ts =====
+import { NextResponse } from 'next/server'
+import { supabaseAdmin } from '@/lib/supabase-admin'
+
+// app/api/inscription/route.ts
+// Option A (confirmation d'email obligatoire) : le compte est cree NON confirme (email_confirm: false),
+// puis un lien d'activation (lien magique) est genere cote serveur et envoye par Brevo, en francais,
+// aux couleurs du cabinet. Cliquer sur le lien confirme l'email et connecte l'utilisateur.
+// La connexion par mot de passe reste impossible tant que l'email n'est pas confirme
+// (reglage Confirm email active dans Supabase).
+// Regles : zero tiret long dans le contenu visible, Notre juriste singulier.
+
+export async function POST(request: Request) {
+  try {
+    const body = await request.json()
+    const { email, password, prenom, nom, type, telephone, rue, code_postal, ville, nom_structure, siret, rna, newsletter } = body
+
+    if (!email || !password || !prenom || !nom) {
+      return NextResponse.json({ error: 'Champs obligatoires manquants.' }, { status: 400 })
+    }
+
+    const origin =
+      request.headers.get('origin') ||
+      process.env.NEXT_PUBLIC_SITE_URL ||
+      'https://cholez-pagotto.fr'
+
+    // CrÃ©er l'utilisateur Supabase Auth, NON confirmÃ© (la confirmation se fait via le lien d'activation)
+    const { data: authData, error: authError } = await supabaseAdmin.auth.admin.createUser({
+      email,
+      password,
+      email_confirm: false,
+    })
+
+    if (authError) {
+      if (authError.message.includes('already registered')) {
+        return NextResponse.json({ error: 'Cette adresse email est dÃ©jÃ  utilisÃ©e.' }, { status: 409 })
+      }
+      return NextResponse.json({ error: authError.message }, { status: 400 })
+    }
+
+    // CrÃ©er le profil dans la table users
+    const { error: profileError } = await supabaseAdmin
+      .from('users')
+      .insert({
+        id: authData.user.id,
+        email,
+        prenom,
+        nom,
+        type: type || 'particulier',
+        telephone: telephone || null,
+        rue: rue || null,
+        code_postal: code_postal || null,
+        ville: ville || null,
+        // Filet de securite : un compte Particulier ne doit jamais porter de SIRET/RNA,
+        // meme si le client envoie une valeur residuelle (bug de formulaire, appel API direct...).
+        nom_structure: type === 'particulier' ? null : (nom_structure || null),
+        siret: type === 'particulier' ? null : (siret || null),
+        rna: type === 'particulier' ? null : (rna || null),
+        newsletter: newsletter || false,
+        abonnement_actif: false,
+        role: 'user',
+      })
+
+    if (profileError) {
+      return NextResponse.json({ error: profileError.message }, { status: 500 })
+    }
+
+    // Lien d'activation (lien magique) genere cote serveur, sans declencher l'email Supabase.
+    // Cliquer dessus confirme l'email et ouvre l'espace client.
+    let actionLink: string | null = null
+    try {
+      const { data: linkData } = await supabaseAdmin.auth.admin.generateLink({
+        type: 'magiclink',
+        email,
+        options: { redirectTo: `${origin}/espace-client` },
+      })
+      actionLink = (linkData && linkData.properties && linkData.properties.action_link) || null
+    } catch (linkErr) {
+      console.error('[Inscription] generateLink activation a echoue:', linkErr)
+    }
+
+    // Envoi de l'email d'activation par Brevo (best effort : ne bloque pas la creation du compte).
+    // En cas d'echec, l'utilisateur peut activer son compte via la fonction mot de passe oublie.
+    if (actionLink && process.env.BREVO_API_KEY) {
+      const htmlActivation = `
+<!DOCTYPE html>
+<html lang="fr">
+<head><meta charset="UTF-8"></head>
+<body style="font-family:Arial,sans-serif;color:#374151;font-size:14px;max-width:600px;margin:0 auto;">
+  <div style="background:linear-gradient(135deg,#0f2d6e 0%,#1a4fba 100%);padding:24px;border-radius:8px 8px 0 0;">
+    <h2 style="color:#ffffff;margin:0;font-size:16px;">Activez votre compte</h2>
+    <p style="color:#bfdbfe;font-size:12px;margin:6px 0 0;">Cabinet CHOLEZ PAGOTTO</p>
+  </div>
+  <div style="background:#f8fafc;padding:24px;border:1px solid #e5e7eb;border-top:none;border-radius:0 0 8px 8px;">
+    <p>Bonjour ${prenom},</p>
+    <p>Merci de votre inscription Ã  l'espace client du Cabinet CHOLEZ PAGOTTO. Pour activer votre compte et accÃ©der Ã  votre espace, cliquez sur le bouton ci-dessous.</p>
+    <div style="text-align:center;margin:24px 0;">
+      <a href="${actionLink}" style="display:inline-block;background:#0f2d6e;color:#ffffff;text-decoration:none;font-size:14px;font-weight:700;padding:13px 28px;border-radius:8px;">
+        Activer mon compte
+      </a>
+    </div>
+    <p style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:12px 14px;font-size:13px;color:#1e3a5f;line-height:1.6;">
+      Ce lien est valable un temps limitÃ©. Tant que votre compte n'est pas activÃ©, la connexion par mot de passe reste impossible. Si vous n'Ãªtes pas Ã  l'origine de cette inscription, ignorez cet email.
+    </p>
+    <p style="margin-top:24px;">Cordialement,</p>
+    <p style="margin:8px 0 0;line-height:1.7;">
+      <strong>Cabinet CHOLEZ PAGOTTO</strong><br>
+      <a href="https://cholez-pagotto.fr" style="color:#1a4fba;text-decoration:none;">cholez-pagotto.fr</a>
+    </p>
+  </div>
+</body>
+</html>`
+
+      await fetch('https://api.brevo.com/v3/smtp/email', {
+        method: 'POST',
+        headers: { 'accept': 'application/json', 'api-key': process.env.BREVO_API_KEY, 'content-type': 'application/json' },
+        body: JSON.stringify({
+          sender: { name: 'Cabinet CHOLEZ PAGOTTO', email: 'contact@cholez-pagotto.fr' },
+          to: [{ email, name: `${prenom} ${nom}` }],
+          subject: 'Activez votre espace client',
+          htmlContent: htmlActivation,
+        }),
+      }).catch(err => console.error('[Inscription] Erreur email activation Brevo:', err))
+    } else if (!actionLink) {
+      console.error('[Inscription] Lien d activation indisponible, aucun email envoye')
+    }
+
+    // Ajout Brevo si consentement newsletter
+    if (newsletter) {
+      const listId = parseInt(process.env.BREVO_NEWSLETTER_LIST_ID || '0')
+      if (listId) {
+        try {
+          await fetch('https://api.brevo.com/v3/contacts', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'api-key': process.env.BREVO_API_KEY!,
+            },
+            body: JSON.stringify({
+              email,
+              attributes: { PRENOM: prenom, NOM: nom },
+              listIds: [listId],
+              updateEnabled: true,
+            }),
+          })
+        } catch (brevoError) {
+          // Non bloquant : l'inscription utilisateur est dÃ©jÃ  faite
+          console.error('Brevo inscription error:', brevoError)
+        }
+      }
+    }
+
+    // Notification Ã  FranÃ§ois si activÃ©e
+    const { data: settingData } = await supabaseAdmin
+      .from('settings')
+      .select('valeur')
+      .eq('id', 'email_admin')
+      .single()
+
+    const { data: notifData } = await supabaseAdmin
+      .from('settings')
+      .select('valeur')
+      .eq('id', 'notif_inscription')
+      .single()
+
+    const emailAdmin = settingData?.valeur || 'contact@cholez-pagotto.fr'
+    const notifActive = notifData?.valeur === 'true'
+
+    if (notifActive) {
+      await fetch('https://api.brevo.com/v3/smtp/email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'api-key': process.env.BREVO_API_KEY!,
+        },
+        body: JSON.stringify({
+          sender: { name: "Cabinet CHOLEZ PAGOTTO", email: 'contact@cholez-pagotto.fr' },
+          to: [{ email: emailAdmin, name: 'FranÃ§ois Cholez' }],
+          subject: `Nouvelle inscription : ${prenom} ${nom}`,
+          htmlContent: `
+            <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+              <div style="background: #0f2d6e; padding: 20px; text-align: center;">
+                <h1 style="color: white; font-size: 16px; margin: 0;">Nouvelle inscription</h1>
+              </div>
+              <div style="padding: 20px; background: #f8fafc; border: 1px solid #e5e7eb;">
+                <p style="color: #374151; font-size: 14px;"><strong>Nom :</strong> ${prenom} ${nom}</p>
+                <p style="color: #374151; font-size: 14px;"><strong>Email :</strong> ${email}</p>
+                <p style="color: #374151; font-size: 14px;"><strong>Type :</strong> ${type || 'particulier'}</p>
+                <p style="color: #374151; font-size: 14px;"><strong>Ville :</strong> ${ville || '-'}</p>
+                <p style="color: #374151; font-size: 14px;"><strong>Newsletter :</strong> ${newsletter ? 'Oui' : 'Non'}</p>
+                <p style="color: #374151; font-size: 14px;"><strong>Statut :</strong> en attente d'activation de l'email</p>
+                ${nom_structure ? `<p style="color: #374151; font-size: 14px;"><strong>Structure :</strong> ${nom_structure}</p>` : ''}
+                <div style="margin-top: 16px; text-align: center;">
+                  <a href="${process.env.SITE_URL}/admin/clients" style="background: #0f2d6e; color: white; padding: 10px 24px; border-radius: 6px; text-decoration: none; font-size: 13px; font-weight: bold;">
+                    Voir dans l'admin â†’
+                  </a>
+                </div>
+              </div>
+            </div>
+          `,
+        }),
+      })
+    }
+
+    return NextResponse.json({ success: true, userId: authData.user.id, confirmationRequise: true })
+  } catch (error) {
+    console.error('Inscription error:', error)
+    return NextResponse.json({ error: 'Erreur serveur.' }, { status: 500 })
+  }
+}
+
+===== FICHIER : app\api\auth\callback\route.ts =====
+import { createClient } from '@supabase/supabase-js'
+import { NextResponse } from 'next/server'
+
+export async function GET(request: Request) {
+  const { searchParams, origin } = new URL(request.url)
+  const code = searchParams.get('code')
+  const type = searchParams.get('type')
+
+  if (code) {
+    const supabase = createClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+    )
+    await supabase.auth.exchangeCodeForSession(code)
+  }
+
+  // Flux recovery : rediriger vers la page de saisie du nouveau mot de passe
+  if (type === 'recovery') {
+    return NextResponse.redirect(`${origin}/nouveau-mot-de-passe`)
+  }
+
+  // Flux standard (inscription, connexion) : espace client
+  return NextResponse.redirect(`${origin}/espace-client`)
+}
+
+===== FICHIER : app\robots.ts =====
+import type { MetadataRoute } from 'next'
+
+const baseUrl = 'https://cholez-pagotto.fr'
+
+export default function robots(): MetadataRoute.Robots {
+  return {
+    rules: [
+      {
+        userAgent: '*',
+        allow: '/',
+        disallow: ['/espace-client', '/admin', '/api'],
+      },
+      {
+        // Robots IA explicitement autorises : visibilite dans les reponses
+        // des moteurs generatifs (ChatGPT, Claude, Perplexity, Google AI, Apple).
+        userAgent: [
+          'GPTBot',
+          'OAI-SearchBot',
+          'ChatGPT-User',
+          'ClaudeBot',
+          'Claude-User',
+          'Claude-SearchBot',
+          'anthropic-ai',
+          'PerplexityBot',
+          'Perplexity-User',
+          'Google-Extended',
+          'Applebot-Extended',
+        ],
+        allow: '/',
+        disallow: ['/espace-client', '/admin', '/api'],
+      },
+    ],
+    sitemap: `${baseUrl}/sitemap.xml`,
+    host: baseUrl,
+  }
+}
+
+===== FICHIER : app\sitemap.ts =====
+import type { MetadataRoute } from 'next'
+import { readdirSync, existsSync } from 'fs'
+import { join } from 'path'
+import { supabaseAdmin } from '@/lib/supabase-admin'
+import { slugify } from '@/lib/slug'
+
+const baseUrl = 'https://cholez-pagotto.fr'
+
+// Le sitemap est genere a la construction du site (a chaque deploiement).
+// Les articles de blog (qui sont ajoutes via le code, donc via un deploiement)
+// et les ressources du catalogue sont ainsi captures automatiquement a chaque mise en ligne.
+
+type Freq = 'always' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly' | 'never'
+
+const pages: { path: string; priority: number; changeFrequency: Freq }[] = [
+  { path: '/', priority: 1.0, changeFrequency: 'weekly' },
+
+  // Pages de service principales
+  { path: '/accompagnement-particuliers', priority: 0.8, changeFrequency: 'monthly' },
+  { path: '/accompagnement-professionnels', priority: 0.8, changeFrequency: 'monthly' },
+  { path: '/accompagnement-associations', priority: 0.8, changeFrequency: 'monthly' },
+  { path: '/creation-entreprise', priority: 0.8, changeFrequency: 'monthly' },
+  { path: '/conseil-assurances', priority: 0.8, changeFrequency: 'monthly' },
+  { path: '/rgpd-conformite', priority: 0.8, changeFrequency: 'monthly' },
+  { path: '/dpo-externalise', priority: 0.8, changeFrequency: 'monthly' },
+  { path: '/formalites-juridiques-externalisees', priority: 0.8, changeFrequency: 'monthly' },
+
+  // RGPD : pages produit et cibles
+  { path: '/rgpd-conformite/diagnostic-essentiel', priority: 0.7, changeFrequency: 'monthly' },
+  { path: '/rgpd-conformite/diagnostic-standard', priority: 0.7, changeFrequency: 'monthly' },
+  { path: '/rgpd-conformite/tpe-independant', priority: 0.7, changeFrequency: 'monthly' },
+  { path: '/rgpd-conformite/association', priority: 0.7, changeFrequency: 'monthly' },
+
+  // Catalogue, tarifs, contenus
+  { path: '/catalogue', priority: 0.7, changeFrequency: 'weekly' },
+  { path: '/tarifs', priority: 0.7, changeFrequency: 'monthly' },
+  { path: '/information-sur-vos-droits', priority: 0.6, changeFrequency: 'monthly' },
+  { path: '/formations', priority: 0.6, changeFrequency: 'monthly' },
+  { path: '/services', priority: 0.6, changeFrequency: 'monthly' },
+  { path: '/paie-externalisee', priority: 0.7, changeFrequency: 'monthly' },
+  { path: '/juriste-formaliste-ou-avocat', priority: 0.6, changeFrequency: 'monthly' },
+  { path: '/vie-des-entreprises', priority: 0.6, changeFrequency: 'monthly' },
+  { path: '/audit-express', priority: 0.6, changeFrequency: 'monthly' },
+
+  // Institutionnel
+  { path: '/a-propos', priority: 0.5, changeFrequency: 'yearly' },
+  { path: '/contact', priority: 0.5, changeFrequency: 'yearly' },
+  { path: '/newsletter', priority: 0.4, changeFrequency: 'yearly' },
+
+  // Blog : listing
+  { path: '/blog', priority: 0.7, changeFrequency: 'daily' },
+
+  // Pages legales
+  { path: '/mentions-legales', priority: 0.3, changeFrequency: 'yearly' },
+  { path: '/cgu', priority: 0.3, changeFrequency: 'yearly' },
+  { path: '/confidentialite', priority: 0.3, changeFrequency: 'yearly' },
+]
+
+// Articles de blog : decouverte automatique des dossiers de app/blog.
+// Chaque nouvel article publie (un dossier contenant page.tsx) est inclus
+// au prochain deploiement, sans intervention manuelle dans ce fichier.
+function getArticlesBlog(): MetadataRoute.Sitemap {
+  try {
+    const blogDir = join(process.cwd(), 'app', 'blog')
+    const lastModified = new Date()
+    return readdirSync(blogDir, { withFileTypes: true })
+      .filter(
+        (e) =>
+          e.isDirectory() &&
+          !e.name.startsWith('[') &&
+          !e.name.startsWith('.') &&
+          !e.name.startsWith('_'),
+      )
+      .filter((e) => existsSync(join(blogDir, e.name, 'page.tsx')))
+      .map((e) => ({
+        url: `${baseUrl}/blog/${e.name}`,
+        lastModified,
+        changeFrequency: 'monthly' as Freq,
+        priority: 0.6,
+      }))
+  } catch {
+    return []
+  }
+}
+
+// Pages dediees des ressources du catalogue (documents, packs, guides, livres),
+// recuperees depuis Supabase au moment de la construction du site.
+async function getRessources(): Promise<MetadataRoute.Sitemap> {
+  try {
+    const { data } = await supabaseAdmin
+      .from('documents')
+      .select('slug')
+      .eq('actif', true)
+      .eq('masque_catalogue', false)
+      .not('slug', 'is', null)
+    if (!data) return []
+    const now = new Date()
+    return data
+      .filter((d) => d.slug && String(d.slug).trim() !== '')
+      .map((d) => ({
+        url: `${baseUrl}/catalogue/${d.slug}`,
+        lastModified: now,
+        changeFrequency: 'weekly' as Freq,
+        priority: 0.6,
+      }))
+  } catch {
+    return []
+  }
+}
+
+async function getCategories(): Promise<MetadataRoute.Sitemap> {
+  try {
+    const { data } = await supabaseAdmin.from('categories').select('nom')
+    if (!data) return []
+    const now = new Date()
+    const vus = new Set<string>()
+    const urls: MetadataRoute.Sitemap = []
+    for (const c of data) {
+      const nom = c.nom ? String(c.nom).trim() : ''
+      if (!nom) continue
+      const s = slugify(nom)
+      if (!s || vus.has(s)) continue
+      vus.add(s)
+      urls.push({ url: `${baseUrl}/catalogue/categorie/${s}`, lastModified: now, changeFrequency: 'weekly' as Freq, priority: 0.6 })
+    }
+    return urls
+  } catch {
+    return []
+  }
+}
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const lastModified = new Date()
+  const statiques: MetadataRoute.Sitemap = pages.map((p) => ({
+    url: p.path === '/' ? baseUrl : `${baseUrl}${p.path}`,
+    lastModified,
+    changeFrequency: p.changeFrequency,
+    priority: p.priority,
+  }))
+  const articles = getArticlesBlog()
+  const ressources = await getRessources()
+  const categories = await getCategories()
+  return [...statiques, ...articles, ...ressources, ...categories]
+}
+
+

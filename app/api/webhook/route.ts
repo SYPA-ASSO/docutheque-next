@@ -3,6 +3,7 @@ import { stripe } from '@/lib/stripe'
 import { supabaseAdmin } from '@/lib/supabase-admin'
 import Stripe from 'stripe'
 import { AVIS_GOOGLE } from '@/lib/avis-google'
+import { findOrCreateMentoratUser, dossierMentoratExistsForSession, createDossierMentorat, envoyerBienvenueMentorat } from '@/lib/mentorat-qualite-account'
 
 const SITE_CONFIRM = 'https://cholez-pagotto.fr'
 
@@ -234,6 +235,31 @@ export async function POST(request: Request) {
             type: priceKey.includes('pro') ? 'pro' : 'particulier',
             stripe_payment_id: session.payment_intent as string,
           })
+      }
+
+      // Mentorat consultant qualité : creation ou rattachement d'un compte cloisonne,
+      // activation de l'acces a l'espace dedie et email de bienvenue avec lien d'acces.
+      // Idempotence sur l'identifiant de session Stripe.
+      if (priceKey === 'mentorat_qualite') {
+        const deja = await dossierMentoratExistsForSession(session.id)
+        if (!deja) {
+          const compte = await findOrCreateMentoratUser({
+            email: customerEmail,
+            fullName: session.customer_details?.name || '',
+            origin: SITE_CONFIRM,
+          })
+          if (compte.userId) {
+            await createDossierMentorat({
+              userId: compte.userId,
+              montantEuros: session.amount_total != null ? session.amount_total / 100 : null,
+              mode: 'carte',
+              stripeSessionId: session.id,
+              statut: 'en_cours',
+            })
+            const { data: u } = await supabaseAdmin.from('users').select('prenom').eq('id', compte.userId).maybeSingle()
+            await envoyerBienvenueMentorat(customerEmail, u?.prenom || '', compte.accessLink, SITE_CONFIRM, eur(session.amount_total))
+          }
+        }
       }
 
       // Achat de document a l'unite (carte) : acces accorde via achats_documents

@@ -1,0 +1,14 @@
+Mentorat consultant qualite - mise a jour (session en cours)
+==============================================================
+
+Fichiers modifies (remplacent l'existant a l'identique) :
+- components/Header.tsx                        (ajout du lien "Mentorat consultant qualite" au menu)
+- app/mentorat-consultant-qualite/page.tsx      (prix mis en avant, date 21/09, places restantes,
+                                                  volet 4 en option/sur devis, nouveau texte exercice
+                                                  pratique, nouvelle section BPF/NDA/audits, correction
+                                                  du bug d'espace)
+- app/espace-mentorat-qualite/page.tsx          (memes ajustements de coherence : date, badge volet 4,
+                                                  "reel" -> "fictif", correction du bug d'espace)
+
+Rien d'autre n'a change depuis le precedent zip (migration SQL, webhook, lib, routes API,
+connexion, espace-client, robots.ts, stripe.ts restent identiques a ce qui a deja ete deploye).

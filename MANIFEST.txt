@@ -1,0 +1,20 @@
+Mentorat consultant qualite - fichiers a extraire dans docutheque-next
+========================================================================
+
+Nouveaux fichiers :
+- app/mentorat-consultant-qualite/page.tsx   (page publique de presentation de l'offre)
+- app/espace-mentorat-qualite/page.tsx       (espace prive apres paiement)
+- app/espace-mentorat-qualite/layout.tsx     (metadata + noindex de l'espace prive)
+- app/api/mentorat-qualite/documents/route.ts (liens signes vers la boite a outils)
+- lib/mentorat-qualite-account.ts            (creation/rattachement de compte cloisonne)
+- migration-mentorat-qualite.sql             (a executer dans l'editeur SQL Supabase)
+
+Fichiers modifies (remplacent l'existant) :
+- app/api/webhook/route.ts   (traitement du paiement mentorat_qualite)
+- app/connexion/page.tsx     (aiguillage vers l'espace mentorat a la connexion)
+- app/espace-client/page.tsx (cloisonnement croise avec l'espace mentorat)
+- app/robots.ts              (espace prive exclu de l'indexation)
+- lib/stripe.ts              (cle de prix Stripe mentorat_qualite)
+
+Apres extraction : voir migration-mentorat-qualite.sql pour la requete SQL,
+et STRIPE_PRICE_MENTORAT_QUALITE pour la variable d'environnement Vercel.

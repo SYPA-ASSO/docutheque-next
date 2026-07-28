@@ -158,6 +158,8 @@ export default function EspaceClient() {
 
   const loadProfile = async (userId: string) => {
     const { data } = await supabase.from('users').select('*').eq('id', userId).single()
+    // Cloisonnement : un compte mentorat qualite n'accède pas à l'espace client classique.
+    if (data && data.acces_mentorat_qualite) { router.push('/espace-mentorat-qualite'); return }
     if (data) setProfile(data)
   }
 

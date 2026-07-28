@@ -61,6 +61,21 @@ export default function Connexion() {
         return
       }
 
+      // Aiguillage selon le type d'espace : un compte mentorat qualite est dirigé
+      // vers son espace dédié, les autres comptes vers l'espace client classique.
+      const { data: sessionData } = await supabase.auth.getSession()
+      const uid = sessionData.session?.user.id
+      if (uid) {
+        const { data: u } = await supabase
+          .from('users')
+          .select('acces_mentorat_qualite')
+          .eq('id', uid)
+          .maybeSingle()
+        if (u && u.acces_mentorat_qualite) {
+          router.push('/espace-mentorat-qualite')
+          return
+        }
+      }
       router.push('/espace-client')
     } catch {
       setErreur('Une erreur est survenue. Veuillez réessayer.')
@@ -268,7 +283,7 @@ export default function Connexion() {
             {mode === 'connexion' && (
               <form onSubmit={handleConnexion} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
                 <button type="button" onClick={() => { setMode('choix'); setErreur('') }} style={{ background: 'none', border: 'none', color: '#6b7280', fontSize: '12px', cursor: 'pointer', padding: 0, display: 'flex', alignItems: 'center', gap: '4px', alignSelf: 'flex-start' }}>
-                  ← Retour
+                  â† Retour
                 </button>
                 <div>
                   <h2 style={{ fontSize: '1.3rem', fontWeight: '700', color: '#0f2d6e', margin: '0 0 4px' }}>Accédez à votre espace client</h2>
@@ -314,7 +329,7 @@ export default function Connexion() {
             {mode === 'inscription' && (
               <form onSubmit={handleInscription} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
                 <button type="button" onClick={() => { setMode('choix'); setErreur('') }} style={{ background: 'none', border: 'none', color: '#6b7280', fontSize: '12px', cursor: 'pointer', padding: 0, display: 'flex', alignItems: 'center', gap: '4px', alignSelf: 'flex-start' }}>
-                  ← Retour
+                  â† Retour
                 </button>
                 <div>
                   <h2 style={{ fontSize: '1.3rem', fontWeight: '700', color: '#0f2d6e', margin: '0 0 4px' }}>Créer mon compte</h2>

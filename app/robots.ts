@@ -8,7 +8,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/espace-client', '/admin', '/api'],
+        disallow: ['/espace-client', '/espace-mentorat-qualite', '/admin', '/api'],
       },
       {
         // Robots IA explicitement autorises : visibilite dans les reponses
@@ -27,7 +27,7 @@ export default function robots(): MetadataRoute.Robots {
           'Applebot-Extended',
         ],
         allow: '/',
-        disallow: ['/espace-client', '/admin', '/api'],
+        disallow: ['/espace-client', '/espace-mentorat-qualite', '/admin', '/api'],
       },
     ],
     sitemap: `${baseUrl}/sitemap.xml`,

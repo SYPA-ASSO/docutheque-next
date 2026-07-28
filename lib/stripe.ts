@@ -18,4 +18,5 @@ export const PRICE_IDS = {
   question_abonne:                process.env.STRIPE_PRICE_QUESTION_ABONNE             || 'price_1Tb1wCBmvu2pHBgzaY7auzsK',
   conseil_assurances_particulier: process.env.STRIPE_PRICE_CONSEIL_PARTICULIER        || 'price_1Tb1xyBmvu2pHBgzOnHchsZ3',
   conseil_assurances_pro:         process.env.STRIPE_PRICE_CONSEIL_PRO                 || 'price_1Tb20ABmvu2pHBgzjSyOfDb5',
+  mentorat_qualite:                   process.env.STRIPE_PRICE_MENTORAT_QUALITE                || '',
 }
