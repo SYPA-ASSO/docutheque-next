@@ -174,10 +174,10 @@ export default function ArticleAssociationFiscalite2026() {
             <div style={{background: '#f8fafc', border: '1px solid #dbeafe', borderLeft: '4px solid #0f2d6e', borderRadius: '10px', padding: '1.1rem 1.4rem', marginBottom: '1.75rem'}}>
               <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px', textTransform: 'uppercase', letterSpacing: '0.03em'}}>En résumé</p>
               <ul style={{paddingLeft: '1.25rem', margin: 0, display: 'flex', flexDirection: 'column', gap: '6px', color: '#374151', fontSize: '13px', lineHeight: '1.6'}}>
-                <li>Pas automatiquement. Une association loi 1901 n'est pas exonérée par principe : son régime fiscal dépend de la nature de ses activités.</li>
-                <li>C'est la méthode de l'administration fiscale pour apprécier le caractère lucratif d'une activité.</li>
-                <li>Pour 2026, le seuil de recettes lucratives accessoires en dessous duquel une association à gestion désintéressée échappe aux impôts commerciaux s'établit à 81 051 euros (contre 80 011 euros en…</li>
-                <li>Les recettes des six manifestations annuelles de bienfaisance ou de soutien sont exonérées de TVA et d'impôt sur les sociétés, et ne sont pas comptabilisées dans le seuil de la franchise.</li>
+                <li>Une association loi 1901 n'est pas exonérée d'impôts par principe : son régime fiscal dépend de la nature de ses activités, selon qu'elle est gérée de façon désintéressée et exerce ou non une activité lucrative.</li>
+                <li>La règle des 4P est la méthode de l'administration fiscale pour apprécier le caractère lucratif d'une activité, selon quatre critères : le Produit, le Public, le Prix et la Publicité.</li>
+                <li>Pour 2026, le seuil de recettes lucratives accessoires en dessous duquel une association à gestion désintéressée échappe aux impôts commerciaux s'établit à 81 051 euros.</li>
+                <li>Les recettes des six manifestations annuelles de bienfaisance ou de soutien sont exonérées de TVA et d'impôt sur les sociétés et ne comptent pas dans le seuil de la franchise.</li>
               </ul>
             </div>
 

@@ -170,10 +170,10 @@ export default function ArticleMasterSaisineRecteur2026() {
             <div style={{background: '#f8fafc', border: '1px solid #dbeafe', borderLeft: '4px solid #0f2d6e', borderRadius: '10px', padding: '1.1rem 1.4rem', marginBottom: '1.75rem'}}>
               <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px', textTransform: 'uppercase', letterSpacing: '0.03em'}}>En résumé</p>
               <ul style={{paddingLeft: '1.25rem', margin: 0, display: 'flex', flexDirection: 'column', gap: '6px', color: '#374151', fontSize: '13px', lineHeight: '1.6'}}>
-                <li>Le décret n° 2026-584 supprime précisément cette condition de la première phrase de l'article R.</li>
-                <li>Vous devez choisir dans le délai prévu : si vous acceptez la nouvelle proposition, vous perdez le bénéfice de celle déjà acceptée dans le cadre de la procédure liée au recteur ; si vous la…</li>
-                <li>Le traitement de la saisine prend fin si vous recevez une réponse positive à l'une de vos candidatures dans la procédure dématérialisée : la voie de recours n'a plus d'objet dès lors qu'une…</li>
-                <li>Un arrêté du 25 juin 2026, publié au Journal officiel du 1er juillet 2026, fixe le calendrier de la procédure dématérialisée de saisine du recteur de région académique, ainsi que celui de la…</li>
+                <li>Être sur liste d'attente n'empêche plus toute saisine du recteur : le décret n° 2026-584 supprime cette condition de l'article R. 612-36-3 du Code de l'éducation.</li>
+                <li>Si vous obtenez une nouvelle proposition après avoir accepté une place via le recteur, vous devez choisir dans le délai prévu entre les deux propositions.</li>
+                <li>La saisine du recteur prend fin si vous recevez une réponse positive à l'une de vos candidatures dans la procédure dématérialisée.</li>
+                <li>Un arrêté du 25 juin 2026, publié au Journal officiel du 1er juillet 2026, fixe le calendrier de la procédure dématérialisée de saisine du recteur.</li>
               </ul>
             </div>
 

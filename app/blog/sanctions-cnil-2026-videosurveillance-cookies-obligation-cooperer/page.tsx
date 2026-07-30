@@ -142,10 +142,10 @@ export default function ArticleSanctionsCnil2026() {
             <div style={{background: '#f8fafc', border: '1px solid #dbeafe', borderLeft: '4px solid #0f2d6e', borderRadius: '10px', padding: '1.1rem 1.4rem', marginBottom: '1.75rem'}}>
               <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px', textTransform: 'uppercase', letterSpacing: '0.03em'}}>En résumé</p>
               <ul style={{paddingLeft: '1.25rem', margin: 0, display: 'flex', flexDirection: 'column', gap: '6px', color: '#374151', fontSize: '13px', lineHeight: '1.6'}}>
-                <li>Mise en place en 2022, c'est une procédure adaptée aux dossiers ne présentant pas de difficulté juridique particulière : le président de la formation restreinte, ou un autre de ses membres…</li>
-                <li>Sauf circonstance exceptionnelle le justifiant.</li>
+                <li>La procédure de sanction simplifiée de la CNIL, mise en place en 2022, permet à un seul membre de la formation restreinte de prononcer une sanction plafonnée à 20 000 euros, sans publication du nom de l'organisme.</li>
+                <li>Une entreprise ne peut pas filmer ses salariés en continu, sauf circonstance exceptionnelle le justifiant : cela méconnaît le principe de minimisation des données posé par le RGPD.</li>
                 <li>L'article 82 de la loi Informatique et Libertés impose qu'il soit aussi simple de refuser tous les cookies que de les accepter tous.</li>
-                <li>L'absence de coopération avec la CNIL constitue en elle-même un manquement autonome à l'article 18 de la loi Informatique et Libertés, sanctionnable indépendamment du bien-fondé de la plainte…</li>
+                <li>L'absence de coopération avec la CNIL constitue en elle-même un manquement autonome à l'article 18 de la loi Informatique et Libertés, sanctionnable indépendamment du bien-fondé de la plainte initiale.</li>
               </ul>
             </div>
 

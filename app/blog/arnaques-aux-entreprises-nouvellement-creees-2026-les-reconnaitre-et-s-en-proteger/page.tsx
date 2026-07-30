@@ -174,10 +174,10 @@ export default function ArticleArnaquesNouvellesEntreprises2026() {
             <div style={{background: '#f8fafc', border: '1px solid #dbeafe', borderLeft: '4px solid #0f2d6e', borderRadius: '10px', padding: '1.1rem 1.4rem', marginBottom: '1.75rem'}}>
               <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px', textTransform: 'uppercase', letterSpacing: '0.03em'}}>En résumé</p>
               <ul style={{paddingLeft: '1.25rem', margin: 0, display: 'flex', flexDirection: 'column', gap: '6px', color: '#374151', fontSize: '13px', lineHeight: '1.6'}}>
-                <li>Parce que vos données sont publiques. Dès votre immatriculation, vos informations (dénomination, SIREN, adresse, dirigeant, code d'activité) sont accessibles gratuitement, en quelques jours, sur…</li>
-                <li>Votre immatriculation se fait en une seule fois, via le guichet unique de l'INPI, et pour une micro-entreprise elle est gratuite.</li>
-                <li>Cinq signaux d'alerte : l'absence de mention claire d'offre commerciale alors qu'un paiement est demandé ; un logo qui imite un cachet officiel (drapeau européen, Marianne) ; un numéro de…</li>
-                <li>En France, il n'existe qu'un seul registre officiel des entreprises : le Registre national des entreprises (RNE), géré par l'INPI depuis 2023, qui a fusionné les anciens registres.</li>
+                <li>Les fraudeurs ciblent les entreprises nouvellement créées car leurs données (dénomination, SIREN, adresse, dirigeant) deviennent publiques et accessibles gratuitement dès l'immatriculation, sur data.inpi.fr notamment.</li>
+                <li>Votre immatriculation se fait en une seule fois via le guichet unique de l'INPI, et pour une micro-entreprise elle est gratuite : aucun second paiement n'arrive après coup pour la finaliser ou la publier.</li>
+                <li>Cinq signaux d'alerte : absence de mention claire d'offre commerciale malgré un paiement demandé, logo imitant un cachet officiel, numéro de référence avec délai court, IBAN étranger, adresse de site suspecte.</li>
+                <li>En France, il n'existe qu'un seul registre officiel des entreprises : le Registre national des entreprises (RNE), géré par l'INPI depuis 2023.</li>
               </ul>
             </div>
 

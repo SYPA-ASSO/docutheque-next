@@ -179,10 +179,10 @@ export default function ArticleDifferendsAgricoles2026() {
             <div style={{background: '#f8fafc', border: '1px solid #dbeafe', borderLeft: '4px solid #0f2d6e', borderRadius: '10px', padding: '1.1rem 1.4rem', marginBottom: '1.75rem'}}>
               <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px', textTransform: 'uppercase', letterSpacing: '0.03em'}}>En résumé</p>
               <ul style={{paddingLeft: '1.25rem', margin: 0, display: 'flex', flexDirection: 'column', gap: '6px', color: '#374151', fontSize: '13px', lineHeight: '1.6'}}>
-                <li>C'est un organe spécialisé créé par la loi Égalim 2 (loi n° 2021-1357 du 18 octobre 2021) et prévu à l'article L.</li>
-                <li>La médiation devant le médiateur des relations commerciales agricoles reste le passage obligé prévu par l'article L.</li>
+                <li>Le comité de règlement des différends commerciaux agricoles (CRDCA) est un organe spécialisé créé par la loi Égalim 2, qui peut être saisi des litiges sur les contrats de vente de produits agricoles après échec de la médiation obligatoire.</li>
+                <li>On ne peut pas saisir directement le comité sans passer par la médiation devant le médiateur des relations commerciales agricoles, qui reste le passage obligé prévu par le Code rural.</li>
                 <li>La partie la plus diligente dispose d'un délai d'un mois à compter de la notification du constat d'échec de la médiation pour saisir le comité.</li>
-                <li>Le décret du 30 juin 2026 organise la protection du secret des affaires dans le cadre de la procédure, point essentiel dans des litiges portant sur les prix, les marges et les clauses…</li>
+                <li>Le décret du 30 juin 2026 organise la protection du secret des affaires dans le cadre de la procédure, point essentiel dans des litiges portant sur les prix et les marges.</li>
               </ul>
             </div>
 

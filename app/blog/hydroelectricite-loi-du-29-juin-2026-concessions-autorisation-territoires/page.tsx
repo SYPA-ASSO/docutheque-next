@@ -179,10 +179,10 @@ export default function ArticleHydroelectriciteLoi2026() {
             <div style={{background: '#f8fafc', border: '1px solid #dbeafe', borderLeft: '4px solid #0f2d6e', borderRadius: '10px', padding: '1.1rem 1.4rem', marginBottom: '1.75rem'}}>
               <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px', textTransform: 'uppercase', letterSpacing: '0.03em'}}>En résumé</p>
               <ul style={{paddingLeft: '1.25rem', margin: 0, display: 'flex', flexDirection: 'column', gap: '6px', color: '#374151', fontSize: '13px', lineHeight: '1.6'}}>
-                <li>Les installations hydroélectriques d'une puissance supérieure à 4 500 kW (4,5 MW), soit environ 340 concessions.</li>
-                <li>La réforme s'opère sans cession des ouvrages et des installations, qui demeurent la propriété de l'État.</li>
-                <li>À une date fixée par décret, et au plus tard le 1er septembre 2026.</li>
-                <li>Le régime des redevances et compensations est réorganisé par la loi.</li>
+                <li>Les installations hydroélectriques d'une puissance supérieure à 4 500 kW sont concernées par la fin des concessions, soit environ 340 concessions.</li>
+                <li>Les barrages ne sont pas privatisés : la réforme s'opère sans cession des ouvrages, qui demeurent la propriété de l'État.</li>
+                <li>La loi sur l'hydroélectricité entre en vigueur à une date fixée par décret, et au plus tard le 1er septembre 2026.</li>
+                <li>Le régime des redevances perçues par les collectivités est réorganisé par la loi, avec un mécanisme de compensation prévu à compter de 2029.</li>
               </ul>
             </div>
 

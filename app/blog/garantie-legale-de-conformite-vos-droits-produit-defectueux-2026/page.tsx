@@ -174,10 +174,10 @@ export default function ArticleGarantieLegaleConformite2026() {
             <div style={{background: '#f8fafc', border: '1px solid #dbeafe', borderLeft: '4px solid #0f2d6e', borderRadius: '10px', padding: '1.1rem 1.4rem', marginBottom: '1.75rem'}}>
               <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px', textTransform: 'uppercase', letterSpacing: '0.03em'}}>En résumé</p>
               <ul style={{paddingLeft: '1.25rem', margin: 0, display: 'flex', flexDirection: 'column', gap: '6px', color: '#374151', fontSize: '13px', lineHeight: '1.6'}}>
-                <li>C'est l'obligation, imposée par le Code de la consommation, pour tout vendeur professionnel de livrer à un consommateur un bien conforme au contrat.</li>
-                <li>Deux ans à compter de la délivrance du bien, que celui-ci soit neuf ou d'occasion.</li>
-                <li>Pendant une certaine durée, tout défaut qui apparaît est présumé avoir existé dès la délivrance : c'est donc au vendeur de prouver le contraire, pas à vous.</li>
-                <li>Pleinement, dès lors que le vendeur est un professionnel.</li>
+                <li>La garantie légale de conformité est l'obligation, imposée par le Code de la consommation, pour tout vendeur professionnel de livrer un bien conforme au contrat.</li>
+                <li>La garantie légale de conformité dure deux ans à compter de la délivrance du bien, neuf ou d'occasion, pour tout achat auprès d'un professionnel.</li>
+                <li>La présomption d'antériorité du défaut dure 24 mois pour un bien neuf et 12 mois pour un bien d'occasion : pendant cette période, c'est au vendeur de prouver que le défaut n'existait pas à la délivrance.</li>
+                <li>La garantie légale de conformité s'applique pleinement aux achats en ligne et d'occasion dès lors que le vendeur est un professionnel ; entre particuliers, seule joue la garantie des vices cachés.</li>
               </ul>
             </div>
 

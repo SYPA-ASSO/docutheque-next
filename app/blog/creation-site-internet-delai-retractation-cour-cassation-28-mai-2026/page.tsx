@@ -158,10 +158,10 @@ export default function ArticleSiteInternetRetractation2026() {
             <div style={{background: '#f8fafc', border: '1px solid #dbeafe', borderLeft: '4px solid #0f2d6e', borderRadius: '10px', padding: '1.1rem 1.4rem', marginBottom: '1.75rem'}}>
               <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px', textTransform: 'uppercase', letterSpacing: '0.03em'}}>En résumé</p>
               <ul style={{paddingLeft: '1.25rem', margin: 0, display: 'flex', flexDirection: 'column', gap: '6px', color: '#374151', fontSize: '13px', lineHeight: '1.6'}}>
-                <li>Selon la Cour de cassation (Civ. 1re, 28 mai 2026, n° 25-14.507), c'est une prestation de services.</li>
-                <li>Pour ce type de contrat, le délai court à compter de la conclusion du contrat, en pratique le plus souvent la date de signature pour ce type de contrats conclus hors établissement, et non à…</li>
-                <li>À condition que le contrat soit conclu hors établissement, que son objet n'entre pas dans le champ de l'activité principale du professionnel sollicité, et que celui-ci emploie cinq salariés au…</li>
-                <li>Si l'information sur le délai de rétractation est absente, ou suffisamment erronée pour priver le consommateur d'une information effective, le professionnel s'expose selon les cas à la…</li>
+                <li>Selon la Cour de cassation (Civ. 1re, 28 mai 2026, n° 25-14.507), un contrat de création de site internet personnalisé est une prestation de services, et non une vente, car il n'emporte pas transfert de propriété d'un bien meuble.</li>
+                <li>Le délai de rétractation de 14 jours court à compter de la conclusion du contrat, en pratique la date de signature, et non de la réception ou de la mise en ligne du site.</li>
+                <li>Un professionnel peut aussi se rétracter d'un contrat de création de site internet à condition que le contrat soit conclu hors établissement, que son objet sorte du champ de son activité principale, et qu'il emploie cinq salariés au plus.</li>
+                <li>Si l'information sur le délai de rétractation est absente ou erronée, le professionnel s'expose à une prorogation de douze mois, voire à la nullité du contrat.</li>
               </ul>
             </div>
 

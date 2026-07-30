@@ -143,10 +143,10 @@ export default function ArticleChantage2026() {
             <div style={{background: '#f8fafc', border: '1px solid #dbeafe', borderLeft: '4px solid #0f2d6e', borderRadius: '10px', padding: '1.1rem 1.4rem', marginBottom: '1.75rem'}}>
               <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px', textTransform: 'uppercase', letterSpacing: '0.03em'}}>En résumé</p>
               <ul style={{paddingLeft: '1.25rem', margin: 0, display: 'flex', flexDirection: 'column', gap: '6px', color: '#374151', fontSize: '13px', lineHeight: '1.6'}}>
-                <li>En principe. Menacer d'user de voies de droit légitimes (porter plainte, saisir un juge, prévenir une autorité compétente) pour faire valoir un droit réel n'est pas du chantage.</li>
-                <li>Pas nécessairement. Des pressions comme « si tu pars, je me fais du mal » relèvent de la pression psychologique et peuvent, selon les cas, constituer du harcèlement moral ou des violences…</li>
+                <li>Menacer de porter plainte ou de saisir un juge pour faire valoir un droit réel n'est en principe pas du chantage, sauf si la menace s'accompagne de faits inventés ou déformés pour obtenir une renonciation.</li>
+                <li>Le chantage affectif n'est pas nécessairement puni pénalement : des pressions comme « si tu pars, je me fais du mal » ne relèvent du chantage au sens strict que si elles comportent une menace de révéler un fait portant atteinte à l'honneur.</li>
                 <li>L'article 312-10 du Code pénal punit le chantage de 5 ans d'emprisonnement et 75 000 euros d'amende.</li>
-                <li>Conserver toutes les preuves sans rien supprimer (messages, captures d'écran horodatées, témoignages), répondre calmement par écrit pour figer la chronologie sans s'accuser soi-même, puis…</li>
+                <li>Face à un chantage, il faut conserver toutes les preuves sans rien supprimer, répondre calmement par écrit, puis déposer plainte.</li>
               </ul>
             </div>
 

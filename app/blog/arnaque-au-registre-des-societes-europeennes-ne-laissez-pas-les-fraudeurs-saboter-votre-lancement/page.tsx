@@ -144,7 +144,7 @@ export default function ArticleArnaqueRSE() {
                 <li>Le BRIS (Business Registers Interconnection System) est le système officiel d'interconnexion des registres du commerce européens.</li>
                 <li>Un courrier officiel (INPI, greffe, URSSAF) ne demande jamais de paiement par courrier postal pour un registre européen.</li>
                 <li>Si le paiement a été effectué par prélèvement SEPA autorisé, vous disposez de 8 semaines pour le contester auprès de votre banque ; 13 mois s'il était non autorisé.</li>
-                <li>Ces pratiques peuvent être qualifiées de pratiques commerciales trompeuses (art.</li>
+                <li>Ces pratiques peuvent être qualifiées de pratiques commerciales trompeuses (article L.121-2 du Code de la consommation), passibles de 2 ans d'emprisonnement et 300 000 € d'amende.</li>
               </ul>
             </div>
 

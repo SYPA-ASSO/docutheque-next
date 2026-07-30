@@ -176,9 +176,9 @@ export default function ArticleFacturationElectronique2026() {
               <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px', textTransform: 'uppercase', letterSpacing: '0.03em'}}>En résumé</p>
               <ul style={{paddingLeft: '1.25rem', margin: 0, display: 'flex', flexDirection: 'column', gap: '6px', color: '#374151', fontSize: '13px', lineHeight: '1.6'}}>
                 <li>La réception de factures électroniques devient obligatoire pour toutes les entreprises assujetties à la TVA dès le 1er septembre 2026.</li>
-                <li>Le micro-entrepreneur en franchise en base reste un assujetti à la TVA au sens de la réglementation, même s'il n'en est pas redevable.</li>
-                <li>Pas comme plateforme d'échange généraliste. Par communiqué du 15 octobre 2024, l'État a abandonné le développement du portail public de facturation comme plateforme gratuite.</li>
-                <li>Un simple PDF envoyé par email n'est pas une facture électronique au sens de la réforme.</li>
+                <li>Le micro-entrepreneur en franchise en base reste un assujetti à la TVA au sens de la réglementation, même s'il n'en est pas redevable, et entre donc dans le champ de la réforme.</li>
+                <li>Le portail public de facturation gratuit n'existe plus comme plateforme d'échange généraliste : l'État en a abandonné le développement par communiqué du 15 octobre 2024.</li>
+                <li>Un simple PDF envoyé par email n'est pas une facture électronique au sens de la réforme, qui exige un format normé transitant par une plateforme agréée.</li>
               </ul>
             </div>
 

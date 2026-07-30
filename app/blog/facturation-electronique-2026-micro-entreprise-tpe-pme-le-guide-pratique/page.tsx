@@ -190,10 +190,10 @@ export default function ArticleFacturationElectroniqueGuidePratique() {
             <div style={{background: '#f8fafc', border: '1px solid #dbeafe', borderLeft: '4px solid #0f2d6e', borderRadius: '10px', padding: '1.1rem 1.4rem', marginBottom: '1.75rem'}}>
               <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px', textTransform: 'uppercase', letterSpacing: '0.03em'}}>En résumé</p>
               <ul style={{paddingLeft: '1.25rem', margin: 0, display: 'flex', flexDirection: 'column', gap: '6px', color: '#374151', fontSize: '13px', lineHeight: '1.6'}}>
-                <li>La franchise en base de TVA vous dispense de facturer la TVA, mais vous restez un assujetti au sens de la réglementation.</li>
-                <li>Choisir une plateforme agréée pour pouvoir recevoir vos factures, car la réception est obligatoire pour tous dès le 1er septembre 2026.</li>
-                <li>La facture électronique obligatoire ne vise que les opérations entre entreprises (B2B).</li>
-                <li>Pas nécessairement. Si votre logiciel actuel est raccordé à une plateforme agréée, vous pouvez le conserver.</li>
+                <li>La franchise en base de TVA dispense de facturer la TVA, mais l'entreprise reste un assujetti au sens de la réglementation et donc concernée par la réforme.</li>
+                <li>La première chose à faire est de choisir une plateforme agréée pour pouvoir recevoir ses factures, la réception étant obligatoire pour tous dès le 1er septembre 2026.</li>
+                <li>La facture électronique obligatoire ne vise que les opérations entre entreprises (B2B) ; les clients particuliers continuent de recevoir une facture classique.</li>
+                <li>Il n'est pas nécessairement obligatoire de changer de logiciel de facturation : si le logiciel actuel est raccordé à une plateforme agréée, il peut être conservé.</li>
               </ul>
             </div>
 

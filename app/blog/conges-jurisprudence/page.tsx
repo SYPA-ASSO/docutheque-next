@@ -141,10 +141,10 @@ export default function ArticleCongesPayes() {
             <div style={{background: '#f8fafc', border: '1px solid #dbeafe', borderLeft: '4px solid #0f2d6e', borderRadius: '10px', padding: '1.1rem 1.4rem', marginBottom: '1.75rem'}}>
               <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px', textTransform: 'uppercase', letterSpacing: '0.03em'}}>En résumé</p>
               <ul style={{paddingLeft: '1.25rem', margin: 0, display: 'flex', flexDirection: 'column', gap: '6px', color: '#374151', fontSize: '13px', lineHeight: '1.6'}}>
-                <li>L'organisation des congés relève du pouvoir de direction de l'employeur.</li>
-                <li>En principe oui, sauf si le salarié n'a pas pu les prendre pour des raisons indépendantes de sa volonté (maladie, accident du travail, congé maternité...).</li>
-                <li>L'action en paiement de congés payés non pris se prescrit par 3 ans à compter du jour où le titulaire du droit a connu ou aurait dû connaître les faits lui permettant de l'exercer.</li>
-                <li>Le salarié ne peut pas refuser de prendre ses congés aux dates fixées par l'employeur si celui-ci a respecté les règles (délai de prévenance d'un mois, consultation des IRP).</li>
+                <li>L'organisation des congés relève du pouvoir de direction de l'employeur, qui peut fixer et modifier les dates de départ sous réserve d'un délai de prévenance d'un mois.</li>
+                <li>Les congés non pris sont en principe perdus à la fin de la période de référence, sauf si le salarié n'a pas pu les prendre pour des raisons indépendantes de sa volonté (maladie, accident du travail, congé maternité).</li>
+                <li>L'action en paiement de congés payés non pris se prescrit par 3 ans à compter du jour où le titulaire du droit a connu les faits lui permettant de l'exercer.</li>
+                <li>Le salarié ne peut pas refuser de prendre ses congés aux dates fixées par l'employeur si celui-ci a respecté les règles de délai de prévenance.</li>
               </ul>
             </div>
 

@@ -171,9 +171,9 @@ export default function ArticleInpiDecret2026() {
             <div style={{background: '#f8fafc', border: '1px solid #dbeafe', borderLeft: '4px solid #0f2d6e', borderRadius: '10px', padding: '1.1rem 1.4rem', marginBottom: '1.75rem'}}>
               <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px', textTransform: 'uppercase', letterSpacing: '0.03em'}}>En résumé</p>
               <ul style={{paddingLeft: '1.25rem', margin: 0, display: 'flex', flexDirection: 'column', gap: '6px', color: '#374151', fontSize: '13px', lineHeight: '1.6'}}>
-                <li>En principe. Le décret entre en vigueur le 2 juillet 2026 et s'applique aux procédures en cours à cette date, sauf pour les dispositions de ses articles 11 et 32 à 36, réservées aux demandes…</li>
-                <li>Deux choses principalement : le délai imparti à l'INPI pour statuer sur les oppositions et demandes en annulation de marques passe de trois à quatre mois, aligné sur les oppositions brevets, et…</li>
-                <li>Le décret limite les informations publiées permettant d'identifier un déposant personne physique à ses nom, prénoms, commune et pays de résidence, pour plusieurs procédures dont les marques et…</li>
+                <li>Le décret du 30 juin 2026 entre en vigueur le 2 juillet 2026 et s'applique en principe aux procédures déjà en cours, sauf pour certaines dispositions réservées aux demandes formulées après son entrée en vigueur.</li>
+                <li>Pour les oppositions de marques, deux changements principaux : le délai de l'INPI pour statuer passe de trois à quatre mois, et une opposition frappée d'irrecevabilité peut désormais être régularisée.</li>
+                <li>Le décret limite les informations publiées permettant d'identifier un déposant personne physique à ses nom, prénoms, commune et pays de résidence.</li>
                 <li>Le décret couvre à la fois les procédures de propriété industrielle et les formalités administratives des entreprises gérées par l'INPI.</li>
               </ul>
             </div>

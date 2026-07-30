@@ -141,10 +141,10 @@ export default function ArticleCEE() {
             <div style={{background: '#f8fafc', border: '1px solid #dbeafe', borderLeft: '4px solid #0f2d6e', borderRadius: '10px', padding: '1.1rem 1.4rem', marginBottom: '1.75rem'}}>
               <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px', textTransform: 'uppercase', letterSpacing: '0.03em'}}>En résumé</p>
               <ul style={{paddingLeft: '1.25rem', margin: 0, display: 'flex', flexDirection: 'column', gap: '6px', color: '#374151', fontSize: '13px', lineHeight: '1.6'}}>
-                <li>La revalorisation s'applique à partir du 1er mai 2025, y compris pour les contrats en cours à cette date.</li>
-                <li>Le CEE ne crée pas de droit à des congés payés au sens habituel du terme.</li>
-                <li>Mais la durée cumulée de l'ensemble de ses CEE ne peut pas excéder 80 jours sur une période de 12 mois consécutifs.</li>
-                <li>Un CEE non conforme aux exigences légales (mentions obligatoires manquantes, dépassement du plafond de 80 jours, rémunération inférieure au minimum) peut être requalifié en contrat de travail à…</li>
+                <li>La revalorisation de mai 2025 s'applique à partir du 1er mai 2025, y compris pour les contrats en cours à cette date.</li>
+                <li>Le CEE ne crée pas de droit à des congés payés au sens habituel, mais ouvre droit à des jours de repos compensateurs.</li>
+                <li>Un salarié peut cumuler plusieurs CEE avec différents employeurs, mais la durée cumulée ne peut pas excéder 80 jours sur une période de 12 mois consécutifs.</li>
+                <li>Un CEE non conforme aux exigences légales peut être requalifié en contrat de travail à durée indéterminée (CDI).</li>
               </ul>
             </div>
 

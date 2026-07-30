@@ -174,10 +174,10 @@ export default function ArticleBoutonRetractation2026() {
             <div style={{background: '#f8fafc', border: '1px solid #dbeafe', borderLeft: '4px solid #0f2d6e', borderRadius: '10px', padding: '1.1rem 1.4rem', marginBottom: '1.75rem'}}>
               <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px', textTransform: 'uppercase', letterSpacing: '0.03em'}}>En résumé</p>
               <ul style={{paddingLeft: '1.25rem', margin: 0, display: 'flex', flexDirection: 'column', gap: '6px', color: '#374151', fontSize: '13px', lineHeight: '1.6'}}>
-                <li>C'est une fonction de rétractation en ligne, obligatoire depuis le 19 juin 2026, qui permet au consommateur d'exercer son droit de rétractation directement depuis l'interface de vente, sans…</li>
-                <li>Depuis le 19 juin 2026. L'obligation résulte de l'ordonnance n° 2026-2 et du décret n° 2026-3 du 5 janvier 2026, qui transposent la directive (UE) 2023/2673 du 22 novembre 2023 et modifient…</li>
-                <li>Tout professionnel qui conclut des contrats à distance, au moyen d'une interface en ligne, avec un consommateur.</li>
-                <li>Sur une marketplace, la plateforme doit s'assurer que la fonctionnalité existe à l'échelle de l'interface.</li>
+                <li>Le bouton de rétractation est une fonction obligatoire depuis le 19 juin 2026 qui permet au consommateur d'exercer son droit de rétractation directement depuis l'interface de vente.</li>
+                <li>Cette obligation résulte de l'ordonnance n° 2026-2 et du décret n° 2026-3 du 5 janvier 2026, qui modifient l'article L. 221-21 du Code de la consommation.</li>
+                <li>Tout professionnel qui conclut des contrats à distance via une interface en ligne avec un consommateur est concerné, quel que soit son secteur.</li>
+                <li>Sur une marketplace, la plateforme doit assurer la fonctionnalité à l'échelle de l'interface ; dès qu'un vendeur a sa propre boutique en ligne, il est lui aussi concerné.</li>
               </ul>
             </div>
 

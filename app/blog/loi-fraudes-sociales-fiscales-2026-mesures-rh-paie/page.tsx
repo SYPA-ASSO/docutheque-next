@@ -143,7 +143,7 @@ export default function ArticleLoiFraudesSocialesFiscales2026() {
               <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px', textTransform: 'uppercase', letterSpacing: '0.03em'}}>En résumé</p>
               <ul style={{paddingLeft: '1.25rem', margin: 0, display: 'flex', flexDirection: 'column', gap: '6px', color: '#374151', fontSize: '13px', lineHeight: '1.6'}}>
                 <li>Depuis le 27 juin 2026, lorsque la caisse primaire d'assurance maladie informe l'employeur qu'une fraude aux indemnités journalières est avérée, celui-ci est dispensé de son obligation de…</li>
-                <li>C'est une nouvelle procédure, issue de l'article 93 de la loi du 25 juin 2026, qui permet à l'Urssaf, lorsqu'un procès-verbal de travail dissimulé fait craindre un risque pour le recouvrement…</li>
+                <li>La procédure de flagrance sociale, issue de l'article 93 de la loi du 25 juin 2026, permet à l'Urssaf de prendre des mesures conservatoires exécutoires sans juge lorsqu'un procès-verbal de travail dissimulé fait craindre un risque pour le recouvrement.</li>
                 <li>La loi introduit une amende administrative spécifique, prononcée directement par la DREETS, pouvant atteindre 4 000 euros par salarié concerné, en plus de l'amende pénale déjà existante, en cas…</li>
                 <li>La loi impose désormais au salarié qui perçoit des indemnités journalières d'informer sans délai l'Assurance maladie de toute adresse différente de celle figurant sur son arrêt de travail, afin…</li>
               </ul>

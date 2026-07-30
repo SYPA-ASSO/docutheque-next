@@ -171,10 +171,10 @@ export default function ArticleMayottePuma2026() {
             <div style={{background: '#f8fafc', border: '1px solid #dbeafe', borderLeft: '4px solid #0f2d6e', borderRadius: '10px', padding: '1.1rem 1.4rem', marginBottom: '1.75rem'}}>
               <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px', textTransform: 'uppercase', letterSpacing: '0.03em'}}>En résumé</p>
               <ul style={{paddingLeft: '1.25rem', margin: 0, display: 'flex', flexDirection: 'column', gap: '6px', color: '#374151', fontSize: '13px', lineHeight: '1.6'}}>
-                <li>Depuis le 1er juillet 2026. Le décret n° 2026-581 du 30 juin 2026 a été publié au Journal officiel du 1er juillet 2026 et son entrée en vigueur est fixée à cette même date.</li>
-                <li>Aux assurés mahorais et à la caisse de sécurité sociale de Mayotte, qui gère localement les prestations.</li>
-                <li>Une personne est réputée avoir son lieu de séjour principal à Mayotte si, sous réserve de ne pas avoir transféré sa résidence hors du territoire, elle y séjourne personnellement et effectivement…</li>
-                <li>Le décret adapte plusieurs procédures de contrôle et de demande de pièces : dans plusieurs cas, la référence à un délai d'un mois est remplacée par un délai de trois mois, l'organisme compétent…</li>
+                <li>Le décret n° 2026-581 du 30 juin 2026, publié au Journal officiel du 1er juillet 2026, s'applique depuis cette même date.</li>
+                <li>Ce décret s'adresse aux assurés mahorais et à la caisse de sécurité sociale de Mayotte, qui gère localement les prestations, ainsi qu'aux professionnels de santé et travailleurs sociaux qui accompagnent les usagers.</li>
+                <li>Une personne est réputée avoir son lieu de séjour principal à Mayotte si elle y séjourne effectivement plus de six mois au cours de l'année civile de versement des prestations.</li>
+                <li>Le décret allonge plusieurs délais de contrôle et de demande de pièces par la caisse de sécurité sociale de Mayotte, remplaçant un délai d'un mois par un délai de trois mois.</li>
               </ul>
             </div>
 

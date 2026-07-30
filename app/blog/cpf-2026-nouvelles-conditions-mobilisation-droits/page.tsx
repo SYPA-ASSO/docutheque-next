@@ -86,10 +86,10 @@ export default function ArticleCpf2026Conditions() {
             <div style={{background: '#f8fafc', border: '1px solid #dbeafe', borderLeft: '4px solid #0f2d6e', borderRadius: '10px', padding: '1.1rem 1.4rem', marginBottom: '1.75rem'}}>
               <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px', textTransform: 'uppercase', letterSpacing: '0.03em'}}>En résumé</p>
               <ul style={{paddingLeft: '1.25rem', margin: 0, display: 'flex', flexDirection: 'column', gap: '6px', color: '#374151', fontSize: '13px', lineHeight: '1.6'}}>
-                <li>C'est le titulaire du CPF, pas l'organisme de formation.</li>
-                <li>Sauf pour les formations linguistiques. Depuis le 27 juin 2026, l'article L.6323-6 du Code du travail interdit de mobiliser ses droits CPF pour financer une formation sanctionnée par une…</li>
-                <li>La loi ne le définit pas elle-même : un décret doit encore en préciser les modalités d'appréciation.</li>
-                <li>Mais pas immédiatement. Les articles L.6113-8-1 et L.6353-12 du Code du travail, qui organisent cette publication, entrent en vigueur à une date fixée par décret, au plus tard un an après la…</li>
+                <li>En cas d'absence à l'examen, c'est le titulaire du CPF qui doit rembourser la Caisse des dépôts, pas l'organisme de formation.</li>
+                <li>Depuis le 27 juin 2026, il n'est plus possible de mobiliser ses droits CPF pour financer une formation sanctionnée par une certification déjà obtenue, sauf pour les formations linguistiques.</li>
+                <li>La loi ne définit pas elle-même ce qu'est un motif légitime d'absence à l'examen : un décret doit encore en préciser les modalités d'appréciation.</li>
+                <li>Les taux de réussite par organisme de formation seront rendus publics, mais pas immédiatement : les articles concernés entrent en vigueur à une date fixée par décret, au plus tard le 25 juin 2027.</li>
               </ul>
             </div>
 

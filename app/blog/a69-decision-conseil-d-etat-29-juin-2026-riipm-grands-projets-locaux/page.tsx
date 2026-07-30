@@ -171,10 +171,10 @@ export default function ArticleA69ConseilDEtat2026() {
             <div style={{background: '#f8fafc', border: '1px solid #dbeafe', borderLeft: '4px solid #0f2d6e', borderRadius: '10px', padding: '1.1rem 1.4rem', marginBottom: '1.75rem'}}>
               <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px', textTransform: 'uppercase', letterSpacing: '0.03em'}}>En résumé</p>
               <ul style={{paddingLeft: '1.25rem', margin: 0, display: 'flex', flexDirection: 'column', gap: '6px', color: '#374151', fontSize: '13px', lineHeight: '1.6'}}>
-                <li>Pas exactement. Le Conseil d'État a rejeté les pourvois en cassation formés contre l'arrêt de la cour administrative d'appel de Toulouse, ce qui rend définitives les autorisations…</li>
-                <li>C'est l'une des trois conditions cumulatives permettant de déroger à l'interdiction de porter atteinte aux espèces protégées : le projet doit présenter un intérêt public à la fois majeur et…</li>
-                <li>Parce qu'elle éclaire la manière dont le juge administratif apprécie la RIIPM et l'absence de solution alternative satisfaisante pour l'ensemble des grands projets : infrastructures de…</li>
-                <li>Le juge vérifie si l'alternative permet d'atteindre les objectifs du projet de manière aussi efficace.</li>
+                <li>Le Conseil d'État n'a pas « autorisé » l'A69 à proprement parler : il a rejeté les pourvois en cassation contre l'arrêt de la cour administrative d'appel de Toulouse, rendant définitives les autorisations environnementales de mars 2023.</li>
+                <li>La raison impérative d'intérêt public majeur (RIIPM) est l'une des trois conditions cumulatives permettant de déroger à l'interdiction de porter atteinte aux espèces protégées : le projet doit présenter un intérêt public à la fois majeur et impératif.</li>
+                <li>Cette décision du 29 juin 2026 est importante au-delà de l'A69 car elle éclaire la manière dont le juge administratif apprécie la RIIPM pour l'ensemble des grands projets : infrastructures de transport, projets énergétiques, aménagements urbains.</li>
+                <li>Une alternative moins dommageable pour l'environnement ne suffit pas à bloquer un projet si elle est nettement moins efficace au regard des objectifs poursuivis.</li>
               </ul>
             </div>
 

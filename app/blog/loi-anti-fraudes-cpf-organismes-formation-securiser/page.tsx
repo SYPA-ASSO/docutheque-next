@@ -86,10 +86,10 @@ export default function ArticleLoiAntiFraudesOF() {
             <div style={{background: '#f8fafc', border: '1px solid #dbeafe', borderLeft: '4px solid #0f2d6e', borderRadius: '10px', padding: '1.1rem 1.4rem', marginBottom: '1.75rem'}}>
               <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px', textTransform: 'uppercase', letterSpacing: '0.03em'}}>En résumé</p>
               <ul style={{paddingLeft: '1.25rem', margin: 0, display: 'flex', flexDirection: 'column', gap: '6px', color: '#374151', fontSize: '13px', lineHeight: '1.6'}}>
-                <li>C'est le titulaire du CPF qui doit rembourser la Caisse des dépôts, pas l'organisme de formation.</li>
-                <li>Depuis la loi du 25 juin 2026, les organismes doivent communiquer aux ministères et organismes certificateurs, par voie dématérialisée, la liste des stagiaires ayant débuté une formation ou une…</li>
-                <li>À terme. Les organismes devront publier sur leur site internet leurs taux de présence et de réussite aux examens, et les transmettre aux stagiaires avant toute inscription (article L.6353-12 du…</li>
-                <li>Indirectement mais fortement. La publication des taux de réussite par organisme entre en résonance avec l'indicateur 2 du Référentiel National Qualité (indicateurs de résultats), qu'un auditeur…</li>
+                <li>C'est le titulaire du CPF qui doit rembourser la Caisse des dépôts en cas d'absence à l'examen, pas l'organisme de formation.</li>
+                <li>Depuis la loi du 25 juin 2026, les organismes de formation doivent communiquer aux ministères et certificateurs la liste des stagiaires ayant débuté ou interrompu une formation menant à une certification.</li>
+                <li>Les taux de réussite des organismes de formation seront publics à terme : ils devront les publier sur leur site et les transmettre aux stagiaires avant inscription, au plus tard le 25 juin 2027.</li>
+                <li>Cette réforme a un lien indirect mais fort avec Qualiopi : la publication des taux de réussite entre en résonance avec l'indicateur 2 du Référentiel National Qualité.</li>
               </ul>
             </div>
 

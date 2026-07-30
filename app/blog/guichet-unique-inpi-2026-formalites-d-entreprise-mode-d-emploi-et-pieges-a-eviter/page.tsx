@@ -174,10 +174,10 @@ export default function ArticleGuichetUniqueINPI2026() {
             <div style={{background: '#f8fafc', border: '1px solid #dbeafe', borderLeft: '4px solid #0f2d6e', borderRadius: '10px', padding: '1.1rem 1.4rem', marginBottom: '1.75rem'}}>
               <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px', textTransform: 'uppercase', letterSpacing: '0.03em'}}>En résumé</p>
               <ul style={{paddingLeft: '1.25rem', margin: 0, display: 'flex', flexDirection: 'column', gap: '6px', color: '#374151', fontSize: '13px', lineHeight: '1.6'}}>
-                <li>Le guichet unique est la plateforme numérique unique, opérée par l'INPI et accessible sur procedures.inpi.fr, par laquelle passent depuis le 1er janvier 2023 toutes les formalités d'entreprise…</li>
-                <li>Sans exception. Que vous créiez une micro-entreprise, une entreprise individuelle, une SARL, une SAS, une SCI ou une société civile, la déclaration passe par le guichet unique.</li>
-                <li>Plus de façon générale. La procédure dérogatoire qui permettait, en 2023 et 2024, de déposer certaines formalités via Infogreffe ou en papier a pris fin le 31 décembre 2024.</li>
-                <li>La procédure de secours, toujours d'actualité en 2026, permet de sécuriser la date de dépôt.</li>
+                <li>Le guichet unique est la plateforme numérique unique, opérée par l'INPI, par laquelle passent depuis le 1er janvier 2023 toutes les formalités d'entreprise.</li>
+                <li>Toutes les entreprises sont concernées sans exception par le guichet unique, qu'il s'agisse d'une micro-entreprise, d'une entreprise individuelle, d'une SARL, d'une SAS, d'une SCI ou d'une société civile.</li>
+                <li>Il n'est plus possible de passer par Infogreffe ou le papier : la procédure dérogatoire qui le permettait en 2023 et 2024 a pris fin le 31 décembre 2024.</li>
+                <li>En cas de blocage technique grave du guichet unique, une procédure de secours permet d'obtenir un récépissé daté auprès de l'INPI pour sécuriser la date de dépôt.</li>
               </ul>
             </div>
 

@@ -175,9 +175,9 @@ export default function ArticleNIS2Cybersecurite2026() {
               <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px', textTransform: 'uppercase', letterSpacing: '0.03em'}}>En résumé</p>
               <ul style={{paddingLeft: '1.25rem', margin: 0, display: 'flex', flexDirection: 'column', gap: '6px', color: '#374151', fontSize: '13px', lineHeight: '1.6'}}>
                 <li>NIS2 est la directive européenne (UE) 2022/2555 du 14 décembre 2022, qui remplace la première directive NIS de 2016.</li>
-                <li>NIS2 concerne les entités d'une certaine taille (en principe au moins 50 salariés ou plus de 10 millions d'euros de chiffre d'affaires) exerçant dans l'un des 18 secteurs visés, classées en…</li>
-                <li>Pas encore pleinement. La directive devait être transposée au plus tard le 17 octobre 2024, mais la France a pris du retard.</li>
-                <li>L'autorité compétente est l'Agence nationale de la sécurité des systèmes d'information (ANSSI).</li>
+                <li>NIS2 concerne les entités d'une certaine taille (en principe au moins 50 salariés ou plus de 10 millions d'euros de chiffre d'affaires) exerçant dans l'un des 18 secteurs visés.</li>
+                <li>NIS2 n'est pas encore pleinement applicable en France : la directive devait être transposée au plus tard le 17 octobre 2024, mais la loi de transposition n'était pas encore promulguée fin 2025.</li>
+                <li>L'autorité compétente pour contrôler l'application de NIS2 en France est l'Agence nationale de la sécurité des systèmes d'information (ANSSI).</li>
               </ul>
             </div>
 
