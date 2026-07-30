@@ -73,7 +73,7 @@ const schema = {
           "name": "Qu'est-ce qu'une faute de gestion ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Une faute de gestion est un manquement à la bonne gestion de l'association : une action ou une inaction contraire à son intérêt, qui lui cause un préjudice. En matière d'insuffisance d'actif, la simple négligence n'engage pas la responsabilité du dirigeant : il faut une véritable faute de gestion, et un lien de causalité entre cette faute et l'aggravation de l'insuffisance d'actif."
+            "text": "C'est un manquement à la bonne gestion de l'association : une action ou une inaction contraire à son intérêt, qui lui cause un préjudice. En matière d'insuffisance d'actif, la simple négligence n'engage pas la responsabilité du dirigeant : il faut une véritable faute de gestion, et un lien de causalité entre cette faute et l'aggravation de l'insuffisance d'actif."
           }
         },
         {
@@ -177,7 +177,7 @@ export default function ArticleResponsabiliteDirigeantsBenevoles() {
                 <li>Le bénévolat n'exonère pas de responsabilité.</li>
                 <li>Le dirigeant de droit est celui qui exerce ses fonctions en vertu d'un titre, par exemple le président élu par l'assemblée générale.</li>
                 <li>En principe non : l'association est une personne morale qui répond elle-même de ses dettes.</li>
-                <li>C'est un manquement à la bonne gestion de l'association : une action ou une inaction contraire à son intérêt, qui lui cause un préjudice.</li>
+                <li>Une faute de gestion est un manquement à la bonne gestion de l'association : une action ou une inaction contraire à son intérêt, qui lui cause un préjudice.</li>
               </ul>
             </div>
 
