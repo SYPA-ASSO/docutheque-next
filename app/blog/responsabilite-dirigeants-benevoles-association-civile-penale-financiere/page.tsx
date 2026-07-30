@@ -176,8 +176,8 @@ export default function ArticleResponsabiliteDirigeantsBenevoles() {
               <ul style={{paddingLeft: '1.25rem', margin: 0, display: 'flex', flexDirection: 'column', gap: '6px', color: '#374151', fontSize: '13px', lineHeight: '1.6'}}>
                 <li>Le bénévolat n'exonère pas de responsabilité.</li>
                 <li>Le dirigeant de droit est celui qui exerce ses fonctions en vertu d'un titre, par exemple le président élu par l'assemblée générale.</li>
-                <li>En principe non : l'association est une personne morale qui répond elle-même de ses dettes.</li>
-                <li>Une faute de gestion est un manquement à la bonne gestion de l'association : une action ou une inaction contraire à son intérêt, qui lui cause un préjudice.</li>
+                <li>Le président d'une association n'est en principe pas responsable des dettes de celle-ci : l'association est une personne morale qui répond elle-même de ses dettes.</li>
+                <li>Une faute de gestion est une action ou une inaction contraire à l'intérêt de l'association qui lui cause un préjudice ; une simple négligence ne suffit pas, il faut une faute caractérisée.</li>
               </ul>
             </div>
 
