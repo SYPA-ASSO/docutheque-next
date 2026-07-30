@@ -136,6 +136,17 @@ export default function ArticleArnaqueRSE() {
               />
             </div>
 
+            {/* EN RÉSUMÉ */}
+            <div style={{background: '#f8fafc', border: '1px solid #dbeafe', borderLeft: '4px solid #0f2d6e', borderRadius: '10px', padding: '1.1rem 1.4rem', marginBottom: '1.75rem'}}>
+              <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px', textTransform: 'uppercase', letterSpacing: '0.03em'}}>En résumé</p>
+              <ul style={{paddingLeft: '1.25rem', margin: 0, display: 'flex', flexDirection: 'column', gap: '6px', color: '#374151', fontSize: '13px', lineHeight: '1.6'}}>
+                <li>Après une création d'entreprise, un faux courrier réclame un paiement pour un « Registre des Sociétés Européennes ».</li>
+                <li>Le registre officiel européen (BRIS) est gratuit et automatique dès l'immatriculation au RCS : aucune démarche ni paiement supplémentaire n'est requis.</li>
+                <li>Aucun organisme officiel (INPI, greffe, URSSAF) ne demande de paiement postal pour un registre européen.</li>
+                <li>En cas de doute : ne rien signer, ne rien payer, signaler sur signal.conso.gouv.fr et contester le paiement auprès de sa banque si nécessaire.</li>
+              </ul>
+            </div>
+
             {/* SOMMAIRE */}
             <nav style={{background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '12px', padding: '1.25rem 1.5rem', marginBottom: '2.5rem'}}>
               <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px'}}>Sommaire</p>
