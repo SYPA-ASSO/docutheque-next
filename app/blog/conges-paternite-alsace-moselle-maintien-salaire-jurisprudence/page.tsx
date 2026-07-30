@@ -133,9 +133,9 @@ export default function ArticleCongesPaternite() {
             <div style={{background: '#f8fafc', border: '1px solid #dbeafe', borderLeft: '4px solid #0f2d6e', borderRadius: '10px', padding: '1.1rem 1.4rem', marginBottom: '1.75rem'}}>
               <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px', textTransform: 'uppercase', letterSpacing: '0.03em'}}>En résumé</p>
               <ul style={{paddingLeft: '1.25rem', margin: 0, display: 'flex', flexDirection: 'column', gap: '6px', color: '#374151', fontSize: '13px', lineHeight: '1.6'}}>
-                <li>Le droit local alsacien-mosellan prévoit le maintien de salaire pour toute suspension du contrat de travail pour un motif personnel indépendant de la volonté du salarié et pour une durée…</li>
-                <li>L'employeur peut déduire de la rémunération maintenue le montant des indemnités journalières de sécurité sociale (IJSS) versées au salarié.</li>
-                <li>Cette obligation de maintien de salaire est spécifique au droit local alsacien-mosellan, applicable uniquement dans le Bas-Rhin, le Haut-Rhin et la Moselle.</li>
+                <li>En Alsace-Moselle, le maintien de salaire s'applique aussi au congé maternité, le droit local prévoyant ce maintien pour toute suspension de contrat pour motif personnel indépendant de la volonté du salarié.</li>
+                <li>L'employeur peut déduire les indemnités journalières de sécurité sociale (IJSS) du maintien de salaire, qui s'applique donc en complément des IJSS et non en plus.</li>
+                <li>Le maintien de salaire en cas de congé de paternité reste spécifique au droit local alsacien-mosellan, applicable uniquement dans le Bas-Rhin, le Haut-Rhin et la Moselle.</li>
               </ul>
             </div>
 

@@ -172,10 +172,10 @@ export default function ArticleMartiniqueLoi2026() {
             <div style={{background: '#f8fafc', border: '1px solid #dbeafe', borderLeft: '4px solid #0f2d6e', borderRadius: '10px', padding: '1.1rem 1.4rem', marginBottom: '1.75rem'}}>
               <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px', textTransform: 'uppercase', letterSpacing: '0.03em'}}>En résumé</p>
               <ul style={{paddingLeft: '1.25rem', margin: 0, display: 'flex', flexDirection: 'column', gap: '6px', color: '#374151', fontSize: '13px', lineHeight: '1.6'}}>
-                <li>Elle habilite l'assemblée de Martinique à adopter des dispositions spécifiques ; elle n'épuise donc pas, à elle seule, le contenu normatif à venir.</li>
-                <li>Deux volets : l'énergie d'une part (maîtrise de la demande, réglementation thermique des bâtiments, énergies renouvelables, mobilité durable), et la création d'une autorité unique en matière…</li>
-                <li>Jusqu'au prochain renouvellement général de l'assemblée de Martinique.</li>
-                <li>La loi pose une limite expresse : les dispositions adoptées ne peuvent pas avoir d'impact sur les charges de service public de l'énergie prises en compte dans le calcul de la péréquation…</li>
+                <li>La loi du 30 juin 2026 ne modifie pas immédiatement les règles applicables en Martinique : elle habilite l'assemblée de Martinique à adopter des dispositions spécifiques.</li>
+                <li>L'habilitation vise deux volets : l'énergie (maîtrise de la demande, réglementation thermique, énergies renouvelables, mobilité durable) et la création d'une autorité unique de l'eau et de l'assainissement.</li>
+                <li>L'habilitation est valable jusqu'au prochain renouvellement général de l'assemblée de Martinique.</li>
+                <li>Les dispositions adoptées ne peuvent pas avoir d'impact sur les charges de service public de l'énergie prises en compte dans le calcul de la péréquation tarifaire.</li>
               </ul>
             </div>
 

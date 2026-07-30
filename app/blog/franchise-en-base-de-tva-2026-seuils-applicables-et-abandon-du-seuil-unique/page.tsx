@@ -174,10 +174,10 @@ export default function ArticleFranchiseTVASeuils2026() {
             <div style={{background: '#f8fafc', border: '1px solid #dbeafe', borderLeft: '4px solid #0f2d6e', borderRadius: '10px', padding: '1.1rem 1.4rem', marginBottom: '1.75rem'}}>
               <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px', textTransform: 'uppercase', letterSpacing: '0.03em'}}>En résumé</p>
               <ul style={{paddingLeft: '1.25rem', margin: 0, display: 'flex', flexDirection: 'column', gap: '6px', color: '#374151', fontSize: '13px', lineHeight: '1.6'}}>
-                <li>Pour 2026, les seuils sont maintenus. Pour les ventes de biens, la restauration et l'hébergement : 85 000 € de chiffre d'affaires l'année précédente (seuil de base) et 93 500 € l'année en cours…</li>
-                <li>Ce seuil unique, instauré par la loi de finances pour 2025, n'a jamais été appliqué.</li>
-                <li>Si votre chiffre d'affaires dépasse le seuil de base mais reste sous le seuil majoré, vous restez en franchise l'année en cours et devenez redevable de la TVA au 1er janvier de l'année suivante.</li>
-                <li>La mention « TVA non applicable, article 293 B du Code général des impôts » pour une entreprise établie en France.</li>
+                <li>Pour 2026, les seuils de franchise en base de TVA sont maintenus : 85 000 € de chiffre d'affaires l'année précédente pour les ventes de biens (seuil de base) et 93 500 € l'année en cours (seuil majoré).</li>
+                <li>Le seuil unique de TVA à 25 000 €, instauré par la loi de finances pour 2025, n'a jamais été appliqué et a été définitivement abandonné par la loi n° 2025-1044 du 3 novembre 2025.</li>
+                <li>En cas de dépassement du seuil de base mais pas du seuil majoré, l'entreprise reste en franchise l'année en cours et devient redevable de la TVA au 1er janvier suivant.</li>
+                <li>La mention obligatoire sur facture en franchise de TVA est « TVA non applicable, article 293 B du Code général des impôts » pour une entreprise établie en France.</li>
               </ul>
             </div>
 

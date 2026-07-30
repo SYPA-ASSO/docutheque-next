@@ -175,10 +175,10 @@ export default function ArticleCongeSupplementaireNaissance2026() {
             <div style={{background: '#f8fafc', border: '1px solid #dbeafe', borderLeft: '4px solid #0f2d6e', borderRadius: '10px', padding: '1.1rem 1.4rem', marginBottom: '1.75rem'}}>
               <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px', textTransform: 'uppercase', letterSpacing: '0.03em'}}>En résumé</p>
               <ul style={{paddingLeft: '1.25rem', margin: 0, display: 'flex', flexDirection: 'column', gap: '6px', color: '#374151', fontSize: '13px', lineHeight: '1.6'}}>
-                <li>Le dispositif entre en vigueur le 1er juillet 2026, après publication des décrets d'application parus au Journal officiel le 31 mai 2026.</li>
-                <li>Chaque parent dispose d'un droit individuel et personnel, non transférable, d'un ou deux mois.</li>
-                <li>Il est indemnisé par l'Assurance maladie sous forme d'indemnités journalières de naissance, et non par l'employeur.</li>
-                <li>Pour un enfant né ou arrivé au foyer entre le 1er janvier et le 30 juin 2026, le délai de neuf mois est décompté à partir du 1er juillet 2026.</li>
+                <li>Le congé supplémentaire de naissance entre en vigueur le 1er juillet 2026 et bénéficie aux parents d'un enfant né ou adopté à compter du 1er janvier 2026.</li>
+                <li>Chaque parent dispose d'un droit individuel et non transférable d'un ou deux mois, pris en une fois ou fractionné en deux périodes d'un mois.</li>
+                <li>Le congé est indemnisé par l'Assurance maladie sous forme d'indemnités journalières de naissance, et non par l'employeur : 70 % du salaire net le premier mois, 60 % le second.</li>
+                <li>Pour un enfant né entre le 1er janvier et le 30 juin 2026, le délai de neuf mois est décompté à partir du 1er juillet 2026, permettant de prendre le congé jusqu'au 31 mars 2027.</li>
               </ul>
             </div>
 

@@ -89,10 +89,10 @@ export default function ArticleVacancesSecuriserLogement() {
             <div style={{background: '#f8fafc', border: '1px solid #dbeafe', borderLeft: '4px solid #0f2d6e', borderRadius: '10px', padding: '1.1rem 1.4rem', marginBottom: '1.75rem'}}>
               <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px', textTransform: 'uppercase', letterSpacing: '0.03em'}}>En résumé</p>
               <ul style={{paddingLeft: '1.25rem', margin: 0, display: 'flex', flexDirection: 'column', gap: '6px', color: '#374151', fontSize: '13px', lineHeight: '1.6'}}>
-                <li>Cela dépend de la clause d'inhabitation prévue dans votre contrat, si elle existe.</li>
-                <li>Ce n'est pas une obligation légale générale, mais c'est recommandé dès lors que votre absence risque de dépasser le délai fixé par la clause d'inhabitation de votre contrat.</li>
-                <li>L'abandon d'un animal domestique est puni des mêmes peines que les actes de cruauté, soit jusqu'à trois ans d'emprisonnement et 45 000 € d'amende en application de l'article 521-1 du Code pénal…</li>
-                <li>À condition que cela soit organisé dans le cadre de son contrat de travail de particulier employeur, avec un accord explicite sur les conditions de déplacement, d'hébergement et de rémunération…</li>
+                <li>La durée de couverture de l'assurance habitation pendant les vacances dépend de la clause d'inhabitation prévue dans votre contrat, si elle existe, avec une durée variant généralement entre 30 et 90 jours selon les assureurs.</li>
+                <li>Prévenir son assureur avant un long départ n'est pas une obligation légale générale, mais c'est recommandé dès lors que l'absence risque de dépasser le délai fixé par la clause d'inhabitation du contrat.</li>
+                <li>L'abandon d'un animal domestique est puni des mêmes peines que les actes de cruauté, soit jusqu'à trois ans d'emprisonnement et 45 000 € d'amende en application de l'article 521-1 du Code pénal.</li>
+                <li>Une nounou ou une assistante maternelle peut accompagner ses employeurs en vacances, à condition que cela soit organisé dans le cadre de son contrat de travail de particulier employeur, avec un accord explicite sur les conditions.</li>
               </ul>
             </div>
 

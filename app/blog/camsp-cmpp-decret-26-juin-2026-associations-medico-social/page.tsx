@@ -180,10 +180,10 @@ export default function ArticleCamspCmppDecret2026() {
             <div style={{background: '#f8fafc', border: '1px solid #dbeafe', borderLeft: '4px solid #0f2d6e', borderRadius: '10px', padding: '1.1rem 1.4rem', marginBottom: '1.75rem'}}>
               <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px', textTransform: 'uppercase', letterSpacing: '0.03em'}}>En résumé</p>
               <ul style={{paddingLeft: '1.25rem', margin: 0, display: 'flex', flexDirection: 'column', gap: '6px', color: '#374151', fontSize: '13px', lineHeight: '1.6'}}>
-                <li>Le décret n° 2026-580 du 26 juin 2026 a été publié au Journal officiel du 1er juillet 2026 et est entré en vigueur le lendemain de sa publication, soit le 2 juillet 2026.</li>
-                <li>Il abroge les annexes 32 et 32 bis du décret n° 46-1834 du 20 août 1946, complétées en 1956 puis 1976, qui régissaient jusqu'ici les CMPP et les CAMSP, et les remplace par deux cahiers des…</li>
-                <li>Les recommandations de bonnes pratiques professionnelles de la Haute Autorité de santé deviennent un référentiel juridiquement opposable aux CAMSP et CMPP : les pratiques des centres peuvent…</li>
-                <li>L'accès direct est consacré : les familles peuvent s'adresser à un CAMSP sans orientation préalable de la MDPH ou de la CDAPH, ce qui favorise la précocité du repérage et des interventions chez…</li>
+                <li>Le décret n° 2026-580 du 26 juin 2026, publié au Journal officiel du 1er juillet 2026, est entré en vigueur le 2 juillet 2026.</li>
+                <li>Ce décret abroge les annexes 32 et 32 bis du décret n° 46-1834 du 20 août 1946 qui régissaient les CMPP et les CAMSP, et les remplace par deux cahiers des charges insérés au Code de l'action sociale et des familles.</li>
+                <li>Les recommandations de bonnes pratiques professionnelles de la Haute Autorité de santé deviennent un référentiel juridiquement opposable aux CAMSP et CMPP, notamment lors des contrôles.</li>
+                <li>L'accès direct à un CAMSP est désormais consacré : les familles peuvent s'y adresser sans orientation préalable de la MDPH ou de la CDAPH.</li>
               </ul>
             </div>
 

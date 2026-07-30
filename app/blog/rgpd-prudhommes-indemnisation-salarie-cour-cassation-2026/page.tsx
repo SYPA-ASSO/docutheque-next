@@ -86,10 +86,10 @@ export default function ArticleRgpdPrudhommes2026() {
             <div style={{background: '#f8fafc', border: '1px solid #dbeafe', borderLeft: '4px solid #0f2d6e', borderRadius: '10px', padding: '1.1rem 1.4rem', marginBottom: '1.75rem'}}>
               <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px', textTransform: 'uppercase', letterSpacing: '0.03em'}}>En résumé</p>
               <ul style={{paddingLeft: '1.25rem', margin: 0, display: 'flex', flexDirection: 'column', gap: '6px', color: '#374151', fontSize: '13px', lineHeight: '1.6'}}>
-                <li>Plus depuis l'arrêt du 24 juin 2026. La Cour de cassation exige désormais que le salarié démontre un préjudice réel, matériel ou moral, résultant de cette violation, ainsi qu'un lien de…</li>
-                <li>Elle peut l'être, sous conditions. La Cour de cassation admet qu'une preuve déloyale ou illicite soit produite dès lors que sa production est indispensable à l'exercice du droit à la preuve et…</li>
-                <li>Si, sur trois plans distincts : une sanction de la CNIL reste possible indépendamment du contentieux prud'homal, une indemnisation du salarié reste due dès qu'un préjudice réel est démontré…</li>
-                <li>La géolocalisation des véhicules professionnels, les outils de mesure de l'activité, la vidéosurveillance, et la messagerie professionnelle, dès lors que ces dispositifs n'ont pas fait l'objet…</li>
+                <li>Depuis l'arrêt du 24 juin 2026, un salarié ne peut plus obtenir des dommages-intérêts pour la seule violation du RGPD par son employeur : il doit démontrer un préjudice réel et un lien de causalité.</li>
+                <li>Une preuve obtenue en violation du RGPD peut être utilisée devant le conseil de prud'hommes sous conditions, dès lors que sa production est indispensable à l'exercice du droit à la preuve et proportionnée au but poursuivi.</li>
+                <li>L'employeur reste exposé sur trois plans : sanction de la CNIL, indemnisation du salarié dès qu'un préjudice réel est démontré, et recevabilité d'une preuve obtenue en violation du RGPD.</li>
+                <li>Les données RH les plus exposées à un contentieux RGPD sont la géolocalisation des véhicules professionnels, les outils de mesure de l'activité, la vidéosurveillance et la messagerie professionnelle.</li>
               </ul>
             </div>
 

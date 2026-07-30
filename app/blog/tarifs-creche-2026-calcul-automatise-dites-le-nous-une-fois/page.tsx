@@ -87,8 +87,8 @@ export default function ArticleTarifsCreche2026() {
               <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px', textTransform: 'uppercase', letterSpacing: '0.03em'}}>En résumé</p>
               <ul style={{paddingLeft: '1.25rem', margin: 0, display: 'flex', flexDirection: 'column', gap: '6px', color: '#374151', fontSize: '13px', lineHeight: '1.6'}}>
                 <li>Seuls les établissements d'accueil du jeune enfant bénéficiant de la Prestation de Service Unique (PSU) sont concernés, soit 12 422 établissements.</li>
-                <li>Pas directement par l'API. Ces familles continuent de transmettre leurs justificatifs de revenus par un autre circuit, une interface de téléversement de documents distincte, mise à disposition…</li>
-                <li>Il est aujourd'hui codifié à l'article L.113-12 du Code des relations entre le public et l'administration, qui dispense l'usager de produire une information déjà détenue par une administration…</li>
+                <li>Les familles non allocataires de la CAF ou de la MSA ne sont pas concernées directement par l'API : elles continuent de transmettre leurs justificatifs de revenus par un autre circuit.</li>
+                <li>Le principe « Dites-le-nous une fois » est codifié à l'article L.113-12 du Code des relations entre le public et l'administration, qui dispense l'usager de produire une information déjà détenue par une autre administration.</li>
                 <li>Le gouvernement présente ce dispositif comme respectueux du RGPD, la donnée circulant entre administrations sans transiter par la famille ni par la crèche sous une forme brute.</li>
               </ul>
             </div>

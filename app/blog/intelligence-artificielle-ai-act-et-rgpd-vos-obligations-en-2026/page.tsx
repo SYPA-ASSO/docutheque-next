@@ -174,10 +174,10 @@ export default function ArticleIARGPDAiAct2026() {
             <div style={{background: '#f8fafc', border: '1px solid #dbeafe', borderLeft: '4px solid #0f2d6e', borderRadius: '10px', padding: '1.1rem 1.4rem', marginBottom: '1.75rem'}}>
               <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px', textTransform: 'uppercase', letterSpacing: '0.03em'}}>En résumé</p>
               <ul style={{paddingLeft: '1.25rem', margin: 0, display: 'flex', flexDirection: 'column', gap: '6px', color: '#374151', fontSize: '13px', lineHeight: '1.6'}}>
-                <li>L'AI Act est le règlement européen (UE) 2024/1689, entré en vigueur le 1er août 2024.</li>
-                <li>Si vous utilisez ou déployez de l'IA, vous êtes concerné, mais à un degré variable.</li>
-                <li>Ce sont deux textes distincts. L'AI Act relève d'une logique de sécurité des produits et de protection des droits fondamentaux.</li>
-                <li>Le Digital Omnibus sur l'IA, qui a fait l'objet d'un accord politique le 7 mai 2026 et a été approuvé par le Parlement européen le 16 juin 2026, reporte l'application des règles sur les systèmes…</li>
+                <li>L'AI Act est le règlement européen (UE) 2024/1689, entré en vigueur le 1er août 2024, premier cadre juridique général au monde sur l'intelligence artificielle.</li>
+                <li>Toute entreprise qui utilise ou déploie de l'IA est concernée par l'AI Act, à un degré variable selon le niveau de risque des outils utilisés.</li>
+                <li>L'AI Act et le RGPD sont deux textes distincts : l'AI Act relève d'une logique de sécurité des produits et de protection des droits fondamentaux, tandis que le RGPD protège les données personnelles.</li>
+                <li>Le Digital Omnibus sur l'IA, approuvé par le Parlement européen le 16 juin 2026, reporte l'application des règles sur les systèmes à haut risque.</li>
               </ul>
             </div>
 

@@ -86,10 +86,10 @@ export default function ArticleArretMaladieTeleconsultation2026() {
             <div style={{background: '#f8fafc', border: '1px solid #dbeafe', borderLeft: '4px solid #0f2d6e', borderRadius: '10px', padding: '1.1rem 1.4rem', marginBottom: '1.75rem'}}>
               <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px', textTransform: 'uppercase', letterSpacing: '0.03em'}}>En résumé</p>
               <ul style={{paddingLeft: '1.25rem', margin: 0, display: 'flex', flexDirection: 'column', gap: '6px', color: '#374151', fontSize: '13px', lineHeight: '1.6'}}>
-                <li>Ce plafond existe depuis le 1er janvier 2024.</li>
-                <li>Le médecin traitant et la sage-femme référente peuvent prescrire un arrêt plus long en téléconsultation, de même qu'en cas d'impossibilité justifiée de consulter en présentiel.</li>
-                <li>Depuis le 27 juin 2026, dans les mêmes conditions que pour un arrêt classique.</li>
-                <li>À compter du 1er septembre 2026, en application du décret n°2026-498 du 12 juin 2026 pris pour la loi de financement de la Sécurité sociale pour 2026 : une première prescription ne pourra pas…</li>
+                <li>Le plafond de 3 jours pour un arrêt en téléconsultation existe depuis le 1er janvier 2024 ; la loi du 25 juin 2026 verrouille surtout les contournements possibles.</li>
+                <li>Un arrêt prescrit par le médecin traitant ou la sage-femme référente n'est pas soumis au plafond de 3 jours, y compris en téléconsultation.</li>
+                <li>Depuis le 27 juin 2026, l'employeur peut faire procéder à une contre-visite même pour un arrêt prescrit par télémédecine, dans les mêmes conditions qu'un arrêt classique.</li>
+                <li>À compter du 1er septembre 2026, tous les arrêts maladie seront plafonnés en durée : 31 jours pour une première prescription, 62 jours par prolongation.</li>
               </ul>
             </div>
 
