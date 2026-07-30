@@ -82,7 +82,18 @@ export default function ArticleCpfTaRouen() {
               <img src="https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/cpf-tribunal-administratif-rouen-2026.webp" alt="CPF : le tribunal administratif de Rouen limite le pouvoir de sanction de l'État" style={{width: '100%', borderRadius: '12px', objectFit: 'cover', maxHeight: '400px'}} />
             </div>
 
-            <nav style={{background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '12px', padding: '1.25rem 1.5rem', marginBottom: '2.5rem'}}>
+                        {/* EN RÉSUMÉ */}
+            <div style={{background: '#f8fafc', border: '1px solid #dbeafe', borderLeft: '4px solid #0f2d6e', borderRadius: '10px', padding: '1.1rem 1.4rem', marginBottom: '1.75rem'}}>
+              <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px', textTransform: 'uppercase', letterSpacing: '0.03em'}}>En résumé</p>
+              <ul style={{paddingLeft: '1.25rem', margin: 0, display: 'flex', flexDirection: 'column', gap: '6px', color: '#374151', fontSize: '13px', lineHeight: '1.6'}}>
+                <li>Selon le tribunal administratif de Rouen. Le contrôle prévu par l'article L.6362-6 du Code du travail porte uniquement sur la réalité des actions et les moyens mobilisés, pas sur leur…</li>
+                <li>Le tribunal rappelle, en s'appuyant sur les conditions générales d'utilisation de Mon compte formation, que la Caisse des dépôts est un tiers à la relation contractuelle entre le titulaire du…</li>
+                <li>La Caisse des dépôts peut le demander, mais sur le fondement de l'article L.6323-44 du Code du travail, pas sur celui de l'article L.6362-6 utilisé par l'administration dans les deux affaires…</li>
+                <li>Cette sanction reste pleinement valable. Le tribunal a confirmé le rejet de dépenses versées au conjoint d'un entrepreneur individuel sans justification suffisante, sur le fondement des articles…</li>
+              </ul>
+            </div>
+
+<nav style={{background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '12px', padding: '1.25rem 1.5rem', marginBottom: '2.5rem'}}>
               <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px'}}>Sommaire</p>
               <ol style={{margin: 0, paddingLeft: '1.25rem', display: 'flex', flexDirection: 'column', gap: '6px'}}>
                 <li><a href="#intro" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none"}}>Introduction</a></li>

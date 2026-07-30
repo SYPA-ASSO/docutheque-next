@@ -170,7 +170,18 @@ export default function ArticleAssociationFiscalite2026() {
             </div>
 
             {/* SOMMAIRE */}
-            <nav style={{background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '12px', padding: '1.25rem 1.5rem', marginBottom: '2.5rem'}}>
+                        {/* EN RÉSUMÉ */}
+            <div style={{background: '#f8fafc', border: '1px solid #dbeafe', borderLeft: '4px solid #0f2d6e', borderRadius: '10px', padding: '1.1rem 1.4rem', marginBottom: '1.75rem'}}>
+              <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px', textTransform: 'uppercase', letterSpacing: '0.03em'}}>En résumé</p>
+              <ul style={{paddingLeft: '1.25rem', margin: 0, display: 'flex', flexDirection: 'column', gap: '6px', color: '#374151', fontSize: '13px', lineHeight: '1.6'}}>
+                <li>Pas automatiquement. Une association loi 1901 n'est pas exonérée par principe : son régime fiscal dépend de la nature de ses activités.</li>
+                <li>C'est la méthode de l'administration fiscale pour apprécier le caractère lucratif d'une activité.</li>
+                <li>Pour 2026, le seuil de recettes lucratives accessoires en dessous duquel une association à gestion désintéressée échappe aux impôts commerciaux s'établit à 81 051 euros (contre 80 011 euros en…</li>
+                <li>Les recettes des six manifestations annuelles de bienfaisance ou de soutien sont exonérées de TVA et d'impôt sur les sociétés, et ne sont pas comptabilisées dans le seuil de la franchise.</li>
+              </ul>
+            </div>
+
+<nav style={{background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '12px', padding: '1.25rem 1.5rem', marginBottom: '2.5rem'}}>
               <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px'}}>Sommaire</p>
               <ol style={{margin: 0, paddingLeft: '1.25rem', display: 'flex', flexDirection: 'column', gap: '6px'}}>
                 <li><a href="#intro" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>Introduction</a></li>

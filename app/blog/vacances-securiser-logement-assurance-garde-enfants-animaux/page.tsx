@@ -85,7 +85,18 @@ export default function ArticleVacancesSecuriserLogement() {
               <img src="https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/vacances-securiser-logement-assurance-garde-enfants-animaux-2026.webp" alt="Vacances : sécuriser son logement, son assurance habitation, la garde des enfants et des animaux" style={{width: '100%', borderRadius: '12px', objectFit: 'cover', maxHeight: '400px'}} />
             </div>
 
-            <nav style={{background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '12px', padding: '1.25rem 1.5rem', marginBottom: '2.5rem'}}>
+                        {/* EN RÉSUMÉ */}
+            <div style={{background: '#f8fafc', border: '1px solid #dbeafe', borderLeft: '4px solid #0f2d6e', borderRadius: '10px', padding: '1.1rem 1.4rem', marginBottom: '1.75rem'}}>
+              <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px', textTransform: 'uppercase', letterSpacing: '0.03em'}}>En résumé</p>
+              <ul style={{paddingLeft: '1.25rem', margin: 0, display: 'flex', flexDirection: 'column', gap: '6px', color: '#374151', fontSize: '13px', lineHeight: '1.6'}}>
+                <li>Cela dépend de la clause d'inhabitation prévue dans votre contrat, si elle existe.</li>
+                <li>Ce n'est pas une obligation légale générale, mais c'est recommandé dès lors que votre absence risque de dépasser le délai fixé par la clause d'inhabitation de votre contrat.</li>
+                <li>L'abandon d'un animal domestique est puni des mêmes peines que les actes de cruauté, soit jusqu'à trois ans d'emprisonnement et 45 000 € d'amende en application de l'article 521-1 du Code pénal…</li>
+                <li>À condition que cela soit organisé dans le cadre de son contrat de travail de particulier employeur, avec un accord explicite sur les conditions de déplacement, d'hébergement et de rémunération…</li>
+              </ul>
+            </div>
+
+<nav style={{background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '12px', padding: '1.25rem 1.5rem', marginBottom: '2.5rem'}}>
               <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px'}}>Sommaire</p>
               <ol style={{margin: 0, paddingLeft: '1.25rem', display: 'flex', flexDirection: 'column', gap: '6px'}}>
                 <li><a href="#intro" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none"}}>Introduction</a></li>

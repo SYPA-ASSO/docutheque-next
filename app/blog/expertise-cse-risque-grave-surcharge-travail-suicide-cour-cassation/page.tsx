@@ -82,7 +82,18 @@ export default function ArticleExpertiseCseRisqueGrave2026() {
               <img src="https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/expertise-cse-risque-grave-2026.webp" alt="Expertise CSE pour risque grave : ce que confirme la Cour de cassation après un suicide lié à la surcharge de travail" style={{width: '100%', borderRadius: '12px', objectFit: 'cover', maxHeight: '400px'}} />
             </div>
 
-            <nav style={{background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '12px', padding: '1.25rem 1.5rem', marginBottom: '2.5rem'}}>
+                        {/* EN RÉSUMÉ */}
+            <div style={{background: '#f8fafc', border: '1px solid #dbeafe', borderLeft: '4px solid #0f2d6e', borderRadius: '10px', padding: '1.1rem 1.4rem', marginBottom: '1.75rem'}}>
+              <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px', textTransform: 'uppercase', letterSpacing: '0.03em'}}>En résumé</p>
+              <ul style={{paddingLeft: '1.25rem', margin: 0, display: 'flex', flexDirection: 'column', gap: '6px', color: '#374151', fontSize: '13px', lineHeight: '1.6'}}>
+                <li>Le CSE doit démontrer l'existence d'un risque grave, identifié et actuel, pour la santé physique ou mentale des salariés, au jour de sa délibération.</li>
+                <li>La Cour de cassation rappelle que le risque grave s'apprécie au jour de la délibération du CSE.</li>
+                <li>La Cour de cassation a censuré un jugement qui écartait le risque grave notamment au motif que le salarié n'avait pas alerté sur sa situation avant son suicide.</li>
+                <li>La Cour de cassation a confirmé, dans un arrêt du 1er octobre 2025, que l'existence de pouvoirs d'enquête ou la mise en œuvre préalable d'une procédure d'alerte pour danger grave et imminent ne…</li>
+              </ul>
+            </div>
+
+<nav style={{background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '12px', padding: '1.25rem 1.5rem', marginBottom: '2.5rem'}}>
               <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px'}}>Sommaire</p>
               <ol style={{margin: 0, paddingLeft: '1.25rem', display: 'flex', flexDirection: 'column', gap: '6px'}}>
                 <li><a href="#intro" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none"}}>Introduction</a></li>

@@ -82,7 +82,18 @@ export default function ArticleArretMaladieTeleconsultation2026() {
               <img src="https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/arret-maladie-teleconsultation-2026.webp" alt="Arrêt maladie en téléconsultation 2026 : le plafond de 3 jours et les nouveaux verrous anti-fraude" style={{width: '100%', borderRadius: '12px', objectFit: 'cover', maxHeight: '400px'}} />
             </div>
 
-            <nav style={{background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '12px', padding: '1.25rem 1.5rem', marginBottom: '2.5rem'}}>
+                        {/* EN RÉSUMÉ */}
+            <div style={{background: '#f8fafc', border: '1px solid #dbeafe', borderLeft: '4px solid #0f2d6e', borderRadius: '10px', padding: '1.1rem 1.4rem', marginBottom: '1.75rem'}}>
+              <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px', textTransform: 'uppercase', letterSpacing: '0.03em'}}>En résumé</p>
+              <ul style={{paddingLeft: '1.25rem', margin: 0, display: 'flex', flexDirection: 'column', gap: '6px', color: '#374151', fontSize: '13px', lineHeight: '1.6'}}>
+                <li>Ce plafond existe depuis le 1er janvier 2024.</li>
+                <li>Le médecin traitant et la sage-femme référente peuvent prescrire un arrêt plus long en téléconsultation, de même qu'en cas d'impossibilité justifiée de consulter en présentiel.</li>
+                <li>Depuis le 27 juin 2026, dans les mêmes conditions que pour un arrêt classique.</li>
+                <li>À compter du 1er septembre 2026, en application du décret n°2026-498 du 12 juin 2026 pris pour la loi de financement de la Sécurité sociale pour 2026 : une première prescription ne pourra pas…</li>
+              </ul>
+            </div>
+
+<nav style={{background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '12px', padding: '1.25rem 1.5rem', marginBottom: '2.5rem'}}>
               <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px'}}>Sommaire</p>
               <ol style={{margin: 0, paddingLeft: '1.25rem', display: 'flex', flexDirection: 'column', gap: '6px'}}>
                 <li><a href="#intro" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none"}}>Introduction</a></li>

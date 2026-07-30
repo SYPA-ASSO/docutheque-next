@@ -82,7 +82,18 @@ export default function ArticleTarifsCreche2026() {
               <img src="https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/tarifs-creche-calcul-automatise-2026.webp" alt="Tarifs de crèche 2026 : l'État automatise le calcul, ce que ça change pour les gestionnaires et les familles" style={{width: '100%', borderRadius: '12px', objectFit: 'cover', maxHeight: '400px'}} />
             </div>
 
-            <nav style={{background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '12px', padding: '1.25rem 1.5rem', marginBottom: '2.5rem'}}>
+                        {/* EN RÉSUMÉ */}
+            <div style={{background: '#f8fafc', border: '1px solid #dbeafe', borderLeft: '4px solid #0f2d6e', borderRadius: '10px', padding: '1.1rem 1.4rem', marginBottom: '1.75rem'}}>
+              <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px', textTransform: 'uppercase', letterSpacing: '0.03em'}}>En résumé</p>
+              <ul style={{paddingLeft: '1.25rem', margin: 0, display: 'flex', flexDirection: 'column', gap: '6px', color: '#374151', fontSize: '13px', lineHeight: '1.6'}}>
+                <li>Seuls les établissements d'accueil du jeune enfant bénéficiant de la Prestation de Service Unique (PSU) sont concernés, soit 12 422 établissements.</li>
+                <li>Pas directement par l'API. Ces familles continuent de transmettre leurs justificatifs de revenus par un autre circuit, une interface de téléversement de documents distincte, mise à disposition…</li>
+                <li>Il est aujourd'hui codifié à l'article L.113-12 du Code des relations entre le public et l'administration, qui dispense l'usager de produire une information déjà détenue par une administration…</li>
+                <li>Le gouvernement présente ce dispositif comme respectueux du RGPD, la donnée circulant entre administrations sans transiter par la famille ni par la crèche sous une forme brute.</li>
+              </ul>
+            </div>
+
+<nav style={{background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '12px', padding: '1.25rem 1.5rem', marginBottom: '2.5rem'}}>
               <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px'}}>Sommaire</p>
               <ol style={{margin: 0, paddingLeft: '1.25rem', display: 'flex', flexDirection: 'column', gap: '6px'}}>
                 <li><a href="#intro" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none"}}>Introduction</a></li>

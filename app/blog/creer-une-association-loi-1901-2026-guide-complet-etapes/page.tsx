@@ -170,7 +170,18 @@ export default function ArticleCreerAssociation1901_2026() {
             </div>
 
             {/* SOMMAIRE */}
-            <nav style={{background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '12px', padding: '1.25rem 1.5rem', marginBottom: '2.5rem'}}>
+                        {/* EN RÉSUMÉ */}
+            <div style={{background: '#f8fafc', border: '1px solid #dbeafe', borderLeft: '4px solid #0f2d6e', borderRadius: '10px', padding: '1.1rem 1.4rem', marginBottom: '1.75rem'}}>
+              <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px', textTransform: 'uppercase', letterSpacing: '0.03em'}}>En résumé</p>
+              <ul style={{paddingLeft: '1.25rem', margin: 0, display: 'flex', flexDirection: 'column', gap: '6px', color: '#374151', fontSize: '13px', lineHeight: '1.6'}}>
+                <li>Deux personnes au minimum suffisent pour créer une association loi 1901.</li>
+                <li>La création est gratuite. La déclaration auprès du greffe des associations et la publication au Journal officiel des associations (JOAFE) sont sans frais depuis le 1er janvier 2020.</li>
+                <li>La loi de 1901 n'impose aucun modèle (sauf en Alsace-Moselle), mais les statuts doivent au minimum préciser la dénomination, l'objet, le siège social et les règles de fonctionnement : conditions…</li>
+                <li>La déclaration se fait auprès du greffe des associations, soit en ligne via le téléservice e-création sur service-public.fr, soit en déposant le formulaire Cerfa à la préfecture ou…</li>
+              </ul>
+            </div>
+
+<nav style={{background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '12px', padding: '1.25rem 1.5rem', marginBottom: '2.5rem'}}>
               <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px'}}>Sommaire</p>
               <ol style={{margin: 0, paddingLeft: '1.25rem', display: 'flex', flexDirection: 'column', gap: '6px'}}>
                 <li><a href="#intro" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>Introduction</a></li>

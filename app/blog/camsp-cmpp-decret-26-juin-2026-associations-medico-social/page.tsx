@@ -176,7 +176,18 @@ export default function ArticleCamspCmppDecret2026() {
             </div>
 
             {/* SOMMAIRE */}
-            <nav style={{background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '12px', padding: '1.25rem 1.5rem', marginBottom: '2.5rem'}}>
+                        {/* EN RÉSUMÉ */}
+            <div style={{background: '#f8fafc', border: '1px solid #dbeafe', borderLeft: '4px solid #0f2d6e', borderRadius: '10px', padding: '1.1rem 1.4rem', marginBottom: '1.75rem'}}>
+              <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px', textTransform: 'uppercase', letterSpacing: '0.03em'}}>En résumé</p>
+              <ul style={{paddingLeft: '1.25rem', margin: 0, display: 'flex', flexDirection: 'column', gap: '6px', color: '#374151', fontSize: '13px', lineHeight: '1.6'}}>
+                <li>Le décret n° 2026-580 du 26 juin 2026 a été publié au Journal officiel du 1er juillet 2026 et est entré en vigueur le lendemain de sa publication, soit le 2 juillet 2026.</li>
+                <li>Il abroge les annexes 32 et 32 bis du décret n° 46-1834 du 20 août 1946, complétées en 1956 puis 1976, qui régissaient jusqu'ici les CMPP et les CAMSP, et les remplace par deux cahiers des…</li>
+                <li>Les recommandations de bonnes pratiques professionnelles de la Haute Autorité de santé deviennent un référentiel juridiquement opposable aux CAMSP et CMPP : les pratiques des centres peuvent…</li>
+                <li>L'accès direct est consacré : les familles peuvent s'adresser à un CAMSP sans orientation préalable de la MDPH ou de la CDAPH, ce qui favorise la précocité du repérage et des interventions chez…</li>
+              </ul>
+            </div>
+
+<nav style={{background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '12px', padding: '1.25rem 1.5rem', marginBottom: '2.5rem'}}>
               <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px'}}>Sommaire</p>
               <ol style={{margin: 0, paddingLeft: '1.25rem', display: 'flex', flexDirection: 'column', gap: '6px'}}>
                 <li><a href="#intro" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>Introduction</a></li>

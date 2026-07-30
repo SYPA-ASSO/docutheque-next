@@ -138,7 +138,18 @@ export default function ArticleQualiopiIso210012026() {
             </div>
 
             {/* SOMMAIRE */}
-            <nav style={{background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '12px', padding: '1.25rem 1.5rem', marginBottom: '2.5rem'}}>
+                        {/* EN RÉSUMÉ */}
+            <div style={{background: '#f8fafc', border: '1px solid #dbeafe', borderLeft: '4px solid #0f2d6e', borderRadius: '10px', padding: '1.1rem 1.4rem', marginBottom: '1.75rem'}}>
+              <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px', textTransform: 'uppercase', letterSpacing: '0.03em'}}>En résumé</p>
+              <ul style={{paddingLeft: '1.25rem', margin: 0, display: 'flex', flexDirection: 'column', gap: '6px', color: '#374151', fontSize: '13px', lineHeight: '1.6'}}>
+                <li>Qualiopi est obligatoire depuis le 1er janvier 2022 pour tout organisme, quel que soit son statut (société, association, coopérative), qui souhaite accéder à des fonds publics ou mutualisés…</li>
+                <li>Qualiopi est une certification nationale et obligatoire, propriété du ministère du Travail, conditionnant l'accès aux fonds publics et mutualisés.</li>
+                <li>La certification Qualiopi est rattachée au numéro de déclaration d'activité de l'organisme, quel que soit son statut juridique.</li>
+                <li>L'organisme certifié doit afficher son certificat dans ses locaux et sur son site internet, ou le communiquer sur demande.</li>
+              </ul>
+            </div>
+
+<nav style={{background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '12px', padding: '1.25rem 1.5rem', marginBottom: '2.5rem'}}>
               <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px'}}>Sommaire</p>
               <ol style={{margin: 0, paddingLeft: '1.25rem', display: 'flex', flexDirection: 'column', gap: '6px'}}>
                 <li><a href="#intro" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>Introduction</a></li>

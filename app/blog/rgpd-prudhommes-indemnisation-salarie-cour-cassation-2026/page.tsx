@@ -82,7 +82,18 @@ export default function ArticleRgpdPrudhommes2026() {
               <img src="https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/rgpd-prudhommes-indemnisation-2026.webp" alt="RGPD et prud'hommes : pourquoi la seule violation ne suffit plus à obtenir réparation" style={{width: '100%', borderRadius: '12px', objectFit: 'cover', maxHeight: '400px'}} />
             </div>
 
-            <nav style={{background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '12px', padding: '1.25rem 1.5rem', marginBottom: '2.5rem'}}>
+                        {/* EN RÉSUMÉ */}
+            <div style={{background: '#f8fafc', border: '1px solid #dbeafe', borderLeft: '4px solid #0f2d6e', borderRadius: '10px', padding: '1.1rem 1.4rem', marginBottom: '1.75rem'}}>
+              <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px', textTransform: 'uppercase', letterSpacing: '0.03em'}}>En résumé</p>
+              <ul style={{paddingLeft: '1.25rem', margin: 0, display: 'flex', flexDirection: 'column', gap: '6px', color: '#374151', fontSize: '13px', lineHeight: '1.6'}}>
+                <li>Plus depuis l'arrêt du 24 juin 2026. La Cour de cassation exige désormais que le salarié démontre un préjudice réel, matériel ou moral, résultant de cette violation, ainsi qu'un lien de…</li>
+                <li>Elle peut l'être, sous conditions. La Cour de cassation admet qu'une preuve déloyale ou illicite soit produite dès lors que sa production est indispensable à l'exercice du droit à la preuve et…</li>
+                <li>Si, sur trois plans distincts : une sanction de la CNIL reste possible indépendamment du contentieux prud'homal, une indemnisation du salarié reste due dès qu'un préjudice réel est démontré…</li>
+                <li>La géolocalisation des véhicules professionnels, les outils de mesure de l'activité, la vidéosurveillance, et la messagerie professionnelle, dès lors que ces dispositifs n'ont pas fait l'objet…</li>
+              </ul>
+            </div>
+
+<nav style={{background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '12px', padding: '1.25rem 1.5rem', marginBottom: '2.5rem'}}>
               <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px'}}>Sommaire</p>
               <ol style={{margin: 0, paddingLeft: '1.25rem', display: 'flex', flexDirection: 'column', gap: '6px'}}>
                 <li><a href="#intro" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none"}}>Introduction</a></li>

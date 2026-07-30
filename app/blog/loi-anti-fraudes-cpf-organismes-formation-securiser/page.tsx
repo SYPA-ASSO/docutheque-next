@@ -82,7 +82,18 @@ export default function ArticleLoiAntiFraudesOF() {
               <img src="https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/loi-anti-fraudes-organismes-formation-securisation.webp" alt="Loi anti-fraudes CPF : ce que les organismes de formation doivent sécuriser dès maintenant" style={{width: '100%', borderRadius: '12px', objectFit: 'cover', maxHeight: '400px'}} />
             </div>
 
-            <nav style={{background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '12px', padding: '1.25rem 1.5rem', marginBottom: '2.5rem'}}>
+                        {/* EN RÉSUMÉ */}
+            <div style={{background: '#f8fafc', border: '1px solid #dbeafe', borderLeft: '4px solid #0f2d6e', borderRadius: '10px', padding: '1.1rem 1.4rem', marginBottom: '1.75rem'}}>
+              <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px', textTransform: 'uppercase', letterSpacing: '0.03em'}}>En résumé</p>
+              <ul style={{paddingLeft: '1.25rem', margin: 0, display: 'flex', flexDirection: 'column', gap: '6px', color: '#374151', fontSize: '13px', lineHeight: '1.6'}}>
+                <li>C'est le titulaire du CPF qui doit rembourser la Caisse des dépôts, pas l'organisme de formation.</li>
+                <li>Depuis la loi du 25 juin 2026, les organismes doivent communiquer aux ministères et organismes certificateurs, par voie dématérialisée, la liste des stagiaires ayant débuté une formation ou une…</li>
+                <li>À terme. Les organismes devront publier sur leur site internet leurs taux de présence et de réussite aux examens, et les transmettre aux stagiaires avant toute inscription (article L.6353-12 du…</li>
+                <li>Indirectement mais fortement. La publication des taux de réussite par organisme entre en résonance avec l'indicateur 2 du Référentiel National Qualité (indicateurs de résultats), qu'un auditeur…</li>
+              </ul>
+            </div>
+
+<nav style={{background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '12px', padding: '1.25rem 1.5rem', marginBottom: '2.5rem'}}>
               <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px'}}>Sommaire</p>
               <ol style={{margin: 0, paddingLeft: '1.25rem', display: 'flex', flexDirection: 'column', gap: '6px'}}>
                 <li><a href="#intro" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none"}}>Introduction</a></li>

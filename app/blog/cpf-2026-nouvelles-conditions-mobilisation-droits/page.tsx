@@ -82,7 +82,18 @@ export default function ArticleCpf2026Conditions() {
               <img src="https://8n0jumnfihjqiv3s.public.blob.vercel-storage.com/cpf-2026-nouvelles-conditions-mobilisation.webp" alt="CPF 2026 : nouvelles conditions de mobilisation des droits" style={{width: '100%', borderRadius: '12px', objectFit: 'cover', maxHeight: '400px'}} />
             </div>
 
-            <nav style={{background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '12px', padding: '1.25rem 1.5rem', marginBottom: '2.5rem'}}>
+                        {/* EN RÉSUMÉ */}
+            <div style={{background: '#f8fafc', border: '1px solid #dbeafe', borderLeft: '4px solid #0f2d6e', borderRadius: '10px', padding: '1.1rem 1.4rem', marginBottom: '1.75rem'}}>
+              <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px', textTransform: 'uppercase', letterSpacing: '0.03em'}}>En résumé</p>
+              <ul style={{paddingLeft: '1.25rem', margin: 0, display: 'flex', flexDirection: 'column', gap: '6px', color: '#374151', fontSize: '13px', lineHeight: '1.6'}}>
+                <li>C'est le titulaire du CPF, pas l'organisme de formation.</li>
+                <li>Sauf pour les formations linguistiques. Depuis le 27 juin 2026, l'article L.6323-6 du Code du travail interdit de mobiliser ses droits CPF pour financer une formation sanctionnée par une…</li>
+                <li>La loi ne le définit pas elle-même : un décret doit encore en préciser les modalités d'appréciation.</li>
+                <li>Mais pas immédiatement. Les articles L.6113-8-1 et L.6353-12 du Code du travail, qui organisent cette publication, entrent en vigueur à une date fixée par décret, au plus tard un an après la…</li>
+              </ul>
+            </div>
+
+<nav style={{background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '12px', padding: '1.25rem 1.5rem', marginBottom: '2.5rem'}}>
               <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px'}}>Sommaire</p>
               <ol style={{margin: 0, paddingLeft: '1.25rem', display: 'flex', flexDirection: 'column', gap: '6px'}}>
                 <li><a href="#intro" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none"}}>Introduction</a></li>

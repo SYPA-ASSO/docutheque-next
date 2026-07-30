@@ -138,7 +138,18 @@ export default function ArticleResponsabiliteFinanciereAssociation2026() {
             </div>
 
             {/* SOMMAIRE */}
-            <nav style={{background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '12px', padding: '1.25rem 1.5rem', marginBottom: '2.5rem'}}>
+                        {/* EN RÉSUMÉ */}
+            <div style={{background: '#f8fafc', border: '1px solid #dbeafe', borderLeft: '4px solid #0f2d6e', borderRadius: '10px', padding: '1.1rem 1.4rem', marginBottom: '1.75rem'}}>
+              <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px', textTransform: 'uppercase', letterSpacing: '0.03em'}}>En résumé</p>
+              <ul style={{paddingLeft: '1.25rem', margin: 0, display: 'flex', flexDirection: 'column', gap: '6px', color: '#374151', fontSize: '13px', lineHeight: '1.6'}}>
+                <li>Dès qu'une collectivité territoriale lui apporte un concours financier supérieur à 1 500 euros par an, une association peut faire l'objet d'un contrôle facultatif de la chambre régionale des…</li>
+                <li>Depuis le 1er janvier 2023, le régime de responsabilité financière des gestionnaires publics s'applique à toute personne qui représente, administre ou agit pour le compte d'un organisme soumis…</li>
+                <li>C'est le régime issu de l'ordonnance n°2022-408 du 23 mars 2022, en vigueur depuis le 1er janvier 2023, qui a unifié les anciens régimes distincts de responsabilité des comptables publics et des…</li>
+                <li>Les magistrats tiennent compte de circonstances aggravantes (connaissance de la portée de ses actes, expérience du dirigeant, alertes ignorées, durée du manquement) et atténuantes (absence…</li>
+              </ul>
+            </div>
+
+<nav style={{background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '12px', padding: '1.25rem 1.5rem', marginBottom: '2.5rem'}}>
               <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px'}}>Sommaire</p>
               <ol style={{margin: 0, paddingLeft: '1.25rem', display: 'flex', flexDirection: 'column', gap: '6px'}}>
                 <li><a href="#intro" style={{color: "#1a4fba", fontSize: "12px", textDecoration: "none", lineHeight: "1.5"}}>Introduction</a></li>
