@@ -174,7 +174,7 @@ export default function ArticleLoiFinances2026TPE() {
             <div style={{background: '#f8fafc', border: '1px solid #dbeafe', borderLeft: '4px solid #0f2d6e', borderRadius: '10px', padding: '1.1rem 1.4rem', marginBottom: '1.75rem'}}>
               <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px', textTransform: 'uppercase', letterSpacing: '0.03em'}}>En résumé</p>
               <ul style={{paddingLeft: '1.25rem', margin: 0, display: 'flex', flexDirection: 'column', gap: '6px', color: '#374151', fontSize: '13px', lineHeight: '1.6'}}>
-                <li>Au terme d'un parcours atypique, marqué par l'absence d'accord fin 2025, une loi spéciale de continuité en décembre 2025 puis plusieurs recours à l'article 49.3, la loi de finances pour 2026 a…</li>
+                <li>La loi de finances pour 2026 a été définitivement adoptée le 2 février 2026, validée par le Conseil constitutionnel et promulguée le 19 février 2026.</li>
                 <li>Le gel du barème, un temps envisagé, a été abandonné.</li>
                 <li>La tentative d'instaurer un nouveau seuil unique de franchise en base de TVA a été écartée.</li>
                 <li>La surtaxe exceptionnelle sur l'impôt sur les sociétés vise les grandes entreprises, dont le chiffre d'affaires est très élevé.</li>

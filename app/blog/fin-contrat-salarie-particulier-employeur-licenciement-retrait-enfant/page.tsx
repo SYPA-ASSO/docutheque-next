@@ -142,10 +142,10 @@ export default function ArticleFinContratParticulierEmployeur2026() {
             <div style={{background: '#f8fafc', border: '1px solid #dbeafe', borderLeft: '4px solid #0f2d6e', borderRadius: '10px', padding: '1.1rem 1.4rem', marginBottom: '1.75rem'}}>
               <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px', textTransform: 'uppercase', letterSpacing: '0.03em'}}>En résumé</p>
               <ul style={{paddingLeft: '1.25rem', margin: 0, display: 'flex', flexDirection: 'column', gap: '6px', color: '#374151', fontSize: '13px', lineHeight: '1.6'}}>
-                <li>La rupture du contrat d'une assistante maternelle par le parent employeur ne s'analyse pas en licenciement au sens du Code du travail, mais en « retrait d'enfant », un mécanisme autonome…</li>
-                <li>Le préavis dépend de l'ancienneté de l'enfant chez l'assistante maternelle : 8 jours si l'accueil dure depuis moins de 3 mois, 15 jours entre 3 mois et 1 an, et 1 mois à partir d'un an…</li>
-                <li>Le retrait des clés, l'arrêt des plannings ou la remise d'un solde de tout compte sans lettre recommandée constituent un licenciement irrégulier, systématiquement requalifié par les juges en…</li>
-                <li>Depuis la convention collective du 15 mars 2021, la présence de nuit est rémunérée par une indemnité forfaitaire au moins égale à un quart du salaire contractuel pour une durée de travail…</li>
+                <li>La rupture du contrat d'une assistante maternelle par le parent employeur ne s'analyse pas en licenciement, mais en « retrait d'enfant », un mécanisme autonome avec ses propres règles.</li>
+                <li>Le préavis dépend de l'ancienneté de l'enfant : 8 jours si l'accueil dure depuis moins de 3 mois, 15 jours entre 3 mois et 1 an, et 1 mois à partir d'un an.</li>
+                <li>Retirer les clés ou remettre un solde de tout compte sans lettre recommandée constitue un licenciement irrégulier, systématiquement requalifié par les juges.</li>
+                <li>Depuis la convention collective du 15 mars 2021, la présence de nuit est rémunérée par une indemnité forfaitaire au moins égale à un quart du salaire contractuel.</li>
               </ul>
             </div>
 

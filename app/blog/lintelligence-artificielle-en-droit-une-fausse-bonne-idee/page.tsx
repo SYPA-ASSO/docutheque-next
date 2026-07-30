@@ -166,9 +166,9 @@ export default function ArticleIA() {
             <div style={{background: '#f8fafc', border: '1px solid #dbeafe', borderLeft: '4px solid #0f2d6e', borderRadius: '10px', padding: '1.1rem 1.4rem', marginBottom: '1.75rem'}}>
               <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px', textTransform: 'uppercase', letterSpacing: '0.03em'}}>En résumé</p>
               <ul style={{paddingLeft: '1.25rem', margin: 0, display: 'flex', flexDirection: 'column', gap: '6px', color: '#374151', fontSize: '13px', lineHeight: '1.6'}}>
-                <li>L'IA peut automatiser certaines tâches répétitives, mais elle ne peut pas reproduire le jugement nuancé, l'éthique, l'empathie et la capacité à traiter chaque situation juridique dans sa…</li>
-                <li>Une hallucination est la production par un modèle d'IA d'informations factuellement inexactes mais présentées de manière convaincante.</li>
-                <li>Le biais algorithmique désigne les erreurs systématiques dans les résultats d'un système d'IA, dues à des données d'entraînement non représentatives ou à la conception de l'algorithme lui-même.</li>
+                <li>L'IA peut automatiser certaines tâches répétitives, mais elle ne peut pas reproduire le jugement nuancé, l'éthique et l'empathie indispensables à la pratique du droit.</li>
+                <li>Une hallucination est la production par un modèle d'IA d'informations factuellement inexactes mais présentées de manière convaincante, comme des citations de jurisprudence inventées.</li>
+                <li>Le biais algorithmique désigne les erreurs systématiques dans les résultats d'un système d'IA, dues à des données d'entraînement non représentatives.</li>
                 <li>L'Union européenne a adopté l'AI Act en 2024, première réglementation mondiale complète sur l'intelligence artificielle.</li>
               </ul>
             </div>

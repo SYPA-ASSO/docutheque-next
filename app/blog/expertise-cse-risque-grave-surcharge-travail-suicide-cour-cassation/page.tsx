@@ -87,9 +87,9 @@ export default function ArticleExpertiseCseRisqueGrave2026() {
               <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px', textTransform: 'uppercase', letterSpacing: '0.03em'}}>En résumé</p>
               <ul style={{paddingLeft: '1.25rem', margin: 0, display: 'flex', flexDirection: 'column', gap: '6px', color: '#374151', fontSize: '13px', lineHeight: '1.6'}}>
                 <li>Le CSE doit démontrer l'existence d'un risque grave, identifié et actuel, pour la santé physique ou mentale des salariés, au jour de sa délibération.</li>
-                <li>La Cour de cassation rappelle que le risque grave s'apprécie au jour de la délibération du CSE.</li>
-                <li>La Cour de cassation a censuré un jugement qui écartait le risque grave notamment au motif que le salarié n'avait pas alerté sur sa situation avant son suicide.</li>
-                <li>La Cour de cassation a confirmé, dans un arrêt du 1er octobre 2025, que l'existence de pouvoirs d'enquête ou la mise en œuvre préalable d'une procédure d'alerte pour danger grave et imminent ne…</li>
+                <li>La Cour de cassation rappelle que le risque grave s'apprécie au jour de la délibération du CSE, sans que des mesures prises ensuite par l'employeur puissent priver le comité de son droit à l'expertise.</li>
+                <li>La Cour de cassation a censuré un jugement qui écartait le risque grave au seul motif que le salarié n'avait pas alerté sur sa situation avant son suicide.</li>
+                <li>L'expertise pour risque grave reste indépendante du droit d'alerte et du pouvoir d'enquête du CSE : ce sont trois outils distincts et cumulables.</li>
               </ul>
             </div>
 

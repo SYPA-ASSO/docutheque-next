@@ -150,10 +150,10 @@ export default function ArticleVenteVehiculeOccasion2026() {
             <div style={{background: '#f8fafc', border: '1px solid #dbeafe', borderLeft: '4px solid #0f2d6e', borderRadius: '10px', padding: '1.1rem 1.4rem', marginBottom: '1.75rem'}}>
               <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px', textTransform: 'uppercase', letterSpacing: '0.03em'}}>En résumé</p>
               <ul style={{paddingLeft: '1.25rem', margin: 0, display: 'flex', flexDirection: 'column', gap: '6px', color: '#374151', fontSize: '13px', lineHeight: '1.6'}}>
-                <li>Le vendeur doit déclarer la cession du véhicule dans les 15 jours à compter de la vente.</li>
-                <li>Le code de cession, le certificat de cession (Cerfa n°15776*02) en deux exemplaires, le certificat de situation administrative, le procès-verbal de contrôle technique de moins de 6 mois si le…</li>
-                <li>Sur un point important : le contrôle technique de moins de 6 mois, obligatoire pour vendre à un particulier, n'a pas à être fourni en cas de vente à un professionnel de l'automobile (article 5…</li>
-                <li>Dès que la vente est réalisée, le vendeur peut envoyer une lettre recommandée avec accusé de réception à son assureur, accompagnée d'une copie du certificat de cession.</li>
+                <li>Le vendeur doit déclarer la cession du véhicule dans les 15 jours à compter de la vente, sous peine d'une contravention de 135 euros.</li>
+                <li>Les documents à remettre à l'acheteur sont le code de cession, le certificat de cession en deux exemplaires, le certificat de situation administrative, et le contrôle technique de moins de 6 mois si applicable.</li>
+                <li>La vente à un professionnel de l'automobile dispense du contrôle technique de moins de 6 mois normalement obligatoire pour vendre à un particulier.</li>
+                <li>Dès que la vente est réalisée, le vendeur peut résilier son assurance par lettre recommandée avec copie du certificat de cession, la résiliation prenant effet sous 10 jours.</li>
               </ul>
             </div>
 

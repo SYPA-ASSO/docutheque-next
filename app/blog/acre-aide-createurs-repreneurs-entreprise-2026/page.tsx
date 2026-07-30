@@ -142,10 +142,10 @@ export default function ArticleAcre2026() {
             <div style={{background: '#f8fafc', border: '1px solid #dbeafe', borderLeft: '4px solid #0f2d6e', borderRadius: '10px', padding: '1.1rem 1.4rem', marginBottom: '1.75rem'}}>
               <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px', textTransform: 'uppercase', letterSpacing: '0.03em'}}>En résumé</p>
               <ul style={{paddingLeft: '1.25rem', margin: 0, display: 'flex', flexDirection: 'column', gap: '6px', color: '#374151', fontSize: '13px', lineHeight: '1.6'}}>
-                <li>Depuis le 1er janvier 2026, la demande doit être déposée auprès de l'Urssaf au plus tard le 60e jour suivant la date de début d'activité mentionnée sur le justificatif de création délivré par le…</li>
-                <li>L'exonération est plafonnée à 25 % des cotisations dues lorsque les revenus sont inférieurs ou égaux à 36 045 euros (75 % du plafond annuel de la Sécurité sociale).</li>
-                <li>L'aide est réservée à des publics définis par la loi : demandeurs d'emploi indemnisés ou inscrits depuis 6 mois, bénéficiaires du RSA ou de l'ASS, personnes de 18 à 26 ans, personnes de moins de…</li>
-                <li>L'Urssaf dispose d'un délai de 30 jours pour instruire la demande.</li>
+                <li>Depuis le 1er janvier 2026, la demande d'Acre doit être déposée auprès de l'Urssaf au plus tard le 60e jour suivant le début d'activité, sous peine de perte définitive de l'exonération.</li>
+                <li>L'exonération Acre est plafonnée à 25 % des cotisations dues lorsque les revenus sont inférieurs ou égaux à 36 045 euros, puis devient dégressive jusqu'à 48 060 euros.</li>
+                <li>L'Acre est réservée à des publics définis par la loi : demandeurs d'emploi, bénéficiaires du RSA ou de l'ASS, personnes de 18 à 26 ans, jeunes handicapés de moins de 30 ans, entre autres.</li>
+                <li>L'Urssaf dispose d'un délai de 30 jours pour instruire la demande d'Acre ; son silence passé ce délai vaut acceptation tacite.</li>
               </ul>
             </div>
 

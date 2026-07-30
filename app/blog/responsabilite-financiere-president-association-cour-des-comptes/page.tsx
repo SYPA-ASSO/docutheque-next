@@ -142,10 +142,10 @@ export default function ArticleResponsabiliteFinanciereAssociation2026() {
             <div style={{background: '#f8fafc', border: '1px solid #dbeafe', borderLeft: '4px solid #0f2d6e', borderRadius: '10px', padding: '1.1rem 1.4rem', marginBottom: '1.75rem'}}>
               <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px', textTransform: 'uppercase', letterSpacing: '0.03em'}}>En résumé</p>
               <ul style={{paddingLeft: '1.25rem', margin: 0, display: 'flex', flexDirection: 'column', gap: '6px', color: '#374151', fontSize: '13px', lineHeight: '1.6'}}>
-                <li>Dès qu'une collectivité territoriale lui apporte un concours financier supérieur à 1 500 euros par an, une association peut faire l'objet d'un contrôle facultatif de la chambre régionale des…</li>
-                <li>Depuis le 1er janvier 2023, le régime de responsabilité financière des gestionnaires publics s'applique à toute personne qui représente, administre ou agit pour le compte d'un organisme soumis…</li>
-                <li>C'est le régime issu de l'ordonnance n°2022-408 du 23 mars 2022, en vigueur depuis le 1er janvier 2023, qui a unifié les anciens régimes distincts de responsabilité des comptables publics et des…</li>
-                <li>Les magistrats tiennent compte de circonstances aggravantes (connaissance de la portée de ses actes, expérience du dirigeant, alertes ignorées, durée du manquement) et atténuantes (absence…</li>
+                <li>Dès qu'une collectivité territoriale apporte à une association un concours financier supérieur à 1 500 euros par an, celle-ci peut faire l'objet d'un contrôle facultatif de la chambre régionale des comptes.</li>
+                <li>Depuis le 1er janvier 2023, le régime de responsabilité financière des gestionnaires publics s'applique à tout dirigeant associatif bénévole dès lors qu'une faute grave a causé un préjudice financier significatif.</li>
+                <li>Le régime de responsabilité financière des gestionnaires publics est issu de l'ordonnance n°2022-408 du 23 mars 2022, qui a unifié les anciens régimes de responsabilité des comptables publics et des ordonnateurs.</li>
+                <li>Les magistrats tiennent compte de circonstances aggravantes, comme des alertes ignorées, et atténuantes, comme l'absence d'avantage personnel tiré de la situation, pour fixer le montant de l'amende.</li>
               </ul>
             </div>
 

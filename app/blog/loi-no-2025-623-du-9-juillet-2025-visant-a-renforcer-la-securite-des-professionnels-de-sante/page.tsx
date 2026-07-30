@@ -142,9 +142,9 @@ export default function ArticleLoisante() {
               <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px', textTransform: 'uppercase', letterSpacing: '0.03em'}}>En résumé</p>
               <ul style={{paddingLeft: '1.25rem', margin: 0, display: 'flex', flexDirection: 'column', gap: '6px', color: '#374151', fontSize: '13px', lineHeight: '1.6'}}>
                 <li>La loi s'applique à l'ensemble des professionnels de santé, qu'ils soient salariés ou libéraux.</li>
-                <li>L'obligation concerne les établissements de santé (publics et privés) ainsi que les structures médico-sociales.</li>
-                <li>La loi permet aux professionnels de santé victimes d'agressions de communiquer l'adresse de leur ordre professionnel ou de leur lieu de travail dans les procédures judiciaires, en lieu et place…</li>
-                <li>Les peines sont significativement alourdies par la loi.</li>
+                <li>L'obligation de rapport annuel concerne les établissements de santé publics et privés ainsi que les structures médico-sociales.</li>
+                <li>La loi permet aux professionnels de santé victimes d'agressions de communiquer l'adresse de leur ordre professionnel ou de leur lieu de travail dans les procédures judiciaires, pour protéger leur vie privée.</li>
+                <li>Les peines sont significativement alourdies par la loi : jusqu'à 7 ans d'emprisonnement et 100 000 € d'amende pour des violences aggravées envers un professionnel de santé.</li>
               </ul>
             </div>
 

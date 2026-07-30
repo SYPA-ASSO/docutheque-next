@@ -142,10 +142,10 @@ export default function ArticleAssmatCalomnie2026() {
             <div style={{background: '#f8fafc', border: '1px solid #dbeafe', borderLeft: '4px solid #0f2d6e', borderRadius: '10px', padding: '1.1rem 1.4rem', marginBottom: '1.75rem'}}>
               <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px', textTransform: 'uppercase', letterSpacing: '0.03em'}}>En résumé</p>
               <ul style={{paddingLeft: '1.25rem', margin: 0, display: 'flex', flexDirection: 'column', gap: '6px', color: '#374151', fontSize: '13px', lineHeight: '1.6'}}>
-                <li>Un signalement peut donner lieu à une simple visite ou évaluation, sans suite.</li>
-                <li>La commission consultative paritaire départementale (CCPD) est une instance composée à parité de représentants du département et de représentants élus des assistantes maternelles.</li>
-                <li>Deux voies, non exclusives l'une de l'autre, existent : la plainte pénale pour dénonciation calomnieuse (article 226-10 du Code pénal), qui suppose de démontrer que l'auteur savait le fait…</li>
-                <li>Conserver tous les écrits (cahier de liaison, messages, courriers de la PMI), demander la consultation du dossier administratif, se rapprocher rapidement d'un syndicat, d'une association…</li>
+                <li>Un signalement à la PMI peut donner lieu à une simple visite ou évaluation, sans suite, et n'entraîne pas automatiquement un retrait d'agrément.</li>
+                <li>La commission consultative paritaire départementale (CCPD) est une instance composée à parité de représentants du département et des assistantes maternelles, consultée avant toute décision de retrait d'agrément.</li>
+                <li>Deux voies de recours existent contre un signalement mensonger : la plainte pénale pour dénonciation calomnieuse et l'action civile en responsabilité pour obtenir réparation du préjudice subi.</li>
+                <li>En cas de suspension d'agrément, il faut conserver tous les écrits, demander la consultation du dossier administratif, et saisir le tribunal administratif dans un délai de deux mois.</li>
               </ul>
             </div>
 

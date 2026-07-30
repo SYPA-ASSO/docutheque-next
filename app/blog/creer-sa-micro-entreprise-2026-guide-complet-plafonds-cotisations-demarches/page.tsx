@@ -174,10 +174,10 @@ export default function ArticleCreerMicroEntreprise2026() {
             <div style={{background: '#f8fafc', border: '1px solid #dbeafe', borderLeft: '4px solid #0f2d6e', borderRadius: '10px', padding: '1.1rem 1.4rem', marginBottom: '1.75rem'}}>
               <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px', textTransform: 'uppercase', letterSpacing: '0.03em'}}>En résumé</p>
               <ul style={{paddingLeft: '1.25rem', margin: 0, display: 'flex', flexDirection: 'column', gap: '6px', color: '#374151', fontSize: '13px', lineHeight: '1.6'}}>
-                <li>La micro-entreprise n'est pas une forme juridique à part : c'est une entreprise individuelle qui bénéficie de régimes simplifiés, le régime micro-fiscal pour l'impôt et le régime micro-social…</li>
-                <li>Pour 2026, les seuils ont été revalorisés : 203 100 euros pour les activités de vente de marchandises et d'hébergement, et 83 600 euros pour les prestations de services et les professions…</li>
-                <li>La création se fait en ligne, gratuitement, sur le guichet unique de l'INPI (procedures.inpi.fr), seule plateforme officielle depuis 2023.</li>
-                <li>En 2026, en métropole, les taux sont de 12,3 % pour la vente de marchandises, 21,2 % pour les prestations de services commerciales et artisanales, 25,6 % pour les professions libérales non…</li>
+                <li>La micro-entreprise n'est pas une forme juridique à part : c'est une entreprise individuelle bénéficiant de régimes simplifiés, le régime micro-fiscal et le régime micro-social.</li>
+                <li>Pour 2026, les seuils de chiffre d'affaires sont de 203 100 euros pour la vente de marchandises et l'hébergement, et 83 600 euros pour les prestations de services et professions libérales.</li>
+                <li>La création d'une micro-entreprise se fait en ligne, gratuitement, sur le guichet unique de l'INPI, seule plateforme officielle depuis 2023.</li>
+                <li>En 2026, les taux de cotisations sont de 12,3 % pour la vente de marchandises, 21,2 % pour les prestations de services, et 25,6 % pour les professions libérales non réglementées.</li>
               </ul>
             </div>
 

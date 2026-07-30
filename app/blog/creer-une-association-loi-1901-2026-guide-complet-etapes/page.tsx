@@ -174,10 +174,10 @@ export default function ArticleCreerAssociation1901_2026() {
             <div style={{background: '#f8fafc', border: '1px solid #dbeafe', borderLeft: '4px solid #0f2d6e', borderRadius: '10px', padding: '1.1rem 1.4rem', marginBottom: '1.75rem'}}>
               <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px', textTransform: 'uppercase', letterSpacing: '0.03em'}}>En résumé</p>
               <ul style={{paddingLeft: '1.25rem', margin: 0, display: 'flex', flexDirection: 'column', gap: '6px', color: '#374151', fontSize: '13px', lineHeight: '1.6'}}>
-                <li>Deux personnes au minimum suffisent pour créer une association loi 1901.</li>
-                <li>La création est gratuite. La déclaration auprès du greffe des associations et la publication au Journal officiel des associations (JOAFE) sont sans frais depuis le 1er janvier 2020.</li>
-                <li>La loi de 1901 n'impose aucun modèle (sauf en Alsace-Moselle), mais les statuts doivent au minimum préciser la dénomination, l'objet, le siège social et les règles de fonctionnement : conditions…</li>
-                <li>La déclaration se fait auprès du greffe des associations, soit en ligne via le téléservice e-création sur service-public.fr, soit en déposant le formulaire Cerfa à la préfecture ou…</li>
+                <li>Deux personnes au minimum suffisent pour créer une association loi 1901, sauf en Alsace-Moselle où sept membres fondateurs sont requis.</li>
+                <li>La création est gratuite : la déclaration au greffe des associations et la publication au Journal officiel des associations sont sans frais depuis le 1er janvier 2020.</li>
+                <li>La loi de 1901 n'impose aucun modèle de statuts (sauf en Alsace-Moselle), mais ils doivent au minimum préciser la dénomination, l'objet, le siège social et les règles de fonctionnement.</li>
+                <li>La déclaration se fait au greffe des associations, en ligne via service-public.fr ou par formulaire Cerfa, avec réception d'un récépissé sous cinq jours.</li>
               </ul>
             </div>
 

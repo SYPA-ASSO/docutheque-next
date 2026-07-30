@@ -174,10 +174,10 @@ export default function ArticlePasserMicroSociete2026() {
             <div style={{background: '#f8fafc', border: '1px solid #dbeafe', borderLeft: '4px solid #0f2d6e', borderRadius: '10px', padding: '1.1rem 1.4rem', marginBottom: '1.75rem'}}>
               <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px', textTransform: 'uppercase', letterSpacing: '0.03em'}}>En résumé</p>
               <ul style={{paddingLeft: '1.25rem', margin: 0, display: 'flex', flexDirection: 'column', gap: '6px', color: '#374151', fontSize: '13px', lineHeight: '1.6'}}>
-                <li>La micro-entreprise n'est pas une société : c'est une entreprise individuelle placée sous un régime simplifié.</li>
-                <li>Pour la période 2026-2028, les plafonds sont de 203 100 € de chiffre d'affaires annuel pour les activités de vente et d'hébergement, et de 83 600 € pour les prestations de services et les…</li>
-                <li>Plusieurs signaux invitent à franchir le cap : un chiffre d'affaires qui approche ou dépasse les plafonds, des charges réelles supérieures à l'abattement forfaitaire de la micro, le besoin de…</li>
-                <li>Deux voies existent : l'apport du fonds de commerce en nature (vous apportez la clientèle et le matériel en échange de parts ou d'actions) ou la cession du fonds (la société achète le fonds à la…</li>
+                <li>La micro-entreprise n'est pas une société : c'est une entreprise individuelle sous régime simplifié, sans transformation directe possible en société.</li>
+                <li>Pour la période 2026-2028, les plafonds sont de 203 100 € de chiffre d'affaires pour la vente et l'hébergement, et 83 600 € pour les prestations de services et activités libérales.</li>
+                <li>Plusieurs signaux invitent à passer en société : un chiffre d'affaires proche des plafonds, des charges réelles supérieures à l'abattement forfaitaire, ou le besoin de s'associer ou de lever des fonds.</li>
+                <li>Deux voies permettent de transférer l'activité vers la société : l'apport du fonds de commerce en nature, ou la cession du fonds à la société après sa création.</li>
               </ul>
             </div>
 

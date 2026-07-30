@@ -142,10 +142,10 @@ export default function ArticleAssuranceIncendieForet2026() {
             <div style={{background: '#f8fafc', border: '1px solid #dbeafe', borderLeft: '4px solid #0f2d6e', borderRadius: '10px', padding: '1.1rem 1.4rem', marginBottom: '1.75rem'}}>
               <p style={{color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 10px', textTransform: 'uppercase', letterSpacing: '0.03em'}}>En résumé</p>
               <ul style={{paddingLeft: '1.25rem', margin: 0, display: 'flex', flexDirection: 'column', gap: '6px', color: '#374151', fontSize: '13px', lineHeight: '1.6'}}>
-                <li>La garantie incendie fait partie des garanties de base de la quasi-totalité des contrats multirisques habitation, mais les dépendances extérieures comme la piscine, l'abri de jardin ou la…</li>
-                <li>Si les dommages résultent d'un incendie de forêt et que l'assuré ne s'est pas conformé à son obligation légale de débroussaillement, l'assureur peut appliquer une franchise supplémentaire…</li>
-                <li>Seule une faute intentionnelle, c'est-à-dire la volonté de causer le dommage tel qu'il est survenu, prive totalement l'assuré de la garantie de l'assureur (article L.113-1 du Code des…</li>
-                <li>L'assurance au tiers, qui ne couvre que la responsabilité civile obligatoire, ne protège pas le véhicule de son propriétaire contre l'incendie.</li>
+                <li>La garantie incendie fait partie des garanties de base de la quasi-totalité des contrats multirisques habitation, mais les dépendances extérieures comme la piscine ou l'abri de jardin sont souvent en option.</li>
+                <li>En cas d'incendie de forêt lié à un défaut de débroussaillement, l'assureur peut appliquer une franchise supplémentaire pouvant atteindre 5 000 euros, en application de l'article L.122-8 du Code des assurances.</li>
+                <li>Seule une faute intentionnelle prive totalement l'assuré de la garantie de l'assureur ; une simple négligence ouvre toujours droit à indemnisation, éventuellement réduite.</li>
+                <li>L'assurance auto au tiers ne couvre que la responsabilité civile obligatoire et ne protège pas le véhicule de son propriétaire contre l'incendie.</li>
               </ul>
             </div>
 
