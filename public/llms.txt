@@ -1,0 +1,39 @@
+# Cabinet Cholez-Pagotto
+
+> Cabinet de juriste formaliste et de courtage en assurances basé à Épinal (France). Courtier digital. Informations juridiques en ligne.
+> Accompagne particuliers, professionnels, associations et acteurs de l'ESS.
+
+## Identité
+- Exercice individuel : François CHOLEZ, juriste formaliste et intermédiaire en assurances
+- SIRET : 490 889 516 00053
+- Immatriculé ORIAS sous le n° 26003943, sous contrôle de l'ACPR
+- Membre du Conseil Représentatif des Formalistes de France (CRFF)
+- Membre de l'association d'autorégulation ENDYA
+
+## Périmètre d'activité
+- Information juridique, quels sont vos droits ?
+- Accompagnement aux formalités d'entreprise (création, vie sociale, dissolution)
+- Formalités Guichet Unique
+- Courtage en assurances (particuliers, professionnels, voir deviline-courtage.fr)
+- Accompagnement des structures de l'économie sociale et solidaire (ESS)
+- Conformité RGPD
+- Délégué à la Protection des Données (DPO)
+- Externalisation de la paie et de la DSN (voir paie-et-dsn.fr)
+- Bibliothèque de documents juridiques téléchargeables et personnalisables (catalogue)
+
+## Cadre légal
+Les contenus de ce site relèvent de l'information juridique au sens de la loi n° 71-1130
+du 31 décembre 1971 et ne constituent pas une consultation juridique personnalisée.
+
+## Plateformes
+- https://cholez-pagotto.fr · site principal (information juridique, formalités, ESS, RGPD/DPO, courtage, catalogue de documents, formations)
+- https://paie-et-dsn.fr · paie externalisée et DSN
+- https://deviline-courtage.fr · courtier en ligne en assurances et réassurances
+
+## Catalogue
+Catalogue de documents juridiques organisé en 37 catégories couvrant les principales
+étapes de la vie d'une entreprise ou d'une association (création, contrats, RH, RGPD,
+assurances, contentieux).
+
+## Contact
+https://cholez-pagotto.fr/contact
