@@ -1,0 +1,16 @@
+Compositeur d'email libre par client, depuis l'admin
+=========================================================
+
+Fichier nouveau :
+- app/api/admin/envoyer-email-client/route.ts
+    -> Envoie un email libre (objet + message texte) a un client precis, habille aux
+       couleurs du site, avec un bouton vers /espace-client. Le corps est ecrit
+       integralement par vous a chaque envoi, ce n'est pas un modele a completer.
+
+Fichier modifie (remplace l'existant a l'identique) :
+- app/admin/echanges-fichiers/page.tsx
+    -> Nouveau bloc "Envoyer un email a ce client" sous la liste des fichiers, dans le
+       meme panneau que le depot/telechargement : pratique pour accompagner l'envoi
+       d'un document (ex. un mandat) d'un message explicatif propre au dossier.
+
+Rien a executer en base.

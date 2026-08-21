@@ -7,7 +7,7 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
 import { useAdmin } from '../layout'
 import { supabase } from '@/lib/supabase'
-import { Users, Search, Upload, Download, Trash2, FileText, User as UserIcon, Building2 } from 'lucide-react'
+import { Users, Search, Upload, Download, Trash2, FileText, User as UserIcon, Building2, Mail } from 'lucide-react'
 
 type Client = {
   id: string
@@ -53,6 +53,11 @@ export default function AdminEchangesFichiers() {
   const [loadingFichiers, setLoadingFichiers] = useState(false)
   const [erreur, setErreur] = useState('')
   const [uploadEnCours, setUploadEnCours] = useState(false)
+  const [emailSujet, setEmailSujet] = useState('')
+  const [emailCorps, setEmailCorps] = useState('')
+  const [emailEnvoiEnCours, setEmailEnvoiEnCours] = useState(false)
+  const [emailErreur, setEmailErreur] = useState('')
+  const [emailSucces, setEmailSucces] = useState('')
   const inputFileRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
@@ -80,6 +85,37 @@ export default function AdminEchangesFichiers() {
   const selectionnerClient = (client: Client) => {
     setClientSelectionne(client)
     chargerFichiers(client)
+    setEmailSujet('')
+    setEmailCorps('')
+    setEmailErreur('')
+    setEmailSucces('')
+  }
+
+  const handleEnvoyerEmail = async () => {
+    if (!clientSelectionne || !password) return
+    if (!emailSujet.trim() || !emailCorps.trim()) {
+      setEmailErreur("L'objet et le message sont obligatoires.")
+      return
+    }
+    setEmailEnvoiEnCours(true)
+    setEmailErreur('')
+    setEmailSucces('')
+    try {
+      const res = await fetch('/api/admin/envoyer-email-client', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'x-admin-password': password },
+        body: JSON.stringify({ userId: clientSelectionne.id, sujet: emailSujet, corps: emailCorps }),
+      })
+      const data = await res.json()
+      if (!res.ok) { setEmailErreur(data.error || "L'envoi a échoué."); return }
+      setEmailSucces(`Email envoyé à ${clientSelectionne.prenom} ${clientSelectionne.nom}.`)
+      setEmailSujet('')
+      setEmailCorps('')
+    } catch {
+      setEmailErreur('Une erreur est survenue.')
+    } finally {
+      setEmailEnvoiEnCours(false)
+    }
   }
 
   const handleUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -241,6 +277,40 @@ export default function AdminEchangesFichiers() {
             <p style={{ margin: '1.25rem 0 0', fontSize: '11px', color: '#9aa2b1' }}>
               Formats acceptés : PDF, image (JPG, PNG, WEBP, HEIC) ou DOCX. Taille maximale : 20 Mo.
             </p>
+
+            {/* COMPOSITEUR D'EMAIL LIBRE */}
+            <div style={{ marginTop: '1.75rem', paddingTop: '1.5rem', borderTop: '1px solid #f1f3f7' }}>
+              <h2 style={{ margin: '0 0 4px', fontSize: '14px', color: '#0f2d6e', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <Mail size={15} /> Envoyer un email à ce client
+              </h2>
+              <p style={{ margin: '0 0 12px', fontSize: '11px', color: '#9aa2b1' }}>
+                Message libre, pour un suivi de dossier propre à ce client. Le message est habillé aux couleurs du site et inclut un bouton vers son espace client.
+              </p>
+
+              {emailErreur && <p style={{ color: '#dc2626', fontSize: '12px', marginBottom: '8px' }}>{emailErreur}</p>}
+              {emailSucces && <p style={{ color: '#15803d', fontSize: '12px', marginBottom: '8px' }}>{emailSucces}</p>}
+
+              <input
+                value={emailSujet}
+                onChange={(e) => setEmailSujet(e.target.value)}
+                placeholder="Objet de l'email"
+                style={{ width: '100%', padding: '9px 10px', border: '1px solid #e5e7eb', borderRadius: '8px', fontSize: '13px', boxSizing: 'border-box', marginBottom: '8px' }}
+              />
+              <textarea
+                value={emailCorps}
+                onChange={(e) => setEmailCorps(e.target.value)}
+                placeholder="Votre message..."
+                rows={8}
+                style={{ width: '100%', padding: '10px', border: '1px solid #e5e7eb', borderRadius: '8px', fontSize: '13px', boxSizing: 'border-box', fontFamily: 'inherit', resize: 'vertical', marginBottom: '10px' }}
+              />
+              <button
+                onClick={handleEnvoyerEmail}
+                disabled={emailEnvoiEnCours}
+                style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: '#0f2d6e', color: 'white', border: 'none', padding: '9px 18px', borderRadius: '8px', fontSize: '12.5px', fontWeight: 700, cursor: emailEnvoiEnCours ? 'not-allowed' : 'pointer', opacity: emailEnvoiEnCours ? 0.6 : 1 }}
+              >
+                <Mail size={13} /> {emailEnvoiEnCours ? 'Envoi...' : "Envoyer l'email"}
+              </button>
+            </div>
           </>
         )}
       </div>
