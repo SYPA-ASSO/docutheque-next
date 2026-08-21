@@ -1,0 +1,27 @@
+Banniere avis Google permanente, controlee uniquement par l'admin
+========================================================================
+
+Fichiers modifies (remplacent l'existant a l'identique) :
+- app/espace-client/page.tsx
+    -> Bouton "Masquer" retire
+    -> Le clic sur "Laisser un avis" ne masque plus la banniere
+    -> La banniere ne disparait desormais que si l'admin la desactive manuellement
+
+- app/api/admin/clients-list/route.ts
+    -> Ajoute avis_google_propose a la selection retournee (necessaire a l'affichage
+       du statut cote admin)
+
+- app/admin/clients/page.tsx
+    -> Dans le detail d'un client selectionne : bloc "Avis Google" avec bouton
+       "Marquer avis laisse" / "Reafficher la banniere"
+
+Fichier nouveau :
+- app/api/admin/clients-avis-google/route.ts
+    -> Bascule le statut avis_google_propose d'un client (true ou false)
+
+A faire manuellement, en dehors de ce zip :
+- Le fichier app/api/compte/avis-propose/route.ts n'est plus utilise (le client ne
+  peut plus s'auto-marquer). Vous pouvez le supprimer, ou le laisser tel quel :
+  il ne fait plus de mal, juste un point d'entree mort qui n'est plus jamais appele.
+
+Rien a executer en base : reutilise la colonne users.avis_google_propose deja existante.

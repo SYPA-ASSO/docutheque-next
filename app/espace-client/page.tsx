@@ -115,7 +115,6 @@ export default function EspaceClient() {
   const [downloadEnCours, setDownloadEnCours] = useState<string | null>(null)
   const [factureEnCours, setFactureEnCours] = useState<string | null>(null)
   const [successMessage, setSuccessMessage] = useState('')
-  const [avisMasque, setAvisMasque] = useState(false)
 
   // Saisie de question
   const [questionSaisie, setQuestionSaisie] = useState<{ id: string; type: string } | null>(null)
@@ -225,20 +224,12 @@ export default function EspaceClient() {
     router.push('/')
   }
 
-  // Invitation a laisser un avis Google : une seule fois par client (in-app ou email), via avis_google_propose.
-  const marquerAvisPropose = async () => {
-    setAvisMasque(true)
-    try {
-      const { data: { session } } = await supabase.auth.getSession()
-      if (!session) return
-      await fetch('/api/compte/avis-propose', { method: 'POST', headers: { 'Authorization': `Bearer ${session.access_token}` } })
-      if (profile) setProfile({ ...profile, avis_google_propose: true })
-    } catch { /* silencieux : l'invitation est simplement masquee */ }
-  }
-
+  // Invitation a laisser un avis Google : reste affichee en permanence, tant que le
+  // cabinet ne l'a pas desactivee manuellement depuis l'admin (avis_google_propose),
+  // en constatant l'avis directement sur la fiche Google. Le client ne peut plus la
+  // masquer lui-meme : ouvrir le lien ne dit rien sur le fait qu'il ait ete au bout.
   const ouvrirAvisGoogle = () => {
     window.open(AVIS_GOOGLE.lien, '_blank', 'noopener,noreferrer')
-    marquerAvisPropose()
   }
 
   const handlePaiement = async (priceKey: string) => {
@@ -689,7 +680,7 @@ export default function EspaceClient() {
                   </div>
                 )}
 
-                {profile && !profile.avis_google_propose && !avisMasque && (
+                {profile && !profile.avis_google_propose && (
                   <div style={{ background: 'linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%)', border: '1px solid #fcd34d', borderRadius: '12px', padding: '1.25rem 1.5rem', display: 'flex', alignItems: 'center', gap: '14px', flexWrap: 'wrap' }}>
                     <div style={{ display: 'flex', gap: '2px', flexShrink: 0 }}>
                       {[0, 1, 2, 3, 4].map((i) => (
@@ -705,9 +696,6 @@ export default function EspaceClient() {
                     <div style={{ display: 'flex', gap: '8px', flexShrink: 0 }}>
                       <button onClick={ouvrirAvisGoogle} style={{ background: '#0f2d6e', color: 'white', border: 'none', padding: '9px 16px', borderRadius: '8px', fontSize: '12px', fontWeight: '700', cursor: 'pointer' }}>
                         Laisser un avis
-                      </button>
-                      <button onClick={marquerAvisPropose} style={{ background: 'transparent', color: '#a16207', border: 'none', padding: '9px 10px', borderRadius: '8px', fontSize: '12px', fontWeight: '600', cursor: 'pointer' }}>
-                        Masquer
                       </button>
                     </div>
                   </div>

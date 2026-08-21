@@ -9,7 +9,7 @@ export async function GET(request: Request) {
 
   const { data, error } = await supabaseAdmin
     .from('users')
-    .select('id, prenom, nom, email, type, telephone, ville, abonnement_actif, abonnement_type, abonnement_periode, date_expiration, created_at, siret, nom_structure')
+    .select('id, prenom, nom, email, type, telephone, ville, abonnement_actif, abonnement_type, abonnement_periode, date_expiration, created_at, siret, nom_structure, avis_google_propose')
     .order('created_at', { ascending: false })
 
   if (error) return NextResponse.json({ error: error.message }, { status: 500 })

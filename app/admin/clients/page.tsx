@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { useAdmin } from '../layout'
-import { Users, Crown, Search, Mail, Phone, Download, UserPlus, X } from 'lucide-react'
+import { Users, Crown, Search, Mail, Phone, Download, UserPlus, X, Star } from 'lucide-react'
 
 type Client = {
   id: string
@@ -19,6 +19,7 @@ type Client = {
   created_at: string
   siret: string | null
   nom_structure: string | null
+  avis_google_propose: boolean | null
 }
 
 export default function AdminClients() {
@@ -132,6 +133,16 @@ export default function AdminClients() {
     } finally {
       setCreationEnCours(false)
     }
+  }
+
+  const basculerAvisGoogle = async (client: Client, avisLaisse: boolean) => {
+    await fetch('/api/admin/clients-avis-google', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'x-admin-password': password || '' },
+      body: JSON.stringify({ userId: client.id, avisLaisse }),
+    })
+    setClients((prev) => prev.map((c) => (c.id === client.id ? { ...c, avis_google_propose: avisLaisse } : c)))
+    setSelectedClient((prev) => (prev && prev.id === client.id ? { ...prev, avis_google_propose: avisLaisse } : prev))
   }
 
   const abonnementLabel = (c: Client) => {
@@ -270,6 +281,22 @@ export default function AdminClients() {
               </div>
             ))}
           </div>
+
+          <div style={{ background: selectedClient.avis_google_propose ? '#f0fdf4' : '#fffbeb', border: `1px solid ${selectedClient.avis_google_propose ? '#bbf7d0' : '#fcd34d'}`, borderRadius: '8px', padding: '12px 14px', marginTop: '1rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <Star size={15} color={selectedClient.avis_google_propose ? '#15803d' : '#d97706'} fill={selectedClient.avis_google_propose ? '#15803d' : 'none'} />
+              <p style={{ margin: 0, fontSize: '12.5px', fontWeight: '700', color: selectedClient.avis_google_propose ? '#15803d' : '#92400e' }}>
+                {selectedClient.avis_google_propose ? 'Avis Google laissé' : 'Bannière avis Google visible pour ce client'}
+              </p>
+            </div>
+            <button
+              onClick={() => basculerAvisGoogle(selectedClient, !selectedClient.avis_google_propose)}
+              style={{ background: selectedClient.avis_google_propose ? 'white' : '#0f2d6e', color: selectedClient.avis_google_propose ? '#374151' : 'white', border: selectedClient.avis_google_propose ? '1px solid #e5e7eb' : 'none', padding: '7px 14px', borderRadius: '6px', fontSize: '12px', fontWeight: '700', cursor: 'pointer' }}
+            >
+              {selectedClient.avis_google_propose ? 'Réafficher la bannière' : 'Marquer avis laissé'}
+            </button>
+          </div>
+
           {selectedClient.siret && selectedClient.type === 'particulier' && (
             <div style={{ background: '#fef3c7', border: '1px solid #fcd34d', borderRadius: '8px', padding: '12px 14px', marginTop: '1rem' }}>
               <p style={{ color: '#92400e', fontSize: '12px', fontWeight: '700', margin: '0 0 4px' }}>Demande de migration Pro en attente</p>
