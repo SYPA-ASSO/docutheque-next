@@ -16,7 +16,8 @@ import {
   User, FileText, Package, MessageSquare, Shield, LogOut,
   Crown, Clock, CheckCircle, AlertCircle, Lock,
   ChevronRight, Calendar, Star, Zap, TrendingUp,
-  ShoppingBag, Receipt, Download, Filter, Send
+  ShoppingBag, Receipt, Download, Filter, Send,
+  Upload, Trash2, FolderSync
 } from 'lucide-react'
 
 type UserProfile = {
@@ -77,12 +78,32 @@ type DossierRgpd = {
   created_at: string
 }
 
+function formatTailleFichier(octets: number | null): string {
+  if (octets == null) return ''
+  if (octets < 1024) return `${octets} o`
+  if (octets < 1024 * 1024) return `${Math.round(octets / 1024)} Ko`
+  return `${(octets / (1024 * 1024)).toFixed(1).replace('.', ',')} Mo`
+}
+
+function formatDateFichier(iso: string): string {
+  try {
+    return new Date(iso).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' })
+  } catch {
+    return iso
+  }
+}
+
 export default function EspaceClient() {
   const router = useRouter()
-  const [onglet, setOnglet] = useState<'tableau-bord' | 'questions' | 'documents' | 'commandes' | 'factures' | 'abonnement' | 'profil'>('tableau-bord')
+  const [onglet, setOnglet] = useState<'tableau-bord' | 'questions' | 'documents' | 'echanges' | 'commandes' | 'factures' | 'abonnement' | 'profil'>('tableau-bord')
   const [profile, setProfile] = useState<UserProfile | null>(null)
   const [questions, setQuestions] = useState<Question[]>([])
   const [factures, setFactures] = useState<Facture[]>([])
+  const [fichiersPartages, setFichiersPartages] = useState<{ id: string; nom: string; taille: number | null; typeMime: string | null; deposePar: 'client' | 'cabinet'; creeLe: string; url: string | null }[]>([])
+  const [fichiersPartagesCharges, setFichiersPartagesCharges] = useState(false)
+  const [fichiersPartagesLoading, setFichiersPartagesLoading] = useState(false)
+  const [fichiersPartagesErreur, setFichiersPartagesErreur] = useState('')
+  const [uploadEnCours, setUploadEnCours] = useState(false)
   const [dossiers, setDossiers] = useState<DossierAssurance[]>([])
   const [dossiersRgpd, setDossiersRgpd] = useState<DossierRgpd[]>([])
   const [catalogue, setCatalogue] = useState<DocItem[]>([])
@@ -377,6 +398,94 @@ export default function EspaceClient() {
     finally { setFactureEnCours(null) }
   }
 
+  const chargerFichiersPartages = useCallback(async () => {
+    setFichiersPartagesLoading(true)
+    setFichiersPartagesErreur('')
+    try {
+      const { data: { session } } = await supabase.auth.getSession()
+      if (!session) return
+      const res = await fetch('/api/compte/documents-partages', {
+        headers: { 'Authorization': `Bearer ${session.access_token}` },
+      })
+      const data = await res.json()
+      if (res.ok && data.fichiers) {
+        setFichiersPartages(data.fichiers)
+        setFichiersPartagesCharges(true)
+      } else {
+        setFichiersPartagesErreur(data.error || 'Le chargement a échoué. Veuillez réessayer.')
+      }
+    } catch {
+      setFichiersPartagesErreur('Une erreur est survenue. Veuillez réessayer.')
+    } finally {
+      setFichiersPartagesLoading(false)
+    }
+  }, [])
+
+  const handleUploadFichierPartage = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    if (!file) return
+    setUploadEnCours(true)
+    setFichiersPartagesErreur('')
+    try {
+      const { data: { session } } = await supabase.auth.getSession()
+      if (!session) return
+
+      // 1. Demande d'une URL de depot signee (le fichier ne transite pas par cette requete :
+      // les fonctions Vercel refusent tout corps de requete de plus de 4,5 Mo).
+      const initRes = await fetch('/api/compte/documents-partages/init-upload', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${session.access_token}` },
+        body: JSON.stringify({ nomFichier: file.name, typeMime: file.type, tailleOctets: file.size }),
+      })
+      const initData = await initRes.json()
+      if (!initRes.ok) { setFichiersPartagesErreur(initData.error || 'Le dépôt a échoué.'); return }
+
+      // 2. Depot direct du navigateur vers Supabase Storage, avec l'URL signee obtenue.
+      const { error: uploadError } = await supabase.storage
+        .from('documents-partages')
+        .uploadToSignedUrl(initData.chemin, initData.token, file)
+      if (uploadError) { setFichiersPartagesErreur("Le dépôt du fichier a échoué."); return }
+
+      // 3. Confirmation aupres du serveur : enregistre les metadonnees du fichier depose.
+      const confirmRes = await fetch('/api/compte/documents-partages', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${session.access_token}` },
+        body: JSON.stringify({ chemin: initData.chemin, nomFichier: file.name, tailleOctets: file.size, typeMime: file.type }),
+      })
+      const confirmData = await confirmRes.json()
+      if (!confirmRes.ok) { setFichiersPartagesErreur(confirmData.error || "La confirmation du dépôt a échoué."); return }
+
+      chargerFichiersPartages()
+    } catch {
+      setFichiersPartagesErreur('Une erreur est survenue. Veuillez réessayer.')
+    } finally {
+      setUploadEnCours(false)
+      e.target.value = ''
+    }
+  }
+
+  const handleSupprimerFichierPartage = async (id: string, nom: string) => {
+    if (!confirm(`Supprimer définitivement "${nom}" ?`)) return
+    try {
+      const { data: { session } } = await supabase.auth.getSession()
+      if (!session) return
+      const res = await fetch('/api/compte/documents-partages', {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${session.access_token}` },
+        body: JSON.stringify({ id }),
+      })
+      const data = await res.json()
+      if (!res.ok) { setFichiersPartagesErreur(data.error || 'La suppression a échoué.'); return }
+      chargerFichiersPartages()
+    } catch {
+      setFichiersPartagesErreur('Une erreur est survenue. Veuillez réessayer.')
+    }
+  }
+
+  useEffect(() => {
+    if (onglet === 'echanges' && !fichiersPartagesCharges && !fichiersPartagesLoading) chargerFichiersPartages()
+  }, [onglet, fichiersPartagesCharges, fichiersPartagesLoading, chargerFichiersPartages])
+
   const handleSubmitQuestion = async (questionId: string) => {
     if (questionTexte.trim().length < 10) {
       setQuestionErreur('Veuillez développer votre question (10 caractères minimum).')
@@ -471,6 +580,7 @@ export default function EspaceClient() {
     { id: 'tableau-bord', label: 'Tableau de bord', icon: <User size={16} strokeWidth={1.5} /> },
     { id: 'questions', label: 'Mes questions', icon: <MessageSquare size={16} strokeWidth={1.5} />, badge: questions.filter(q => q.statut === 'repondu').length || null },
     { id: 'documents', label: 'Documents', icon: <FileText size={16} strokeWidth={1.5} />, locked: !estAbonne },
+    { id: 'echanges', label: 'Échanges de documents', icon: <FolderSync size={16} strokeWidth={1.5} /> },
     { id: 'commandes', label: 'Mes commandes', icon: <ShoppingBag size={16} strokeWidth={1.5} /> },
     { id: 'factures', label: 'Factures', icon: <Receipt size={16} strokeWidth={1.5} />, badge: factures.length || null },
     { id: 'abonnement', label: 'Abonnement', icon: <Crown size={16} strokeWidth={1.5} />, highlight: !estAbonne },
@@ -949,6 +1059,65 @@ export default function EspaceClient() {
                   <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '3rem', textAlign: 'center' }}>
                     <FileText size={32} color="#d1d5db" strokeWidth={1} style={{ marginBottom: '12px' }} />
                     <p style={{ color: '#6b7280', fontSize: '14px', margin: 0 }}>La bibliothèque sera disponible prochainement.</p>
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* ── ECHANGES DE DOCUMENTS ── */}
+            {onglet === 'echanges' && (
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '10px' }}>
+                  <h1 style={{ color: '#0f2d6e', fontSize: '1.4rem', fontWeight: '700', margin: 0 }}>Échanges de documents</h1>
+                  <div>
+                    <input type="file" accept=".pdf,.jpg,.jpeg,.png,.webp,.heic,.docx" onChange={handleUploadFichierPartage} style={{ display: 'none' }} id="upload-fichier-partage" />
+                    <label htmlFor="upload-fichier-partage" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: '#0f2d6e', color: 'white', padding: '10px 18px', borderRadius: '8px', fontSize: '13px', fontWeight: '700', cursor: uploadEnCours ? 'not-allowed' : 'pointer', opacity: uploadEnCours ? 0.6 : 1 }}>
+                      <Upload size={14} /> {uploadEnCours ? 'Envoi...' : 'Déposer un fichier'}
+                    </label>
+                  </div>
+                </div>
+
+                <p style={{ color: '#6b7280', fontSize: '12.5px', margin: 0, lineHeight: '1.7' }}>
+                  Un espace privé pour transmettre vos pièces au cabinet et recevoir celles que nous vous adressons (formats acceptés : PDF, image ou DOCX, 20 Mo maximum). Vous seul et le cabinet pouvez y accéder.
+                </p>
+
+                {fichiersPartagesErreur && (
+                  <div style={{ background: '#fef2f2', border: '1px solid #fecaca', borderRadius: '8px', padding: '10px 14px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <AlertCircle size={14} color="#dc2626" style={{ flexShrink: 0 }} />
+                    <p style={{ color: '#dc2626', fontSize: '12.5px', margin: 0 }}>{fichiersPartagesErreur}</p>
+                  </div>
+                )}
+
+                {fichiersPartagesLoading ? (
+                  <p style={{ color: '#9ca3af', fontSize: '13px', textAlign: 'center', padding: '2rem 0' }}>Chargement de vos documents...</p>
+                ) : fichiersPartages.length === 0 ? (
+                  <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '3rem', textAlign: 'center' }}>
+                    <FolderSync size={32} color="#d1d5db" strokeWidth={1} style={{ marginBottom: '12px' }} />
+                    <p style={{ color: '#6b7280', fontSize: '14px', margin: 0 }}>Aucun document échangé pour le moment.</p>
+                  </div>
+                ) : (
+                  <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '0.5rem 1.25rem' }}>
+                    {fichiersPartages.map((f, i) => (
+                      <div key={f.id} style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '12px 0', borderTop: i === 0 ? 'none' : '1px solid #f1f3f7' }}>
+                        <FileText size={16} color="#6b7280" style={{ flexShrink: 0 }} />
+                        <div style={{ flex: 1, minWidth: 0 }}>
+                          <p style={{ margin: 0, fontSize: '13px', fontWeight: '600', color: '#1f2937', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{f.nom}</p>
+                          <p style={{ margin: 0, fontSize: '11px', color: '#9aa2b1' }}>
+                            {f.deposePar === 'cabinet' ? 'Envoyé par le cabinet' : 'Envoyé par vous'} · {formatTailleFichier(f.taille)} · {formatDateFichier(f.creeLe)}
+                          </p>
+                        </div>
+                        {f.url && (
+                          <a href={f.url} target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', fontSize: '11.5px', fontWeight: '700', color: '#0f2d6e', border: '1px solid #d7dce5', borderRadius: '6px', padding: '7px 11px', textDecoration: 'none', flexShrink: 0 }}>
+                            <Download size={12} /> Télécharger
+                          </a>
+                        )}
+                        {f.deposePar === 'client' && (
+                          <button onClick={() => handleSupprimerFichierPartage(f.id, f.nom)} style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', fontSize: '11.5px', fontWeight: '700', color: '#dc2626', background: 'white', border: '1px solid #fecaca', borderRadius: '6px', padding: '7px 11px', cursor: 'pointer', flexShrink: 0 }}>
+                            <Trash2 size={12} />
+                          </button>
+                        )}
+                      </div>
+                    ))}
                   </div>
                 )}
               </div>

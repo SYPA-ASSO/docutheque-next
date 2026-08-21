@@ -1,0 +1,32 @@
+Echange de fichiers securise, espace client <-> cabinet (dans les deux sens)
+Version 2 : depot direct vers Supabase Storage (corrige la limite Vercel de 4,5 Mo)
+================================================================================
+
+CORRECTIF IMPORTANT par rapport a la premiere livraison :
+Les fonctions serverless Vercel refusent toute requete de plus de 4,5 Mo, une limite
+d'infrastructure non contournable en code. Le premier envoi faisait transiter le fichier
+directement dans le corps de la requete vers la route API : tout fichier au-dela de 4,5 Mo
+aurait donc echoue, bien avant la limite metier de 20 Mo. Corrige en depot direct du
+navigateur vers Supabase Storage, via une URL signee generee par le serveur (le fichier
+ne transite plus jamais par une fonction Vercel).
+Le bucket Supabase applique desormais lui-meme un plafond de 20 Mo et la liste des formats
+autorises, en filet de securite supplementaire (colonnes file_size_limit / allowed_mime_types).
+
+Fichiers nouveaux :
+- migration-echanges-documents.sql (MISE A JOUR : ajoute file_size_limit et allowed_mime_types
+  au bucket ; peut etre relancee meme si vous avez deja execute la version precedente, le
+  ON CONFLICT DO UPDATE s'en charge)
+- lib/documents-partages.ts (MODIFIE : ajout de validerDeclaration, pour valider avant meme
+  que le fichier ne soit envoye)
+- app/api/compte/documents-partages/init-upload/route.ts (NOUVEAU : genere l'URL de depot signee)
+- app/api/compte/documents-partages/route.ts (MODIFIE : POST devient une confirmation de
+  depot, GET et DELETE inchanges)
+- app/api/admin/documents-partages-init-upload/route.ts (NOUVEAU : idem cote admin)
+- app/api/admin/documents-partages-upload/route.ts (MODIFIE : devient une confirmation)
+- app/api/admin/documents-partages-liste/route.ts (inchange)
+- app/api/admin/documents-partages-delete/route.ts (inchange)
+- app/admin/echanges-fichiers/page.tsx (MODIFIE : depot en deux temps cote admin)
+- app/espace-client/page.tsx (MODIFIE : depot en deux temps cote client)
+- app/admin/layout.tsx (inchange depuis la premiere livraison)
+
+Mise en place : re-executer migration-echanges-documents.sql dans Supabase avant deploiement.
