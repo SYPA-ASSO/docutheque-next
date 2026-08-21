@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { useAdmin } from '../layout'
-import { Users, Crown, Search, Mail, Phone, Download } from 'lucide-react'
+import { Users, Crown, Search, Mail, Phone, Download, UserPlus, X } from 'lucide-react'
 
 type Client = {
   id: string
@@ -28,6 +28,14 @@ export default function AdminClients() {
   const [search, setSearch] = useState('')
   const [filtre, setFiltre] = useState<'tous' | 'abonnes' | 'gratuits' | 'migration'>('tous')
   const [selectedClient, setSelectedClient] = useState<Client | null>(null)
+  const [modalOuverte, setModalOuverte] = useState(false)
+  const [creationEnCours, setCreationEnCours] = useState(false)
+  const [creationErreur, setCreationErreur] = useState('')
+  const [creationSucces, setCreationSucces] = useState('')
+  const [formulaire, setFormulaire] = useState({
+    prenom: '', nom: '', email: '', type: 'particulier' as 'particulier' | 'professionnel',
+    telephone: '', ville: '', nom_structure: '', siret: '', rna: '',
+  })
   const [inclusesMois, setInclusesMois] = useState<Set<string>>(new Set())
 
   // Preselectionne l'onglet "Migration en attente" si on arrive via le lien du tableau de bord
@@ -87,6 +95,45 @@ export default function AdminClients() {
     URL.revokeObjectURL(url)
   }
 
+  const reinitialiserFormulaire = () => {
+    setFormulaire({ prenom: '', nom: '', email: '', type: 'particulier', telephone: '', ville: '', nom_structure: '', siret: '', rna: '' })
+    setCreationErreur('')
+    setCreationSucces('')
+  }
+
+  const fermerModal = () => {
+    setModalOuverte(false)
+    reinitialiserFormulaire()
+  }
+
+  const handleCreerClient = async () => {
+    if (!formulaire.prenom || !formulaire.nom || !formulaire.email) {
+      setCreationErreur('Prénom, nom et email sont obligatoires.')
+      return
+    }
+    setCreationEnCours(true)
+    setCreationErreur('')
+    setCreationSucces('')
+    try {
+      const res = await fetch('/api/admin/clients-create', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'x-admin-password': password || '' },
+        body: JSON.stringify(formulaire),
+      })
+      const data = await res.json()
+      if (!res.ok) { setCreationErreur(data.error || 'La création a échoué.'); return }
+      setCreationSucces(data.emailEnvoye
+        ? `Compte créé pour ${formulaire.prenom} ${formulaire.nom}. Un email lui a été envoyé pour définir son mot de passe.`
+        : `Compte créé pour ${formulaire.prenom} ${formulaire.nom}, mais l'envoi de l'email a échoué : pensez à utiliser "mot de passe oublié" pour lui donner accès.`)
+      fetch('/api/admin/clients-list', { headers: { 'x-admin-password': password || '' } })
+        .then(r => r.json()).then(d => setClients(d.clients || []))
+    } catch {
+      setCreationErreur('Une erreur est survenue. Veuillez réessayer.')
+    } finally {
+      setCreationEnCours(false)
+    }
+  }
+
   const abonnementLabel = (c: Client) => {
     if (!c.abonnement_actif) return null
     const type = c.abonnement_type === 'optimal_pro' ? 'Pro' : 'Particulier'
@@ -109,10 +156,16 @@ export default function AdminClients() {
             {clients.length} inscrits · {clients.filter(c => c.abonnement_actif).length} abonnés actifs
           </p>
         </div>
-        <button onClick={exportCSV}
-          style={{ background: 'white', color: '#0f2d6e', border: '1px solid #e5e7eb', padding: '9px 16px', borderRadius: '8px', fontSize: '12px', fontWeight: '700', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '6px' }}>
-          <Download size={14} /> Exporter CSV
-        </button>
+        <div style={{ display: 'flex', gap: '8px' }}>
+          <button onClick={() => setModalOuverte(true)}
+            style={{ background: '#0f2d6e', color: 'white', border: 'none', padding: '9px 16px', borderRadius: '8px', fontSize: '12px', fontWeight: '700', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '6px' }}>
+            <UserPlus size={14} /> Nouveau client
+          </button>
+          <button onClick={exportCSV}
+            style={{ background: 'white', color: '#0f2d6e', border: '1px solid #e5e7eb', padding: '9px 16px', borderRadius: '8px', fontSize: '12px', fontWeight: '700', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '6px' }}>
+            <Download size={14} /> Exporter CSV
+          </button>
+        </div>
       </div>
 
       {/* Recherche + filtres */}
@@ -235,6 +288,106 @@ export default function AdminClients() {
               </button>
             </div>
           )}
+        </div>
+      )}
+
+      {/* Modale de création de client */}
+      {modalOuverte && (
+        <div style={{ position: 'fixed', inset: 0, background: 'rgba(15,45,110,0.4)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 50, padding: '1.5rem' }} onClick={fermerModal}>
+          <div style={{ background: 'white', borderRadius: '14px', padding: '1.75rem', maxWidth: '480px', width: '100%', maxHeight: '90vh', overflowY: 'auto' }} onClick={(e) => e.stopPropagation()}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem' }}>
+              <h2 style={{ color: '#0f2d6e', fontSize: '15px', fontWeight: '700', margin: 0 }}>Nouveau client</h2>
+              <button onClick={fermerModal} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#9ca3af' }}><X size={18} /></button>
+            </div>
+
+            {creationSucces ? (
+              <div>
+                <p style={{ background: '#f0fdf4', border: '1px solid #bbf7d0', borderRadius: '8px', padding: '12px 14px', color: '#15803d', fontSize: '13px', margin: '0 0 1rem', lineHeight: '1.6' }}>{creationSucces}</p>
+                <div style={{ display: 'flex', gap: '10px' }}>
+                  <button onClick={reinitialiserFormulaire} style={{ flex: 1, background: 'white', color: '#0f2d6e', border: '1px solid #e5e7eb', padding: '10px', borderRadius: '8px', fontSize: '13px', fontWeight: '700', cursor: 'pointer' }}>Créer un autre client</button>
+                  <button onClick={fermerModal} style={{ flex: 1, background: '#0f2d6e', color: 'white', border: 'none', padding: '10px', borderRadius: '8px', fontSize: '13px', fontWeight: '700', cursor: 'pointer' }}>Fermer</button>
+                </div>
+              </div>
+            ) : (
+              <>
+                {creationErreur && (
+                  <p style={{ background: '#fef2f2', border: '1px solid #fecaca', borderRadius: '8px', padding: '10px 14px', color: '#dc2626', fontSize: '12.5px', margin: '0 0 1rem' }}>{creationErreur}</p>
+                )}
+
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px', marginBottom: '10px' }}>
+                  <div>
+                    <label style={{ display: 'block', color: '#6b7280', fontSize: '11px', fontWeight: '600', marginBottom: '4px' }}>Prénom *</label>
+                    <input value={formulaire.prenom} onChange={(e) => setFormulaire({ ...formulaire, prenom: e.target.value })}
+                      style={{ width: '100%', padding: '9px 10px', border: '1px solid #e5e7eb', borderRadius: '8px', fontSize: '13px', boxSizing: 'border-box' }} />
+                  </div>
+                  <div>
+                    <label style={{ display: 'block', color: '#6b7280', fontSize: '11px', fontWeight: '600', marginBottom: '4px' }}>Nom *</label>
+                    <input value={formulaire.nom} onChange={(e) => setFormulaire({ ...formulaire, nom: e.target.value })}
+                      style={{ width: '100%', padding: '9px 10px', border: '1px solid #e5e7eb', borderRadius: '8px', fontSize: '13px', boxSizing: 'border-box' }} />
+                  </div>
+                </div>
+
+                <div style={{ marginBottom: '10px' }}>
+                  <label style={{ display: 'block', color: '#6b7280', fontSize: '11px', fontWeight: '600', marginBottom: '4px' }}>Email *</label>
+                  <input type="email" value={formulaire.email} onChange={(e) => setFormulaire({ ...formulaire, email: e.target.value })}
+                    style={{ width: '100%', padding: '9px 10px', border: '1px solid #e5e7eb', borderRadius: '8px', fontSize: '13px', boxSizing: 'border-box' }} />
+                </div>
+
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px', marginBottom: '10px' }}>
+                  <div>
+                    <label style={{ display: 'block', color: '#6b7280', fontSize: '11px', fontWeight: '600', marginBottom: '4px' }}>Type de compte</label>
+                    <select value={formulaire.type} onChange={(e) => setFormulaire({ ...formulaire, type: e.target.value as 'particulier' | 'professionnel' })}
+                      style={{ width: '100%', padding: '9px 10px', border: '1px solid #e5e7eb', borderRadius: '8px', fontSize: '13px', boxSizing: 'border-box', background: 'white' }}>
+                      <option value="particulier">Particulier</option>
+                      <option value="professionnel">Professionnel</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label style={{ display: 'block', color: '#6b7280', fontSize: '11px', fontWeight: '600', marginBottom: '4px' }}>Téléphone</label>
+                    <input value={formulaire.telephone} onChange={(e) => setFormulaire({ ...formulaire, telephone: e.target.value })}
+                      style={{ width: '100%', padding: '9px 10px', border: '1px solid #e5e7eb', borderRadius: '8px', fontSize: '13px', boxSizing: 'border-box' }} />
+                  </div>
+                </div>
+
+                <div style={{ marginBottom: '10px' }}>
+                  <label style={{ display: 'block', color: '#6b7280', fontSize: '11px', fontWeight: '600', marginBottom: '4px' }}>Ville</label>
+                  <input value={formulaire.ville} onChange={(e) => setFormulaire({ ...formulaire, ville: e.target.value })}
+                    style={{ width: '100%', padding: '9px 10px', border: '1px solid #e5e7eb', borderRadius: '8px', fontSize: '13px', boxSizing: 'border-box' }} />
+                </div>
+
+                {formulaire.type === 'professionnel' && (
+                  <>
+                    <div style={{ marginBottom: '10px' }}>
+                      <label style={{ display: 'block', color: '#6b7280', fontSize: '11px', fontWeight: '600', marginBottom: '4px' }}>Structure</label>
+                      <input value={formulaire.nom_structure} onChange={(e) => setFormulaire({ ...formulaire, nom_structure: e.target.value })}
+                        style={{ width: '100%', padding: '9px 10px', border: '1px solid #e5e7eb', borderRadius: '8px', fontSize: '13px', boxSizing: 'border-box' }} />
+                    </div>
+                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px', marginBottom: '10px' }}>
+                      <div>
+                        <label style={{ display: 'block', color: '#6b7280', fontSize: '11px', fontWeight: '600', marginBottom: '4px' }}>SIRET</label>
+                        <input value={formulaire.siret} onChange={(e) => setFormulaire({ ...formulaire, siret: e.target.value })}
+                          style={{ width: '100%', padding: '9px 10px', border: '1px solid #e5e7eb', borderRadius: '8px', fontSize: '13px', boxSizing: 'border-box' }} />
+                      </div>
+                      <div>
+                        <label style={{ display: 'block', color: '#6b7280', fontSize: '11px', fontWeight: '600', marginBottom: '4px' }}>RNA (association)</label>
+                        <input value={formulaire.rna} onChange={(e) => setFormulaire({ ...formulaire, rna: e.target.value })}
+                          style={{ width: '100%', padding: '9px 10px', border: '1px solid #e5e7eb', borderRadius: '8px', fontSize: '13px', boxSizing: 'border-box' }} />
+                      </div>
+                    </div>
+                  </>
+                )}
+
+                <p style={{ color: '#9ca3af', fontSize: '11px', margin: '4px 0 16px', lineHeight: '1.6' }}>
+                  Le compte est créé sans mot de passe. Un email est envoyé au client pour qu&apos;il définisse le sien et accède à son espace.
+                </p>
+
+                <button onClick={handleCreerClient} disabled={creationEnCours}
+                  style={{ width: '100%', background: '#0f2d6e', color: 'white', border: 'none', padding: '11px', borderRadius: '8px', fontSize: '13px', fontWeight: '700', cursor: creationEnCours ? 'not-allowed' : 'pointer', opacity: creationEnCours ? 0.6 : 1 }}>
+                  {creationEnCours ? 'Création...' : 'Créer le compte'}
+                </button>
+              </>
+            )}
+          </div>
         </div>
       )}
     </div>

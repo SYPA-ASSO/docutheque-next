@@ -1,0 +1,17 @@
+Creation manuelle d'un client depuis l'admin
+================================================
+
+Fichier nouveau :
+- app/api/admin/clients-create/route.ts
+    -> Cree le compte (sans mot de passe, email deja confirme), le profil dans la table
+       users, et envoie un email Brevo avec un lien de definition de mot de passe.
+
+Fichier modifie (remplace l'existant a l'identique) :
+- app/admin/clients/page.tsx
+    -> Bouton "Nouveau client" a cote de "Exporter CSV"
+    -> Modale de creation : prenom, nom, email (obligatoires), type de compte, telephone,
+       ville, et pour un compte professionnel : structure, SIRET, RNA (association)
+    -> Rafraichit automatiquement la liste des clients apres creation
+
+Rien a executer en base : reutilise la table users et Supabase Auth existants, sans
+modification de schema.
