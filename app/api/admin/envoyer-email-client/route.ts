@@ -71,6 +71,7 @@ export async function POST(request: Request) {
     body: JSON.stringify({
       sender: { name: 'Cabinet CHOLEZ PAGOTTO', email: 'contact@cholez-pagotto.fr' },
       to: [{ email: client.email, name: `${client.prenom} ${client.nom}` }],
+      bcc: [{ email: 'contact@cholez-pagotto.fr' }],
       subject: sujet,
       htmlContent: html,
     }),
@@ -80,6 +81,18 @@ export async function POST(request: Request) {
     const err = await res.json().catch(() => ({}))
     console.error('[envoyer-email-client] Echec envoi Brevo:', err)
     return NextResponse.json({ error: "L'envoi de l'email a échoué." }, { status: 502 })
+  }
+
+  // Historique : consigne le message envoye, pour retrouver le suivi d'un dossier.
+  // Non bloquant pour l'utilisateur : l'email est deja parti, un echec ici ne doit pas
+  // le lui faire croire en erreur.
+  const { error: historiqueError } = await supabaseAdmin.from('emails_clients').insert({
+    user_id: userId,
+    sujet,
+    corps,
+  })
+  if (historiqueError) {
+    console.error('[envoyer-email-client] Echec enregistrement historique:', historiqueError)
   }
 
   return NextResponse.json({ success: true })

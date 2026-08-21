@@ -58,6 +58,9 @@ export default function AdminEchangesFichiers() {
   const [emailEnvoiEnCours, setEmailEnvoiEnCours] = useState(false)
   const [emailErreur, setEmailErreur] = useState('')
   const [emailSucces, setEmailSucces] = useState('')
+  const [historique, setHistorique] = useState<{ id: string; sujet: string; corps: string; created_at: string }[]>([])
+  const [historiqueLoading, setHistoriqueLoading] = useState(false)
+  const [historiqueOuvert, setHistoriqueOuvert] = useState<string | null>(null)
   const inputFileRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
@@ -82,13 +85,25 @@ export default function AdminEchangesFichiers() {
       .finally(() => setLoadingFichiers(false))
   }, [password])
 
+  const chargerHistorique = useCallback((client: Client) => {
+    if (!password) return
+    setHistoriqueLoading(true)
+    fetch(`/api/admin/emails-clients-liste?user_id=${client.id}`, { headers: { 'x-admin-password': password } })
+      .then((r) => r.json())
+      .then((d) => setHistorique(d.emails || []))
+      .catch(() => {})
+      .finally(() => setHistoriqueLoading(false))
+  }, [password])
+
   const selectionnerClient = (client: Client) => {
     setClientSelectionne(client)
     chargerFichiers(client)
+    chargerHistorique(client)
     setEmailSujet('')
     setEmailCorps('')
     setEmailErreur('')
     setEmailSucces('')
+    setHistoriqueOuvert(null)
   }
 
   const handleEnvoyerEmail = async () => {
@@ -111,6 +126,7 @@ export default function AdminEchangesFichiers() {
       setEmailSucces(`Email envoyé à ${clientSelectionne.prenom} ${clientSelectionne.nom}.`)
       setEmailSujet('')
       setEmailCorps('')
+      chargerHistorique(clientSelectionne)
     } catch {
       setEmailErreur('Une erreur est survenue.')
     } finally {
@@ -310,6 +326,40 @@ export default function AdminEchangesFichiers() {
               >
                 <Mail size={13} /> {emailEnvoiEnCours ? 'Envoi...' : "Envoyer l'email"}
               </button>
+              <p style={{ margin: '8px 0 0', fontSize: '10.5px', color: '#9aa2b1' }}>
+                Une copie est automatiquement envoyée en CCI à contact@cholez-pagotto.fr.
+              </p>
+
+              {/* HISTORIQUE */}
+              <div style={{ marginTop: '1.5rem' }}>
+                <p style={{ margin: '0 0 8px', fontSize: '11.5px', fontWeight: 700, color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                  Historique des emails envoyés
+                </p>
+                {historiqueLoading ? (
+                  <p style={{ color: '#9ca3af', fontSize: '12px' }}>Chargement...</p>
+                ) : historique.length === 0 ? (
+                  <p style={{ color: '#9ca3af', fontSize: '12px' }}>Aucun email envoyé à ce client pour le moment.</p>
+                ) : (
+                  <div style={{ display: 'flex', flexDirection: 'column' }}>
+                    {historique.map((h, i) => (
+                      <div key={h.id} style={{ borderTop: i === 0 ? 'none' : '1px solid #f1f3f7', padding: '10px 0' }}>
+                        <button
+                          onClick={() => setHistoriqueOuvert(historiqueOuvert === h.id ? null : h.id)}
+                          style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%', background: 'none', border: 'none', cursor: 'pointer', padding: 0, textAlign: 'left', gap: '10px' }}
+                        >
+                          <span style={{ fontSize: '12.5px', fontWeight: 600, color: '#1f2937', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{h.sujet}</span>
+                          <span style={{ fontSize: '11px', color: '#9aa2b1', flexShrink: 0 }}>{formatDate(h.created_at)}</span>
+                        </button>
+                        {historiqueOuvert === h.id && (
+                          <p style={{ margin: '8px 0 0', fontSize: '12px', color: '#374151', lineHeight: 1.7, whiteSpace: 'pre-line', background: '#f8fafc', border: '1px solid #f1f3f7', borderRadius: '8px', padding: '10px 12px' }}>
+                            {h.corps}
+                          </p>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
           </>
         )}

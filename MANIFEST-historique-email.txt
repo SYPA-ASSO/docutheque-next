@@ -1,0 +1,18 @@
+Historique des emails envoyes + copie CCI au cabinet
+=========================================================
+
+Fichier nouveau :
+- migration-emails-clients.sql
+    -> Table emails_clients (avec RLS), pour conserver chaque email libre envoye
+- app/api/admin/emails-clients-liste/route.ts
+    -> Liste l'historique des emails envoyes a un client donne
+
+Fichiers modifies (remplacent l'existant a l'identique) :
+- app/api/admin/envoyer-email-client/route.ts
+    -> Ajoute une copie en CCI a contact@cholez-pagotto.fr a chaque envoi
+    -> Enregistre chaque email envoye dans la table emails_clients
+- app/admin/echanges-fichiers/page.tsx
+    -> Historique affiche sous le compositeur, avec sujet + date, deplie au clic pour
+       voir le message complet ; se recharge automatiquement apres chaque nouvel envoi
+
+Mise en place : executer migration-emails-clients.sql dans Supabase avant deploiement.
