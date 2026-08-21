@@ -1,0 +1,12 @@
+Lien direct de l'email vers l'onglet Echanges de documents
+================================================================
+
+Fichiers modifies (remplacent l'existant a l'identique) :
+- app/espace-client/page.tsx
+    -> Ajout de "echanges" a la liste blanche des onglets accessibles via l'URL
+       (?onglet=echanges), mecanisme deja existant sur le site, juste incomplet
+       depuis l'ajout de ce nouvel onglet.
+- app/api/admin/envoyer-email-client/route.ts
+    -> Le bouton de l'email pointe desormais vers /espace-client?onglet=echanges
+       (le client atterrit directement sur ses documents) au lieu de la page
+       d'accueil generique de l'espace client.

@@ -143,7 +143,7 @@ export default function EspaceClient() {
     if (!loading) {
       const params = new URLSearchParams(window.location.search)
       const ongletParam = params.get('onglet')
-      const validOnglets = ['tableau-bord', 'questions', 'documents', 'commandes', 'factures', 'abonnement', 'profil']
+      const validOnglets = ['tableau-bord', 'questions', 'documents', 'echanges', 'commandes', 'factures', 'abonnement', 'profil']
       if (ongletParam && validOnglets.includes(ongletParam)) {
         setOnglet(ongletParam as typeof onglet)
       }

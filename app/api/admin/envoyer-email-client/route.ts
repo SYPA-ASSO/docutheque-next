@@ -52,8 +52,8 @@ export async function POST(request: Request) {
   <div style="background:#f8fafc;padding:24px;border:1px solid #e5e7eb;border-top:none;border-radius:0 0 8px 8px;">
     <p style="color:#374151;font-size:14px;line-height:1.7;white-space:pre-line;margin:0 0 20px;">${corpsEchappe}</p>
     <div style="text-align:center;margin:20px 0;">
-      <a href="${site}/espace-client" style="display:inline-block;background:#0f2d6e;color:#ffffff;text-decoration:none;font-size:13px;font-weight:700;padding:12px 26px;border-radius:8px;">
-        Accéder à mon espace client
+      <a href="${site}/espace-client?onglet=echanges" style="display:inline-block;background:#0f2d6e;color:#ffffff;text-decoration:none;font-size:13px;font-weight:700;padding:12px 26px;border-radius:8px;">
+        Accéder à mes documents
       </a>
     </div>
     <p style="margin-top:24px;">Cordialement,</p>
