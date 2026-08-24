@@ -20,6 +20,15 @@ export async function POST(request: Request) {
 
     if (error) return NextResponse.json({ error: error.message }, { status: 500 })
 
+    // Echappement HTML de la reponse (texte libre saisi par l'admin), puis conversion
+    // des sauts de ligne en vraies balises <br> : la propriete CSS white-space:pre-line
+    // utilisee auparavant n'est pas fiable sous Outlook desktop (moteur Word).
+    const reponseEchappee = String(reponse)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/\n/g, '<br>')
+
     const { data: user } = await supabaseAdmin
       .from('users').select('prenom, nom').eq('id', userId).single()
 
@@ -46,7 +55,7 @@ export async function POST(request: Request) {
                 <p style="color: #374151; font-size: 14px;">Notre juriste a répondu à votre question juridique.</p>
                 <div style="background: white; border: 1px solid #bbf7d0; border-radius: 8px; padding: 16px; margin: 16px 0;">
                   <p style="color: #15803d; font-size: 12px; font-weight: bold; margin: 0 0 8px;">Réponse du juriste</p>
-                  <p style="color: #374151; font-size: 14px; margin: 0; line-height: 1.7; white-space: pre-line;">${reponse}</p>
+                  <p style="color: #374151; font-size: 14px; margin: 0; line-height: 1.7;">${reponseEchappee}</p>
                 </div>
                 <div style="text-align: center; margin: 24px 0;">
                   <a href="${process.env.NEXT_PUBLIC_SITE_URL}/espace-client" style="background: #0f2d6e; color: white; padding: 14px 32px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 14px;">

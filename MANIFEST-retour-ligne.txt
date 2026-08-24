@@ -1,0 +1,22 @@
+Correction des retours a la ligne invisibles sous Outlook
+================================================================
+
+Cause : white-space:pre-line n'est pas fiable sous Outlook desktop (moteur Word).
+Les retours a la ligne tapes dans le compositeur restaient donc invisibles a
+l'affichage, aussi bien pour vous (apercu) que pour le client (email recu).
+
+Correction : conversion des sauts de ligne en vraies balises <br> avant l'envoi,
+qui fonctionnent dans absolument tous les clients mail. La propriete CSS devenue
+inutile a ete retiree.
+
+Fichiers modifies (remplacent l'existant a l'identique) :
+- app/api/admin/envoyer-email-client/route.ts
+    -> Le compositeur d'email libre (meme correctif que ci-dessus)
+
+- app/api/admin/questions-repondre/route.ts
+    -> Meme defaut trouve et corrige dans l'email de reponse a une question
+       juridique (qui servait justement de modele a l'origine). Ajoute egalement
+       l'echappement HTML de la reponse, absent jusqu'ici (la reponse etait
+       inseree telle quelle dans l'email, sans protection).
+
+Rien a executer en base.

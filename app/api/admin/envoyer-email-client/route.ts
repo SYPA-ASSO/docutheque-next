@@ -33,12 +33,14 @@ export async function POST(request: Request) {
 
   const site = process.env.NEXT_PUBLIC_SITE_URL || 'https://cholez-pagotto.fr'
 
-  // Echappement HTML minimal du texte libre, avant preservation des sauts de ligne
-  // par white-space: pre-line (comme pour les reponses aux questions juridiques).
+  // Echappement HTML minimal du texte libre, puis conversion des sauts de ligne en
+  // vraies balises <br>. La propriete CSS white-space:pre-line, utilisee auparavant,
+  // n'est pas fiable sous Outlook desktop (moteur Word) : les <br> fonctionnent partout.
   const corpsEchappe = String(corps)
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
+    .replace(/\n/g, '<br>')
 
   const html = `
 <!DOCTYPE html>
@@ -62,7 +64,7 @@ export async function POST(request: Request) {
       <!-- CORPS -->
       <tr>
         <td style="padding:36px;">
-          <p style="color:#374151;font-size:14.5px;line-height:1.8;white-space:pre-line;margin:0;">${corpsEchappe}</p>
+          <p style="color:#374151;font-size:14.5px;line-height:1.8;margin:0;">${corpsEchappe}</p>
 
           <div style="text-align:center;margin:32px 0 8px;">
             <a href="${site}/espace-client?onglet=echanges" style="display:inline-block;background:#0f2d6e;color:#ffffff;text-decoration:none;font-size:13.5px;font-weight:600;padding:13px 30px;border-radius:8px;">
