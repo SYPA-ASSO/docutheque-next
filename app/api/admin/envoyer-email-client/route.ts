@@ -43,24 +43,63 @@ export async function POST(request: Request) {
   const html = `
 <!DOCTYPE html>
 <html lang="fr">
-<head><meta charset="UTF-8"></head>
-<body style="font-family:Arial,sans-serif;color:#374151;font-size:14px;max-width:600px;margin:0 auto;">
-  <div style="background:linear-gradient(135deg,#0f2d6e 0%,#1a4fba 100%);padding:24px;border-radius:8px 8px 0 0;">
-    <h2 style="color:#ffffff;margin:0;font-size:16px;">${sujet}</h2>
-    <p style="color:#bfdbfe;font-size:12px;margin:6px 0 0;">Cabinet CHOLEZ PAGOTTO</p>
-  </div>
-  <div style="background:#f8fafc;padding:24px;border:1px solid #e5e7eb;border-top:none;border-radius:0 0 8px 8px;">
-    <p style="color:#374151;font-size:14px;line-height:1.7;white-space:pre-line;margin:0 0 20px;">${corpsEchappe}</p>
-    <div style="text-align:center;margin:20px 0;">
-      <a href="${site}/espace-client?onglet=echanges" style="display:inline-block;background:#0f2d6e;color:#ffffff;text-decoration:none;font-size:13px;font-weight:700;padding:12px 26px;border-radius:8px;">
-        Accéder à mes documents
-      </a>
-    </div>
-    <p style="margin-top:24px;">Cordialement,</p>
-    <p style="margin:8px 0 0;line-height:1.7;">
-      <strong>Cabinet CHOLEZ PAGOTTO</strong><br>
-      <a href="https://cholez-pagotto.fr" style="color:#1a4fba;text-decoration:none;">cholez-pagotto.fr</a>
-    </p>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="margin:0;padding:0;background:#eef1f6;font-family:'Segoe UI',Helvetica,Arial,sans-serif;">
+  <div style="max-width:600px;margin:0 auto;padding:32px 16px;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#ffffff;border-radius:12px;overflow:hidden;box-shadow:0 2px 10px rgba(15,45,110,0.08);">
+
+      <!-- EN-TETE -->
+      <tr>
+        <td style="background:#ffffff;padding:28px 36px;border-bottom:1px solid #e5e7eb;">
+          <img src="https://cholez-pagotto.fr/logo-cholez-pagotto-transparent.svg" alt="Cabinet Cholez-Pagotto" height="38" style="display:block;height:38px;width:auto;margin-bottom:16px;">
+          <h1 style="color:#0f2d6e;margin:0;font-size:18px;font-weight:600;line-height:1.4;">${sujet}</h1>
+        </td>
+      </tr>
+
+      <!-- CORPS -->
+      <tr>
+        <td style="padding:36px;">
+          <p style="color:#374151;font-size:14.5px;line-height:1.8;white-space:pre-line;margin:0;">${corpsEchappe}</p>
+
+          <div style="text-align:center;margin:32px 0 8px;">
+            <a href="${site}/espace-client?onglet=echanges" style="display:inline-block;background:#0f2d6e;color:#ffffff;text-decoration:none;font-size:13.5px;font-weight:600;padding:13px 30px;border-radius:8px;">
+              Accéder à mes documents
+            </a>
+          </div>
+        </td>
+      </tr>
+
+      <!-- SIGNATURE -->
+      <tr>
+        <td style="padding:0 36px 32px;">
+          <div style="border-top:1px solid #eef1f6;padding-top:24px;">
+            <p style="color:#374151;font-size:13.5px;line-height:1.7;margin:0 0 16px;">Cordialement,</p>
+            <img src="https://cholez-pagotto.fr/logo-cholez-pagotto-transparent.svg" alt="Cabinet Cholez-Pagotto" height="30" style="display:block;height:30px;width:auto;margin-bottom:12px;">
+            <p style="color:#0f2d6e;font-size:13.5px;font-weight:700;line-height:1.6;margin:0;">François CHOLEZ</p>
+            <p style="color:#6b7280;font-size:12px;line-height:1.6;margin:2px 0 14px;">Juriste · Formaliste · Conseil en assurances et réassurances</p>
+            <p style="color:#6b7280;font-size:12px;line-height:1.8;margin:0;">
+              Tél. (+33) 03 74 47 40 55 &nbsp;·&nbsp; Mobile (+33) 07 55 61 66 88<br>
+              <a href="mailto:francois@cholez-pagotto.fr" style="color:#1a4fba;text-decoration:none;">francois@cholez-pagotto.fr</a><br>
+              Nos sites institutionnels :
+              <a href="https://cholez-pagotto.fr" style="color:#1a4fba;text-decoration:none;">cholez-pagotto.fr</a> &nbsp;|&nbsp;
+              <a href="https://deviline-courtage.fr" style="color:#1a4fba;text-decoration:none;">deviline-courtage.fr</a> &nbsp;|&nbsp;
+              <a href="https://paie-et-dsn.fr" style="color:#1a4fba;text-decoration:none;">paie-et-dsn.fr</a>
+            </p>
+          </div>
+        </td>
+      </tr>
+
+      <!-- PIED DE PAGE -->
+      <tr>
+        <td style="background:#f8fafc;padding:18px 36px;border-top:1px solid #eef1f6;text-align:center;">
+          <p style="color:#9ca3af;font-size:11px;line-height:1.7;margin:0;">Ceci est un message automatique d&apos;information.</p>
+        </td>
+      </tr>
+
+    </table>
   </div>
 </body>
 </html>`

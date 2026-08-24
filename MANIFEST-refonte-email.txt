@@ -1,0 +1,16 @@
+Refonte visuelle du message personnalise (compositeur email)
+==================================================================
+
+Fichier modifie (remplace l'existant a l'identique) :
+- app/api/admin/envoyer-email-client/route.ts
+    -> En-tete : fond blanc + logo officiel du cabinet (logo-cholez-pagotto-transparent.svg),
+       au lieu du texte "CABINET CHOLEZ PAGOTTO" sur fond degrade.
+    -> Objet du message toujours dynamique (${sujet}, ce que vous tapez dans le compositeur) :
+       rien de fige, seul l'habillage visuel a change.
+    -> Signature complete : logo, François CHOLEZ, titre, telephone fixe et mobile,
+       email personnel, liens vers les 3 sites institutionnels du cabinet.
+    -> Pied de page simplifie : mention centree "Ceci est un message automatique
+       d'information." (l'adresse et le telephone du cabinet ont ete deplaces dans
+       la signature, retires du pied de page pour eviter la redondance).
+
+Rien a executer en base.
