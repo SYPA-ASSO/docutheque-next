@@ -606,11 +606,12 @@ export default function EspaceClient() {
   return (
     <>
       <Header />
+      <style dangerouslySetInnerHTML={{ __html: '@media(max-width:768px){.ec-layout{flex-direction:column !important;align-items:stretch !important;padding-left:1rem !important;padding-right:1rem !important}.ec-sidebar{flex-basis:auto !important;width:100% !important;position:static !important;top:auto !important;box-sizing:border-box !important}}' }} />
       <main style={{ background: '#f8fafc', minHeight: '100vh', padding: '2rem 0' }}>
-        <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 2rem', display: 'flex', gap: '2rem', alignItems: 'flex-start' }}>
+        <div className="ec-layout" style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 2rem', display: 'flex', gap: '2rem', alignItems: 'flex-start' }}>
 
           {/* SIDEBAR */}
-          <div style={{ flex: '0 0 240px', background: 'white', borderRadius: '12px', border: '1px solid #e5e7eb', padding: '1.5rem', position: 'sticky', top: '80px' }}>
+          <div className="ec-sidebar" style={{ flex: '0 0 240px', background: 'white', borderRadius: '12px', border: '1px solid #e5e7eb', padding: '1.5rem', position: 'sticky', top: '80px' }}>
             <div style={{ marginBottom: '1.25rem', paddingBottom: '1.25rem', borderBottom: '1px solid #f3f4f6' }}>
               <div style={{ width: '48px', height: '48px', background: estAbonne ? 'linear-gradient(135deg, #0f2d6e, #1a4fba)' : '#f3f4f6', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '10px' }}>
                 {estAbonne ? <Crown size={20} color="white" strokeWidth={1.5} /> : <User size={22} color="#9ca3af" strokeWidth={1.5} />}

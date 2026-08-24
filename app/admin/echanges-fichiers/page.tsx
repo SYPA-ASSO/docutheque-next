@@ -43,7 +43,7 @@ function formatDate(iso: string): string {
 }
 
 export default function AdminEchangesFichiers() {
-  const { password } = useAdmin()
+  const { password, isMobile } = useAdmin()
   const [clients, setClients] = useState<Client[]>([])
   const [loadingClients, setLoadingClients] = useState(true)
   const [recherche, setRecherche] = useState('')
@@ -197,10 +197,10 @@ export default function AdminEchangesFichiers() {
   })
 
   return (
-    <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'flex-start' }}>
+    <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: '1.5rem', alignItems: isMobile ? 'stretch' : 'flex-start' }}>
 
       {/* LISTE DES CLIENTS */}
-      <div style={{ flex: '0 0 300px', background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.25rem' }}>
+      <div style={{ flex: isMobile ? '1 1 auto' : '0 0 300px', background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.25rem' }}>
         <h2 style={{ margin: '0 0 12px', fontSize: '15px', color: '#0f2d6e', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '8px' }}>
           <Users size={16} /> Clients
         </h2>

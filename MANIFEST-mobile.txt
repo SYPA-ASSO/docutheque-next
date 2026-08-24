@@ -1,0 +1,32 @@
+Correction des superpositions sur mobile (espace client + admin)
+======================================================================
+
+Cause identifiee : espace-client et admin/echanges-fichiers placent une colonne de
+largeur fixe (sidebar 240px cote client, liste clients 300px cote admin) a cote du
+contenu, sans jamais empiler verticalement sur petit ecran. Sur un telephone, le
+contenu principal se retrouve compresse dans une largeur residuelle de quelques
+dizaines de pixels, d'ou l'illisibilite constatee (particulierement visible sur
+l'onglet Echanges de documents, plus charge visuellement que les autres onglets,
+mais le probleme touchait en realite TOUS les onglets de l'espace client).
+
+Fichiers modifies (remplacent l'existant a l'identique) :
+- app/espace-client/page.tsx
+    -> Regle responsive ajoutee (sous 768px) : sidebar et contenu s'empilent
+       verticalement au lieu de se serrer cote a cote.
+
+- app/admin/layout.tsx
+    -> isMobile (deja detecte en interne) est desormais expose via le contexte admin
+       (useAdmin()), pour que les autres pages admin puissent s'y adapter aussi.
+
+- app/admin/echanges-fichiers/page.tsx
+    -> Utilise ce isMobile : la liste des clients et le panneau de fichiers s'empilent
+       verticalement sur mobile au lieu de se partager la largeur.
+
+Verifie egalement mais AUCUNE correction necessaire :
+- app/admin/clients/page.tsx : deja en colonne unique, pas de probleme constate.
+- Le shell admin (menu lateral) : deja responsive via son propre isMobile local.
+
+A faire manuellement (recommande, hors zip) :
+- Supprimer app/api/compte/avis-propose/route.ts, redondant avec la nouvelle logique
+  admin-only et pouvant etre appele directement en contournement :
+  Remove-Item -Recurse -Force "app\api\compte\avis-propose"

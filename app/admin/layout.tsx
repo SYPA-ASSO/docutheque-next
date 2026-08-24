@@ -10,9 +10,10 @@ import {
 type AdminContextType = {
   password: string
   isAuth: boolean
+  isMobile: boolean
 }
 
-const AdminContext = createContext<AdminContextType>({ password: '', isAuth: false })
+const AdminContext = createContext<AdminContextType>({ password: '', isAuth: false, isMobile: false })
 export const useAdmin = () => useContext(AdminContext)
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
@@ -159,7 +160,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   }
 
   return (
-    <AdminContext.Provider value={{ password, isAuth }}>
+    <AdminContext.Provider value={{ password, isAuth, isMobile }}>
       <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', minHeight: '100vh', background: '#f8fafc' }}>
 
         {/* Sidebar : barre laterale figee sur ordinateur, bandeau haut sur mobile */}
