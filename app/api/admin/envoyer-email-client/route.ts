@@ -54,7 +54,7 @@ export async function POST(request: Request) {
       <!-- EN-TETE -->
       <tr>
         <td style="background:#ffffff;padding:28px 36px;border-bottom:1px solid #e5e7eb;">
-          <img src="https://cholez-pagotto.fr/logo-cholez-pagotto-transparent.svg" alt="Cabinet Cholez-Pagotto" height="38" style="display:block;height:38px;width:auto;margin-bottom:16px;">
+          <img src="https://cholez-pagotto.fr/logo-cholez-pagotto-email.png" alt="Cabinet Cholez-Pagotto" height="38" style="display:block;height:38px;width:auto;margin-bottom:16px;">
           <h1 style="color:#0f2d6e;margin:0;font-size:18px;font-weight:600;line-height:1.4;">${sujet}</h1>
         </td>
       </tr>
@@ -77,7 +77,7 @@ export async function POST(request: Request) {
         <td style="padding:0 36px 32px;">
           <div style="border-top:1px solid #eef1f6;padding-top:24px;">
             <p style="color:#374151;font-size:13.5px;line-height:1.7;margin:0 0 16px;">Cordialement,</p>
-            <img src="https://cholez-pagotto.fr/logo-cholez-pagotto-transparent.svg" alt="Cabinet Cholez-Pagotto" height="30" style="display:block;height:30px;width:auto;margin-bottom:12px;">
+            <img src="https://cholez-pagotto.fr/logo-cholez-pagotto-email.png" alt="Cabinet Cholez-Pagotto" height="30" style="display:block;height:30px;width:auto;margin-bottom:12px;">
             <p style="color:#0f2d6e;font-size:13.5px;font-weight:700;line-height:1.6;margin:0;">François CHOLEZ</p>
             <p style="color:#6b7280;font-size:12px;line-height:1.6;margin:2px 0 14px;">Juriste · Formaliste · Conseil en assurances et réassurances</p>
             <p style="color:#6b7280;font-size:12px;line-height:1.8;margin:0;">

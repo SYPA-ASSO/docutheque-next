@@ -1,0 +1,14 @@
+Correction du logo casse sous Outlook desktop
+=================================================
+
+Cause : Outlook desktop (moteur de rendu herite de Word) ne sait pas afficher les
+images au format SVG. Le fichier logo-cholez-pagotto-transparent.svg utilise dans
+l'email precedent en etait la cause.
+
+Fichier modifie (remplace l'existant a l'identique) :
+- app/api/admin/envoyer-email-client/route.ts
+    -> Les deux occurrences du logo (en-tete et signature) utilisent desormais
+       logo-cholez-pagotto-email.png (format PNG, deja present dans vos assets,
+       nomme specifiquement pour cet usage) au lieu du SVG.
+
+Rien a executer en base.
