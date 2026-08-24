@@ -1,0 +1,38 @@
+Revue complete de tous les emails automatiques (SVG + degrades CSS)
+========================================================================
+
+METHODE : recherche systematique, dans tous les fichiers du projet envoyant un
+email (references a htmlContent / api.brevo.com), de deux defauts connus
+d'Outlook desktop : les images SVG (non supportees) et les degrades CSS
+"background: linear-gradient(...)" sans couleur de secours (le texte blanc
+pose dessus devient alors illisible, Outlook affichant un fond blanc par defaut).
+
+RESULTAT :
+- SVG dans un email : 1 seul cas trouve, deja corrige lors de l'echange precedent
+  (app/api/admin/envoyer-email-client/route.ts, remplace par un PNG).
+- Degrade CSS sans secours : 9 fichiers trouves et corriges dans ce lot (liste
+  ci-dessous). Deux d'entre eux sont des emails de premiere importance :
+  l'activation de compte (inscription) et la reinitialisation de mot de passe,
+  dont le titre en blanc etait potentiellement illisible sous Outlook depuis
+  le debut, avant meme cette session.
+- Aucun autre email du site n'utilise ni SVG ni degrade problematique : les
+  autres (bienvenue mentorat, alertes admin, questions/reponses, migration,
+  newsletter, avis Google...) utilisent deja des couleurs pleines, sans risque.
+
+LA CORRECTION : ajout d'une couleur de fond pleine (background-color) juste
+avant le degrade existant, sur le meme element. Outlook (qui ignore le degrade
+qu'il ne sait pas interpreter) affiche cette couleur pleine ; les autres clients
+mail affichent le degrade normalement, par-dessus.
+
+Fichiers modifies (remplacent l'existant a l'identique) :
+- app/api/inscription/route.ts                       (email d'activation de compte)
+- app/api/compte/mot-de-passe-oublie/route.ts         (email de reinitialisation)
+- app/api/compte/resilier/route.ts                    (email de resiliation)
+- app/api/documents/acheter/route.ts                  (email d'achat de document)
+- app/api/checkout/diagnostic/commande/route.ts       (email diagnostic RGPD)
+- app/api/checkout/diagnostic/confirme/route.ts       (email diagnostic RGPD)
+- app/api/admin/factures-upload/route.ts              (email de facture disponible)
+- app/audit-express/route.ts                          (email d'audit express)
+- app/api/admin/clients-create/route.ts               (creation manuelle de client, cette session)
+
+Rien a executer en base.

@@ -48,7 +48,7 @@ export async function POST(request: Request) {
             to: [{ email: u.email, name: prenom }],
             subject: 'Une facture est disponible dans votre espace client',
             htmlContent: `<body style="font-family:Arial,sans-serif;color:#374151;font-size:14px;max-width:600px;margin:0 auto;">
-  <div style="background:linear-gradient(135deg,#0f2d6e 0%,#1a4fba 100%);padding:24px;border-radius:8px 8px 0 0;">
+  <div style="background-color:#0f2d6e;background:linear-gradient(135deg,#0f2d6e 0%,#1a4fba 100%);padding:24px;border-radius:8px 8px 0 0;">
     <h2 style="color:#ffffff;margin:0;font-size:16px;">Nouvelle facture disponible</h2>
     <p style="color:#bfdbfe;font-size:12px;margin:6px 0 0;">Cabinet CHOLEZ PAGOTTO</p>
   </div>
