@@ -71,6 +71,16 @@ export default function AdminEchangesFichiers() {
       .catch(() => setLoadingClients(false))
   }, [password])
 
+  // Selection automatique du client vise par un lien de notification (?client=<id>),
+  // par exemple depuis l'email d'alerte de depot de document.
+  useEffect(() => {
+    if (clients.length === 0 || clientSelectionne) return
+    const idVise = new URLSearchParams(window.location.search).get('client')
+    if (!idVise) return
+    const client = clients.find((c) => c.id === idVise)
+    if (client) selectionnerClient(client)
+  }, [clients]) // eslint-disable-line react-hooks/exhaustive-deps
+
   const chargerFichiers = useCallback((client: Client) => {
     if (!password) return
     setLoadingFichiers(true)

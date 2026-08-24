@@ -89,6 +89,34 @@ export async function POST(request: Request) {
   })
   if (insertError) return NextResponse.json({ error: insertError.message }, { status: 500 })
 
+  // Alerte au cabinet : un client vient de deposer un fichier. Non bloquant pour le
+  // client, un echec d'envoi ne doit pas lui faire croire que son depot a rate.
+  if (process.env.BREVO_API_KEY) {
+    try {
+      const { data: client } = await supabaseAdmin.from('users').select('prenom, nom').eq('id', userId).maybeSingle()
+      const site = process.env.NEXT_PUBLIC_SITE_URL || 'https://cholez-pagotto.fr'
+      const nomClient = client ? `${client.prenom} ${client.nom}` : 'Un client'
+      await fetch('https://api.brevo.com/v3/smtp/email', {
+        method: 'POST',
+        headers: { accept: 'application/json', 'api-key': process.env.BREVO_API_KEY, 'content-type': 'application/json' },
+        body: JSON.stringify({
+          sender: { name: 'Cabinet CHOLEZ PAGOTTO', email: 'contact@cholez-pagotto.fr' },
+          to: [{ email: 'contact@cholez-pagotto.fr' }],
+          subject: `Nouveau document déposé par ${nomClient}`,
+          htmlContent: `<!DOCTYPE html><html lang="fr"><body style="font-family:Arial,sans-serif;color:#374151;font-size:14px;max-width:600px;margin:0 auto;">
+            <p><strong>${nomClient}</strong> vient de déposer un document dans son espace client :</p>
+            <p style="background:#f8fafc;border:1px solid #e5e7eb;border-radius:8px;padding:10px 14px;">${nomFichier}</p>
+            <div style="text-align:center;margin:20px 0;">
+              <a href="${site}/admin/echanges-fichiers?client=${userId}" style="display:inline-block;background:#0f2d6e;color:#ffffff;text-decoration:none;font-size:13px;font-weight:700;padding:12px 26px;border-radius:8px;">Voir le document</a>
+            </div>
+          </body></html>`,
+        }),
+      })
+    } catch (notifError) {
+      console.error('[documents-partages] Echec notification cabinet:', notifError)
+    }
+  }
+
   return NextResponse.json({ success: true })
 }
 

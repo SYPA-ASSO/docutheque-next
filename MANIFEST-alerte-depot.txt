@@ -1,0 +1,15 @@
+Alerte au cabinet lors du depot d'un document par un client
+=================================================================
+
+Fichiers modifies (remplacent l'existant a l'identique) :
+- app/api/compte/documents-partages/route.ts
+    -> Envoie desormais un email a contact@cholez-pagotto.fr a chaque depot cote client
+       (nom du client, nom du fichier, bouton "Voir le document"). Non bloquant : un
+       echec d'envoi n'empeche jamais le depot cote client de reussir.
+
+- app/admin/echanges-fichiers/page.tsx
+    -> Lit un parametre d'URL ?client=<id> pour selectionner automatiquement le bon
+       client des l'ouverture de la page (utilise par le lien de l'email d'alerte,
+       qui pointe vers /admin/echanges-fichiers?client=<id>).
+
+Rien a executer en base.
