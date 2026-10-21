@@ -103,11 +103,21 @@ export default function CataloguePage() {
   const [categories, setCategories] = useState<Categorie[]>([])
   const [categorieActive, setCategorieActive] = useState<string | null>(null)
   const [loading, setLoading] = useState(true)
+  const [connecte, setConnecte] = useState<boolean | null>(null)
   const [periode, setPeriode] = useState<'monthly' | 'yearly'>('monthly')
   const router = useRouter()
 
   useEffect(() => {
     const loadData = async () => {
+      // Le contenu de la bibliothèque n'est chargé que pour un internaute inscrit et connecté.
+      const { data: sessionData } = await supabase.auth.getSession()
+      const estConnecte = Boolean(sessionData?.session)
+      setConnecte(estConnecte)
+      if (!estConnecte) {
+        setLoading(false)
+        return
+      }
+
       const { data: docs } = await supabase
         .from('documents')
         .select('id, nom, slug, description, blob_url, categories, profils_autorises, acces_gratuit, acces_optimal, acces_payant, prix_unitaire, actif, ordre, type, masque_catalogue')
@@ -119,7 +129,6 @@ export default function CataloguePage() {
         .from('categories')
         .select('id, nom, ordre, mots_cles')
         .order('ordre', { ascending: true })
-
 
       if (docs) setDocuments(docs)
       if (cats) setCategories(cats)
@@ -154,6 +163,93 @@ export default function CataloguePage() {
       </a>
     )
   }
+
+  const blocAbonnement = (
+    <section style={{ marginBottom: '3.5rem' }}>
+      <h2 style={{ fontSize: '1.4rem', fontWeight: 700, color: '#0f2d6e', marginBottom: '0.5rem' }}>
+        L'abonnement Optimal
+      </h2>
+      <p style={{ color: '#6b7280', fontSize: 13, marginBottom: '2rem' }}>
+        Deux formules selon votre profil. Chaque formule est disponible en mensuel sans engagement ou en annuel avec 3 mois offerts.
+      </p>
+
+      {/* TOGGLE MENSUEL / ANNUEL */}
+      <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '2rem' }}>
+        <div style={{ background: '#f3f4f6', borderRadius: 10, padding: '4px', display: 'inline-flex', gap: '4px' }}>
+          {(['monthly', 'yearly'] as const).map(p => (
+            <button key={p}
+              onClick={() => setPeriode(p)}
+              style={{ padding: '8px 20px', borderRadius: 8, border: 'none', background: periode === p ? 'white' : 'transparent', color: periode === p ? '#0f2d6e' : '#6b7280', fontSize: 13, fontWeight: periode === p ? 700 : 500, cursor: 'pointer', boxShadow: periode === p ? '0 1px 3px rgba(0,0,0,0.1)' : 'none', transition: 'all 0.15s' }}>
+              {p === 'monthly' ? 'Mensuel' : 'Annuel'}
+              {p === 'yearly' && <span style={{ marginLeft: 6, background: '#0f2d6e', color: 'white', fontSize: 9, fontWeight: 700, padding: '1px 6px', borderRadius: 10 }}>3 mois offerts</span>}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1.5rem' }}>
+        {[
+          {
+            profil: 'Optimal Particulier',
+            cible: 'Particulier · Usage personnel',
+            prix: periode === 'yearly' ? '12,42 €' : '17,90 €',
+            detail: periode === 'yearly' ? '149 € / an' : 'Sans engagement',
+            inclus: [
+              'Accès complet à la bibliothèque',
+              'Documents téléchargeables et personnalisables',
+              'Mises à jour incluses',
+              '1 question juriste incluse par mois (non cumulable)',
+              'Questions supplémentaires à 14,90 €',
+              'Accès espace client',
+            ],
+            couleur: '#1a4fba',
+          },
+          {
+            profil: 'Optimal Pro',
+            cible: 'Professionnel · Association · Collectivité',
+            prix: periode === 'yearly' ? '20,75 €' : '27,90 €',
+            detail: periode === 'yearly' ? '249 € / an' : 'Sans engagement',
+            inclus: [
+              'Accès complet à la bibliothèque',
+              'Documents téléchargeables et personnalisables',
+              'Mises à jour incluses',
+              '2 questions juriste incluses par mois (non cumulables)',
+              'Questions supplémentaires à 14,90 €',
+              'Alertes légales événementielles',
+              'Accès espace client',
+            ],
+            couleur: '#0f2d6e',
+          },
+        ].map((offre, i) => (
+          <div key={i} style={{ background: 'white', border: `2px solid ${offre.couleur}40`, borderRadius: 12, padding: '1.5rem' }}>
+            <div style={{ marginBottom: '0.75rem' }}>
+              <p style={{ color: offre.couleur, fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', margin: '0 0 2px' }}>{offre.profil}</p>
+              <p style={{ color: '#9ca3af', fontSize: 11, margin: 0 }}>{offre.cible}</p>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.3rem', marginBottom: '4px' }}>
+              <span style={{ fontSize: '2rem', fontWeight: 800, color: offre.couleur }}>{offre.prix}</span>
+              <span style={{ fontSize: 13, color: '#6b7280' }}>/mois</span>
+            </div>
+            <p style={{ color: '#9ca3af', fontSize: 11, margin: '0 0 1rem' }}>{offre.detail}</p>
+            <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 1.5rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+              {offre.inclus.map((item, j) => (
+                <li key={j} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem', fontSize: 12, color: '#374151' }}>
+                  <CheckCircle size={14} strokeWidth={2} style={{ color: offre.couleur, marginTop: 2, flexShrink: 0 }} />
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <a href="/connexion" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', background: offre.couleur, color: 'white', textDecoration: 'none', padding: '11px 20px', borderRadius: 8, fontWeight: 700, fontSize: '0.875rem', width: '100%', boxSizing: 'border-box' as const }}>
+              S'inscrire <ArrowRight size={16} />
+            </a>
+          </div>
+        ))}
+      </div>
+      <p style={{ color: '#9ca3af', fontSize: 11, textAlign: 'center', marginTop: '1rem' }}>
+        Sans engagement pour les formules mensuelles · Engagement 12 mois pour les formules annuelles · Paiement sécurisé
+      </p>
+    </section>
+  )
 
   return (
     <>
@@ -221,141 +317,161 @@ export default function CataloguePage() {
             </p>
           </div>
 
-          {/* RECHERCHE + CATEGORIES */}
-          <div style={{ maxWidth: 560, marginBottom: '1.5rem' }}>
-            <DocumentSearch
-              documents={documents}
-              onSelect={(doc) => { if (doc.slug) router.push(`/catalogue/${doc.slug}`) }}
-              onSubmit={(query) => router.push(`/catalogue/recherche?q=${encodeURIComponent(query)}`)}
-              placeholder="Rechercher un document par nom, catégorie ou mot-clé..."
-            />
-          </div>
-
-          {categories.length > 0 && (
-            <div style={{ marginBottom: '2rem' }}>
-              <p style={{ fontSize: 12, fontWeight: 700, color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: 10 }}>Parcourir par catégorie</p>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
-                {categories.map((cat) => (
-                  <a key={cat.id} href={`/catalogue/categorie/${slugify(cat.nom)}`} style={{ display: 'inline-block', padding: '7px 14px', borderRadius: 20, fontSize: 13, fontWeight: 600, background: '#eff6ff', color: '#1a4fba', textDecoration: 'none', border: '1px solid #dbeafe' }}>{cat.nom}</a>
-                ))}
-              </div>
-            </div>
+          {/* VISITEUR : offres payantes en avant, aucun document visible */}
+          {connecte !== true && (
+            <>
+              <section style={{ marginBottom: '1.5rem' }}>
+                <h2 style={{ fontSize: '1.4rem', fontWeight: 700, color: '#0f2d6e', marginBottom: '0.5rem' }}>
+                  Accédez à toute la bibliothèque
+                </h2>
+                <p style={{ color: '#6b7280', fontSize: 13, margin: 0 }}>
+                  Les documents en accès libre sont téléchargeables immédiatement après inscription.
+                </p>
+              </section>
+              {blocAbonnement}
+            </>
           )}
 
-          {/* CATALOGUE PAR CATÉGORIES */}
-          <section style={{ marginBottom: '3.5rem' }}>
-            <h2 style={{ fontSize: '1.4rem', fontWeight: 700, color: '#0f2d6e', marginBottom: '0.5rem' }}>
-              Documents disponibles
-            </h2>
-            <p style={{ color: '#6b7280', fontSize: 13, marginBottom: '2rem' }}>
-              Cliquez sur une catégorie pour voir les documents disponibles. Les documents en accès libre sont téléchargeables immédiatement après inscription gratuite.
-            </p>
-
-            {loading ? (
-              <p style={{ color: '#9ca3af', fontSize: 14 }}>Chargement des documents...</p>
-            ) : categories.length === 0 ? (
-              <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: 12, padding: '3rem', textAlign: 'center' }}>
-                <FileText size={32} color="#d1d5db" strokeWidth={1} style={{ marginBottom: 12 }} />
-                <p style={{ color: '#6b7280', fontSize: 14, margin: 0 }}>La bibliothèque sera disponible prochainement.</p>
+          {/* MEMBRE CONNECTÉ : bibliothèque complète */}
+          {connecte === true && (
+            <>
+              {/* RECHERCHE + CATEGORIES */}
+              <div style={{ maxWidth: 560, marginBottom: '1.5rem' }}>
+                <DocumentSearch
+                  documents={documents}
+                  onSelect={(doc) => { if (doc.slug) router.push(`/catalogue/${doc.slug}`) }}
+                  onSubmit={(query) => router.push(`/catalogue/recherche?q=${encodeURIComponent(query)}`)}
+                  placeholder="Rechercher un document par nom, catégorie ou mot-clé..."
+                />
               </div>
-            ) : (
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                {categories.map((cat) => {
-                  const docs = docsParCategorie(cat.nom)
-                  if (docs.length === 0) return null
-                  const isOpen = categorieActive === cat.id
-                  const nbGrat = docs.filter(d => d.acces_gratuit).length
 
-                  return (
-                    <div
-                      key={cat.id}
-                      style={{ background: 'white', border: `1px solid ${isOpen ? '#1a4fba' : '#e5e7eb'}`, borderRadius: 12, overflow: 'hidden', transition: 'border-color 0.2s' }}
-                    >
-                      <button
-                        onClick={() => setCategorieActive(isOpen ? null : cat.id)}
-                        style={{ width: '100%', background: 'none', border: 'none', padding: '1rem 1.25rem', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px', textAlign: 'left' }}
-                      >
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                          <FileText size={18} color="#1a4fba" strokeWidth={1.5} style={{ flexShrink: 0 }} />
-                          <div>
-                            <p style={{ color: '#0f2d6e', fontSize: '14px', fontWeight: 700, margin: 0 }}>{cat.nom}</p>
-                            <p style={{ color: '#9ca3af', fontSize: 11, margin: 0 }}>
-                              {docs.length} document{docs.length > 1 ? 's' : ''}
-                              {nbGrat > 0 && ` · ${nbGrat} gratuit${nbGrat > 1 ? 's' : ''}`}
-                            </p>
-                          </div>
-                        </div>
-                        <ChevronRight size={16} color="#9ca3af" style={{ transform: isOpen ? 'rotate(90deg)' : 'none', transition: 'transform 0.2s', flexShrink: 0 }} />
-                      </button>
+              {categories.length > 0 && (
+                <div style={{ marginBottom: '2rem' }}>
+                  <p style={{ fontSize: 12, fontWeight: 700, color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: 10 }}>Parcourir par catégorie</p>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+                    {categories.map((cat) => (
+                      <a key={cat.id} href={`/catalogue/categorie/${slugify(cat.nom)}`} style={{ display: 'inline-block', padding: '7px 14px', borderRadius: 20, fontSize: 13, fontWeight: 600, background: '#eff6ff', color: '#1a4fba', textDecoration: 'none', border: '1px solid #dbeafe' }}>{cat.nom}</a>
+                    ))}
+                  </div>
+                </div>
+              )}
 
-                      {isOpen && (
-                        <div style={{ borderTop: '1px solid #f3f4f6', padding: '1rem 1.25rem' }}>
-                          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: '8px' }}>
-                            {docs.map(doc => {
-                              const acces = accesLabel(doc)
-                              return (
-                                <a key={doc.id} href={doc.slug ? `/catalogue/${doc.slug}` : undefined} style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '10px 12px', background: doc.acces_gratuit ? '#f0fdf4' : '#ffffff', borderRadius: 8, border: `1px solid ${doc.acces_gratuit ? '#bbf7d0' : '#e5e7eb'}`, textDecoration: 'none', color: 'inherit', cursor: doc.slug ? 'pointer' : 'default' }}>
-                                  {doc.type === 'pack'
-                                    ? <Package size={15} color={acces.color} style={{ flexShrink: 0 }} />
-                                    : <FileText size={14} color={acces.color} style={{ flexShrink: 0 }} />
-                                  }
-                                  <p style={{ color: '#374151', fontSize: 12, fontWeight: 600, margin: 0, flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                                    {doc.nom}
+              {/* CATALOGUE PAR CATÉGORIES */}
+              <section style={{ marginBottom: '3.5rem' }}>
+                <h2 style={{ fontSize: '1.4rem', fontWeight: 700, color: '#0f2d6e', marginBottom: '0.5rem' }}>
+                  Documents disponibles
+                </h2>
+                <p style={{ color: '#6b7280', fontSize: 13, marginBottom: '2rem' }}>
+                  Cliquez sur une catégorie pour voir les documents disponibles. Les documents en accès libre sont téléchargeables immédiatement après inscription.
+                </p>
+
+                {loading ? (
+                  <p style={{ color: '#9ca3af', fontSize: 14 }}>Chargement des documents...</p>
+                ) : categories.length === 0 ? (
+                  <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: 12, padding: '3rem', textAlign: 'center' }}>
+                    <FileText size={32} color="#d1d5db" strokeWidth={1} style={{ marginBottom: 12 }} />
+                    <p style={{ color: '#6b7280', fontSize: 14, margin: 0 }}>La bibliothèque sera disponible prochainement.</p>
+                  </div>
+                ) : (
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                    {categories.map((cat) => {
+                      const docs = docsParCategorie(cat.nom)
+                      if (docs.length === 0) return null
+                      const isOpen = categorieActive === cat.id
+                      const nbGrat = docs.filter(d => d.acces_gratuit).length
+
+                      return (
+                        <div
+                          key={cat.id}
+                          style={{ background: 'white', border: `1px solid ${isOpen ? '#1a4fba' : '#e5e7eb'}`, borderRadius: 12, overflow: 'hidden', transition: 'border-color 0.2s' }}
+                        >
+                          <button
+                            onClick={() => setCategorieActive(isOpen ? null : cat.id)}
+                            style={{ width: '100%', background: 'none', border: 'none', padding: '1rem 1.25rem', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px', textAlign: 'left' }}
+                          >
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                              <FileText size={18} color="#1a4fba" strokeWidth={1.5} style={{ flexShrink: 0 }} />
+                              <div>
+                                <p style={{ color: '#0f2d6e', fontSize: '14px', fontWeight: 700, margin: 0 }}>{cat.nom}</p>
+                                <p style={{ color: '#9ca3af', fontSize: 11, margin: 0 }}>
+                                  {docs.length} document{docs.length > 1 ? 's' : ''}
+                                  {nbGrat > 0 && ` · ${nbGrat} gratuit${nbGrat > 1 ? 's' : ''}`}
+                                </p>
+                              </div>
+                            </div>
+                            <ChevronRight size={16} color="#9ca3af" style={{ transform: isOpen ? 'rotate(90deg)' : 'none', transition: 'transform 0.2s', flexShrink: 0 }} />
+                          </button>
+
+                          {isOpen && (
+                            <div style={{ borderTop: '1px solid #f3f4f6', padding: '1rem 1.25rem' }}>
+                              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: '8px' }}>
+                                {docs.map(doc => {
+                                  const acces = accesLabel(doc)
+                                  return (
+                                    <a key={doc.id} href={doc.slug ? `/catalogue/${doc.slug}` : undefined} style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '10px 12px', background: doc.acces_gratuit ? '#f0fdf4' : '#ffffff', borderRadius: 8, border: `1px solid ${doc.acces_gratuit ? '#bbf7d0' : '#e5e7eb'}`, textDecoration: 'none', color: 'inherit', cursor: doc.slug ? 'pointer' : 'default' }}>
+                                      {doc.type === 'pack'
+                                        ? <Package size={15} color={acces.color} style={{ flexShrink: 0 }} />
+                                        : <FileText size={14} color={acces.color} style={{ flexShrink: 0 }} />
+                                      }
+                                      <p style={{ color: '#374151', fontSize: 12, fontWeight: 600, margin: 0, flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                                        {doc.nom}
+                                      </p>
+                                      <span style={{ background: acces.bg, color: acces.color, fontSize: 9, fontWeight: 700, padding: '2px 6px', borderRadius: 4, flexShrink: 0 }}>
+                                        {acces.label}
+                                      </span>
+                                    </a>
+                                  )
+                                })}
+                              </div>
+                              {docs.some(d => !d.acces_gratuit) && (
+                                <div style={{ marginTop: '12px', display: 'flex', alignItems: 'center', gap: '10px', padding: '10px 12px', background: '#eff6ff', borderRadius: 8 }}>
+                                  <Crown size={14} color="#1a4fba" style={{ flexShrink: 0 }} />
+                                  <p style={{ color: '#1e3a5f', fontSize: 12, margin: 0 }}>
+                                    Les documents Optimal sont accessibles à prix unitaires ou gratuitement en illimité avec l'
+                                    <a href="/tarifs" style={{ color: '#1a4fba', fontWeight: 700 }}>Abonnement Optimal</a>
+                                    {' '}dès 17,90 €/mois.
                                   </p>
-                                  <span style={{ background: acces.bg, color: acces.color, fontSize: 9, fontWeight: 700, padding: '2px 6px', borderRadius: 4, flexShrink: 0 }}>
-                                    {acces.label}
-                                  </span>
-                                </a>
-                              )
-                            })}
-                          </div>
-                          {docs.some(d => !d.acces_gratuit) && (
-                            <div style={{ marginTop: '12px', display: 'flex', alignItems: 'center', gap: '10px', padding: '10px 12px', background: '#eff6ff', borderRadius: 8 }}>
-                              <Crown size={14} color="#1a4fba" style={{ flexShrink: 0 }} />
-                              <p style={{ color: '#1e3a5f', fontSize: 12, margin: 0 }}>
-                                Les documents Optimal sont accessibles à prix unitaires ou gratuitement en illimité avec l'
-                                <a href="/tarifs" style={{ color: '#1a4fba', fontWeight: 700 }}>Abonnement Optimal</a>
-                                {' '}dès 17,90 €/mois.
-                              </p>
+                                </div>
+                              )}
                             </div>
                           )}
                         </div>
-                      )}
-                    </div>
-                  )
-                })}
-              </div>
-            )}
-          </section>
+                      )
+                    })}
+                  </div>
+                )}
+              </section>
 
-          {/* GUIDES */}
-          {!loading && guides.length > 0 && (
-            <section style={{ marginBottom: '3.5rem' }}>
-              <h2 style={{ fontSize: '1.4rem', fontWeight: 700, color: '#0f2d6e', marginBottom: '0.5rem' }}>
-                Guides disponibles
-              </h2>
-              <p style={{ color: '#6b7280', fontSize: 13, marginBottom: '2rem' }}>
-                Guides pratiques pour comprendre et agir, gratuits ou payants selon les cas.
-              </p>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: '12px' }}>
-                {guides.map(carteRessource)}
-              </div>
-            </section>
-          )}
+              {/* GUIDES */}
+              {!loading && guides.length > 0 && (
+                <section style={{ marginBottom: '3.5rem' }}>
+                  <h2 style={{ fontSize: '1.4rem', fontWeight: 700, color: '#0f2d6e', marginBottom: '0.5rem' }}>
+                    Guides disponibles
+                  </h2>
+                  <p style={{ color: '#6b7280', fontSize: 13, marginBottom: '2rem' }}>
+                    Guides pratiques pour comprendre et agir, gratuits ou payants selon les cas.
+                  </p>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: '12px' }}>
+                    {guides.map(carteRessource)}
+                  </div>
+                </section>
+              )}
 
-          {/* OUVRAGES */}
-          {!loading && livres.length > 0 && (
-            <section style={{ marginBottom: '3.5rem' }}>
-              <h2 style={{ fontSize: '1.4rem', fontWeight: 700, color: '#0f2d6e', marginBottom: '0.5rem' }}>
-                Ouvrages disponibles
-              </h2>
-              <p style={{ color: '#6b7280', fontSize: 13, marginBottom: '2rem' }}>
-                Ouvrages de fond à télécharger, gratuits ou payants selon les cas.
-              </p>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: '12px' }}>
-                {livres.map(carteRessource)}
-              </div>
-            </section>
+              {/* OUVRAGES */}
+              {!loading && livres.length > 0 && (
+                <section style={{ marginBottom: '3.5rem' }}>
+                  <h2 style={{ fontSize: '1.4rem', fontWeight: 700, color: '#0f2d6e', marginBottom: '0.5rem' }}>
+                    Ouvrages disponibles
+                  </h2>
+                  <p style={{ color: '#6b7280', fontSize: 13, marginBottom: '2rem' }}>
+                    Ouvrages de fond à télécharger, gratuits ou payants selon les cas.
+                  </p>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: '12px' }}>
+                    {livres.map(carteRessource)}
+                  </div>
+                </section>
+              )}
+            </>
           )}
 
           {/* AVANTAGES */}
@@ -374,91 +490,7 @@ export default function CataloguePage() {
             </div>
           </section>
 
-          {/* ABONNEMENT */}
-          <section style={{ marginBottom: '3.5rem' }}>
-            <h2 style={{ fontSize: '1.4rem', fontWeight: 700, color: '#0f2d6e', marginBottom: '0.5rem' }}>
-              L'abonnement Optimal
-            </h2>
-            <p style={{ color: '#6b7280', fontSize: 13, marginBottom: '2rem' }}>
-              Deux formules selon votre profil. Chaque formule est disponible en mensuel sans engagement ou en annuel avec 3 mois offerts.
-            </p>
-
-            {/* TOGGLE MENSUEL / ANNUEL */}
-            <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '2rem' }}>
-              <div style={{ background: '#f3f4f6', borderRadius: 10, padding: '4px', display: 'inline-flex', gap: '4px' }}>
-                {(['monthly', 'yearly'] as const).map(p => (
-                  <button key={p}
-                    onClick={() => setPeriode(p)}
-                    style={{ padding: '8px 20px', borderRadius: 8, border: 'none', background: periode === p ? 'white' : 'transparent', color: periode === p ? '#0f2d6e' : '#6b7280', fontSize: 13, fontWeight: periode === p ? 700 : 500, cursor: 'pointer', boxShadow: periode === p ? '0 1px 3px rgba(0,0,0,0.1)' : 'none', transition: 'all 0.15s' }}>
-                    {p === 'monthly' ? 'Mensuel' : 'Annuel'}
-                    {p === 'yearly' && <span style={{ marginLeft: 6, background: '#0f2d6e', color: 'white', fontSize: 9, fontWeight: 700, padding: '1px 6px', borderRadius: 10 }}>3 mois offerts</span>}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1.5rem' }}>
-              {[
-                {
-                  profil: 'Optimal Particulier',
-                  cible: 'Particulier · Usage personnel',
-                  prix: periode === 'yearly' ? '12,42 €' : '17,90 €',
-                  detail: periode === 'yearly' ? '149 € / an' : 'Sans engagement',
-                  inclus: [
-                    'Accès complet à la bibliothèque',
-                    'Documents téléchargeables et personnalisables',
-                    'Mises à jour incluses',
-                    '1 question juriste incluse par mois (non cumulable)',
-                    'Questions supplémentaires à 14,90 €',
-                    'Accès espace client',
-                  ],
-                  couleur: '#1a4fba',
-                },
-                {
-                  profil: 'Optimal Pro',
-                  cible: 'Professionnel · Association · Collectivité',
-                  prix: periode === 'yearly' ? '20,75 €' : '27,90 €',
-                  detail: periode === 'yearly' ? '249 € / an' : 'Sans engagement',
-                  inclus: [
-                    'Accès complet à la bibliothèque',
-                    'Documents téléchargeables et personnalisables',
-                    'Mises à jour incluses',
-                    '2 questions juriste incluses par mois (non cumulables)',
-                    'Questions supplémentaires à 14,90 €',
-                    'Alertes légales événementielles',
-                    'Accès espace client',
-                  ],
-                  couleur: '#0f2d6e',
-                },
-              ].map((offre, i) => (
-                <div key={i} style={{ background: 'white', border: `2px solid ${offre.couleur}40`, borderRadius: 12, padding: '1.5rem' }}>
-                  <div style={{ marginBottom: '0.75rem' }}>
-                    <p style={{ color: offre.couleur, fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', margin: '0 0 2px' }}>{offre.profil}</p>
-                    <p style={{ color: '#9ca3af', fontSize: 11, margin: 0 }}>{offre.cible}</p>
-                  </div>
-                  <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.3rem', marginBottom: '4px' }}>
-                    <span style={{ fontSize: '2rem', fontWeight: 800, color: offre.couleur }}>{offre.prix}</span>
-                    <span style={{ fontSize: 13, color: '#6b7280' }}>/mois</span>
-                  </div>
-                  <p style={{ color: '#9ca3af', fontSize: 11, margin: '0 0 1rem' }}>{offre.detail}</p>
-                  <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 1.5rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                    {offre.inclus.map((item, j) => (
-                      <li key={j} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem', fontSize: 12, color: '#374151' }}>
-                        <CheckCircle size={14} strokeWidth={2} style={{ color: offre.couleur, marginTop: 2, flexShrink: 0 }} />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                  <a href="/connexion" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', background: offre.couleur, color: 'white', textDecoration: 'none', padding: '11px 20px', borderRadius: 8, fontWeight: 700, fontSize: '0.875rem', width: '100%', boxSizing: 'border-box' as const }}>
-                    S'inscrire <ArrowRight size={16} />
-                  </a>
-                </div>
-              ))}
-            </div>
-            <p style={{ color: '#9ca3af', fontSize: 11, textAlign: 'center', marginTop: '1rem' }}>
-              Sans engagement pour les formules mensuelles · Engagement 12 mois pour les formules annuelles · Paiement sécurisé
-            </p>
-          </section>
+          {connecte === true && blocAbonnement}
 
           {/* CTA FINAL */}
           <section style={{ background: 'linear-gradient(135deg, #0f2d6e 0%, #1a4fba 100%)', borderRadius: 14, padding: '2.5rem', textAlign: 'center' }}>
