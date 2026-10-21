@@ -12,8 +12,8 @@ import { supabase } from '@/lib/supabase'
 import type { DocItem, Categorie } from '@/lib/types'
 import { formatPrix } from '@/lib/format'
 import {
-  FileText, Package, Star, ArrowRight, ChevronRight,
-  CheckCircle, Scale, Info, Download, Crown, ChevronDown, BookOpen
+  FileText, Star, ArrowRight, ChevronRight,
+  CheckCircle, Scale, Info, Download, ChevronDown, BookOpen
 } from 'lucide-react'
 
 const schemaData = {
@@ -101,7 +101,6 @@ const faqCatalogue = [
 export default function CataloguePage() {
   const [documents, setDocuments] = useState<DocItem[]>([])
   const [categories, setCategories] = useState<Categorie[]>([])
-  const [categorieActive, setCategorieActive] = useState<string | null>(null)
   const [loading, setLoading] = useState(true)
   const [connecte, setConnecte] = useState<boolean | null>(null)
   const [periode, setPeriode] = useState<'monthly' | 'yearly'>('monthly')
@@ -136,9 +135,6 @@ export default function CataloguePage() {
     }
     loadData()
   }, [])
-
-  const docsParCategorie = (nomCategorie: string) =>
-    documents.filter(doc => doc.categories?.includes(nomCategorie) && doc.type !== 'guide' && doc.type !== 'livre')
 
   const guides = documents.filter(d => d.type === 'guide')
   const livres = documents.filter(d => d.type === 'livre')
@@ -355,92 +351,6 @@ export default function CataloguePage() {
                   </div>
                 </div>
               )}
-
-              {/* CATALOGUE PAR CATÉGORIES */}
-              <section style={{ marginBottom: '3.5rem' }}>
-                <h2 style={{ fontSize: '1.4rem', fontWeight: 700, color: '#0f2d6e', marginBottom: '0.5rem' }}>
-                  Documents disponibles
-                </h2>
-                <p style={{ color: '#6b7280', fontSize: 13, marginBottom: '2rem' }}>
-                  Cliquez sur une catégorie pour voir les documents disponibles. Les documents en accès libre sont téléchargeables immédiatement après inscription.
-                </p>
-
-                {loading ? (
-                  <p style={{ color: '#9ca3af', fontSize: 14 }}>Chargement des documents...</p>
-                ) : categories.length === 0 ? (
-                  <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: 12, padding: '3rem', textAlign: 'center' }}>
-                    <FileText size={32} color="#d1d5db" strokeWidth={1} style={{ marginBottom: 12 }} />
-                    <p style={{ color: '#6b7280', fontSize: 14, margin: 0 }}>La bibliothèque sera disponible prochainement.</p>
-                  </div>
-                ) : (
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                    {categories.map((cat) => {
-                      const docs = docsParCategorie(cat.nom)
-                      if (docs.length === 0) return null
-                      const isOpen = categorieActive === cat.id
-                      const nbGrat = docs.filter(d => d.acces_gratuit).length
-
-                      return (
-                        <div
-                          key={cat.id}
-                          style={{ background: 'white', border: `1px solid ${isOpen ? '#1a4fba' : '#e5e7eb'}`, borderRadius: 12, overflow: 'hidden', transition: 'border-color 0.2s' }}
-                        >
-                          <button
-                            onClick={() => setCategorieActive(isOpen ? null : cat.id)}
-                            style={{ width: '100%', background: 'none', border: 'none', padding: '1rem 1.25rem', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px', textAlign: 'left' }}
-                          >
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                              <FileText size={18} color="#1a4fba" strokeWidth={1.5} style={{ flexShrink: 0 }} />
-                              <div>
-                                <p style={{ color: '#0f2d6e', fontSize: '14px', fontWeight: 700, margin: 0 }}>{cat.nom}</p>
-                                <p style={{ color: '#9ca3af', fontSize: 11, margin: 0 }}>
-                                  {docs.length} document{docs.length > 1 ? 's' : ''}
-                                  {nbGrat > 0 && ` · ${nbGrat} gratuit${nbGrat > 1 ? 's' : ''}`}
-                                </p>
-                              </div>
-                            </div>
-                            <ChevronRight size={16} color="#9ca3af" style={{ transform: isOpen ? 'rotate(90deg)' : 'none', transition: 'transform 0.2s', flexShrink: 0 }} />
-                          </button>
-
-                          {isOpen && (
-                            <div style={{ borderTop: '1px solid #f3f4f6', padding: '1rem 1.25rem' }}>
-                              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: '8px' }}>
-                                {docs.map(doc => {
-                                  const acces = accesLabel(doc)
-                                  return (
-                                    <a key={doc.id} href={doc.slug ? `/catalogue/${doc.slug}` : undefined} style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '10px 12px', background: doc.acces_gratuit ? '#f0fdf4' : '#ffffff', borderRadius: 8, border: `1px solid ${doc.acces_gratuit ? '#bbf7d0' : '#e5e7eb'}`, textDecoration: 'none', color: 'inherit', cursor: doc.slug ? 'pointer' : 'default' }}>
-                                      {doc.type === 'pack'
-                                        ? <Package size={15} color={acces.color} style={{ flexShrink: 0 }} />
-                                        : <FileText size={14} color={acces.color} style={{ flexShrink: 0 }} />
-                                      }
-                                      <p style={{ color: '#374151', fontSize: 12, fontWeight: 600, margin: 0, flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                                        {doc.nom}
-                                      </p>
-                                      <span style={{ background: acces.bg, color: acces.color, fontSize: 9, fontWeight: 700, padding: '2px 6px', borderRadius: 4, flexShrink: 0 }}>
-                                        {acces.label}
-                                      </span>
-                                    </a>
-                                  )
-                                })}
-                              </div>
-                              {docs.some(d => !d.acces_gratuit) && (
-                                <div style={{ marginTop: '12px', display: 'flex', alignItems: 'center', gap: '10px', padding: '10px 12px', background: '#eff6ff', borderRadius: 8 }}>
-                                  <Crown size={14} color="#1a4fba" style={{ flexShrink: 0 }} />
-                                  <p style={{ color: '#1e3a5f', fontSize: 12, margin: 0 }}>
-                                    Les documents Optimal sont accessibles à prix unitaires ou gratuitement en illimité avec l'
-                                    <a href="/tarifs" style={{ color: '#1a4fba', fontWeight: 700 }}>Abonnement Optimal</a>
-                                    {' '}dès 17,90 €/mois.
-                                  </p>
-                                </div>
-                              )}
-                            </div>
-                          )}
-                        </div>
-                      )
-                    })}
-                  </div>
-                )}
-              </section>
 
               {/* GUIDES */}
               {!loading && guides.length > 0 && (

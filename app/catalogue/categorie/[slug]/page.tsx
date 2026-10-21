@@ -98,7 +98,7 @@ export default async function CategoriePage({ params }: { params: Promise<{ slug
           {docs.length === 0 ? (
             <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: 12, padding: '2.5rem', textAlign: 'center' }}>
               <FileText size={32} color="#d1d5db" strokeWidth={1} style={{ marginBottom: 12 }} />
-              <p style={{ color: '#374151', fontSize: 15, fontWeight: 700, margin: '0 0 6px' }}>Cette catégorie se complète.</p>
+              <p style={{ color: '#374151', fontSize: 15, fontWeight: 700, margin: '0 0 6px' }}>Plusieurs documents de cette catégorie sont disponibles selon votre besoin.</p>
               <p style={{ color: '#6b7280', fontSize: 13.5, lineHeight: 1.6, margin: '0 0 16px', maxWidth: 460, marginLeft: 'auto', marginRight: 'auto' }}>
                 Besoin d&apos;un document de cette catégorie dès maintenant{NB}? Sollicitez-le auprès du cabinet, nous vous le transmettons rapidement.
               </p>
