@@ -39,7 +39,7 @@ export default function BanniereALaUne({ maxWidth = 1100, outerPadding = '0 1.5r
         <div style={{ flex: 1, minWidth: 240 }}>
           <span style={{ display: 'inline-block', background: v.ac, color: 'white', fontSize: 10, fontWeight: 700, letterSpacing: '0.08em', padding: '3px 10px', borderRadius: 20, marginBottom: 8 }}>{v.badge}</span>
           {banniere.titre && <p style={{ color: '#0f2d6e', fontSize: '1.05rem', fontWeight: 700, margin: '0 0 4px' }}>{banniere.titre}</p>}
-          {banniere.texte && <p style={{ color: '#4b5563', fontSize: 14, lineHeight: 1.6, margin: 0 }}>{banniere.texte}</p>}
+          {banniere.texte && <p style={{ color: '#4b5563', fontSize: 14, lineHeight: 1.7, margin: 0, whiteSpace: 'pre-line' }}>{banniere.texte}</p>}
         </div>
         {banniere.lien && banniere.libelle_bouton && (
           <a href={banniere.lien} style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: v.ac, color: 'white', padding: '11px 22px', borderRadius: 8, fontWeight: 700, fontSize: 14, textDecoration: 'none', whiteSpace: 'nowrap' }}>
