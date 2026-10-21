@@ -16,8 +16,8 @@ import {
 
 // Date de la prochaine session de demarrage, places restantes et prix affiche,
 // mis a jour manuellement d'une session a l'autre.
-const PROCHAINE_SESSION = '21 septembre 2026'
-const PLACES_RESTANTES = 3
+const PROCHAINE_SESSION = '16 novembre 2026'
+const PLACES_RESTANTES = 5
 const PRIX_NET = '1 990,00'
 
 export const metadata = {
