@@ -193,12 +193,12 @@ export default function MentoratConsultantQualite() {
                 Pour les volets 1 à 3 du programme. Le volet 4 (veille et maintien des outils) est proposé en option, sur devis.
               </p>
             </div>
-            <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', flexShrink: 0 }}>
-              <a href="/mentorat-consultant-qualite/inscription" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: '#0f2d6e', color: 'white', padding: '13px 26px', borderRadius: '8px', fontSize: '14px', fontWeight: 700, textDecoration: 'none' }}>
-                M&apos;inscrire <ArrowRight size={16} />
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', flexShrink: 0 }}>
+              <a href="/contact" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '8px', background: '#0f2d6e', color: 'white', padding: '13px 26px', borderRadius: '8px', fontSize: '14px', fontWeight: 700, textDecoration: 'none' }}>
+                Échanger sur mon projet <ArrowRight size={16} />
               </a>
-              <a href="/contact" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'white', color: '#0f2d6e', border: '1px solid #0f2d6e', padding: '12px 24px', borderRadius: '8px', fontSize: '14px', fontWeight: 700, textDecoration: 'none' }}>
-                Échanger sur mon projet
+              <a href="/mentorat-consultant-qualite/inscription" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '8px', background: '#b8860b', color: 'white', padding: '13px 26px', borderRadius: '8px', fontSize: '14px', fontWeight: 700, textDecoration: 'none' }}>
+                M&apos;inscrire <ArrowRight size={16} />
               </a>
             </div>
           </section>
