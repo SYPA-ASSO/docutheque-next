@@ -14,6 +14,7 @@ import { useRouter } from 'next/navigation'
 import { supabase } from '@/lib/supabase'
 import Header from '@/components/Header'
 import FooterMinimal from '@/components/FooterMinimal'
+import { PROCHAINE_SESSION } from '@/lib/mentorat-session'
 import {
   Compass, FolderOpen, ClipboardCheck, LogOut, Download,
   CheckCircle, Clock, AlertCircle, ShieldCheck, BookOpen,
@@ -57,9 +58,7 @@ const STATUTS: Record<string, { label: string; couleur: string; fond: string }> 
   termine: { label: 'Accompagnement terminé', couleur: '#374151', fond: '#f3f4f6' },
 }
 
-// Date de la prochaine session de demarrage, affichee sur la page.
-// A mettre a jour manuellement d'une session a l'autre.
-const PROCHAINE_SESSION = '16 novembre 2026'
+// Date de la prochaine session : voir lib/mentorat-session.ts
 
 function formatMontant(montant: number | null): string {
   if (montant == null) return ''

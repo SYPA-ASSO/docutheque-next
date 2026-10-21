@@ -8,17 +8,14 @@
 
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import { PROCHAINE_SESSION, PLACES_RESTANTES, PRIX_NET } from '@/lib/mentorat-session'
 import {
   ChevronRight, ArrowRight, Compass, FolderOpen, Users, RefreshCw,
   ShieldCheck, Calendar, Sparkles, ScrollText, FileCheck2, Scale,
   CheckCircle, XCircle, Target
 } from 'lucide-react'
 
-// Date de la prochaine session de demarrage, places restantes et prix affiche,
-// mis a jour manuellement d'une session a l'autre.
-const PROCHAINE_SESSION = '16 novembre 2026'
-const PLACES_RESTANTES = 5
-const PRIX_NET = '1 990,00'
+// Date de la prochaine session, places restantes et prix : voir lib/mentorat-session.ts
 
 export const metadata = {
   title: 'Mentorat consultant Qualiopi · Cabinet Cholez-Pagotto',
@@ -196,9 +193,14 @@ export default function MentoratConsultantQualite() {
                 Pour les volets 1 à 3 du programme. Le volet 4 (veille et maintien des outils) est proposé en option, sur devis.
               </p>
             </div>
-            <a href="/contact" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: '#0f2d6e', color: 'white', padding: '13px 26px', borderRadius: '8px', fontSize: '14px', fontWeight: 700, textDecoration: 'none', flexShrink: 0 }}>
-              Échanger sur mon projet <ArrowRight size={16} />
-            </a>
+            <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', flexShrink: 0 }}>
+              <a href="/mentorat-consultant-qualite/inscription" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: '#0f2d6e', color: 'white', padding: '13px 26px', borderRadius: '8px', fontSize: '14px', fontWeight: 700, textDecoration: 'none' }}>
+                M&apos;inscrire <ArrowRight size={16} />
+              </a>
+              <a href="/contact" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'white', color: '#0f2d6e', border: '1px solid #0f2d6e', padding: '12px 24px', borderRadius: '8px', fontSize: '14px', fontWeight: 700, textDecoration: 'none' }}>
+                Échanger sur mon projet
+              </a>
+            </div>
           </section>
 
           {/* PROCHAINE SESSION */}
