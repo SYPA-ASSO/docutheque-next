@@ -3,21 +3,18 @@
 import { useEffect, useState, useCallback } from 'react'
 import { useRouter } from 'next/navigation'
 import { supabase } from '@/lib/supabase'
-import { formatPrix } from '@/lib/format'
-import type { DocItem, Categorie } from '@/lib/types'
 import { DIAGNOSTIC_FORFAITS } from '@/lib/diagnostic-forfaits'
 import { AVIS_GOOGLE } from '@/lib/avis-google'
 import Header from '@/components/Header'
 import FooterMinimal from '@/components/FooterMinimal'
-import { CategorySearch } from '@/components/CategorySearch'
-import { DocumentSearch } from '@/components/DocumentSearch'
 import { PhoneInput } from '@/components/PhoneInput'
+import { STATUTS_DEMANDE_MODELE, statutDemandeModele, formatDateFr, DEMANDE_TYPE_MAX, DEMANDE_CONTEXTE_MAX } from '@/lib/demandes-modeles-statuts'
 import { PARCOURS_COURTAGE, PROFILS_COURTAGE, labelEtape, descriptionEtape, suiteEtape, formatDateHeureParis, texteEnListe } from '@/lib/courtage-etapes'
 import {
-  User, FileText, Package, MessageSquare, Shield, LogOut,
+  User, FileText, MessageSquare, Shield, LogOut,
   Crown, Clock, CheckCircle, AlertCircle, Lock,
   ChevronRight, Calendar, Star, Zap, TrendingUp,
-  ShoppingBag, Receipt, Download, Filter, Send,
+  ShoppingBag, Receipt, Download, Send,
   Upload, Trash2, FolderSync, Briefcase
 } from 'lucide-react'
 
@@ -79,6 +76,18 @@ type DossierRgpd = {
   created_at: string
 }
 
+type DemandeModele = {
+  id: string
+  type_document: string
+  contexte: string | null
+  date_souhaitee: string | null
+  statut: string
+  reponse_client: string | null
+  created_at: string
+}
+
+type DocumentObtenu = { id: string; nom: string; type: string | null; origine: string }
+
 type DossierCourtage = {
   id: string
   reference: string
@@ -135,10 +144,15 @@ export default function EspaceClient() {
   // null : pas encore charge. La liste des entreprises d'assurance n'est jamais dans le code de la page,
   // elle est demandee a une route reservee au client connecte qui a un dossier de courtage.
   const [partenairesCourtage, setPartenairesCourtage] = useState<string[] | null>(null)
-  const [catalogue, setCatalogue] = useState<DocItem[]>([])
-  const [catalogueFiltre, setCatalogueFiltre] = useState<DocItem[]>([])
-  const [categoriesFiltres, setCategoriesFiltres] = useState<string[]>([])
-  const [categoriesCatalogue, setCategoriesCatalogue] = useState<Categorie[]>([])
+  // Demandes de modeles : le client ne voit jamais la liste des modeles disponibles.
+  const [demandes, setDemandes] = useState<DemandeModele[]>([])
+  const [docsObtenus, setDocsObtenus] = useState<DocumentObtenu[]>([])
+  const [demandeType, setDemandeType] = useState('')
+  const [demandeContexte, setDemandeContexte] = useState('')
+  const [demandeDate, setDemandeDate] = useState('')
+  const [demandeLoading, setDemandeLoading] = useState(false)
+  const [demandeErreur, setDemandeErreur] = useState('')
+  const [demandeSucces, setDemandeSucces] = useState('')
   const [loading, setLoading] = useState(true)
   const [periodeChoisie, setPeriodeChoisie] = useState<'monthly' | 'yearly'>('yearly')
   const [downloadEnCours, setDownloadEnCours] = useState<string | null>(null)
@@ -157,12 +171,6 @@ export default function EspaceClient() {
   const [resiliationLoading, setResiliationLoading] = useState(false)
   const [resiliationErreur, setResiliationErreur] = useState('')
 
-  // Achat de document a l'unite
-  const [documentsAchetes, setDocumentsAchetes] = useState<Record<string, string>>({})
-  const [achatDoc, setAchatDoc] = useState<DocItem | null>(null)
-  const [achatLoading, setAchatLoading] = useState(false)
-  const [achatErreur, setAchatErreur] = useState('')
-  const [achatReference, setAchatReference] = useState('')
 
   useEffect(() => { checkAuth() }, [])
 
@@ -179,7 +187,7 @@ export default function EspaceClient() {
         setSuccessMessage('Votre abonnement est maintenant actif. Bienvenue dans Optimal !')
       }
       if (params.get('achat') === 'succes') {
-        setSuccessMessage('Paiement reçu. Votre document est disponible dans l\'onglet Documents.')
+        setSuccessMessage('Paiement reçu. Votre document est disponible dans l\'onglet « Demander un modèle », rubrique « Vos documents déjà obtenus ».')
       }
       // Nettoyer l'URL
       window.history.replaceState({}, '', '/espace-client')
@@ -200,8 +208,8 @@ export default function EspaceClient() {
       loadDossiers(session.user.id),
       loadDossiersRgpd(session.user.id),
       loadDossiersCourtage(session.user.id),
-      loadAchats(session.user.id),
-      loadCatalogue(),
+      loadDemandes(session.user.id),
+      loadDocsObtenus(),
     ])
     setLoading(false)
   }
@@ -241,20 +249,53 @@ export default function EspaceClient() {
     if (evts) setEvenementsCourtage(evts)
   }
 
-  const loadAchats = async (userId: string) => {
-    const { data } = await supabase.from('achats_documents').select('document_id, statut').eq('user_id', userId)
-    if (data) {
-      const map: Record<string, string> = {}
-      for (const a of data) { if (a.document_id) map[a.document_id] = a.statut }
-      setDocumentsAchetes(map)
+  const loadDemandes = async (userId: string) => {
+    const { data } = await supabase.from('demandes_modeles').select('*').eq('user_id', userId).order('created_at', { ascending: false })
+    if (data) setDemandes(data)
+  }
+
+  // Documents deja obtenus (telecharges ou achetes) : la route ne renvoie jamais le reste de la bibliotheque.
+  const loadDocsObtenus = async () => {
+    try {
+      const { data: { session } } = await supabase.auth.getSession()
+      if (!session) return
+      const res = await fetch('/api/compte/documents-obtenus', { headers: { Authorization: `Bearer ${session.access_token}` } })
+      if (!res.ok) return
+      const data = await res.json()
+      if (Array.isArray(data.documents)) setDocsObtenus(data.documents)
+    } catch {
+      // la section « documents deja obtenus » reste simplement vide
     }
   }
 
-  const loadCatalogue = async () => {
-    const { data: docs } = await supabase.from('documents').select('*').eq('actif', true).order('ordre', { ascending: true })
-    const { data: cats } = await supabase.from('categories').select('id, nom, ordre, mots_cles').order('ordre', { ascending: true })
-    if (docs) { setCatalogue(docs); setCatalogueFiltre(docs) }
-    if (cats) setCategoriesCatalogue(cats)
+  const envoyerDemandeModele = async () => {
+    setDemandeErreur('')
+    setDemandeSucces('')
+    if (demandeType.trim().length < 3) { setDemandeErreur('Indiquez le type de document souhaité.'); return }
+    setDemandeLoading(true)
+    try {
+      const { data: { session } } = await supabase.auth.getSession()
+      if (!session) { router.push('/connexion'); return }
+      const res = await fetch('/api/compte/demandes-modeles', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${session.access_token}` },
+        body: JSON.stringify({ type_document: demandeType, contexte: demandeContexte, date_souhaitee: demandeDate }),
+      })
+      const data = await res.json().catch(() => ({}))
+      if (res.ok && data.success) {
+        setDemandeType('')
+        setDemandeContexte('')
+        setDemandeDate('')
+        setDemandeSucces('Votre demande est enregistrée. Un e-mail de confirmation vous a été envoyé.')
+        if (profile) await loadDemandes(profile.id)
+      } else {
+        setDemandeErreur(data.error || "La demande n'a pas pu être enregistrée. Veuillez réessayer.")
+      }
+    } catch {
+      setDemandeErreur('Une erreur est survenue. Veuillez réessayer.')
+    } finally {
+      setDemandeLoading(false)
+    }
   }
 
   const handleDeconnexion = async () => {
@@ -342,38 +383,6 @@ export default function EspaceClient() {
       setResiliationErreur('Une erreur est survenue. Veuillez reessayer.')
     } finally {
       setResiliationLoading(false)
-    }
-  }
-
-  // Achat d'un document a l'unite : carte (redirection Stripe) ou virement (reference + RIB par email)
-  const acheterDocument = async (mode: 'carte' | 'virement') => {
-    if (!achatDoc) return
-    setAchatLoading(true)
-    setAchatErreur('')
-    try {
-      const { data: { session } } = await supabase.auth.getSession()
-      if (!session) { router.push('/connexion'); return }
-      const res = await fetch('/api/documents/acheter', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${session.access_token}` },
-        body: JSON.stringify({ documentId: achatDoc.id, mode }),
-      })
-      const data = await res.json()
-      if (mode === 'carte') {
-        if (res.ok && data.url) { window.location.href = data.url; return }
-        setAchatErreur(data.error || "Le paiement n'a pas pu démarrer. Veuillez réessayer.")
-      } else {
-        if (res.ok && data.success) {
-          setAchatReference(data.reference || '')
-          if (profile) await loadAchats(profile.id)
-        } else {
-          setAchatErreur(data.error || "La commande n'a pas pu être enregistrée. Veuillez réessayer.")
-        }
-      }
-    } catch {
-      setAchatErreur('Une erreur est survenue. Veuillez réessayer.')
-    } finally {
-      setAchatLoading(false)
     }
   }
 
@@ -562,17 +571,6 @@ export default function EspaceClient() {
     }
   }
 
-  // Filtre catalogue par catégories sélectionnées
-  useEffect(() => {
-    if (categoriesFiltres.length === 0) {
-      setCatalogueFiltre(catalogue)
-    } else {
-      setCatalogueFiltre(catalogue.filter(doc =>
-        categoriesFiltres.some(cat => doc.categories?.includes(cat))
-      ))
-    }
-  }, [categoriesFiltres, catalogue])
-
   if (loading) {
     return (
       <>
@@ -628,26 +626,13 @@ export default function EspaceClient() {
     { id: 'tableau-bord', label: 'Tableau de bord', icon: <User size={16} strokeWidth={1.5} /> },
     ...(dossiersCourtage.length > 0 ? [{ id: 'courtage', label: "Mon dossier d'assurance", icon: <Briefcase size={16} strokeWidth={1.5} />, badge: null as number | null }] : []),
     { id: 'questions', label: 'Mes questions', icon: <MessageSquare size={16} strokeWidth={1.5} />, badge: questions.filter(q => q.statut === 'repondu').length || null },
-    { id: 'documents', label: 'Documents', icon: <FileText size={16} strokeWidth={1.5} />, locked: !estAbonne },
+    { id: 'documents', label: 'Demander un modèle', icon: <FileText size={16} strokeWidth={1.5} /> },
     { id: 'echanges', label: 'Échanges de documents', icon: <FolderSync size={16} strokeWidth={1.5} /> },
     { id: 'commandes', label: 'Mes commandes', icon: <ShoppingBag size={16} strokeWidth={1.5} /> },
     { id: 'factures', label: 'Factures', icon: <Receipt size={16} strokeWidth={1.5} />, badge: factures.length || null },
     { id: 'abonnement', label: 'Abonnement', icon: <Crown size={16} strokeWidth={1.5} />, highlight: !estAbonne },
     { id: 'profil', label: 'Mon profil', icon: <Shield size={16} strokeWidth={1.5} /> },
   ]
-
-  const accesDocLabel = (doc: DocItem): { label: string; color: string; bg: string; accessible: boolean; achetable?: boolean; enAttente?: boolean } => {
-    if (doc.acces_gratuit) return { label: 'Gratuit', color: '#15803d', bg: '#f0fdf4', accessible: true }
-    if (doc.acces_optimal && estAbonne) return { label: 'Optimal', color: '#1a4fba', bg: '#eff6ff', accessible: true }
-    const statutAchat = documentsAchetes[doc.id]
-    if (doc.acces_payant && statutAchat === 'paye') return { label: 'Acheté', color: '#15803d', bg: '#f0fdf4', accessible: true }
-    if (doc.acces_payant && statutAchat === 'en_attente') return { label: 'Virement en attente', color: '#d97706', bg: '#fff7ed', accessible: false, enAttente: true }
-    // Un document payant non encore acquis reste achetable a l'unite, meme s'il est aussi propose en Optimal (cas du non-abonne).
-    if (doc.acces_payant) return { label: formatPrix(doc.prix_unitaire) || '?\u00a0€', color: '#d97706', bg: '#fff7ed', accessible: false, achetable: true }
-    // Document Optimal seul et non-abonne : acces verrouille, orientation vers l'abonnement.
-    if (doc.acces_optimal && !estAbonne) return { label: 'Optimal', color: '#1a4fba', bg: '#eff6ff', accessible: false }
-    return { label: '-', color: '#9ca3af', bg: '#f3f4f6', accessible: false }
-  }
 
   const carteCourtage = { background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.5rem' } as const
   const titreCarteCourtage = { color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: '0 0 12px' } as const
@@ -696,7 +681,7 @@ export default function EspaceClient() {
                 <div style={{ height: '4px', background: '#e5e7eb', borderRadius: '4px' }}>
                   <div style={{ height: '4px', background: 'linear-gradient(90deg, #1a4fba, #93c5fd)', borderRadius: '4px', width: '0%' }} />
                 </div>
-                <p style={{ color: '#9ca3af', fontSize: '10px', margin: '6px 0 0', lineHeight: '1.4' }}>Passez à l'Optimal pour tout débloquer</p>
+                <p style={{ color: '#9ca3af', fontSize: '10px', margin: '6px 0 0', lineHeight: '1.4' }}>Passez à l'Optimal : une question juriste incluse chaque mois</p>
               </div>
             )}
 
@@ -716,7 +701,7 @@ export default function EspaceClient() {
             {!estAbonne && (
               <div style={{ background: 'linear-gradient(135deg, #0f2d6e 0%, #1a4fba 100%)', borderRadius: '10px', padding: '14px', marginBottom: '1rem' }}>
                 <p style={{ color: 'white', fontSize: '12px', fontWeight: '700', margin: '0 0 4px' }}>✦ Passer à l'Optimal</p>
-                <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: '11px', margin: '0 0 10px', lineHeight: '1.5' }}>Moins de 0,60 €/jour pour accéder à tout.</p>
+                <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: '11px', margin: '0 0 10px', lineHeight: '1.5' }}>1 question juriste incluse par mois et un tarif réduit.</p>
                 <button onClick={() => setOnglet('abonnement')} style={{ width: '100%', background: 'white', color: '#0f2d6e', border: 'none', padding: '8px', borderRadius: '6px', fontSize: '11px', fontWeight: '700', cursor: 'pointer' }}>
                   Voir les offres →
                 </button>
@@ -787,7 +772,7 @@ export default function EspaceClient() {
                           <Crown size={16} color="#fcd34d" strokeWidth={1.5} />
                           <span style={{ color: '#fcd34d', fontSize: '11px', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Abonnement Optimal</span>
                         </div>
-                        <p style={{ color: 'white', fontSize: '1.1rem', fontWeight: '700', margin: '0 0 6px' }}>Bibliothèque complète + 1 question juriste / mois</p>
+                        <p style={{ color: 'white', fontSize: '1.1rem', fontWeight: '700', margin: '0 0 6px' }}>Modèles de documents sur demande + 1 question juriste / mois</p>
                         <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: '13px', margin: 0 }}>À partir de <strong style={{ color: 'white' }}>12,42 €/mois</strong> en annuel</p>
                       </div>
                       <button onClick={() => setOnglet('abonnement')} style={{ background: 'white', color: '#0f2d6e', border: 'none', padding: '11px 22px', borderRadius: '8px', fontSize: '13px', fontWeight: '700', cursor: 'pointer', flexShrink: 0 }}>
@@ -823,34 +808,19 @@ export default function EspaceClient() {
                   ))}
                 </div>
 
-                {/* Aperçu documents */}
-                {!estAbonne && catalogue.length > 0 && (
-                  <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.5rem' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
-                      <p style={{ color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: 0 }}>Bibliothèque de documents</p>
-                      <span style={{ background: '#fff7ed', color: '#d97706', fontSize: '10px', fontWeight: '700', padding: '2px 8px', borderRadius: '20px' }}>
-                        {catalogue.filter(d => !d.acces_gratuit).length} documents Optimal
-                      </span>
-                    </div>
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '8px', marginBottom: '1rem' }}>
-                      {catalogue.slice(0, 6).map((doc, i) => {
-                        const acces = accesDocLabel(doc)
-                        return (
-                          <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '10px 12px', background: acces.accessible ? '#f0fdf4' : '#ffffff', borderRadius: '8px', border: `1px solid ${acces.accessible ? '#bbf7d0' : '#e5e7eb'}` }}>
-                            {doc.type === 'pack' ? <Package size={14} color={acces.color} style={{ flexShrink: 0 }} /> : <FileText size={13} color={acces.color} style={{ flexShrink: 0 }} />}
-                            <div style={{ flex: 1, minWidth: 0 }}>
-                              <p style={{ color: '#374151', fontSize: '11px', fontWeight: '600', margin: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{doc.nom}</p>
-                            </div>
-                            <span style={{ background: acces.bg, color: acces.color, fontSize: '9px', fontWeight: '700', padding: '1px 5px', borderRadius: '4px', flexShrink: 0 }}>{acces.label}</span>
-                          </div>
-                        )
-                      })}
-                    </div>
-                    <button onClick={() => setOnglet('abonnement')} style={{ width: '100%', background: '#0f2d6e', color: 'white', border: 'none', padding: '11px', borderRadius: '8px', fontSize: '13px', fontWeight: '700', cursor: 'pointer' }}>
-                      Débloquer toute la bibliothèque →
-                    </button>
+                {/* Demander un modèle */}
+                <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.5rem', display: 'flex', alignItems: 'center', gap: '14px', flexWrap: 'wrap' }}>
+                  <FileText size={22} color="#1a4fba" strokeWidth={1.5} style={{ flexShrink: 0 }} />
+                  <div style={{ flex: 1, minWidth: '220px' }}>
+                    <p style={{ color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: '0 0 4px' }}>Besoin d&apos;un modèle de document ?</p>
+                    <p style={{ color: '#6b7280', fontSize: '13px', margin: 0, lineHeight: '1.6' }}>
+                      Décrivez le document dont vous avez besoin : le cabinet vous transmet le modèle correspondant, s&apos;il en existe un.
+                    </p>
                   </div>
-                )}
+                  <button onClick={() => setOnglet('documents')} style={{ background: '#0f2d6e', color: 'white', border: 'none', padding: '10px 18px', borderRadius: '8px', fontSize: '13px', fontWeight: '700', cursor: 'pointer', flexShrink: 0 }}>
+                    Demander un modèle
+                  </button>
+                </div>
 
                 {/* Poser une question */}
                 <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.5rem' }}>
@@ -1046,84 +1016,103 @@ export default function EspaceClient() {
               </div>
             )}
 
-            {/* ── DOCUMENTS ── */}
+            {/* ── DEMANDER UN MODELE ── */}
             {onglet === 'documents' && (
               <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-                <h1 style={{ color: '#0f2d6e', fontSize: '1.4rem', fontWeight: '700', margin: 0 }}>Documents</h1>
+                <h1 style={{ color: '#0f2d6e', fontSize: '1.4rem', fontWeight: '700', margin: 0 }}>Demander un modèle de document</h1>
+                <p style={{ color: '#6b7280', fontSize: '13px', margin: 0, lineHeight: '1.7' }}>
+                  Décrivez le document dont vous avez besoin. Le cabinet vérifie s&apos;il dispose d&apos;un modèle adapté et, le cas échéant, vous le transmet dans « Échanges de documents ». Vous êtes prévenu par e-mail.
+                </p>
 
-                {!estAbonne && (
-                  <div style={{ background: 'linear-gradient(135deg, #0f2d6e 0%, #1a4fba 100%)', borderRadius: '12px', padding: '1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-                    <div>
-                      <p style={{ color: '#fcd34d', fontSize: '11px', fontWeight: '700', margin: '0 0 6px', textTransform: 'uppercase', letterSpacing: '0.08em' }}>✦ {catalogue.filter(d => !d.acces_gratuit).length} documents verrouillés</p>
-                      <p style={{ color: 'white', fontSize: '14px', fontWeight: '700', margin: '0 0 4px' }}>Débloquez toute la bibliothèque</p>
-                      <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: '12px', margin: 0 }}>Abonnement Optimal · à partir de 12,42 €/mois</p>
-                    </div>
-                    <button onClick={() => setOnglet('abonnement')} style={{ background: 'white', color: '#0f2d6e', border: 'none', padding: '11px 22px', borderRadius: '8px', fontSize: '13px', fontWeight: '700', cursor: 'pointer', flexShrink: 0 }}>
-                      Débloquer →
-                    </button>
+                {demandeSucces && (
+                  <div style={{ background: '#f0fdf4', border: '1px solid #bbf7d0', borderRadius: '10px', padding: '12px 16px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                    <CheckCircle size={18} color="#16a34a" strokeWidth={1.5} style={{ flexShrink: 0 }} />
+                    <p style={{ color: '#15803d', fontSize: '13px', fontWeight: '600', margin: 0 }}>{demandeSucces}</p>
+                  </div>
+                )}
+                {demandeErreur && (
+                  <div style={{ background: '#fef2f2', border: '1px solid #fecaca', borderRadius: '8px', padding: '10px 14px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <AlertCircle size={14} color="#dc2626" style={{ flexShrink: 0 }} />
+                    <p style={{ color: '#dc2626', fontSize: '12.5px', margin: 0 }}>{demandeErreur}</p>
                   </div>
                 )}
 
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                  <DocumentSearch documents={catalogue} onChange={(filtered: DocItem[]) => setCatalogueFiltre(filtered)} placeholder="Rechercher un document..." />
+                <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '14px' }}>
                   <div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-                      <Filter size={13} color="#6b7280" />
-                      <p style={{ color: '#6b7280', fontSize: '12px', fontWeight: '600', margin: 0 }}>Filtrer par catégorie</p>
-                      {categoriesFiltres.length > 0 && (
-                        <button onClick={() => setCategoriesFiltres([])} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#9ca3af', fontSize: '11px', textDecoration: 'underline' }}>
-                          Effacer
-                        </button>
-                      )}
-                    </div>
-                    <CategorySearch
-                      categories={categoriesCatalogue}
-                      selected={categoriesFiltres}
-                      onToggle={(nom: string) => setCategoriesFiltres(prev => prev.includes(nom) ? prev.filter(c => c !== nom) : [...prev, nom])}
-                      placeholder="Filtrer par catégorie..."
-                    />
+                    <label htmlFor="demande-type" style={{ display: 'block', color: '#374151', fontSize: '12.5px', fontWeight: '600', marginBottom: '6px' }}>Document souhaité *</label>
+                    <input id="demande-type" type="text" value={demandeType} maxLength={DEMANDE_TYPE_MAX}
+                      onChange={e => setDemandeType(e.target.value)}
+                      placeholder="Ex. contrat de travail à durée déterminée, statuts d'association, lettre de contestation"
+                      style={inputStyle} />
                   </div>
-                  {catalogueFiltre.length !== catalogue.length && (
-                    <p style={{ color: '#6b7280', fontSize: '12px', margin: 0 }}>{catalogueFiltre.length} document{catalogueFiltre.length > 1 ? 's' : ''} affiché{catalogueFiltre.length > 1 ? 's' : ''}</p>
-                  )}
+                  <div>
+                    <label htmlFor="demande-contexte" style={{ display: 'block', color: '#374151', fontSize: '12.5px', fontWeight: '600', marginBottom: '6px' }}>Votre situation (facultatif)</label>
+                    <textarea id="demande-contexte" value={demandeContexte} maxLength={DEMANDE_CONTEXTE_MAX} rows={4}
+                      onChange={e => setDemandeContexte(e.target.value)}
+                      placeholder="À quoi doit servir ce document ? Quelles sont les parties concernées ? Toute précision utile."
+                      style={{ ...inputStyle, resize: 'vertical' }} />
+                    <p style={{ color: '#9ca3af', fontSize: '11px', margin: '4px 0 0', textAlign: 'right' }}>{demandeContexte.length} / {DEMANDE_CONTEXTE_MAX}</p>
+                  </div>
+                  <div style={{ maxWidth: '260px' }}>
+                    <label htmlFor="demande-date" style={{ display: 'block', color: '#374151', fontSize: '12.5px', fontWeight: '600', marginBottom: '6px' }}>Pour le (facultatif)</label>
+                    <input id="demande-date" type="date" value={demandeDate} min={new Date().toISOString().slice(0, 10)}
+                      onChange={e => setDemandeDate(e.target.value)} style={inputStyle} />
+                  </div>
+                  <p style={{ color: '#9ca3af', fontSize: '11.5px', margin: 0, lineHeight: '1.6' }}>
+                    Un modèle est un document type à compléter. Il ne constitue pas une consultation juridique personnalisée.
+                  </p>
+                  <button onClick={envoyerDemandeModele} disabled={demandeLoading || demandeType.trim().length < 3}
+                    style={{ alignSelf: 'flex-start', background: demandeLoading || demandeType.trim().length < 3 ? '#9ca3af' : '#0f2d6e', color: 'white', border: 'none', padding: '11px 22px', borderRadius: '8px', fontSize: '13px', fontWeight: '700', cursor: demandeLoading || demandeType.trim().length < 3 ? 'not-allowed' : 'pointer' }}>
+                    {demandeLoading ? 'Envoi...' : 'Envoyer ma demande'}
+                  </button>
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '10px' }}>
-                  {catalogueFiltre.map(doc => {
-                    const acces = accesDocLabel(doc)
-                    return (
-                      <div key={doc.id} style={{ background: 'white', border: `1px solid ${acces.accessible ? '#bbf7d0' : '#e5e7eb'}`, borderRadius: '10px', padding: '1rem', display: 'flex', alignItems: 'center', gap: '10px' }}>
-                        <div style={{ width: '36px', height: '36px', background: acces.bg, borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                          {doc.type === 'pack' ? <Package size={16} color={acces.color} /> : <FileText size={16} color={acces.color} />}
-                        </div>
+                {demandes.length > 0 && (
+                  <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.5rem' }}>
+                    <p style={{ color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: '0 0 12px' }}>Vos demandes</p>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                      {demandes.map(d => {
+                        const st = statutDemandeModele(d.statut)
+                        return (
+                          <div key={d.id} style={{ background: '#f8fafc', border: '1px solid #e5e7eb', borderRadius: '8px', padding: '12px 14px' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap', marginBottom: '2px' }}>
+                              <p style={{ color: '#1f2937', fontSize: '13px', fontWeight: '600', margin: 0, minWidth: 0, overflowWrap: 'anywhere' }}>{d.type_document}</p>
+                              <span style={{ background: st.bg, color: st.color, fontSize: '10px', fontWeight: '700', padding: '2px 8px', borderRadius: '4px' }}>{st.label}</span>
+                            </div>
+                            <p style={{ color: '#9ca3af', fontSize: '11px', margin: 0 }}>
+                              Demandé le {new Date(d.created_at).toLocaleDateString('fr-FR')}{d.date_souhaitee ? ` · souhaité pour le ${formatDateFr(d.date_souhaitee)}` : ''}
+                            </p>
+                            {d.reponse_client && (
+                              <p style={{ color: '#374151', fontSize: '12.5px', margin: '8px 0 0', whiteSpace: 'pre-wrap', lineHeight: '1.7' }}>{d.reponse_client}</p>
+                            )}
+                            {d.statut === 'livree' && (
+                              <button onClick={() => setOnglet('echanges')} style={{ marginTop: '8px', background: 'transparent', border: 'none', color: '#1a4fba', fontSize: '12px', fontWeight: '600', cursor: 'pointer', padding: 0, textDecoration: 'underline' }}>
+                                Ouvrir mes échanges de documents
+                              </button>
+                            )}
+                          </div>
+                        )
+                      })}
+                    </div>
+                  </div>
+                )}
+
+                {docsObtenus.length > 0 && (
+                  <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '0.5rem 1.25rem' }}>
+                    <p style={{ color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: '12px 0 4px' }}>Vos documents déjà obtenus</p>
+                    {docsObtenus.map((doc, i) => (
+                      <div key={doc.id} style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '12px 0', borderTop: i === 0 ? 'none' : '1px solid #f1f3f7' }}>
+                        <FileText size={16} color="#6b7280" style={{ flexShrink: 0 }} />
                         <div style={{ flex: 1, minWidth: 0 }}>
-                          <p style={{ color: '#0f2d6e', fontSize: '12px', fontWeight: '600', margin: '0 0 2px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{doc.nom}</p>
-                          {doc.categories && doc.categories.length > 0 && (
-                            <p style={{ color: '#d1d5db', fontSize: '10px', margin: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{doc.categories[0]}</p>
-                          )}
+                          <p style={{ margin: 0, fontSize: '13px', fontWeight: '600', color: '#1f2937', overflowWrap: 'anywhere' }}>{doc.nom}</p>
+                          <p style={{ margin: 0, fontSize: '11px', color: '#9aa2b1' }}>{doc.origine === 'achat' ? 'Acheté' : doc.origine === 'abonnement' ? 'Inclus dans votre abonnement' : 'Accès libre'}</p>
                         </div>
-                        {acces.accessible ? (
-                          <button onClick={() => handleDownload(doc.id, doc.nom)} disabled={downloadEnCours === doc.id}
-                            style={{ background: '#0f2d6e', color: 'white', border: 'none', padding: '6px 10px', borderRadius: '6px', fontSize: '11px', fontWeight: '700', cursor: downloadEnCours === doc.id ? 'not-allowed' : 'pointer', flexShrink: 0, display: 'flex', alignItems: 'center', gap: '4px' }}>
-                            {downloadEnCours === doc.id ? '...' : <><Download size={11} /> DOCX</>}
-                          </button>
-                        ) : acces.achetable ? (
-                          <button onClick={() => { setAchatDoc(doc); setAchatErreur(''); setAchatReference('') }}
-                            style={{ background: '#d97706', color: 'white', border: 'none', padding: '6px 10px', borderRadius: '6px', fontSize: '11px', fontWeight: '700', cursor: 'pointer', flexShrink: 0, whiteSpace: 'nowrap' }}>
-                            Acheter · {acces.label}
-                          </button>
-                        ) : (
-                          <span style={{ background: acces.bg, color: acces.color, fontSize: '9px', fontWeight: '700', padding: '2px 7px', borderRadius: '4px', flexShrink: 0, whiteSpace: 'nowrap' }}>{acces.label}</span>
-                        )}
+                        <button onClick={() => handleDownload(doc.id, doc.nom)} disabled={downloadEnCours === doc.id}
+                          style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', fontSize: '11.5px', fontWeight: '700', color: '#0f2d6e', background: 'white', border: '1px solid #d7dce5', borderRadius: '6px', padding: '7px 11px', cursor: downloadEnCours === doc.id ? 'not-allowed' : 'pointer', flexShrink: 0 }}>
+                          <Download size={12} /> {downloadEnCours === doc.id ? '...' : 'Télécharger'}
+                        </button>
                       </div>
-                    )
-                  })}
-                </div>
-
-                {catalogue.length === 0 && (
-                  <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '3rem', textAlign: 'center' }}>
-                    <FileText size={32} color="#d1d5db" strokeWidth={1} style={{ marginBottom: '12px' }} />
-                    <p style={{ color: '#6b7280', fontSize: '14px', margin: 0 }}>La bibliothèque sera disponible prochainement.</p>
+                    ))}
                   </div>
                 )}
               </div>
@@ -1699,14 +1688,13 @@ export default function EspaceClient() {
                       </div>
 
                       {[
-                        { label: 'Documents en accès libre', gratuit: '✓', part: '✓', pro: '✓' },
-                        { label: 'Bibliothèque complète (DOCX)', gratuit: '✗', part: '✓', pro: '✓' },
+                        { label: 'Modèles de documents sur demande', gratuit: '✓', part: '✓', pro: '✓' },
                         { label: 'Question juriste incluse / mois', gratuit: '✗', part: '1 incluse', pro: '1 incluse' },
                         { label: 'Questions supplémentaires', gratuit: '47 €', part: '14,90 €', pro: '14,90 €' },
                         { label: "Délai de réponse", gratuit: '24-48h', part: '24-48h', pro: '24-48h' },
                         { label: 'Professionnels / associations', gratuit: '✗', part: '✗', pro: '✓' },
                       ].map((row, i) => (
-                        <div key={i} style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr 1fr 1fr', borderBottom: i < 5 ? '1px solid #f3f4f6' : 'none' }}>
+                        <div key={i} style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr 1fr 1fr', borderBottom: i < 4 ? '1px solid #f3f4f6' : 'none' }}>
                           <div style={{ padding: '12px 1.25rem', borderRight: '1px solid #e5e7eb' }}>
                             <p style={{ color: '#374151', fontSize: '12px', margin: 0 }}>{row.label}</p>
                           </div>
@@ -1755,69 +1743,6 @@ export default function EspaceClient() {
           </div>
         </div>
       </main>
-
-      {/* Modale d'achat de document a l'unite */}
-      {achatDoc && (
-        <div onClick={() => { if (!achatLoading) setAchatDoc(null) }}
-          style={{ position: 'fixed', inset: 0, background: 'rgba(15,23,42,0.45)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 50, padding: '1rem' }}>
-          <div onClick={e => e.stopPropagation()}
-            style={{ background: 'white', borderRadius: '14px', padding: '1.5rem', width: '100%', maxWidth: '420px', boxShadow: '0 20px 40px rgba(0,0,0,0.2)' }}>
-            {!achatReference ? (
-              <>
-                <p style={{ color: '#0f2d6e', fontSize: '15px', fontWeight: '700', margin: '0 0 4px' }}>Acheter ce document</p>
-                <p style={{ color: '#374151', fontSize: '13px', margin: '0 0 4px', lineHeight: '1.5' }}>{achatDoc.nom}</p>
-                <p style={{ color: '#d97706', fontSize: '1.3rem', fontWeight: '700', margin: '0 0 16px' }}>{formatPrix(achatDoc.prix_unitaire) || '?\u00a0€'}</p>
-                <p style={{ color: '#6b7280', fontSize: '12px', margin: '0 0 16px', lineHeight: '1.6' }}>
-                  Achat définitif : une fois réglé, le document reste téléchargeable depuis votre espace client. Choisissez votre mode de paiement.
-                </p>
-                {achatErreur && (
-                  <div style={{ display: 'flex', gap: '8px', alignItems: 'center', marginBottom: '12px' }}>
-                    <AlertCircle size={14} color="#dc2626" style={{ flexShrink: 0 }} />
-                    <p style={{ color: '#dc2626', fontSize: '12px', margin: 0 }}>{achatErreur}</p>
-                  </div>
-                )}
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                  <button onClick={() => acheterDocument('carte')} disabled={achatLoading}
-                    style={{ background: achatLoading ? '#9ca3af' : '#0f2d6e', color: 'white', border: 'none', padding: '12px', borderRadius: '8px', fontSize: '13px', fontWeight: '700', cursor: achatLoading ? 'not-allowed' : 'pointer' }}>
-                    {achatLoading ? 'Redirection...' : 'Payer par carte bancaire'}
-                  </button>
-                  <button onClick={() => acheterDocument('virement')} disabled={achatLoading}
-                    style={{ background: 'white', color: '#0f2d6e', border: '1px solid #cbd5e1', padding: '12px', borderRadius: '8px', fontSize: '13px', fontWeight: '700', cursor: achatLoading ? 'not-allowed' : 'pointer' }}>
-                    Payer par virement
-                  </button>
-                  <button onClick={() => setAchatDoc(null)} disabled={achatLoading}
-                    style={{ background: 'transparent', color: '#6b7280', border: 'none', padding: '8px', borderRadius: '8px', fontSize: '12px', cursor: achatLoading ? 'not-allowed' : 'pointer' }}>
-                    Annuler
-                  </button>
-                </div>
-                <p style={{ color: '#9ca3af', fontSize: '11px', margin: '12px 0 0', lineHeight: '1.6' }}>
-                  Le paiement par carte est immédiat. Le virement ouvre l'accès dès réception, après vérification.
-                </p>
-              </>
-            ) : (
-              <>
-                <div style={{ display: 'flex', gap: '10px', alignItems: 'flex-start', marginBottom: '12px' }}>
-                  <CheckCircle size={20} color="#16a34a" style={{ flexShrink: 0, marginTop: '1px' }} />
-                  <div>
-                    <p style={{ color: '#15803d', fontSize: '14px', fontWeight: '700', margin: '0 0 4px' }}>Commande enregistrée</p>
-                    <p style={{ color: '#374151', fontSize: '12px', margin: 0, lineHeight: '1.6' }}>
-                      Un email contenant le RIB et la référence vient de vous être envoyé. Votre document sera téléchargeable dès réception et vérification de votre virement.
-                    </p>
-                  </div>
-                </div>
-                <div style={{ background: '#f8fafc', border: '1px solid #e5e7eb', borderRadius: '8px', padding: '10px 14px', marginBottom: '16px' }}>
-                  <p style={{ color: '#6b7280', fontSize: '11px', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em', margin: '0 0 2px' }}>Référence de votre virement</p>
-                  <p style={{ color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: 0, letterSpacing: '0.03em' }}>{achatReference}</p>
-                </div>
-                <button onClick={() => { setAchatDoc(null); setAchatReference('') }}
-                  style={{ width: '100%', background: '#0f2d6e', color: 'white', border: 'none', padding: '11px', borderRadius: '8px', fontSize: '13px', fontWeight: '700', cursor: 'pointer' }}>
-                  Fermer
-                </button>
-              </>
-            )}
-          </div>
-        </div>
-      )}
 
       <FooterMinimal />
     </>

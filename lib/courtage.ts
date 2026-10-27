@@ -52,6 +52,7 @@ export async function envoyerEmailBrevo(params: {
   to: { email: string; name?: string }
   subject: string
   html: string
+  sansCopie?: boolean
 }): Promise<boolean> {
   if (!process.env.BREVO_API_KEY) {
     console.error('[courtage] BREVO_API_KEY absente, e-mail non envoye')
@@ -64,7 +65,7 @@ export async function envoyerEmailBrevo(params: {
       body: JSON.stringify({
         sender: { name: 'CBT CHOLEZ PAGOTTO', email: 'contact@cholez-pagotto.fr' },
         to: [params.to],
-        bcc: [{ email: 'contact@cholez-pagotto.fr' }],
+        ...(params.sansCopie ? {} : { bcc: [{ email: 'contact@cholez-pagotto.fr' }] }),
         subject: params.subject,
         htmlContent: params.html,
       }),

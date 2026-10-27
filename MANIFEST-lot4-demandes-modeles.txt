@@ -1,0 +1,9 @@
+Lot 4 : demandes de modeles de documents (espace client -> back-office)
+SQL : migration-demandes-modeles.sql (a executer une fois dans Supabase)
+- lib/demandes-modeles-statuts.ts (client-safe), lib/demandes-modeles.ts (e-mails, serveur)
+- lib/courtage.ts : option sansCopie pour l'envoi Brevo
+- app/api/compte/demandes-modeles/route.ts : creation d'une demande par le client
+- app/api/compte/documents-obtenus/route.ts : documents deja telecharges ou achetes
+- app/api/admin/demandes-modeles-list|update/route.ts
+- app/admin/demandes-modeles/page.tsx + entree de menu admin (app/admin/layout.tsx)
+- app/espace-client/page.tsx : onglet « Demander un modele », liste des modeles retiree, achat a l'unite retire de l'espace client
