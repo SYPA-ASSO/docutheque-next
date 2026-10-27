@@ -626,7 +626,7 @@ export default function EspaceClient() {
 
   const navItems = [
     { id: 'tableau-bord', label: 'Tableau de bord', icon: <User size={16} strokeWidth={1.5} /> },
-    ...(dossiersCourtage.length > 0 ? [{ id: 'courtage', label: 'Mon dossier courtage', icon: <Briefcase size={16} strokeWidth={1.5} />, badge: null as number | null }] : []),
+    ...(dossiersCourtage.length > 0 ? [{ id: 'courtage', label: "Mon dossier d'assurance", icon: <Briefcase size={16} strokeWidth={1.5} />, badge: null as number | null }] : []),
     { id: 'questions', label: 'Mes questions', icon: <MessageSquare size={16} strokeWidth={1.5} />, badge: questions.filter(q => q.statut === 'repondu').length || null },
     { id: 'documents', label: 'Documents', icon: <FileText size={16} strokeWidth={1.5} />, locked: !estAbonne },
     { id: 'echanges', label: 'Échanges de documents', icon: <FolderSync size={16} strokeWidth={1.5} /> },
@@ -748,7 +748,7 @@ export default function EspaceClient() {
                   <div key={d.id} style={{ background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '12px', padding: '1.25rem 1.5rem', display: 'flex', alignItems: 'center', gap: '14px', flexWrap: 'wrap' }}>
                     <Briefcase size={22} color="#1a4fba" strokeWidth={1.5} style={{ flexShrink: 0 }} />
                     <div style={{ flex: 1, minWidth: '200px' }}>
-                      <p style={{ color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 2px' }}>Votre dossier de courtage · {d.reference}</p>
+                      <p style={{ color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 2px' }}>Votre dossier d&apos;assurance · {d.reference}</p>
                       <p style={{ color: '#1e3a5f', fontSize: '12px', margin: 0, lineHeight: '1.5' }}>{d.objet} · Étape : {labelEtape(d.etape)}</p>
                     </div>
                     <button onClick={() => setOnglet('courtage')} style={{ background: '#0f2d6e', color: 'white', border: 'none', padding: '9px 16px', borderRadius: '8px', fontSize: '12px', fontWeight: '700', cursor: 'pointer' }}>
@@ -1199,7 +1199,7 @@ export default function EspaceClient() {
                   .cp-det[open] > summary .cp-chev { transform: rotate(90deg); }
                   .cp-det > .cp-det-corps { padding: 0 0 12px 20px; }
                 `}</style>
-                <h1 style={{ color: '#0f2d6e', fontSize: '1.4rem', fontWeight: '700', margin: 0 }}>Mon dossier courtage</h1>
+                <h1 style={{ color: '#0f2d6e', fontSize: '1.4rem', fontWeight: '700', margin: 0 }}>Mon dossier d&apos;assurance</h1>
 
                 {dossiersCourtage.map(d => {
                   const evts = evenementsCourtage.filter(e => e.dossier_id === d.id)
@@ -1498,14 +1498,14 @@ export default function EspaceClient() {
 
                 {dossiers.length > 0 && (
                   <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.5rem' }}>
-                    <p style={{ color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 12px' }}>Forfaits conseil assurances</p>
+                    <p style={{ color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 12px' }}>Audits et conseil assurances</p>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                       {dossiers.map(d => (
                         <div key={d.id} style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '12px', background: '#f8fafc', borderRadius: '8px' }}>
                           <Shield size={16} color="#6b7280" strokeWidth={1.5} style={{ flexShrink: 0 }} />
                           <div style={{ flex: 1 }}>
                             <p style={{ color: '#374151', fontSize: '12px', fontWeight: '600', margin: '0 0 2px' }}>
-                              Forfait conseil assurances · {d.type === 'pro' ? 'Pro / Association' : 'Particulier'}
+                              Audit et conseil assurances · {d.type === 'pro' ? 'Pro / Association' : 'Particulier'}
                             </p>
                             <p style={{ color: '#9ca3af', fontSize: '11px', margin: 0 }}>
                               {new Date(d.created_at).toLocaleDateString('fr-FR')} · {d.type === 'pro' ? '150\u00a0€' : '90\u00a0€'}

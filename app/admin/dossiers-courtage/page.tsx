@@ -218,7 +218,7 @@ export default function AdminDossiersCourtage() {
     <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '12px', flexWrap: 'wrap' }}>
         <div>
-          <h1 style={{ color: '#0f2d6e', fontSize: '1.5rem', fontWeight: '700', margin: '0 0 4px' }}>Dossiers courtage</h1>
+          <h1 style={{ color: '#0f2d6e', fontSize: '1.5rem', fontWeight: '700', margin: '0 0 4px' }}>Suivi des dossiers courtage</h1>
           <p style={{ color: '#9ca3af', fontSize: '13px', margin: 0 }}>
             {dossiers.filter(d => !termine(d)).length} en cours · {dossiers.length} au total
           </p>

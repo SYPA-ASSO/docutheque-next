@@ -68,7 +68,7 @@ export default function AdminDossiers() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
       <div>
-        <h1 style={{ color: '#0f2d6e', fontSize: '1.5rem', fontWeight: '700', margin: '0 0 4px' }}>Dossiers assurances</h1>
+        <h1 style={{ color: '#0f2d6e', fontSize: '1.5rem', fontWeight: '700', margin: '0 0 4px' }}>Audits et forfaits conseil</h1>
         <p style={{ color: '#9ca3af', fontSize: '13px', margin: 0 }}>
           {dossiers.filter(d => d.statut === 'en_attente').length} en attente · {dossiers.length} au total
         </p>

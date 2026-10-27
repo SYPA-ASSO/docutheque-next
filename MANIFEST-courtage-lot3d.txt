@@ -1,0 +1,6 @@
+Lot 3D (cumule avec 3C) : refonte de l'onglet courtage + renommage des menus
+- Menu admin : « Audits et forfaits conseil » et « Suivi des dossiers courtage »
+- Espace client : onglet « Mon dossier d'assurance », « Audits et conseil assurances » dans les commandes
+- E-mails : « Votre dossier d'assurance est ouvert »
+- Refonte de l'onglet (ex lot 3C) : actions en haut, prochaine etape, informations reglementaires repliables
+Aucune requete SQL.

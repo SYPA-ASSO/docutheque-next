@@ -151,14 +151,14 @@ export function emailAcces(params: {
     : `<p style="margin:16px 0 0;">Vous disposez déjà d'un espace client : connectez-vous avec votre adresse e-mail habituelle.</p>`
   const corps = `
     <p style="margin:0 0 12px;">Bonjour ${escapeHtml(params.prenom)},</p>
-    <p style="margin:0 0 12px;">Le cabinet a ouvert pour vous un dossier de courtage en assurances (référence <strong>${escapeHtml(params.reference)}</strong>) : ${escapeHtml(params.objet)}.</p>
+    <p style="margin:0 0 12px;">Le cabinet a ouvert pour vous un dossier d'assurance, dans le cadre d'une mission de courtage (référence <strong>${escapeHtml(params.reference)}</strong>) : ${escapeHtml(params.objet)}.</p>
     <p style="margin:0;">Votre espace client sécurisé, associé à votre seule adresse e-mail, vous permet de suivre l'avancement de votre dossier, de déposer vos pièces, de retrouver vos documents et de consulter les informations que le cabinet doit vous communiquer avant toute souscription.</p>
     ${bloc}
     ${message}`
   return {
     subject: 'Votre espace client est prêt : dossier ' + params.reference,
     html: emailShell({
-      titre: 'Votre dossier de courtage est ouvert',
+      titre: "Votre dossier d'assurance est ouvert",
       corpsHtml: corps,
       ctaUrl: params.accessLink || `${params.origin}/connexion`,
       ctaLabel: params.accessLink ? 'Définir mon mot de passe' : 'Accéder à mon espace client',
