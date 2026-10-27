@@ -111,7 +111,7 @@ export async function envoyerEmailBrevo(params: {
       method: 'POST',
       headers: { accept: 'application/json', 'api-key': process.env.BREVO_API_KEY, 'content-type': 'application/json' },
       body: JSON.stringify({
-        sender: { name: 'Cabinet CHOLEZ PAGOTTO', email: 'contact@cholez-pagotto.fr' },
+        sender: { name: 'CBT CHOLEZ PAGOTTO', email: 'contact@cholez-pagotto.fr' },
         to: [params.to],
         bcc: [{ email: 'contact@cholez-pagotto.fr' }],
         subject: params.subject,
@@ -149,7 +149,7 @@ function emailShell(opts: { titre: string; corpsHtml: string; ctaUrl?: string; c
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#ffffff;border-radius:12px;overflow:hidden;box-shadow:0 2px 10px rgba(15,45,110,0.08);">
       <tr>
         <td style="background:#ffffff;padding:28px 36px;border-bottom:1px solid #e5e7eb;">
-          <img src="https://cholez-pagotto.fr/logo-cholez-pagotto-email.png" alt="Cabinet Cholez-Pagotto" height="38" style="display:block;height:38px;width:auto;margin-bottom:16px;">
+          <img src="https://cholez-pagotto.fr/logo-cholez-pagotto-email.png" alt="DEVILINE COURTAGE, service de CBT CHOLEZ PAGOTTO" height="38" style="display:block;height:38px;width:auto;margin-bottom:16px;">
           <h1 style="color:#0f2d6e;margin:0;font-size:18px;font-weight:600;line-height:1.4;">${escapeHtml(opts.titre)}</h1>
         </td>
       </tr>
@@ -164,6 +164,7 @@ function emailShell(opts: { titre: string; corpsHtml: string; ctaUrl?: string; c
           <div style="border-top:1px solid #eef1f6;padding-top:24px;">
             <p style="color:#374151;font-size:13.5px;line-height:1.7;margin:0 0 12px;">Cordialement,</p>
             <p style="color:#0f2d6e;font-size:13.5px;font-weight:700;line-height:1.6;margin:0;">François CHOLEZ</p>
+            <p style="color:#0f2d6e;font-size:12.5px;font-weight:600;line-height:1.6;margin:2px 0 0;">DEVILINE COURTAGE, service de CBT CHOLEZ PAGOTTO</p>
             <p style="color:#6b7280;font-size:12px;line-height:1.6;margin:2px 0 12px;">Juriste · Formaliste · Conseil et courtage en assurances et réassurances</p>
             <p style="color:#6b7280;font-size:12px;line-height:1.8;margin:0;">
               Tél. (+33) 03 74 47 40 55 &nbsp;·&nbsp; Mobile (+33) 07 55 61 66 88<br>
@@ -266,7 +267,7 @@ export function emailFichePrecontractuelle(params: {
     <p style="margin:0 0 12px;">Voici la fiche d'information que le cabinet doit vous remettre avant toute souscription, pour votre dossier <strong>${escapeHtml(params.reference)}</strong> (${escapeHtml(params.objet)}). Conservez-la : elle est aussi disponible dans votre espace client.</p>
 
     ${titre('1. Votre intermédiaire')}
-    <p style="margin:0;"><strong>CBT CHOLEZ PAGOTTO</strong>, Cabinet Cholez-Pagotto, entreprise individuelle de François CHOLEZ, 12 rue d'Olima, 88000 Épinal. SIREN 490 889 516. Courtier d'assurance immatriculé à l'ORIAS sous le numéro 26003943 (www.orias.fr). Autorité de contrôle : ACPR, 4 place de Budapest, CS 92459, 75436 Paris Cedex 09.</p>
+    <p style="margin:0;"><strong>CBT CHOLEZ PAGOTTO</strong>, entreprise individuelle de François CHOLEZ, 12 rue d'Olima, 88000 Épinal, éditeur du service DEVILINE COURTAGE. SIREN 490 889 516. Courtier d'assurance immatriculé à l'ORIAS sous le numéro 26003943 (www.orias.fr). Autorité de contrôle : ACPR, 4 place de Budapest, CS 92459, 75436 Paris Cedex 09.</p>
 
     ${titre('2. Statut et relations avec les assureurs')}
     <p style="margin:0;">Le cabinet n'est soumis à aucune obligation contractuelle de travailler exclusivement avec une ou plusieurs entreprises d'assurance. Il ne détient aucune participation égale ou supérieure à 10 % des droits de vote ou du capital d'une entreprise d'assurance, et aucune entreprise d'assurance ne détient de participation de cette importance dans le cabinet. Le cabinet n'encaisse aucune prime : elle est réglée directement à l'entreprise d'assurance.</p>
