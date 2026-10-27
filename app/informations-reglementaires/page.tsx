@@ -156,7 +156,7 @@ export default function InformationsReglementaires() {
               <section id="mediation" style={cardstyle}>
                 <h2 style={h2style}>8. Médiation de l&apos;assurance</h2>
                 <p style={pstyle}>
-                  Si la réponse du cabinet ne vous satisfait pas, ou en l&apos;absence de réponse, vous pouvez saisir gratuitement le médiateur de l&apos;assurance, dans le cadre de l&apos;adhésion du cabinet à l&apos;association professionnelle ENDYA :
+                  Si la réponse du cabinet ne vous satisfait pas, ou en l&apos;absence de réponse, vous pouvez saisir gratuitement le médiateur de l&apos;assurance :
                 </p>
                 <div style={{ background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '8px', padding: '12px 14px', margin: '12px 0', fontSize: '13px', color: '#1e3a5f', lineHeight: '1.7' }}>
                   <strong>La Médiation de l&apos;Assurance</strong><br />

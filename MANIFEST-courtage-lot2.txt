@@ -15,5 +15,5 @@ Fichiers modifies (remplacent l'existant, fichiers complets) :
 - components/FooterMinimal.tsx        (lien pied de page)
 - app/sitemap.ts                      (nouvelle page)
 
-A confirmer par l'editeur avant mise en ligne : police RC pro, mediation via ENDYA, absence de participations.
+A confirmer par l'editeur avant mise en ligne : police RC pro, absence de participations (le lien mediation via ENDYA a ete retire de la page).
 Rien a executer en base de donnees.
