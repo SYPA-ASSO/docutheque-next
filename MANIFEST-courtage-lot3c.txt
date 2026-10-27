@@ -1,0 +1,5 @@
+Lot 3C : refonte de l'onglet « Mon dossier courtage » (espace client)
+- lib/courtage-etapes.ts : descriptions des etapes reformulees, ajout de « Et ensuite » (suiteEtape)
+- app/espace-client/page.tsx : actions (documents, contact) et prochaine etape en haut, puis besoins, suivi, informations reglementaires repliables
+- app/api/admin/dossiers-courtage-create/route.ts : libelle du journal « Ouverture de votre dossier »
+Aucune requete SQL.

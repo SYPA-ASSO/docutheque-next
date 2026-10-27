@@ -127,7 +127,7 @@ export async function POST(request: Request) {
       dossier_id: dossier.id,
       user_id: userId,
       type: 'ouverture',
-      libelle: 'Dossier ouvert : ' + objet,
+      libelle: 'Ouverture de votre dossier',
       visible_client: true,
     })
 

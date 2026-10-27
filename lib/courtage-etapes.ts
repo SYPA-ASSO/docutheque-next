@@ -14,13 +14,43 @@ export type EtapeCourtage =
   | 'conclu'
   | 'sans_suite'
 
-export const ETAPES_COURTAGE: { value: EtapeCourtage; label: string; description: string }[] = [
-  { value: 'demande_recue', label: 'Demande reçue', description: "Votre demande est enregistrée et le cabinet l'étudie." },
-  { value: 'besoins_recueillis', label: 'Besoins recueillis', description: 'Vos exigences et vos besoins sont consignés par écrit.' },
-  { value: 'consultation', label: 'Consultation des assureurs', description: "Le cabinet consulte les entreprises d'assurance et les grossistes partenaires." },
-  { value: 'proposition', label: 'Proposition transmise', description: 'Une proposition vous a été transmise, avec les raisons du conseil.' },
-  { value: 'conclu', label: 'Souscription réalisée', description: 'Le contrat est souscrit. Vos documents sont à votre disposition.' },
-  { value: 'sans_suite', label: 'Sans suite', description: 'Le dossier est clos sans souscription.' },
+export const ETAPES_COURTAGE: { value: EtapeCourtage; label: string; description: string; suite: string }[] = [
+  {
+    value: 'demande_recue',
+    label: 'Demande reçue',
+    description: "Votre demande est enregistrée. Le cabinet analyse les éléments que vous lui avez transmis.",
+    suite: 'Le cabinet vous contacte pour préciser vos exigences et vos besoins, puis les consigne par écrit.',
+  },
+  {
+    value: 'besoins_recueillis',
+    label: 'Besoins recueillis',
+    description: 'Vos exigences et vos besoins sont consignés par écrit dans votre espace.',
+    suite: "Le cabinet consulte les entreprises d'assurance et prépare sa recommandation.",
+  },
+  {
+    value: 'consultation',
+    label: "Consultation des assureurs",
+    description: "Le cabinet consulte les entreprises d'assurance et les grossistes avec lesquels il travaille.",
+    suite: 'Vous recevez une proposition accompagnée des raisons du conseil.',
+  },
+  {
+    value: 'proposition',
+    label: 'Proposition transmise',
+    description: 'Une proposition vous a été transmise, avec les raisons du conseil.',
+    suite: "Si elle vous convient, indiquez-le au cabinet. La souscription n'intervient qu'après l'envoi de la fiche d'information précontractuelle.",
+  },
+  {
+    value: 'conclu',
+    label: 'Souscription réalisée',
+    description: 'Votre contrat est souscrit. Les documents de votre dossier sont à votre disposition.',
+    suite: 'Le cabinet reste votre interlocuteur pour toute question relative à votre contrat.',
+  },
+  {
+    value: 'sans_suite',
+    label: 'Dossier clos sans suite',
+    description: 'Ce dossier est clos sans souscription.',
+    suite: '',
+  },
 ]
 
 // Etapes du parcours normal (la barre de progression). "sans_suite" est une sortie a part.
@@ -40,6 +70,11 @@ export function labelEtape(valeur: string): string {
 export function descriptionEtape(valeur: string): string {
   const e = ETAPES_COURTAGE.find(x => x.value === valeur)
   return e ? e.description : ''
+}
+
+export function suiteEtape(valeur: string): string {
+  const e = ETAPES_COURTAGE.find(x => x.value === valeur)
+  return e ? e.suite : ''
 }
 
 export function etapeValide(valeur: unknown): valeur is EtapeCourtage {

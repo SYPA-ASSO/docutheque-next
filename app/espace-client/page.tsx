@@ -12,7 +12,7 @@ import FooterMinimal from '@/components/FooterMinimal'
 import { CategorySearch } from '@/components/CategorySearch'
 import { DocumentSearch } from '@/components/DocumentSearch'
 import { PhoneInput } from '@/components/PhoneInput'
-import { PARCOURS_COURTAGE, labelEtape, descriptionEtape, formatDateHeureParis, texteEnListe } from '@/lib/courtage-etapes'
+import { PARCOURS_COURTAGE, PROFILS_COURTAGE, labelEtape, descriptionEtape, suiteEtape, formatDateHeureParis, texteEnListe } from '@/lib/courtage-etapes'
 import {
   User, FileText, Package, MessageSquare, Shield, LogOut,
   Crown, Clock, CheckCircle, AlertCircle, Lock,
@@ -1191,6 +1191,14 @@ export default function EspaceClient() {
             {/* ── MON DOSSIER COURTAGE ── */}
             {onglet === 'courtage' && (
               <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                <style>{`
+                  .cp-det { border-top: 1px solid #e5e7eb; }
+                  .cp-det > summary { list-style: none; cursor: pointer; display: flex; align-items: center; gap: 8px; padding: 12px 0; color: #0f2d6e; font-size: 13px; font-weight: 700; }
+                  .cp-det > summary::-webkit-details-marker { display: none; }
+                  .cp-det > summary .cp-chev { display: inline-block; transition: transform 0.15s; color: #6b7280; }
+                  .cp-det[open] > summary .cp-chev { transform: rotate(90deg); }
+                  .cp-det > .cp-det-corps { padding: 0 0 12px 20px; }
+                `}</style>
                 <h1 style={{ color: '#0f2d6e', fontSize: '1.4rem', fontWeight: '700', margin: 0 }}>Mon dossier courtage</h1>
 
                 {dossiersCourtage.map(d => {
@@ -1199,14 +1207,21 @@ export default function EspaceClient() {
                   const sansSuite = d.etape === 'sans_suite'
                   const consultes = texteEnListe(d.assureurs_consultes)
                   const partenaires = partenairesCourtage || []
+                  const profilLabel = PROFILS_COURTAGE.find(p => p.value === d.profil)?.label || ''
+                  const suite = suiteEtape(d.etape)
+                  const sujetMail = encodeURIComponent('Dossier ' + d.reference)
+                  const lien = { color: '#1a4fba' } as const
                   return (
                     <div key={d.id} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
 
-                      {/* En-tete et progression */}
+                      {/* 1. Synthese, progression, prochaine etape, actions */}
                       <div style={carteCourtage}>
-                        <p style={{ color: '#9ca3af', fontSize: '11px', margin: '0 0 4px' }}>Référence {d.reference} · ouvert le {new Date(d.created_at).toLocaleDateString('fr-FR')}</p>
-                        <p style={{ color: '#0f2d6e', fontSize: '1.05rem', fontWeight: '700', margin: '0 0 16px', lineHeight: '1.4' }}>{d.objet}</p>
-                        <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap', marginBottom: '14px' }}>
+                        <p style={{ color: '#6b7280', fontSize: '11px', fontWeight: '700', letterSpacing: '0.05em', textTransform: 'uppercase', margin: '0 0 4px' }}>
+                          Dossier {d.reference}{profilLabel ? ` · ${profilLabel}` : ''} · ouvert le {new Date(d.created_at).toLocaleDateString('fr-FR')}
+                        </p>
+                        <p style={{ color: '#0f2d6e', fontSize: '1.1rem', fontWeight: '700', margin: '0 0 18px', lineHeight: '1.4' }}>{d.objet}</p>
+
+                        <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap', marginBottom: '16px' }}>
                           {PARCOURS_COURTAGE.map((etape, i) => {
                             const fait = !sansSuite && indexEtape >= 0 && i < indexEtape
                             const courant = !sansSuite && i === indexEtape
@@ -1220,104 +1235,69 @@ export default function EspaceClient() {
                             )
                           })}
                         </div>
-                        <div style={{ background: sansSuite ? '#f3f4f6' : '#eff6ff', borderRadius: '8px', padding: '10px 12px' }}>
-                          <p style={{ color: '#1e3a5f', fontSize: '12.5px', fontWeight: '700', margin: '0 0 2px' }}>Étape actuelle : {labelEtape(d.etape)}</p>
-                          <p style={{ color: '#374151', fontSize: '12.5px', margin: 0, lineHeight: '1.6' }}>{descriptionEtape(d.etape)}</p>
+
+                        <div style={{ background: sansSuite ? '#f3f4f6' : '#eff6ff', borderRadius: '8px', padding: '12px 14px', marginBottom: '16px' }}>
+                          <p style={{ color: '#1e3a5f', fontSize: '13px', fontWeight: '700', margin: '0 0 3px' }}>{labelEtape(d.etape)}</p>
+                          <p style={{ color: '#374151', fontSize: '13px', margin: 0, lineHeight: '1.6' }}>{descriptionEtape(d.etape)}</p>
+                          {suite && (
+                            <p style={{ color: '#374151', fontSize: '13px', margin: '8px 0 0', lineHeight: '1.6' }}>
+                              <strong>Et ensuite : </strong>{suite}
+                            </p>
+                          )}
+                        </div>
+
+                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '10px' }}>
+                          <button
+                            onClick={() => setOnglet('echanges')}
+                            style={{ textAlign: 'left', background: '#0f2d6e', color: 'white', border: 'none', borderRadius: '10px', padding: '14px 16px', cursor: 'pointer' }}
+                          >
+                            <span style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '13px', fontWeight: '700', marginBottom: '4px' }}>
+                              <Upload size={15} strokeWidth={1.75} /> Déposer ou consulter des documents
+                            </span>
+                            <span style={{ display: 'block', fontSize: '12px', lineHeight: '1.5', opacity: 0.85 }}>
+                              Pièces demandées par le cabinet, propositions, rapport de conseil, attestations.
+                            </span>
+                          </button>
+                          <a
+                            href={`mailto:contact@cholez-pagotto.fr?subject=${sujetMail}`}
+                            style={{ display: 'block', textAlign: 'left', background: 'white', color: '#0f2d6e', border: '1px solid #cbd5e1', borderRadius: '10px', padding: '14px 16px', textDecoration: 'none' }}
+                          >
+                            <span style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '13px', fontWeight: '700', marginBottom: '4px' }}>
+                              <Send size={15} strokeWidth={1.75} /> Écrire au cabinet
+                            </span>
+                            <span style={{ display: 'block', fontSize: '12px', lineHeight: '1.5', color: '#4b5563' }}>
+                              Une question sur ce dossier : contact@cholez-pagotto.fr
+                            </span>
+                          </a>
                         </div>
                       </div>
 
-                      {/* Exigences et besoins */}
+                      {/* 2. Exigences et besoins */}
                       <div style={carteCourtage}>
                         <p style={titreCarteCourtage}>Vos exigences et vos besoins</p>
                         {d.recueil_besoins ? (
                           <>
                             <p style={{ ...texteCourtage, whiteSpace: 'pre-wrap', background: '#f8fafc', border: '1px solid #e5e7eb', borderRadius: '8px', padding: '12px 14px' }}>{d.recueil_besoins}</p>
-                            <p style={{ color: '#9ca3af', fontSize: '11px', margin: '0 0 8px' }}>Consignés par écrit le {formatDateHeureParis(d.recueil_le)}.</p>
-                            <p style={{ ...texteCourtage, margin: 0 }}>Si une information est inexacte ou incomplète, répondez à l'e-mail du cabinet ou déposez un document dans l'onglet « Échanges de documents ». Le cabinet mettra le texte à jour.</p>
+                            <p style={{ color: '#6b7280', fontSize: '11px', margin: '0 0 10px' }}>Consignés par écrit le {formatDateHeureParis(d.recueil_le)}.</p>
+                            <p style={{ ...texteCourtage, margin: 0 }}>
+                              Si un élément est inexact ou incomplet, signalez-le au cabinet par e-mail ou déposez un document dans « Échanges de documents » : le texte sera mis à jour.
+                            </p>
                           </>
                         ) : (
-                          <p style={{ ...texteCourtage, margin: 0 }}>Vos exigences et vos besoins ne sont pas encore consignés. Le cabinet les précise par écrit à partir des informations que vous lui avez communiquées, puis vous les retrouverez ici.</p>
-                        )}
-                      </div>
-
-                      {/* Informations precontractuelles */}
-                      <div style={carteCourtage}>
-                        <p style={titreCarteCourtage}>Informations à connaître avant toute souscription</p>
-                        <p style={{ ...texteCourtage, color: '#6b7280', fontSize: '12px' }}>
-                          {d.fiche_envoyee_le
-                            ? `La fiche d'information précontractuelle vous a été envoyée par e-mail le ${formatDateHeureParis(d.fiche_envoyee_le)}.`
-                            : "La fiche d'information précontractuelle vous sera envoyée par e-mail avant toute souscription."}
-                        </p>
-
-                        <p style={sousTitreCourtage}>Votre intermédiaire</p>
-                        <p style={texteCourtage}>
-                          CBT CHOLEZ PAGOTTO, entreprise individuelle de François CHOLEZ, 12 rue d'Olima, 88000 Épinal, éditeur du service DEVILINE COURTAGE. SIREN 490 889 516. Courtier d'assurance immatriculé à l'ORIAS sous le numéro 26003943 (<a href="https://www.orias.fr" target="_blank" rel="noopener noreferrer" style={{ color: '#1a4fba' }}>www.orias.fr</a>). Autorité de contrôle : ACPR, 4 place de Budapest, CS 92459, 75436 Paris Cedex 09.
-                        </p>
-
-                        <p style={sousTitreCourtage}>Statut et relations avec les assureurs</p>
-                        <p style={texteCourtage}>
-                          Le cabinet n'est soumis à aucune obligation contractuelle de travailler exclusivement avec une ou plusieurs entreprises d'assurance. Il ne détient aucune participation égale ou supérieure à 10 % des droits de vote ou du capital d'une entreprise d'assurance, et aucune entreprise d'assurance n'en détient dans le cabinet. Il n'encaisse aucune prime : elle est réglée directement à l'entreprise d'assurance.
-                        </p>
-
-                        <p style={sousTitreCourtage}>Base de l'analyse et entreprises d'assurance</p>
-                        <p style={texteCourtage}>
-                          Le cabinet ne fonde pas son analyse sur l'ensemble des contrats offerts sur le marché et ne se prévaut pas d'une analyse impartiale fondée sur un nombre suffisant de contrats. Il travaille avec les entreprises d'assurance et les grossistes ci-dessous.
-                        </p>
-                        {partenaires.length > 0 ? (
-                          <ul style={{ ...texteCourtage, paddingLeft: '1.25rem', margin: '0 0 8px' }}>
-                            {partenaires.map(n => <li key={n}>{n}</li>)}
-                          </ul>
-                        ) : consultes.length === 0 ? (
-                          <p style={{ ...texteCourtage, background: '#fffbeb', border: '1px solid #fde68a', borderRadius: '8px', padding: '10px 12px' }}>
-                            Le nom des entreprises d'assurance avec lesquelles le cabinet travaille vous est communiqué dans cet espace avant toute proposition.
+                          <p style={{ ...texteCourtage, margin: 0 }}>
+                            Vos exigences et vos besoins apparaîtront ici dès que le cabinet les aura consignés par écrit. Vous pourrez alors les vérifier et signaler toute correction.
                           </p>
-                        ) : null}
-                        {consultes.length > 0 && (
-                          <>
-                            <p style={{ ...texteCourtage, fontWeight: '700', margin: '4px 0' }}>Consultés pour votre dossier :</p>
-                            <ul style={{ ...texteCourtage, paddingLeft: '1.25rem', margin: '0 0 8px' }}>
-                              {consultes.map(n => <li key={n}>{n}</li>)}
-                            </ul>
-                          </>
                         )}
-                        <p style={texteCourtage}>
-                          Le cabinet fournit un service de recommandation : il précise vos exigences et vos besoins par écrit et vous indique les raisons de son conseil (article L.521-4 du Code des assurances).
-                        </p>
-
-                        <p style={sousTitreCourtage}>Rémunération du cabinet</p>
-                        <p style={texteCourtage}>
-                          Le cabinet est rémunéré par une commission, incluse dans la prime d'assurance et versée par l'assureur, et, le cas échéant, par des honoraires payés directement par vous.
-                        </p>
-                        <p style={{ ...texteCourtage, fontWeight: '600' }}>
-                          {d.remuneration_note ? d.remuneration_note : 'Les modalités précises de rémunération pour votre dossier vous seront communiquées avant toute souscription.'}
-                        </p>
-
-                        <p style={sousTitreCourtage}>Réclamations et médiation</p>
-                        <p style={texteCourtage}>
-                          Vous pouvez adresser une réclamation au cabinet par le <a href="/contact" style={{ color: '#1a4fba' }}>formulaire de contact</a> ou par courrier. Le cabinet en accuse réception sous dix jours ouvrables et répond dans un délai maximal de deux mois. En cas de désaccord, vous pouvez saisir gratuitement La Médiation de l'Assurance, TSA 50110, 75441 Paris Cedex 09 (<a href="https://www.mediation-assurance.org" target="_blank" rel="noopener noreferrer" style={{ color: '#1a4fba' }}>www.mediation-assurance.org</a>). Vous pouvez aussi saisir l'ACPR ou les juridictions compétentes.
-                        </p>
-                        <p style={{ ...texteCourtage, margin: 0 }}>
-                          <a href="/informations-reglementaires" style={{ color: '#1a4fba', fontWeight: '600' }}>Voir toutes les informations réglementaires →</a>
-                        </p>
                       </div>
 
-                      {/* Documents */}
-                      <div style={carteCourtage}>
-                        <p style={titreCarteCourtage}>Vos documents et vos pièces</p>
-                        <p style={texteCourtage}>Déposez ici les pièces demandées par le cabinet et retrouvez les documents de votre dossier (propositions, rapport de conseil, attestations).</p>
-                        <button onClick={() => setOnglet('echanges')} style={{ background: '#0f2d6e', color: 'white', border: 'none', padding: '10px 18px', borderRadius: '8px', fontSize: '13px', fontWeight: '700', cursor: 'pointer' }}>
-                          Ouvrir mes échanges de documents
-                        </button>
-                      </div>
-
-                      {/* Suivi */}
+                      {/* 3. Suivi */}
                       <div style={carteCourtage}>
                         <p style={titreCarteCourtage}>Suivi de votre dossier</p>
                         {evts.length === 0 ? (
-                          <p style={{ ...texteCourtage, margin: 0 }}>Aucun événement pour le moment.</p>
+                          <p style={{ ...texteCourtage, margin: 0 }}>Aucune mise à jour pour le moment.</p>
                         ) : (
                           <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                            {evts.map(e => (
+                            {evts.slice(0, 4).map(e => (
                               <div key={e.id} style={{ background: '#f8fafc', border: '1px solid #e5e7eb', borderRadius: '8px', padding: '10px 12px' }}>
                                 <p style={{ color: '#374151', fontSize: '12.5px', fontWeight: '600', margin: '0 0 2px', lineHeight: '1.5' }}>{e.libelle}</p>
                                 <p style={{ color: '#9ca3af', fontSize: '11px', margin: 0 }}>{formatDateHeureParis(e.created_at)}</p>
@@ -1326,16 +1306,112 @@ export default function EspaceClient() {
                                 )}
                               </div>
                             ))}
+                            {evts.length > 4 && (
+                              <details className="cp-det">
+                                <summary><span className="cp-chev">›</span> Voir les {evts.length - 4} mises à jour précédentes</summary>
+                                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', paddingBottom: '8px' }}>
+                                  {evts.slice(4).map(e => (
+                                    <div key={e.id} style={{ background: '#f8fafc', border: '1px solid #e5e7eb', borderRadius: '8px', padding: '10px 12px' }}>
+                                      <p style={{ color: '#374151', fontSize: '12.5px', fontWeight: '600', margin: '0 0 2px', lineHeight: '1.5' }}>{e.libelle}</p>
+                                      <p style={{ color: '#9ca3af', fontSize: '11px', margin: 0 }}>{formatDateHeureParis(e.created_at)}</p>
+                                      {e.detail && e.type === 'message' && (
+                                        <p style={{ color: '#374151', fontSize: '12.5px', margin: '8px 0 0', whiteSpace: 'pre-wrap', lineHeight: '1.7' }}>{e.detail}</p>
+                                      )}
+                                    </div>
+                                  ))}
+                                </div>
+                              </details>
+                            )}
                           </div>
                         )}
+                      </div>
+
+                      {/* 4. Informations reglementaires (repliables) */}
+                      <div style={carteCourtage}>
+                        <p style={titreCarteCourtage}>Informations à connaître avant toute souscription</p>
+                        <p style={{ ...texteCourtage, color: '#4b5563', margin: '0 0 12px' }}>
+                          {d.fiche_envoyee_le
+                            ? `La fiche d'information précontractuelle vous a été envoyée par e-mail le ${formatDateHeureParis(d.fiche_envoyee_le)}.`
+                            : "La fiche d'information précontractuelle vous sera envoyée par e-mail avant toute souscription."}
+                          {' '}Les points essentiels sont rappelés ci-dessous.
+                        </p>
+
+                        <details className="cp-det">
+                          <summary><span className="cp-chev">›</span> Votre intermédiaire</summary>
+                          <div className="cp-det-corps">
+                            <p style={{ ...texteCourtage, margin: 0 }}>
+                              Le service DEVILINE COURTAGE est un service de CBT CHOLEZ PAGOTTO, entreprise individuelle de François CHOLEZ, 12 rue d'Olima, 88000 Épinal (SIREN 490 889 516). Courtier d'assurance immatriculé à l'ORIAS sous le numéro 26003943 (<a href="https://www.orias.fr" target="_blank" rel="noopener noreferrer" style={lien}>www.orias.fr</a>). Autorité de contrôle : ACPR, 4 place de Budapest, CS 92459, 75436 Paris Cedex 09.
+                            </p>
+                          </div>
+                        </details>
+
+                        <details className="cp-det">
+                          <summary><span className="cp-chev">›</span> Statut et liens avec les entreprises d'assurance</summary>
+                          <div className="cp-det-corps">
+                            <p style={{ ...texteCourtage, margin: 0 }}>
+                              Le cabinet n'est soumis à aucune obligation contractuelle de travailler exclusivement avec une ou plusieurs entreprises d'assurance. Il ne détient aucune participation égale ou supérieure à 10 % des droits de vote ou du capital d'une entreprise d'assurance, et aucune entreprise d'assurance ne détient une telle participation dans le cabinet. Le cabinet n'encaisse aucune prime : vous la réglez directement à l'entreprise d'assurance.
+                            </p>
+                          </div>
+                        </details>
+
+                        <details className="cp-det">
+                          <summary><span className="cp-chev">›</span> Base du conseil et entreprises d'assurance</summary>
+                          <div className="cp-det-corps">
+                            <p style={texteCourtage}>
+                              Le cabinet ne fonde pas son analyse sur l'ensemble des contrats offerts sur le marché et ne se prévaut pas d'une analyse impartiale fondée sur un nombre suffisant de contrats. Il fournit un service de recommandation : il précise vos exigences et vos besoins par écrit et vous indique les raisons de son conseil (article L.521-4 du Code des assurances).
+                            </p>
+                            {partenaires.length > 0 && (
+                              <>
+                                <p style={{ ...texteCourtage, fontWeight: '700', margin: '4px 0' }}>Entreprises d'assurance et grossistes avec lesquels le cabinet travaille :</p>
+                                <ul style={{ ...texteCourtage, paddingLeft: '1.25rem', margin: '0 0 8px' }}>
+                                  {partenaires.map(n => <li key={n}>{n}</li>)}
+                                </ul>
+                              </>
+                            )}
+                            {consultes.length > 0 && (
+                              <>
+                                <p style={{ ...texteCourtage, fontWeight: '700', margin: '4px 0' }}>Consultés pour votre dossier :</p>
+                                <ul style={{ ...texteCourtage, paddingLeft: '1.25rem', margin: '0 0 8px' }}>
+                                  {consultes.map(n => <li key={n}>{n}</li>)}
+                                </ul>
+                              </>
+                            )}
+                            {partenaires.length === 0 && consultes.length === 0 && (
+                              <p style={{ ...texteCourtage, margin: 0, background: '#f8fafc', border: '1px solid #e5e7eb', borderRadius: '8px', padding: '10px 12px' }}>
+                                Les entreprises d'assurance consultées pour votre dossier vous seront indiquées ici avant toute proposition.
+                              </p>
+                            )}
+                          </div>
+                        </details>
+
+                        <details className="cp-det">
+                          <summary><span className="cp-chev">›</span> Rémunération du cabinet</summary>
+                          <div className="cp-det-corps">
+                            <p style={texteCourtage}>
+                              Le cabinet est rémunéré par une commission, incluse dans la prime d'assurance et versée par l'entreprise d'assurance, et, le cas échéant, par des honoraires que vous lui réglez directement.
+                            </p>
+                            <p style={{ ...texteCourtage, fontWeight: '600', margin: 0 }}>
+                              {d.remuneration_note ? d.remuneration_note : 'Les modalités précises de rémunération pour votre dossier vous seront communiquées par écrit avant toute souscription.'}
+                            </p>
+                          </div>
+                        </details>
+
+                        <details className="cp-det" style={{ borderBottom: '1px solid #e5e7eb' }}>
+                          <summary><span className="cp-chev">›</span> Réclamations et médiation</summary>
+                          <div className="cp-det-corps">
+                            <p style={texteCourtage}>
+                              Vous pouvez adresser une réclamation au cabinet par le <a href="/contact" style={lien}>formulaire de contact</a> ou par courrier. Le cabinet en accuse réception sous dix jours ouvrables et y répond dans un délai maximal de deux mois. En cas de désaccord, vous pouvez saisir gratuitement La Médiation de l'Assurance, TSA 50110, 75441 Paris Cedex 09 (<a href="https://www.mediation-assurance.org" target="_blank" rel="noopener noreferrer" style={lien}>www.mediation-assurance.org</a>). Vous pouvez aussi saisir l'ACPR ou les juridictions compétentes.
+                            </p>
+                          </div>
+                        </details>
+
+                        <p style={{ ...texteCourtage, margin: '12px 0 0' }}>
+                          <a href="/informations-reglementaires" style={{ ...lien, fontWeight: '600' }}>Voir toutes les informations réglementaires →</a>
+                        </p>
                       </div>
                     </div>
                   )
                 })}
-
-                <p style={{ color: '#9ca3af', fontSize: '12px', margin: 0, textAlign: 'center' }}>
-                  Une question sur votre dossier : <a href="mailto:contact@cholez-pagotto.fr" style={{ color: '#1a4fba' }}>contact@cholez-pagotto.fr</a>
-                </p>
               </div>
             )}
 
