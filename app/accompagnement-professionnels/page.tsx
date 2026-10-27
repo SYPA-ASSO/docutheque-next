@@ -115,14 +115,14 @@ const services = [
         couleur: "#7c3aed",
       },
       {
-        titre: "Bibliothèque de documents",
-        badge: "Accès libre",
+        titre: "Modèles de documents",
+        badge: "Sur demande",
         badgeColor: "#7c3aed",
         href: "/catalogue",
-        description: "Modèles juridiques en DOCX : une sélection en accès libre avec un compte gratuit, et la bibliothèque complète via l'abonnement Optimal. Statuts, contrats, RGPD, registres, courriers.",
+        description: "Modèles juridiques en DOCX remis sur demande : gratuits, inclus dans l'abonnement Optimal ou à l'unité selon le modèle, avec le prix indiqué avant paiement. Statuts, contrats, RGPD, registres, courriers.",
         points: [
-          "Documents gratuits en accès libre",
-          "Bibliothèque complète sur abonnement Optimal",
+          "Modèles gratuits remis sur demande",
+          "Tous les modèles inclus avec l'abonnement Optimal",
           "Personnalisables dans Word ou LibreOffice",
           "Mises à jour législatives incluses",
         ],
@@ -421,7 +421,7 @@ export default function AccompagnementProfessionnelsPage() {
             <h2 style={{ color: '#0f2d6e', fontSize: '1.05rem', fontWeight: 700, margin: '0 0 14px' }}>Pour aller plus loin</h2>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
               {[
-                { label: 'Catalogue de documents', href: '/catalogue' },
+                { label: 'Demander un modèle', href: '/catalogue' },
                 { label: "Création d'entreprise", href: '/creation-entreprise' },
                 { label: 'RGPD & conformité', href: '/rgpd-conformite' },
                 { label: 'Juriste ou avocat ?', href: '/juriste-formaliste-ou-avocat' },

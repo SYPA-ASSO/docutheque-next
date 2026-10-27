@@ -437,7 +437,7 @@ export default function MentoratConsultantQualite() {
             <div>
               <h2 style={{ color: '#0f2d6e', fontSize: '1rem', fontWeight: 700, margin: '0 0 8px' }}>Un accès qui dépasse la durée de l&apos;accompagnement</h2>
               <p style={{ color: '#374151', fontSize: '13px', lineHeight: 1.8, margin: 0 }}>
-                Pendant toute la durée de votre mentorat, et bien au-delà, vous bénéficiez de l&apos;accès à l&apos;offre juridique du cabinet : <a href="/catalogue" style={{ color: '#1a4fba', fontWeight: 600 }}>bibliothèque de documents</a>, service <a href="/information-sur-vos-droits" style={{ color: '#1a4fba', fontWeight: 600 }}>information sur vos droits</a>, veille réglementaire. Cet accès continue de vous accompagner lorsque vous lancerez votre activité de consultant et monterez vous-même des dossiers Qualiopi pour vos clients, centres de formation et formateurs indépendants.
+                Pendant toute la durée de votre mentorat, et bien au-delà, vous bénéficiez de l&apos;accès à l&apos;offre juridique du cabinet : <a href="/catalogue" style={{ color: '#1a4fba', fontWeight: 600 }}>modèles de documents sur demande</a>, service <a href="/information-sur-vos-droits" style={{ color: '#1a4fba', fontWeight: 600 }}>information sur vos droits</a>, veille réglementaire. Cet accès continue de vous accompagner lorsque vous lancerez votre activité de consultant et monterez vous-même des dossiers Qualiopi pour vos clients, centres de formation et formateurs indépendants.
               </p>
             </div>
           </section>

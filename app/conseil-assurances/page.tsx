@@ -567,7 +567,7 @@ export default function ConseilAssurancesPage() {
               {[
                 { label: 'Juriste ou avocat ?', href: '/juriste-formaliste-ou-avocat' },
                 { label: 'Information sur vos droits', href: '/information-sur-vos-droits' },
-                { label: 'Catalogue de documents', href: '/catalogue' },
+                { label: 'Demander un modèle', href: '/catalogue' },
               ].map((l) => (
                 <a key={l.href} href={l.href} style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: '#f8fafc', border: '1px solid #e5e7eb', borderRadius: 999, padding: '8px 16px', fontSize: '13px', color: '#1a4fba', fontWeight: 600, textDecoration: 'none' }}>
                   {l.label}<span aria-hidden="true" style={{ marginLeft: '2px' }}>→</span>

@@ -224,7 +224,7 @@ export default function APropos() {
             <h2 style={{ color: '#0f2d6e', fontSize: '1.2rem', fontWeight: '700', margin: '0 0 1.25rem' }}>Ce que le cabinet propose</h2>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '12px' }}>
               {[
-                { label: "Bibliothèque de documents juridiques téléchargeables et personnalisables", lien: "/catalogue" },
+                { label: "Modèles de documents juridiques sur demande, personnalisables", lien: "/catalogue" },
                 { label: "Information sur vos droits par un juriste sous 24 à 48h ouvrées", lien: "/information-sur-vos-droits" },
                 { label: "Accompagnement à la création d'entreprise : formalités offertes", lien: "/accompagnement-professionnels" },
                 { label: "Accompagnement des associations et structures ESS", lien: "/accompagnement-associations" },

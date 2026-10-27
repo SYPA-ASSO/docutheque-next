@@ -361,7 +361,7 @@ export default function EspaceMentoratQualite() {
           <div style={{ background: '#eef1fa', border: '1px solid #d3daf0', borderRadius: '12px', padding: '14px 18px', marginBottom: '1.75rem', display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
             <Scale size={18} style={{ color: '#0f2d6e', flexShrink: 0, marginTop: '2px' }} />
             <p style={{ margin: 0, fontSize: '12.5px', color: '#1e3a5f', lineHeight: 1.7 }}>
-              <strong>Un accès qui dépasse la durée de l&apos;accompagnement.</strong> Pendant votre mentorat, et bien au-delà, vous bénéficiez de l&apos;accès à l&apos;offre juridique du cabinet : <a href="/catalogue" style={{ color: '#1a4fba', fontWeight: 600 }}>bibliothèque de documents</a>, service <a href="/information-sur-vos-droits" style={{ color: '#1a4fba', fontWeight: 600 }}>information sur vos droits</a>, veille réglementaire. Cet accès continue de vous accompagner lorsque vous monterez vous-même des dossiers Qualiopi pour vos clients, centres de formation et formateurs indépendants.
+              <strong>Un accès qui dépasse la durée de l&apos;accompagnement.</strong> Pendant votre mentorat, et bien au-delà, vous bénéficiez de l&apos;accès à l&apos;offre juridique du cabinet : <a href="/catalogue" style={{ color: '#1a4fba', fontWeight: 600 }}>modèles de documents sur demande</a>, service <a href="/information-sur-vos-droits" style={{ color: '#1a4fba', fontWeight: 600 }}>information sur vos droits</a>, veille réglementaire. Cet accès continue de vous accompagner lorsque vous monterez vous-même des dossiers Qualiopi pour vos clients, centres de formation et formateurs indépendants.
             </p>
           </div>
 

@@ -1,0 +1,20 @@
+LOT 5B : pages publiques alignees sur le modele de document sur demande (gratuit, inclus Optimal ou payant)
+Aucune requete SQL.
+Fichiers :
+ app/page.tsx
+ app/tarifs/page.tsx
+ app/tarifs/TarifsClient.tsx
+ app/connexion/page.tsx
+ app/newsletter/page.tsx
+ app/accompagnement-particuliers/layout.tsx
+ app/accompagnement-particuliers/page.tsx
+ app/accompagnement-professionnels/page.tsx
+ app/accompagnement-associations/page.tsx
+ app/services/page.tsx
+ app/a-propos/page.tsx
+ app/information-sur-vos-droits/page.tsx
+ app/conseil-assurances/page.tsx
+ app/juriste-formaliste-ou-avocat/page.tsx
+ app/mentorat-consultant-qualite/page.tsx
+ app/espace-mentorat-qualite/page.tsx
+ components/Header.tsx

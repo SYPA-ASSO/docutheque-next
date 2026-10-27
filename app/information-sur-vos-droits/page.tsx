@@ -61,7 +61,7 @@ const schema = {
           "name": "Quelle est la différence avec l'Abonnement Optimal ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "L'Abonnement Optimal inclut une question mensuelle au tarif préférentiel de 14,90 € pour les questions supplémentaires, plus l'accès à toute la bibliothèque de documents juridiques. Si vous posez régulièrement des questions, l'abonnement devient plus économique dès la deuxième question mensuelle."
+            "text": "L'Abonnement Optimal inclut une question mensuelle au tarif préférentiel de 14,90 € pour les questions supplémentaires, plus les modèles de documents que vous demandez au cabinet. Si vous posez régulièrement des questions, l'abonnement devient plus économique dès la deuxième question mensuelle."
           }
         },
         {
@@ -168,7 +168,7 @@ const faqs = [
   },
   {
     q: "Quelle est la différence avec l'Abonnement Optimal ?",
-    a: "L'Abonnement Optimal inclut une question mensuelle, plus l'accès à toute la bibliothèque de documents juridiques (DOCX). Les questions supplémentaires sont à 14,90 € pour les abonnés au lieu de 47 €. Si vous posez régulièrement des questions, l'abonnement devient plus économique dès la deuxième question mensuelle."
+    a: "L'Abonnement Optimal inclut une question mensuelle, plus les modèles de documents (DOCX) que vous demandez au cabinet. Les questions supplémentaires sont à 14,90 € pour les abonnés au lieu de 47 €. Si vous posez régulièrement des questions, l'abonnement devient plus économique dès la deuxième question mensuelle."
   },
   {
     q: "Ma question est-elle confidentielle ?",
@@ -445,7 +445,7 @@ export default function InformationDroits() {
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
               {[
                 { label: 'Juriste ou avocat ?', href: '/juriste-formaliste-ou-avocat' },
-                { label: 'Catalogue de documents', href: '/catalogue' },
+                { label: 'Demander un modèle', href: '/catalogue' },
                 { label: 'Tous nos services', href: '/services' },
               ].map((l) => (
                 <a key={l.href} href={l.href} style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: '#f8fafc', border: '1px solid #e5e7eb', borderRadius: 999, padding: '8px 16px', fontSize: '13px', color: '#1a4fba', fontWeight: 600, textDecoration: 'none' }}>
