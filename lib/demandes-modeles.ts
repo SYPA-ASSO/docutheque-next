@@ -5,6 +5,7 @@
 // Regles : zero tiret long dans le contenu visible.
 
 import { envoyerEmailBrevo, escapeHtml, siteUrl } from '@/lib/courtage'
+import { supabaseAdmin } from '@/lib/supabase-admin'
 import { formatDateFr, type StatutDemandeModele } from '@/lib/demandes-modeles-statuts'
 
 function versHtml(texte: string): string {
@@ -60,7 +61,7 @@ export function emailAccuseDemande(params: { prenom: string; typeDocument: strin
   const corps = `
     <p style="margin:0 0 12px;">Bonjour ${escapeHtml(params.prenom)},</p>
     <p style="margin:0 0 12px;">Votre demande de modèle a bien été enregistrée : <strong>${escapeHtml(params.typeDocument)}</strong>.</p>
-    <p style="margin:0;">Le cabinet vérifie s'il dispose d'un modèle adapté et, le cas échéant, vous le transmet dans votre espace client, onglet « Échanges de documents ». Vous recevrez un e-mail dès que sa réponse sera disponible.</p>`
+    <p style="margin:0;">Le cabinet vérifie s'il dispose d'un modèle adapté. Selon le modèle, il est gratuit, inclus dans l'abonnement Optimal ou payable à l'unité : le prix vous est indiqué avant tout paiement. Vous recevrez un e-mail dès que la réponse du cabinet sera disponible.</p>`
   return {
     subject: 'Votre demande de modèle a bien été reçue',
     html: habillage({ titre: 'Demande de modèle enregistrée', corpsHtml: corps, ctaUrl: `${base}/espace-client?onglet=documents`, ctaLabel: 'Suivre ma demande' }),
@@ -97,19 +98,29 @@ export function emailReponseDemande(params: {
   statut: StatutDemandeModele
   message?: string | null
   origin?: string | null
+  // true si le modele provient de la bibliotheque (telechargeable depuis « Vos documents deja obtenus »)
+  avecDocument?: boolean
 }): { subject: string; html: string } {
   const base = siteUrl(params.origin)
   const message = params.message && params.message.trim()
     ? `<p style="margin:12px 0 0;background:#f8fafc;border:1px solid #e5e7eb;border-radius:8px;padding:12px 14px;">${versHtml(params.message.trim())}</p>`
     : ''
   if (params.statut === 'livree') {
+    const ou = params.avecDocument
+      ? "dans votre espace client, onglet « Demander un modèle », rubrique « Vos documents déjà obtenus »"
+      : "dans votre espace client, onglet « Échanges de documents »"
     const corps = `
       <p style="margin:0 0 12px;">Bonjour ${escapeHtml(params.prenom)},</p>
-      <p style="margin:0 0 12px;">Le modèle que vous avez demandé (<strong>${escapeHtml(params.typeDocument)}</strong>) est à votre disposition dans votre espace client, onglet « Échanges de documents ».</p>
+      <p style="margin:0 0 12px;">Le modèle que vous avez demandé (<strong>${escapeHtml(params.typeDocument)}</strong>) est à votre disposition ${ou}.</p>
       ${message}`
     return {
       subject: 'Votre modèle est disponible',
-      html: habillage({ titre: 'Votre modèle est disponible', corpsHtml: corps, ctaUrl: `${base}/espace-client?onglet=echanges`, ctaLabel: 'Ouvrir mes échanges de documents' }),
+      html: habillage({
+        titre: 'Votre modèle est disponible',
+        corpsHtml: corps,
+        ctaUrl: params.avecDocument ? `${base}/espace-client?onglet=documents` : `${base}/espace-client?onglet=echanges`,
+        ctaLabel: params.avecDocument ? 'Télécharger mon modèle' : 'Ouvrir mes échanges de documents',
+      }),
     }
   }
   const corps = `
@@ -119,6 +130,77 @@ export function emailReponseDemande(params: {
   return {
     subject: 'Réponse à votre demande de modèle',
     html: habillage({ titre: 'Réponse à votre demande de modèle', corpsHtml: corps, ctaUrl: `${base}/espace-client?onglet=documents`, ctaLabel: 'Voir ma demande' }),
+  }
+}
+
+// Le cabinet dispose d'un modele payant : le client est invite a le regler depuis son espace.
+export function emailModeleAPayer(params: {
+  prenom: string
+  typeDocument: string
+  documentNom: string
+  prix: number
+  inclusOptimal: boolean
+  message?: string | null
+  origin?: string | null
+}): { subject: string; html: string } {
+  const base = siteUrl(params.origin)
+  const prix = `${params.prix.toFixed(2).replace('.', ',')}\u00a0€`
+  const message = params.message && params.message.trim()
+    ? `<p style="margin:12px 0 0;background:#f8fafc;border:1px solid #e5e7eb;border-radius:8px;padding:12px 14px;">${versHtml(params.message.trim())}</p>`
+    : ''
+  const optimal = params.inclusOptimal
+    ? `<p style="margin:12px 0 0;">Ce modèle est aussi inclus dans l'abonnement Optimal.</p>`
+    : ''
+  const corps = `
+    <p style="margin:0 0 12px;">Bonjour ${escapeHtml(params.prenom)},</p>
+    <p style="margin:0 0 12px;">Le cabinet dispose d'un modèle correspondant à votre demande (<strong>${escapeHtml(params.typeDocument)}</strong>) : <strong>${escapeHtml(params.documentNom)}</strong>.</p>
+    <p style="margin:0;">Ce modèle est proposé au prix de <strong>${prix}</strong>. Vous pouvez le régler par carte bancaire ou par virement depuis votre espace client, onglet « Demander un modèle ». Il reste ensuite téléchargeable à tout moment.</p>
+    ${optimal}
+    ${message}`
+  return {
+    subject: 'Un modèle est disponible pour votre demande',
+    html: habillage({ titre: 'Un modèle est disponible pour votre demande', corpsHtml: corps, ctaUrl: `${base}/espace-client?onglet=documents`, ctaLabel: 'Voir le modèle et le régler' }),
+  }
+}
+
+// Fait passer en « Modele transmis » les demandes « En attente de paiement » dont le client a
+// depuis regle le modele (carte ou virement valide), ou est devenu abonne Optimal alors que le
+// modele est inclus. Appele a chaque lecture : evite de modifier le webhook de paiement.
+export async function reconcilierDemandesModeles(userId?: string): Promise<void> {
+  try {
+    let requete = supabaseAdmin
+      .from('demandes_modeles')
+      .select('id, user_id, document_id')
+      .eq('statut', 'a_payer')
+      .not('document_id', 'is', null)
+    if (userId) requete = requete.eq('user_id', userId)
+    const { data: demandes } = await requete
+    if (!demandes || demandes.length === 0) return
+
+    const userIds = Array.from(new Set(demandes.map(d => d.user_id as string)))
+    const docIds = Array.from(new Set(demandes.map(d => d.document_id as string)))
+
+    const [{ data: achats }, { data: users }, { data: docs }] = await Promise.all([
+      supabaseAdmin.from('achats_documents').select('user_id, document_id').eq('statut', 'paye').in('user_id', userIds).in('document_id', docIds),
+      supabaseAdmin.from('users').select('id, abonnement_actif').in('id', userIds),
+      supabaseAdmin.from('documents').select('id, acces_gratuit, acces_optimal').in('id', docIds),
+    ])
+    const achetes = new Set((achats || []).map(a => `${a.user_id}|${a.document_id}`))
+    const abonnes = new Set((users || []).filter(u => u.abonnement_actif).map(u => u.id as string))
+    const inclus = new Set((docs || []).filter(d => d.acces_optimal).map(d => d.id as string))
+    const gratuits = new Set((docs || []).filter(d => d.acces_gratuit).map(d => d.id as string))
+
+    const aClore = demandes
+      .filter(d => achetes.has(`${d.user_id}|${d.document_id}`) || (abonnes.has(d.user_id) && inclus.has(d.document_id)) || gratuits.has(d.document_id))
+      .map(d => d.id as string)
+    if (aClore.length === 0) return
+    const maintenant = new Date().toISOString()
+    await supabaseAdmin
+      .from('demandes_modeles')
+      .update({ statut: 'livree', livree_le: maintenant, updated_at: maintenant })
+      .in('id', aClore)
+  } catch (error) {
+    console.error('[demandes-modeles] Reconciliation impossible:', error)
   }
 }
 

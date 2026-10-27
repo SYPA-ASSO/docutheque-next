@@ -1,0 +1,16 @@
+LOT 4B : un modele demande peut etre gratuit, inclus dans Optimal ou payant (carte ou virement)
+
+SQL a executer AVANT le deploiement : migration-demandes-modeles-4b.sql (ajout de colonnes, nouveau statut a_payer).
+
+Fichiers :
+ migration-demandes-modeles-4b.sql
+ lib/demandes-modeles-statuts.ts
+ lib/demandes-modeles.ts
+ app/api/admin/demandes-modeles-update/route.ts
+ app/api/admin/demandes-modeles-list/route.ts
+ app/api/compte/demandes-modeles/route.ts
+ app/api/compte/documents-obtenus/route.ts
+ app/api/documents/acheter/route.ts   (restaure, rattache a la demande, case de retractation)
+ app/api/webhook/route.ts             (textes des e-mails uniquement)
+ app/admin/demandes-modeles/page.tsx
+ app/espace-client/page.tsx

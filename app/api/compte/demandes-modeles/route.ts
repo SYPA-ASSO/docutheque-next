@@ -1,12 +1,39 @@
 // app/api/compte/demandes-modeles/route.ts
-// Enregistre une demande de modele de document faite par un client connecte (jeton Supabase en
-// en-tete Authorization), puis envoie l'accuse de reception au client et l'alerte au cabinet.
+// Liste (GET) et enregistre (POST) les demandes de modele de document d'un client connecte
+// (jeton Supabase en en-tete Authorization). A l'enregistrement, un accuse de reception part
+// vers le client et une alerte vers le cabinet.
 // Le client ne voit jamais la liste des modeles disponibles : seul le cabinet la consulte.
 
 import { NextResponse } from 'next/server'
 import { supabaseAdmin } from '@/lib/supabase-admin'
-import { envoyerEmailBrevo, emailAccuseDemande, emailAlerteDemande } from '@/lib/demandes-modeles'
+import { envoyerEmailBrevo, emailAccuseDemande, emailAlerteDemande, reconcilierDemandesModeles } from '@/lib/demandes-modeles'
 import { DEMANDE_CONTEXTE_MAX, DEMANDE_TYPE_MAX, DEMANDES_OUVERTES_MAX } from '@/lib/demandes-modeles-statuts'
+
+// Liste des demandes du client connecte (apres mise a jour des demandes dont le modele a ete regle).
+export async function GET(request: Request) {
+  const authHeader = request.headers.get('authorization') || ''
+  const token = authHeader.startsWith('Bearer ') ? authHeader.slice(7) : ''
+  if (!token) return NextResponse.json({ error: 'Authentification requise.' }, { status: 401 })
+
+  const { data: auth, error: authError } = await supabaseAdmin.auth.getUser(token)
+  if (authError || !auth || !auth.user) {
+    return NextResponse.json({ error: 'Authentification requise.' }, { status: 401 })
+  }
+
+  try {
+    await reconcilierDemandesModeles(auth.user.id)
+    const { data, error } = await supabaseAdmin
+      .from('demandes_modeles')
+      .select('*')
+      .eq('user_id', auth.user.id)
+      .order('created_at', { ascending: false })
+    if (error) return NextResponse.json({ error: error.message }, { status: 500 })
+    return NextResponse.json({ demandes: data || [] })
+  } catch (error) {
+    console.error('[demandes-modeles] Lecture impossible:', error)
+    return NextResponse.json({ error: 'Erreur serveur.' }, { status: 500 })
+  }
+}
 
 export async function POST(request: Request) {
   const authHeader = request.headers.get('authorization') || ''

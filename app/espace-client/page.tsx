@@ -8,6 +8,7 @@ import { AVIS_GOOGLE } from '@/lib/avis-google'
 import Header from '@/components/Header'
 import FooterMinimal from '@/components/FooterMinimal'
 import { PhoneInput } from '@/components/PhoneInput'
+import { formatPrix } from '@/lib/format'
 import { STATUTS_DEMANDE_MODELE, statutDemandeModele, formatDateFr, DEMANDE_TYPE_MAX, DEMANDE_CONTEXTE_MAX } from '@/lib/demandes-modeles-statuts'
 import { PARCOURS_COURTAGE, PROFILS_COURTAGE, labelEtape, descriptionEtape, suiteEtape, formatDateHeureParis, texteEnListe } from '@/lib/courtage-etapes'
 import {
@@ -83,8 +84,15 @@ type DemandeModele = {
   date_souhaitee: string | null
   statut: string
   reponse_client: string | null
+  document_id: string | null
+  document_nom: string | null
+  document_prix: number | string | null
+  document_inclus_optimal: boolean | null
   created_at: string
 }
+
+// Modele attribue par le cabinet et propose au reglement
+type ModeleAPayer = { id: string; nom: string; prix: number | string | null }
 
 type DocumentObtenu = { id: string; nom: string; type: string | null; origine: string }
 
@@ -147,6 +155,12 @@ export default function EspaceClient() {
   // Demandes de modeles : le client ne voit jamais la liste des modeles disponibles.
   const [demandes, setDemandes] = useState<DemandeModele[]>([])
   const [docsObtenus, setDocsObtenus] = useState<DocumentObtenu[]>([])
+  // Reglement d'un modele attribue par le cabinet (carte ou virement)
+  const [achatDoc, setAchatDoc] = useState<ModeleAPayer | null>(null)
+  const [achatLoading, setAchatLoading] = useState(false)
+  const [achatErreur, setAchatErreur] = useState('')
+  const [achatReference, setAchatReference] = useState('')
+  const [achatRenonciation, setAchatRenonciation] = useState(false)
   const [demandeType, setDemandeType] = useState('')
   const [demandeContexte, setDemandeContexte] = useState('')
   const [demandeDate, setDemandeDate] = useState('')
@@ -187,7 +201,15 @@ export default function EspaceClient() {
         setSuccessMessage('Votre abonnement est maintenant actif. Bienvenue dans Optimal !')
       }
       if (params.get('achat') === 'succes') {
-        setSuccessMessage('Paiement reçu. Votre document est disponible dans l\'onglet « Demander un modèle », rubrique « Vos documents déjà obtenus ».')
+        setSuccessMessage('Paiement reçu. Votre modèle apparaît dans l\'onglet « Demander un modèle », rubrique « Vos documents déjà obtenus », dès confirmation du paiement (quelques secondes).')
+        // Le paiement est confirme par la banque de maniere asynchrone : on actualise la liste peu apres le retour.
+        const actualiser = async () => {
+          const { data: { session } } = await supabase.auth.getSession()
+          if (!session) return
+          await Promise.all([loadDemandes(), loadDocsObtenus()])
+        }
+        setTimeout(actualiser, 3500)
+        setTimeout(actualiser, 9000)
       }
       // Nettoyer l'URL
       window.history.replaceState({}, '', '/espace-client')
@@ -208,7 +230,7 @@ export default function EspaceClient() {
       loadDossiers(session.user.id),
       loadDossiersRgpd(session.user.id),
       loadDossiersCourtage(session.user.id),
-      loadDemandes(session.user.id),
+      loadDemandes(),
       loadDocsObtenus(),
     ])
     setLoading(false)
@@ -249,9 +271,21 @@ export default function EspaceClient() {
     if (evts) setEvenementsCourtage(evts)
   }
 
-  const loadDemandes = async (userId: string) => {
-    const { data } = await supabase.from('demandes_modeles').select('*').eq('user_id', userId).order('created_at', { ascending: false })
-    if (data) setDemandes(data)
+  // Les demandes passent par la route serveur : elle met a jour au passage celles dont le modele a ete regle.
+  const loadDemandes = async () => {
+    try {
+      const { data: { session } } = await supabase.auth.getSession()
+      if (!session) return
+      const res = await fetch('/api/compte/demandes-modeles', { headers: { Authorization: `Bearer ${session.access_token}` } })
+      if (res.ok) {
+        const data = await res.json()
+        if (Array.isArray(data.demandes)) { setDemandes(data.demandes); return }
+      }
+      const { data } = await supabase.from('demandes_modeles').select('*').eq('user_id', session.user.id).order('created_at', { ascending: false })
+      if (data) setDemandes(data)
+    } catch {
+      // la liste reste telle quelle
+    }
   }
 
   // Documents deja obtenus (telecharges ou achetes) : la route ne renvoie jamais le reste de la bibliotheque.
@@ -287,7 +321,7 @@ export default function EspaceClient() {
         setDemandeContexte('')
         setDemandeDate('')
         setDemandeSucces('Votre demande est enregistrée. Un e-mail de confirmation vous a été envoyé.')
-        if (profile) await loadDemandes(profile.id)
+        await loadDemandes()
       } else {
         setDemandeErreur(data.error || "La demande n'a pas pu être enregistrée. Veuillez réessayer.")
       }
@@ -295,6 +329,38 @@ export default function EspaceClient() {
       setDemandeErreur('Une erreur est survenue. Veuillez réessayer.')
     } finally {
       setDemandeLoading(false)
+    }
+  }
+
+  // Reglement d'un modele attribue par le cabinet : carte (redirection Stripe) ou virement (reference + RIB par e-mail)
+  const acheterDocument = async (mode: 'carte' | 'virement') => {
+    if (!achatDoc) return
+    if (!achatRenonciation) { setAchatErreur('Cochez la case relative au droit de rétractation pour continuer.'); return }
+    setAchatLoading(true)
+    setAchatErreur('')
+    try {
+      const { data: { session } } = await supabase.auth.getSession()
+      if (!session) { router.push('/connexion'); return }
+      const res = await fetch('/api/documents/acheter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${session.access_token}` },
+        body: JSON.stringify({ documentId: achatDoc.id, mode, renonciation: true }),
+      })
+      const data = await res.json().catch(() => ({}))
+      if (mode === 'carte') {
+        if (res.ok && data.url) { window.location.href = data.url; return }
+        setAchatErreur(data.error || "Le paiement n'a pas pu démarrer. Veuillez réessayer.")
+      } else {
+        if (res.ok && data.success) {
+          setAchatReference(data.reference || '')
+        } else {
+          setAchatErreur(data.error || "La commande n'a pas pu être enregistrée. Veuillez réessayer.")
+        }
+      }
+    } catch {
+      setAchatErreur('Une erreur est survenue. Veuillez réessayer.')
+    } finally {
+      setAchatLoading(false)
     }
   }
 
@@ -681,7 +747,7 @@ export default function EspaceClient() {
                 <div style={{ height: '4px', background: '#e5e7eb', borderRadius: '4px' }}>
                   <div style={{ height: '4px', background: 'linear-gradient(90deg, #1a4fba, #93c5fd)', borderRadius: '4px', width: '0%' }} />
                 </div>
-                <p style={{ color: '#9ca3af', fontSize: '10px', margin: '6px 0 0', lineHeight: '1.4' }}>Passez à l'Optimal : une question juriste incluse chaque mois</p>
+                <p style={{ color: '#9ca3af', fontSize: '10px', margin: '6px 0 0', lineHeight: '1.4' }}>Passez à l'Optimal : modèles inclus et une question juriste chaque mois</p>
               </div>
             )}
 
@@ -701,7 +767,7 @@ export default function EspaceClient() {
             {!estAbonne && (
               <div style={{ background: 'linear-gradient(135deg, #0f2d6e 0%, #1a4fba 100%)', borderRadius: '10px', padding: '14px', marginBottom: '1rem' }}>
                 <p style={{ color: 'white', fontSize: '12px', fontWeight: '700', margin: '0 0 4px' }}>✦ Passer à l'Optimal</p>
-                <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: '11px', margin: '0 0 10px', lineHeight: '1.5' }}>1 question juriste incluse par mois et un tarif réduit.</p>
+                <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: '11px', margin: '0 0 10px', lineHeight: '1.5' }}>Tous les modèles inclus, 1 question juriste incluse par mois et un tarif réduit.</p>
                 <button onClick={() => setOnglet('abonnement')} style={{ width: '100%', background: 'white', color: '#0f2d6e', border: 'none', padding: '8px', borderRadius: '6px', fontSize: '11px', fontWeight: '700', cursor: 'pointer' }}>
                   Voir les offres →
                 </button>
@@ -772,7 +838,7 @@ export default function EspaceClient() {
                           <Crown size={16} color="#fcd34d" strokeWidth={1.5} />
                           <span style={{ color: '#fcd34d', fontSize: '11px', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Abonnement Optimal</span>
                         </div>
-                        <p style={{ color: 'white', fontSize: '1.1rem', fontWeight: '700', margin: '0 0 6px' }}>Modèles de documents sur demande + 1 question juriste / mois</p>
+                        <p style={{ color: 'white', fontSize: '1.1rem', fontWeight: '700', margin: '0 0 6px' }}>Tous les modèles inclus sur demande + 1 question juriste / mois</p>
                         <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: '13px', margin: 0 }}>À partir de <strong style={{ color: 'white' }}>12,42 €/mois</strong> en annuel</p>
                       </div>
                       <button onClick={() => setOnglet('abonnement')} style={{ background: 'white', color: '#0f2d6e', border: 'none', padding: '11px 22px', borderRadius: '8px', fontSize: '13px', fontWeight: '700', cursor: 'pointer', flexShrink: 0 }}>
@@ -1021,7 +1087,7 @@ export default function EspaceClient() {
               <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
                 <h1 style={{ color: '#0f2d6e', fontSize: '1.4rem', fontWeight: '700', margin: 0 }}>Demander un modèle de document</h1>
                 <p style={{ color: '#6b7280', fontSize: '13px', margin: 0, lineHeight: '1.7' }}>
-                  Décrivez le document dont vous avez besoin. Le cabinet vérifie s&apos;il dispose d&apos;un modèle adapté et, le cas échéant, vous le transmet dans « Échanges de documents ». Vous êtes prévenu par e-mail.
+                  Décrivez le document dont vous avez besoin. Le cabinet vérifie s&apos;il dispose d&apos;un modèle adapté. Selon le modèle, il est gratuit, inclus dans l&apos;abonnement Optimal ou payable à l&apos;unité : le prix vous est indiqué avant tout paiement. Vous êtes prévenu par e-mail.
                 </p>
 
                 {demandeSucces && (
@@ -1085,7 +1151,32 @@ export default function EspaceClient() {
                             {d.reponse_client && (
                               <p style={{ color: '#374151', fontSize: '12.5px', margin: '8px 0 0', whiteSpace: 'pre-wrap', lineHeight: '1.7' }}>{d.reponse_client}</p>
                             )}
-                            {d.statut === 'livree' && (
+                            {d.statut === 'a_payer' && d.document_id && (
+                              <div style={{ marginTop: '10px', background: '#fff7ed', border: '1px solid #fed7aa', borderRadius: '8px', padding: '10px 12px' }}>
+                                <p style={{ color: '#374151', fontSize: '12.5px', margin: '0 0 8px', lineHeight: '1.6' }}>
+                                  Le cabinet a un modèle pour vous : <strong>{d.document_nom}</strong>
+                                  {d.document_prix ? <> · <strong>{formatPrix(d.document_prix)}</strong></> : null}.
+                                  {d.document_inclus_optimal ? ' Il est aussi inclus dans l\u2019abonnement Optimal.' : ''}
+                                </p>
+                                <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', alignItems: 'center' }}>
+                                  <button onClick={() => { setAchatErreur(''); setAchatReference(''); setAchatRenonciation(false); setAchatDoc({ id: d.document_id as string, nom: d.document_nom || d.type_document, prix: d.document_prix }) }}
+                                    style={{ background: '#0f2d6e', color: 'white', border: 'none', padding: '8px 16px', borderRadius: '8px', fontSize: '12px', fontWeight: '700', cursor: 'pointer' }}>
+                                    Régler ce modèle
+                                  </button>
+                                  {d.document_inclus_optimal && !estAbonne && (
+                                    <button onClick={() => setOnglet('abonnement')} style={{ background: 'transparent', border: 'none', color: '#1a4fba', fontSize: '12px', fontWeight: '600', cursor: 'pointer', padding: 0, textDecoration: 'underline' }}>
+                                      Voir l&apos;abonnement Optimal
+                                    </button>
+                                  )}
+                                </div>
+                              </div>
+                            )}
+                            {d.statut === 'livree' && d.document_id && (
+                              <p style={{ color: '#15803d', fontSize: '12px', fontWeight: '600', margin: '8px 0 0' }}>
+                                Votre modèle est disponible ci-dessous, dans « Vos documents déjà obtenus ».
+                              </p>
+                            )}
+                            {d.statut === 'livree' && !d.document_id && (
                               <button onClick={() => setOnglet('echanges')} style={{ marginTop: '8px', background: 'transparent', border: 'none', color: '#1a4fba', fontSize: '12px', fontWeight: '600', cursor: 'pointer', padding: 0, textDecoration: 'underline' }}>
                                 Ouvrir mes échanges de documents
                               </button>
@@ -1688,13 +1779,14 @@ export default function EspaceClient() {
                       </div>
 
                       {[
-                        { label: 'Modèles de documents sur demande', gratuit: '✓', part: '✓', pro: '✓' },
+                        { label: 'Modèles gratuits sur demande', gratuit: '✓', part: '✓', pro: '✓' },
+                        { label: 'Modèles payants sur demande', gratuit: "À l'unité", part: 'Inclus', pro: 'Inclus' },
                         { label: 'Question juriste incluse / mois', gratuit: '✗', part: '1 incluse', pro: '1 incluse' },
                         { label: 'Questions supplémentaires', gratuit: '47 €', part: '14,90 €', pro: '14,90 €' },
                         { label: "Délai de réponse", gratuit: '24-48h', part: '24-48h', pro: '24-48h' },
                         { label: 'Professionnels / associations', gratuit: '✗', part: '✗', pro: '✓' },
                       ].map((row, i) => (
-                        <div key={i} style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr 1fr 1fr', borderBottom: i < 4 ? '1px solid #f3f4f6' : 'none' }}>
+                        <div key={i} style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr 1fr 1fr', borderBottom: i < 5 ? '1px solid #f3f4f6' : 'none' }}>
                           <div style={{ padding: '12px 1.25rem', borderRight: '1px solid #e5e7eb' }}>
                             <p style={{ color: '#374151', fontSize: '12px', margin: 0 }}>{row.label}</p>
                           </div>
@@ -1743,6 +1835,76 @@ export default function EspaceClient() {
           </div>
         </div>
       </main>
+
+
+      {/* Modale d'achat de document a l'unite */}
+      {achatDoc && (
+        <div onClick={() => { if (!achatLoading) setAchatDoc(null) }}
+          style={{ position: 'fixed', inset: 0, background: 'rgba(15,23,42,0.45)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 50, padding: '1rem' }}>
+          <div onClick={e => e.stopPropagation()}
+            style={{ background: 'white', borderRadius: '14px', padding: '1.5rem', width: '100%', maxWidth: '420px', boxShadow: '0 20px 40px rgba(0,0,0,0.2)' }}>
+            {!achatReference ? (
+              <>
+                <p style={{ color: '#0f2d6e', fontSize: '15px', fontWeight: '700', margin: '0 0 4px' }}>Régler ce modèle</p>
+                <p style={{ color: '#374151', fontSize: '13px', margin: '0 0 4px', lineHeight: '1.5' }}>{achatDoc.nom}</p>
+                <p style={{ color: '#d97706', fontSize: '1.3rem', fontWeight: '700', margin: '0 0 16px' }}>{formatPrix(achatDoc.prix) || '?\u00a0€'}</p>
+                <p style={{ color: '#6b7280', fontSize: '12px', margin: '0 0 16px', lineHeight: '1.6' }}>
+                  Une fois réglé, le modèle reste téléchargeable depuis votre espace client. Choisissez votre mode de paiement.
+                </p>
+                <label style={{ display: 'flex', gap: '8px', alignItems: 'flex-start', margin: '0 0 14px', cursor: 'pointer' }}>
+                  <input type="checkbox" checked={achatRenonciation} onChange={e => setAchatRenonciation(e.target.checked)} disabled={achatLoading} style={{ marginTop: '2px', flexShrink: 0 }} />
+                  <span style={{ color: '#374151', fontSize: '12px', lineHeight: '1.6' }}>
+                    Je demande la mise à disposition immédiate du modèle et je reconnais perdre mon droit de rétractation dès cette mise à disposition.
+                  </span>
+                </label>
+                {achatErreur && (
+                  <div style={{ display: 'flex', gap: '8px', alignItems: 'center', marginBottom: '12px' }}>
+                    <AlertCircle size={14} color="#dc2626" style={{ flexShrink: 0 }} />
+                    <p style={{ color: '#dc2626', fontSize: '12px', margin: 0 }}>{achatErreur}</p>
+                  </div>
+                )}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                  <button onClick={() => acheterDocument('carte')} disabled={achatLoading || !achatRenonciation}
+                    style={{ background: achatLoading || !achatRenonciation ? '#9ca3af' : '#0f2d6e', color: 'white', border: 'none', padding: '12px', borderRadius: '8px', fontSize: '13px', fontWeight: '700', cursor: achatLoading || !achatRenonciation ? 'not-allowed' : 'pointer' }}>
+                    {achatLoading ? 'Redirection...' : 'Payer par carte bancaire'}
+                  </button>
+                  <button onClick={() => acheterDocument('virement')} disabled={achatLoading || !achatRenonciation}
+                    style={{ background: 'white', color: '#0f2d6e', border: '1px solid #cbd5e1', padding: '12px', borderRadius: '8px', fontSize: '13px', fontWeight: '700', cursor: achatLoading ? 'not-allowed' : 'pointer' }}>
+                    Payer par virement
+                  </button>
+                  <button onClick={() => setAchatDoc(null)} disabled={achatLoading}
+                    style={{ background: 'transparent', color: '#6b7280', border: 'none', padding: '8px', borderRadius: '8px', fontSize: '12px', cursor: achatLoading ? 'not-allowed' : 'pointer' }}>
+                    Annuler
+                  </button>
+                </div>
+                <p style={{ color: '#9ca3af', fontSize: '11px', margin: '12px 0 0', lineHeight: '1.6' }}>
+                  Le paiement par carte est immédiat. Le virement ouvre l'accès dès réception, après vérification.
+                </p>
+              </>
+            ) : (
+              <>
+                <div style={{ display: 'flex', gap: '10px', alignItems: 'flex-start', marginBottom: '12px' }}>
+                  <CheckCircle size={20} color="#16a34a" style={{ flexShrink: 0, marginTop: '1px' }} />
+                  <div>
+                    <p style={{ color: '#15803d', fontSize: '14px', fontWeight: '700', margin: '0 0 4px' }}>Commande enregistrée</p>
+                    <p style={{ color: '#374151', fontSize: '12px', margin: 0, lineHeight: '1.6' }}>
+                      Un email contenant le RIB et la référence vient de vous être envoyé. Votre modèle sera téléchargeable dès réception et vérification de votre virement.
+                    </p>
+                  </div>
+                </div>
+                <div style={{ background: '#f8fafc', border: '1px solid #e5e7eb', borderRadius: '8px', padding: '10px 14px', marginBottom: '16px' }}>
+                  <p style={{ color: '#6b7280', fontSize: '11px', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em', margin: '0 0 2px' }}>Référence de votre virement</p>
+                  <p style={{ color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: 0, letterSpacing: '0.03em' }}>{achatReference}</p>
+                </div>
+                <button onClick={() => { setAchatDoc(null); setAchatReference(''); setAchatRenonciation(false); loadDemandes() }}
+                  style={{ width: '100%', background: '#0f2d6e', color: 'white', border: 'none', padding: '11px', borderRadius: '8px', fontSize: '13px', fontWeight: '700', cursor: 'pointer' }}>
+                  Fermer
+                </button>
+              </>
+            )}
+          </div>
+        </div>
+      )}
 
       <FooterMinimal />
     </>

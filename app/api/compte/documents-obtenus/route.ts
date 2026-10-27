@@ -1,11 +1,12 @@
 // app/api/compte/documents-obtenus/route.ts
 // Renvoie au client connecte (jeton Supabase) la liste des documents qu'il a DEJA obtenus :
-// ceux qu'il a telecharges et ceux qu'il a achetes (paiement confirme), tant qu'il y a encore
-// droit. La bibliotheque complete n'est jamais renvoyee : le client ne voit pas les autres modeles.
+// ceux qu'il a telecharges, ceux qu'il a achetes (paiement confirme) et ceux que le cabinet lui a
+// attribues en reponse a une demande de modele, tant qu'il y a encore droit. La bibliotheque complete n'est jamais renvoyee : le client ne voit pas les autres modeles.
 // Les droits d'acces sont ceux de la route de telechargement (gratuit, Optimal actif, achat paye).
 
 import { NextResponse } from 'next/server'
 import { supabaseAdmin } from '@/lib/supabase-admin'
+import { reconcilierDemandesModeles } from '@/lib/demandes-modeles'
 
 export async function GET(request: Request) {
   const authHeader = request.headers.get('authorization') || ''
@@ -19,16 +20,19 @@ export async function GET(request: Request) {
   const userId = auth.user.id
 
   try {
-    const [{ data: profil }, { data: telechargements }, { data: achats }] = await Promise.all([
+    await reconcilierDemandesModeles(userId)
+    const [{ data: profil }, { data: telechargements }, { data: achats }, { data: demandes }] = await Promise.all([
       supabaseAdmin.from('users').select('abonnement_actif').eq('id', userId).single(),
       supabaseAdmin.from('downloads').select('document_id').eq('user_id', userId),
       supabaseAdmin.from('achats_documents').select('document_id').eq('user_id', userId).eq('statut', 'paye'),
+      supabaseAdmin.from('demandes_modeles').select('document_id').eq('user_id', userId).eq('statut', 'livree').not('document_id', 'is', null),
     ])
 
     const achetes = new Set<string>((achats || []).map((a: { document_id: string | null }) => a.document_id).filter(Boolean) as string[])
     const ids = Array.from(new Set<string>([
       ...((telechargements || []).map((t: { document_id: string | null }) => t.document_id).filter(Boolean) as string[]),
       ...Array.from(achetes),
+      ...((demandes || []).map((d: { document_id: string | null }) => d.document_id).filter(Boolean) as string[]),
     ]))
     if (ids.length === 0) return NextResponse.json({ documents: [] })
 

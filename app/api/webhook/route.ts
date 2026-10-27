@@ -17,11 +17,11 @@ type TypeCommande = 'abonnement' | 'document' | 'panier' | 'question' | 'conseil
 function contenuConfirmation(type: TypeCommande): { sujet: string; titre: string; corps: string; cta: string; lien: string } {
   switch (type) {
     case 'abonnement':
-      return { sujet: 'Votre abonnement Optimal est actif', titre: 'Bienvenue, votre abonnement est actif', corps: "Votre abonnement Optimal est désormais actif. Vous avez accès à la bibliothèque complète de documents, à vos questions au juriste et à l'ensemble des avantages de votre formule.", cta: 'Accéder à mon espace', lien: `${SITE_CONFIRM}/espace-client` }
+      return { sujet: 'Votre abonnement Optimal est actif', titre: 'Bienvenue, votre abonnement est actif', corps: "Votre abonnement Optimal est désormais actif. Les modèles de documents que vous demandez au cabinet sont inclus dans votre abonnement, ainsi que votre question juriste mensuelle et l'ensemble des avantages de votre formule.", cta: 'Accéder à mon espace', lien: `${SITE_CONFIRM}/espace-client` }
     case 'document':
-      return { sujet: 'Votre achat est confirmé', titre: 'Merci, votre achat est confirmé', corps: "Votre paiement a bien été reçu. Votre document est dès à présent disponible au téléchargement dans votre espace client, onglet Documents.", cta: 'Télécharger mon document', lien: `${SITE_CONFIRM}/espace-client?onglet=documents` }
+      return { sujet: 'Votre achat est confirmé', titre: 'Merci, votre achat est confirmé', corps: "Votre paiement a bien été reçu. Votre modèle est dès à présent disponible au téléchargement dans votre espace client, onglet « Demander un modèle », rubrique « Vos documents déjà obtenus ».", cta: 'Télécharger mon modèle', lien: `${SITE_CONFIRM}/espace-client?onglet=documents` }
     case 'panier':
-      return { sujet: 'Votre commande est confirmée', titre: 'Merci, votre commande est confirmée', corps: "Votre paiement a bien été reçu. Vos documents sont dès à présent disponibles au téléchargement dans votre espace client, onglet Documents.", cta: 'Accéder à mes documents', lien: `${SITE_CONFIRM}/espace-client?onglet=documents` }
+      return { sujet: 'Votre commande est confirmée', titre: 'Merci, votre commande est confirmée', corps: "Votre paiement a bien été reçu. Vos documents sont dès à présent disponibles au téléchargement dans votre espace client, onglet « Demander un modèle », rubrique « Vos documents déjà obtenus ».", cta: 'Accéder à mes documents', lien: `${SITE_CONFIRM}/espace-client?onglet=documents` }
     case 'question':
       return { sujet: 'Votre question a bien été enregistrée', titre: 'Votre question est bien prise en compte', corps: "Votre paiement a bien été reçu et votre question est enregistrée. Notre juriste vous répondra dans les meilleurs délais, sous 24 à 48 heures ouvrées.", cta: 'Suivre ma demande', lien: `${SITE_CONFIRM}/espace-client` }
     case 'conseil':
