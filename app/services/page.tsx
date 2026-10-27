@@ -219,11 +219,11 @@ const services = [
     titre: "Conseil en assurances",
     accroche: "Un intermédiaire en assurances réglementé pour vous orienter vers les garanties adaptées à votre situation.",
     pourQui: "Particuliers, associations, entreprises, professions libérales, structures ESS.",
-    description: "Conformément à l'article L.521-4 du Code des assurances (devoir de conseil DDA), le conseil est individualisé, documenté et motivé. Un forfait couvre l'analyse des besoins, l'audit des contrats existants et la comparaison des offres du marché. Il est dû avant remise du rapport, indépendamment de toute souscription. En cas de souscription via le cabinet, une commission versée par l'assureur s'y ajoute, séparée du forfait, communiquée avant souscription conformément à l'article L.521-2 du Code des assurances et à la recommandation ACPR 2024-R-01. ORIAS n°26003943, sous contrôle de l'ACPR.",
+    description: "Conformément à l'article L.521-4 du Code des assurances (devoir de conseil DDA), le conseil est individualisé, documenté et motivé. Un forfait couvre l'analyse des besoins, l'audit des contrats existants et la consultation des compagnies et grossistes partenaires du cabinet. Il est dû avant remise du rapport, indépendamment de toute souscription. En cas de souscription via le cabinet, une commission versée par l'assureur s'y ajoute, séparée du forfait ; le mode de rémunération est indiqué avant souscription (art. L.521-2 du Code des assurances). ORIAS n°26003943, sous contrôle de l'ACPR.",
     comprend: [
       "Recueil des besoins via formulaire en ligne (horodaté, archivé dans l'espace client)",
       "Audit des contrats existants et identification des lacunes ou doublons",
-      "Comparaison des offres du marché dans les catégories couvertes (ORIAS n°26003943)",
+      "Consultation des compagnies et grossistes partenaires dans les catégories couvertes (ORIAS n°26003943)",
       "Rapport de conseil écrit, documenté et motivé : conforme à l'article L.521-4 du Code des assurances (DDA)",
       "Archivage du dossier complet dans l'espace client (formulaire + facture + rapport)",
       "Accompagnement en cas de sinistre ou d'insatisfaction vis-à-vis de l'assureur",

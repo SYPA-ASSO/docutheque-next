@@ -272,7 +272,7 @@ export default function AccompagnementParticuliersPage() {
                   </div>
                 </div>
                 <p style={{ fontSize: 13, color: '#374151', lineHeight: 1.7, marginBottom: '1rem', flex: 1 }}>
-                  Intermédiaire en assurances réglementé. Audit de vos contrats existants, comparaison des offres du marché,
+                  Intermédiaire en assurances réglementé. Audit de vos contrats existants, consultation des compagnies et grossistes partenaires,
                   rapport de conseil écrit et motivé. Aucun lien exclusif avec aucune compagnie.
                   Conforme à l'article L.521-4 du Code des assurances (DDA).
                 </p>

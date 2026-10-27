@@ -131,7 +131,7 @@ export default function APropos() {
                 },
                 {
                   titre: 'Indépendant dans nos recommandations',
-                  desc: "Aucun lien exclusif avec un assureur, aucune affiliation à un réseau qui orienterait nos conseils. Les recommandations que nous formulons reposent exclusivement sur l'analyse des besoins du client et la comparaison objective des offres disponibles sur le marché.",
+                  desc: "Aucun lien exclusif avec un assureur, aucune affiliation à un réseau qui orienterait nos conseils. Les recommandations que nous formulons reposent sur l'analyse des besoins du client et sur les offres des compagnies et grossistes partenaires du cabinet que nous avons consultés, et non sur l'ensemble du marché.",
                   couleur: '#0f2d6e',
                 },
                 {

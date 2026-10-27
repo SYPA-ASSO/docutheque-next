@@ -1,0 +1,22 @@
+Courtage lot 1 : corrections de formulations (aucune modification de base de donnees)
+=====================================================================================
+
+Fichiers modifies (remplacent l'existant, fichiers complets) :
+- app/conseil-assurances/page.tsx
+- app/cgu/page.tsx                         (article 5.5 uniquement)
+- app/a-propos/page.tsx                    (bloc "Independant dans nos recommandations")
+- app/services/page.tsx                    (carte conseil en assurances)
+- app/accompagnement-particuliers/page.tsx (une phrase)
+- app/accompagnement-professionnels/page.tsx (une phrase)
+
+Changements :
+1. Reference ACPR : 2024-R-01 remplacee par 2024-R-02 (recueil des informations client pour le devoir de conseil).
+2. "Comparaison des offres du marche" remplace par "consultation des compagnies et grossistes partenaires" (panel, pas tout le marche).
+3. Commission : le texte ne rattache plus a l'article L.521-2 l'obligation de communiquer le MONTANT de la commission.
+   L.521-2 est cite pour le mode de remuneration ; la communication du montant devient un engagement du cabinet.
+4. Fonctions non developpees retirees des textes : formulaire de recueil horodate, paiement en ligne du forfait, archivage automatique.
+   Les textes decrivent maintenant : recueil ecrit et reformulation a confirmer, reglement selon modalites indiquees par le cabinet,
+   documents mis a disposition dans l'espace client (onglet Echanges de documents).
+5. Retrait de "garantit l'objectivite" et "absence de conflit d'interets" (le cabinet percoit aussi une commission).
+
+Rien a executer en base de donnees.

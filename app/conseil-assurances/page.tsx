@@ -2,7 +2,7 @@
 
 // app/conseil-assurances/page.tsx
 // Cabinet Cholez-Pagotto - Conseil en assurances
-// Règles : ORIAS 26003943, DDA L.521-4, ACPR 2024-R-01, zéro tiret long, cholez-pagotto.fr
+// Règles : ORIAS 26003943, DDA L.521-4, ACPR 2024-R-02, zéro tiret long, cholez-pagotto.fr
 
 import { useState } from 'react'
 import Header from '@/components/Header'
@@ -64,7 +64,7 @@ const schemaData = {
           "name": "Pourquoi un forfait conseil est-il facturé avant toute souscription ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Conformément à l'article L.521-4 du Code des assurances (devoir de conseil issu de la Directive sur la Distribution d'Assurances, DDA) et à la recommandation ACPR 2024-R-01, le conseil en assurances doit être individualisé, documenté et motivé. Le forfait rémunère ce travail de conseil indépendamment de toute souscription, garantissant ainsi l'objectivité du rapport et l'absence de conflit d'intérêts. Si vous souscrivez un contrat via le cabinet, celui-ci perçoit en complément une commission versée par l'assureur, séparée du forfait, dont le montant vous est communiqué avant toute souscription conformément à l'article L.521-2 du Code des assurances."
+            "text": "Conformément à l'article L.521-4 du Code des assurances (devoir de conseil issu de la Directive sur la Distribution d'Assurances, DDA), le conseil en assurances doit être cohérent avec vos exigences et besoins et motivé, ce que le cabinet formalise par écrit. La recommandation ACPR 2024-R-02 invite les distributeurs à exposer par écrit, sur support durable, les raisons du conseil. Le forfait rémunère ce travail de conseil indépendamment de toute souscription. Si vous souscrivez un contrat via le cabinet, celui-ci perçoit en complément une commission versée par l'assureur, séparée du forfait. Le cabinet vous indique son mode de rémunération avant toute souscription (art. L.521-2 du Code des assurances) et s'engage à vous en communiquer le montant."
           }
         },
         {
@@ -88,7 +88,7 @@ const schemaData = {
           "name": "Le cabinet est-il indépendant des assureurs ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Oui. Le cabinet intervient en qualité de courtier en assurances (IAS), ce qui lui permet de comparer librement les offres de plusieurs assureurs sans être lié à un réseau exclusif. Le rapport de conseil identifie les offres les mieux adaptées à votre situation parmi les produits disponibles sur le marché. En cas de souscription via le cabinet, une commission est versée par l'assureur choisi, séparée du forfait conseil, dont le montant vous est communiqué avant toute souscription conformément à l'article L.521-2 du Code des assurances et à la recommandation ACPR 2024-R-01."
+            "text": "Le cabinet intervient en qualité de courtier en assurances (IAS) et n'est lié à aucune compagnie par une exclusivité. Il consulte les compagnies et grossistes avec lesquels il a conclu des conventions de partenariat, c'est-à-dire un panel de partenaires et non l'ensemble du marché ; la liste vous est communiquée sur demande avant toute souscription. Le rapport de conseil identifie les offres les mieux adaptées à votre situation parmi celles de ces partenaires. En cas de souscription via le cabinet, une commission est versée par l'assureur choisi, séparée du forfait conseil. Le cabinet vous indique son mode de rémunération avant toute souscription (art. L.521-2 du Code des assurances) et s'engage à vous en communiquer le montant."
           }
         },
         {
@@ -96,7 +96,7 @@ const schemaData = {
           "name": "Que contient le rapport de conseil ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Le rapport de conseil est un document écrit, daté et archivé dans votre espace client. Il comprend : la synthèse de votre situation assurantielle actuelle, l'analyse de vos besoins identifiés lors du recueil d'informations, la comparaison des offres disponibles sur le marché adaptées à votre profil, la recommandation motivée avec les raisons du choix proposé, et les modalités de souscription."
+            "text": "Le rapport de conseil est un document écrit, daté et mis à disposition dans votre espace client. Il comprend : la synthèse de votre situation assurantielle actuelle, l'analyse de vos besoins identifiés lors du recueil d'informations, la comparaison des offres des compagnies et grossistes partenaires consultés, adaptées à votre profil, la recommandation motivée avec les raisons du choix proposé, et les modalités de souscription."
           }
         },
         {
@@ -148,31 +148,31 @@ const etapes = [
   {
     numero: "01",
     titre: "Recueil de vos besoins",
-    description: "Vous renseignez un formulaire de recueil en ligne, horodaté et archivé dans votre espace client. Ce document décrit votre situation, vos contrats existants et vos besoins identifiés. Il constitue la base documentaire du conseil conformément à l'art. L.521-4 du Code des assurances.",
+    description: "Vous décrivez votre situation et vos besoins par le formulaire de contact. Le cabinet recueille ensuite, par écrit, vos exigences et besoins (contrats existants, risques à couvrir, niveau de garanties souhaité) et vous en adresse une reformulation à confirmer. Ce document constitue la base documentaire du conseil conformément à l'art. L.521-4 du Code des assurances.",
     icone: <FileText size={22} strokeWidth={1.5} />
   },
   {
     numero: "02",
     titre: "Règlement du forfait conseil",
-    description: "Le forfait conseil (90 € pour les particuliers, 150 € pour les professionnels et associations) est réglé en ligne. Ce paiement préalable garantit l'objectivité du rapport, indépendamment de toute souscription ultérieure.",
+    description: "Le forfait conseil (90 € pour les particuliers, 150 € pour les professionnels et associations) est réglé avant la remise du rapport, selon les modalités indiquées par le cabinet à l'ouverture du dossier. Ce paiement rémunère le travail de conseil, indépendamment de toute souscription ultérieure.",
     icone: <Euro size={22} strokeWidth={1.5} />
   },
   {
     numero: "03",
     titre: "Audit et comparaison des offres",
-    description: "Notre conseiller analyse vos contrats existants, identifie les lacunes de couverture et compare les offres du marché adaptées à votre profil. L'analyse porte sur les garanties, les exclusions, les franchises et les tarifs.",
+    description: "Notre conseiller analyse vos contrats existants, identifie les lacunes de couverture, consulte les compagnies et grossistes partenaires du cabinet et compare leurs offres adaptées à votre profil. L'analyse porte sur les garanties, les exclusions, les franchises et les tarifs.",
     icone: <Shield size={22} strokeWidth={1.5} />
   },
   {
     numero: "04",
     titre: "Remise du rapport de conseil",
-    description: "Vous recevez un rapport de conseil écrit et motivé, archivé dans votre espace client avec le formulaire de recueil et le justificatif de paiement. Le rapport identifie les contrats recommandés et les raisons du choix.",
+    description: "Vous recevez un rapport de conseil écrit et motivé, mis à disposition dans votre espace client, avec la fiche de vos exigences et besoins et le justificatif de paiement. Il vous est remis avant toute souscription. Le rapport identifie les contrats recommandés et les raisons du choix.",
     icone: <Award size={22} strokeWidth={1.5} />
   },
   {
     numero: "05",
     titre: "Accompagnement à la souscription",
-    description: "Si vous décidez de souscrire un contrat via le cabinet, notre conseiller vous accompagne dans les démarches. En cas de souscription, une commission est versée par l'assureur, séparée du forfait, dont le montant vous est communiqué avant toute souscription (art. L.521-2 Code des assurances).",
+    description: "Si vous décidez de souscrire un contrat via le cabinet, notre conseiller vous accompagne dans les démarches. En cas de souscription, une commission est versée par l'assureur, séparée du forfait. Le cabinet vous indique son mode de rémunération avant toute souscription (art. L.521-2 du Code des assurances) et s'engage à vous en communiquer le montant.",
     icone: <CheckCircle size={22} strokeWidth={1.5} />
   }
 ]
@@ -180,7 +180,7 @@ const etapes = [
 const faqs = [
   {
     question: "Pourquoi un forfait conseil est-il facturé avant toute souscription ?",
-    reponse: "Conformément à l'article L.521-4 du Code des assurances (devoir de conseil DDA) et à la recommandation ACPR 2024-R-01, le conseil doit être individualisé, documenté et motivé. Le forfait rémunère ce travail indépendamment de toute souscription, garantissant l'objectivité du rapport et l'absence de conflit d'intérêts. En cas de souscription via le cabinet, une commission assureur s'ajoute, séparée du forfait, dont le montant vous est communiqué avant toute souscription (art. L.521-2 Code des assurances)."
+    reponse: "Conformément à l'article L.521-4 du Code des assurances (devoir de conseil DDA), le conseil doit être cohérent avec vos exigences et besoins et motivé, ce que le cabinet formalise par écrit. La recommandation ACPR 2024-R-02 invite les distributeurs à exposer par écrit, sur support durable, les raisons du conseil. Le forfait rémunère ce travail indépendamment de toute souscription. En cas de souscription via le cabinet, une commission assureur s'ajoute, séparée du forfait. Le cabinet vous indique son mode de rémunération avant toute souscription (art. L.521-2 du Code des assurances) et s'engage à vous en communiquer le montant."
   },
   {
     question: "Qu'est-ce que l'ORIAS et comment vérifier l'immatriculation du cabinet ?",
@@ -192,11 +192,11 @@ const faqs = [
   },
   {
     question: "Le cabinet est-il indépendant des assureurs ?",
-    reponse: "Oui. Le cabinet intervient en qualité de courtier (IAS), ce qui lui permet de comparer librement les offres de plusieurs assureurs sans être lié à un réseau exclusif. Le rapport identifie les offres les mieux adaptées parmi les produits disponibles sur le marché. La commission assureur éventuelle, séparée du forfait, vous est communiquée avant toute souscription (art. L.521-2 Code des assurances et recommandation ACPR 2024-R-01)."
+    reponse: "Le cabinet intervient en qualité de courtier (IAS) et n'est lié à aucune compagnie par une exclusivité. Il consulte les compagnies et grossistes avec lesquels il a conclu des conventions de partenariat, c'est-à-dire un panel de partenaires et non l'ensemble du marché ; la liste vous est communiquée sur demande avant toute souscription. Le rapport identifie les offres les mieux adaptées parmi celles de ces partenaires. La commission assureur éventuelle est séparée du forfait ; le cabinet vous indique son mode de rémunération avant toute souscription (art. L.521-2 du Code des assurances) et s'engage à vous en communiquer le montant."
   },
   {
     question: "Que contient le rapport de conseil ?",
-    reponse: "Le rapport est un document écrit, daté et archivé dans votre espace client. Il comprend : la synthèse de votre situation assurantielle, l'analyse de vos besoins, la comparaison des offres disponibles, la recommandation motivée et les modalités de souscription."
+    reponse: "Le rapport est un document écrit, daté et mis à disposition dans votre espace client. Il comprend : la synthèse de votre situation assurantielle, l'analyse de vos besoins, la comparaison des offres des partenaires consultés, la recommandation motivée et les modalités de souscription."
   },
   {
     question: "Le conseil couvre-t-il les associations et structures ESS ?",
@@ -251,7 +251,7 @@ export default function ConseilAssurancesPage() {
             </h1>
             <p style={{ fontSize: '1.1rem', color: 'rgba(255,255,255,0.88)', marginBottom: '1.5rem', lineHeight: 1.7 }}>
               Particuliers, professionnels et associations. Audit de vos contrats existants,
-              comparaison des offres du marché, rapport de conseil écrit.
+              consultation de compagnies et grossistes partenaires, rapport de conseil écrit.
               Forfait conseil 90 € (particuliers) · 150 € (professionnels et associations).
             </p>
 
@@ -265,7 +265,7 @@ export default function ConseilAssurancesPage() {
               </a>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: 13, color: 'rgba(255,255,255,0.8)' }}>
                 <Shield size={16} strokeWidth={1.5} />
-                <span>Conseil multimarque · Comparaison objective du marché</span>
+                <span>Conseil multimarque · Compagnies et grossistes partenaires</span>
               </div>
             </div>
 
@@ -290,7 +290,7 @@ export default function ConseilAssurancesPage() {
           <div style={{ maxWidth: 1100, margin: '0 auto', display: 'flex', alignItems: 'flex-start', gap: '0.75rem' }}>
             <Info size={16} strokeWidth={1.5} style={{ color: '#065f46', marginTop: 2, flexShrink: 0 }} />
             <p style={{ fontSize: 12, color: '#064e3b', lineHeight: 1.6, margin: 0 }}>
-              Le cabinet est enregistré à l'ORIAS sous le numéro <strong>26003943</strong>. Conformément à l'article L.521-4 du Code des assurances (devoir de conseil DDA) et à la recommandation ACPR 2024-R-01, le conseil est individualisé, documenté et motivé. Le forfait est dû avant remise du rapport, indépendamment de toute souscription. En cas de souscription via le cabinet, une commission assureur s'ajoute, séparée du forfait, communiquée avant souscription (art. L.521-2 Code des assurances).
+              Le cabinet est enregistré à l'ORIAS sous le numéro <strong>26003943</strong>. Conformément à l'article L.521-4 du Code des assurances (devoir de conseil DDA) , le conseil est individualisé, documenté et motivé. La recommandation ACPR 2024-R-02 précise les bonnes pratiques de recueil des informations du client. Le forfait est dû avant remise du rapport, indépendamment de toute souscription. En cas de souscription via le cabinet, une commission assureur s'ajoute, séparée du forfait. Le cabinet vous indique son mode de rémunération avant souscription (art. L.521-2 du Code des assurances) et s'engage à vous en communiquer le montant. Le cabinet consulte les compagnies et grossistes partenaires avec lesquels il a conclu des conventions, et non l'ensemble du marché.
               Immatriculation vérifiable sur <a href="https://www.orias.fr" target="_blank" rel="noopener noreferrer" style={{ color: '#065f46' }}>www.orias.fr</a>.
             </p>
           </div>
@@ -317,11 +317,11 @@ export default function ConseilAssurancesPage() {
                   couleur: "#065f46",
                   border: "#a7f3d0",
                   inclus: [
-                    "Formulaire de recueil horodaté (archivé espace client)",
+                    "Recueil écrit de vos exigences et besoins, confirmé par vos soins",
                     "Audit de vos contrats existants",
-                    "Comparaison des offres du marché adaptées à votre profil",
+                    "Consultation des compagnies et grossistes partenaires, pour votre profil",
                     "Rapport de conseil écrit et motivé",
-                    "Archivage complet dans votre espace client",
+                    "Remise des documents dans votre espace client",
                     "Accompagnement à la souscription si vous le souhaitez"
                   ]
                 },
@@ -334,12 +334,12 @@ export default function ConseilAssurancesPage() {
                   border: "#bfdbfe",
                   badge: "Associations et ESS inclus",
                   inclus: [
-                    "Formulaire de recueil horodaté (archivé espace client)",
+                    "Recueil écrit de vos exigences et besoins, confirmé par vos soins",
                     "Audit de vos contrats existants (RC Pro, multirisques, prévoyance collective)",
-                    "Comparaison des offres du marché adaptées à votre activité",
+                    "Consultation des compagnies et grossistes partenaires, pour votre activité",
                     "Rapport de conseil écrit et motivé",
                     "Analyse spécifique : obligations légales selon votre secteur",
-                    "Archivage complet dans votre espace client"
+                    "Remise des documents dans votre espace client"
                   ]
                 }
               ].map((offre, i) => (
@@ -445,7 +445,7 @@ export default function ConseilAssurancesPage() {
               {[
                 {
                   titre: "Une obligation légale (art. L.521-4)",
-                  texte: "La DDA impose que tout intermédiaire fournisse un conseil individualisé, documenté et motivé avant toute souscription. Un conseil oral sans trace écrite ne remplit pas cette obligation."
+                  texte: "Le conseil doit être cohérent avec vos exigences et besoins et motivé, avant toute souscription. La recommandation ACPR 2024-R-02 invite les distributeurs à exposer par écrit, sur support durable, les raisons du conseil, et à pouvoir justifier de leur remise au client."
                 },
                 {
                   titre: "Une protection pour le client",
@@ -453,11 +453,11 @@ export default function ConseilAssurancesPage() {
                 },
                 {
                   titre: "Une transparence sur la rémunération",
-                  texte: "La recommandation ACPR 2024-R-01 impose la communication préalable des commissions. Le forfait conseil, séparé de la commission assureur, garantit l'objectivité de la recommandation."
+                  texte: "Avant toute souscription, le cabinet vous indique comment il est rémunéré (art. L.521-2 du Code des assurances) : forfait conseil, et commission versée par l'assureur en cas de souscription. Le forfait est séparé de la commission, et le cabinet s'engage à vous en communiquer le montant."
                 },
                 {
-                  titre: "Un archivage dans votre espace client",
-                  texte: "Le formulaire de recueil, le rapport de conseil et le justificatif de paiement sont archivés dans votre espace client. Vous y accédez à tout moment."
+                  titre: "Une remise dans votre espace client",
+                  texte: "La fiche de vos exigences et besoins, le rapport de conseil et le justificatif de paiement sont mis à disposition dans votre espace client. Vous y accédez à tout moment."
                 }
               ].map((item, i) => (
                 <div key={i} style={{ background: 'white', borderRadius: 8, padding: '1rem', border: '1px solid #a7f3d0' }}>
@@ -478,7 +478,7 @@ export default function ConseilAssurancesPage() {
                 Vous souhaitez un conseil en assurances ?
               </h2>
               <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.8)', margin: 0 }}>
-                Décrivez votre situation. Notre conseiller analyse vos besoins et compare les offres du marché.
+                Décrivez votre situation. Notre conseiller analyse vos besoins et consulte les compagnies et grossistes partenaires du cabinet.
               </p>
             </div>
             <a href="/contact" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: 'white', color: '#065f46', textDecoration: 'none', padding: '13px 28px', borderRadius: 8, fontWeight: 700, fontSize: '0.95rem', whiteSpace: 'nowrap' }}>

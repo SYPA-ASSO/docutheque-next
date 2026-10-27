@@ -139,7 +139,7 @@ const services = [
         badge: "90 € particulier · 150 € pro",
         badgeColor: "#065f46",
         href: "/conseil-assurances",
-        description: "Audit de vos contrats existants, comparaison des offres du marché, rapport de conseil écrit et motivé. RC Pro, multirisques professionnelle, prévoyance collective, assurance des dirigeants. ORIAS n°26003943.",
+        description: "Audit de vos contrats existants, consultation des compagnies et grossistes partenaires, rapport de conseil écrit et motivé. RC Pro, multirisques professionnelle, prévoyance collective, assurance des dirigeants. ORIAS n°26003943.",
         points: [
           "RC Pro et multirisques professionnelle",
           "Prévoyance : arrêt maladie, invalidité, décès",
