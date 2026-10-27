@@ -1326,87 +1326,53 @@ export default function EspaceClient() {
                         )}
                       </div>
 
-                      {/* 4. Informations reglementaires (repliables) */}
+                      {/* 4. Informations reglementaires : l'essentiel propre au dossier, le reste est sur la page publique et dans la fiche */}
                       <div style={carteCourtage}>
-                        <p style={titreCarteCourtage}>Informations à connaître avant toute souscription</p>
-                        <p style={{ ...texteCourtage, color: '#4b5563', margin: '0 0 12px' }}>
-                          {d.fiche_envoyee_le
-                            ? `La fiche d'information précontractuelle vous a été envoyée par e-mail le ${formatDateHeureParis(d.fiche_envoyee_le)}.`
-                            : "La fiche d'information précontractuelle vous sera envoyée par e-mail avant toute souscription."}
-                          {' '}Les points essentiels sont rappelés ci-dessous.
-                        </p>
-
-                        <details className="cp-det">
-                          <summary><span className="cp-chev">›</span> Votre intermédiaire</summary>
-                          <div className="cp-det-corps">
+                        <p style={titreCarteCourtage}>Informations réglementaires de votre dossier</p>
+                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 220px), 1fr))', gap: '14px 24px' }}>
+                          <div style={{ minWidth: 0 }}>
+                            <p style={{ ...sousTitreCourtage, margin: '0 0 4px' }}>Fiche d&apos;information précontractuelle</p>
                             <p style={{ ...texteCourtage, margin: 0 }}>
-                              Le service DEVILINE COURTAGE est un service de CBT CHOLEZ PAGOTTO, entreprise individuelle de François CHOLEZ, 12 rue d'Olima, 88000 Épinal (SIREN 490 889 516). Courtier d'assurance immatriculé à l'ORIAS sous le numéro 26003943 (<a href="https://www.orias.fr" target="_blank" rel="noopener noreferrer" style={lien}>www.orias.fr</a>). Autorité de contrôle : ACPR, 4 place de Budapest, CS 92459, 75436 Paris Cedex 09.
+                              {d.fiche_envoyee_le
+                                ? `Envoyée par e-mail le ${formatDateHeureParis(d.fiche_envoyee_le)}.`
+                                : 'Elle vous sera envoyée par e-mail avant toute souscription.'}
                             </p>
                           </div>
-                        </details>
-
-                        <details className="cp-det">
-                          <summary><span className="cp-chev">›</span> Statut et liens avec les entreprises d'assurance</summary>
-                          <div className="cp-det-corps">
+                          <div style={{ minWidth: 0 }}>
+                            <p style={{ ...sousTitreCourtage, margin: '0 0 4px' }}>Entreprises d&apos;assurance</p>
+                            {partenaires.length > 0 || consultes.length > 0 ? (
+                              <>
+                                {partenaires.length > 0 && (
+                                  <>
+                                    <p style={{ ...texteCourtage, margin: '0 0 2px' }}>Le cabinet travaille avec :</p>
+                                    <ul style={{ ...texteCourtage, paddingLeft: '1.1rem', margin: '0 0 6px' }}>
+                                      {partenaires.map(n => <li key={n}>{n}</li>)}
+                                    </ul>
+                                  </>
+                                )}
+                                {consultes.length > 0 && (
+                                  <>
+                                    <p style={{ ...texteCourtage, margin: '0 0 2px' }}>Consultées pour votre dossier :</p>
+                                    <ul style={{ ...texteCourtage, paddingLeft: '1.1rem', margin: 0 }}>
+                                      {consultes.map(n => <li key={n}>{n}</li>)}
+                                    </ul>
+                                  </>
+                                )}
+                              </>
+                            ) : (
+                              <p style={{ ...texteCourtage, margin: 0 }}>Elles vous seront indiquées ici avant toute proposition.</p>
+                            )}
+                          </div>
+                          <div style={{ minWidth: 0 }}>
+                            <p style={{ ...sousTitreCourtage, margin: '0 0 4px' }}>Rémunération du cabinet</p>
                             <p style={{ ...texteCourtage, margin: 0 }}>
-                              Le cabinet n'est soumis à aucune obligation contractuelle de travailler exclusivement avec une ou plusieurs entreprises d'assurance. Il ne détient aucune participation égale ou supérieure à 10 % des droits de vote ou du capital d'une entreprise d'assurance, et aucune entreprise d'assurance ne détient une telle participation dans le cabinet. Le cabinet n'encaisse aucune prime : vous la réglez directement à l'entreprise d'assurance.
+                              {d.remuneration_note ? d.remuneration_note : 'Elle vous sera communiquée par écrit avant toute souscription.'}
                             </p>
                           </div>
-                        </details>
-
-                        <details className="cp-det">
-                          <summary><span className="cp-chev">›</span> Base du conseil et entreprises d'assurance</summary>
-                          <div className="cp-det-corps">
-                            <p style={texteCourtage}>
-                              Le cabinet ne fonde pas son analyse sur l'ensemble des contrats offerts sur le marché et ne se prévaut pas d'une analyse impartiale fondée sur un nombre suffisant de contrats. Il fournit un service de recommandation : il précise vos exigences et vos besoins par écrit et vous indique les raisons de son conseil (article L.521-4 du Code des assurances).
-                            </p>
-                            {partenaires.length > 0 && (
-                              <>
-                                <p style={{ ...texteCourtage, fontWeight: '700', margin: '4px 0' }}>Entreprises d'assurance et grossistes avec lesquels le cabinet travaille :</p>
-                                <ul style={{ ...texteCourtage, paddingLeft: '1.25rem', margin: '0 0 8px' }}>
-                                  {partenaires.map(n => <li key={n}>{n}</li>)}
-                                </ul>
-                              </>
-                            )}
-                            {consultes.length > 0 && (
-                              <>
-                                <p style={{ ...texteCourtage, fontWeight: '700', margin: '4px 0' }}>Consultés pour votre dossier :</p>
-                                <ul style={{ ...texteCourtage, paddingLeft: '1.25rem', margin: '0 0 8px' }}>
-                                  {consultes.map(n => <li key={n}>{n}</li>)}
-                                </ul>
-                              </>
-                            )}
-                            {partenaires.length === 0 && consultes.length === 0 && (
-                              <p style={{ ...texteCourtage, margin: 0, background: '#f8fafc', border: '1px solid #e5e7eb', borderRadius: '8px', padding: '10px 12px' }}>
-                                Les entreprises d'assurance consultées pour votre dossier vous seront indiquées ici avant toute proposition.
-                              </p>
-                            )}
-                          </div>
-                        </details>
-
-                        <details className="cp-det">
-                          <summary><span className="cp-chev">›</span> Rémunération du cabinet</summary>
-                          <div className="cp-det-corps">
-                            <p style={texteCourtage}>
-                              Le cabinet est rémunéré par une commission, incluse dans la prime d'assurance et versée par l'entreprise d'assurance, et, le cas échéant, par des honoraires que vous lui réglez directement.
-                            </p>
-                            <p style={{ ...texteCourtage, fontWeight: '600', margin: 0 }}>
-                              {d.remuneration_note ? d.remuneration_note : 'Les modalités précises de rémunération pour votre dossier vous seront communiquées par écrit avant toute souscription.'}
-                            </p>
-                          </div>
-                        </details>
-
-                        <details className="cp-det" style={{ borderBottom: '1px solid #e5e7eb' }}>
-                          <summary><span className="cp-chev">›</span> Réclamations et médiation</summary>
-                          <div className="cp-det-corps">
-                            <p style={texteCourtage}>
-                              Vous pouvez adresser une réclamation au cabinet par le <a href="/contact" style={lien}>formulaire de contact</a> ou par courrier. Le cabinet en accuse réception sous dix jours ouvrables et y répond dans un délai maximal de deux mois. En cas de désaccord, vous pouvez saisir gratuitement La Médiation de l'Assurance, TSA 50110, 75441 Paris Cedex 09 (<a href="https://www.mediation-assurance.org" target="_blank" rel="noopener noreferrer" style={lien}>www.mediation-assurance.org</a>). Vous pouvez aussi saisir l'ACPR ou les juridictions compétentes.
-                            </p>
-                          </div>
-                        </details>
-
-                        <p style={{ ...texteCourtage, margin: '12px 0 0' }}>
-                          <a href="/informations-reglementaires" style={{ ...lien, fontWeight: '600' }}>Voir toutes les informations réglementaires →</a>
+                        </div>
+                        <p style={{ ...texteCourtage, margin: '16px 0 0', paddingTop: '12px', borderTop: '1px solid #e5e7eb' }}>
+                          Identité du cabinet, statut, réclamations et médiation :{' '}
+                          <a href="/informations-reglementaires" style={{ color: '#1a4fba', fontWeight: '600' }}>informations réglementaires →</a>
                         </p>
                       </div>
                     </div>

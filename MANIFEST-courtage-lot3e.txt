@@ -1,0 +1,3 @@
+Lot 3E : espace client, bloc « Informations reglementaires » allege
+- app/espace-client/page.tsx : le texte reglementaire complet est remplace par trois rubriques propres au dossier (fiche precontractuelle, entreprises d'assurance, remuneration) et un lien vers la page publique
+Aucune requete SQL.
