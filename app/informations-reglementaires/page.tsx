@@ -102,7 +102,7 @@ export default function InformationsReglementaires() {
                   Le cabinet ne fonde pas son analyse sur l&apos;ensemble des contrats offerts sur le marché. Il travaille avec des compagnies d&apos;assurance et des grossistes avec lesquels il a conclu des conventions de partenariat, et il ne se prévaut pas d&apos;une analyse impartiale fondée sur un nombre suffisant de contrats offerts sur le marché.
                 </p>
                 <div style={{ background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '8px', padding: '12px 14px', margin: '12px 0', fontSize: '13px', color: '#1e3a5f', lineHeight: '1.7' }}>
-                  <strong>Le nom des compagnies et des grossistes avec lesquels le cabinet travaille</strong> vous est communiqué avant toute souscription, dans votre espace client et dans la fiche remise avant la souscription.
+                  <strong>Le nom des compagnies et des grossistes avec lesquels le cabinet travaille</strong>{' '}vous est communiqué avant toute souscription, dans votre espace client et dans la fiche remise avant la souscription.
                 </div>
                 <p style={plastyle}>
                   Le cabinet fournit un service de recommandation : le rapport de conseil explique pourquoi, parmi les offres des partenaires consultés, celles qu&apos;il recommande correspondent le mieux à vos exigences et à vos besoins (article L.521-4 du Code des assurances).
@@ -139,14 +139,14 @@ export default function InformationsReglementaires() {
               <section id="rc" style={cardstyle}>
                 <h2 style={h2style}>6. Responsabilité civile professionnelle</h2>
                 <p style={plastyle}>
-                  Le cabinet a souscrit une assurance de responsabilité civile professionnelle auprès de <strong>MARKEL INSURANCE SE</strong> (Neuilly-sur-Seine), police n°&nbsp;RK0002849, couvrant son activité de courtage sans encaissement de primes.
+                  Le cabinet a souscrit une assurance de responsabilité civile professionnelle auprès de <strong>MARKEL INSURANCE SE</strong>{' '}(Neuilly-sur-Seine), police n°&nbsp;RK0002849, couvrant son activité de courtage sans encaissement de primes.
                 </p>
               </section>
 
               <section id="reclamations" style={cardstyle}>
                 <h2 style={h2style}>7. Réclamations</h2>
                 <p style={pstyle}>
-                  Toute réclamation relative à l&apos;activité de courtage en assurances peut être adressée au cabinet par le <a href="/contact" style={{ ...linkstyle, fontWeight: '600' }}>formulaire de contact</a> ou par courrier à l&apos;adresse indiquée en haut de cette page.
+                  Toute réclamation relative à l&apos;activité de courtage en assurances peut être adressée au cabinet par le <a href="/contact" style={{ ...linkstyle, fontWeight: '600' }}>formulaire de contact</a>{' '}ou par courrier à l&apos;adresse indiquée en haut de cette page.
                 </p>
                 <p style={plastyle}>
                   Le cabinet en accuse réception sous dix jours ouvrables et apporte une réponse dans un délai maximal de deux mois à compter de la réception de la réclamation.

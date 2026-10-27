@@ -1,0 +1,3 @@
+Correctif typographique : espaces explicites apres un lien ou un passage en gras (page Informations reglementaires)
+- app/informations-reglementaires/page.tsx
+Aucune requete SQL.
