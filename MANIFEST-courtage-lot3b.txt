@@ -1,0 +1,27 @@
+LOT 3B : ESPACE CLIENT COURTAGE (cote client) + correctif du lot 3A
+
+SQL a executer : aucun (les tables ont ete creees avec le lot 3A).
+
+Nouveaux fichiers :
+- lib/courtage-etapes.ts (etapes, libelles, dates : utilisable dans le navigateur, sans la liste des assureurs)
+- app/api/compte/courtage-partenaires/route.ts (liste des assureurs, reservee au client connecte qui a un dossier)
+
+Fichiers modifies :
+- app/espace-client/page.tsx : ajout de l'onglet "Mon dossier courtage" (visible seulement si le client a un dossier),
+  d'un bandeau sur le tableau de bord, du chargement des dossiers et du suivi. Aucun onglet, aucune fonction existante retire.
+- lib/courtage.ts : reprend les etapes depuis lib/courtage-etapes.ts (correctif)
+- app/admin/dossiers-courtage/page.tsx : n'importe plus la liste des assureurs (correctif)
+- app/api/admin/dossiers-courtage-list/route.ts : indique seulement si la liste est renseignee (correctif)
+
+Correctif de securite : la liste des entreprises d'assurance (lib/courtage-partenaires.ts) ne doit jamais se
+retrouver dans le code telecharge par le navigateur. Verifie en construisant le site avec un nom factice dans la
+liste : il n'apparait que cote serveur, jamais dans .next/static.
+
+Contenu de l'onglet client : etape en cours et progression, exigences et besoins consignes par ecrit (avec date),
+informations precontractuelles (identite, statut, entreprises d'assurance, remuneration, reclamations, mediation),
+acces aux echanges de documents, suivi horodate visible.
+
+Correctif de mise en page (espace client) : sur le tableau de bord d'un client sans abonnement, les noms longs
+de la "Bibliotheque de documents" elargissaient la colonne de contenu et la decalaient hors du cadre.
+Corrige par minWidth: 0 sur la colonne et minmax(0, 1fr) sur 3 grilles (tableau de bord et onglet Documents).
+Sans effet sur les autres onglets.

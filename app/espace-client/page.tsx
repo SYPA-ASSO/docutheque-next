@@ -12,12 +12,13 @@ import FooterMinimal from '@/components/FooterMinimal'
 import { CategorySearch } from '@/components/CategorySearch'
 import { DocumentSearch } from '@/components/DocumentSearch'
 import { PhoneInput } from '@/components/PhoneInput'
+import { PARCOURS_COURTAGE, labelEtape, descriptionEtape, formatDateHeureParis, texteEnListe } from '@/lib/courtage-etapes'
 import {
   User, FileText, Package, MessageSquare, Shield, LogOut,
   Crown, Clock, CheckCircle, AlertCircle, Lock,
   ChevronRight, Calendar, Star, Zap, TrendingUp,
   ShoppingBag, Receipt, Download, Filter, Send,
-  Upload, Trash2, FolderSync
+  Upload, Trash2, FolderSync, Briefcase
 } from 'lucide-react'
 
 type UserProfile = {
@@ -78,6 +79,29 @@ type DossierRgpd = {
   created_at: string
 }
 
+type DossierCourtage = {
+  id: string
+  reference: string
+  profil: string
+  objet: string
+  etape: string
+  recueil_besoins: string | null
+  recueil_le: string | null
+  assureurs_consultes: string | null
+  remuneration_note: string | null
+  fiche_envoyee_le: string | null
+  created_at: string
+}
+
+type EvenementCourtage = {
+  id: string
+  dossier_id: string
+  type: string
+  libelle: string
+  detail: string | null
+  created_at: string
+}
+
 function formatTailleFichier(octets: number | null): string {
   if (octets == null) return ''
   if (octets < 1024) return `${octets} o`
@@ -95,7 +119,7 @@ function formatDateFichier(iso: string): string {
 
 export default function EspaceClient() {
   const router = useRouter()
-  const [onglet, setOnglet] = useState<'tableau-bord' | 'questions' | 'documents' | 'echanges' | 'commandes' | 'factures' | 'abonnement' | 'profil'>('tableau-bord')
+  const [onglet, setOnglet] = useState<'tableau-bord' | 'questions' | 'documents' | 'echanges' | 'courtage' | 'commandes' | 'factures' | 'abonnement' | 'profil'>('tableau-bord')
   const [profile, setProfile] = useState<UserProfile | null>(null)
   const [questions, setQuestions] = useState<Question[]>([])
   const [factures, setFactures] = useState<Facture[]>([])
@@ -106,6 +130,11 @@ export default function EspaceClient() {
   const [uploadEnCours, setUploadEnCours] = useState(false)
   const [dossiers, setDossiers] = useState<DossierAssurance[]>([])
   const [dossiersRgpd, setDossiersRgpd] = useState<DossierRgpd[]>([])
+  const [dossiersCourtage, setDossiersCourtage] = useState<DossierCourtage[]>([])
+  const [evenementsCourtage, setEvenementsCourtage] = useState<EvenementCourtage[]>([])
+  // null : pas encore charge. La liste des entreprises d'assurance n'est jamais dans le code de la page,
+  // elle est demandee a une route reservee au client connecte qui a un dossier de courtage.
+  const [partenairesCourtage, setPartenairesCourtage] = useState<string[] | null>(null)
   const [catalogue, setCatalogue] = useState<DocItem[]>([])
   const [catalogueFiltre, setCatalogueFiltre] = useState<DocItem[]>([])
   const [categoriesFiltres, setCategoriesFiltres] = useState<string[]>([])
@@ -142,7 +171,7 @@ export default function EspaceClient() {
     if (!loading) {
       const params = new URLSearchParams(window.location.search)
       const ongletParam = params.get('onglet')
-      const validOnglets = ['tableau-bord', 'questions', 'documents', 'echanges', 'commandes', 'factures', 'abonnement', 'profil']
+      const validOnglets = ['tableau-bord', 'questions', 'documents', 'echanges', 'courtage', 'commandes', 'factures', 'abonnement', 'profil']
       if (ongletParam && validOnglets.includes(ongletParam)) {
         setOnglet(ongletParam as typeof onglet)
       }
@@ -170,6 +199,7 @@ export default function EspaceClient() {
       loadFactures(session.user.id),
       loadDossiers(session.user.id),
       loadDossiersRgpd(session.user.id),
+      loadDossiersCourtage(session.user.id),
       loadAchats(session.user.id),
       loadCatalogue(),
     ])
@@ -201,6 +231,14 @@ export default function EspaceClient() {
   const loadDossiersRgpd = async (userId: string) => {
     const { data } = await supabase.from('dossiers_rgpd').select('*').eq('user_id', userId).order('created_at', { ascending: false })
     if (data) setDossiersRgpd(data)
+  }
+
+  const loadDossiersCourtage = async (userId: string) => {
+    const { data } = await supabase.from('dossiers_courtage').select('*').eq('user_id', userId).order('created_at', { ascending: false })
+    if (data) setDossiersCourtage(data)
+    // La politique de securite de la base ne renvoie que les evenements marques visibles par le client.
+    const { data: evts } = await supabase.from('dossiers_courtage_evenements').select('*').eq('user_id', userId).order('created_at', { ascending: false })
+    if (evts) setEvenementsCourtage(evts)
   }
 
   const loadAchats = async (userId: string) => {
@@ -477,6 +515,25 @@ export default function EspaceClient() {
     if (onglet === 'echanges' && !fichiersPartagesCharges && !fichiersPartagesLoading) chargerFichiersPartages()
   }, [onglet, fichiersPartagesCharges, fichiersPartagesLoading, chargerFichiersPartages])
 
+  useEffect(() => {
+    if (onglet !== 'courtage' || partenairesCourtage !== null || dossiersCourtage.length === 0) return
+    let annule = false
+    ;(async () => {
+      try {
+        const { data: { session } } = await supabase.auth.getSession()
+        if (!session) return
+        const res = await fetch('/api/compte/courtage-partenaires', {
+          headers: { 'Authorization': `Bearer ${session.access_token}` },
+        })
+        const data = await res.json().catch(() => ({}))
+        if (!annule) setPartenairesCourtage(res.ok && Array.isArray(data.partenaires) ? data.partenaires : [])
+      } catch {
+        if (!annule) setPartenairesCourtage([])
+      }
+    })()
+    return () => { annule = true }
+  }, [onglet, partenairesCourtage, dossiersCourtage.length])
+
   const handleSubmitQuestion = async (questionId: string) => {
     if (questionTexte.trim().length < 10) {
       setQuestionErreur('Veuillez développer votre question (10 caractères minimum).')
@@ -569,6 +626,7 @@ export default function EspaceClient() {
 
   const navItems = [
     { id: 'tableau-bord', label: 'Tableau de bord', icon: <User size={16} strokeWidth={1.5} /> },
+    ...(dossiersCourtage.length > 0 ? [{ id: 'courtage', label: 'Mon dossier courtage', icon: <Briefcase size={16} strokeWidth={1.5} />, badge: null as number | null }] : []),
     { id: 'questions', label: 'Mes questions', icon: <MessageSquare size={16} strokeWidth={1.5} />, badge: questions.filter(q => q.statut === 'repondu').length || null },
     { id: 'documents', label: 'Documents', icon: <FileText size={16} strokeWidth={1.5} />, locked: !estAbonne },
     { id: 'echanges', label: 'Échanges de documents', icon: <FolderSync size={16} strokeWidth={1.5} /> },
@@ -590,6 +648,11 @@ export default function EspaceClient() {
     if (doc.acces_optimal && !estAbonne) return { label: 'Optimal', color: '#1a4fba', bg: '#eff6ff', accessible: false }
     return { label: '-', color: '#9ca3af', bg: '#f3f4f6', accessible: false }
   }
+
+  const carteCourtage = { background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.5rem' } as const
+  const titreCarteCourtage = { color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: '0 0 12px' } as const
+  const texteCourtage = { color: '#374151', fontSize: '13px', lineHeight: '1.75', margin: '0 0 8px' } as const
+  const sousTitreCourtage = { color: '#0f2d6e', fontSize: '12px', fontWeight: '700', margin: '16px 0 4px', textTransform: 'uppercase', letterSpacing: '0.04em' } as const
 
   const inputStyle = {
     width: '100%',
@@ -666,7 +729,7 @@ export default function EspaceClient() {
           </div>
 
           {/* CONTENU PRINCIPAL */}
-          <div style={{ flex: 1 }}>
+          <div style={{ flex: 1, minWidth: 0 }}>
 
             {/* ── TABLEAU DE BORD ── */}
             {onglet === 'tableau-bord' && (
@@ -680,6 +743,19 @@ export default function EspaceClient() {
                     <p style={{ color: '#15803d', fontSize: '13px', fontWeight: '600', margin: 0 }}>{successMessage}</p>
                   </div>
                 )}
+
+                {dossiersCourtage.filter(d => d.etape !== 'conclu' && d.etape !== 'sans_suite').slice(0, 2).map(d => (
+                  <div key={d.id} style={{ background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '12px', padding: '1.25rem 1.5rem', display: 'flex', alignItems: 'center', gap: '14px', flexWrap: 'wrap' }}>
+                    <Briefcase size={22} color="#1a4fba" strokeWidth={1.5} style={{ flexShrink: 0 }} />
+                    <div style={{ flex: 1, minWidth: '200px' }}>
+                      <p style={{ color: '#0f2d6e', fontSize: '13px', fontWeight: '700', margin: '0 0 2px' }}>Votre dossier de courtage · {d.reference}</p>
+                      <p style={{ color: '#1e3a5f', fontSize: '12px', margin: 0, lineHeight: '1.5' }}>{d.objet} · Étape : {labelEtape(d.etape)}</p>
+                    </div>
+                    <button onClick={() => setOnglet('courtage')} style={{ background: '#0f2d6e', color: 'white', border: 'none', padding: '9px 16px', borderRadius: '8px', fontSize: '12px', fontWeight: '700', cursor: 'pointer' }}>
+                      Voir mon dossier
+                    </button>
+                  </div>
+                ))}
 
                 {profile && !profile.avis_google_propose && (
                   <div style={{ background: 'linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%)', border: '1px solid #fcd34d', borderRadius: '12px', padding: '1.25rem 1.5rem', display: 'flex', alignItems: 'center', gap: '14px', flexWrap: 'wrap' }}>
@@ -731,7 +807,7 @@ export default function EspaceClient() {
                   </div>
                 )}
 
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', gap: '16px' }}>
                   {[
                     { label: 'Questions posées', value: questions.length, icon: <MessageSquare size={20} color="#1a4fba" strokeWidth={1.5} />, action: () => setOnglet('questions') },
                     { label: 'En attente de réponse', value: questions.filter(q => q.statut !== 'repondu').length, icon: <Clock size={20} color="#d97706" strokeWidth={1.5} />, action: () => setOnglet('questions') },
@@ -756,7 +832,7 @@ export default function EspaceClient() {
                         {catalogue.filter(d => !d.acces_gratuit).length} documents Optimal
                       </span>
                     </div>
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', marginBottom: '1rem' }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '8px', marginBottom: '1rem' }}>
                       {catalogue.slice(0, 6).map((doc, i) => {
                         const acces = accesDocLabel(doc)
                         return (
@@ -1012,7 +1088,7 @@ export default function EspaceClient() {
                   )}
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '10px' }}>
                   {catalogueFiltre.map(doc => {
                     const acces = accesDocLabel(doc)
                     return (
@@ -1109,6 +1185,157 @@ export default function EspaceClient() {
                     ))}
                   </div>
                 )}
+              </div>
+            )}
+
+            {/* ── MON DOSSIER COURTAGE ── */}
+            {onglet === 'courtage' && (
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                <h1 style={{ color: '#0f2d6e', fontSize: '1.4rem', fontWeight: '700', margin: 0 }}>Mon dossier courtage</h1>
+
+                {dossiersCourtage.map(d => {
+                  const evts = evenementsCourtage.filter(e => e.dossier_id === d.id)
+                  const indexEtape = PARCOURS_COURTAGE.findIndex(x => x === d.etape)
+                  const sansSuite = d.etape === 'sans_suite'
+                  const consultes = texteEnListe(d.assureurs_consultes)
+                  const partenaires = partenairesCourtage || []
+                  return (
+                    <div key={d.id} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+
+                      {/* En-tete et progression */}
+                      <div style={carteCourtage}>
+                        <p style={{ color: '#9ca3af', fontSize: '11px', margin: '0 0 4px' }}>Référence {d.reference} · ouvert le {new Date(d.created_at).toLocaleDateString('fr-FR')}</p>
+                        <p style={{ color: '#0f2d6e', fontSize: '1.05rem', fontWeight: '700', margin: '0 0 16px', lineHeight: '1.4' }}>{d.objet}</p>
+                        <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap', marginBottom: '14px' }}>
+                          {PARCOURS_COURTAGE.map((etape, i) => {
+                            const fait = !sansSuite && indexEtape >= 0 && i < indexEtape
+                            const courant = !sansSuite && i === indexEtape
+                            return (
+                              <div key={etape} style={{ flex: '1 1 110px', minWidth: '110px' }}>
+                                <div style={{ height: '5px', borderRadius: '4px', background: fait || courant ? '#1a4fba' : '#e5e7eb', opacity: courant ? 1 : fait ? 0.55 : 1, marginBottom: '6px' }} />
+                                <p style={{ color: courant ? '#0f2d6e' : fait ? '#374151' : '#9ca3af', fontSize: '11px', fontWeight: courant ? '700' : '500', margin: 0, lineHeight: '1.4' }}>
+                                  {fait ? '✓ ' : ''}{labelEtape(etape)}
+                                </p>
+                              </div>
+                            )
+                          })}
+                        </div>
+                        <div style={{ background: sansSuite ? '#f3f4f6' : '#eff6ff', borderRadius: '8px', padding: '10px 12px' }}>
+                          <p style={{ color: '#1e3a5f', fontSize: '12.5px', fontWeight: '700', margin: '0 0 2px' }}>Étape actuelle : {labelEtape(d.etape)}</p>
+                          <p style={{ color: '#374151', fontSize: '12.5px', margin: 0, lineHeight: '1.6' }}>{descriptionEtape(d.etape)}</p>
+                        </div>
+                      </div>
+
+                      {/* Exigences et besoins */}
+                      <div style={carteCourtage}>
+                        <p style={titreCarteCourtage}>Vos exigences et vos besoins</p>
+                        {d.recueil_besoins ? (
+                          <>
+                            <p style={{ ...texteCourtage, whiteSpace: 'pre-wrap', background: '#f8fafc', border: '1px solid #e5e7eb', borderRadius: '8px', padding: '12px 14px' }}>{d.recueil_besoins}</p>
+                            <p style={{ color: '#9ca3af', fontSize: '11px', margin: '0 0 8px' }}>Consignés par écrit le {formatDateHeureParis(d.recueil_le)}.</p>
+                            <p style={{ ...texteCourtage, margin: 0 }}>Si une information est inexacte ou incomplète, répondez à l'e-mail du cabinet ou déposez un document dans l'onglet « Échanges de documents ». Le cabinet mettra le texte à jour.</p>
+                          </>
+                        ) : (
+                          <p style={{ ...texteCourtage, margin: 0 }}>Vos exigences et vos besoins ne sont pas encore consignés. Le cabinet les précise par écrit à partir des informations que vous lui avez communiquées, puis vous les retrouverez ici.</p>
+                        )}
+                      </div>
+
+                      {/* Informations precontractuelles */}
+                      <div style={carteCourtage}>
+                        <p style={titreCarteCourtage}>Informations à connaître avant toute souscription</p>
+                        <p style={{ ...texteCourtage, color: '#6b7280', fontSize: '12px' }}>
+                          {d.fiche_envoyee_le
+                            ? `La fiche d'information précontractuelle vous a été envoyée par e-mail le ${formatDateHeureParis(d.fiche_envoyee_le)}.`
+                            : "La fiche d'information précontractuelle vous sera envoyée par e-mail avant toute souscription."}
+                        </p>
+
+                        <p style={sousTitreCourtage}>Votre intermédiaire</p>
+                        <p style={texteCourtage}>
+                          CBT CHOLEZ PAGOTTO, entreprise individuelle de François CHOLEZ, 12 rue d'Olima, 88000 Épinal, éditeur du service DEVILINE COURTAGE. SIREN 490 889 516. Courtier d'assurance immatriculé à l'ORIAS sous le numéro 26003943 (<a href="https://www.orias.fr" target="_blank" rel="noopener noreferrer" style={{ color: '#1a4fba' }}>www.orias.fr</a>). Autorité de contrôle : ACPR, 4 place de Budapest, CS 92459, 75436 Paris Cedex 09.
+                        </p>
+
+                        <p style={sousTitreCourtage}>Statut et relations avec les assureurs</p>
+                        <p style={texteCourtage}>
+                          Le cabinet n'est soumis à aucune obligation contractuelle de travailler exclusivement avec une ou plusieurs entreprises d'assurance. Il ne détient aucune participation égale ou supérieure à 10 % des droits de vote ou du capital d'une entreprise d'assurance, et aucune entreprise d'assurance n'en détient dans le cabinet. Il n'encaisse aucune prime : elle est réglée directement à l'entreprise d'assurance.
+                        </p>
+
+                        <p style={sousTitreCourtage}>Base de l'analyse et entreprises d'assurance</p>
+                        <p style={texteCourtage}>
+                          Le cabinet ne fonde pas son analyse sur l'ensemble des contrats offerts sur le marché et ne se prévaut pas d'une analyse impartiale fondée sur un nombre suffisant de contrats. Il travaille avec les entreprises d'assurance et les grossistes ci-dessous.
+                        </p>
+                        {partenaires.length > 0 ? (
+                          <ul style={{ ...texteCourtage, paddingLeft: '1.25rem', margin: '0 0 8px' }}>
+                            {partenaires.map(n => <li key={n}>{n}</li>)}
+                          </ul>
+                        ) : consultes.length === 0 ? (
+                          <p style={{ ...texteCourtage, background: '#fffbeb', border: '1px solid #fde68a', borderRadius: '8px', padding: '10px 12px' }}>
+                            Le nom des entreprises d'assurance avec lesquelles le cabinet travaille vous est communiqué dans cet espace avant toute proposition.
+                          </p>
+                        ) : null}
+                        {consultes.length > 0 && (
+                          <>
+                            <p style={{ ...texteCourtage, fontWeight: '700', margin: '4px 0' }}>Consultés pour votre dossier :</p>
+                            <ul style={{ ...texteCourtage, paddingLeft: '1.25rem', margin: '0 0 8px' }}>
+                              {consultes.map(n => <li key={n}>{n}</li>)}
+                            </ul>
+                          </>
+                        )}
+                        <p style={texteCourtage}>
+                          Le cabinet fournit un service de recommandation : il précise vos exigences et vos besoins par écrit et vous indique les raisons de son conseil (article L.521-4 du Code des assurances).
+                        </p>
+
+                        <p style={sousTitreCourtage}>Rémunération du cabinet</p>
+                        <p style={texteCourtage}>
+                          Le cabinet est rémunéré par une commission, incluse dans la prime d'assurance et versée par l'assureur, et, le cas échéant, par des honoraires payés directement par vous.
+                        </p>
+                        <p style={{ ...texteCourtage, fontWeight: '600' }}>
+                          {d.remuneration_note ? d.remuneration_note : 'Les modalités précises de rémunération pour votre dossier vous seront communiquées avant toute souscription.'}
+                        </p>
+
+                        <p style={sousTitreCourtage}>Réclamations et médiation</p>
+                        <p style={texteCourtage}>
+                          Vous pouvez adresser une réclamation au cabinet par le <a href="/contact" style={{ color: '#1a4fba' }}>formulaire de contact</a> ou par courrier. Le cabinet en accuse réception sous dix jours ouvrables et répond dans un délai maximal de deux mois. En cas de désaccord, vous pouvez saisir gratuitement La Médiation de l'Assurance, TSA 50110, 75441 Paris Cedex 09 (<a href="https://www.mediation-assurance.org" target="_blank" rel="noopener noreferrer" style={{ color: '#1a4fba' }}>www.mediation-assurance.org</a>). Vous pouvez aussi saisir l'ACPR ou les juridictions compétentes.
+                        </p>
+                        <p style={{ ...texteCourtage, margin: 0 }}>
+                          <a href="/informations-reglementaires" style={{ color: '#1a4fba', fontWeight: '600' }}>Voir toutes les informations réglementaires →</a>
+                        </p>
+                      </div>
+
+                      {/* Documents */}
+                      <div style={carteCourtage}>
+                        <p style={titreCarteCourtage}>Vos documents et vos pièces</p>
+                        <p style={texteCourtage}>Déposez ici les pièces demandées par le cabinet et retrouvez les documents de votre dossier (propositions, rapport de conseil, attestations).</p>
+                        <button onClick={() => setOnglet('echanges')} style={{ background: '#0f2d6e', color: 'white', border: 'none', padding: '10px 18px', borderRadius: '8px', fontSize: '13px', fontWeight: '700', cursor: 'pointer' }}>
+                          Ouvrir mes échanges de documents
+                        </button>
+                      </div>
+
+                      {/* Suivi */}
+                      <div style={carteCourtage}>
+                        <p style={titreCarteCourtage}>Suivi de votre dossier</p>
+                        {evts.length === 0 ? (
+                          <p style={{ ...texteCourtage, margin: 0 }}>Aucun événement pour le moment.</p>
+                        ) : (
+                          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                            {evts.map(e => (
+                              <div key={e.id} style={{ background: '#f8fafc', border: '1px solid #e5e7eb', borderRadius: '8px', padding: '10px 12px' }}>
+                                <p style={{ color: '#374151', fontSize: '12.5px', fontWeight: '600', margin: '0 0 2px', lineHeight: '1.5' }}>{e.libelle}</p>
+                                <p style={{ color: '#9ca3af', fontSize: '11px', margin: 0 }}>{formatDateHeureParis(e.created_at)}</p>
+                                {e.detail && e.type === 'message' && (
+                                  <p style={{ color: '#374151', fontSize: '12.5px', margin: '8px 0 0', whiteSpace: 'pre-wrap', lineHeight: '1.7' }}>{e.detail}</p>
+                                )}
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  )
+                })}
+
+                <p style={{ color: '#9ca3af', fontSize: '12px', margin: 0, textAlign: 'center' }}>
+                  Une question sur votre dossier : <a href="mailto:contact@cholez-pagotto.fr" style={{ color: '#1a4fba' }}>contact@cholez-pagotto.fr</a>
+                </p>
               </div>
             )}
 

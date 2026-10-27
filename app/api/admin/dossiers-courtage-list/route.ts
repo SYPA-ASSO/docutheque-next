@@ -3,6 +3,7 @@
 
 import { NextResponse } from 'next/server'
 import { supabaseAdmin } from '@/lib/supabase-admin'
+import { listePartenaires } from '@/lib/courtage'
 
 export async function GET(request: Request) {
   const adminPassword = request.headers.get('x-admin-password')
@@ -32,5 +33,5 @@ export async function GET(request: Request) {
     ...d,
     evenements: evenements.filter(e => e.dossier_id === d.id),
   }))
-  return NextResponse.json({ dossiers: resultat })
+  return NextResponse.json({ dossiers: resultat, partenairesRenseignes: listePartenaires().length > 0 })
 }

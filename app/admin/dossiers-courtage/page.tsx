@@ -3,8 +3,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import { useAdmin } from '@/app/admin/layout'
 import { Briefcase, CheckCircle, Clock, Mail, Phone, ChevronDown, ChevronUp, Plus, Send, FolderSync, AlertCircle } from 'lucide-react'
-import { ETAPES_COURTAGE, PROFILS_COURTAGE, labelEtape, formatDateHeureParis } from '@/lib/courtage'
-import { PARTENAIRES_COURTAGE } from '@/lib/courtage-partenaires'
+import { ETAPES_COURTAGE, PROFILS_COURTAGE, labelEtape, formatDateHeureParis } from '@/lib/courtage-etapes'
 
 type Evenement = {
   id: string
@@ -104,7 +103,8 @@ export default function AdminDossiersCourtage() {
   const [nOccupe, setNOccupe] = useState(false)
   const [nRetour, setNRetour] = useState<Retour | null>(null)
 
-  const listeVide = PARTENAIRES_COURTAGE.map(s => s.trim()).filter(Boolean).length === 0
+  // Indique par le serveur : la liste elle-meme n'est jamais envoyee au navigateur.
+  const [listeVide, setListeVide] = useState(false)
 
   const charger = useCallback(async () => {
     setLoading(true)
@@ -112,6 +112,7 @@ export default function AdminDossiersCourtage() {
     if (res.ok) {
       const d = await res.json()
       setDossiers(d.dossiers || [])
+      setListeVide(d.partenairesRenseignes === false)
     }
     setLoading(false)
   }, [password])
