@@ -1,0 +1,27 @@
+LOT 3A : BACK-OFFICE COURTAGE (cote cabinet)
+
+SQL a executer : migration-courtage.sql (editeur SQL Supabase, une seule fois).
+Ajouts uniquement (2 tables + politiques RLS). Aucune table ni donnee existante n'est touchee.
+
+Nouveaux fichiers :
+- migration-courtage.sql
+- lib/courtage.ts (etapes, references, e-mails : acces, suivi, fiche precontractuelle)
+- lib/courtage-partenaires.ts (liste des entreprises d'assurance, a renseigner)
+- app/api/admin/dossiers-courtage-list/route.ts
+- app/api/admin/dossiers-courtage-create/route.ts
+- app/api/admin/dossiers-courtage-update/route.ts
+- app/api/admin/dossiers-courtage-fiche/route.ts
+- app/api/admin/dossiers-courtage-acces/route.ts
+- app/admin/dossiers-courtage/page.tsx
+
+Fichier modifie (ajout d'une entree de menu, rien de retire) :
+- app/admin/layout.tsx
+
+Garde-fous de conformite appliques par l'administration :
+- passage en "proposition transmise" : exigences et besoins consignes par ecrit (L.521-4)
+  et noms des entreprises d'assurance renseignes (L.521-2, II, 1°, b) ;
+- passage en "souscription realisee" : fiche d'information precontractuelle deja envoyee ;
+- envoi de la fiche : noms des entreprises d'assurance et note de remuneration renseignes.
+
+A faire avant toute proposition : renseigner lib/courtage-partenaires.ts
+(ou le champ "assureurs consultes" du dossier).
