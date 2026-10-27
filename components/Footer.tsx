@@ -48,7 +48,7 @@ export default function Footer() {
                 { label: 'Certification Qualiopi', href: '/accompagnement-organismes-formation' },
                 { label: 'Paie et DSN externalisées', href: 'https://paie-et-dsn.fr' },
                 { label: 'Tous nos services', href: '/services' },
-                { label: 'Catalogue de documents', href: '/catalogue' },
+                { label: 'Modèles de documents', href: '/catalogue' },
                 { label: 'Tarifs', href: '/tarifs' },
               ].map((l) => (
                 <Link key={l.href + l.label} href={l.href} style={{ color: 'rgba(255,255,255,0.7)', fontSize: '12px', textDecoration: 'none', lineHeight: '1.5' }}>

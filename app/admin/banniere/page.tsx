@@ -107,7 +107,7 @@ export default function AdminBanniere() {
           </div>
           <div style={{ flex: 1, minWidth: 210 }}>
             <label style={label}>Lien du bouton (optionnel)</label>
-            <input value={b.lien} onChange={e => setB({ ...b, lien: e.target.value })} style={input} placeholder="/catalogue/pack-conformite-vente-en-ligne" />
+            <input value={b.lien} onChange={e => setB({ ...b, lien: e.target.value })} style={input} placeholder="/catalogue" />
           </div>
         </div>
         <p style={{ color: '#9ca3af', fontSize: 12, margin: 0 }}>Le bouton n&apos;apparaît que si le libellé et le lien sont tous deux renseignés.</p>

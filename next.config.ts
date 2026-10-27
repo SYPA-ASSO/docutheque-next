@@ -165,6 +165,19 @@ const nextConfig: NextConfig = {
         destination: '/catalogue',
         permanent: true,
       },
+
+      // Catalogue converti en page de demande de modele : fiches, categories, recherche et panier
+      // n'existent plus, on conserve le referencement en redirigeant vers /catalogue.
+      {
+        source: '/catalogue/:path+',
+        destination: '/catalogue',
+        permanent: true,
+      },
+      {
+        source: '/panier',
+        destination: '/catalogue',
+        permanent: true,
+      },
     ];
   },
   async headers() {

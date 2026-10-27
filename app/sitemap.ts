@@ -1,14 +1,12 @@
 import type { MetadataRoute } from 'next'
 import { readdirSync, existsSync } from 'fs'
 import { join } from 'path'
-import { supabaseAdmin } from '@/lib/supabase-admin'
-import { slugify } from '@/lib/slug'
 
 const baseUrl = 'https://cholez-pagotto.fr'
 
 // Le sitemap est genere a la construction du site (a chaque deploiement).
 // Les articles de blog (qui sont ajoutes via le code, donc via un deploiement)
-// et les ressources du catalogue sont ainsi captures automatiquement a chaque mise en ligne.
+// sont ainsi captures automatiquement a chaque mise en ligne.
 
 type Freq = 'always' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly' | 'never'
 
@@ -84,53 +82,7 @@ function getArticlesBlog(): MetadataRoute.Sitemap {
   }
 }
 
-// Pages dediees des ressources du catalogue (documents, packs, guides, livres),
-// recuperees depuis Supabase au moment de la construction du site.
-async function getRessources(): Promise<MetadataRoute.Sitemap> {
-  try {
-    const { data } = await supabaseAdmin
-      .from('documents')
-      .select('slug')
-      .eq('actif', true)
-      .eq('masque_catalogue', false)
-      .not('slug', 'is', null)
-    if (!data) return []
-    const now = new Date()
-    return data
-      .filter((d) => d.slug && String(d.slug).trim() !== '')
-      .map((d) => ({
-        url: `${baseUrl}/catalogue/${d.slug}`,
-        lastModified: now,
-        changeFrequency: 'weekly' as Freq,
-        priority: 0.6,
-      }))
-  } catch {
-    return []
-  }
-}
-
-async function getCategories(): Promise<MetadataRoute.Sitemap> {
-  try {
-    const { data } = await supabaseAdmin.from('categories').select('nom')
-    if (!data) return []
-    const now = new Date()
-    const vus = new Set<string>()
-    const urls: MetadataRoute.Sitemap = []
-    for (const c of data) {
-      const nom = c.nom ? String(c.nom).trim() : ''
-      if (!nom) continue
-      const s = slugify(nom)
-      if (!s || vus.has(s)) continue
-      vus.add(s)
-      urls.push({ url: `${baseUrl}/catalogue/categorie/${s}`, lastModified: now, changeFrequency: 'weekly' as Freq, priority: 0.6 })
-    }
-    return urls
-  } catch {
-    return []
-  }
-}
-
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date()
   const statiques: MetadataRoute.Sitemap = pages.map((p) => ({
     url: p.path === '/' ? baseUrl : `${baseUrl}${p.path}`,
@@ -139,7 +91,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: p.priority,
   }))
   const articles = getArticlesBlog()
-  const ressources = await getRessources()
-  const categories = await getCategories()
-  return [...statiques, ...articles, ...ressources, ...categories]
+  return [...statiques, ...articles]
 }

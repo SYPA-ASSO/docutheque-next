@@ -105,7 +105,7 @@ function RessourceFields({ f, setF, inputStyle, labelStyle }: { f: EditFormType,
     <>
       <div style={{ borderTop: '1px dashed #e5e7eb', paddingTop: '14px' }}>
         <p style={{ fontSize: '12px', fontWeight: 700, color: '#0f2d6e', margin: '0 0 2px', textTransform: 'uppercase', letterSpacing: '0.04em' }}>Page dediee et maillage (SEO)</p>
-        <p style={{ fontSize: '11px', color: '#9ca3af', margin: 0 }}>Genere la page publique /catalogue/[slug]. Slug vide = pas de page individuelle.</p>
+        <p style={{ fontSize: '11px', color: '#9ca3af', margin: 0 }}>Les pages individuelles de modeles ont ete retirees du site public (modeles sur demande). Ces champs ne servent plus qu'au classement interne.</p>
       </div>
       <div style={{ display: 'grid', gridTemplateColumns: '160px 1fr', gap: '12px' }}>
         <div>
@@ -617,12 +617,6 @@ export default function AdminDocuments() {
                       style={{ background: '#f3f4f6', border: 'none', padding: '8px', borderRadius: '6px', cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
                       {doc.actif ? <EyeOff size={15} color="#6b7280" /> : <Eye size={15} color="#6b7280" />}
                     </button>
-                    {doc.slug && (
-                      <a href={`/catalogue/${doc.slug}`} target="_blank" rel="noopener noreferrer" title="Voir la page publique"
-                        style={{ background: '#f0fdf4', border: 'none', padding: '8px', borderRadius: '6px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '33px', height: '33px', textDecoration: 'none' }}>
-                        <ExternalLink size={15} color="#15803d" />
-                      </a>
-                    )}
                     {doc.blob_url && (
                       <a href={doc.blob_url} target="_blank" rel="noopener noreferrer"
                         style={{ background: '#eff6ff', border: 'none', padding: '8px', borderRadius: '6px', cursor: 'pointer', display: 'flex', alignItems: 'center', textDecoration: 'none' }}>

@@ -1,0 +1,7 @@
+Lot 5A : /catalogue devient une page de demande de modele (plus aucune liste de modeles)
+Fichiers modifies : app/catalogue/page.tsx, app/catalogue/layout.tsx, components/Header.tsx, components/Footer.tsx,
+  app/layout.tsx, app/sitemap.ts, next.config.ts, app/admin/documents/page.tsx, app/admin/banniere/page.tsx
+Fichiers supprimes (git rm) : app/catalogue/[slug], app/catalogue/categorie, app/catalogue/recherche,
+  app/panier, app/api/panier, app/api/documents/acheter, components/CartContext.tsx
+Redirections permanentes : /catalogue/:path+ et /panier vers /catalogue
+Aucune requete SQL.

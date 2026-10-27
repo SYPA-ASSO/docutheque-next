@@ -4,8 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import Image from 'next/image'
-import { ChevronDown, User, Building2, Heart, Scale, Briefcase, Shield, ShieldCheck, UserCheck, BookOpen, Layers, LayoutGrid, Calculator, Menu, X, ShoppingCart, GraduationCap, Presentation, type LucideIcon } from 'lucide-react'
-import { useCart } from '@/components/CartContext'
+import { ChevronDown, User, Building2, Heart, Scale, Briefcase, Shield, ShieldCheck, UserCheck, BookOpen, Layers, LayoutGrid, Calculator, Menu, X, GraduationCap, Presentation, type LucideIcon } from 'lucide-react'
 
 type NavChild = { label: string; href: string; desc?: string; icon?: LucideIcon }
 type NavGroup = { label: string; children: NavChild[] }
@@ -16,7 +15,6 @@ export default function Header() {
   const pageSobre = ['/cgu', '/mentions-legales', '/confidentialite', '/retractation'].some((p) => (pathname || '').startsWith(p))
 
   const [menuOpen, setMenuOpen] = useState(false)
-  const { count } = useCart()
   const [mobileGroupsOpen, setMobileGroupsOpen] = useState<Record<string, boolean>>({})
   const [dropdownOpen, setDropdownOpen] = useState<string | null>(null)
 
@@ -52,7 +50,7 @@ export default function Header() {
         },
       ],
     },
-    { label: 'Catalogue', href: '/catalogue' },
+    { label: 'Modèles', href: '/catalogue' },
     { label: 'Tarifs', href: '/tarifs' },
     { label: 'Blog', href: '/blog' },
     { label: 'Contact', href: '/contact' },
@@ -233,12 +231,6 @@ export default function Header() {
 
           {/* CTA DESKTOP */}
           <div className="header-cta" style={{ display: 'flex', alignItems: 'center', gap: '10px', flexShrink: 0 }}>
-            <Link href="/panier" aria-label="Panier" style={{ position: 'relative', display: 'flex', alignItems: 'center', padding: '8px', color: '#0f2d6e', textDecoration: 'none' }}>
-              <ShoppingCart size={20} strokeWidth={1.8} />
-              {count > 0 ? (
-                <span style={{ position: 'absolute', top: 0, right: 0, background: '#b8860b', color: 'white', fontSize: '10px', fontWeight: 700, minWidth: '16px', height: '16px', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '0 3px' }}>{count}</span>
-              ) : null}
-            </Link>
             <Link href="/espace-client" style={{
               padding: '8px 16px',
               fontSize: '13px',
@@ -304,7 +296,7 @@ export default function Header() {
             })}
 
             <Link href="/catalogue" onClick={() => setMenuOpen(false)} style={{ display: 'block', padding: '12px 4px', fontSize: '15px', color: '#0f2d6e', textDecoration: 'none', fontWeight: 600, borderTop: '1px solid #f3f4f6', borderBottom: '1px solid #f3f4f6' }}>
-              Catalogue
+              Modèles
             </Link>
             <Link href="/tarifs" onClick={() => setMenuOpen(false)} style={{ display: 'block', padding: '12px 4px', fontSize: '15px', color: '#0f2d6e', textDecoration: 'none', fontWeight: 600, borderBottom: '1px solid #f3f4f6' }}>
               Tarifs
@@ -317,9 +309,6 @@ export default function Header() {
             </Link>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginTop: '14px' }}>
-              <Link href="/panier" onClick={() => setMenuOpen(false)} style={{ textAlign: 'center', padding: '11px 16px', fontSize: '14px', color: '#0f2d6e', textDecoration: 'none', fontWeight: 600, border: '1px solid #0f2d6e', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
-                <ShoppingCart size={16} /> Mon panier{count > 0 ? ` (${count})` : ''}
-              </Link>
               <Link href="/espace-client" onClick={() => setMenuOpen(false)} style={{ textAlign: 'center', padding: '11px 16px', fontSize: '14px', color: '#0f2d6e', textDecoration: 'none', fontWeight: 600, border: '1px solid #0f2d6e', borderRadius: '8px' }}>
                 Mon espace
               </Link>
