@@ -53,7 +53,7 @@ export default function MentionsLegales() {
                 <h2 style={{color: '#0f2d6e', fontSize: '1.1rem', fontWeight: '700', margin: '0 0 1rem', paddingBottom: '0.75rem', borderBottom: '1px solid #f3f4f6'}}>1. Éditeur du site</h2>
                 <div style={{display: 'grid', gridTemplateColumns: '160px 1fr', gap: '8px 16px', fontSize: '14px', color: '#374151', lineHeight: '1.7'}}>
                   <span style={{color: '#6b7280', fontSize: '13px'}}>Éditeur</span>
-                  <span><strong>CBT CHOLEZ-PAGOTTO</strong></span>
+                  <span><strong>CBT CHOLEZ PAGOTTO</strong></span>
                   <span style={{color: '#6b7280', fontSize: '13px'}}>Forme juridique</span>
                   <span>Entreprise individuelle (E.I.)</span>
                   <span style={{color: '#6b7280', fontSize: '13px'}}>SIRET</span>
@@ -76,7 +76,7 @@ export default function MentionsLegales() {
                     <p style={{fontSize: '14px', fontWeight: '600', color: '#0f2d6e', margin: '0 0 6px'}}>Courtage en assurances et réassurances</p>
                     <p style={{fontSize: '13px', color: '#6b7280', margin: '0 0 4px', lineHeight: '1.7'}}>Activité réglementée exercée sous le contrôle de l'Autorité de Contrôle Prudentiel et de Résolution (ACPR), 4 place de Budapest, CS 92459, 75436 Paris Cedex 09.</p>
                     <p style={{fontSize: '13px', color: '#6b7280', margin: '0 0 4px'}}>Immatriculé à l'ORIAS sous le numéro <strong>26003943</strong>, consultable sur <a href="https://www.orias.fr" target="_blank" rel="noopener noreferrer" style={{color: '#1a4fba', textDecoration: 'none'}}>www.orias.fr</a></p>
-                    <p style={{fontSize: '13px', color: '#6b7280', margin: 0}}>Membre de l'association d'autorégulation <strong>ENDYA</strong>.</p>
+                    <p style={{fontSize: '13px', color: '#6b7280', margin: 0}}>Membre de l'association d'autorégulation <strong>ENDYA</strong>. <a href="/informations-reglementaires" style={{color: '#1a4fba', textDecoration: 'none', fontWeight: '600'}}>Informations réglementaires du courtage →</a></p>
                   </div>
 
                   <div style={{background: '#eff6ff', borderRadius: '8px', padding: '12px 14px'}}>

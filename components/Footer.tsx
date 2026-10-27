@@ -104,6 +104,7 @@ export default function Footer() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
               {[
                 { label: 'Mentions légales', href: '/mentions-legales' },
+                { label: 'Informations réglementaires', href: '/informations-reglementaires' },
                 { label: 'CGU', href: '/cgu' },
                 { label: 'Politique de confidentialité', href: '/confidentialite' },
               ].map((l) => (

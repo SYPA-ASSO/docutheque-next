@@ -52,6 +52,7 @@ const pages: { path: string; priority: number; changeFrequency: Freq }[] = [
 
   // Pages legales
   { path: '/mentions-legales', priority: 0.3, changeFrequency: 'yearly' },
+  { path: '/informations-reglementaires', priority: 0.4, changeFrequency: 'yearly' },
   { path: '/cgu', priority: 0.3, changeFrequency: 'yearly' },
   { path: '/confidentialite', priority: 0.3, changeFrequency: 'yearly' },
 ]

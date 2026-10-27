@@ -1,0 +1,19 @@
+Courtage lot 2 : textes reglementaires (aucune modification de base de donnees)
+==============================================================================
+
+Ce zip est CUMULATIF : app/conseil-assurances/page.tsx et app/cgu/page.tsx contiennent aussi le lot 1 bis.
+
+Fichier nouveau :
+- app/informations-reglementaires/page.tsx   (identite, statut, base de l'analyse, remuneration, conseil, RC pro, reclamations, mediation)
+
+Fichiers modifies (remplacent l'existant, fichiers complets) :
+- app/cgu/page.tsx                    (5.5 : renvoi ; 9.4 : retractation du forfait conseil ; 19 : mediation de l'assurance)
+- app/retractation/page.tsx           (paragraphe services : demande expresse, perte du droit, paiement proportionnel)
+- app/mentions-legales/page.tsx       (lien ; "CBT CHOLEZ PAGOTTO" sans trait d'union)
+- app/conseil-assurances/page.tsx     (lien vers les informations reglementaires)
+- components/Footer.tsx               (lien pied de page)
+- components/FooterMinimal.tsx        (lien pied de page)
+- app/sitemap.ts                      (nouvelle page)
+
+A confirmer par l'editeur avant mise en ligne : police RC pro, mediation via ENDYA, absence de participations.
+Rien a executer en base de donnees.

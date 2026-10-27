@@ -29,6 +29,7 @@ export default function FooterMinimal() {
         <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap' }}>
           {[
             { label: 'Mentions légales', href: '/mentions-legales' },
+            { label: 'Informations réglementaires', href: '/informations-reglementaires' },
             { label: 'CGU', href: '/cgu' },
             { label: 'Confidentialité', href: '/confidentialite' },
             { label: 'Contact', href: '/contact' },
