@@ -64,7 +64,7 @@ const schemaData = {
           "name": "Pourquoi un forfait conseil est-il facturé avant toute souscription ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Conformément à l'article L.521-4 du Code des assurances (devoir de conseil issu de la Directive sur la Distribution d'Assurances, DDA), le conseil en assurances doit être cohérent avec vos exigences et besoins et motivé, ce que le cabinet formalise par écrit. La recommandation ACPR 2024-R-02 invite les distributeurs à exposer par écrit, sur support durable, les raisons du conseil. Le forfait rémunère ce travail de conseil indépendamment de toute souscription. Si vous souscrivez un contrat via le cabinet, celui-ci perçoit en complément une commission versée par l'assureur, séparée du forfait. Le cabinet vous indique son mode de rémunération avant toute souscription (art. L.521-2 du Code des assurances) et s'engage à vous en communiquer le montant."
+            "text": "Conformément à l'article L.521-4 du Code des assurances (devoir de conseil issu de la Directive sur la Distribution d'Assurances, DDA), avant la conclusion de tout contrat, le distributeur précise par écrit les exigences et les besoins du client, conseille un contrat cohérent avec ceux-ci et précise les raisons de ce conseil. La recommandation ACPR 2024-R-02 invite les distributeurs à exposer par écrit, sur support durable, les raisons du conseil. Le forfait rémunère ce travail de conseil indépendamment de toute souscription. Si vous souscrivez un contrat via le cabinet, celui-ci perçoit en complément une commission versée par l'assureur, séparée du forfait. Le cabinet vous indique son mode de rémunération avant toute souscription (art. L.521-2 du Code des assurances) et s'engage à vous en communiquer le montant."
           }
         },
         {
@@ -88,7 +88,7 @@ const schemaData = {
           "name": "Le cabinet est-il indépendant des assureurs ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Le cabinet intervient en qualité de courtier en assurances (IAS) et n'est lié à aucune compagnie par une exclusivité. Il consulte les compagnies et grossistes avec lesquels il a conclu des conventions de partenariat, c'est-à-dire un panel de partenaires et non l'ensemble du marché ; la liste vous est communiquée sur demande avant toute souscription. Le rapport de conseil identifie les offres les mieux adaptées à votre situation parmi celles de ces partenaires. En cas de souscription via le cabinet, une commission est versée par l'assureur choisi, séparée du forfait conseil. Le cabinet vous indique son mode de rémunération avant toute souscription (art. L.521-2 du Code des assurances) et s'engage à vous en communiquer le montant."
+            "text": "Le cabinet intervient en qualité de courtier en assurances (IAS) et n'est soumis à aucune obligation contractuelle de travailler exclusivement avec une ou plusieurs compagnies d'assurance. Il consulte les compagnies et grossistes avec lesquels il a conclu des conventions de partenariat, c'est-à-dire un panel de partenaires et non l'ensemble du marché ; les noms des compagnies avec lesquelles le cabinet travaille vous sont communiqués avant toute souscription. Le rapport de conseil identifie les offres les mieux adaptées à votre situation parmi celles de ces partenaires. En cas de souscription via le cabinet, une commission est versée par l'assureur choisi, séparée du forfait conseil. Le cabinet vous indique son mode de rémunération avant toute souscription (art. L.521-2 du Code des assurances) et s'engage à vous en communiquer le montant."
           }
         },
         {
@@ -180,7 +180,7 @@ const etapes = [
 const faqs = [
   {
     question: "Pourquoi un forfait conseil est-il facturé avant toute souscription ?",
-    reponse: "Conformément à l'article L.521-4 du Code des assurances (devoir de conseil DDA), le conseil doit être cohérent avec vos exigences et besoins et motivé, ce que le cabinet formalise par écrit. La recommandation ACPR 2024-R-02 invite les distributeurs à exposer par écrit, sur support durable, les raisons du conseil. Le forfait rémunère ce travail indépendamment de toute souscription. En cas de souscription via le cabinet, une commission assureur s'ajoute, séparée du forfait. Le cabinet vous indique son mode de rémunération avant toute souscription (art. L.521-2 du Code des assurances) et s'engage à vous en communiquer le montant."
+    reponse: "Conformément à l'article L.521-4 du Code des assurances (devoir de conseil DDA), avant la conclusion de tout contrat, le distributeur précise par écrit les exigences et les besoins du client, conseille un contrat cohérent avec ceux-ci et précise les raisons de ce conseil. La recommandation ACPR 2024-R-02 invite les distributeurs à exposer par écrit, sur support durable, les raisons du conseil. Le forfait rémunère ce travail indépendamment de toute souscription. En cas de souscription via le cabinet, une commission assureur s'ajoute, séparée du forfait. Le cabinet vous indique son mode de rémunération avant toute souscription (art. L.521-2 du Code des assurances) et s'engage à vous en communiquer le montant."
   },
   {
     question: "Qu'est-ce que l'ORIAS et comment vérifier l'immatriculation du cabinet ?",
@@ -192,7 +192,7 @@ const faqs = [
   },
   {
     question: "Le cabinet est-il indépendant des assureurs ?",
-    reponse: "Le cabinet intervient en qualité de courtier (IAS) et n'est lié à aucune compagnie par une exclusivité. Il consulte les compagnies et grossistes avec lesquels il a conclu des conventions de partenariat, c'est-à-dire un panel de partenaires et non l'ensemble du marché ; la liste vous est communiquée sur demande avant toute souscription. Le rapport identifie les offres les mieux adaptées parmi celles de ces partenaires. La commission assureur éventuelle est séparée du forfait ; le cabinet vous indique son mode de rémunération avant toute souscription (art. L.521-2 du Code des assurances) et s'engage à vous en communiquer le montant."
+    reponse: "Le cabinet intervient en qualité de courtier (IAS) et n'est soumis à aucune obligation contractuelle de travailler exclusivement avec une ou plusieurs compagnies d'assurance. Il consulte les compagnies et grossistes avec lesquels il a conclu des conventions de partenariat, c'est-à-dire un panel de partenaires et non l'ensemble du marché ; les noms des compagnies avec lesquelles le cabinet travaille vous sont communiqués avant toute souscription. Le rapport identifie les offres les mieux adaptées parmi celles de ces partenaires. La commission assureur éventuelle est séparée du forfait ; le cabinet vous indique son mode de rémunération avant toute souscription (art. L.521-2 du Code des assurances) et s'engage à vous en communiquer le montant."
   },
   {
     question: "Que contient le rapport de conseil ?",
@@ -290,7 +290,7 @@ export default function ConseilAssurancesPage() {
           <div style={{ maxWidth: 1100, margin: '0 auto', display: 'flex', alignItems: 'flex-start', gap: '0.75rem' }}>
             <Info size={16} strokeWidth={1.5} style={{ color: '#065f46', marginTop: 2, flexShrink: 0 }} />
             <p style={{ fontSize: 12, color: '#064e3b', lineHeight: 1.6, margin: 0 }}>
-              Le cabinet est enregistré à l'ORIAS sous le numéro <strong>26003943</strong>. Conformément à l'article L.521-4 du Code des assurances (devoir de conseil DDA) , le conseil est individualisé, documenté et motivé. La recommandation ACPR 2024-R-02 précise les bonnes pratiques de recueil des informations du client. Le forfait est dû avant remise du rapport, indépendamment de toute souscription. En cas de souscription via le cabinet, une commission assureur s'ajoute, séparée du forfait. Le cabinet vous indique son mode de rémunération avant souscription (art. L.521-2 du Code des assurances) et s'engage à vous en communiquer le montant. Le cabinet consulte les compagnies et grossistes partenaires avec lesquels il a conclu des conventions, et non l'ensemble du marché.
+              Le cabinet est enregistré à l'ORIAS sous le numéro <strong>26003943</strong>. Conformément à l'article L.521-4 du Code des assurances (devoir de conseil DDA) , le conseil est individualisé, documenté et motivé. La recommandation ACPR 2024-R-02 précise les bonnes pratiques de recueil des informations du client. Le forfait est dû avant remise du rapport, indépendamment de toute souscription. En cas de souscription via le cabinet, une commission assureur s'ajoute, séparée du forfait. Le cabinet vous indique avant souscription qu'il est rémunéré sur la base d'honoraires (le forfait conseil) et, en cas de souscription, d'une commission incluse dans la prime (art. L.521-2 du Code des assurances), dont il s'engage à vous communiquer le montant. Le cabinet consulte les compagnies et grossistes partenaires avec lesquels il a conclu des conventions, et non l'ensemble du marché ; les noms des compagnies avec lesquelles il travaille vous sont communiqués avant toute souscription. Le cabinet fournit un service de recommandation : le rapport explique pourquoi, parmi les offres des partenaires consultés, celles qu'il recommande correspondent le mieux à vos exigences et à vos besoins (art. L.521-4 du Code des assurances).
               Immatriculation vérifiable sur <a href="https://www.orias.fr" target="_blank" rel="noopener noreferrer" style={{ color: '#065f46' }}>www.orias.fr</a>.
             </p>
           </div>
@@ -445,7 +445,7 @@ export default function ConseilAssurancesPage() {
               {[
                 {
                   titre: "Une obligation légale (art. L.521-4)",
-                  texte: "Le conseil doit être cohérent avec vos exigences et besoins et motivé, avant toute souscription. La recommandation ACPR 2024-R-02 invite les distributeurs à exposer par écrit, sur support durable, les raisons du conseil, et à pouvoir justifier de leur remise au client."
+                  texte: "Avant la conclusion de tout contrat, le distributeur précise par écrit vos exigences et vos besoins, conseille un contrat cohérent avec ceux-ci et précise les raisons de ce conseil. Ces précisions sont adaptées à la complexité du contrat. La recommandation ACPR 2024-R-02 invite les distributeurs à exposer par écrit, sur support durable, les raisons du conseil, et à pouvoir justifier de leur remise au client."
                 },
                 {
                   titre: "Une protection pour le client",
@@ -453,7 +453,7 @@ export default function ConseilAssurancesPage() {
                 },
                 {
                   titre: "Une transparence sur la rémunération",
-                  texte: "Avant toute souscription, le cabinet vous indique comment il est rémunéré (art. L.521-2 du Code des assurances) : forfait conseil, et commission versée par l'assureur en cas de souscription. Le forfait est séparé de la commission, et le cabinet s'engage à vous en communiquer le montant."
+                  texte: "Avant toute souscription, le cabinet vous indique comment il est rémunéré (art. L.521-2 du Code des assurances) : sur la base d'honoraires, c'est-à-dire le forfait conseil que vous payez directement, dont le montant est affiché, et, en cas de souscription, sur la base d'une commission incluse dans la prime. Le forfait est séparé de la commission, dont le cabinet s'engage à vous communiquer le montant."
                 },
                 {
                   titre: "Une remise dans votre espace client",

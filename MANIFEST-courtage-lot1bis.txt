@@ -1,0 +1,15 @@
+Courtage lot 1 bis : alignement sur le texte verifie des articles L.521-2 et L.521-4 (aucune modification de base de donnees)
+==============================================================================================================================
+
+Fichiers modifies (remplacent l'existant, fichiers complets) :
+- app/conseil-assurances/page.tsx
+- app/cgu/page.tsx (article 5.5 uniquement)
+
+Changements :
+1. L.521-2 II 1 b) : les noms des compagnies avec lesquelles le cabinet travaille sont communiques AVANT la souscription (et non "sur demande").
+2. L.521-2 II 1 a) : "aucune obligation contractuelle de travailler exclusivement avec une ou plusieurs compagnies" (formulation du texte).
+3. L.521-4 I : exigences et besoins precises PAR ECRIT avant la conclusion, contrat conseille coherent, raisons precisees ; precisions adaptees a la complexite (III).
+4. L.521-2 II 2 : remuneration annoncee comme honoraires (forfait) + commission incluse dans la prime (combinaison).
+5. L.521-2 I et L.521-4 II : mention explicite que le cabinet fournit un service de recommandation.
+
+Rien a executer en base de donnees.
