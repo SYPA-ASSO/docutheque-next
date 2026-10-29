@@ -46,6 +46,7 @@ export async function POST(request: Request) {
           body: JSON.stringify({
             sender: { name: 'Cabinet CHOLEZ PAGOTTO', email: 'contact@cholez-pagotto.fr' },
             to: [{ email: u.email, name: prenom }],
+            bcc: [{ email: 'contact@cholez-pagotto.fr', name: 'Cabinet CHOLEZ PAGOTTO' }],
             subject: 'Une facture est disponible dans votre espace client',
             htmlContent: `<body style="font-family:Arial,sans-serif;color:#374151;font-size:14px;max-width:600px;margin:0 auto;">
   <div style="background-color:#0f2d6e;background:linear-gradient(135deg,#0f2d6e 0%,#1a4fba 100%);padding:24px;border-radius:8px 8px 0 0;">
