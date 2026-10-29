@@ -14,6 +14,8 @@ export async function POST(request: Request) {
     const userId = formData.get('userId') as string
     const montant = formData.get('montant') ? parseFloat(formData.get('montant') as string) : null
     const type = formData.get('type') as string || null
+    // Notification email : active par defaut, desactivee uniquement si le formulaire envoie '0'.
+    const notifier = formData.get('notifier') !== '0'
 
     if (!file || !userId) {
       return NextResponse.json({ error: 'Fichier et userId requis.' }, { status: 400 })
@@ -34,8 +36,8 @@ export async function POST(request: Request) {
 
     if (error) return NextResponse.json({ error: error.message }, { status: 500 })
 
-    // Notifier le client par email qu'une facture est disponible (best effort).
-    try {
+    // Notifier le client par email qu'une facture est disponible (best effort), sauf si desactive.
+    if (notifier) try {
       const { data: u } = await supabaseAdmin.from('users').select('email, prenom').eq('id', userId).single()
       if (u?.email && process.env.BREVO_API_KEY) {
         const site = process.env.SITE_URL || 'https://cholez-pagotto.fr'

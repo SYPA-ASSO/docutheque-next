@@ -35,7 +35,9 @@ export default function AdminFactures() {
     montant: '',
     type: 'abonnement',
     file: null as File | null,
+    notifier: true,
   })
+  const [dernierNotifie, setDernierNotifie] = useState(true)
 
   const loadFactures = useCallback(async (pwd: string) => {
     setLoading(true)
@@ -81,6 +83,7 @@ export default function AdminFactures() {
     fd.append('userId', form.userId)
     fd.append('type', form.type)
     if (form.montant) fd.append('montant', form.montant)
+    fd.append('notifier', form.notifier ? '1' : '0')
 
     const res = await fetch('/api/admin/factures-upload', {
       method: 'POST',
@@ -89,9 +92,10 @@ export default function AdminFactures() {
     })
 
     if (res.ok) {
+      setDernierNotifie(form.notifier)
       setUploadStatut('success')
       setShowForm(false)
-      setForm({ userId: '', montant: '', type: 'abonnement', file: null })
+      setForm({ userId: '', montant: '', type: 'abonnement', file: null, notifier: true })
       loadFactures(password)
       setTimeout(() => setUploadStatut('idle'), 3000)
     } else {
@@ -139,7 +143,7 @@ export default function AdminFactures() {
 
         {uploadStatut === 'success' && (
           <div style={{ background: '#f0fdf4', border: '1px solid #bbf7d0', borderRadius: '8px', padding: '12px 16px', marginBottom: '1rem' }}>
-            <p style={{ color: '#15803d', fontSize: '13px', margin: 0 }}>✓ Facture déposée avec succès. Le client peut la consulter dans son espace.</p>
+            <p style={{ color: '#15803d', fontSize: '13px', margin: 0 }}>✓ Facture déposée avec succès. Le client peut la consulter dans son espace{dernierNotifie ? ' et a été prévenu par email.' : ', sans email de notification.'}</p>
           </div>
         )}
 
@@ -198,6 +202,16 @@ export default function AdminFactures() {
                   onChange={e => setForm({ ...form, file: e.target.files?.[0] || null })}
                   style={{ ...inputStyle, padding: '8px 12px' }} required />
               </div>
+
+              <label style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', fontSize: '13px', color: '#374151', cursor: 'pointer' }}>
+                <input type="checkbox" checked={form.notifier} onChange={e => setForm({ ...form, notifier: e.target.checked })} style={{ marginTop: '2px', flexShrink: 0 }} />
+                <span>
+                  Prévenir le client par email
+                  <span style={{ display: 'block', color: '#9ca3af', fontSize: '11px', marginTop: '2px' }}>
+                    Décochez pour une facture déjà réglée : elle sera visible dans l'espace client, sans email.
+                  </span>
+                </span>
+              </label>
 
               {uploadErreur && <p style={{ color: '#dc2626', fontSize: '12px', margin: 0 }}>{uploadErreur}</p>}
 
