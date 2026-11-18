@@ -125,7 +125,7 @@ export default function Footer() {
             >
               <img
                 src="https://www.prozowo.fr/api/badge/46be05a9-3430-4029-bbcb-91b20fa43f6c?theme=sombre"
-                alt="Prozowo, Prestataire vérifié + : CBT CHOLEZ PAGOTTO"
+                alt="CBT CHOLEZ PAGOTTO sur Prozowo.fr"
                 width={224}
                 height={48}
                 style={{ width: '100%', maxWidth: '224px', height: 'auto', display: 'block' }}
