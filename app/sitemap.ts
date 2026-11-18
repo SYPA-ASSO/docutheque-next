@@ -42,6 +42,7 @@ const pages: { path: string; priority: number; changeFrequency: Freq }[] = [
 
   // Institutionnel
   { path: '/a-propos', priority: 0.5, changeFrequency: 'yearly' },
+  { path: '/prozowo', priority: 0.5, changeFrequency: 'monthly' },
   { path: '/contact', priority: 0.5, changeFrequency: 'yearly' },
   { path: '/newsletter', priority: 0.4, changeFrequency: 'yearly' },
 

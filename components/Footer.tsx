@@ -85,10 +85,10 @@ export default function Footer() {
               {[
                 { label: 'Blog juridique', href: '/blog' },
                 { label: 'Juriste ou avocat ?', href: '/juriste-formaliste-ou-avocat' },
-                { label: "Juriste ou avocat ?", href: '/juriste-formaliste-ou-avocat' },
                 { label: 'Avocats : nous rejoindre', href: '/referencement-avocats' },
                 { label: 'Newsletter', href: '/newsletter' },
                 { label: 'À propos', href: '/a-propos' },
+                { label: 'Prozowo.fr, plateforme de mise en relation', href: '/prozowo' },
                 { label: 'Contact', href: '/contact' },
               ].map((l) => (
                 <Link key={l.href} href={l.href} style={{ color: 'rgba(255,255,255,0.7)', fontSize: '12px', textDecoration: 'none', lineHeight: '1.5' }}>

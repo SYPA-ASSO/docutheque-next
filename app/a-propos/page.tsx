@@ -239,6 +239,9 @@ export default function APropos() {
                 </a>
               ))}
             </div>
+            <p style={{ color: '#6b7280', fontSize: '13px', lineHeight: '1.75', margin: '16px 0 0' }}>
+              Pour vos autres besoins de prestataire, l&apos;éditeur du cabinet exploite aussi <a href="/prozowo" style={{ color: '#1a4fba', fontWeight: 600 }}>Prozowo.fr</a>, une plateforme gratuite de mise en relation avec des prestataires vérifiés.
+            </p>
           </section>
 
           {/* CTA */}
