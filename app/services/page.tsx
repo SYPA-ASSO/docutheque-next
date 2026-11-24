@@ -5,7 +5,7 @@ import { ChevronRight, ChevronDown, FileText, Scale, Building2, Heart, Shield, L
 
 export const metadata = {
   title: "Nos services · Cabinet Cholez-Pagotto · Juriste, Formaliste, Conseil en assurances",
-  description: "Découvrez l'ensemble des services du Cabinet Cholez-Pagotto : modèles de documents juridiques sur demande, information sur vos droits, accompagnement création d'entreprise, associations ESS, RGPD, DPO externalisé, conseil en assurances.",
+  description: "Découvrez l'ensemble des services du Cabinet Cholez-Pagotto : bibliothèque juridique, information sur vos droits, accompagnement création d'entreprise, associations ESS, RGPD, DPO externalisé, conseil en assurances.",
 }
 
 const schema = {
@@ -18,7 +18,7 @@ const schema = {
       "url": "https://cholez-pagotto.fr/services",
       "numberOfItems": 9,
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Modèles de documents juridiques sur demande", "url": "https://cholez-pagotto.fr/catalogue" },
+        { "@type": "ListItem", "position": 1, "name": "Bibliothèque de documents juridiques", "url": "https://cholez-pagotto.fr/catalogue" },
         { "@type": "ListItem", "position": 2, "name": "Information sur vos droits", "url": "https://cholez-pagotto.fr/information-sur-vos-droits" },
         { "@type": "ListItem", "position": 3, "name": "Accompagnement création d'entreprise", "url": "https://cholez-pagotto.fr/accompagnement-professionnels" },
         { "@type": "ListItem", "position": 4, "name": "Accompagnement associations & ESS", "url": "https://cholez-pagotto.fr/accompagnement-associations" },
@@ -42,23 +42,23 @@ const schema = {
 const services = [
   {
     id: "bibliotheque",
-    badge: "SUR DEMANDE & ABONNEMENT",
+    badge: "ACCÈS LIBRE & ABONNEMENT",
     icon: <FileText size={22} color="#1a4fba" strokeWidth={1.5} />,
-    titre: "Modèles de documents juridiques",
+    titre: "Bibliothèque de documents juridiques",
     accroche: "Des modèles de documents rédigés par un juriste, accompagnés de notices explicatives pour les adapter à votre situation.",
     pourQui: "Particuliers, professionnels, associations, dirigeants d'entreprise.",
-    description: "Vous décrivez le document dont vous avez besoin et le cabinet vous remet le modèle correspondant, en format DOCX, rédigé par un juriste et accompagné de notices explicatives. Selon le modèle, il est gratuit, inclus dans l'Abonnement Optimal ou payable à l'unité, avec le prix indiqué avant tout paiement. L'Abonnement Optimal inclut tous les modèles, avec des fiches pédagogiques de vulgarisation juridique et une question mensuelle d'information juridique rédigée par un juriste.",
+    description: "La bibliothèque du cabinet regroupe des modèles de documents juridiques en format DOCX, rédigés par un juriste et accompagnés de notices explicatives. Certains documents sont disponibles en accès libre. L'Abonnement Optimal donne accès à l'intégralité de la bibliothèque, incluant des fiches pédagogiques de vulgarisation juridique et une question mensuelle d'information juridique rédigée par un juriste.",
     comprend: [
       "Documents DOCX téléchargeables en format éditable",
       "Notices explicatives rédigées par un juriste pour les principaux documents",
       "Fiches pédagogiques de vulgarisation juridique (Abonnement Optimal)",
       "Mise à jour des documents en fonction des évolutions législatives et réglementaires",
-      "Modèle gratuit, payable à l'unité, ou inclus dans l'Abonnement Optimal",
+      "Accès libre (documents sélectionnés) ou accès complet (Abonnement Optimal)",
     ],
-    tarif: "Gratuit, à l'unité (prix indiqué avant paiement) ou inclus dans l'Abonnement Optimal : 17,90 €/mois ou 149 €/an",
+    tarif: "Gratuit (accès libre, documents sélectionnés) · 17,90 €/mois ou 149 €/an pour l'accès complet (Abonnement Optimal)",
     lien: "/catalogue",
     disponible: false,
-    cta: "Demander un modèle",
+    cta: "Voir la bibliothèque",
   },
   {
     id: "information-droits",
@@ -75,7 +75,7 @@ const services = [
       "Délai indicatif de 24 à 48h ouvrées",
       "Orientation vers le professionnel compétent si nécessaire",
     ],
-    tarif: "47 € à l'unité · Abonnés Optimal (dès 17,90 €/mois) : 1 question gratuite/mois, puis 14,90 €",
+    tarif: "47 € à l'unité · Abonnés Optimal (dès 17,90 €/mois) : 1 question gratuite/mois, puis 19 €",
     lien: "/information-sur-vos-droits",
     disponible: true,
     cta: "En savoir plus",
@@ -219,11 +219,11 @@ const services = [
     titre: "Conseil en assurances",
     accroche: "Un intermédiaire en assurances réglementé pour vous orienter vers les garanties adaptées à votre situation.",
     pourQui: "Particuliers, associations, entreprises, professions libérales, structures ESS.",
-    description: "Conformément à l'article L.521-4 du Code des assurances (devoir de conseil DDA), le conseil est individualisé, documenté et motivé. Un forfait couvre l'analyse des besoins, l'audit des contrats existants et la consultation des compagnies et grossistes partenaires du cabinet. Il est dû avant remise du rapport, indépendamment de toute souscription. En cas de souscription via le cabinet, une commission versée par l'assureur s'y ajoute, séparée du forfait ; le mode de rémunération est indiqué avant souscription (art. L.521-2 du Code des assurances). ORIAS n°26003943, sous contrôle de l'ACPR.",
+    description: "Conformément à l'article L.521-4 du Code des assurances (devoir de conseil DDA), le conseil est individualisé, documenté et motivé. Un forfait couvre l'analyse des besoins, l'audit des contrats existants et la comparaison des offres du marché. Il est dû avant remise du rapport, indépendamment de toute souscription. En cas de souscription via le cabinet, une commission versée par l'assureur s'y ajoute, séparée du forfait, communiquée avant souscription conformément à l'article L.521-2 du Code des assurances et à la recommandation ACPR 2024-R-01. ORIAS n°26003943, sous contrôle de l'ACPR.",
     comprend: [
       "Recueil des besoins via formulaire en ligne (horodaté, archivé dans l'espace client)",
       "Audit des contrats existants et identification des lacunes ou doublons",
-      "Consultation des compagnies et grossistes partenaires dans les catégories couvertes (ORIAS n°26003943)",
+      "Comparaison des offres du marché dans les catégories couvertes (ORIAS n°26003943)",
       "Rapport de conseil écrit, documenté et motivé : conforme à l'article L.521-4 du Code des assurances (DDA)",
       "Archivage du dossier complet dans l'espace client (formulaire + facture + rapport)",
       "Accompagnement en cas de sinistre ou d'insatisfaction vis-à-vis de l'assureur",
@@ -239,7 +239,7 @@ const services = [
 const faqServices = [
   { q: "Quels services le cabinet propose-t-il ?", r: "Le cabinet intervient sur l'information juridique, les documents et modèles téléchargeables, l'accompagnement à la création d'entreprise, le suivi des formalités juridiques, la conformité RGPD avec délégué à la protection des données externalisé, le conseil en assurances en tant qu'intermédiaire immatriculé, et la formation. Chaque service s'adresse aussi bien aux particuliers qu'aux professionnels, aux associations et aux collectivités." },
   { q: "Le cabinet délivre-t-il des consultations juridiques ?", r: "Notre juriste délivre une information juridique au sens de la loi n°71-1130 du 31 décembre 1971 : il explique les règles applicables et les démarches possibles. Cette information ne constitue pas une consultation juridique personnalisée, ni la rédaction d'actes pour autrui, ni la représentation en justice, qui sont réservées à l'avocat." },
-  { q: "Faut-il un abonnement pour faire appel au cabinet ?", r: "Non. Plusieurs services sont accessibles ponctuellement, comme la question juridique à 47 € ou l'achat d'un modèle de document à l'unité, au prix indiqué avant paiement. L'abonnement Optimal s'adresse à ceux qui ont des besoins récurrents et inclut tous les modèles de documents ainsi que une ou deux questions juriste par mois." },
+  { q: "Faut-il un abonnement pour faire appel au cabinet ?", r: "Non. Plusieurs services sont accessibles ponctuellement, comme la question juridique à 47 € ou l'achat de documents à l'unité à partir de 2,99 €. L'abonnement Optimal s'adresse à ceux qui ont des besoins récurrents et donne accès à toute la bibliothèque ainsi qu'à une ou deux questions juriste par mois." },
   { q: "Le cabinet travaille-t-il à distance ?", r: "Oui. Les services sont conçus pour être accessibles en ligne : documents téléchargeables, réponses écrites, accompagnement par échanges dématérialisés. Le cabinet est établi à Épinal, dans le Grand Est, et intervient pour des clients partout en France." },
   { q: "Êtes-vous habilité à intervenir en assurance ?", r: "Oui. Le cabinet est intermédiaire en assurances immatriculé à l'ORIAS sous le numéro 26003943 et placé sous le contrôle de l'ACPR. Notre juriste vous informe sur les garanties utiles et vous oriente selon votre intérêt, sans lien d'exclusivité avec un assureur." },
   { q: "Comment savoir si mon besoin relève du cabinet ou d'un avocat ?", r: "L'information juridique, les formalités, les modèles de documents et le conseil en assurance relèvent du cabinet. La consultation personnalisée, la rédaction d'actes pour autrui et la représentation en justice relèvent de l'avocat. En cas de doute, notre juriste vous oriente vers le bon interlocuteur." }

@@ -1,6 +1,7 @@
 ﻿import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import NewsletterForm from '@/components/NewsletterForm'
+import LienSortieDocutheque from '@/components/LienSortieDocutheque'
 import { ChevronRight, FileText, Clock, CheckCircle, MessageSquare, Send, Shield, User } from 'lucide-react'
 
 export const metadata = {
@@ -61,7 +62,7 @@ const schema = {
           "name": "Quelle est la différence avec l'Abonnement Optimal ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "L'Abonnement Optimal inclut une question mensuelle au tarif préférentiel de 14,90 € pour les questions supplémentaires, plus les modèles de documents que vous demandez au cabinet. Si vous posez régulièrement des questions, l'abonnement devient plus économique dès la deuxième question mensuelle."
+            "text": "L'Abonnement Optimal inclut une question mensuelle au tarif préférentiel de 19 € pour les questions supplémentaires, plus l'accès à toute la bibliothèque de documents juridiques. Si vous posez régulièrement des questions, l'abonnement devient plus économique dès la deuxième question mensuelle. L'abonnement de la Docuthèque (149 € par an) est distinct : il donne aussi accès aux questions à 19 € au lieu de 47 €."
           }
         },
         {
@@ -168,7 +169,7 @@ const faqs = [
   },
   {
     q: "Quelle est la différence avec l'Abonnement Optimal ?",
-    a: "L'Abonnement Optimal inclut une question mensuelle, plus les modèles de documents (DOCX) que vous demandez au cabinet. Les questions supplémentaires sont à 14,90 € pour les abonnés au lieu de 47 €. Si vous posez régulièrement des questions, l'abonnement devient plus économique dès la deuxième question mensuelle."
+    a: "L'Abonnement Optimal inclut une question mensuelle, plus l'accès à toute la bibliothèque de documents juridiques (DOCX). Les questions supplémentaires sont à 19 € pour les abonnés au lieu de 47 €. Si vous posez régulièrement des questions, l'abonnement devient plus économique dès la deuxième question mensuelle. L'abonnement de la Docuthèque (149 € par an) est distinct : il donne aussi accès aux questions à 19 € au lieu de 47 €."
   },
   {
     q: "Ma question est-elle confidentielle ?",
@@ -403,6 +404,37 @@ export default function InformationDroits() {
             </div>
           </section>
 
+          {/* OFFRES POSSIBLES */}
+          <section>
+            <h2 style={{color: '#0f2d6e', fontSize: '1.4rem', fontWeight: '700', margin: '0 0 8px'}}>Les offres possibles</h2>
+            <p style={{color: '#6b7280', fontSize: '13px', lineHeight: '1.7', margin: '0 0 20px'}}>
+              Une question isolée, un abonnement avec questions incluses, ou l'abonnement de la Docuthèque. Les deux abonnements sont distincts : chacun se souscrit sur son site, avec son propre compte.
+            </p>
+            <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1rem'}}>
+              <div style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '10px'}}>
+                <p style={{color: '#1a4fba', fontSize: '11px', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.06em', margin: 0}}>Sans abonnement</p>
+                <h3 style={{color: '#0f2d6e', fontSize: '1.05rem', fontWeight: '700', margin: 0}}>Une question à l'unité</h3>
+                <p style={{color: '#0f2d6e', fontSize: '1.6rem', fontWeight: '800', margin: 0}}>47 €</p>
+                <p style={{color: '#374151', fontSize: '13px', lineHeight: '1.7', margin: '0 0 8px'}}>Une réponse écrite d'un juriste sous 24 à 48h ouvrées, sans engagement.</p>
+                <a href="/connexion" style={{marginTop: 'auto', color: '#1a4fba', fontSize: '13px', fontWeight: '700', textDecoration: 'none'}}>Poser ma question</a>
+              </div>
+              <div style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '10px'}}>
+                <p style={{color: '#1a4fba', fontSize: '11px', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.06em', margin: 0}}>Abonnement Optimal</p>
+                <h3 style={{color: '#0f2d6e', fontSize: '1.05rem', fontWeight: '700', margin: 0}}>Questions incluses et bibliothèque</h3>
+                <p style={{color: '#0f2d6e', fontSize: '1.6rem', fontWeight: '800', margin: 0}}>dès 17,90 €/mois</p>
+                <p style={{color: '#374151', fontSize: '13px', lineHeight: '1.7', margin: '0 0 8px'}}>Bibliothèque complète de modèles DOCX. 1 question par mois incluse en formule Particulier, 2 en formule Pro. Questions supplémentaires à 19 €. Annuel : 149 € (Particulier) ou 249 € (Pro).</p>
+                <a href="/tarifs" style={{marginTop: 'auto', color: '#1a4fba', fontSize: '13px', fontWeight: '700', textDecoration: 'none'}}>Voir l'abonnement Optimal</a>
+              </div>
+              <div style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '10px'}}>
+                <p style={{color: '#1a4fba', fontSize: '11px', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.06em', margin: 0}}>Abonnement Docuthèque</p>
+                <h3 style={{color: '#0f2d6e', fontSize: '1.05rem', fontWeight: '700', margin: 0}}>Documents, dossiers et formalités</h3>
+                <p style={{color: '#0f2d6e', fontSize: '1.6rem', fontWeight: '800', margin: 0}}>149 € par an</p>
+                <p style={{color: '#374151', fontSize: '13px', lineHeight: '1.7', margin: '0 0 8px'}}>Tous les modèles payants et packs, les dossiers juridiques en PDF et les formalités d'entreprise individuelle et de micro-entreprise. Questions à un juriste à 19 € au lieu de 47 €.</p>
+                <LienSortieDocutheque href="https://docutheque.cholez-pagotto.fr/tarifs" style={{marginTop: 'auto', color: '#1a4fba', fontSize: '13px', fontWeight: '700', textDecoration: 'none'}}>Voir l'abonnement Docuthèque</LienSortieDocutheque>
+              </div>
+            </div>
+          </section>
+
           {/* FAQ */}
           <section>
             <h2 style={{color: '#0f2d6e', fontSize: '1.5rem', fontWeight: '700', margin: '0 0 1.5rem', textAlign: 'center'}}>Questions fréquentes</h2>
@@ -445,7 +477,7 @@ export default function InformationDroits() {
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
               {[
                 { label: 'Juriste ou avocat ?', href: '/juriste-formaliste-ou-avocat' },
-                { label: 'Demander un modèle', href: '/catalogue' },
+                { label: 'Catalogue de documents', href: '/catalogue' },
                 { label: 'Tous nos services', href: '/services' },
               ].map((l) => (
                 <a key={l.href} href={l.href} style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: '#f8fafc', border: '1px solid #e5e7eb', borderRadius: 999, padding: '8px 16px', fontSize: '13px', color: '#1a4fba', fontWeight: 600, textDecoration: 'none' }}>

@@ -18,7 +18,7 @@ export default function FAQ() {
     },
     {
       q: 'Qu\'est-ce que le service "Information sur vos droits" ?',
-      a: "C'est un service à l'unité, sans abonnement, à 47 €. Vous posez votre question en langage courant et un juriste vous apporte une réponse pédagogique par écrit sous 24 à 48h. Ce service constitue une information juridique au sens de la loi n°71-1130 du 31 décembre 1971 et ne constitue pas une consultation juridique personnalisée. Si votre situation génère plusieurs questions, l'abonnement Optimal est plus adapté : à partir de 17,90 €/mois sans engagement, il inclut une question par mois et les suivantes à seulement 14,90 €."
+      a: "C'est un service à l'unité, sans abonnement, à 47 €. Vous posez votre question en langage courant et un juriste vous apporte une réponse pédagogique par écrit sous 24 à 48h. Ce service constitue une information juridique au sens de la loi n°71-1130 du 31 décembre 1971 et ne constitue pas une consultation juridique personnalisée. Si votre situation génère plusieurs questions, l'abonnement Optimal est plus adapté : à partir de 17,90 €/mois sans engagement, il inclut une question par mois et les suivantes à seulement 19 €."
     },
     {
       q: "L'intelligence artificielle est-elle utilisée pour rédiger les documents ?",
