@@ -85,7 +85,7 @@ const avantages = [
 
 const faqCatalogue = [
   { q: "Sous quel format les documents sont-ils livrés ?", r: "Tous les modèles sont fournis au format DOCX (Word), téléchargeables et personnalisables. Vous les complétez et les adaptez librement à votre situation depuis votre traitement de texte habituel." },
-  { q: "Quelle différence entre la Docuthèque et la bibliothèque de modèles ?", r: "Ce sont deux espaces distincts, chacun avec son compte et son abonnement : l'abonnement Optimal se souscrit sur ce site, l'abonnement de la Docuthèque (149 € par an) sur docutheque.cholez-pagotto.fr. Optimal inclut des questions au juriste chaque mois ; l'abonnement de la Docuthèque donne accès aux questions à 19 € au lieu de 47 €. Sur la Docuthèque, vous répondez à un questionnaire et le document est construit selon votre situation : des clauses apparaissent ou disparaissent, puis vous le téléchargez en Word. La bibliothèque propose des modèles DOCX prêts à personnaliser vous-même, à l'unité ou par l'abonnement Optimal." },
+  { q: "Quelle différence entre la Docuthèque et la bibliothèque de modèles ?", r: "Sur la Docuthèque, vous répondez à un questionnaire et le document est construit selon votre situation : des clauses apparaissent ou disparaissent, puis vous le téléchargez en Word. La bibliothèque propose des modèles DOCX prêts à personnaliser vous-même, à l'unité ou par l'abonnement Optimal." },
   { q: "Qui rédige les modèles ?", r: "Les modèles sont élaborés et relus par notre juriste formaliste, sur la base de références juridiques sourcées et vérifiées. Ils ne sont pas produits par un outil automatisé. Chaque fiche indique les textes sur lesquels le modèle repose." },
   { q: "Existe-t-il des modèles gratuits ?", r: "Les modèles gratuits sont fournis sur demande. Indiquez le modèle souhaité au regard de votre besoin depuis la page Contact. S'il n'existe pas de modèle gratuit correspondant, nous vous indiquons le modèle payant adapté, ou le cabinet peut envisager de le créer." },
   { q: "Puis-je acheter un document seul, sans abonnement ?", r: "Oui. Chaque document payant est disponible à l'unité. Le prix est affiché sur la fiche avant tout achat, avec téléchargement immédiat après paiement. Si vos besoins sont récurrents, l'abonnement Optimal donne accès à toute la bibliothèque." },
@@ -175,7 +175,7 @@ export default function CataloguePage() {
         L'abonnement Optimal
       </h2>
       <p style={{ color: '#6b7280', fontSize: 13, marginBottom: '2rem' }}>
-        Deux formules selon votre profil. Chaque formule est disponible en mensuel sans engagement ou en annuel avec 3 mois offerts. L'abonnement Optimal se souscrit sur ce site et inclut des questions au juriste. L'abonnement de la Docuthèque est distinct : il se souscrit sur docutheque.cholez-pagotto.fr, avec son propre compte.
+        Deux formules selon votre profil. Chaque formule est disponible en mensuel sans engagement ou en annuel avec 3 mois offerts.
       </p>
 
       {/* TOGGLE MENSUEL / ANNUEL */}
@@ -396,50 +396,6 @@ export default function CataloguePage() {
                 </ul>
                 <a href="#abonnement" style={{ marginTop: 'auto', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', background: 'transparent', color: '#0f2d6e', border: '1.5px solid #0f2d6e', textDecoration: 'none', padding: '10px 20px', borderRadius: 8, fontWeight: 700, fontSize: '0.875rem' }}>
                   Voir les offres <ArrowRight size={16} />
-                </a>
-              </div>
-            </div>
-          </section>
-
-          {/* OFFRES DOCUTHEQUE */}
-          <section style={{ marginBottom: '3rem' }}>
-            <h2 style={{ fontSize: '1.4rem', fontWeight: 700, color: '#0f2d6e', marginBottom: '0.5rem' }}>
-              Les offres de la Docuthèque
-            </h2>
-            <p style={{ color: '#6b7280', fontSize: 13, marginBottom: '1.5rem' }}>
-              Documents construits par questionnaire, dossiers juridiques et formalités d'entreprise. La Docuthèque se trouve sur docutheque.cholez-pagotto.fr et fonctionne avec son propre compte.
-            </p>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1rem' }}>
-              <div style={{ background: 'white', border: '2px solid #0f2d6e', borderRadius: 12, padding: '1.25rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                <p style={{ color: '#1a4fba', fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', margin: 0 }}>Abonnement Docuthèque</p>
-                <p style={{ margin: 0 }}><span style={{ fontSize: '1.6rem', fontWeight: 800, color: '#0f2d6e' }}>149 €</span> <span style={{ fontSize: 12, color: '#6b7280' }}>par an</span></p>
-                <p style={{ fontSize: 12, color: '#374151', lineHeight: 1.6, margin: '0 0 0.5rem' }}>Tous les modèles payants et packs, les dossiers juridiques en PDF et les formalités d'entreprise individuelle et de micro-entreprise. Questions à un juriste à 19 € au lieu de 47 €. Statuts pour entrepreneurs vendus à part.</p>
-                <a href="https://docutheque.cholez-pagotto.fr/tarifs" onClick={ouvrirSortie} style={{ marginTop: 'auto', display: 'inline-flex', alignItems: 'center', gap: '0.4rem', color: '#1a4fba', fontWeight: 700, fontSize: 13, textDecoration: 'none' }}>
-                  Voir le détail <ArrowRight size={14} />
-                </a>
-              </div>
-              <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: 12, padding: '1.25rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                <p style={{ color: '#1a4fba', fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', margin: 0 }}>Documents à l'unité</p>
-                <p style={{ margin: 0 }}><span style={{ fontSize: '1.6rem', fontWeight: 800, color: '#0f2d6e' }}>dès 0,99 €</span> <span style={{ fontSize: 12, color: '#6b7280' }}>par document</span></p>
-                <p style={{ fontSize: 12, color: '#374151', lineHeight: 1.6, margin: '0 0 0.5rem' }}>Le prix est affiché sur la fiche avant de remplir le document. Certains modèles sont gratuits.</p>
-                <a href="https://docutheque.cholez-pagotto.fr/tarifs" onClick={ouvrirSortie} style={{ marginTop: 'auto', display: 'inline-flex', alignItems: 'center', gap: '0.4rem', color: '#1a4fba', fontWeight: 700, fontSize: 13, textDecoration: 'none' }}>
-                  Voir le détail <ArrowRight size={14} />
-                </a>
-              </div>
-              <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: 12, padding: '1.25rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                <p style={{ color: '#1a4fba', fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', margin: 0 }}>Dossiers juridiques</p>
-                <p style={{ margin: 0 }}><span style={{ fontSize: '1.6rem', fontWeight: 800, color: '#0f2d6e' }}>dès 19 €</span> <span style={{ fontSize: 12, color: '#6b7280' }}>par dossier (PDF)</span></p>
-                <p style={{ fontSize: 12, color: '#374151', lineHeight: 1.6, margin: '0 0 0.5rem' }}>Dossiers thématiques en PDF, sommaire offert. Inclus dans l'abonnement Docuthèque.</p>
-                <a href="https://docutheque.cholez-pagotto.fr/tarifs" onClick={ouvrirSortie} style={{ marginTop: 'auto', display: 'inline-flex', alignItems: 'center', gap: '0.4rem', color: '#1a4fba', fontWeight: 700, fontSize: 13, textDecoration: 'none' }}>
-                  Voir le détail <ArrowRight size={14} />
-                </a>
-              </div>
-              <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: 12, padding: '1.25rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                <p style={{ color: '#1a4fba', fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', margin: 0 }}>Formalités d'entreprise</p>
-                <p style={{ margin: 0 }}><span style={{ fontSize: '1.6rem', fontWeight: 800, color: '#0f2d6e' }}>dès 29 €</span> <span style={{ fontSize: 12, color: '#6b7280' }}>prix fixe</span></p>
-                <p style={{ fontSize: 12, color: '#374151', lineHeight: 1.6, margin: '0 0 0.5rem' }}>Création, modification ou fermeture, déposées par un juriste formaliste. Frais officiels (greffe, INPI, annonce légale) en sus.</p>
-                <a href="https://docutheque.cholez-pagotto.fr/tarifs" onClick={ouvrirSortie} style={{ marginTop: 'auto', display: 'inline-flex', alignItems: 'center', gap: '0.4rem', color: '#1a4fba', fontWeight: 700, fontSize: 13, textDecoration: 'none' }}>
-                  Voir le détail <ArrowRight size={14} />
                 </a>
               </div>
             </div>
