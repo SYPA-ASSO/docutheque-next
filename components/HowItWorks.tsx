@@ -38,7 +38,7 @@ export default function HowItWorks() {
           <div style={{display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem'}}>
             {[
               { n: '1', title: 'Vous avez une question sur vos droits', text: "Relations difficiles avec votre employeur ou votre bailleur, licenciement, litige consommateur, clause contractuelle, obligation légale, droit du voisinage, relations entre professionnels... Posez votre question en langage courant, pas besoin de maîtriser le droit." },
-              { n: '2', title: 'Choisissez votre formule', text: "Abonné Optimal ? Une question est incluse chaque mois, non cumulable, les suivantes à 19 €. Sans abonnement ? Accédez directement à l'offre unitaire Information sur vos droits à 47 €, sans abonnement ni engagement." },
+              { n: '2', title: 'Choisissez votre formule', text: "Abonné Optimal ? Une question est incluse chaque mois, non cumulable, les suivantes à 9,90 €. Sans abonnement ? Accédez directement à l'offre unitaire Information sur vos droits à 47 €, sans abonnement ni engagement." },
               { n: '3', title: 'Recevez une réponse claire sous 24 à 48h', text: "Un juriste vous apporte une réponse pédagogique par écrit, sous 24 à 48h. Cette réponse constitue une information juridique au sens de la loi n°71-1130 du 31 décembre 1971 et ne constitue pas une consultation juridique personnalisée." },
             ].map((s) => (
               <div key={s.n} style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.5rem', display: 'flex', gap: '1rem', alignItems: 'flex-start'}}>

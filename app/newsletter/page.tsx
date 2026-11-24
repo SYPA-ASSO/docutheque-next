@@ -68,12 +68,12 @@ export default function Newsletter() {
                 },
                 {
                   titre: 'Nouveaux documents disponibles',
-                  desc: "Soyez alerté dès qu'un nouveau modèle de document est ajouté à la bibliothèque : contrats, mises en demeure, RGPD, statuts et plus.",
+                  desc: "Soyez alerté dès qu'un nouveau modèle de document est disponible : contrats, mises en demeure, RGPD, statuts et plus.",
                   icon: '📂'
                 },
                 {
                   titre: 'Offres et promotions',
-                  desc: "Offres ponctuelles sur les documents à l'unité, sur les abonnements, et réductions négociées auprès de services complémentaires.",
+                  desc: "Offres ponctuelles sur les modèles de documents, sur les abonnements, et réductions négociées auprès de services complémentaires.",
                   icon: '🎁'
                 },
                 {
@@ -105,7 +105,7 @@ export default function Newsletter() {
               <h2 style={{color: '#0f2d6e', fontSize: '1.3rem', fontWeight: '700', margin: 0}}>La newsletter exclusive abonnés</h2>
             </div>
             <p style={{color: '#6b7280', fontSize: '14px', lineHeight: '1.8', marginBottom: '1.5rem'}}>
-              Réservée aux abonnés Optimal, cette newsletter va plus loin : analyses approfondies, accès prioritaire aux nouveaux documents, offres tarifaires préférentielles et contenus réservés aux abonnés.
+              Réservée aux abonnés Optimal, cette newsletter va plus loin : analyses approfondies, nouveaux modèles en avant-première, offres tarifaires préférentielles et contenus réservés aux abonnés.
             </p>
 
             <div style={{background: 'white', border: '2px solid #d4a017', borderRadius: '14px', padding: '2rem', marginBottom: '1.5rem', position: 'relative', overflow: 'hidden'}}>
@@ -120,8 +120,8 @@ export default function Newsletter() {
                     icon: '🔍'
                   },
                   {
-                    titre: 'Accès prioritaire aux documents',
-                    desc: "Les nouveaux modèles sont signalés aux abonnés en avant-première, avant leur mise en ligne dans la bibliothèque.",
+                    titre: 'Nouveaux modèles en avant-première',
+                    desc: "Les nouveaux modèles de documents sont signalés aux abonnés en avant-première.",
                     icon: '⭐'
                   },
                   {
@@ -147,7 +147,7 @@ export default function Newsletter() {
               <div style={{borderTop: '1px solid #f3f4f6', paddingTop: '1.25rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '12px'}}>
                 <div>
                   <p style={{color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: '0 0 2px'}}>Abonnement Optimal à partir de 17,90 €/mois</p>
-                  <p style={{color: '#6b7280', fontSize: '12px', margin: 0}}>Newsletter exclusive incluse · 1 question juriste/mois · Bibliothèque complète</p>
+                  <p style={{color: '#6b7280', fontSize: '12px', margin: 0}}>Newsletter exclusive incluse · 1 question juriste/mois · Tous les modèles inclus</p>
                 </div>
                 <a href="/tarifs" style={{display: 'inline-block', background: 'linear-gradient(135deg, #b8860b 0%, #d4a017 50%, #b8860b 100%)', color: 'white', padding: '10px 24px', borderRadius: '8px', fontSize: '13px', fontWeight: '700', textDecoration: 'none', whiteSpace: 'nowrap'}}>
                   Voir l'offre Optimal →

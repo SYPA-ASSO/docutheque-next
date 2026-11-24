@@ -10,11 +10,7 @@ export default function FAQ() {
     },
     {
       q: "Quelle est la différence entre un modèle gratuit et un modèle Optimal ?",
-      a: "Les modèles gratuits sont fournis sur demande : indiquez le modèle souhaité depuis la page Contact. L'abonnement Optimal débloque la bibliothèque complète, les notices explicatives des documents, les fiches pédagogiques de vulgarisation juridique et une question incluse par mois sous 24 à 48h."
-    },
-    {
-      q: "Qu'est-ce que la Docuthèque ?",
-      a: "La Docuthèque (docutheque.cholez-pagotto.fr) est l'espace du cabinet où le document est construit à partir de vos réponses à un questionnaire. Certains modèles sont gratuits avec un compte gratuit, les autres sont à partir de 0,99 € ou inclus dans l'abonnement de 149 € par an. Ce compte et cet abonnement sont distincts de ceux de cholez-pagotto.fr."
+      a: "L'accès gratuit donne accès à tous les documents disponibles en accès libre, en format DOCX. L'abonnement Optimal débloque la bibliothèque complète, les notices explicatives des documents, les fiches pédagogiques de vulgarisation juridique et une question incluse par mois sous 24 à 48h."
     },
     {
       q: "Puis-je modifier les documents après téléchargement ?",

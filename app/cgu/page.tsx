@@ -89,7 +89,7 @@ export default function CGU() {
               <section id="objet" style={cardstyle}>
                 <h2 style={h2style}>Article 2 : Objet et champ d'application</h2>
                 <p style={pstyle}>Les présentes CGU régissent l'accès et l'utilisation de la Plateforme ainsi que les relations contractuelles entre le Prestataire et tout Client, qu'il soit Consommateur ou Professionnel.</p>
-                <p style={pstyle}>Elles s'appliquent à l'ensemble des services proposés : compte gratuit, Abonnement Optimal, Service d'information juridique à l'unité et accompagnement à la création d'entreprise.</p>
+                <p style={pstyle}>Elles s'appliquent à l'ensemble des services proposés : accès gratuit aux contenus en accès libre, Abonnement Optimal, Service d'information juridique à l'unité et accompagnement à la création d'entreprise.</p>
                 <p style={pstyle}>Les présentes CGU prévalent sur tout autre document, sauf accord dérogatoire exprès et écrit du Prestataire. Elles sont conformes au droit français et au droit de l'Union européenne applicable, notamment :</p>
                 <ul style={ulstyle}>
                   <li>La Directive 2011/83/UE relative aux droits des consommateurs, telle que modifiée par la Directive 2019/2161, transposée par l'Ordonnance n°2021-1247 du 29 septembre 2021 ;</li>
@@ -127,8 +127,8 @@ export default function CGU() {
                 <h2 style={h2style}>Article 5 : Description des services</h2>
                 <div style={{display: 'flex', flexDirection: 'column', gap: '1rem'}}>
                   <div>
-                    <p style={h3style}>5.1 Compte gratuit</p>
-                    <p style={plastyle}>La création d'un compte gratuit donne accès à l'espace client, à l'achat de Contenus numériques à l'unité et à la newsletter. Les Contenus numériques gratuits, au format DOCX, sont fournis sur demande adressée au Prestataire, selon disponibilité. Cet accès est sans engagement et résiliable à tout moment.</p>
+                    <p style={h3style}>5.1 Accès gratuit</p>
+                    <p style={plastyle}>La création d'un compte gratuit donne accès aux Contenus numériques disponibles en accès libre, téléchargeables au format DOCX, ainsi qu'à la newsletter. Cet accès est sans engagement et résiliable à tout moment.</p>
                   </div>
                   <div>
                     <p style={h3style}>5.2 Abonnement Optimal Particulier</p>
@@ -187,7 +187,7 @@ export default function CGU() {
                     </thead>
                     <tbody>
                       {[
-                        ['Compte gratuit', 'Gratuit', 'Aucun'],
+                        ['Accès gratuit', 'Gratuit', 'Aucun'],
                         ['Abonnement Optimal Particulier mensuel', '17,90 €/mois', 'Aucun (résiliation 30 j)'],
                         ['Abonnement Optimal Particulier annuel', '149 €/an (soit 12,42 €/mois)', '12 mois'],
                         ['Abonnement Optimal Pro mensuel', '27,90 €/mois', 'Aucun (résiliation 30 j)'],

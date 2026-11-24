@@ -19,7 +19,7 @@
 - Conformité RGPD
 - Délégué à la Protection des Données (DPO)
 - Externalisation de la paie et de la DSN (voir paie-et-dsn.fr)
-- Modèles de documents juridiques rédigés et relus par un juriste : bibliothèque DOCX de cholez-pagotto.fr (catalogue, à l'unité ou abonnement Optimal, modèles gratuits sur demande) et Docuthèque (https://docutheque.cholez-pagotto.fr, documents construits par questionnaire, certains modèles gratuits avec un compte gratuit, abonnement de 149 € par an)
+- Bibliothèque de documents juridiques téléchargeables et personnalisables (catalogue)
 
 ## Cadre légal
 Les contenus de ce site relèvent de l'information juridique au sens de la loi n° 71-1130

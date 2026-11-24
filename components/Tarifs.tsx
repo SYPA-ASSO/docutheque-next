@@ -34,21 +34,21 @@ export default function Tarifs() {
           {/* GRATUIT */}
           <div style={{border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.5rem', display: 'flex', flexDirection: 'column'}}>
             <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px'}}>
-              <p style={{fontWeight: '600', color: '#0f2d6e', fontSize: '13px'}}>Compte gratuit</p>
+              <p style={{fontWeight: '600', color: '#0f2d6e', fontSize: '13px'}}>Accès gratuit</p>
               <span style={{background: '#f3f4f6', color: '#6b7280', fontSize: '10px', padding: '2px 8px', borderRadius: '20px'}}>Inscription gratuite</span>
             </div>
             <p style={{fontSize: '26px', fontWeight: '600', color: '#0f2d6e'}}>0 €</p>
             <p style={{color: '#6b7280', fontSize: '12px', marginBottom: '12px'}}>pour toujours</p>
             <div style={{borderTop: '1px solid #f3f4f6', margin: '0 0 12px'}}></div>
             <div style={{display: 'flex', flexDirection: 'column', gap: '7px', flex: 1}}>
-              <p style={{fontSize: '12px'}}><span style={{color: '#16a34a', marginRight: '5px'}}>✓</span>Modèles gratuits fournis sur demande, format DOCX</p>
+              <p style={{fontSize: '12px'}}><span style={{color: '#16a34a', marginRight: '5px'}}>✓</span>Documents en accès libre, format DOCX</p>
               <p style={{fontSize: '12px'}}><span style={{color: '#16a34a', marginRight: '5px'}}>✓</span>Documents supplémentaires à l'unité</p>
               <p style={{fontSize: '12px'}}><span style={{color: '#16a34a', marginRight: '5px'}}>✓</span>Newsletter juridique gratuite</p>
               <p style={{fontSize: '12px'}}><span style={{color: '#d1d5db', marginRight: '5px'}}>✗</span><span style={{color: '#9ca3af'}}>Bibliothèque complète</span></p>
               <p style={{fontSize: '12px'}}><span style={{color: '#d1d5db', marginRight: '5px'}}>✗</span><span style={{color: '#9ca3af'}}>Question juriste incluse</span></p>
             </div>
             <a href="/connexion" style={{display: 'block', width: '100%', marginTop: '14px', background: 'white', color: '#1a4fba', border: '1.5px solid #1a4fba', padding: '9px', borderRadius: '6px', fontSize: '12px', fontWeight: '500', cursor: 'pointer', textDecoration: 'none', textAlign: 'center', boxSizing: 'border-box'}}>
-              Créer mon compte gratuit
+              Accéder gratuitement
             </a>
           </div>
 

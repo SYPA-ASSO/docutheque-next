@@ -87,7 +87,7 @@ const faqCatalogue = [
   { q: "Sous quel format les documents sont-ils livrés ?", r: "Tous les modèles sont fournis au format DOCX (Word), téléchargeables et personnalisables. Vous les complétez et les adaptez librement à votre situation depuis votre traitement de texte habituel." },
   { q: "Quelle différence entre la Docuthèque et la bibliothèque de modèles ?", r: "Ce sont deux espaces distincts, chacun avec son compte et son abonnement : l'abonnement Optimal se souscrit sur ce site, l'abonnement de la Docuthèque (149 € par an) sur docutheque.cholez-pagotto.fr. Optimal inclut des questions au juriste chaque mois ; l'abonnement de la Docuthèque donne accès aux questions à 19 € au lieu de 47 €. Sur la Docuthèque, vous répondez à un questionnaire et le document est construit selon votre situation : des clauses apparaissent ou disparaissent, puis vous le téléchargez en Word. La bibliothèque propose des modèles DOCX prêts à personnaliser vous-même, à l'unité ou par l'abonnement Optimal." },
   { q: "Qui rédige les modèles ?", r: "Les modèles sont élaborés et relus par notre juriste formaliste, sur la base de références juridiques sourcées et vérifiées. Ils ne sont pas produits par un outil automatisé. Chaque fiche indique les textes sur lesquels le modèle repose." },
-  { q: "Existe-t-il des modèles gratuits ?", r: "Oui, dans les deux espaces. Sur la Docuthèque, certains modèles sont gratuits avec un compte gratuit. Dans la bibliothèque de cholez-pagotto.fr, les modèles gratuits sont fournis sur demande : indiquez le modèle souhaité au regard de votre besoin depuis la page Contact. S'il n'existe pas de modèle gratuit correspondant, nous vous indiquons le modèle payant adapté, ou le cabinet peut envisager de le créer." },
+  { q: "Existe-t-il des modèles gratuits ?", r: "Les modèles gratuits sont fournis sur demande. Indiquez le modèle souhaité au regard de votre besoin depuis la page Contact. S'il n'existe pas de modèle gratuit correspondant, nous vous indiquons le modèle payant adapté, ou le cabinet peut envisager de le créer." },
   { q: "Puis-je acheter un document seul, sans abonnement ?", r: "Oui. Chaque document payant est disponible à l'unité. Le prix est affiché sur la fiche avant tout achat, avec téléchargement immédiat après paiement. Si vos besoins sont récurrents, l'abonnement Optimal donne accès à toute la bibliothèque." },
   { q: "Que comprend l'abonnement Optimal ?", r: "L'abonnement Optimal donne accès à toute la bibliothèque de modèles DOCX, aux notices explicatives et fiches pédagogiques, et inclut une question juriste par mois non cumulable, traitée sous 24 à 48 h. La formule Particulier est à 17,90 €/mois ou 149 €/an, la formule Pro à 27,90 €/mois ou 249 €/an avec deux questions par mois." },
   { q: "Les modèles remplacent-ils l'avis d'un professionnel ?", r: "Non. Les modèles sont des documents de référence à usage général, conçus pour couvrir les situations courantes. Ils constituent une information documentaire et ne remplacent pas une consultation adaptée à votre situation, laquelle relève de l'avocat. Pour un cas particulier ou un enjeu important, notre juriste peut vous informer sur les points de vigilance ou vous orienter." },
@@ -338,7 +338,7 @@ export default function CataloguePage() {
             </div>
 
             <p style={{ color: 'rgba(255,255,255,0.45)', fontSize: 11, marginTop: 14 }}>
-              Rédigés et relus par un juriste · Word modifiable · Bases légales citées
+              Questionnaire guidé · Word modifiable · Modèles gratuits sur demande
             </p>
           </div>
         </section>
@@ -365,7 +365,7 @@ export default function CataloguePage() {
             <div style={{ background: 'white', border: '1px solid #e5e7eb', borderLeft: '4px solid #1a4fba', borderRadius: 10, padding: '1.1rem 1.4rem', marginBottom: '1.75rem' }}>
               <p style={{ fontSize: 11, fontWeight: 700, color: '#1a4fba', textTransform: 'uppercase', letterSpacing: '0.06em', margin: '0 0 6px' }}>En résumé</p>
               <p style={{ fontSize: 14, color: '#374151', lineHeight: 1.7, margin: 0 }}>
-                Le cabinet propose des modèles de documents juridiques, rédigés et relus par un juriste, dans deux espaces distincts. Sur la Docuthèque (docutheque.cholez-pagotto.fr), le document est construit à partir de vos réponses à un questionnaire : certains modèles sont gratuits avec un compte gratuit, les autres sont à partir de 0,99 € ou inclus dans l'abonnement de 149 € par an. Dans la bibliothèque de cholez-pagotto.fr, les modèles DOCX sont à personnaliser vous-même, à l'unité ou par l'abonnement Optimal (dès 17,90 € par mois) ; les modèles gratuits y sont fournis sur demande. Il s'agit d'information juridique, pas d'une consultation.
+                Le cabinet propose des modèles de documents juridiques rédigés et relus par un juriste, au format Word. Deux façons de les obtenir : compléter un document par questionnaire sur la Docuthèque, ou accéder à la bibliothèque de modèles par l'abonnement Optimal ou l'achat à l'unité. Les modèles gratuits sont fournis sur demande. Il s'agit d'information juridique, pas d'une consultation.
               </p>
             </div>
             <h2 style={{ fontSize: '1.4rem', fontWeight: 700, color: '#0f2d6e', marginBottom: '1.25rem' }}>
@@ -421,7 +421,7 @@ export default function CataloguePage() {
               <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: 12, padding: '1.25rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                 <p style={{ color: '#1a4fba', fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', margin: 0 }}>Documents à l'unité</p>
                 <p style={{ margin: 0 }}><span style={{ fontSize: '1.6rem', fontWeight: 800, color: '#0f2d6e' }}>dès 0,99 €</span> <span style={{ fontSize: 12, color: '#6b7280' }}>par document</span></p>
-                <p style={{ fontSize: 12, color: '#374151', lineHeight: 1.6, margin: '0 0 0.5rem' }}>Le prix est affiché sur la fiche avant de remplir le document. Certains modèles sont gratuits avec un compte gratuit.</p>
+                <p style={{ fontSize: 12, color: '#374151', lineHeight: 1.6, margin: '0 0 0.5rem' }}>Le prix est affiché sur la fiche avant de remplir le document. Certains modèles sont gratuits.</p>
                 <a href="https://docutheque.cholez-pagotto.fr/tarifs" onClick={ouvrirSortie} style={{ marginTop: 'auto', display: 'inline-flex', alignItems: 'center', gap: '0.4rem', color: '#1a4fba', fontWeight: 700, fontSize: 13, textDecoration: 'none' }}>
                   Voir le détail <ArrowRight size={14} />
                 </a>

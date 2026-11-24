@@ -21,7 +21,7 @@ export default function TarifsClient() {
     "mainEntity": {
       "@type": "ItemList",
       "itemListElement": [
-        { "@type": "Offer", "name": "Compte gratuit", "price": "0", "priceCurrency": "EUR", "description": "Espace client, achat de documents à l'unité, newsletter. Modèles gratuits fournis sur demande." },
+        { "@type": "Offer", "name": "Accès Gratuit", "price": "0", "priceCurrency": "EUR", "description": "Accès gratuit à tous les documents disponibles en accès libre, en format DOCX." },
         { "@type": "Offer", "name": "Abonnement Optimal Particulier", "price": "17.90", "priceCurrency": "EUR", "description": "Accès à toute la bibliothèque de documents juridiques en DOCX, notices explicatives, fiches pédagogiques, 1 question juriste incluse par mois non cumulable sous 24 à 48h, support prioritaire. Sans engagement mensuel ou 149 €/an." },
         { "@type": "Offer", "name": "Abonnement Optimal Pro", "price": "27.90", "priceCurrency": "EUR", "description": "Accès à toute la bibliothèque, 2 questions juriste incluses par mois, alertes légales événementielles, support prioritaire. Sans engagement mensuel ou 249 €/an." },
         { "@type": "Offer", "name": "Information sur vos droits", "price": "47", "priceCurrency": "EUR", "description": "Réponse pédagogique rédigée par un juriste sous 24 à 48h ouvrées, sans abonnement ni engagement." },
@@ -95,11 +95,11 @@ export default function TarifsClient() {
           {/* COMMENT FONCTIONNE L ACCES */}
           <div style={{ maxWidth: '860px', margin: '0 auto 2.5rem', background: 'white', border: '1px solid #e5e7eb', borderRadius: '14px', padding: '1.75rem' }}>
             <h2 style={{ fontSize: '1.1rem', fontWeight: '700', color: '#0f2d6e', margin: '0 0 4px', textAlign: 'center' }}>Comment fonctionne l'accès aux documents&nbsp;?</h2>
-            <p style={{ color: '#6b7280', fontSize: '13px', textAlign: 'center', margin: '0 0 18px' }}>Trois manières d'accéder aux modèles de la bibliothèque, selon vos besoins. L'abonnement de la Docuthèque (149 € par an) est distinct : il se souscrit sur docutheque.cholez-pagotto.fr, avec son propre compte.</p>
+            <p style={{ color: '#6b7280', fontSize: '13px', textAlign: 'center', margin: '0 0 18px' }}>Trois manières d'accéder à nos modèles, selon vos besoins.</p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
               <div style={{ borderLeft: '3px solid #16a34a', background: '#f0fdf4', borderRadius: '8px', padding: '12px 14px' }}>
-                <p style={{ margin: '0 0 2px', fontWeight: '700', color: '#15803d', fontSize: '13px' }}>Compte gratuit</p>
-                <p style={{ margin: 0, color: '#374151', fontSize: '13px', lineHeight: '1.6' }}>La création de compte est gratuite. Elle donne accès à votre espace client, à l'achat de documents à l'unité et à la newsletter. Les modèles gratuits sont fournis sur demande.</p>
+                <p style={{ margin: '0 0 2px', fontWeight: '700', color: '#15803d', fontSize: '13px' }}>Accès gratuit</p>
+                <p style={{ margin: 0, color: '#374151', fontSize: '13px', lineHeight: '1.6' }}>La création de compte est gratuite. Elle donne accès au téléchargement de tous les documents proposés en accès libre. Les autres restent consultables et disponibles à l'achat à l'unité.</p>
               </div>
               <div style={{ borderLeft: '3px solid #d97706', background: '#fffbeb', borderRadius: '8px', padding: '12px 14px' }}>
                 <p style={{ margin: '0 0 2px', fontWeight: '700', color: '#b45309', fontSize: '13px' }}>Documents à l'unité</p>
@@ -128,12 +128,12 @@ export default function TarifsClient() {
 
             {/* GRATUIT */}
             <div style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '14px', padding: '1.5rem', display: 'flex', flexDirection: 'column'}}>
-              <p style={{fontSize: '11px', fontWeight: '600', color: '#6b7280', letterSpacing: '0.08em', margin: 0}}>COMPTE GRATUIT</p>
+              <p style={{fontSize: '11px', fontWeight: '600', color: '#6b7280', letterSpacing: '0.08em', margin: 0}}>ACCÈS GRATUIT</p>
               <div style={{margin: '10px 0 4px'}}><span style={{fontSize: '2rem', fontWeight: '700', color: '#0f2d6e'}}>0 €</span></div>
               <p style={{color: '#6b7280', fontSize: '11px', marginBottom: '16px'}}>Inscription gratuite requise</p>
               <div style={{display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '20px', flex: 1}}>
                 {[
-                  'Modèles gratuits fournis sur demande, format DOCX',
+                  'Accès aux documents en accès libre, format DOCX',
                   "Documents supplémentaires disponibles à l'unité",
                   'Newsletter gratuite',
                 ].map((item, i) => (
@@ -249,15 +249,15 @@ export default function TarifsClient() {
               <table style={{width: '100%', borderCollapse: 'collapse', fontSize: '12.5px', minWidth: 760}}>
                 <thead>
                   <tr>
-                    {['', 'Compte gratuit', 'Optimal Particulier', 'Optimal Pro', "Question à l'unité"].map((h, i) => (
+                    {['', 'Accès gratuit', 'Optimal Particulier', 'Optimal Pro', "Question à l'unité"].map((h, i) => (
                       <th key={i} style={{padding: '12px 14px', textAlign: i === 0 ? 'left' : 'center', background: i === 2 ? '#0f2d6e' : '#f8fafc', color: i === 2 ? 'white' : '#0f2d6e', fontSize: '12px', fontWeight: 700, borderBottom: '1px solid #e5e7eb', whiteSpace: 'nowrap'}}>{h}</th>
                     ))}
                   </tr>
                 </thead>
                 <tbody>
                   {[
-                    ['Usage type', "Créer son espace client et acheter à l'unité", 'Particulier qui veut toute la bibliothèque et un fil direct avec le juriste', 'Professionnel, association ou collectivité', "Besoin ponctuel d'éclairage, sans abonnement"],
-                    ['Modèles gratuits (DOCX)', 'Sur demande', '✓', '✓', '-'],
+                    ['Usage type', 'Découvrir et télécharger les documents en accès libre', 'Particulier qui veut toute la bibliothèque et un fil direct avec le juriste', 'Professionnel, association ou collectivité', "Besoin ponctuel d'éclairage, sans abonnement"],
+                    ['Documents en accès libre (DOCX)', '✓', '✓', '✓', '-'],
                     ['Bibliothèque complète, notices et fiches', "À l'unité, selon le document", '✓ incluse', '✓ incluse', '-'],
                     ['Question à un juriste', '47 € la question', '1 incluse par mois (non cumulable)', '2 incluses par mois (non cumulables)', '47 € la question'],
                     ['Question supplémentaire', '47 €', '19 €', '19 €', '47 €'],
