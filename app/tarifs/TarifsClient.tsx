@@ -21,7 +21,7 @@ export default function TarifsClient() {
     "mainEntity": {
       "@type": "ItemList",
       "itemListElement": [
-        { "@type": "Offer", "name": "Accès Gratuit", "price": "0", "priceCurrency": "EUR", "description": "Compte gratuit : demande de modèles de documents en DOCX (modèles gratuits remis aussitôt, autres modèles payables à l'unité), newsletter gratuite." },
+        { "@type": "Offer", "name": "Accès Gratuit", "price": "0", "priceCurrency": "EUR", "description": "Compte gratuit : demande de modèles de documents en DOCX (modèles gratuits accessibles depuis la Docuthèque, autres modèles sur demande), newsletter gratuite." },
         { "@type": "Offer", "name": "Abonnement Optimal Particulier", "price": "17.90", "priceCurrency": "EUR", "description": "Tous les modèles de documents demandés au cabinet inclus (DOCX), notices explicatives, fiches pédagogiques, 1 question juriste incluse par mois non cumulable sous 24 à 48h, support prioritaire. Sans engagement mensuel ou 149 €/an." },
         { "@type": "Offer", "name": "Abonnement Optimal Pro", "price": "27.90", "priceCurrency": "EUR", "description": "Tous les modèles de documents inclus, 2 questions juriste incluses par mois, alertes légales événementielles, support prioritaire. Sans engagement mensuel ou 249 €/an." },
         { "@type": "Offer", "name": "Information sur vos droits", "price": "47", "priceCurrency": "EUR", "description": "Réponse pédagogique rédigée par un juriste sous 24 à 48h ouvrées, sans abonnement ni engagement." },
@@ -57,7 +57,7 @@ export default function TarifsClient() {
     },
     {
       q: "Puis-je cumuler les questions incluses dans mon abonnement Optimal ?",
-      a: "Non. Les questions mensuelles incluses dans l'abonnement Optimal ne sont pas cumulables d'un mois sur l'autre. Si vous avez besoin de poser des questions supplémentaires dans le même mois, elles sont disponibles à 14,90 € l'unité pour les abonnés. Sans abonnement, chaque question est à 47 €. Si vous posez régulièrement des questions, l'abonnement Optimal devient plus économique dès la deuxième question mensuelle."
+      a: "Non. Les questions mensuelles incluses dans l'abonnement Optimal ne sont pas cumulables d'un mois sur l'autre. Si vous avez besoin de poser des questions supplémentaires dans le même mois, elles sont disponibles à 19 € l'unité pour les abonnés. Sans abonnement, chaque question est à 47 €. Si vous posez régulièrement des questions, l'abonnement Optimal devient plus économique dès la deuxième question mensuelle."
     },
   ]
 
@@ -99,7 +99,7 @@ export default function TarifsClient() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
               <div style={{ borderLeft: '3px solid #16a34a', background: '#f0fdf4', borderRadius: '8px', padding: '12px 14px' }}>
                 <p style={{ margin: '0 0 2px', fontWeight: '700', color: '#15803d', fontSize: '13px' }}>Modèles gratuits</p>
-                <p style={{ margin: 0, color: '#374151', fontSize: '13px', lineHeight: '1.6' }}>La création de compte est gratuite. Depuis votre espace client, vous décrivez le document dont vous avez besoin : si le cabinet dispose d'un modèle gratuit, il vous est remis aussitôt.</p>
+                <p style={{ margin: 0, color: '#374151', fontSize: '13px', lineHeight: '1.6' }}>La création de compte est gratuite. Les modèles gratuits sont accessibles depuis la Docuthèque (docutheque.cholez-pagotto.fr), avec son propre compte gratuit. Les autres modèles se demandent depuis votre espace client.</p>
               </div>
               <div style={{ borderLeft: '3px solid #d97706', background: '#fffbeb', borderRadius: '8px', padding: '12px 14px' }}>
                 <p style={{ margin: '0 0 2px', fontWeight: '700', color: '#b45309', fontSize: '13px' }}>Modèles à l'unité</p>
@@ -134,7 +134,7 @@ export default function TarifsClient() {
               <div style={{display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '20px', flex: 1}}>
                 {[
                   'Demande de modèles de documents, format DOCX',
-                  "Modèles gratuits remis aussitôt, autres modèles à l'unité",
+                  "Modèles gratuits accessibles depuis la Docuthèque, autres modèles sur demande",
                   'Newsletter gratuite',
                 ].map((item, i) => (
                   <div key={i} style={{display: 'flex', gap: '8px', alignItems: 'flex-start'}}>
@@ -164,7 +164,7 @@ export default function TarifsClient() {
                   "Tous les modèles de documents inclus (DOCX)",
                   'Notices et fiches pédagogiques',
                   '1 question juriste/mois · non cumulable',
-                  '14,90 € par question supplémentaire',
+                  '19 € par question supplémentaire',
                   'Newsletter abonnés',
                   'Orientation vers un avocat ou notaire partenaire *',
                   'Support prioritaire par mail',
@@ -194,7 +194,7 @@ export default function TarifsClient() {
                   "Tous les modèles de documents inclus (DOCX)",
                   'Notices et fiches pédagogiques',
                   '2 questions juriste/mois · non cumulables',
-                  '14,90 € par question supplémentaire',
+                  '19 € par question supplémentaire',
                   'Alertes légales événementielles',
                   'Orientation vers un avocat ou notaire partenaire *',
                   'Support prioritaire par mail',
@@ -228,7 +228,7 @@ export default function TarifsClient() {
               </div>
               <div style={{background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '8px', padding: '8px 10px', marginBottom: '16px'}}>
                 <p style={{color: '#1e3a5f', fontSize: '10px', lineHeight: '1.6', margin: 0}}>
-                  Abonnés Optimal : 14,90 € par question supplémentaire (au lieu de 47 €).
+                  Abonnés Optimal : 19 € par question supplémentaire (au lieu de 47 €).
                 </p>
               </div>
               <a href="/information-sur-vos-droits" style={{display: 'block', width: '100%', padding: '10px', borderRadius: '8px', background: '#1a4fba', color: 'white', fontSize: '12px', fontWeight: '600', cursor: 'pointer', textDecoration: 'none', textAlign: 'center', boxSizing: 'border-box'}}>Poser ma question</a>
@@ -257,10 +257,10 @@ export default function TarifsClient() {
                 <tbody>
                   {[
                     ['Usage type', 'Demander un modèle, gratuit ou payant à l\'unité', 'Particulier qui veut tous les modèles inclus et un fil direct avec le juriste', 'Professionnel, association ou collectivité', "Besoin ponctuel d'éclairage, sans abonnement"],
-                    ['Modèles gratuits sur demande (DOCX)', '✓', '✓', '✓', '-'],
+                    ['Modèles gratuits (depuis la Docuthèque)', '✓', '✓', '✓', '-'],
                     ['Modèles payants, notices et fiches', "À l'unité, prix indiqué avant paiement", '✓ inclus', '✓ inclus', '-'],
                     ['Question à un juriste', '47 € la question', '1 incluse par mois (non cumulable)', '2 incluses par mois (non cumulables)', '47 € la question'],
-                    ['Question supplémentaire', '47 €', '14,90 €', '14,90 €', '47 €'],
+                    ['Question supplémentaire', '47 €', '19 €', '19 €', '47 €'],
                     ['Alertes légales événementielles', '-', '-', '✓', '-'],
                     ['Orientation avocat ou notaire partenaire *', '-', '✓', '✓', '-'],
                     ['Support prioritaire par mail', '-', '✓', '✓', '-'],

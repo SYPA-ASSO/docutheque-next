@@ -127,18 +127,18 @@ export default function CGU() {
                 <h2 style={h2style}>Article 5 : Description des services</h2>
                 <div style={{display: 'flex', flexDirection: 'column', gap: '1rem'}}>
                   <div>
-                    <p style={h3style}>5.1 Accès gratuit</p>
-                    <p style={plastyle}>La création d'un compte gratuit donne accès aux Contenus numériques disponibles en accès libre, téléchargeables au format DOCX, ainsi qu'à la newsletter. Cet accès est sans engagement et résiliable à tout moment.</p>
+                    <p style={h3style}>5.1 Compte gratuit</p>
+                    <p style={plastyle}>La création d'un compte gratuit sur le site du cabinet donne accès à l'espace client, à la demande de modèles de documents et à la newsletter. Les modèles gratuits sont accessibles depuis la Docuthèque (docutheque.cholez-pagotto.fr), qui dispose de son propre compte gratuit et de ses propres conditions. Les abonnements Optimal du cabinet et l'abonnement de la Docuthèque sont distincts. Cet accès est sans engagement et résiliable à tout moment.</p>
                   </div>
                   <div>
                     <p style={h3style}>5.2 Abonnement Optimal Particulier</p>
                     <p style={pstyle}>L'Abonnement Optimal Particulier donne accès à l'intégralité de la bibliothèque de Contenus numériques de la Plateforme et inclut une question mensuelle au Service d'information juridique. Cette question est strictement <strong>non cumulable d'un mois sur l'autre</strong> : toute question non utilisée au cours d'un mois civil est définitivement perdue et ne peut être reportée.</p>
-                    <p style={plastyle}>Des questions supplémentaires peuvent être acquises par l'abonné au tarif préférentiel de <strong>14,90 €</strong> par question.</p>
+                    <p style={plastyle}>Des questions supplémentaires peuvent être acquises par l'abonné au tarif préférentiel de <strong>19 €</strong> par question.</p>
                   </div>
                   <div>
                     <p style={h3style}>5.3 Abonnement Optimal Pro</p>
                     <p style={pstyle}>L'Abonnement Optimal Pro donne accès à l'intégralité de la bibliothèque de Contenus numériques de la Plateforme et inclut deux questions mensuelles au Service d'information juridique. Ces questions sont strictement <strong>non cumulables d'un mois sur l'autre</strong>.</p>
-                    <p style={plastyle}>Des questions supplémentaires peuvent être acquises par l'abonné au tarif préférentiel de <strong>14,90 €</strong> par question. L'Abonnement Optimal Pro inclut en outre l'accès aux alertes légales événementielles publiées par le Prestataire.</p>
+                    <p style={plastyle}>Des questions supplémentaires peuvent être acquises par l'abonné au tarif préférentiel de <strong>19 €</strong> par question. L'Abonnement Optimal Pro inclut en outre l'accès aux alertes légales événementielles publiées par le Prestataire.</p>
                   </div>
                   <div>
                     <p style={h3style}>5.4 Service d'information juridique à l'unité</p>
@@ -192,7 +192,7 @@ export default function CGU() {
                         ['Abonnement Optimal Particulier annuel', '149 €/an (soit 12,42 €/mois)', '12 mois'],
                         ['Abonnement Optimal Pro mensuel', '27,90 €/mois', 'Aucun (résiliation 30 j)'],
                         ['Abonnement Optimal Pro annuel', '249 €/an (soit 20,75 €/mois)', '12 mois'],
-                        ['Question supplémentaire (abonné)', '14,90 €/question', 'Aucun'],
+                        ['Question supplémentaire (abonné)', '19 €/question', 'Aucun'],
                         ['Information sur vos droits (unitaire)', '47 €/question', 'Aucun'],
                         ['Conseil en assurances - Particulier', '90 €/forfait', 'Aucun'],
                         ['Conseil en assurances - Pro / Association', '150 €/forfait', 'Aucun'],

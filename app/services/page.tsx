@@ -75,7 +75,7 @@ const services = [
       "Délai indicatif de 24 à 48h ouvrées",
       "Orientation vers le professionnel compétent si nécessaire",
     ],
-    tarif: "47 € à l'unité · Abonnés Optimal (dès 17,90 €/mois) : 1 question gratuite/mois, puis 14,90 €",
+    tarif: "47 € à l'unité · Abonnés Optimal (dès 17,90 €/mois) : 1 question gratuite/mois, puis 19 €",
     lien: "/information-sur-vos-droits",
     disponible: true,
     cta: "En savoir plus",

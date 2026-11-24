@@ -41,7 +41,7 @@ export default function Tarifs() {
             <p style={{color: '#6b7280', fontSize: '12px', marginBottom: '12px'}}>pour toujours</p>
             <div style={{borderTop: '1px solid #f3f4f6', margin: '0 0 12px'}}></div>
             <div style={{display: 'flex', flexDirection: 'column', gap: '7px', flex: 1}}>
-              <p style={{fontSize: '12px'}}><span style={{color: '#16a34a', marginRight: '5px'}}>✓</span>Documents en accès libre, format DOCX</p>
+              <p style={{fontSize: '12px'}}><span style={{color: '#16a34a', marginRight: '5px'}}>✓</span>Modèles gratuits accessibles depuis la Docuthèque</p>
               <p style={{fontSize: '12px'}}><span style={{color: '#16a34a', marginRight: '5px'}}>✓</span>Documents supplémentaires à l'unité</p>
               <p style={{fontSize: '12px'}}><span style={{color: '#16a34a', marginRight: '5px'}}>✓</span>Newsletter juridique gratuite</p>
               <p style={{fontSize: '12px'}}><span style={{color: '#d1d5db', marginRight: '5px'}}>✗</span><span style={{color: '#9ca3af'}}>Bibliothèque complète</span></p>
@@ -74,7 +74,7 @@ export default function Tarifs() {
               <p style={{fontSize: '12px', color: 'rgba(255,255,255,0.85)'}}><span style={{color: '#93c5fd', marginRight: '5px'}}>✓</span>Bibliothèque complète DOCX</p>
               <p style={{fontSize: '12px', color: 'rgba(255,255,255,0.85)'}}><span style={{color: '#93c5fd', marginRight: '5px'}}>✓</span>Notices et fiches pédagogiques</p>
               <p style={{fontSize: '12px', color: 'rgba(255,255,255,0.85)'}}><span style={{color: '#93c5fd', marginRight: '5px'}}>✓</span>1 question juriste/mois · non cumulable</p>
-              <p style={{fontSize: '11px', color: 'rgba(255,255,255,0.55)', paddingLeft: '16px'}}>puis 14,90 € par question supplémentaire</p>
+              <p style={{fontSize: '11px', color: 'rgba(255,255,255,0.55)', paddingLeft: '16px'}}>puis 19 € par question supplémentaire</p>
               <p style={{fontSize: '12px', color: 'rgba(255,255,255,0.85)'}}><span style={{color: '#93c5fd', marginRight: '5px'}}>✓</span>Newsletter abonnés</p>
               <p style={{fontSize: '12px', color: 'rgba(255,255,255,0.85)'}}><span style={{color: '#93c5fd', marginRight: '5px'}}>✓</span>Support prioritaire</p>
             </div>
@@ -105,7 +105,7 @@ export default function Tarifs() {
               <p style={{fontSize: '12px'}}><span style={{color: '#b8860b', marginRight: '5px'}}>✓</span>Bibliothèque complète DOCX</p>
               <p style={{fontSize: '12px'}}><span style={{color: '#b8860b', marginRight: '5px'}}>✓</span>Notices et fiches pédagogiques</p>
               <p style={{fontSize: '12px'}}><span style={{color: '#b8860b', marginRight: '5px'}}>✓</span>2 questions juriste/mois · non cumulables</p>
-              <p style={{fontSize: '11px', color: '#9ca3af', paddingLeft: '16px'}}>puis 14,90 € par question supplémentaire</p>
+              <p style={{fontSize: '11px', color: '#9ca3af', paddingLeft: '16px'}}>puis 19 € par question supplémentaire</p>
               <p style={{fontSize: '12px'}}><span style={{color: '#b8860b', marginRight: '5px'}}>✓</span>Alertes légales événementielles</p>
               <p style={{fontSize: '12px'}}><span style={{color: '#b8860b', marginRight: '5px'}}>✓</span>Support prioritaire</p>
             </div>
@@ -143,7 +143,7 @@ export default function Tarifs() {
         {/* NOTE */}
         <div style={{maxWidth: '1100px', margin: '1.5rem auto 0', background: '#fff7ed', border: '1px solid #fed7aa', borderRadius: '10px', padding: '0.875rem 1.25rem'}}>
           <p style={{color: '#92400e', fontSize: '11px', lineHeight: '1.7', margin: 0}}>
-            <strong>Information importante :</strong> L'abonnement mensuel (Particulier ou Pro) est sans engagement de durée, résiliable avec 30 jours de préavis. L'abonnement annuel bénéficie de 3 mois offerts en contrepartie d'un engagement de 12 mois, renouvelable automatiquement sauf résiliation adressée par écrit au moins 30 jours avant l'échéance. Les questions mensuelles incluses sont non cumulables d'un mois sur l'autre. Questions supplémentaires : 14,90 € pour les abonnés, 47 € sans abonnement. <a href="/tarifs" style={{color: '#92400e', fontWeight: '600'}}>Voir les tarifs complets →</a>
+            <strong>Information importante :</strong> L'abonnement mensuel (Particulier ou Pro) est sans engagement de durée, résiliable avec 30 jours de préavis. L'abonnement annuel bénéficie de 3 mois offerts en contrepartie d'un engagement de 12 mois, renouvelable automatiquement sauf résiliation adressée par écrit au moins 30 jours avant l'échéance. Les questions mensuelles incluses sont non cumulables d'un mois sur l'autre. Questions supplémentaires : 19 € pour les abonnés, 47 € sans abonnement. <a href="/tarifs" style={{color: '#92400e', fontWeight: '600'}}>Voir les tarifs complets →</a>
           </p>
         </div>
 

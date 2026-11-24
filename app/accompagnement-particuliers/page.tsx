@@ -241,7 +241,7 @@ export default function AccompagnementParticuliersPage() {
                   {[
                     "Tous les modèles de documents inclus (DOCX)",
                     "1 question juriste / mois incluse",
-                    `Questions supplémentaires à 14,90 €`,
+                    `Questions supplémentaires à 19 €`,
                     "Mises à jour législatives incluses"
                   ].map((item, j) => (
                     <li key={j} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem', fontSize: 12, color: 'rgba(255,255,255,0.85)' }}>

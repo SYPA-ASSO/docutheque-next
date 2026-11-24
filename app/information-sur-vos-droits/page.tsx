@@ -61,7 +61,7 @@ const schema = {
           "name": "Quelle est la différence avec l'Abonnement Optimal ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "L'Abonnement Optimal inclut une question mensuelle au tarif préférentiel de 14,90 € pour les questions supplémentaires, plus les modèles de documents que vous demandez au cabinet. Si vous posez régulièrement des questions, l'abonnement devient plus économique dès la deuxième question mensuelle."
+            "text": "L'Abonnement Optimal inclut une question mensuelle au tarif préférentiel de 19 € pour les questions supplémentaires, plus les modèles de documents que vous demandez au cabinet. Si vous posez régulièrement des questions, l'abonnement devient plus économique dès la deuxième question mensuelle."
           }
         },
         {
@@ -168,7 +168,11 @@ const faqs = [
   },
   {
     q: "Quelle est la différence avec l'Abonnement Optimal ?",
-    a: "L'Abonnement Optimal inclut une question mensuelle, plus les modèles de documents (DOCX) que vous demandez au cabinet. Les questions supplémentaires sont à 14,90 € pour les abonnés au lieu de 47 €. Si vous posez régulièrement des questions, l'abonnement devient plus économique dès la deuxième question mensuelle."
+    a: "L'Abonnement Optimal inclut une question mensuelle, plus les modèles de documents (DOCX) que vous demandez au cabinet. Les questions supplémentaires sont à 19 € pour les abonnés au lieu de 47 €. Si vous posez régulièrement des questions, l'abonnement devient plus économique dès la deuxième question mensuelle."
+  },
+  {
+    q: "L'abonnement de la Docuthèque est-il le même que l'Abonnement Optimal ?",
+    a: "Non. La Docuthèque (docutheque.cholez-pagotto.fr) a son propre compte et son propre abonnement à 149 € par an, distincts de l'Abonnement Optimal du cabinet. Dans les deux cas, les questions supplémentaires sont à 19 € au lieu de 47 €."
   },
   {
     q: "Ma question est-elle confidentielle ?",
@@ -415,6 +419,25 @@ export default function InformationDroits() {
                   </summary>
                   <p style={{color: '#374151', fontSize: '13px', lineHeight: '1.75', marginTop: '12px', marginBottom: 0}}>{faq.a}</p>
                 </details>
+              ))}
+            </div>
+          </section>
+
+          {/* OFFRES POSSIBLES */}
+          <section>
+            <h2 style={{fontSize: '1.4rem', fontWeight: 700, color: '#0f2d6e', marginBottom: '0.5rem'}}>Les offres possibles</h2>
+            <p style={{fontSize: '13px', color: '#6b7280', margin: '0 0 1.5rem'}}>Trois façons de poser votre question, selon votre besoin. Les abonnements du cabinet et de la Docuthèque sont distincts.</p>
+            <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.2rem'}}>
+              {[
+                { prix: '47 €', titre: 'Une question, à l\'unité', texte: "Sans abonnement. Réponse écrite d'un juriste sous 24 à 48h ouvrées." },
+                { prix: 'Dès 17,90 €/mois', titre: 'Abonnement Optimal du cabinet', texte: "1 question incluse par mois en Particulier, 2 en Pro, puis questions supplémentaires à 19 € au lieu de 47 €." },
+                { prix: '149 €/an', titre: 'Abonnement Docuthèque', texte: "Questions à 19 € au lieu de 47 €, avec tous les modèles payants et les packs de la Docuthèque. Compte et abonnement distincts de ceux du cabinet." },
+              ].map((o, i) => (
+                <div key={i} style={{background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.25rem'}}>
+                  <p style={{fontSize: '12px', fontWeight: 700, color: '#1a4fba', margin: '0 0 0.3rem'}}>{o.prix}</p>
+                  <h3 style={{fontSize: '0.95rem', fontWeight: 700, color: '#0f2d6e', margin: '0 0 0.4rem'}}>{o.titre}</h3>
+                  <p style={{fontSize: '12px', color: '#6b7280', lineHeight: 1.6, margin: 0}}>{o.texte}</p>
+                </div>
               ))}
             </div>
           </section>

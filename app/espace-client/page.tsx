@@ -656,17 +656,19 @@ export default function EspaceClient() {
   // Question incluse Optimal : 1 par mois calendaire, non cumulable.
   // On regarde si une question de type 'incluse' a deja ete creee ce mois-ci.
   const maintenant = new Date()
-  const questionIncluseUtilisee = questions.some(q => {
+  const quotaIncluses = estPro ? 2 : 1
+  const nbIncluses = questions.filter(q => {
     if (q.type !== 'incluse') return false
     const d = new Date(q.created_at)
     return d.getFullYear() === maintenant.getFullYear() && d.getMonth() === maintenant.getMonth()
-  })
+  }).length
+  const questionIncluseUtilisee = nbIncluses >= quotaIncluses
   const questionIncluseDisponible = !!estAbonne && !questionIncluseUtilisee
   const prochaineQuestionIncluse = new Date(maintenant.getFullYear(), maintenant.getMonth() + 1, 1)
     .toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })
   const labelPoserQuestion = questionIncluseDisponible
     ? 'Poser ma question incluse'
-    : estAbonne ? 'Poser ma question · 14,90\u00a0€' : 'Poser ma question · 47\u00a0€'
+    : estAbonne ? 'Poser ma question · 19\u00a0€' : 'Poser ma question · 47\u00a0€'
 
   const abonnementLabel = () => {
     if (!estAbonne) return null
@@ -892,7 +894,7 @@ export default function EspaceClient() {
                 <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.5rem' }}>
                   <p style={{ color: '#0f2d6e', fontSize: '14px', fontWeight: '700', margin: '0 0 8px' }}>Poser une question juridique</p>
                   <p style={{ color: '#6b7280', fontSize: '13px', margin: '0 0 12px', lineHeight: '1.6' }}>
-                    {estAbonne ? "Votre abonnement inclut 1 question par mois. Questions supplémentaires à 14,90 €." : "Réponse rédigée par un juriste sous 24 à 48h ouvrées. 47 € à l'unité, sans abonnement."}
+                    {estAbonne ? `Votre abonnement inclut ${quotaIncluses} question${quotaIncluses > 1 ? 's' : ''} par mois. Questions supplémentaires à 19 €.` : "Réponse rédigée par un juriste sous 24 à 48h ouvrées. 47 € à l'unité, sans abonnement."}
                   </p>
                   {estAbonne && (
                     <div style={{ background: questionIncluseDisponible ? '#f0fdf4' : '#f8fafc', border: `1px solid ${questionIncluseDisponible ? '#bbf7d0' : '#e5e7eb'}`, borderRadius: '8px', padding: '10px 12px', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}>
@@ -943,7 +945,7 @@ export default function EspaceClient() {
                     disabled={questionInclLoading}
                     style={{ background: '#0f2d6e', color: 'white', border: 'none', padding: '10px 20px', borderRadius: '8px', fontSize: '13px', fontWeight: '700', cursor: questionInclLoading ? 'not-allowed' : 'pointer' }}
                   >
-                    {questionIncluseDisponible ? '+ Question incluse' : `+ Nouvelle question ${estAbonne ? '· 14,90\u00a0€' : '· 47\u00a0€'}`}
+                    {questionIncluseDisponible ? '+ Question incluse' : `+ Nouvelle question ${estAbonne ? '· 19\u00a0€' : '· 47\u00a0€'}`}
                   </button>
                 </div>
 
@@ -951,7 +953,7 @@ export default function EspaceClient() {
                   <div style={{ background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '10px', padding: '12px 16px', display: 'flex', alignItems: 'center', gap: '10px' }}>
                     <Zap size={16} color="#1a4fba" style={{ flexShrink: 0 }} />
                     <p style={{ color: '#1e3a5f', fontSize: '12px', margin: 0 }}>
-                      Avec l'Abonnement Optimal, 1 question incluse par mois. Questions supplémentaires à 14,90 € au lieu de 47 €.{' '}
+                      Avec l'Abonnement Optimal, 1 question incluse par mois (2 avec Optimal Pro). Questions supplémentaires à 19 € au lieu de 47 €.{' '}
                       <button onClick={() => setOnglet('abonnement')} style={{ color: '#1a4fba', fontWeight: '700', background: 'none', border: 'none', cursor: 'pointer', fontSize: '12px', padding: 0, textDecoration: 'underline' }}>Voir les offres →</button>
                     </p>
                   </div>
@@ -962,8 +964,8 @@ export default function EspaceClient() {
                     {questionIncluseDisponible ? <CheckCircle size={16} color="#16a34a" style={{ flexShrink: 0 }} /> : <Clock size={16} color="#6b7280" style={{ flexShrink: 0 }} />}
                     <p style={{ color: questionIncluseDisponible ? '#15803d' : '#6b7280', fontSize: '12px', margin: 0 }}>
                       {questionIncluseDisponible
-                        ? 'Votre question incluse de ce mois est disponible. Questions supplémentaires à 14,90\u00a0€.'
-                        : `Votre question incluse de ce mois a été utilisée. Prochaine disponible le ${prochaineQuestionIncluse}. Questions supplémentaires à 14,90\u00a0€.`}
+                        ? 'Votre question incluse de ce mois est disponible. Questions supplémentaires à 19\u00a0€.'
+                        : `Votre question incluse de ce mois a été utilisée. Prochaine disponible le ${prochaineQuestionIncluse}. Questions supplémentaires à 19\u00a0€.`}
                     </p>
                   </div>
                 )}
@@ -999,7 +1001,7 @@ export default function EspaceClient() {
                           </span>
                           <span style={{ color: '#9ca3af', fontSize: '11px' }}>{new Date(q.created_at).toLocaleDateString('fr-FR')}</span>
                           <span style={{ color: '#9ca3af', fontSize: '11px' }}>
-                            · {q.type === 'unitaire' ? '47 €' : q.type === 'abonne' ? '14,90 €' : 'Incluse'}
+                            · {q.type === 'unitaire' ? '47 €' : q.type === 'abonne' ? '19 €' : 'Incluse'}
                           </span>
                         </div>
 
@@ -1493,7 +1495,7 @@ export default function EspaceClient() {
                             </p>
                             <p style={{ color: '#9ca3af', fontSize: '11px', margin: 0 }}>
                               {new Date(q.created_at).toLocaleDateString('fr-FR')} ·{' '}
-                              {q.type === 'unitaire' ? '47 €' : q.type === 'abonne' ? '14,90 €' : 'Incluse'}
+                              {q.type === 'unitaire' ? '47 €' : q.type === 'abonne' ? '19 €' : 'Incluse'}
                             </p>
                           </div>
                           <span style={{ fontSize: '10px', fontWeight: '700', padding: '2px 8px', borderRadius: '20px', flexShrink: 0, background: q.statut === 'repondu' ? '#f0fdf4' : '#f3f4f6', color: q.statut === 'repondu' ? '#15803d' : '#6b7280' }}>
@@ -1779,10 +1781,10 @@ export default function EspaceClient() {
                       </div>
 
                       {[
-                        { label: 'Modèles gratuits sur demande', gratuit: '✓', part: '✓', pro: '✓' },
+                        { label: 'Modèles gratuits (depuis la Docuthèque)', gratuit: '✓', part: '✓', pro: '✓' },
                         { label: 'Modèles payants sur demande', gratuit: "À l'unité", part: 'Inclus', pro: 'Inclus' },
-                        { label: 'Question juriste incluse / mois', gratuit: '✗', part: '1 incluse', pro: '1 incluse' },
-                        { label: 'Questions supplémentaires', gratuit: '47 €', part: '14,90 €', pro: '14,90 €' },
+                        { label: 'Question juriste incluse / mois', gratuit: '✗', part: '1 incluse', pro: '2 incluses' },
+                        { label: 'Questions supplémentaires', gratuit: '47 €', part: '19 €', pro: '19 €' },
                         { label: "Délai de réponse", gratuit: '24-48h', part: '24-48h', pro: '24-48h' },
                         { label: 'Professionnels / associations', gratuit: '✗', part: '✗', pro: '✓' },
                       ].map((row, i) => (

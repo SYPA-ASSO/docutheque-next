@@ -10,7 +10,7 @@ export default function FAQ() {
     },
     {
       q: "Quelle est la différence entre un modèle gratuit et un modèle Optimal ?",
-      a: "L'accès gratuit donne accès à tous les documents disponibles en accès libre, en format DOCX. L'abonnement Optimal débloque la bibliothèque complète, les notices explicatives des documents, les fiches pédagogiques de vulgarisation juridique et une question incluse par mois sous 24 à 48h."
+      a: "Le compte gratuit du cabinet donne accès à votre espace client ; les modèles gratuits sont accessibles depuis la Docuthèque (docutheque.cholez-pagotto.fr), qui a son propre compte gratuit et son propre abonnement, distincts de ceux du cabinet. L'abonnement Optimal donne accès à tous les modèles demandés au cabinet, les notices explicatives des documents, les fiches pédagogiques de vulgarisation juridique et une question incluse par mois sous 24 à 48h."
     },
     {
       q: "Puis-je modifier les documents après téléchargement ?",
@@ -18,7 +18,7 @@ export default function FAQ() {
     },
     {
       q: 'Qu\'est-ce que le service "Information sur vos droits" ?',
-      a: "C'est un service à l'unité, sans abonnement, à 47 €. Vous posez votre question en langage courant et un juriste vous apporte une réponse pédagogique par écrit sous 24 à 48h. Ce service constitue une information juridique au sens de la loi n°71-1130 du 31 décembre 1971 et ne constitue pas une consultation juridique personnalisée. Si votre situation génère plusieurs questions, l'abonnement Optimal est plus adapté : à partir de 17,90 €/mois sans engagement, il inclut une question par mois et les suivantes à seulement 14,90 €."
+      a: "C'est un service à l'unité, sans abonnement, à 47 €. Vous posez votre question en langage courant et un juriste vous apporte une réponse pédagogique par écrit sous 24 à 48h. Ce service constitue une information juridique au sens de la loi n°71-1130 du 31 décembre 1971 et ne constitue pas une consultation juridique personnalisée. Si votre situation génère plusieurs questions, l'abonnement Optimal est plus adapté : à partir de 17,90 €/mois sans engagement, il inclut une question par mois et les suivantes à seulement 19 €."
     },
     {
       q: "L'intelligence artificielle est-elle utilisée pour rédiger les documents ?",

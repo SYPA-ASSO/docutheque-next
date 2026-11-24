@@ -1,5 +1,5 @@
 // app/catalogue/page.tsx
-// Modeles de documents sur demande : plus aucune liste de modeles n'est affichee, meme aux clients
+// Modeles de documents : les gratuits sont accessibles depuis la Docutheque ; les autres se demandent au cabinet. Plus aucune liste de modeles n'est affichee, meme aux clients
 // connectes. Le client decrit son besoin depuis son espace client ; seul le cabinet voit les
 // modeles disponibles (administration) et transmet le fichier par « Echanges de documents ».
 // Regles : zero tiret long dans le contenu visible.
@@ -8,6 +8,7 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import NewsletterForm from '@/components/NewsletterForm'
 import BanniereALaUne from '@/components/BanniereALaUne'
+import LienSortieDocutheque from '@/components/LienSortieDocutheque'
 import {
   FileText, ArrowRight, ChevronRight, CheckCircle, Scale, Info, ChevronDown, UserPlus, Send, FolderSync
 } from 'lucide-react'
@@ -39,9 +40,16 @@ const schemaData = {
   ]
 }
 
+const offresDocutheque = [
+  { prix: 'Gratuit', titre: 'Compte gratuit', texte: "Accès à un choix de modèles courants, à télécharger au format DOCX." },
+  { prix: 'Dès 0,99 €', titre: 'Documents à l\'unité', texte: "Les autres modèles, personnalisés à votre situation, à l'unité." },
+  { prix: 'Dès 19 €', titre: 'Dossiers et formalités', texte: "Dossiers PDF dès 19 € ; formalités dès 29 € (frais officiels en sus)." },
+  { prix: '149 € par an', titre: 'Abonnement Docuthèque', texte: "Tous les modèles payants et les packs, les dossiers et les formalités d'entreprise individuelle et de micro-entreprise, et les questions à 19 € au lieu de 47 €." },
+]
+
 const etapes = [
   { icone: <UserPlus size={20} strokeWidth={1.5} />, titre: '1. Créez votre compte gratuit', texte: "L'inscription est gratuite et vous donne accès à votre espace client." },
-  { icone: <Send size={20} strokeWidth={1.5} />, titre: '2. Décrivez votre besoin', texte: "Dans l'onglet « Demander un modèle », indiquez le document souhaité et, si vous le pouvez, votre situation." },
+  { icone: <Send size={20} strokeWidth={1.5} />, titre: '2. Décrivez votre besoin', texte: "Dans l'onglet « Demander un modèle », indiquez le document souhaité et, si vous le pouvez, votre situation. Les modèles gratuits se prennent directement dans la Docuthèque." },
   { icone: <FolderSync size={20} strokeWidth={1.5} />, titre: '3. Recevez le modèle', texte: "Le cabinet vous transmet le modèle dans « Échanges de documents » et vous prévient par e-mail." },
 ]
 
@@ -65,6 +73,8 @@ const avantages = [
 
 const faqCatalogue = [
   { q: "Comment demander un modèle de document ?", r: "Créez un compte gratuit, puis ouvrez l'onglet « Demander un modèle » de votre espace client. Indiquez le document souhaité et, facultativement, votre situation et la date pour laquelle vous en avez besoin. Vous recevez un e-mail de confirmation, puis un second e-mail lorsque le cabinet a donné suite à votre demande." },
+  { q: "Où trouver les modèles gratuits ?", r: "Les modèles gratuits sont accessibles depuis la Docuthèque (docutheque.cholez-pagotto.fr), avec son propre compte gratuit. Ils ne se demandent pas au cabinet. Le site du cabinet sert aux autres modèles, demandés depuis votre espace client." },
+  { q: "Les abonnements du cabinet et de la Docuthèque sont-ils les mêmes ?", r: "Non, ce sont deux espaces distincts, avec chacun son compte et son abonnement. L'abonnement Optimal du cabinet (dès 17,90 € par mois, ou 149 € par an en Particulier) inclut les modèles demandés au cabinet et des questions à un juriste. L'abonnement de la Docuthèque (149 € par an) donne accès à tous ses modèles payants et à ses packs, ainsi qu'aux questions à 19 € au lieu de 47 €." },
   { q: "Sous quel format les modèles sont-ils transmis ?", r: "Les modèles sont fournis au format DOCX (Word), personnalisables. Vous les complétez et les adaptez librement à votre situation depuis votre traitement de texte habituel." },
   { q: "Que se passe-t-il si aucun modèle ne correspond à ma demande ?", r: "Le cabinet vous l'indique dans sa réponse. Votre demande est alors clôturée sans suite, et vous pouvez en formuler une nouvelle en précisant votre besoin." },
   { q: "Les modèles remplacent-ils l'avis d'un professionnel ?", r: "Non. Les modèles sont des documents de référence à usage général, conçus pour couvrir les situations courantes. Ils constituent une information documentaire et ne remplacent pas une consultation adaptée à votre situation, laquelle relève de l'avocat. Pour un cas particulier ou un enjeu important, notre juriste peut vous informer sur les points de vigilance ou vous orienter." },
@@ -100,7 +110,7 @@ export default function CataloguePage() {
               Demandez le modèle de document dont vous avez besoin
             </h1>
             <p style={{ fontSize: '1rem', color: 'rgba(255,255,255,0.85)', lineHeight: 1.8, margin: '0 auto 2rem' }}>
-              Contrats, statuts, courriers, mises en demeure, documents RGPD : décrivez votre besoin. Le cabinet vous transmet le modèle correspondant, s&apos;il en existe un, au format DOCX.
+              Contrats, statuts, courriers, mises en demeure, documents RGPD : les modèles gratuits sont accessibles depuis notre Docuthèque. Pour les autres, décrivez votre besoin : le cabinet vous transmet le modèle correspondant, s&apos;il en existe un, au format DOCX.
             </p>
 
             <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
@@ -130,6 +140,30 @@ export default function CataloguePage() {
               <a href="/information-sur-vos-droits" style={{ color: '#1a4fba' }}>Information sur vos droits</a> peut vous apporter un éclairage complémentaire.
             </p>
           </div>
+
+          {/* EN RESUME + DOCUTHEQUE */}
+          <section style={{ marginBottom: '3.5rem' }}>
+            <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: 12, padding: '1.5rem', marginBottom: '2rem' }}>
+              <h2 style={{ fontSize: '1.2rem', fontWeight: 700, color: '#0f2d6e', margin: '0 0 0.6rem' }}>En résumé</h2>
+              <p style={{ fontSize: 14, color: '#374151', lineHeight: 1.8, margin: 0 }}>
+                Deux espaces distincts, avec chacun son compte. Les modèles gratuits, les documents à l&apos;unité, les dossiers et les formalités se trouvent dans la Docuthèque. Les autres modèles se demandent au cabinet depuis votre espace client, gratuitement pour les abonnés Optimal ou à l&apos;unité selon le modèle.
+              </p>
+            </div>
+            <h2 style={{ fontSize: '1.4rem', fontWeight: 700, color: '#0f2d6e', marginBottom: '0.5rem' }}>Les offres de la Docuthèque</h2>
+            <p style={{ fontSize: 13, color: '#6b7280', margin: '0 0 1.5rem' }}>Note Google : 5,0/5.</p>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(230px, 1fr))', gap: '1.2rem', marginBottom: '1.5rem' }}>
+              {offresDocutheque.map((o, i) => (
+                <div key={i} style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: 12, padding: '1.25rem' }}>
+                  <p style={{ fontSize: 12, fontWeight: 700, color: '#1a4fba', margin: '0 0 0.3rem', textTransform: 'uppercase', letterSpacing: '0.04em' }}>{o.prix}</p>
+                  <h3 style={{ fontSize: '0.95rem', fontWeight: 700, color: '#0f2d6e', margin: '0 0 0.4rem' }}>{o.titre}</h3>
+                  <p style={{ fontSize: 12, color: '#6b7280', lineHeight: 1.6, margin: 0 }}>{o.texte}</p>
+                </div>
+              ))}
+            </div>
+            <LienSortieDocutheque style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: '#0f2d6e', color: 'white', padding: '12px 24px', borderRadius: 8, fontWeight: 700, fontSize: 14, textDecoration: 'none' }}>
+              Découvrir la Docuthèque <ArrowRight size={15} />
+            </LienSortieDocutheque>
+          </section>
 
           {/* COMMENT CA MARCHE */}
           <section style={{ marginBottom: '3.5rem' }}>

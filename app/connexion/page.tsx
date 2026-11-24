@@ -186,7 +186,7 @@ export default function Connexion() {
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '28px' }}>
               {[
-                { label: 'Accès gratuit', desc: 'Demande de modèles de documents (DOCX) : modèles gratuits remis aussitôt, autres modèles à l\'unité.', color: '#4ade80' },
+                { label: 'Accès gratuit', desc: 'Demande de modèles de documents (DOCX) : modèles gratuits accessibles depuis la Docuthèque, autres modèles sur demande ou à l\'unité.', color: '#4ade80' },
                 { label: 'Abonnement Optimal', desc: 'Tous les modèles de documents inclus sur demande, 1 question juriste incluse par mois, non cumulable. À partir de 17,90 €/mois ou 149 €/an.', color: '#93c5fd' },
                 { label: 'Information sur vos droits', desc: 'Une question, une réponse rédigée par un juriste sous 24 à 48h. 47 € à l\'unité, sans abonnement. Ce service constitue une information juridique au sens de la loi n°71-1130 du 31 décembre 1971 et ne constitue pas une consultation juridique personnalisée.', color: '#fcd34d' },
               ].map((offre, i) => (

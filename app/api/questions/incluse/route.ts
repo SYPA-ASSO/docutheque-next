@@ -4,7 +4,7 @@ import { supabaseAdmin } from '@/lib/supabase-admin'
 export const runtime = 'nodejs'
 
 // app/api/questions/incluse/route.ts
-// Cree la question incluse (gratuite) d'un abonne Optimal : 1 par mois calendaire, non cumulable.
+// Cree la question incluse (gratuite) d'un abonne Optimal : 1 par mois calendaire (Particulier) ou 2 (Pro), non cumulable.
 // Verifie cote serveur, a partir du jeton d'authentification, que l'utilisateur est connecte,
 // abonne actif, et n'a pas deja utilise sa question incluse du mois en cours. La question est
 // creee sans texte ; l'utilisateur le saisit ensuite via la route de soumission habituelle.
@@ -26,7 +26,7 @@ export async function POST(request: NextRequest) {
     // Verifier l'abonnement actif (la question incluse est reservee aux abonnes Optimal)
     const { data: profil, error: profilErr } = await supabaseAdmin
       .from('users')
-      .select('abonnement_actif')
+      .select('abonnement_actif, abonnement_type')
       .eq('id', userId)
       .single()
     if (profilErr || !profil) {
@@ -53,8 +53,9 @@ export async function POST(request: NextRequest) {
       console.error('[Question incluse] lecture des questions existantes a echoue:', existErr.message)
       return NextResponse.json({ error: 'Une erreur est survenue. Veuillez reessayer.' }, { status: 500 })
     }
-    if (existantes && existantes.length > 0) {
-      return NextResponse.json({ error: 'Votre question incluse de ce mois a deja ete utilisee.' }, { status: 409 })
+    const quota = profil.abonnement_type === 'optimal_pro' ? 2 : 1
+    if (existantes && existantes.length >= quota) {
+      return NextResponse.json({ error: 'Vos questions incluses de ce mois ont deja ete utilisees.' }, { status: 409 })
     }
 
     // Creer la question incluse (sans texte ; saisie ensuite par l'utilisateur)

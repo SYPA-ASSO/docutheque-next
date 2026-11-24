@@ -119,9 +119,9 @@ const services = [
         badge: "Sur demande",
         badgeColor: "#7c3aed",
         href: "/catalogue",
-        description: "Modèles juridiques en DOCX remis sur demande : gratuits, inclus dans l'abonnement Optimal ou à l'unité selon le modèle, avec le prix indiqué avant paiement. Statuts, contrats, RGPD, registres, courriers.",
+        description: "Modèles juridiques en DOCX : gratuits depuis la Docuthèque, ou sur demande (inclus dans l'abonnement Optimal ou à l'unité selon le modèle), avec le prix indiqué avant paiement. Statuts, contrats, RGPD, registres, courriers.",
         points: [
-          "Modèles gratuits remis sur demande",
+          "Modèles gratuits accessibles depuis la Docuthèque",
           "Tous les modèles inclus avec l'abonnement Optimal",
           "Personnalisables dans Word ou LibreOffice",
           "Mises à jour législatives incluses",
