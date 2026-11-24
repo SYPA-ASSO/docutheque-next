@@ -41,10 +41,10 @@ const schema = {
 }
 
 const faqAccueil = [
-  { q: "Que propose le Cabinet Cholez-Pagotto ?", r: "Le cabinet réunit l'information juridique, des modèles de documents au format DOCX remis sur demande, l'accompagnement à la création d'entreprise et aux formalités, la conformité RGPD et le conseil en assurances. Il s'adresse aux particuliers, aux professionnels, aux associations et aux collectivités." },
+  { q: "Que propose le Cabinet Cholez-Pagotto ?", r: "Le cabinet réunit l'information juridique, des modèles de documents rédigés et relus par un juriste (la Docuthèque et la bibliothèque DOCX du cabinet), l'accompagnement à la création d'entreprise et aux formalités, la conformité RGPD et le conseil en assurances. Il s'adresse aux particuliers, aux professionnels, aux associations et aux collectivités." },
   { q: "Le cabinet remplace-t-il un avocat ?", r: "Non. Notre juriste délivre une information juridique au sens de la loi n°71-1130 du 31 décembre 1971 et vous accompagne dans vos formalités. La consultation personnalisée, la rédaction d'actes pour autrui et la représentation en justice relèvent de l'avocat, vers lequel vous êtes orienté si votre situation l'exige." },
   { q: "Comment obtenir une réponse à une question juridique ?", r: "Vous pouvez poser une question et recevoir une réponse écrite rédigée par notre juriste sous 24 à 48h ouvrées, au tarif de 47 € sans abonnement. L'Abonnement Optimal Particulier inclut 1 question par mois, l'Abonnement Optimal Pro en inclut 2." },
-  { q: "Faut-il payer pour obtenir un modèle de document ?", r: "Après création d'un compte gratuit, vous décrivez le document dont vous avez besoin depuis votre espace client. Selon le modèle, il est gratuit, inclus dans l'abonnement Optimal (à partir de 17,90 €/mois) ou payable à l'unité : le prix vous est indiqué avant tout paiement." },
+  { q: "Faut-il payer pour accéder aux documents ?", r: "Cela dépend de l'espace. Sur la Docuthèque (docutheque.cholez-pagotto.fr), certains modèles sont gratuits avec un compte gratuit, les autres sont à partir de 0,99 € à l'unité ou inclus dans l'abonnement de 149 € par an. Dans la bibliothèque de cholez-pagotto.fr, les modèles s'achètent à l'unité (prix affiché sur la fiche) ou sont inclus dans l'abonnement Optimal, à partir de 17,90 € par mois. Les modèles gratuits de cette bibliothèque sont fournis sur demande." },
   { q: "Où le cabinet est-il établi ?", r: "Le cabinet est établi à Épinal, en région Grand Est, et intervient en ligne pour des clients partout en France." },
   { q: "Le cabinet peut-il intervenir en assurance ?", r: "Oui. Le cabinet est intermédiaire en assurances immatriculé à l'ORIAS sous le numéro 26003943 et placé sous le contrôle de l'ACPR. Notre juriste vous informe sur les garanties utiles et vous oriente selon votre intérêt." }
 ]
@@ -71,7 +71,7 @@ export default function Home() {
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '14px', textAlign: 'left', marginTop: '8px' }}>
               {[
                 { icone: HelpCircle, titre: "J'ai une question juridique", texte: "Réponse écrite et pédagogique d'un juriste sous 24 à 48 h.", href: '/information-sur-vos-droits', action: 'Poser ma question' },
-                { icone: FileText, titre: "J'ai besoin d'un document", texte: "Modèles DOCX prêts à personnaliser, remis sur simple demande.", href: '/catalogue', action: 'Demander un modèle' },
+                { icone: FileText, titre: "J'ai besoin d'un document", texte: "Modèles rédigés par un juriste : à compléter par questionnaire sur la Docuthèque, ou à personnaliser en DOCX.", href: '/catalogue', action: 'Parcourir le catalogue' },
                 { icone: Compass, titre: "J'ai un projet ou un besoin de conformité", texte: 'Création, formalités, RGPD, assurances : des accompagnements dédiés.', href: '/services', action: 'Voir les accompagnements' },
               ].map((porte, i) => (
                 <a key={i} href={porte.href} style={{ background: 'white', borderRadius: '12px', padding: '1.1rem 1.25rem', textDecoration: 'none', display: 'flex', flexDirection: 'column', gap: '6px' }}>
@@ -97,7 +97,7 @@ export default function Home() {
             </p>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '16px' }}>
               {[
-                { icone: BookOpen, kicker: 'COMPRENDRE', titre: 'Informer', texte: "Information juridique par notre juriste, modèles de documents sur demande et blog d'actualité : des repères fiables pour comprendre vos droits.", liens: [{ label: 'Poser une question', href: '/information-sur-vos-droits' }, { label: 'Demander un modèle', href: '/catalogue' }] },
+                { icone: BookOpen, kicker: 'COMPRENDRE', titre: 'Informer', texte: "Information juridique par notre juriste, bibliothèque de modèles commentés et blog d'actualité : des repères fiables pour comprendre vos droits.", liens: [{ label: 'Poser une question', href: '/information-sur-vos-droits' }, { label: 'Catalogue de documents', href: '/catalogue' }] },
                 { icone: ClipboardCheck, kicker: 'DÉCIDER ET AGIR', titre: 'Accomplir', texte: "Création d'entreprise, formalités externalisées, accompagnement des professionnels et des associations, conformité RGPD et DPO externalisé : vos démarches menées de bout en bout.", liens: [{ label: 'Nos accompagnements', href: '/services' }] },
                 { icone: ShieldCheck, kicker: 'PROTÉGER', titre: 'Assurer', texte: "Courtier en assurances (ORIAS n° 26003943, sous le contrôle de l'ACPR) : analyse de vos contrats et conseil individualisé, indépendant des compagnies.", liens: [{ label: 'Conseil en assurances', href: '/conseil-assurances' }] },
               ].map((m, i) => (
@@ -130,10 +130,10 @@ export default function Home() {
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px' }}>
               {[
                 {
-                  titre: "Modèles de documents",
-                  desc: "Décrivez le document dont vous avez besoin : le cabinet vous remet le modèle DOCX adapté (contrats, mises en demeure, statuts, RGPD). Gratuit, inclus dans l'abonnement Optimal ou à l'unité selon le modèle.",
+                  titre: "Bibliothèque de documents",
+                  desc: "Modèles DOCX à personnaliser : contrats, mises en demeure, statuts, RGPD. À l'unité ou par l'abonnement Optimal. Modèles gratuits sur demande.",
                   lien: '/catalogue',
-                  cta: 'Demander un modèle',
+                  cta: 'Voir le catalogue',
                   badge: 'Information juridique',
                   badgeColor: '#eff6ff',
                   badgeText: '#1a4fba',
@@ -225,10 +225,10 @@ export default function Home() {
                 ABONNEMENT OPTIMAL
               </span>
               <h2 style={{ color: 'white', fontSize: '1.6rem', fontWeight: '700', margin: '0 0 12px' }}>
-                Tous les modèles inclus + questions juriste incluses
+                Accès illimité à toute la bibliothèque + questions juriste incluses
               </h2>
               <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '14px', lineHeight: '1.8', margin: '0 0 24px', maxWidth: '580px', marginLeft: 'auto', marginRight: 'auto' }}>
-                Les modèles de documents demandés au cabinet sont inclus, avec une question juriste mensuelle non cumulable, newsletter exclusive abonnés, tarif préférentiel sur les questions supplémentaires.
+                Documents téléchargeables et personnalisables, question juriste mensuelle non cumulable, newsletter exclusive abonnés, tarif préférentiel sur les questions supplémentaires.
               </p>
               <div style={{ display: 'flex', gap: '32px', justifyContent: 'center', marginBottom: '24px', flexWrap: 'wrap' }}>
                 <div style={{ textAlign: 'center' }}>
@@ -293,7 +293,7 @@ export default function Home() {
             </p>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '16px' }}>
               {[
-                { kicker: 'PARTICULIER', question: "Mon propriétaire ne me rend pas le dépôt de garantie, deux mois après mon départ. Quels sont mes droits ?", apport: "Une réponse écrite sous 24 à 48 h : les délais légaux, la majoration applicable, la marche à suivre. Et, sur demande, le modèle de mise en demeure pour agir.", href: '/information-sur-vos-droits', action: 'Poser ma question' },
+                { kicker: 'PARTICULIER', question: "Mon propriétaire ne me rend pas le dépôt de garantie, deux mois après mon départ. Quels sont mes droits ?", apport: "Une réponse écrite sous 24 à 48 h : les délais légaux, la majoration applicable, la marche à suivre. Et le modèle de mise en demeure du catalogue pour agir.", href: '/information-sur-vos-droits', action: 'Poser ma question' },
                 { kicker: 'ASSOCIATION', question: "Notre association embauche son premier salarié : par quoi devons-nous commencer ?", apport: "Les repères essentiels (déclarations, registre du personnel, affichages), les modèles associés, et le relais de notre service dédié pour les bulletins de paie et la DSN.", href: '/accompagnement-associations', action: "Voir l'accompagnement" },
                 { kicker: "CRÉATEUR D'ENTREPRISE", question: "Je passe de la micro-entreprise à la société : formalités, assurances, par où commencer ?", apport: "Un accompagnement de la création au guichet unique, des repères pour choisir la forme en connaissance de cause, et un point sur les assurances professionnelles obligatoires.", href: '/creation-entreprise', action: 'Découvrir la création' },
               ].map((c, i) => (
@@ -316,7 +316,7 @@ export default function Home() {
           <div style={{ maxWidth: '760px', margin: '0 auto', padding: '0 2rem', textAlign: 'center' }}>
             <h2 style={{ color: '#0f2d6e', fontSize: '1.5rem', fontWeight: '700', margin: '0 0 12px' }}>Prêt à commencer ?</h2>
             <p style={{ color: '#6b7280', fontSize: '14px', lineHeight: '1.8', margin: '0 0 28px' }}>
-              Créez votre compte gratuit, demandez les modèles de documents dont vous avez besoin, et découvrez nos offres.
+              Créez votre compte gratuit pour retrouver vos documents et vos questions, demandez un modèle gratuit et découvrez nos offres.
             </p>
             <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
               <a href="/connexion" style={{ display: 'inline-block', background: '#0f2d6e', color: 'white', padding: '13px 28px', borderRadius: '8px', fontSize: '14px', fontWeight: '700', textDecoration: 'none' }}>

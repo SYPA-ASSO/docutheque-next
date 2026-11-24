@@ -86,7 +86,7 @@ const domaines = [
 
 const faqParticuliers = [
   { q: "Le cabinet peut-il me donner une consultation juridique ?", r: "Notre juriste délivre une information juridique au sens de la loi n°71-1130 du 31 décembre 1971 : il vous explique les règles applicables à votre situation et les démarches possibles, ce qui vous permet de décider en connaissance de cause. Cette information ne constitue pas une consultation juridique personnalisée, laquelle relève de l'avocat. Le cas échéant, vous êtes orienté vers le professionnel du droit compétent." },
-  { q: "Quelle différence entre une question juridique et l'abonnement à la bibliothèque ?", r: "La question juridique, facturée 47 €, vous apporte une réponse écrite sur un point de droit précis. L'abonnement Optimal, à 17,90 €/mois, donne accès à l'intégralité de la bibliothèque de modèles de documents, que vous téléchargez et réutilisez librement. Une partie de la bibliothèque reste par ailleurs accessible gratuitement après la simple création d'un compte." },
+  { q: "Quelle différence entre une question juridique et l'abonnement à la bibliothèque ?", r: "La question juridique, facturée 47 €, vous apporte une réponse écrite sur un point de droit précis. L'abonnement Optimal, à 17,90 €/mois, donne accès à l'intégralité de la bibliothèque de modèles de documents, que vous téléchargez et réutilisez librement. Les modèles gratuits sont fournis sur demande." },
   { q: "Les modèles de documents sont-ils adaptés à ma situation personnelle ?", r: "Les modèles sont des trames générales conformes au droit en vigueur, conçues pour couvrir les situations courantes. Ils vous font gagner du temps mais ne remplacent pas l'analyse d'une situation particulière. Pour un cas complexe ou un enjeu important, notre juriste vous informe sur les points de vigilance ou vous oriente vers l'avocat compétent." },
   { q: "Le cabinet peut-il rédiger un acte ou me représenter en justice ?", r: "Non. La rédaction d'actes pour le compte d'autrui, la consultation juridique personnalisée et la représentation ou la défense en justice sont des actes réservés à l'avocat. Le cabinet prépare et vous assiste dans la rédaction de vos propres documents et vous accompagne dans vos formalités, dans le respect de la loi du 31 décembre 1971." },
   { q: "Sous quel délai vais-je obtenir une réponse ?", r: "Le délai dépend de la complexité de votre demande. Vous recevez une estimation dès la prise en charge. Notre juriste privilégie une réponse claire et documentée plutôt qu'une réponse rapide et approximative." },
@@ -165,15 +165,15 @@ export default function AccompagnementParticuliersPage() {
                   <BookOpen size={22} color="#065f46" strokeWidth={1.5} />
                 </div>
                 <div>
-                  <p style={{ color: '#065f46', fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', margin: '0 0 4px' }}>Accès libre · Gratuit</p>
-                  <h3 style={{ fontSize: '1.15rem', fontWeight: 700, color: '#0f2d6e', margin: '0 0 0.35rem' }}>Une partie de la bibliothèque est gratuite</h3>
+                  <p style={{ color: '#065f46', fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', margin: '0 0 4px' }}>Modèles gratuits</p>
+                  <h3 style={{ fontSize: '1.15rem', fontWeight: 700, color: '#0f2d6e', margin: '0 0 0.35rem' }}>Des modèles gratuits sur demande</h3>
                   <p style={{ fontSize: 13, color: '#374151', lineHeight: 1.6, margin: 0 }}>
-                    Créez un compte gratuit et téléchargez immédiatement une sélection de modèles de documents. L'abonnement Optimal débloque ensuite l'intégralité de la bibliothèque.
+                    Indiquez le modèle souhaité au regard de votre besoin : nous vous le transmettons s'il existe en version gratuite. L'abonnement Optimal donne accès à l'intégralité de la bibliothèque.
                   </p>
                 </div>
               </div>
               <a href="/catalogue" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: '#065f46', color: 'white', textDecoration: 'none', padding: '12px 22px', borderRadius: 8, fontWeight: 700, fontSize: '0.9rem', flexShrink: 0 }}>
-                Parcourir le catalogue gratuitement <ArrowRight size={16} />
+                Parcourir le catalogue <ArrowRight size={16} />
               </a>
             </div>
           </section>

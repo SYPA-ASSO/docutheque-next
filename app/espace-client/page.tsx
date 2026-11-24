@@ -620,7 +620,7 @@ export default function EspaceClient() {
               <p style={{ color: '#9ca3af', fontSize: '11px', margin: '0 0 8px' }}>{profile?.email}</p>
               {estAbonne
                 ? <span style={{ background: 'linear-gradient(135deg, #0f2d6e, #1a4fba)', color: 'white', fontSize: '10px', fontWeight: '700', padding: '3px 10px', borderRadius: '20px' }}>✦ {abonnementLabel()}</span>
-                : <span style={{ background: '#f3f4f6', color: '#6b7280', fontSize: '10px', fontWeight: '600', padding: '3px 10px', borderRadius: '20px' }}>Accès gratuit</span>
+                : <span style={{ background: '#f3f4f6', color: '#6b7280', fontSize: '10px', fontWeight: '600', padding: '3px 10px', borderRadius: '20px' }}>Compte gratuit</span>
               }
             </div>
 
@@ -1410,7 +1410,7 @@ export default function EspaceClient() {
                       <div style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr 1fr 1fr', borderBottom: '1px solid #e5e7eb' }}>
                         <div style={{ padding: '1.25rem', borderRight: '1px solid #e5e7eb' }} />
                         <div style={{ padding: '1.25rem', borderRight: '1px solid #e5e7eb' }}>
-                          <p style={{ color: '#9ca3af', fontSize: '12px', fontWeight: '700', margin: '0 0 4px' }}>Accès gratuit</p>
+                          <p style={{ color: '#9ca3af', fontSize: '12px', fontWeight: '700', margin: '0 0 4px' }}>Compte gratuit</p>
                           <p style={{ color: '#0f2d6e', fontSize: '1.1rem', fontWeight: '700', margin: 0 }}>0 €</p>
                         </div>
                         <div style={{ padding: '1.25rem', borderRight: '1px solid #e5e7eb', background: '#f8fafc' }}>
@@ -1430,7 +1430,7 @@ export default function EspaceClient() {
                       </div>
 
                       {[
-                        { label: 'Documents en accès libre', gratuit: '✓', part: '✓', pro: '✓' },
+                        { label: 'Modèles gratuits (DOCX)', gratuit: 'Sur demande', part: '✓', pro: '✓' },
                         { label: 'Bibliothèque complète (DOCX)', gratuit: '✗', part: '✓', pro: '✓' },
                         { label: 'Question juriste incluse / mois', gratuit: '✗', part: '1 incluse', pro: '1 incluse' },
                         { label: 'Questions supplémentaires', gratuit: '47 €', part: '19 €', pro: '19 €' },

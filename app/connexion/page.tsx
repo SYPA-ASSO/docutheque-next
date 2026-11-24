@@ -179,15 +179,15 @@ export default function Connexion() {
               <span style={{ color: 'white', fontWeight: '700', fontSize: '15px' }}>Cabinet Cholez-Pagotto</span>
             </div>
             <h2 style={{ color: 'white', fontSize: '1.3rem', fontWeight: '700', lineHeight: '1.4', marginBottom: '8px' }}>
-              Vos modèles de documents et vos droits expliqués, sans jargon.
+              Vos documents juridiques et vos droits expliqués, sans jargon.
             </h2>
             <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '13px', lineHeight: '1.7', marginBottom: '28px' }}>
-              Accédez à votre espace client pour demander vos modèles de documents, poser vos questions et gérer votre abonnement.
+              Accédez à votre espace client pour télécharger vos documents, poser vos questions et gérer votre abonnement.
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '28px' }}>
               {[
-                { label: 'Accès gratuit', desc: 'Demande de modèles de documents (DOCX) : modèles gratuits remis aussitôt, autres modèles à l\'unité.', color: '#4ade80' },
-                { label: 'Abonnement Optimal', desc: 'Tous les modèles de documents inclus sur demande, 1 question juriste incluse par mois, non cumulable. À partir de 17,90 €/mois ou 149 €/an.', color: '#93c5fd' },
+                { label: 'Compte gratuit', desc: "Espace client, achat de documents à l'unité, newsletter. Modèles gratuits fournis sur demande.", color: '#4ade80' },
+                { label: 'Abonnement Optimal', desc: 'Bibliothèque complète de documents juridiques, 1 question juriste incluse par mois, non cumulable. À partir de 17,90 €/mois ou 149 €/an.', color: '#93c5fd' },
                 { label: 'Information sur vos droits', desc: 'Une question, une réponse rédigée par un juriste sous 24 à 48h. 47 € à l\'unité, sans abonnement. Ce service constitue une information juridique au sens de la loi n°71-1130 du 31 décembre 1971 et ne constitue pas une consultation juridique personnalisée.', color: '#fcd34d' },
               ].map((offre, i) => (
                 <div key={i} style={{ background: 'rgba(255,255,255,0.1)', borderRadius: '10px', padding: '12px 14px' }}>
@@ -309,7 +309,7 @@ export default function Connexion() {
                 </button>
                 <div style={{ background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '10px', padding: '14px 16px' }}>
                   <p style={{ color: '#1e3a5f', fontSize: '12px', fontWeight: '600', marginBottom: '8px' }}>Depuis votre espace client, vous pouvez :</p>
-                  {['Demander un modèle de document et le télécharger en DOCX', 'Poser une question à votre juriste', 'Gérer votre abonnement Optimal', 'Consulter vos réponses et historique'].map((item, i) => (
+                  {['Télécharger vos documents en format DOCX', 'Poser une question à votre juriste', 'Gérer votre abonnement Optimal', 'Consulter vos réponses et historique'].map((item, i) => (
                     <div key={i} style={{ display: 'flex', gap: '8px', alignItems: 'flex-start', marginBottom: '4px' }}>
                       <span style={{ color: '#1a4fba', fontSize: '12px', flexShrink: 0 }}>✓</span>
                       <span style={{ color: '#374151', fontSize: '12px' }}>{item}</span>
@@ -390,7 +390,7 @@ export default function Connexion() {
 
                 <div style={{ background: '#f8fafc', border: '1px solid #e5e7eb', borderRadius: '10px', padding: '16px' }}>
                   <p style={{ color: '#6b7280', fontSize: '12px', fontWeight: '600', margin: '0 0 12px' }}>
-                    Informations complémentaires <span style={{ fontWeight: '400', fontStyle: 'italic' }}>(optionnelles pour l'accès gratuit, requises pour l'Abonnement Optimal et la question payante)</span>
+                    Informations complémentaires <span style={{ fontWeight: '400', fontStyle: 'italic' }}>(optionnelles pour le compte gratuit, requises pour l'Abonnement Optimal et la question payante)</span>
                   </p>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                     <div>
@@ -494,7 +494,7 @@ export default function Connexion() {
                 <div style={{ background: '#f0fdf4', border: '1px solid #bbf7d0', borderRadius: '8px', padding: '12px 14px' }}>
                   <p style={{ color: '#15803d', fontSize: '12px', lineHeight: '1.6', margin: '0 0 6px', fontWeight: '600' }}>Après création de votre compte :</p>
                   {[
-                    'Demande de modèles de documents, gratuits ou payants selon le modèle',
+                    "Espace client, achat de documents à l'unité et newsletter",
                     'Souscription à l\'abonnement Optimal si vous le souhaitez',
                     'Question unitaire à 47 € · ou incluse dans l\'Abonnement Optimal.',
                   ].map((item, i) => (

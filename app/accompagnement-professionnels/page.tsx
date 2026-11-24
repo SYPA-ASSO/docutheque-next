@@ -115,14 +115,14 @@ const services = [
         couleur: "#7c3aed",
       },
       {
-        titre: "Modèles de documents",
-        badge: "Sur demande",
+        titre: "Bibliothèque de documents",
+        badge: "Bibliothèque",
         badgeColor: "#7c3aed",
         href: "/catalogue",
-        description: "Modèles juridiques en DOCX remis sur demande : gratuits, inclus dans l'abonnement Optimal ou à l'unité selon le modèle, avec le prix indiqué avant paiement. Statuts, contrats, RGPD, registres, courriers.",
+        description: "Modèles juridiques en DOCX : à l'unité ou en accès complet via l'abonnement Optimal, modèles gratuits sur demande. Statuts, contrats, RGPD, registres, courriers.",
         points: [
-          "Modèles gratuits remis sur demande",
-          "Tous les modèles inclus avec l'abonnement Optimal",
+          "Modèles gratuits sur demande",
+          "Bibliothèque complète sur abonnement Optimal",
           "Personnalisables dans Word ou LibreOffice",
           "Mises à jour législatives incluses",
         ],
@@ -139,7 +139,7 @@ const services = [
         badge: "90 € particulier · 150 € pro",
         badgeColor: "#065f46",
         href: "/conseil-assurances",
-        description: "Audit de vos contrats existants, consultation des compagnies et grossistes partenaires, rapport de conseil écrit et motivé. RC Pro, multirisques professionnelle, prévoyance collective, assurance des dirigeants. ORIAS n°26003943.",
+        description: "Audit de vos contrats existants, comparaison des offres du marché, rapport de conseil écrit et motivé. RC Pro, multirisques professionnelle, prévoyance collective, assurance des dirigeants. ORIAS n°26003943.",
         points: [
           "RC Pro et multirisques professionnelle",
           "Prévoyance : arrêt maladie, invalidité, décès",
@@ -421,7 +421,7 @@ export default function AccompagnementProfessionnelsPage() {
             <h2 style={{ color: '#0f2d6e', fontSize: '1.05rem', fontWeight: 700, margin: '0 0 14px' }}>Pour aller plus loin</h2>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
               {[
-                { label: 'Demander un modèle', href: '/catalogue' },
+                { label: 'Catalogue de documents', href: '/catalogue' },
                 { label: "Création d'entreprise", href: '/creation-entreprise' },
                 { label: 'RGPD & conformité', href: '/rgpd-conformite' },
                 { label: 'Juriste ou avocat ?', href: '/juriste-formaliste-ou-avocat' },
