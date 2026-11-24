@@ -28,7 +28,8 @@ export async function GET(request: Request) {
       .from('users').select('abonnement_actif, type, prenom, nom, email').eq('id', user.id).single()
 
     let autorise = false
-    if (document.acces_gratuit) autorise = true
+    // Modèles gratuits fournis sur demande : téléchargement direct réservé aux abonnés.
+    if (document.acces_gratuit && profile?.abonnement_actif) autorise = true
     if (!autorise && document.acces_optimal && profile?.abonnement_actif) autorise = true
     if (!autorise && document.acces_payant) {
       const { data: achats } = await supabaseAdmin

@@ -52,7 +52,7 @@ export function DocumentSearch({
 
   const accesLabel = (doc: DocItem) => {
     const parts: string[] = []
-    if (doc.acces_gratuit) parts.push('Gratuit')
+    if (doc.acces_gratuit) parts.push('Gratuit sur demande')
     if (doc.acces_optimal) parts.push('Optimal')
     if (doc.acces_payant) parts.push(formatPrix(doc.prix_unitaire) || "À l'unité")
     return parts.join(' · ') || '-'
