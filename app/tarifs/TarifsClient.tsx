@@ -21,9 +21,9 @@ export default function TarifsClient() {
     "mainEntity": {
       "@type": "ItemList",
       "itemListElement": [
-        { "@type": "Offer", "name": "Accès Gratuit", "price": "0", "priceCurrency": "EUR", "description": "Accès gratuit à tous les documents disponibles en accès libre, en format DOCX." },
-        { "@type": "Offer", "name": "Abonnement Optimal Particulier", "price": "17.90", "priceCurrency": "EUR", "description": "Accès à toute la bibliothèque de documents juridiques en DOCX, notices explicatives, fiches pédagogiques, 1 question juriste incluse par mois non cumulable sous 24 à 48h, support prioritaire. Sans engagement mensuel ou 149 €/an." },
-        { "@type": "Offer", "name": "Abonnement Optimal Pro", "price": "27.90", "priceCurrency": "EUR", "description": "Accès à toute la bibliothèque, 2 questions juriste incluses par mois, alertes légales événementielles, support prioritaire. Sans engagement mensuel ou 249 €/an." },
+        { "@type": "Offer", "name": "Accès Gratuit", "price": "0", "priceCurrency": "EUR", "description": "Compte gratuit : demande de modèles de documents en DOCX (modèles gratuits remis aussitôt, autres modèles payables à l'unité), newsletter gratuite." },
+        { "@type": "Offer", "name": "Abonnement Optimal Particulier", "price": "17.90", "priceCurrency": "EUR", "description": "Tous les modèles de documents demandés au cabinet inclus (DOCX), notices explicatives, fiches pédagogiques, 1 question juriste incluse par mois non cumulable sous 24 à 48h, support prioritaire. Sans engagement mensuel ou 149 €/an." },
+        { "@type": "Offer", "name": "Abonnement Optimal Pro", "price": "27.90", "priceCurrency": "EUR", "description": "Tous les modèles de documents inclus, 2 questions juriste incluses par mois, alertes légales événementielles, support prioritaire. Sans engagement mensuel ou 249 €/an." },
         { "@type": "Offer", "name": "Information sur vos droits", "price": "47", "priceCurrency": "EUR", "description": "Réponse pédagogique rédigée par un juriste sous 24 à 48h ouvrées, sans abonnement ni engagement." },
         { "@type": "Offer", "name": "Accompagnement Créateurs", "price": "0", "priceCurrency": "EUR", "description": "Création d'entreprise offerte (hors frais de greffe et JAL). Statuts, formalités, accompagnement juriste formaliste inclus. Sur devis personnalisé." }
       ]
@@ -33,7 +33,7 @@ export default function TarifsClient() {
   const faqItems = [
     {
       q: "Quelle est la différence entre l'Abonnement Optimal Particulier et l'Abonnement Optimal Pro ?",
-      a: "L'Abonnement Optimal Particulier inclut 1 question juriste par mois et donne accès à la bibliothèque complète. L'Abonnement Optimal Pro inclut 2 questions par mois, le même accès bibliothèque, ainsi que les alertes légales événementielles publiées par le cabinet selon l'actualité. Le Pro est conçu pour les professionnels, associations et structures qui ont des besoins juridiques récurrents."
+      a: "L'Abonnement Optimal Particulier inclut 1 question juriste par mois et tous les modèles de documents demandés au cabinet. L'Abonnement Optimal Pro inclut 2 questions par mois, les mêmes modèles inclus, ainsi que les alertes légales événementielles publiées par le cabinet selon l'actualité. Le Pro est conçu pour les professionnels, associations et structures qui ont des besoins juridiques récurrents."
     },
     {
       q: "L'abonnement mensuel est-il sans engagement ?",
@@ -57,7 +57,7 @@ export default function TarifsClient() {
     },
     {
       q: "Puis-je cumuler les questions incluses dans mon abonnement Optimal ?",
-      a: "Non. Les questions mensuelles incluses dans l'abonnement Optimal ne sont pas cumulables d'un mois sur l'autre. Si vous avez besoin de poser des questions supplémentaires dans le même mois, elles sont disponibles à 19 € l'unité pour les abonnés. Sans abonnement, chaque question est à 47 €. Si vous posez régulièrement des questions, l'abonnement Optimal devient plus économique dès la deuxième question mensuelle."
+      a: "Non. Les questions mensuelles incluses dans l'abonnement Optimal ne sont pas cumulables d'un mois sur l'autre. Si vous avez besoin de poser des questions supplémentaires dans le même mois, elles sont disponibles à 14,90 € l'unité pour les abonnés. Sans abonnement, chaque question est à 47 €. Si vous posez régulièrement des questions, l'abonnement Optimal devient plus économique dès la deuxième question mensuelle."
     },
   ]
 
@@ -83,7 +83,7 @@ export default function TarifsClient() {
             <h1 style={{fontSize: '2rem', fontWeight: '700', color: '#0f2d6e', margin: 0}}>Nos tarifs</h1>
             <p style={{color: '#6b7280', fontSize: '0.95rem', marginTop: '8px', marginBottom: '16px'}}>Des formules simples, transparentes, sans mauvaise surprise.</p>
             <p style={{color: '#374151', fontSize: '0.95rem', lineHeight: '1.8'}}>
-              Que vous ayez besoin d'un document ponctuel, d'un accès complet à notre bibliothèque juridique ou d'un accompagnement personnalisé pour créer votre entreprise, le cabinet propose une offre adaptée à chaque situation. Tous nos documents sont rédigés par un juriste, jamais générés par une IA, et mis à jour dès que la législation évolue.
+              Que vous ayez besoin d'un document ponctuel, de tous nos modèles de documents inclus dans un abonnement ou d'un accompagnement personnalisé pour créer votre entreprise, le cabinet propose une offre adaptée à chaque situation. Tous nos documents sont rédigés par un juriste, jamais générés par une IA, et mis à jour dès que la législation évolue.
             </p>
           </div>
 
@@ -94,20 +94,20 @@ export default function TarifsClient() {
 
           {/* COMMENT FONCTIONNE L ACCES */}
           <div style={{ maxWidth: '860px', margin: '0 auto 2.5rem', background: 'white', border: '1px solid #e5e7eb', borderRadius: '14px', padding: '1.75rem' }}>
-            <h2 style={{ fontSize: '1.1rem', fontWeight: '700', color: '#0f2d6e', margin: '0 0 4px', textAlign: 'center' }}>Comment fonctionne l'accès aux documents&nbsp;?</h2>
-            <p style={{ color: '#6b7280', fontSize: '13px', textAlign: 'center', margin: '0 0 18px' }}>Trois manières d'accéder à nos modèles, selon vos besoins.</p>
+            <h2 style={{ fontSize: '1.1rem', fontWeight: '700', color: '#0f2d6e', margin: '0 0 4px', textAlign: 'center' }}>Comment obtenir un modèle de document&nbsp;?</h2>
+            <p style={{ color: '#6b7280', fontSize: '13px', textAlign: 'center', margin: '0 0 18px' }}>Trois manières d'obtenir nos modèles, selon vos besoins.</p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
               <div style={{ borderLeft: '3px solid #16a34a', background: '#f0fdf4', borderRadius: '8px', padding: '12px 14px' }}>
-                <p style={{ margin: '0 0 2px', fontWeight: '700', color: '#15803d', fontSize: '13px' }}>Accès gratuit</p>
-                <p style={{ margin: 0, color: '#374151', fontSize: '13px', lineHeight: '1.6' }}>La création de compte est gratuite. Elle donne accès au téléchargement de tous les documents proposés en accès libre. Les autres restent consultables et disponibles à l'achat à l'unité.</p>
+                <p style={{ margin: '0 0 2px', fontWeight: '700', color: '#15803d', fontSize: '13px' }}>Modèles gratuits</p>
+                <p style={{ margin: 0, color: '#374151', fontSize: '13px', lineHeight: '1.6' }}>La création de compte est gratuite. Depuis votre espace client, vous décrivez le document dont vous avez besoin : si le cabinet dispose d'un modèle gratuit, il vous est remis aussitôt.</p>
               </div>
               <div style={{ borderLeft: '3px solid #d97706', background: '#fffbeb', borderRadius: '8px', padding: '12px 14px' }}>
-                <p style={{ margin: '0 0 2px', fontWeight: '700', color: '#b45309', fontSize: '13px' }}>Documents à l'unité</p>
-                <p style={{ margin: 0, color: '#374151', fontSize: '13px', lineHeight: '1.6' }}>Les documents payants s'achètent un par un, sans abonnement, au tarif indiqué sur chaque fiche. Une fois réglés, ils restent accessibles dans votre espace client.</p>
+                <p style={{ margin: '0 0 2px', fontWeight: '700', color: '#b45309', fontSize: '13px' }}>Modèles à l'unité</p>
+                <p style={{ margin: 0, color: '#374151', fontSize: '13px', lineHeight: '1.6' }}>Certains modèles sont payants. Le cabinet vous indique le prix avant tout paiement, par carte bancaire ou par virement, sans abonnement. Une fois réglé, le modèle reste accessible dans votre espace client.</p>
               </div>
               <div style={{ borderLeft: '3px solid #1a4fba', background: '#eff6ff', borderRadius: '8px', padding: '12px 14px' }}>
                 <p style={{ margin: '0 0 2px', fontWeight: '700', color: '#1a4fba', fontSize: '13px' }}>Abonnement Optimal</p>
-                <p style={{ margin: 0, color: '#374151', fontSize: '13px', lineHeight: '1.6' }}>L'abonnement Optimal donne accès à l'ensemble des documents, packs, guides et ouvrages, sans coût supplémentaire, ainsi qu'à une question à notre juriste chaque mois. Au choix&nbsp;: paiement mensuel sans engagement de durée, ou paiement annuel avec trois mois offerts.</p>
+                <p style={{ margin: 0, color: '#374151', fontSize: '13px', lineHeight: '1.6' }}>L'abonnement Optimal inclut tous les modèles de documents que vous demandez au cabinet, sans coût supplémentaire, ainsi qu'une question à notre juriste chaque mois. Au choix&nbsp;: paiement mensuel sans engagement de durée, ou paiement annuel avec trois mois offerts.</p>
               </div>
             </div>
           </div>
@@ -133,8 +133,8 @@ export default function TarifsClient() {
               <p style={{color: '#6b7280', fontSize: '11px', marginBottom: '16px'}}>Inscription gratuite requise</p>
               <div style={{display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '20px', flex: 1}}>
                 {[
-                  'Accès aux documents en accès libre, format DOCX',
-                  "Documents supplémentaires disponibles à l'unité",
+                  'Demande de modèles de documents, format DOCX',
+                  "Modèles gratuits remis aussitôt, autres modèles à l'unité",
                   'Newsletter gratuite',
                 ].map((item, i) => (
                   <div key={i} style={{display: 'flex', gap: '8px', alignItems: 'flex-start'}}>
@@ -161,10 +161,10 @@ export default function TarifsClient() {
               </p>
               <div style={{display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '20px', flex: 1}}>
                 {[
-                  "Bibliothèque complète de documents DOCX",
+                  "Tous les modèles de documents inclus (DOCX)",
                   'Notices et fiches pédagogiques',
                   '1 question juriste/mois · non cumulable',
-                  '19 € par question supplémentaire',
+                  '14,90 € par question supplémentaire',
                   'Newsletter abonnés',
                   'Orientation vers un avocat ou notaire partenaire *',
                   'Support prioritaire par mail',
@@ -191,10 +191,10 @@ export default function TarifsClient() {
               </p>
               <div style={{display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '20px', flex: 1}}>
                 {[
-                  "Bibliothèque complète de documents DOCX",
+                  "Tous les modèles de documents inclus (DOCX)",
                   'Notices et fiches pédagogiques',
                   '2 questions juriste/mois · non cumulables',
-                  '19 € par question supplémentaire',
+                  '14,90 € par question supplémentaire',
                   'Alertes légales événementielles',
                   'Orientation vers un avocat ou notaire partenaire *',
                   'Support prioritaire par mail',
@@ -228,7 +228,7 @@ export default function TarifsClient() {
               </div>
               <div style={{background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '8px', padding: '8px 10px', marginBottom: '16px'}}>
                 <p style={{color: '#1e3a5f', fontSize: '10px', lineHeight: '1.6', margin: 0}}>
-                  Abonnés Optimal : 19 € par question supplémentaire (au lieu de 47 €).
+                  Abonnés Optimal : 14,90 € par question supplémentaire (au lieu de 47 €).
                 </p>
               </div>
               <a href="/information-sur-vos-droits" style={{display: 'block', width: '100%', padding: '10px', borderRadius: '8px', background: '#1a4fba', color: 'white', fontSize: '12px', fontWeight: '600', cursor: 'pointer', textDecoration: 'none', textAlign: 'center', boxSizing: 'border-box'}}>Poser ma question</a>
@@ -256,11 +256,11 @@ export default function TarifsClient() {
                 </thead>
                 <tbody>
                   {[
-                    ['Usage type', 'Découvrir et télécharger les documents en accès libre', 'Particulier qui veut toute la bibliothèque et un fil direct avec le juriste', 'Professionnel, association ou collectivité', "Besoin ponctuel d'éclairage, sans abonnement"],
-                    ['Documents en accès libre (DOCX)', '✓', '✓', '✓', '-'],
-                    ['Bibliothèque complète, notices et fiches', "À l'unité, selon le document", '✓ incluse', '✓ incluse', '-'],
+                    ['Usage type', 'Demander un modèle, gratuit ou payant à l\'unité', 'Particulier qui veut tous les modèles inclus et un fil direct avec le juriste', 'Professionnel, association ou collectivité', "Besoin ponctuel d'éclairage, sans abonnement"],
+                    ['Modèles gratuits sur demande (DOCX)', '✓', '✓', '✓', '-'],
+                    ['Modèles payants, notices et fiches', "À l'unité, prix indiqué avant paiement", '✓ inclus', '✓ inclus', '-'],
                     ['Question à un juriste', '47 € la question', '1 incluse par mois (non cumulable)', '2 incluses par mois (non cumulables)', '47 € la question'],
-                    ['Question supplémentaire', '47 €', '19 €', '19 €', '47 €'],
+                    ['Question supplémentaire', '47 €', '14,90 €', '14,90 €', '47 €'],
                     ['Alertes légales événementielles', '-', '-', '✓', '-'],
                     ['Orientation avocat ou notaire partenaire *', '-', '✓', '✓', '-'],
                     ['Support prioritaire par mail', '-', '✓', '✓', '-'],

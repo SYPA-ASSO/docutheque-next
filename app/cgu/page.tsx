@@ -133,12 +133,12 @@ export default function CGU() {
                   <div>
                     <p style={h3style}>5.2 Abonnement Optimal Particulier</p>
                     <p style={pstyle}>L'Abonnement Optimal Particulier donne accès à l'intégralité de la bibliothèque de Contenus numériques de la Plateforme et inclut une question mensuelle au Service d'information juridique. Cette question est strictement <strong>non cumulable d'un mois sur l'autre</strong> : toute question non utilisée au cours d'un mois civil est définitivement perdue et ne peut être reportée.</p>
-                    <p style={plastyle}>Des questions supplémentaires peuvent être acquises par l'abonné au tarif préférentiel de <strong>19 €</strong> par question.</p>
+                    <p style={plastyle}>Des questions supplémentaires peuvent être acquises par l'abonné au tarif préférentiel de <strong>14,90 €</strong> par question.</p>
                   </div>
                   <div>
                     <p style={h3style}>5.3 Abonnement Optimal Pro</p>
                     <p style={pstyle}>L'Abonnement Optimal Pro donne accès à l'intégralité de la bibliothèque de Contenus numériques de la Plateforme et inclut deux questions mensuelles au Service d'information juridique. Ces questions sont strictement <strong>non cumulables d'un mois sur l'autre</strong>.</p>
-                    <p style={plastyle}>Des questions supplémentaires peuvent être acquises par l'abonné au tarif préférentiel de <strong>19 €</strong> par question. L'Abonnement Optimal Pro inclut en outre l'accès aux alertes légales événementielles publiées par le Prestataire.</p>
+                    <p style={plastyle}>Des questions supplémentaires peuvent être acquises par l'abonné au tarif préférentiel de <strong>14,90 €</strong> par question. L'Abonnement Optimal Pro inclut en outre l'accès aux alertes légales événementielles publiées par le Prestataire.</p>
                   </div>
                   <div>
                     <p style={h3style}>5.4 Service d'information juridique à l'unité</p>
@@ -152,7 +152,7 @@ export default function CGU() {
                       <li><strong>Professionnel, association, structure ESS :</strong> 150 €</li>
                       <li><strong>Structure complexe (PME, structure multi-contrats) :</strong> sur devis</li>
                     </ul>
-                    <p style={plastyle}>En cas de souscription d'un contrat d'assurance via le Cabinet, celui-ci perçoit en complément une commission versée par l'assureur, indépendante du forfait, dont le montant est communiqué au Client avant toute souscription, conformément à l'article L.521-2 du Code des assurances et à la Directive sur la Distribution d'Assurances (DDA). Le Cabinet est enregistré à l'ORIAS sous le numéro 26003943, catégorie IAS Niveau 1, sous contrôle de l'ACPR.</p>
+                    <p style={plastyle}>En cas de souscription d'un contrat d'assurance via le Cabinet, celui-ci perçoit en complément une commission versée par l'assureur, indépendante du forfait, dont le Cabinet s'engage à communiquer le montant au Client avant toute souscription. Le Cabinet indique par ailleurs au Client, avant toute souscription, qu'il est rémunéré sur la base d'honoraires (le forfait ci-dessus, payé directement par le Client) et, en cas de souscription, d'une commission incluse dans la prime, conformément à l'article L.521-2 du Code des assurances. Le Cabinet consulte les compagnies et grossistes partenaires avec lesquels il a conclu des conventions, et non l'ensemble du marché ; il communique au Client le nom des compagnies avec lesquelles il travaille avant toute souscription. Les informations réglementaires du Cabinet (statut, rémunération, réclamations, médiation) figurent sur la page <a href="/informations-reglementaires" style={{color: '#1a4fba', textDecoration: 'none'}}>Informations réglementaires</a>. Le Cabinet est enregistré à l'ORIAS sous le numéro 26003943, catégorie IAS Niveau 1, sous contrôle de l'ACPR.</p>
                   </div>
                   <div>
                     <p style={h3style}>5.6 Accompagnement à la création d'entreprise</p>
@@ -192,7 +192,7 @@ export default function CGU() {
                         ['Abonnement Optimal Particulier annuel', '149 €/an (soit 12,42 €/mois)', '12 mois'],
                         ['Abonnement Optimal Pro mensuel', '27,90 €/mois', 'Aucun (résiliation 30 j)'],
                         ['Abonnement Optimal Pro annuel', '249 €/an (soit 20,75 €/mois)', '12 mois'],
-                        ['Question supplémentaire (abonné)', '19 €/question', 'Aucun'],
+                        ['Question supplémentaire (abonné)', '14,90 €/question', 'Aucun'],
                         ['Information sur vos droits (unitaire)', '47 €/question', 'Aucun'],
                         ['Conseil en assurances - Particulier', '90 €/forfait', 'Aucun'],
                         ['Conseil en assurances - Pro / Association', '150 €/forfait', 'Aucun'],
@@ -232,7 +232,8 @@ export default function CGU() {
                   </div>
 
                   <p style={pstyle}><strong>9.2 : Service d'information juridique.</strong> Conformément à l'article L.221-28 1° du Code de la consommation, le droit de rétractation ne peut plus être exercé dès lors que le Service d'information juridique a été intégralement exécuté, c'est-à-dire dès la transmission de la réponse rédigée par le juriste au Client, celui-ci ayant donné son accord exprès pour l'exécution du service avant l'expiration du délai de rétractation.</p>
-                  <p style={plastyle}><strong>9.3 : Clients Professionnels.</strong> Le droit de rétractation prévu par le Code de la consommation ne s'applique pas aux Clients agissant en qualité de Professionnels au sens de l'article liminaire du Code de la consommation.</p>
+                  <p style={pstyle}><strong>9.3 : Clients Professionnels.</strong> Le droit de rétractation prévu par le Code de la consommation ne s'applique pas aux Clients agissant en qualité de Professionnels au sens de l'article liminaire du Code de la consommation.</p>
+                  <p style={plastyle}><strong>9.4 : Conseil en assurances.</strong> Pour le forfait de conseil en assurances, conclu à distance par un Client Consommateur, le délai de rétractation de 14 jours court à compter de la conclusion du contrat, c'est-à-dire de la validation de la demande de conseil et de l'acceptation des présentes CGU. Le montant du forfait et ces conditions sont communiqués au Client avant toute commande et avant tout paiement. Le Client peut demander au Cabinet de commencer l'analyse et l'établissement du rapport de conseil avant la fin du délai de rétractation. Cette demande expresse est recueillie avant le paiement, par une case à cocher dédiée du formulaire de demande, et sa preuve est conservée. En la cochant, le Client reconnaît qu'une fois le service entièrement exécuté, c'est-à-dire une fois le rapport de conseil remis, il ne disposera plus de son droit de rétractation. Si le Client se rétracte après le début d'exécution qu'il a demandé, il verse au Cabinet un montant proportionné au service déjà fourni jusqu'à la communication de sa décision de se rétracter, calculé en fonction des étapes réalisées (analyse du recueil des besoins, audit des contrats existants, consultation des partenaires, rédaction du rapport) au regard du prix total du forfait. Le surplus éventuellement payé lui est remboursé. Sans demande expresse du Client, le Cabinet ne commence pas l'exécution avant la fin du délai de rétractation et aucune somme n'est due en cas de rétractation.</p>
                 </div>
               </section>
 
@@ -337,6 +338,7 @@ export default function CGU() {
               <section id="mediation" style={cardstyle}>
                 <h2 style={h2style}>Article 19 : Médiation et règlement des litiges</h2>
                 <p style={pstyle}>En cas de litige, le Client adresse une réclamation écrite préalable au Prestataire via le <a href="/contact" style={{color: '#1a4fba', textDecoration: 'none'}}>formulaire de contact</a>. Le Prestataire s'engage à y répondre dans un délai de <strong>30 jours</strong>.</p>
+                <p style={pstyle}>Pour les litiges relatifs à l'activité de conseil et de courtage en assurances, les modalités de réclamation et de médiation sont celles indiquées sur la page <a href="/informations-reglementaires" style={{color: '#1a4fba', textDecoration: 'none'}}>Informations réglementaires</a> (La Médiation de l'Assurance). La médiation de la consommation décrite ci-dessous s'applique aux autres services du Prestataire.</p>
                 <p style={pstyle}>À défaut de résolution amiable dans ce délai, et conformément à l'article L.612-1 du Code de la consommation, le Client Consommateur peut recourir gratuitement à la médiation de la consommation auprès du médiateur désigné :</p>
                 <div style={hlstyle}>
                   <strong>Centre de Médiation de la Consommation de Conciliateurs de Justice (CM2C)</strong><br />

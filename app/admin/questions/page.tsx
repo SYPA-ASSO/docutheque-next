@@ -71,7 +71,7 @@ export default function AdminQuestions() {
     const conf = type === 'incluse'
       ? { label: 'Incluse', bg: '#f0fdf4', color: '#15803d', border: '#bbf7d0' }
       : type === 'abonne'
-        ? { label: '19\u00a0€', bg: '#eff6ff', color: '#1a4fba', border: '#bfdbfe' }
+        ? { label: '14,90\u00a0€', bg: '#eff6ff', color: '#1a4fba', border: '#bfdbfe' }
         : { label: '47\u00a0€', bg: '#fff7ed', color: '#d97706', border: '#fed7aa' }
     return (
       <span style={{ background: conf.bg, color: conf.color, border: `1px solid ${conf.border}`, fontSize: '10px', fontWeight: '700', padding: '1px 6px', borderRadius: '4px' }}>
@@ -90,7 +90,7 @@ export default function AdminQuestions() {
   const payantesDuMois = questionsDuMois.filter(q => q.type === 'unitaire' || q.type === 'abonne')
   const abonnesIncluseDuMois = new Set(inclusesDuMois.map(q => q.user_id)).size
   // Calcul en centimes pour eviter les erreurs de virgule flottante
-  const encaisseCentimesMois = questionsDuMois.reduce((acc, q) => acc + (q.type === 'unitaire' ? 4700 : q.type === 'abonne' ? 1900 : 0), 0)
+  const encaisseCentimesMois = questionsDuMois.reduce((acc, q) => acc + (q.type === 'unitaire' ? 4700 : q.type === 'abonne' ? 1490 : 0), 0)
   const encaisseMois = (encaisseCentimesMois / 100).toLocaleString('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
   const moisLabel = maintenant.toLocaleDateString('fr-FR', { month: 'long', year: 'numeric' })
 

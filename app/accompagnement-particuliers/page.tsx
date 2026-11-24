@@ -14,7 +14,7 @@ const schemaData = {
       "@type": "Service",
       "@id": "https://cholez-pagotto.fr/accompagnement-particuliers#service",
       "name": "Accompagnement particuliers - Cabinet Cholez-Pagotto",
-      "description": "Accompagnement juridique des particuliers : information sur vos droits (47 €), bibliothèque de documents (dès 17,90 €/mois), conseil en assurances réglementé ORIAS 26003943. Tous les domaines du droit.",
+      "description": "Accompagnement juridique des particuliers : information sur vos droits (47 €), modèles de documents sur demande (inclus dès 17,90 €/mois avec l'abonnement Optimal), conseil en assurances réglementé ORIAS 26003943. Tous les domaines du droit.",
       "provider": {
         "@type": "LegalService",
         "@id": "https://cholez-pagotto.fr/#cabinet",
@@ -86,7 +86,7 @@ const domaines = [
 
 const faqParticuliers = [
   { q: "Le cabinet peut-il me donner une consultation juridique ?", r: "Notre juriste délivre une information juridique au sens de la loi n°71-1130 du 31 décembre 1971 : il vous explique les règles applicables à votre situation et les démarches possibles, ce qui vous permet de décider en connaissance de cause. Cette information ne constitue pas une consultation juridique personnalisée, laquelle relève de l'avocat. Le cas échéant, vous êtes orienté vers le professionnel du droit compétent." },
-  { q: "Quelle différence entre une question juridique et l'abonnement à la bibliothèque ?", r: "La question juridique, facturée 47 €, vous apporte une réponse écrite sur un point de droit précis. L'abonnement Optimal, à 17,90 €/mois, donne accès à l'intégralité de la bibliothèque de modèles de documents, que vous téléchargez et réutilisez librement. Une partie de la bibliothèque reste par ailleurs accessible gratuitement après la simple création d'un compte." },
+  { q: "Quelle différence entre une question juridique et l'abonnement Optimal ?", r: "La question juridique, facturée 47 €, vous apporte une réponse écrite sur un point de droit précis. L'abonnement Optimal, à 17,90 €/mois, inclut tous les modèles de documents que vous demandez au cabinet, que vous téléchargez et réutilisez librement, ainsi qu'une question juriste par mois. Certains modèles sont aussi gratuits après la simple création d'un compte, et les autres peuvent être achetés à l'unité." },
   { q: "Les modèles de documents sont-ils adaptés à ma situation personnelle ?", r: "Les modèles sont des trames générales conformes au droit en vigueur, conçues pour couvrir les situations courantes. Ils vous font gagner du temps mais ne remplacent pas l'analyse d'une situation particulière. Pour un cas complexe ou un enjeu important, notre juriste vous informe sur les points de vigilance ou vous oriente vers l'avocat compétent." },
   { q: "Le cabinet peut-il rédiger un acte ou me représenter en justice ?", r: "Non. La rédaction d'actes pour le compte d'autrui, la consultation juridique personnalisée et la représentation ou la défense en justice sont des actes réservés à l'avocat. Le cabinet prépare et vous assiste dans la rédaction de vos propres documents et vous accompagne dans vos formalités, dans le respect de la loi du 31 décembre 1971." },
   { q: "Sous quel délai vais-je obtenir une réponse ?", r: "Le délai dépend de la complexité de votre demande. Vous recevez une estimation dès la prise en charge. Notre juriste privilégie une réponse claire et documentée plutôt qu'une réponse rapide et approximative." },
@@ -125,7 +125,7 @@ export default function AccompagnementParticuliersPage() {
               prenez vos décisions en toute connaissance de cause
             </h1>
             <p style={{ fontSize: '1.1rem', color: 'rgba(255,255,255,0.88)', marginBottom: '2rem', lineHeight: 1.7 }}>
-              Quatre façons de bénéficier de l'expertise du cabinet : information juridique, bibliothèque de documents, conseil en assurances réglementé et formations sur-mesure.
+              Quatre façons de bénéficier de l'expertise du cabinet : information juridique, modèles de documents, conseil en assurances réglementé et formations sur-mesure.
               Réponse juriste sous 24 à 48h ouvrées. 100% humain, aucune IA.
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '2rem', paddingTop: '2rem', borderTop: '1px solid rgba(255,255,255,0.2)' }}>
@@ -157,7 +157,7 @@ export default function AccompagnementParticuliersPage() {
 
         <div style={{ maxWidth: 1100, margin: '0 auto', padding: '3rem 1.5rem' }}>
 
-          {/* ACCES LIBRE BIBLIOTHEQUE */}
+          {/* MODELES SUR DEMANDE */}
           <section style={{ marginBottom: '3.5rem' }}>
             <div style={{ background: '#ecfdf5', border: '1px solid #a7f3d0', borderRadius: 14, padding: '1.5rem 1.75rem', display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '1.25rem', justifyContent: 'space-between' }}>
               <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.9rem', flex: 1, minWidth: '280px' }}>
@@ -165,15 +165,15 @@ export default function AccompagnementParticuliersPage() {
                   <BookOpen size={22} color="#065f46" strokeWidth={1.5} />
                 </div>
                 <div>
-                  <p style={{ color: '#065f46', fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', margin: '0 0 4px' }}>Accès libre · Gratuit</p>
-                  <h3 style={{ fontSize: '1.15rem', fontWeight: 700, color: '#0f2d6e', margin: '0 0 0.35rem' }}>Une partie de la bibliothèque est gratuite</h3>
+                  <p style={{ color: '#065f46', fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', margin: '0 0 4px' }}>Modèles sur demande</p>
+                  <h3 style={{ fontSize: '1.15rem', fontWeight: 700, color: '#0f2d6e', margin: '0 0 0.35rem' }}>Demandez le modèle dont vous avez besoin</h3>
                   <p style={{ fontSize: 13, color: '#374151', lineHeight: 1.6, margin: 0 }}>
-                    Créez un compte gratuit et téléchargez immédiatement une sélection de modèles de documents. L'abonnement Optimal débloque ensuite l'intégralité de la bibliothèque.
+                    Créez un compte gratuit et décrivez le document souhaité. Selon le modèle, il est gratuit, inclus dans l'abonnement Optimal ou payable à l'unité, avec le prix indiqué avant tout paiement.
                   </p>
                 </div>
               </div>
               <a href="/catalogue" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: '#065f46', color: 'white', textDecoration: 'none', padding: '12px 22px', borderRadius: 8, fontWeight: 700, fontSize: '0.9rem', flexShrink: 0 }}>
-                Parcourir le catalogue gratuitement <ArrowRight size={16} />
+                Demander un modèle <ArrowRight size={16} />
               </a>
             </div>
           </section>
@@ -229,19 +229,19 @@ export default function AccompagnementParticuliersPage() {
                     <BookOpen size={22} color="white" strokeWidth={1.5} />
                   </div>
                   <div>
-                    <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', margin: 0 }}>Bibliothèque + questions</p>
+                    <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', margin: 0 }}>Modèles + questions</p>
                     <h3 style={{ fontSize: '1.05rem', fontWeight: 700, color: 'white', margin: 0 }}>Abonnement Optimal</h3>
                   </div>
                 </div>
                 <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.85)', lineHeight: 1.7, marginBottom: '1rem', flex: 1 }}>
-                  Accès complet à la bibliothèque de documents juridiques en DOCX, personnalisables et mis à jour.
+                  Tous les modèles de documents demandés au cabinet, en DOCX, personnalisables et mis à jour.
                   Une question juriste incluse par mois, questions supplémentaires à tarif préférentiel.
                 </p>
                 <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 1.5rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                   {[
-                    "Bibliothèque complète de documents DOCX",
+                    "Tous les modèles de documents inclus (DOCX)",
                     "1 question juriste / mois incluse",
-                    `Questions supplémentaires à 19 €`,
+                    `Questions supplémentaires à 14,90 €`,
                     "Mises à jour législatives incluses"
                   ].map((item, j) => (
                     <li key={j} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem', fontSize: 12, color: 'rgba(255,255,255,0.85)' }}>
@@ -255,8 +255,8 @@ export default function AccompagnementParticuliersPage() {
                   <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.6)', marginLeft: '0.4rem' }}>/ mois · sans engagement</span>
                 </div>
                 <p style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)', margin: '0 0 1rem' }}>ou 149 € / an · 3 mois offerts</p>
-                <a href="/catalogue" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', background: 'white', color: '#0f2d6e', textDecoration: 'none', padding: '12px 20px', borderRadius: 8, fontWeight: 700, fontSize: '0.875rem' }}>
-                  Voir la bibliothèque <ArrowRight size={16} />
+                <a href="/tarifs" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', background: 'white', color: '#0f2d6e', textDecoration: 'none', padding: '12px 20px', borderRadius: 8, fontWeight: 700, fontSize: '0.875rem' }}>
+                  Voir l'abonnement Optimal <ArrowRight size={16} />
                 </a>
               </div>
 
@@ -272,7 +272,7 @@ export default function AccompagnementParticuliersPage() {
                   </div>
                 </div>
                 <p style={{ fontSize: 13, color: '#374151', lineHeight: 1.7, marginBottom: '1rem', flex: 1 }}>
-                  Intermédiaire en assurances réglementé. Audit de vos contrats existants, comparaison des offres du marché,
+                  Intermédiaire en assurances réglementé. Audit de vos contrats existants, consultation des compagnies et grossistes partenaires,
                   rapport de conseil écrit et motivé. Aucun lien exclusif avec aucune compagnie.
                   Conforme à l'article L.521-4 du Code des assurances (DDA).
                 </p>
@@ -427,7 +427,7 @@ export default function AccompagnementParticuliersPage() {
             <h2 style={{ fontSize: '1.3rem', fontWeight: 700, margin: '0 0 0.5rem' }}>Par où commencer ?</h2>
             <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.8)', margin: '0 0 1.5rem', lineHeight: 1.9 }}>
               Une question précise : <strong>Information sur vos droits</strong> : 47 €.<br />
-              Besoin de documents régulièrement : <strong>Abonnement Optimal</strong> : à partir de 17,90 € / mois.<br />
+              Besoin de modèles de documents régulièrement : <strong>Abonnement Optimal</strong> : à partir de 17,90 € / mois.<br />
               Vos assurances à revoir : <strong>Conseil en assurances</strong> : forfait 90 €.
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', justifyContent: 'center' }}>
@@ -435,7 +435,7 @@ export default function AccompagnementParticuliersPage() {
                 Poser une question · 47 € <ArrowRight size={16} />
               </a>
               <a href="/catalogue" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: 'transparent', color: 'white', textDecoration: 'none', padding: '12px 24px', borderRadius: 8, fontWeight: 600, fontSize: '0.875rem', border: '1px solid rgba(255,255,255,0.5)' }}>
-                Voir la bibliothèque
+                Demander un modèle
               </a>
               <a href="/conseil-assurances" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: 'transparent', color: 'white', textDecoration: 'none', padding: '12px 24px', borderRadius: 8, fontWeight: 600, fontSize: '0.875rem', border: '1px solid rgba(255,255,255,0.5)' }}>
                 Conseil en assurances

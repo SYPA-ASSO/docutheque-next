@@ -34,7 +34,7 @@ export default function SchemaOrg() {
         {
           "@type": "Offer",
           "name": "Abonnement Optimal",
-          "price": "17.90",
+          "price": "14.90",
           "priceCurrency": "EUR",
           "description": "Bibliothèque complète, notices juridiques, fiches pédagogiques et 1 question d'information juridique par mois sous 24 à 48h"
         },

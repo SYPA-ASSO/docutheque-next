@@ -60,7 +60,7 @@ export async function POST(request: Request) {
     const notifActive = notifData?.valeur === 'true'
 
     if (notifActive && user) {
-      const typeLabel = question.type === 'unitaire' ? '47 €' : question.type === 'abonne' ? '19 €' : 'incluse'
+      const typeLabel = question.type === 'unitaire' ? '47 €' : question.type === 'abonne' ? '14,90 €' : 'incluse'
 
       await fetch('https://api.brevo.com/v3/smtp/email', {
         method: 'POST',
