@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  experimental: { cpus: process.env.BUILD_CPUS ? Number(process.env.BUILD_CPUS) : undefined },
   async redirects() {
     return [
       // Canonique : redirection de l'ancien sous-domaine www vers l'apex
